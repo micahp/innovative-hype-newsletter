@@ -1,0 +1,138 @@
+# Innovative Hype Newsletter Pipeline — Configuration
+# =====================================================
+# Copy this file to config.local.yaml and fill in secrets.
+# config.local.yaml is gitignored and never committed.
+
+# --- Substack Publishing ---
+substack:
+  # The secret @substack.com posting address for your publication.
+  # Find this in Substack → Settings → Publishing → "Post by email"
+  posting_address: "CHANGEME@substack.com"
+
+# --- SMTP ---
+smtp:
+  host: "smtp.gmail.com"
+  port: 587
+  # Use an App Password if 2FA is enabled (recommended).
+  # https://myaccount.google.com/apppasswords
+  username: "CHANGEME@gmail.com"
+  password: "CHANGEME"
+
+# --- RSS Feeds ---
+# Tier 1: Major AI news outlets
+# Tier 2: Research / academic
+# Tier 3: Community / aggregation
+rss_feeds:
+  # Tier 1 — Major AI & Tech News
+  - name: "TechCrunch AI"
+    url: "https://techcrunch.com/category/artificial-intelligence/feed/"
+    tier: 1
+  - name: "The Verge AI"
+    url: "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml"
+    tier: 1
+  - name: "VentureBeat AI"
+    url: "https://venturebeat.com/category/ai/feed/"
+    tier: 1
+  - name: "MIT Technology Review"
+    url: "https://www.technologyreview.com/feed/"
+    tier: 1
+  - name: "Wired AI"
+    url: "https://www.wired.com/feed/tag/ai/latest/rss"
+    tier: 1
+  - name: "Ars Technica"
+    url: "https://feeds.arstechnica.com/arstechnica/index"
+    tier: 1
+
+  # Tier 2 — Research & Deep Analysis
+  - name: "arXiv CS.AI"
+    url: "https://rss.arxiv.org/rss/cs.AI"
+    tier: 2
+  - name: "arXiv CS.CL"
+    url: "https://rss.arxiv.org/rss/cs.CL"
+    tier: 2
+  - name: "Simon Willison's Blog"
+    url: "https://simonwillison.net/atom/everything/"
+    tier: 2
+  - name: "Google AI Blog"
+    url: "https://blog.research.google/feeds/posts/default"
+    tier: 2
+  - name: "OpenAI Blog"
+    url: "https://openai.com/blog/rss.xml"
+    tier: 2
+  - name: "DeepMind Blog"
+    url: "https://deepmind.google/discover/blog/feed.xml"
+    tier: 2
+  - name: "Anthropic Research"
+    url: "https://www.anthropic.com/research/feed"
+    tier: 2
+  - name: "Meta AI Blog"
+    url: "https://ai.meta.com/blog/feed/"
+    tier: 2
+
+  # Tier 3 — Community & Curation
+  - name: "Hacker News (AI)"
+    url: "https://hnrss.org/frontpage?q=AI+OR+ML+OR+LLM+OR+GPT+OR+Claude+OR+Gemini"
+    tier: 3
+  - name: "Hacker News (tech)"
+    url: "https://hnrss.org/frontpage"
+    tier: 3
+  - name: "Import AI"
+    url: "https://importai.substack.com/feed"
+    tier: 3
+
+# --- Filtering ---
+filter:
+  # Only keep articles whose title/summary match at least one keyword
+  keywords:
+    - "AI"
+    - "artificial intelligence"
+    - "LLM"
+    - "large language model"
+    - "GPT"
+    - "Claude"
+    - "Gemini"
+    - "machine learning"
+    - "deep learning"
+    - "neural net"
+    - "transformer"
+    - "diffusion"
+    - "open source model"
+    - "AGI"
+    - "OpenAI"
+    - "Anthropic"
+    - "DeepMind"
+    - "Meta AI"
+    - "Mistral"
+    - "Stable Diffusion"
+    - "Sora"
+    - "generative AI"
+    - "chatbot"
+    - "AI agent"
+    - "AI regulation"
+    - "AI safety"
+    - "alignment"
+  # Articles older than this many hours are dropped
+  max_age_hours: 48
+  # Maximum articles to keep after filtering
+  max_articles: 20
+
+# --- Output Paths ---
+output:
+  digest: "digest.json"
+  newsletter: "newsletter.md"
+  log: "pipeline.log"
+
+# --- Newsletter Template ---
+newsletter:
+  # Number of stories to include in each edition
+  story_count: 5
+  # Publication name (for headers/footers)
+  publication_name: "Innovative Hype"
+  # Newsletter sections to include
+  sections:
+    - "Top Story"        # The biggest AI news of the day
+    - "What It Means"    # Analysis / commentary for each story
+    - "Quick Hits"       # 2-3 shorter stories
+    - "The Bottom Line"  # CTA / wrap-up
+  # Sponsor placeholder text
+  sponsor_placeholder: "*This edition of Innovative Hype is brought to you by [Your Brand Here]. Want to reach 76+ AI-curious readers? Reply to this email.*"
