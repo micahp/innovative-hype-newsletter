@@ -61,7 +61,7 @@ banner "STAGE 1: AI News Research — $TIMESTAMP"
 log "Config: $CONFIG"
 log "Researching AI news from RSS feeds..."
 
-python3 research.py --config "$CONFIG" --output digest.json 2>&1 | while IFS= read -r line; do
+/Users/micah/.hermes/hermes-agent/venv/bin/python research.py --config "$CONFIG" --output digest.json 2>&1 | while IFS= read -r line; do
     log "$line"
 done
 
@@ -85,7 +85,7 @@ fi
 banner "STAGE 2: Newsletter Draft"
 log "Generating draft prompt from digest..."
 
-python3 draft.py --config "$CONFIG" --digest digest.json --output newsletter.md
+/Users/micah/.hermes/hermes-agent/venv/bin/python draft.py --config "$CONFIG" --digest digest.json --output newsletter.md
 
 if [ ! -s newsletter.md ]; then
     log "ERROR: newsletter.md is empty — draft generation failed."
@@ -106,7 +106,9 @@ if [ "$MODE" = "publish" ]; then
     banner "STAGE 3: Substack Publish"
     log "Sending newsletter to Substack..."
 
-    python3 publish.py newsletter.md --config "$CONFIG"
+    /Users/micah/.hermes/hermes-agent/venv/bin/python publish.py newsletter.md --config "$CONFIG" 2>&1 | while IFS= read -r line; do
+        log "$line"
+    done
 
     log "Pipeline complete! Check innovativehype.substack.com."
 elif [ "$MODE" = "dry-run" ]; then
