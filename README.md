@@ -36,7 +36,7 @@ research.py ──► digest.json ──► draft.py ──► newsletter.md ─
 | `research.py` | Stage 1 — RSS scrape, filter, dedup → `digest.json` |
 | `draft.py` | Stage 2 — digest → `newsletter.md` prompt template |
 | `pipeline.sh` | Orchestrates stages; modes below |
-| `publish.py` | Stage 3 — emails the edition to Substack _(referenced by `pipeline.sh`; add/restore before using `--publish`)_ |
+| `publish.py` | Stage 3 — emails the edition to Substack (used by `pipeline.sh --publish`) |
 | `digest.json` / `newsletter.md` | Latest run artifacts (checked in as examples) |
 
 ## Setup
