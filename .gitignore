@@ -1,0 +1,10 @@
+# Secrets — never commit
+config.local.yaml
+*.local.yaml
+.env
+
+# Runtime
+pipeline.log
+*.log
+__pycache__/
+*.pyc
