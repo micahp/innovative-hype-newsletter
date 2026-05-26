@@ -1,0 +1,314 @@
+{
+  "slug": "11-reddit-post-1t84rlc",
+  "url": "https://www.reddit.com/r/AIAgentsInAction/comments/1t84rlc/this_guy_won_the_anthropic_hackathon_solo_then_he/",
+  "screenshot": "/Users/micah/code/hytopia-demo/scraped-links/11-reddit-post-1t84rlc.png",
+  "scrapedAt": "2026-05-26T00:02:07.763Z",
+  "platform": "reddit",
+  "title": "This guy Won the Anthropic Hackathon Solo. Then He Open-Sourced the Stack includes: 38 Agents, 156 Skills, 1,282 Security Tests : r/AIAgentsInAction",
+  "post": {
+    "author": null,
+    "datetime": null,
+    "text": "This guy Won the Anthropic Hackathon Solo. Then He Open-Sourced the Stack includes: 38 Agents, 156 Skills, 1,282 Security Tests\n\nA solo dev won the Anthropic hackathon by shipping a product in eight hours with Claude Code. Prize: $15,000. He open-sourced the repo and it sits at 153,000+ stars on GitHub.\n\nThe repo is Everything Claude Code (ECC). Claude Code with 38 specialized agents, 156 skills, 72 commands, and a security scanner with 1,282 tests.\n\nInstall selectively\n\n# Plugin install\n/plugin marketplace add affaan-m/everything-claude-code\n/plugin install everything-claude-code@everything-claude-code\n\n# Or pick what you need\necc install --profile developer \\\n  --with lang:typescript \\\n  --with agent:security-reviewer \\\n  --without skill:continuous-learning\n\nLoading all 156 skills wastes context. Pick your stack, drop the rest.\n\nAgents that do one job\n\nplanner             → breaks down task, delegates to specialists\nsecurity-reviewer   → scans for vulnerabilities pre-ship\ntypescript-reviewer → catches TS antipatterns\ncode-reviewer       → 5 parallel checks\ndebugger            → root-cause analysis\n\nCoverage spans 12 language ecosystems. The planner agent handles orchestration: hand it a ticket, it decomposes the work and routes to specialists.\n\nSkills load on demand\n\n/plan          → structured task planning\n/tdd           → test-driven workflow\n/security-scan → AgentShield audit\n/quality-gate  → ship-readiness check\n/simplify      → refactor for readability\n\nStack-specific ones too: nextjs-turbopack, bun-runtime, pytorch-patterns, mcp-server-patterns.\n\nAgentShield\n\nThis is the part most people skip and where ECC pays for itself.\n\n# Quick scan, no install\nnpx ecc-agentshield scan\n\n# Auto-fix safe issues\nnpx ecc-agentshield scan --fix\n\n# Three Opus 4.6 agents in red-team pipeline\nnpx ecc-agentshield scan --opus --stream\n\nThe --opus flag runs three Claude Opus 4.6 agents:\n\nAttacker  → looks for exploit chains\nDefender  → evaluates defenses\nAuditor   → synthesizes a prioritized risk report\n\nWhat gets scanned:\n\nCLAUDE.md     → hardcoded secrets, injection vectors\nsettings.json → misconfigured permissions\nMCP configs   → server risks (25+ known CVEs)\nHooks         → injection analysis\nAgents        → prompt injection, privilege escalation\nSkills        → supply chain verification\n\nSample output:\n\nGrade: B+\nCritical: 0 | High: 2 | Medium: 5 | Low: 3\n\n❌ HIGH: Hardcoded API key in CLAUDE.md:15\n   Fix: Move to environment variable\n\nDrops into continuous integration so any pull request changing an agent config gets audited.\n\nThe learning layer\n\nStock Claude Code starts each session blank. ECC's continuous learning watches your sessions and builds patterns:\n\nSession 1:  you fix an async error pattern    (confidence: 0.3)\nSession 5:  same pattern, refined             (confidence: 0.6)\nSession 10: stable, applied automatically     (confidence: 0.9)\n\nA knowledge layer that persists across sessions, sharpens with use. After two or three weeks, Claude writes in your conventions instead of generic large language model defaults.\n\nThree repos that close ECC's gaps\n\nclaude-mem for cross-session memory (github.com/thedotmack/claude-mem). Five lifecycle hooks, SQLite storage, web viewer at localhost:37777.\n\n/plugin marketplace add thedotmack/claude-mem\n/plugin install claude-mem\n\nSuperpowers for forced planning (github.com/obra/superpowers). ECC's agents will write 400 lines without a plan. Superpowers makes them think first.\n\n/plugin marketplace add obra/superpowers\n/plugin install superpowers\n\nCLAUDE.md rules for predictable agent behavior. All 38 agents read the file. Drop in:\n\n- Run tests before marking task complete\n- Never create files outside the project directory\n- Ask before deleting any file\n- Explain reasoning before writing code\n- If unsure, ask. Don't guess.\n\nEasy setup\n\n# 1. Install ECC for your stack\n/plugin install everything-claude-code@everything-claude-code\n\n# 2. Memory\n/plugin install claude-mem\n\n# 3. Planning discipline\n/plugin install superpowers\n\n# 4. Security scan\nnpx ecc-agentshield scan --fix\n\n# 5. Drop behavior rules into CLAUDE.md",
+    "images": [
+      "https://styles.redditmedia.com/t5_fd586i/styles/communityIcon_uihtizy80esg1.png?width=96&height=96&frame=1&auto=webp&crop=96%3A96%2Csmart&s=c9f7bbe9dd52d206801d0013201f5bffb1ef4d32",
+      "https://preview.redd.it/i39jfyhd1izg1.png?auto=webp&s=1228cbd2b5d2e7493b04670194aa20280cb9ed74",
+      "https://styles.redditmedia.com/t5_1yz875/styles/profileIcon_klqlly9fc4l41.png?width=64&height=64&frame=1&auto=webp&crop=64%3A64%2Csmart&s=4cd002de4de73dc33950158eb385a54026d627e1",
+      "https://styles.redditmedia.com/t5_21mxoz/styles/profileIcon_6vdizl7sbsn31.png?width=64&height=64&frame=1&auto=webp&crop=64%3A64%2Csmart&s=906bcfa4ea31e0d3b95743be2356a6f4456406f5",
+      "https://styles.redditmedia.com/t5_et0q8/styles/profileIcon_txtk9ldnpk4a1.jpg?width=64&height=64&frame=1&auto=webp&crop=64%3A64%2Csmart&s=7620b166daacb1f775b8d3c55845d4b6c4990ded",
+      "https://styles.redditmedia.com/t5_pceuh/styles/profileIcon_re50n8n463ob1.png?width=48&height=48&frame=1&auto=webp&crop=48%3A48%2Csmart&s=d9c7c554bf0d8c69402093071554e2b95e774500",
+      "https://preview.redd.it/5yha9sw3oazg1.png?width=640&crop=smart&auto=webp&s=da44db839e277d3d0a51d4b62c8a0253a2d072b3",
+      "https://preview.redd.it/chfz1kx3oazg1.png?width=640&crop=smart&auto=webp&s=8ba2a636201fb8fd1462032fa1dabd65e40f0fd9",
+      "https://preview.redd.it/x0z0vzx3oazg1.png?width=640&crop=smart&auto=webp&s=77580a131a6bcfa51b3e2af0cbd5302539c9afdc",
+      "https://preview.redd.it/sgjuyky3oazg1.png?width=640&crop=smart&auto=webp&s=3ead6ff51eccbf9893e8abdd397dea19c2d70809",
+      "https://preview.redd.it/lmjtnyy3oazg1.jpg?width=640&crop=smart&auto=webp&s=291fa12eabcf5a1fdc6a466c1f255d3a00fd595b",
+      "https://styles.redditmedia.com/t5_aor7ef/styles/profileIcon_vhx0shyf5ttc1.jpeg?width=64&height=64&frame=1&auto=webp&crop=64%3A64%2Csmart&s=4439920bc53193458f974f29cf77a7a2cc4b95a8",
+      "https://styles.redditmedia.com/t5_e2atnn/styles/profileIcon_uuvs8a9ea1se1.png?width=64&height=64&frame=1&auto=webp&crop=64%3A64%2Csmart&s=88b4a32e45b7aacbd80eaf26cdb9422f72dd7585",
+      "https://preview.redd.it/zkepwca1s4og1.png?auto=webp&s=54a75df92e5fb4bba9f32a145e70ebd30047b92a",
+      "https://styles.redditmedia.com/t5_d6br6/styles/profileIcon_06emvbudndj71.png?width=64&height=64&frame=1&auto=webp&crop=64%3A64%2Csmart&s=665fd860d65913cf892c45a63a2e1d72dfd76163",
+      "https://styles.redditmedia.com/t5_cmgsn/styles/profileIcon_v69hcz1q8nab1.jpg?width=64&height=64&frame=1&auto=webp&crop=64%3A64%2Csmart&s=541218c7ddf473d509ed09df71dc5c0c07525363",
+      "https://preview.redd.it/this-guy-won-the-anthropic-hackathon-solo-then-he-open-v0-aejj8laofb0h1.jpeg?width=1080&format=pjpg&auto=webp&s=43905132395e93fa63ccb0284764543d2f40ace9",
+      "https://styles.redditmedia.com/t5_5wa5ww/styles/communityIcon_wyopomb2xb0a1.png?width=48&height=48&frame=1&auto=webp&crop=48%3A48%2Csmart&s=993cee5fff1a15460b937e402b9397420f150b5a",
+      "https://styles.redditmedia.com/t5_d5w4yc/styles/profileIcon_yz8831kuzyge1.jpg?width=48&height=48&frame=1&auto=webp&crop=48%3A48%2Csmart&s=dd3d834b78867ca3800ed6d10b25a4daab6dbeff",
+      "https://external-preview.redd.it/153T5oINSGAU9Lnv2bO-MH5p_4vdxbsN6jEscM1q7BY.png?width=108&crop=smart&format=pjpg&auto=webp&s=b38beb27de152fc82e298677920bf534576f794e",
+      "https://styles.redditmedia.com/t5_81eyvm/styles/communityIcon_cumnsvx9kzma1.png?width=48&height=48&frame=1&auto=webp&crop=48%3A48%2Csmart&s=a65b055886461d9f520fb038a7ab11356a72b896",
+      "https://styles.redditmedia.com/t5_5nsj5k/styles/communityIcon_nrzwex66tmjb1.png?width=48&height=48&frame=1&auto=webp&crop=48%3A48%2Csmart&s=d2eba576be00986f38d02af68f4ed2ffdbc25ca6",
+      "https://b.thumbs.redditmedia.com/SNHPOt67Y9JQ1Aflh5fnm5xzvPjSfD1X_YMPcIkcx6c.jpg",
+      "https://styles.redditmedia.com/t5_dp6k3k/styles/communityIcon_g3ehwz8f4sbf1.jpg?width=48&height=48&frame=1&auto=webp&crop=48%3A48%2Csmart&s=3078fec0c87d7b6f9bfe74b2932791ef497eaffb",
+      "https://preview.redd.it/rgwzo56tlxxg1.jpeg?width=140&height=140&crop=1%3A1%2Csmart&auto=webp&s=942af516c37e0f1e9952c3a0b951ffdab8c867f5",
+      "https://styles.redditmedia.com/t5_e2rxrm/styles/communityIcon_c4b81khvimyg1.png?width=48&height=48&frame=1&auto=webp&crop=48%3A48%2Csmart&s=81ef40f18874cc9855342c0fa6ca8df6f53d0d3c",
+      "https://preview.redd.it/mvbyrznehdog1.png?width=140&height=140&crop=1%3A1%2Csmart&auto=webp&s=88e1d700929a02e839f5f4fceb6fe3054615cac2",
+      "https://styles.redditmedia.com/t5_ev2z02/styles/communityIcon_0mrio0jnb6bf1.jpg?width=48&height=48&frame=1&auto=webp&crop=48%3A48%2Csmart&s=e4fe928419103b7d8bb5f774342ecfd05ccc2eb9",
+      "https://preview.redd.it/df3ydzqwbelg1.png?width=140&height=140&crop=1%3A1%2Csmart&auto=webp&s=e1d8b8c4750eff07868eee9ebdaf666ec511c1dd",
+      "https://styles.redditmedia.com/t5_7tpn6r/styles/communityIcon_vw08a423ptxa1.png?width=48&height=48&frame=1&auto=webp&crop=48%3A48%2Csmart&s=860301d17bf9fdde358e2d2490bbb192d141f397",
+      "https://preview.redd.it/2m53eiaq8pkg1.png?width=140&height=140&crop=1%3A1%2Csmart&auto=webp&s=9b62cc23681f9d48c25379dc97ca6462c3641194",
+      "https://styles.redditmedia.com/t5_2y46a/styles/communityIcon_qoggx8r4r8m31.png?width=48&height=48&frame=1&auto=webp&crop=48%3A48%2Csmart&s=709e7429a1de4851591bc1a4dec1c9dcb20e01c0",
+      "https://external-preview.redd.it/d3oPtTiU-SbRBlF-kR2cJykQNHqwVkuuyJhFDcaPPxQ.jpeg?width=140&height=93&auto=webp&s=830849891d4074522fc384a422389d537ec304fd",
+      "https://styles.redditmedia.com/t5_8f6xyy/styles/communityIcon_cifdzj1blbsc1.png?width=48&height=48&frame=1&auto=webp&crop=48%3A48%2Csmart&s=bbb77ca62d2240146be91bd43257c521a96152d3",
+      "https://preview.redd.it/25btz09yv5yg1.png?width=140&height=140&crop=1%3A1%2Csmart&auto=webp&s=1d2ffbf8f0950761b54826779c93b59d4d02fcc1",
+      "https://styles.redditmedia.com/t5_95egkp/styles/communityIcon_tg782nsbpdjb1.png?width=48&height=48&frame=1&auto=webp&crop=48%3A48%2Csmart&s=4cf913125e1a09e4733b014e89e9b635a2d3a13f",
+      "https://styles.redditmedia.com/t5_7t8hvt/styles/communityIcon_97yk0vsmp4cf1.png?width=48&height=48&frame=1&auto=webp&crop=48%3A48%2Csmart&s=553dec879c203855da3925cf00c120b370bb0ca0",
+      "https://styles.redditmedia.com/t5_fgw1tz/styles/communityIcon_l23h7m9g2o3g1.png?width=48&height=48&frame=1&auto=webp&crop=48%3A48%2Csmart&s=981e81893b3a88e8d5f54547e5e7a8a8f3c1098c",
+      "https://external-preview.redd.it/J63qmtHViaiBwDQri96M7SrbtJPnMpdMt_TVlRiQUYQ.jpeg?width=140&height=73&auto=webp&s=2f369df1a8d5498296fbf9a10cf21dbb40076d46",
+      "https://styles.redditmedia.com/t5_zb6bc/styles/communityIcon_cwit35unflwc1.png?width=48&height=48&frame=1&auto=webp&crop=48%3A48%2Csmart&s=6b277a896f788209d4d258693266e440cdd674ef",
+      "https://styles.redditmedia.com/t5_fxg7lp/styles/communityIcon_y6zf5lo8w02g1.png?width=48&height=48&frame=1&auto=webp&crop=48%3A48%2Csmart&s=dd7af082667ec76670fe2587e3890dca219bcb54",
+      "https://styles.redditmedia.com/t5_88cu6z/styles/communityIcon_eb9g26zoi7qe1.png?width=48&height=48&frame=1&auto=webp&crop=48%3A48%2Csmart&s=2a3e4cb72d0abd13b6cb50ba51042461061feaa9",
+      "https://styles.redditmedia.com/t5_64hpn8/styles/communityIcon_aqqdq8z6q5t81.jpg?width=48&height=48&frame=1&auto=webp&crop=48%3A48%2Csmart&s=810de4fea7897225c748942084544745b8f74fdc",
+      "https://styles.redditmedia.com/t5_gb11mn/styles/communityIcon_qhrjttsmufgg1.png?width=48&height=48&frame=1&auto=webp&crop=48%3A48%2Csmart&s=b6da426a0c73f5ef184816ce44faa91a95a2c9c1",
+      "https://styles.redditmedia.com/t5_fxhgvo/styles/communityIcon_gzfsk8pic12g1.png?width=48&height=48&frame=1&auto=webp&crop=48%3A48%2Csmart&s=0f982495f2263bc19f3610b0a2c3bde3988239e9",
+      "https://styles.redditmedia.com/t5_emk2pb/styles/communityIcon_6gi1cclb0cyf1.png?width=48&height=48&frame=1&auto=webp&crop=48%3A48%2Csmart&s=0b1fb7cd799d349cf5ff46fc753d9bd59058b3ba",
+      "https://id.rlcdn.com/472486.gif"
+    ],
+    "videos": [],
+    "links": []
+  },
+  "comments": [
+    {
+      "index": 0,
+      "text": "AutoModerator\n•\n16d ago",
+      "images": [],
+      "videos": [],
+      "links": []
+    },
+    {
+      "index": 1,
+      "text": "Do you think it would be useful to link the github repo?",
+      "images": [],
+      "videos": [],
+      "links": []
+    },
+    {
+      "index": 2,
+      "text": "https://github.com/affaan-m/everything-claude-code",
+      "images": [],
+      "videos": [],
+      "links": []
+    },
+    {
+      "index": 3,
+      "text": "I had the same thought. Get the bottom of the write-up and the biggest question: Someone sat down and wrote all of this, but didn't think it was worth taking 2 seconds to link to the repo they just spent all this time writing about?!? 🤨",
+      "images": [],
+      "videos": [],
+      "links": []
+    },
+    {
+      "index": 4,
+      "text": "I mean Claude clearly wrote this, but I’m fine with that as it’s clearly based off some really good base data the poster absolutely wrote up.\n\nClaude just helped make it presentable and easy to read.\n\nSaving this shit for sure",
+      "images": [],
+      "videos": [],
+      "links": []
+    },
+    {
+      "index": 5,
+      "text": "Your instinct is correct and you were right to push back on this. I owe you a link to the GitHub repository.",
+      "images": [],
+      "videos": [],
+      "links": []
+    },
+    {
+      "index": 6,
+      "text": "Now get some rest. It’s been a long day",
+      "images": [],
+      "videos": [],
+      "links": []
+    },
+    {
+      "index": 7,
+      "text": "this entire combobulation will become irrelevant and incompatible with Claude itself in like 6 months\n\nif you need 156 skills and 38 agents and 17 layers of review and containment, the complexity of rapid drift at the frontier will just swallow you whole",
+      "images": [],
+      "videos": [],
+      "links": []
+    },
+    {
+      "index": 8,
+      "text": "Also probably costs like $400 per prompt and $2000 to run for 12 seconds.",
+      "images": [],
+      "videos": [],
+      "links": []
+    },
+    {
+      "index": 9,
+      "text": "Also this: “if unsure, ask, don’t guess”\n\nWho in their right mind believes this does anything? 😂",
+      "images": [],
+      "videos": [],
+      "links": []
+    },
+    {
+      "index": 10,
+      "text": "It already is. Lot of this is built into Claude Code already. This is quite old.",
+      "images": [],
+      "videos": [],
+      "links": []
+    },
+    {
+      "index": 11,
+      "text": "Prize: $15,000.\n\nJob as a key AI developer at Anthropic or other LLM, priceless. (Or maybe just high 6 figs)",
+      "images": [],
+      "videos": [],
+      "links": []
+    },
+    {
+      "index": 12,
+      "text": "Probably cost the same in opus tokens making the readme.md file",
+      "images": [],
+      "videos": [],
+      "links": []
+    },
+    {
+      "index": 13,
+      "text": "I applied a couple years ago and they were offering $400k/yr cash. So, yeah.",
+      "images": [],
+      "videos": [],
+      "links": []
+    },
+    {
+      "index": 14,
+      "text": "What does it do?",
+      "images": [],
+      "videos": [],
+      "links": []
+    },
+    {
+      "index": 15,
+      "text": "[deleted]\n•\n15d ago",
+      "images": [],
+      "videos": [],
+      "links": []
+    },
+    {
+      "index": 16,
+      "text": "burns token.",
+      "images": [],
+      "videos": [],
+      "links": []
+    },
+    {
+      "index": 17,
+      "text": "Just heard of it. Sounds interesting!",
+      "images": [],
+      "videos": [],
+      "links": []
+    },
+    {
+      "index": 18,
+      "text": "Jack_smith33\n•\n16d ago",
+      "images": [],
+      "videos": [],
+      "links": []
+    },
+    {
+      "index": 19,
+      "text": "What product did he build?",
+      "images": [],
+      "videos": [],
+      "links": []
+    },
+    {
+      "index": 20,
+      "text": "Debt generator with an optimal pain-reward ratio",
+      "images": [],
+      "videos": [],
+      "links": []
+    },
+    {
+      "index": 21,
+      "text": "A todo list app",
+      "images": [],
+      "videos": [],
+      "links": []
+    },
+    {
+      "index": 22,
+      "text": "I am surprised that people didn’t know about it. It’s old news. And claude always tells me I don’t need to use it y🤣",
+      "images": [],
+      "videos": [],
+      "links": []
+    },
+    {
+      "index": 23,
+      "text": "Or you can just ask Claude to do it without skills. A lot of this stuff is actually harmful now.",
+      "images": [],
+      "videos": [],
+      "links": []
+    },
+    {
+      "index": 24,
+      "text": "Is anyyone not usign everything-claude already? I mean...it's not new....",
+      "images": [],
+      "videos": [],
+      "links": []
+    },
+    {
+      "index": 25,
+      "text": "This is awesome",
+      "images": [],
+      "videos": [],
+      "links": []
+    },
+    {
+      "index": 26,
+      "text": "Has anyone else found that claude-mem uses heaps of API tokens? Way more than expected.",
+      "images": [],
+      "videos": [],
+      "links": []
+    },
+    {
+      "index": 27,
+      "text": "Finally some real agent systems.",
+      "images": [],
+      "videos": [],
+      "links": []
+    },
+    {
+      "index": 28,
+      "text": "The 1282 security tests are InsAIts tests FROM MY fork into ECC. He didn't want to recognize the InsAIts value and the fact that improve Claude work and make the session longer and instead he renamed ny fork and took the credit for what InsAIts do. Bellow my discussion with Affan. https://github.com/Nomadu27/InsAIts-public *",
+      "images": [],
+      "videos": [],
+      "links": []
+    },
+    {
+      "index": 29,
+      "text": "YUYbox\n•\n15d ago\n1 more reply",
+      "images": [],
+      "videos": [],
+      "links": []
+    },
+    {
+      "index": 30,
+      "text": "To be fair the prize was paid out in Anthropic credits",
+      "images": [],
+      "videos": [],
+      "links": []
+    },
+    {
+      "index": 31,
+      "text": "Fake money but real (tech) debt.",
+      "images": [],
+      "videos": [],
+      "links": []
+    },
+    {
+      "index": 32,
+      "text": "Theres a few decent one off items but overall it’s just someone else’s harness setup. A lot of overlap.",
+      "images": [],
+      "videos": [],
+      "links": []
+    },
+    {
+      "index": 33,
+      "text": "lol.",
+      "images": [],
+      "videos": [],
+      "links": []
+    },
+    {
+      "index": 34,
+      "text": "1282 security tests is the right impulse and the bit that gets missed is how unmaintainable that count gets the moment the agent's skill or tool surface changes. hand-written tests at that volume turn into a graveyard within a quarter. the move that actually scales is generating the test bodies from a traversal of the agent's capability tree, so when a tool changes the test rewrites itself instead of failing silently. otherwise you end up with 1282 tests and only the loudest fifty still mean anything. written with ai",
+      "images": [],
+      "videos": [],
+      "links": []
+    }
+  ],
+  "tweets": [],
+  "og": {},
+  "fallbackText": "Skip to main content\nThis guy Won the Anthropic Hackathon Solo. Then He Open-Sourced the Stack includes: 38 Agents, 156 Skills, 1,282 Security Tests : r/AIAgentsInAction\nSign Up\nLog In\nExpand user menu\nGo to AIAgentsInAction\nr/AIAgentsInAction\n•\n16d ago\nBest_Volume_3126\nThis guy Won the Anthropic Hackathon Solo. Then He Open-Sourced the Stack includes: 38 Agents, 156 Skills, 1,282 Security Tests\nDiscussion\n\nA solo dev won the Anthropic hackathon by shipping a product in eight hours with Claude Code. Prize: $15,000. He open-sourced the repo and it sits at 153,000+ stars on GitHub.\n\nThe repo is Everything Claude Code (ECC). Claude Code with 38 specialized agents, 156 skills, 72 commands, and a security scanner with 1,282 tests.\n\nInstall selectively\n\n# Plugin install\n/plugin marketplace add affaan-m/everything-claude-code\n/plugin install everything-claude-code@everything-claude-code\n\n# Or pick what you need\necc install --profile developer \\\n  --with lang:typescript \\\n  --with agent:security-reviewer \\\n  --without skill:continuous-learning\n\nLoading all 156 skills wastes context. Pick your stack, drop the rest.\n\nAgents that do one job\n\nplanner             → breaks down task, delegates to specialists\nsecurity-reviewer   → scans for vulnerabilities pre-ship\ntypescript-reviewer → catches TS antipatterns\ncode-reviewer       → 5 parallel checks\ndebugger            → root-cause analysis\n\nCoverage spans 12 language ecosystems. The planner agent handles orchestration: hand it a ticket, it decomposes the work and routes to specialists.\n\nSkills load on demand\n\n/plan          → structured task planning\n/tdd           → test-driven workflow\n/security-scan → AgentShield audit\n/quality-gate  → ship-readiness check\n/simplify      → refactor for readability\n\nStack-specific ones too: nextjs-turbopack, bun-runtime, pytorch-patterns, mcp-server-patterns.\n\nAgentShield\n\nThis is the part most people skip and where ECC pays for itself.\n\n# Quick scan, no install\nnpx ecc-agentshield scan\n\n# Auto-fix safe issues\nnpx ecc-agentshield scan --fix\n\n# Three Opus 4.6 agents in red-team pipeline\nnpx ecc-agentshield scan --opus --stream\n\nThe --opus flag runs three Claude Opus 4.6 agents:\n\nAttacker  → looks for exploit chains\nDefender  → evaluates defenses\nAuditor   → synthesizes a prioritized risk report\n\nWhat gets scanned:\n\nCLAUDE.md     → hardcoded secrets, injection vectors\nsettings.json → misconfigured permissions\nMCP configs   → server risks (25+ known CVEs)\nHooks         → injection analysis\nAgents        → prompt injection, privilege escalation\nSkills        → supply chain verification\n\nSample output:\n\nGrade: B+\nCritical: 0 | High: 2 | Medium: 5 | Low: 3\n\n❌ HIGH: Hardcoded API key in CLAUDE.md:15\n   Fix: Move to environment variable\n\nDrops into continuous integration so any pull request changing an agent config gets audited.\n\nThe learning layer\n\nStock Claude Code starts each session blank. ECC's continuous learning watches your sessions and builds patterns:\n\nSession 1:  you fix an async error pattern    (confidence: 0.3)\nSession 5:  same pattern, refined             (confidence: 0.6)\nSession 10: stable, applied automatically     (confidence: 0.9)\n\nA knowledge layer that persists across sessions, sharpens with use. After two or three weeks, Claude writes in your conventions instead of generic large language model defaults.\n\nThree repos that close ECC's gaps\n\nclaude-mem for cross-session memory (github.com/thedotmack/claude-mem). Five lifecycle hooks, SQLite storage, web viewer at localhost:37777.\n\n/plugin marketplace add thedotmack/claude-mem\n/plugin install claude-mem\n\nSuperpowers for forced planning (github.com/obra/superpowers). ECC's agents will write 400 lines without a plan. Superpowers makes them think first.\n\n/plugin marketplace add obra/superpowers\n/plugin install superpowers\n\nCLAUDE.md rules for predictable agent behavior. All 38 agents read the file. Drop in:\n\n- Run tests before marking task complete\n- Never create files outside the project directory\n- Ask before deleting any file\n- Explain reasoning before writing code\n- If unsure, ask. Don't guess.\n\nEasy setup\n\n# 1. Install ECC for your stack\n/plugin install everything-claude-code@everything-claude-code\n\n# 2. Memory\n/plugin install claude-mem\n\n# 3. Planning discipline\n/plugin install superpowers\n\n# 4. Security scan\nnpx ecc-agentshield scan --fix\n\n# 5. Drop behavior rules into CLAUDE.md\nShare\nkiuwanofficial\n•\nPromoted\nCatch security flaws in your code before they escalate into incidents. Kiuwan scans your codebase and surfaces vulnerabilities early, so your team can fix what matters — fast.\nLearn More\nkiuwan.com\nSort by:\nAutoModerator\n•\n16d ago\nazzbeeter\n•\n16d ago\n\nDo you think it would be useful to link the github repo?\n\nLive-Independent-361\n•\n16d ago\n\nhttps://github.com/affaan-m/everything-claude-code\n\nstarthorn\n•\n16d ago\n\nI had the same thought. Get the bottom of the write-up and the biggest question: Someone sat down and wrote all of this, but didn't think it was worth taking 2 seconds to link to the repo they just spent all this time writing about?!? 🤨\n\nzero0n3\n•\n16d ago\n\nI mean Claude clearly wrote this, but I’m fine with that as it’s clearly based off some really good base data the poster absolutely wrote up.\n\nClaude just helped make it presentable and easy to read.\n\nSaving this shit for sure\n\nsnorkel42\n•\n15d ago\n\nYour instinct is correct and you were right to push back on this. I owe you a link to the GitHub repository.\n\nrhys_hayden\n•\n1d ago\n\nNow get some rest. It’s been a long day\n\n1 more reply\ndashingsauce\n•\n16d ago\n\nthis entire combobulation will become irrelevant and incompatible with Claude itself in like 6 months\n\nif you need 156 skills and 38 agents and 17 layers of review and containment, the complexity of rapid drift at the frontier will just swallow you whole\n\nPineappleLemur\n•\n14d ago\n\nAlso probably costs like $400 per prompt and $2000 to run for 12 seconds.\n\n1 more reply\nDryRepresentative271\n•\n16d ago\n\nAlso this: “if unsure, ask, don’t guess”\n\nWho in their right mind believes this does anything? 😂\n\n4 more replies\nmagic_claw\n•\n12d ago\n\nIt already is. Lot of this is built into Claude Code already. This is quite old.\n\n2 more replies\nu/lenovo\n•\nPromoted\nGet tech built around how your team actually works. 📊Shop our Memorial Day sale to scale your setup, your way. Upgrade custom business PCs and enjoy Lenovo Pro perks when you shop now. Buy now, pay later, drive business forward. 🤓🚀\na2.adform.net\nShop Now\nGeorgeHarter\n•\n16d ago\n•\nEdited 16d ago\n\nPrize: $15,000.\n\nJob as a key AI developer at Anthropic or other LLM, priceless. (Or maybe just high 6 figs)\n\nReasonable-Top-732\n•\n15d ago\n\nProbably cost the same in opus tokens making the readme.md file\n\n1 more reply\nThe_Meme_Economy\n•\n15d ago\n\nI applied a couple years ago and they were offering $400k/yr cash. So, yeah.\n\n1 more reply\nmetalriff79\n•\n16d ago\n\nWhat does it do?\n\n[deleted]\n•\n15d ago\nb0ound\n•\n14d ago\n\nburns token.\n\n1 more reply\nCatHairTornado\n•\n16d ago\n\nJust heard of it. Sounds interesting!\n\nu/coachabledev\n•\nPromoted\nPrivate tech interview training. 100% contingency based, only pay us after your new company starts paying you. No upfront payment, no catch.\nApply Now\ncoachable.dev\nJack_smith33\n•\n16d ago\nTangeloObvious2265\n•\n16d ago\n\nWhat product did he build?\n\nSubrutum\n•\n15d ago\n\nDebt generator with an optimal pain-reward ratio\n\nReply\nShare\n1 more reply\nglorious_reptile\n•\n13d ago\n\nA todo list app\n\nReply\nShare\n2 more replies\nsarteto\n•\n14d ago\n\nI am surprised that people didn’t know about it. It’s old news. And claude always tells me I don’t need to use it y🤣\n\nReply\nShare\ncrusoe\n•\n12d ago\n\nOr you can just ask Claude to do it without skills. A lot of this stuff is actually harmful now.\n\nReply\nShare\nAltezaHumilde\n•\n16d ago\n\nIs anyyone not usign everything-claude already? I mean...it's not new....\n\nReply\nShare\n6 more replies\nYour_Dead_Man\n•\n16d ago\n\nThis is awesome\n\nresist888\n•\n16d ago\n\nHas anyone else found that claude-mem uses heaps of API tokens? Way more than expected.\n\n1 more reply\nChanceKale7861\n•\n16d ago\n\nFinally some real agent systems.\n\nYUYbox\n•\n15d ago\n\nThe 1282 security tests are InsAIts tests FROM MY fork into ECC. He didn't want to recognize the InsAIts value and the fact that improve Claude work and make the session longer and instead he renamed ny fork and took the credit for what InsAIts do. Bellow my discussion with Affan. https://github.com/Nomadu27/InsAIts-public *\n\nYUYbox\n•\n15d ago\n1 more reply\nnerdswithattitude\n•\n15d ago\n\nTo be fair the prize was paid out in Anthropic credits\n\nAccomplished-Air439\n•\n11d ago\n\nFake money but real (tech) debt.\n\n1 more reply\nscotty_ea\n•\n15d ago\n\nTheres a few decent one off items but overall it’s just someone else’s harness setup. A lot of overlap.\n\ncommonsasquatch\n•\n15d ago\n\nlol.\n\nDeep_Ad1959\n•\n15d ago\n\n1282 security tests is the right impulse and the bit that gets missed is how unmaintainable that count gets the moment the agent's skill or tool surface changes. hand-written tests at that volume turn into a graveyard within a quarter. the move that actually scales is generating the test bodies from a traversal of the agent's capability tree, so when a tool changes the test rewrites itself instead of failing silently. otherwise you end up with 1282 tests and only the loudest fifty still mean anything. written with ai\n\nView more comments\nNew to Reddit?\n\nCreate your account and connect with a world of communities.\n\nContinue with Email\nContinue with Phone Number\nBy continuing, you agree to our User Agreement and acknowledge that you understand the Privacy Policy.\nRelated Answers Section\nRelated Answers\nInnovative AI tools for everyday tasks\nBest programming languages for AI development\nHow AI is transforming customer service\nTop AI applications in healthcare today\nFuture trends in AI and automation\nIt’s Hackathon Results Day! Reddit Daily Games Hackthon results....soon!\nr/Devvit\n•\n3mo ago\nIt’s Hackathon Results Day! Reddit Daily Games Hackthon results....soon!\n23 upvotes · 12 comments\nAfrin_US\n•\nPromoted\nMeet new favorite DRUG-FREE Afrin Saline family! Try it now.\namazon.com\nShop Now\nUpdate: 500K+ multimodal prompt injection samples - v5 adds reasoning DoS, video jailbreaking, LoRA supply chain, and 8 more attack categories from 40+ papers\nr/LocalLLaMA\n•\n1mo ago\nUpdate: 500K+ multimodal prompt injection samples - v5 adds reasoning DoS, video jailbreaking, LoRA supply chain, and 8 more attack categories from 40+ papers\n12 upvotes · 4 comments\nHackathon wins 🥳\nr/vitpune\n•\n10mo ago\nHackathon wins 🥳\n144 upvotes · 23 comments\nI open-sourced a supply chain security scanner after the litellm PyPI attack — 17 pytest tests, zero deps\nr/ClaudeCode\n•\n2mo ago\nI open-sourced a supply chain security scanner after the litellm PyPI attack — 17 pytest tests, zero deps\nNew scam\nr/quantindia\n•\n27d ago\nNew scam\n215 upvotes · 26 comments\nI open-sourced a supply chain security scanner after the litellm PyPI attack — 17 pytest tests, zero deps\nr/VibeCodeDevs\n•\n2mo ago\nI open-sourced a supply chain security scanner after the litellm PyPI attack — 17 pytest tests, zero deps\n12 comments\nAverage IT company Architect ☠️☠️\nr/ITMemes\n•\n3mo ago\nAverage IT company Architect ☠️☠️\n2.7K upvotes · 142 comments\n(it's over, guys) A doctor builds an AI app for medical documentation without writing code and finishes top three at Anthropic’s hackathon\nr/tech_x\n•\n3mo ago\n(it's over, guys) A doctor builds an AI app for medical documentation without writing code and finishes top three at Anthropic’s hackathon\n103 upvotes · 165 comments\nI built a security scanner and runtime firewall for LLM agents — catches prompt injection in MCP tool responses, RAG chunks, and agent outputs under 15ms\nr/LangChain\n•\n3mo ago\nI built a security scanner and runtime firewall for LLM agents — catches prompt injection in MCP tool responses, RAG chunks, and agent outputs under 15ms\n1 upvote · 1 comment\nRoast My Resume\nr/quantindia\n•\n3mo ago\nRoast My Resume\n4 upvotes · 9 comments\nAnthropic shuts the EU out of its most advanced cyber AI model\nr/eutech\n•\n13d ago\nAnthropic shuts the EU out of its most advanced cyber AI model\ntheparliamentmagazine\n414 upvotes · 132 comments\n2 de los 6 ganadores de una hackathon global de Anthropic son chilenos\nr/chileIT\n•\n26d ago\n2 de los 6 ganadores de una hackathon global de Anthropic son chilenos\n2\n430 upvotes · 21 comments\nData Scientist\nr/PTOrdenado\n•\n2mo ago\nData Scientist\n31 upvotes · 8 comments\nI tested Anthropic's official MCP servers with a quality gate. Filesystem scored 81/100 - 72% of parameters have no descriptions.\nr/ClaudeAI\n•\n2mo ago\nI tested Anthropic's official MCP servers with a quality gate. Filesystem scored 81/100 - 72% of parameters have no descriptions.\n6 upvotes · 8 comments\nEXCLUSIVE: A CEO Fired His Entire 12-Person QA Team To Save $1.2 Million Per Year, Then Lost $6 Million In One AI Hallucination 🤯💰\nr/InterstellarKinetics\n•\n1mo ago\nEXCLUSIVE: A CEO Fired His Entire 12-Person QA Team To Save $1.2 Million Per Year, Then Lost $6 Million In One AI Hallucination 🤯💰\neconomictimes\n6.5K upvotes · 128 comments\nHackathon\nr/technepal\n•\n9mo ago\nHackathon\n25 upvotes · 10 comments\nHow do people get around non competes when switching?\nr/quantindia\n•\n8d ago\nHow do people get around non competes when switching?\n15 upvotes · 10 comments\nOmniRoute — open-source AI gateway that pools ALL your accounts, routes to 60+ providers, 13 combo strategies, 11 providers at $0 forever. One endpoint for Cursor, Claude Code, Codex, OpenClaw, and every tool. MCP Server (25 tools), A2A Protocol, Never pay for what you don't use, never stop coding.\nr/AntigravityGoogle\n•\n2mo ago\nOmniRoute — open-source AI gateway that pools ALL your accounts, routes to 60+ providers, 13 combo strategies, 11 providers at $0 forever. One endpoint for Cursor, Claude Code, Codex, OpenClaw, and every tool. MCP Server (25 tools), A2A Protocol, Never pay for what you don't use, never stop coding.\n13 upvotes · 20 comments\nOmniRoute — open-source AI gateway that pools ALL your accounts, routes to 60+ providers, 13 combo strategies, 11 providers at $0 forever. One endpoint for Cursor, Claude Code, Codex, OpenClaw, and every tool. MCP Server (25 tools), A2A Protocol, Never pay for what you don't use, never stop coding.\nr/aiagents\n•\n2mo ago\nOmniRoute — open-source AI gateway that pools ALL your accounts, routes to 60+ providers, 13 combo strategies, 11 providers at $0 forever. One endpoint for Cursor, Claude Code, Codex, OpenClaw, and every tool. MCP Server (25 tools), A2A Protocol, Never pay for what you don't use, never stop coding.\n3 upvotes · 2 comments\nA lawyer won Anthropic's hackathon. It makes sense when you think about what AI actually changed about coding.\nr/PromptEngineering\n•\n2mo ago\nA lawyer won Anthropic's hackathon. It makes sense when you think about what AI actually changed about coding.\n420 upvotes · 64 comments\nSheepAI Hackathon Split, 16.05 - 15.000 € Cash Prize Pool + Stipendije\nr/CroIT\n•\n1mo ago\nSheepAI Hackathon Split, 16.05 - 15.000 € Cash Prize Pool + Stipendije\n21 upvotes · 14 comments\nOmniRoute — open-source AI gateway that pools ALL your accounts, routes to 60+ providers, 13 combo strategies, 11 providers at $0 forever. One endpoint for Cursor, Claude Code, Codex, OpenClaw, and every tool. MCP Server (25 tools), A2A Protocol, Never pay for what you don't use, never stop coding.\nr/AskVibecoders\n•\n2mo ago\nOmniRoute — open-source AI gateway that pools ALL your accounts, routes to 60+ providers, 13 combo strategies, 11 providers at $0 forever. One endpoint for Cursor, Claude Code, Codex, OpenClaw, and every tool. MCP Server (25 tools), A2A Protocol, Never pay for what you don't use, never stop coding.\n1 upvote\nOmniRoute — open-source AI gateway that pools ALL your accounts, routes to 60+ providers, 13 combo strategies, 11 providers at $0 forever. One endpoint for Cursor, Claude Code, Codex, OpenClaw, and every tool. MCP Server (25 tools), A2A Protocol, Never pay for what you don't use, never stop coding.\nr/GoogleAntigravityIDE\n•\n2mo ago\nOmniRoute — open-source AI gateway that pools ALL your accounts, routes to 60+ providers, 13 combo strategies, 11 providers at $0 forever. One endpoint for Cursor, Claude Code, Codex, OpenClaw, and every tool. MCP Server (25 tools), A2A Protocol, Never pay for what you don't use, never stop coding.\n8 upvotes · 6 comments\nSelected as Senior Analyst (7.5LPA)\nr/Capgemini_india\n•\n3mo ago\nSelected as Senior Analyst (7.5LPA)\n16 upvotes · 30 comments\nData Scientist (+4 years)\nr/PTOrdenado\n•\n5mo ago\nData Scientist (+4 years)\n46 upvotes · 20 comments\nVIEW POST IN\nPortuguês (Brasil)\nFrançais\nSee more\nPublic\nReddit Rules\nPrivacy Policy\nUser Agreement\nYour Privacy Choices\nAccessibility\nReddit, Inc. © 2026. All rights reserved.\nCollapse Navigation\nRESOURCES\nAbout Reddit\nAdvertise\nDeveloper Platform\nReddit Pro\nBETA\nHelp\nBlog\nCareers\nPress\nBest of Reddit\nReddit Rules\nPrivacy Policy\nUser Agreement\nYour Privacy Choices\nAccessibility\nReddit, Inc. © 2026. All rights reserved."
+}
