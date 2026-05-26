@@ -1,0 +1,102 @@
+{
+  "slug": "07-x-leopardracer-2058478408498061453",
+  "url": "https://x.com/leopardracer/status/2058478408498061453",
+  "screenshot": "/Users/micah/code/hytopia-demo/scraped-links/07-x-leopardracer-2058478408498061453.png",
+  "scrapedAt": "2026-05-26T00:01:12.114Z",
+  "platform": "x",
+  "title": "leopardracer on X: \"THIS ENGINEER SKIPPED 7,862 WORDS OF AI ROADMAP AND SHIPPED ON A WEEKEND a Pi Zero 2W, an IMX500 camera and a solar panel, that's the whole stack inference runs on-chip so there's no cloud, no latency and no monthly bill Spotted Dove at 0.95, King Parrot at 0.88, runs forever https://t.co/7O4XBqQunx\" / X",
+  "tweets": [
+    {
+      "index": 0,
+      "author": "leopardracer\n@leopardracer",
+      "datetime": "2026-05-06T16:29:16.000Z",
+      "text": "THIS ENGINEER SKIPPED 7,862 WORDS OF AI ROADMAP AND SHIPPED ON A WEEKEND\n\na Pi Zero 2W, an IMX500 camera and a solar panel, that's the whole stack\n\ninference runs on-chip so there's no cloud, no latency and no monthly bill\n\nSpotted Dove at 0.95, King Parrot at 0.88, runs forever on sun\n\ncode is open source and the 3D files are free, you just print the case and buy the parts\n\nand it works better than most paid wildlife monitoring services out there\n\nfull video: \nhttps://\nm.youtube.com/watch?v=GxocHf\ngGO6o\n…\ncode (open source): \nhttps://\ngithub.com/LukeDitria/min\ni_ai_camera\n…\n3D print files: \nhttps://\nmakerworld.com/ru/models/2821\n457-solar-powered-ai-wildlife-monitor\n…\nsolar power board: \nhttps://\nauto-ecology.com/store/p/pvpi-b\nyg2d\n…\n\nsave this so you actually have everything in one place when you decide to build it",
+      "images": [
+        "https://pbs.twimg.com/amplify_video_thumb/2058478342085509120/img/49R0RHPt-VKhh_05.jpg",
+        "https://pbs.twimg.com/media/HHpDBc3acAAYZsR?format=jpg&name=medium"
+      ],
+      "videos": [
+        "blob:https://x.com/e97de8ba-3eee-49de-8abf-129c66ba26b7"
+      ],
+      "links": [
+        "https://t.co/AK7HLRv5xd",
+        "https://t.co/DVN45TA01m",
+        "https://t.co/f9JTAmUcfC",
+        "https://t.co/GczrEvJ6Rp"
+      ]
+    },
+    {
+      "index": 1,
+      "author": "Yoseph Gratika I.P.\n@yosephgratika\n·\nMay 24",
+      "datetime": "2026-05-24T19:29:41.000Z",
+      "text": "@grok\n wait what does this Computer vision do? Detecting birds? Is this pi zero capable to add custom CV model?",
+      "images": [],
+      "videos": [],
+      "links": []
+    },
+    {
+      "index": 2,
+      "author": "zostaff\n@zostaff\n·\nMay 24",
+      "datetime": "2026-05-24T18:48:11.000Z",
+      "text": "edge inference on a pi zero is wild in 2026",
+      "images": [],
+      "videos": [],
+      "links": []
+    },
+    {
+      "index": 3,
+      "author": "AiSDR\n@getaisdr\n·\n18h",
+      "datetime": "2026-05-25T05:12:10.000Z",
+      "text": "\"inference runs on-chip so there's no cloud\" is the quiet revolution here. same pattern will eat half the \"ai\" tools in b2b once teams realize a $40 edge box can replace a whole row of usage-based line items.",
+      "images": [],
+      "videos": [],
+      "links": []
+    },
+    {
+      "index": 4,
+      "author": "Avid\n@Av1dlive\n·\nMay 24",
+      "datetime": "2026-05-24T09:51:47.000Z",
+      "text": "Thanks, Leopard. I really appreciate it. What did you like from this article exactly?",
+      "images": [],
+      "videos": [],
+      "links": []
+    },
+    {
+      "index": 5,
+      "author": "FOX Sports: MLB\n@MLBONFOX",
+      "datetime": null,
+      "text": "The Phillies are now 16-4 since Don Mattingly took over as manager \n\n\n@KevinBurkhardt\n | \n@DTrainMLB",
+      "images": [
+        "https://pbs.twimg.com/media/HIph8qvWkAEwsGP.jpg"
+      ],
+      "videos": [
+        "blob:https://x.com/d7f39f47-e6e3-455c-afe6-29f9d4baa169"
+      ],
+      "links": []
+    }
+  ],
+  "post": {
+    "index": 0,
+    "author": "leopardracer\n@leopardracer",
+    "datetime": "2026-05-06T16:29:16.000Z",
+    "text": "THIS ENGINEER SKIPPED 7,862 WORDS OF AI ROADMAP AND SHIPPED ON A WEEKEND\n\na Pi Zero 2W, an IMX500 camera and a solar panel, that's the whole stack\n\ninference runs on-chip so there's no cloud, no latency and no monthly bill\n\nSpotted Dove at 0.95, King Parrot at 0.88, runs forever on sun\n\ncode is open source and the 3D files are free, you just print the case and buy the parts\n\nand it works better than most paid wildlife monitoring services out there\n\nfull video: \nhttps://\nm.youtube.com/watch?v=GxocHf\ngGO6o\n…\ncode (open source): \nhttps://\ngithub.com/LukeDitria/min\ni_ai_camera\n…\n3D print files: \nhttps://\nmakerworld.com/ru/models/2821\n457-solar-powered-ai-wildlife-monitor\n…\nsolar power board: \nhttps://\nauto-ecology.com/store/p/pvpi-b\nyg2d\n…\n\nsave this so you actually have everything in one place when you decide to build it",
+    "images": [
+      "https://pbs.twimg.com/amplify_video_thumb/2058478342085509120/img/49R0RHPt-VKhh_05.jpg",
+      "https://pbs.twimg.com/media/HHpDBc3acAAYZsR?format=jpg&name=medium"
+    ],
+    "videos": [
+      "blob:https://x.com/e97de8ba-3eee-49de-8abf-129c66ba26b7"
+    ],
+    "links": [
+      "https://t.co/AK7HLRv5xd",
+      "https://t.co/DVN45TA01m",
+      "https://t.co/f9JTAmUcfC",
+      "https://t.co/GczrEvJ6Rp"
+    ]
+  },
+  "comments": [],
+  "og": {
+    "image": "https://abs.twimg.com/rweb/ssr/default/v2/og/image.png"
+  },
+  "fallbackText": "To view keyboard shortcuts, press question mark\nView keyboard shortcuts\nPost\nSee new posts\nConversation\nleopardracer\n@leopardracer\nTHIS ENGINEER SKIPPED 7,862 WORDS OF AI ROADMAP AND SHIPPED ON A WEEKEND\n\na Pi Zero 2W, an IMX500 camera and a solar panel, that's the whole stack\n\ninference runs on-chip so there's no cloud, no latency and no monthly bill\n\nSpotted Dove at 0.95, King Parrot at 0.88, runs forever on sun\n\ncode is open source and the 3D files are free, you just print the case and buy the parts\n\nand it works better than most paid wildlife monitoring services out there\n\nfull video: \nhttps://\nm.youtube.com/watch?v=GxocHf\ngGO6o\n…\ncode (open source): \nhttps://\ngithub.com/LukeDitria/min\ni_ai_camera\n…\n3D print files: \nhttps://\nmakerworld.com/ru/models/2821\n457-solar-powered-ai-wildlife-monitor\n…\nsolar power board: \nhttps://\nauto-ecology.com/store/p/pvpi-b\nyg2d\n…\n\nsave this so you actually have everything in one place when you decide to build it\nQuote\nAvid\n@Av1dlive\n·\nMay 6\n Article\nHow to Become an AI Engineer in 2026 (Builder's Roadmap)\nYou can build the next $1B company in a weekend using AI\n\nAnd the only skill you need  to learn is \n\nTLDR; if you don't want to read 7,862 words of roadmap, then you can simply just give this link to...\n4:21 AM · May 24, 2026\n·\n60.7K\n Views\n38\n76\n554\n985\nRelevant\nPost your reply\n\n\nReply\nYoseph Gratika I.P.\n@yosephgratika\n·\nMay 24\n@grok\n wait what does this Computer vision do? Detecting birds? Is this pi zero capable to add custom CV model?\n1\n262\nzostaff\n@zostaff\n·\nMay 24\nedge inference on a pi zero is wild in 2026\n1\n3\n183\nAiSDR\n@getaisdr\n·\n18h\n\"inference runs on-chip so there's no cloud\" is the quiet revolution here. same pattern will eat half the \"ai\" tools in b2b once teams realize a $40 edge box can replace a whole row of usage-based line items.\n1\n71\nAvid\n@Av1dlive\n·\nMay 24\nThanks, Leopard. I really appreciate it. What did you like from this article exactly?\n292\nFOX Sports: MLB\n@MLBONFOX\nThe Phillies are now 16-4 since Don Mattingly took over as manager \n\n\n@KevinBurkhardt\n | \n@DTrainMLB\nShow more\n36\n68\n843\n4.1M\nRelevant people\nleopardracer\n@leopardracer\nFollow\nresearcher & analyst | eth maxi\nAvid\n@Av1dlive\nFollow\nI write, read and build. I normie-maxx building harness-agnostic memory for ai agents\nTrending now\nWhat’s happening\nIt's the perfect mix\nPromoted by AT&T\nTrending in United States\nRobin Clarke\nTrending in United States\nSunburn\nTrending in United States\nPininfarina\nShow more\nTerms of Service\n |\nPrivacy Policy\n |\nCookie Policy\n |\nAccessibility\n |\nAds info\n |\nMore\n© 2026 X Corp."
+}

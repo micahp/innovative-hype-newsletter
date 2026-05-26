@@ -1,0 +1,74 @@
+{
+  "slug": "09-x-victormustar-2058492201261244458",
+  "url": "https://x.com/victormustar/status/2058492201261244458",
+  "screenshot": "/Users/micah/code/hytopia-demo/scraped-links/09-x-victormustar-2058492201261244458.png",
+  "scrapedAt": "2026-05-26T00:01:45.153Z",
+  "platform": "x",
+  "title": "Victor M on X: \"New: LongCat just dropped an excellent open-source talking-avatar model (probably SOTA) + MIT licensed 🔥 Made a Hugging Face Space for it and it's very impressive. So many cool products to build with it: AI tutors with a face, dubbing pipelines, talking-head coding agents https://t.co/RcUc5GxKcZ\" / X",
+  "tweets": [
+    {
+      "index": 0,
+      "author": "Victor M\n@victormustar",
+      "datetime": "2024-04-07T16:47:49.000Z",
+      "text": "New: LongCat just dropped an excellent open-source talking-avatar model (probably SOTA) + MIT licensed \n\nMade a Hugging Face Space for it and it's very impressive. So many cool products to build with it: AI tutors with a face, dubbing pipelines, talking-head coding agents (imagine Claude Code with a face), NPC dialogue, etc...\n\nSharing the Hugging Face (free) demo below",
+      "images": [
+        "https://pbs.twimg.com/ext_tw_video_thumb/1777015357514899456/pu/img/Kng-uG5q9_WjsUsv.jpg"
+      ],
+      "videos": [
+        "blob:https://x.com/b0568b05-604e-4bef-b179-9d02e50af2f5",
+        "blob:https://x.com/4db6629c-a8a9-4dfe-97aa-d07dd105fb55"
+      ],
+      "links": []
+    },
+    {
+      "index": 1,
+      "author": "Victor M\n@victormustar\n·\nMay 24",
+      "datetime": "2026-05-24T10:16:01.000Z",
+      "text": "Running on ZeroGPU try it here:",
+      "images": [
+        "https://pbs.twimg.com/card_img/2058491351403024384/CZpkzqce?format=jpg&name=medium"
+      ],
+      "videos": [],
+      "links": []
+    },
+    {
+      "index": 2,
+      "author": "Victor M\n@victormustar\n·\nMay 24",
+      "datetime": "2026-05-24T10:16:27.000Z",
+      "text": "model:",
+      "images": [
+        "https://pbs.twimg.com/card_img/2057490503281889280/JQiTbhPZ?format=jpg&name=medium"
+      ],
+      "videos": [],
+      "links": []
+    },
+    {
+      "index": 3,
+      "author": "Reed Taylor\n@021method\n·\nMay 24",
+      "datetime": "2026-05-24T12:21:37.000Z",
+      "text": "Max clip length?",
+      "images": [],
+      "videos": [],
+      "links": []
+    }
+  ],
+  "post": {
+    "index": 0,
+    "author": "Victor M\n@victormustar",
+    "datetime": "2024-04-07T16:47:49.000Z",
+    "text": "New: LongCat just dropped an excellent open-source talking-avatar model (probably SOTA) + MIT licensed \n\nMade a Hugging Face Space for it and it's very impressive. So many cool products to build with it: AI tutors with a face, dubbing pipelines, talking-head coding agents (imagine Claude Code with a face), NPC dialogue, etc...\n\nSharing the Hugging Face (free) demo below",
+    "images": [
+      "https://pbs.twimg.com/ext_tw_video_thumb/1777015357514899456/pu/img/Kng-uG5q9_WjsUsv.jpg"
+    ],
+    "videos": [
+      "blob:https://x.com/b0568b05-604e-4bef-b179-9d02e50af2f5",
+      "blob:https://x.com/4db6629c-a8a9-4dfe-97aa-d07dd105fb55"
+    ],
+    "links": []
+  },
+  "comments": [],
+  "og": {
+    "image": "https://abs.twimg.com/rweb/ssr/default/v2/og/image.png"
+  },
+  "fallbackText": "To view keyboard shortcuts, press question mark\nView keyboard shortcuts\nPost\nSee new posts\nConversation\nVictor M\n@victormustar\nNew: LongCat just dropped an excellent open-source talking-avatar model (probably SOTA) + MIT licensed \n\nMade a Hugging Face Space for it and it's very impressive. So many cool products to build with it: AI tutors with a face, dubbing pipelines, talking-head coding agents (imagine Claude Code with a face), NPC dialogue, etc...\n\nSharing the Hugging Face (free) demo below \n0:16\nQuote\nVictor M\n@victormustar\n·\nApr 7, 2024\nMaking an AI Genie that checks what I'm doing, he's roasting me hard \n5:16 AM · May 24, 2026\n·\n177.7K\n Views\n38\n261\n1.7K\n2.5K\nRelevant\nView quotes\nPost your reply\n\n\nReply\nVictor M\n@victormustar\n·\nMay 24\nRunning on ZeroGPU try it here:\nLongCat-Video-Avatar 1.5 - a Hugging Face Space by victor\nFrom huggingface.co\n2\n1\n51\n5.7K\nVictor M\n@victormustar\n·\nMay 24\nmodel:\nmeituan-longcat/LongCat-Video-Avatar-1.5 · Hugging Face\nFrom huggingface.co\n3\n36\n4.7K\nReed Taylor\n@021method\n·\nMay 24\nMax clip length?\n1\n1\n2.5K\nRelevant people\nVictor M\n@victormustar\nFollow\n Head of Product \n@huggingface\nTrending now\nWhat’s happening\nIt's the perfect mix\nPromoted by AT&T\nPolitics · Trending\nTrumps\nTrending in United States\nRobin Clarke\nTrending in United States\nSunburn\nShow more\nTerms of Service\n |\nPrivacy Policy\n |\nCookie Policy\n |\nAccessibility\n |\nAds info\n |\nMore\n© 2026 X Corp."
+}

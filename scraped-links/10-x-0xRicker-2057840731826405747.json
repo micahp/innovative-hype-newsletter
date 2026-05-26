@@ -1,0 +1,63 @@
+{
+  "slug": "10-x-0xRicker-2057840731826405747",
+  "url": "https://x.com/0xRicker/status/2057840731826405747",
+  "screenshot": "/Users/micah/code/hytopia-demo/scraped-links/10-x-0xRicker-2057840731826405747.png",
+  "scrapedAt": "2026-05-26T00:01:57.418Z",
+  "platform": "x",
+  "title": "0xRicker on X: \"Hermes + Polymarket-how to build an AI for a self-learning BTC trading agent $100 → $10,000 (guide)\" / X",
+  "tweets": [
+    {
+      "index": 0,
+      "author": "0xRicker\n@0xRicker",
+      "datetime": "2026-05-22T15:07:17.000Z",
+      "text": "",
+      "images": [
+        "https://pbs.twimg.com/media/HIv-6nQXAAAvW-q?format=jpg&name=medium",
+        "https://pbs.twimg.com/media/HImzaeAXkAA2gH2?format=jpg&name=medium",
+        "https://pbs.twimg.com/media/HIm0FpQWQAA-B61?format=png&name=small",
+        "https://pbs.twimg.com/media/HIm1xakXwAAMLEy?format=jpg&name=medium",
+        "https://pbs.twimg.com/media/HIm2HstWQAAnJaD?format=jpg&name=medium",
+        "https://pbs.twimg.com/media/HIm2Ni2XoAMtnEz?format=jpg&name=medium",
+        "https://pbs.twimg.com/media/HIm3CxLXIAEgzU_?format=jpg&name=medium",
+        "https://pbs.twimg.com/media/HIm3xMKW4AEzT0F?format=png&name=small",
+        "https://pbs.twimg.com/media/HIm4SgqWoAA5xWj?format=jpg&name=medium"
+      ],
+      "videos": [],
+      "links": [
+        "https://polymarket.com/@bonereaper?r=joinjoinjoin#tLcpwsE",
+        "https://polymarket.com/@0xe1d6b51521bd4365769199f392f9818661bd907?r=joinjoinjoin#9TKvd55",
+        "https://polymarket.com/@0xb27bc932bf8110d8f78e55da7d5f0497a18b5b82-1772569391020?r=joinjoinjoin#lIVnuAb",
+        "https://predictparity.com/?code=ricky"
+      ]
+    }
+  ],
+  "post": {
+    "index": 0,
+    "author": "0xRicker\n@0xRicker",
+    "datetime": "2026-05-22T15:07:17.000Z",
+    "text": "",
+    "images": [
+      "https://pbs.twimg.com/media/HIv-6nQXAAAvW-q?format=jpg&name=medium",
+      "https://pbs.twimg.com/media/HImzaeAXkAA2gH2?format=jpg&name=medium",
+      "https://pbs.twimg.com/media/HIm0FpQWQAA-B61?format=png&name=small",
+      "https://pbs.twimg.com/media/HIm1xakXwAAMLEy?format=jpg&name=medium",
+      "https://pbs.twimg.com/media/HIm2HstWQAAnJaD?format=jpg&name=medium",
+      "https://pbs.twimg.com/media/HIm2Ni2XoAMtnEz?format=jpg&name=medium",
+      "https://pbs.twimg.com/media/HIm3CxLXIAEgzU_?format=jpg&name=medium",
+      "https://pbs.twimg.com/media/HIm3xMKW4AEzT0F?format=png&name=small",
+      "https://pbs.twimg.com/media/HIm4SgqWoAA5xWj?format=jpg&name=medium"
+    ],
+    "videos": [],
+    "links": [
+      "https://polymarket.com/@bonereaper?r=joinjoinjoin#tLcpwsE",
+      "https://polymarket.com/@0xe1d6b51521bd4365769199f392f9818661bd907?r=joinjoinjoin#9TKvd55",
+      "https://polymarket.com/@0xb27bc932bf8110d8f78e55da7d5f0497a18b5b82-1772569391020?r=joinjoinjoin#lIVnuAb",
+      "https://predictparity.com/?code=ricky"
+    ]
+  },
+  "comments": [],
+  "og": {
+    "image": "https://abs.twimg.com/rweb/ssr/default/v2/og/image.png"
+  },
+  "fallbackText": "To view keyboard shortcuts, press question mark\nView keyboard shortcuts\nArticle\nSee new posts\nConversation\n0xRicker\n@0xRicker\nHermes + Polymarket-how to build an AI for a self-learning BTC trading agent $100 → $10,000 (guide)\n24\n76\n330\n829K\nTrading bots generated over $60M in profit on Polymarket in 2025–2026. 77% of that came from the Crypto UP/DOWN market - driven by persistent structural inefficiencies. Here's how to build one.\n01 - The opportunity\nWhy BTC Up/Down markets\nThe BTC 5-minute Up/Down market on Polymarket is one of the most inefficient segments in prediction markets. The crowd prices directional moves based on emotion - news cycles, social media, gut feel.\nMeanwhile, the transition matrix of BTC price states shows something different. When the market is in a committed directional state - the persistence is measurable. The math knows before the crowd does.\nThat gap between what the math says and what the market prices is the edge. And it's repeatable, scalable, and automatable.\nThe agent framework we're using is Hermes - open-source, built by NousResearch (backed by Paradigm with $70M). By April 2026, Hermes surpassed Anthropic's Claude Code in total GitHub stars - a clear signal of how fast the developer community adopted it.\n288 windows/day per asset\n1 trade every 81 seconds\nEdge window: 5–15% avg gap\nWin rate: 63–72% at p ≥ 0.87\nTop Successful bots running right now\nBonereaper\n- High-Confidence Spread CaptureEq\n> Profile: https://polymarket.com/@bonereaper?r=joinjoinjoin#tLcpwsE\n 0xe1D6b514 - Dual-Mode Expected Value\n> Profile: https://polymarket.com/@0xe1d6b51521bd4365769199f392f9818661bd907?r=joinjoinjoin#9TKvd55\n0xB27BC932- Multi-Asset Variance ReductionEq\n> Profile: https://polymarket.com/@0xb27bc932bf8110d8f78e55da7d5f0497a18b5b82-1772569391020?r=joinjoinjoin#lIVnuAb\nCombined: $2,112,019. Three bots. One market segment. Same underlying math.\n02 - The edge\nHow the math works\nThe model is based on Markov Chain analysis of BTC price states. The core insight: price movement is not random. When the market enters a persistent directional state, the probability of continuation is measurably above 50%.\nThe entry formula\nΔ⁽ʷ⁾ = p̂⁽ʷ⁾ − q⁽ʷ⁾ ≥ ε   →   ENTER\np̂ = model probability  ·  q = market price  ·  ε = 5% minimum gap\nr = (1 − q) / q\nAt q = 0.647 → r = +54.5% per trade  ·  At q = 0.441 → r = +126.7% per trade\nThe bot only enters when p(j*,j*) ≥ 0.87 - the Markov persistence threshold. Below that, no trade. This is why the win rate is consistently above 65% despite no directional prediction.\nKelly f* = p − (1−p)/b\nOptimal position sizing per trade  ·  f* ≈ 0.71 at p = 0.87, b = 0.647\n03 - The stack\nWhat you need to build this \nThe entire setup runs on open-source tools. No coding required. Total cost: under $10/month\n$10 min to start → $50 recommended → 2 POL for gas (~$1) → ~30 min setup\n04 - Setup\nHow to set up Hermes in 3 steps\nSTEP 01\nInstall Atomic and launch Hermes\nGo to atomicbot.ai → download Atomic → choose Hermes agent on the main page. You can run it locally on Mac or choose \"Run in Cloud\" in the top-right corner - login via Google, same interface. Move app to Applications folder after download.\n\nAtomic offers 100+ integrations, persistent memory, and support for all major AI models (Claude, ChatGPT, Gemini).\nSTEP 02\nConnect model API - use Claude Opus 4.7\nIn Atomic settings → AI Models → select Anthropic → paste your API key. Choose Claude Opus 4.7 as the model engine - it has the reasoning capacity needed for real-time market analysis and self-improvement loops.\n\nAlternatively: OpenRouter (pay-as-you-go) or OpenAI Codex (free via ChatGPT Pro).\npython\nAnthropic API setup\n# Atomic → Settings → AI Models → Anthropic\nModel:     claude-opus-4-7-20261001\nAPI Key:   sk-ant-...\nMax tokens: 4096\nTemperature: 0.2  # lower = more consistent decisions\nSTEP 03\nConnect Telegram bot to your agent\nAtomic → Skills → Messengers → Telegram → Connect. Create a bot via @BotFather in Telegram → copy token → paste into Atomic. Done in 2 clicks.\n\nFrom this point your Hermes agent is live and waiting for your trading logic prompt.\n05 - Trading logic\nSetting up the BTC trading strategy\nInstead of building from scratch, use an existing GitHub repo as the base logic - then feed it to Hermes and let Claude Opus adapt it to the latest Polymarket CLOB v2.\nRecommended repos\npython\naulekator/polymarket-BTC-15-Minute-Trading-Bot\nProduction-grade, 7-phase architecture, Grafana, Redis, SL/TP\nBest for: Markov-based entries, Kelly sizing\n\nJLowo/gengar-polymarket-bot\nQuarter-Kelly, Brownian motion, calibrated vol\nBest for: conservative sizing with real-world guardrails\n\ndijenne/Polymarket-bot\nTwo strategies: arbitrage + momentum, auto-optimization\nBest for: multi-strategy approach\nStep 1 - Give Hermes the trading logic prompt\npython\nHERMES · PROMPT 1 — BUILD LOGIC\nBuild a Polymarket BTC 5-minute up/down trading agent\nfrom this repo: github.com/aulekator/polymarket-BTC-15-Minute-Trading-Bot\n\nUpdate it for Polymarket CLOB v2 and make it ready for safe live trading.\n\nRequirements:\n- Keep the existing architecture if possible\n- Use Python\n- Migrate execution to py_clob_client_v2\n- Support SAFE_ADDRESS for Polymarket Safe/proxy wallets\n- Use collateral balance terminology, not legacy USDC\n- Add fee-aware trade evaluation using CLOB v2 market metadata\n- Implement Markov persistence filter: enter only when p(j*,j*) ≥ 0.87\n- Apply Kelly criterion for position sizing: f* = p - (1-p)/b\n- Keep DRY_RUN=true by default\n- Do not expose private keys in chat or logs\nStep 2 - Set up wallet\npython\nHERMES · PROMPT 2 -WALLET SETUP\nCreate a Polymarket trading wallet and send me the address\nso I can deposit collateral.\n\nApprove 3 Polymarket contracts:\n- CTF Exchange\n- Neg Risk CTF Exchange\n- Neg Risk Adapter\n\nConfirm you understand the risks before proceeding.\nStep 3 - Environment config\npython\n.env configuration\nPRIVATE_KEY=your_wallet_key\nSAFE_ADDRESS=your_safe_address\nCLOB_HOST=https://clob.polymarket.com\nDRY_RUN=true          # start here always\nMIN_EDGE=0.05         # 5% minimum arbitrage gap\nMIN_PROB=0.87         # Markov persistence threshold\nMIN_BET=1.00          # $1 minimum for testing\nMAX_BET=50.00         # start conservative\nBANKROLL=100.00       # initial capital\nStep 4 - Run dry test first\npython\nHERMES · PROMPT 3 — TEST\nRun the bot in DRY_RUN mode for 24 hours.\nAfter each session log:\n- Number of signals detected\n- Entry prices and Markov state at entry\n- Simulated P/L per trade\n- Win rate at p(j*,j*) threshold\n\nSend me a summary every 6 hours via Telegram.\n06 - Self-learning loop\nHow the agent improves itself\nThis is what separates Hermes from a static bot. Claude Opus 4.7 reads the execution journal after every session and rewrites the trading rules based on what worked and what didn't.\nTrade executes\nBot enters market at p(j*,j*) ≥ 0.87. Every entry, exit, and P/L is logged to journal.\nNightly review\nClaude Opus reads the full journal. Analyzes which persistence thresholds performed, which windows lost, which entry prices had best EV.\nStrategy update\nOpus rewrites the threshold rules, adjusts Kelly sizing, and updates MIN_PROB and MIN_EDGE parameters automatically.\nNext session runs with updated rules\nThe agent is measurably smarter after 50–100 trades. Let the AI do the heavy lifting.\nTelegram report every morning\nYesterday's trades, updated rules, today's strategy. You review, approve, it runs.\npython\nHERMES · NIGHTLY LOOP PROMPT\nEvery day at midnight, read the trade journal from today.\n\nAnalyze:\n- Which Markov states had the highest win rate\n- Which entry price ranges performed best (EV per trade)\n- Whether current MIN_PROB should be adjusted up or down\n- Whether Kelly f* is correctly sized given recent results\n\nThen update the .env config and strategy parameters accordingly.\nSend me a summary via Telegram with:\n- Today's P/L, win rate, number of trades\n- What changed in the strategy and why\n- Tomorrow's updated thresholds\nConclusion\nPolymarket trading bots have already taken a large share of the profit from manual traders - and this percentage keeps increasing daily.\nWith agentic frameworks like Hermes and Atomic, you don't need to be a senior developer to build your own. You need Claude Opus as the brain, a GitHub repo as the starting logic, and time for 50–100 training trades.\nThe self-learning loop does the rest.\nStart small. DRY_RUN=true first. $1–$2 per trade while training. The agent improves with every trade it executes - don't rush the learning phase.\nTop example of Bots from article: \nhttps://polymarket.com/@bonereaper?r=joinjoinjoin#tLcpwsE\n\nhttps://polymarket.com/@0xe1d6b51521bd4365769199f392f9818661bd907?r=joinjoinjoin#9TKvd55\n\nhttps://polymarket.com/@0xb27bc932bf8110d8f78e55da7d5f0497a18b5b82-1772569391020?r=joinjoinjoin#lIVnuAb\nFastest way to find all insights and their next trade before they blow up:\nhttps://predictparity.com?code=ricky\nWant to publish your own Article?\nUpgrade to Premium\n Paid partnership\n10:07 AM · May 22, 2026\n·\n829K\n Views\n24\n76\n330\n1.1K\nRelevant\nView quotes\nPost your reply\n\n\nReply\nRelevant people\n0xRicker\n@0xRicker\nFollow\nResearcher & Contributor | Polymarket Maxi | Dm open\nTrending now\nWhat’s happening\nIt's the perfect mix\nPromoted by AT&T\nTrending in United States\nRobin Clarke\nTrending in United States\nSunburn\nTrending in United States\n#Jeopardy\nShow more\nTerms of Service\n |\nPrivacy Policy\n |\nCookie Policy\n |\nAccessibility\n |\nAds info\n |\nMore\n© 2026 X Corp."
+}
