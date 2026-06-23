@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>innovative hype · tasteful software that just works</title>
+<meta name="description" content="design and engineering, shipped without the headaches. building an app? get the field guides and do it yourself, or schedule a call. we can help you either way."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f3f0e7; --ink:#1a1a1a; --red:#e2231a; --blue:#21409a; --yellow:#f4c300;
+    --bg:var(--paper); --fg:var(--ink);
+    --rule:5px; --hair:2px;
+    --pad:clamp(28px,6vw,80px);
+    --sec:clamp(64px,10vw,128px);
+  }
+  [data-theme="dark"]{--paper:#15140f;--ink:#f3f0e7;--bg:#15140f;--fg:#f3f0e7;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--fg);font-family:"Jost",system-ui,sans-serif;font-weight:400;line-height:1.45;text-transform:lowercase;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 var(--pad)}
+  a{color:inherit}
+  .mono{font-family:"Space Mono",monospace;text-transform:uppercase;letter-spacing:.14em;font-size:12px;font-weight:700}
+  .eyebrow{display:flex;align-items:center;gap:10px;color:var(--fg);opacity:.75}
+  .eyebrow:before{content:"";width:22px;height:var(--hair);background:currentColor;display:inline-block}
+
+  /* header */
+  header{display:flex;align-items:center;justify-content:space-between;padding:24px 0;border-bottom:var(--rule) solid var(--fg)}
+  .brand{display:flex;align-items:center;gap:13px;font-weight:900;font-size:21px;letter-spacing:-.01em}
+  .marks{display:flex;gap:5px;align-items:flex-end}
+  .m-tri{width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-bottom:14px solid var(--yellow)}
+  .m-sq{width:14px;height:14px;background:var(--red)}
+  .m-ci{width:14px;height:14px;background:var(--blue);border-radius:50%}
+  nav{display:flex;gap:24px;align-items:center}
+  nav a{text-decoration:none;letter-spacing:.12em}
+  nav a:hover{color:var(--blue)}
+  .toggle{appearance:none;border:3px solid var(--fg);background:var(--yellow);width:32px;height:32px;border-radius:50%;cursor:pointer;flex:none;display:grid;place-items:center;padding:0}
+  .toggle .ico{width:17px;height:17px;stroke:#1a1a1a;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;pointer-events:none}
+  .toggle .moon{display:none}
+  [data-theme="dark"] .toggle .sun{display:none}
+  [data-theme="dark"] .toggle .moon{display:block}
+  @media(max-width:680px){nav .lnk{display:none}}
+
+  /* hero */
+  .hero{position:relative;padding:var(--sec) 0 clamp(40px,7vw,72px);overflow:hidden}
+  .hero h1{font-weight:900;font-size:clamp(46px,12.5vw,150px);line-height:.9;letter-spacing:-.035em}
+  .hero h1 .dot{color:var(--red)}
+  .hero .lede{margin-top:clamp(24px,4vw,38px);max-width:30em;font-size:clamp(17px,1.9vw,22px);font-weight:400;line-height:1.5}
+  .hero .ask{margin-top:clamp(16px,2.2vw,22px);font-size:clamp(15px,1.6vw,18px);max-width:30em}
+  .hero .ask b{font-weight:700}
+  .hero .ask span{opacity:.7}
+  .composition{position:absolute;right:0;top:clamp(40px,8vw,90px);width:min(42vw,360px);height:min(42vw,360px);z-index:-1;pointer-events:none}
+  .composition .c{position:absolute;border-radius:50%;width:64%;height:64%;background:var(--yellow);right:0;top:0}
+  .composition .s{position:absolute;width:42%;height:42%;background:var(--blue);left:6%;bottom:8%}
+  .composition .t{position:absolute;width:0;height:0;border-left:46px solid transparent;border-right:46px solid transparent;border-bottom:80px solid var(--red);right:18%;bottom:0;transform:rotate(12deg)}
+  @media(max-width:680px){.composition{opacity:.85;top:0;width:55vw;height:55vw}}
+
+  /* metrics */
+  .metrics{display:grid;grid-template-columns:repeat(3,1fr);border-top:var(--rule) solid var(--fg);border-bottom:var(--rule) solid var(--fg)}
+  .metrics div{padding:clamp(20px,3vw,30px) 0;border-right:var(--hair) solid var(--fg)}
+  .metrics div:last-child{border-right:0}
+  .metrics b{display:block;font-weight:900;font-size:clamp(36px,5.5vw,58px);line-height:1;letter-spacing:-.02em}
+  .metrics span{display:block;margin-top:6px;opacity:.7}
+  @media(max-width:680px){.metrics{grid-template-columns:1fr}.metrics div{border-right:0;border-bottom:var(--hair) solid var(--fg)}.metrics div:last-child{border-bottom:0}}
+
+  /* clients */
+  .clients{padding:clamp(36px,5vw,56px) 0;border-bottom:var(--hair) solid var(--fg)}
+  .clients .lbl{margin-bottom:clamp(16px,2vw,22px)}
+  .logos{display:flex;flex-wrap:wrap;align-items:center;gap:clamp(22px,4vw,52px)}
+  .logos img{height:30px;width:auto;object-fit:contain;filter:grayscale(1) brightness(0);opacity:.62;transition:opacity .15s}
+  .logos img:hover{opacity:1}
+  [data-theme="dark"] .logos img{filter:grayscale(1) brightness(0) invert(1)}
+
+  section.block{padding:var(--sec) 0}
+  .sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:clamp(28px,4vw,48px)}
+  .sec-head h2{font-weight:900;font-size:clamp(28px,4.5vw,52px);line-height:.95;letter-spacing:-.02em}
+
+  /* paths */
+  .paths{display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,2.4vw,28px)}
+  @media(max-width:760px){.paths{grid-template-columns:1fr}}
+  .path{position:relative;border:var(--rule) solid var(--fg);padding:clamp(26px,3.4vw,44px);min-height:360px;display:flex;flex-direction:column;background:var(--bg);transition:background .2s ease,color .2s ease;overflow:hidden}
+  .path h3{font-weight:900;font-size:clamp(28px,3.6vw,42px);line-height:.95;margin:14px 0 16px;letter-spacing:-.02em}
+  .path p{font-weight:400;max-width:40ch;line-height:1.5;margin-bottom:auto}
+  .path ul{list-style:none;display:flex;flex-direction:column;gap:9px;margin:18px 0 0}
+  .path li{padding-left:22px;position:relative;font-weight:400;font-size:15px;line-height:1.4}
+  .path li:before{content:"";position:absolute;left:0;top:7px;width:9px;height:9px;background:currentColor}
+  .shape{position:absolute;right:-34px;bottom:-34px;width:150px;height:150px;transition:transform .3s cubic-bezier(.2,.8,.2,1)}
+  .path.diy .shape{background:var(--blue);border-radius:50%}
+  .path.help .shape{background:var(--red)}
+  .path:hover .shape,.path:focus-within .shape{transform:rotate(45deg) scale(1.15)}
+  .path.diy:hover,.path.diy:focus-within{background:var(--blue);color:#fff}
+  .path.help:hover,.path.help:focus-within{background:var(--red);color:#fff}
+  .cta{display:inline-block;margin-top:26px;font-weight:700;font-size:19px;border-bottom:4px solid currentColor;padding-bottom:3px;width:fit-content;text-decoration:none}
+  .dl{margin-top:16px;display:flex;flex-direction:column;gap:7px;font-size:14px;font-weight:400}
+  .dl a{text-decoration:none;opacity:.82;border-bottom:var(--hair) solid transparent}
+  .dl a:hover{opacity:1;border-bottom-color:currentColor}
+
+  /* why partner */
+  .why{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,40px)}
+  @media(max-width:760px){.why{grid-template-columns:1fr}}
+  .why .item{border-top:var(--rule) solid var(--fg);padding-top:20px}
+  .why .gm{width:26px;height:26px;margin-bottom:16px}
+  .why .item:nth-child(1) .gm{width:0;height:0;border-left:13px solid transparent;border-right:13px solid transparent;border-bottom:26px solid var(--yellow)}
+  .why .item:nth-child(2) .gm{background:var(--red)}
+  .why .item:nth-child(3) .gm{background:var(--blue);border-radius:50%}
+  .why h4{font-weight:700;font-size:21px;letter-spacing:-.01em;line-height:1.15;max-width:14ch}
+
+  /* tile grids */
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2vw,20px)}
+  @media(max-width:760px){.grid{grid-template-columns:1fr}}
+  .tile{border:var(--hair) solid var(--fg);padding:clamp(20px,2.4vw,28px);text-decoration:none;display:flex;justify-content:space-between;align-items:flex-start;gap:12px;transition:background .15s,color .15s}
+  .tile:hover{background:var(--fg);color:var(--bg)}
+  .tile b{font-weight:900;font-size:21px;letter-spacing:-.01em}
+  .tile small{display:block;font-weight:400;font-size:14px;opacity:.75;margin-top:5px}
+  .tile .ar{font-weight:900;font-size:18px}
+  .pw .tile{cursor:default}.pw .tile:hover{background:var(--bg);color:var(--fg)}
+
+  footer{border-top:var(--rule) solid var(--fg);padding:clamp(30px,4vw,44px) 0 64px;display:flex;flex-wrap:wrap;gap:18px 30px;align-items:center;justify-content:space-between}
+  footer .ch{display:flex;flex-wrap:wrap;gap:22px}
+  footer a{text-decoration:none;letter-spacing:.1em}
+  footer a:hover{color:var(--blue)}
+  :focus-visible{outline:4px solid var(--blue);outline-offset:3px}
+  @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="brand"><span class="marks"><i class="m-tri"></i><i class="m-sq"></i><i class="m-ci"></i></span> innovative hype</div>
+    <nav>
+      <a class="lnk mono" href="#work">work</a>
+      <a class="lnk mono" href="#start">start</a>
+      <button class="toggle" id="toggle" aria-label="toggle theme">
+        <svg class="ico sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M19.1 4.9l-1.8 1.8M6.7 17.3l-1.8 1.8"/></svg>
+        <svg class="ico moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a7 7 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="composition" aria-hidden="true"><span class="c"></span><span class="s"></span><span class="t"></span></div>
+    <h1>tasteful<br>software<br>that just<br>works<span class="dot">.</span></h1>
+    <p class="lede">design and engineering, shipped without the headaches.</p>
+  </section>
+
+  <section class="metrics">
+    <div><b>18</b><span class="mono">mvps shipped</span></div>
+    <div><b>7+</b><span class="mono">years building</span></div>
+    <div><b>$30m</b><span class="mono">raised by clients</span></div>
+  </section>
+
+  <section class="clients">
+    <div class="eyebrow mono lbl">trusted by</div>
+    <div class="logos">
+      <img src="assets/images/client-logos/ellomix-logo.png" alt="ellomix">
+      <img src="assets/images/client-logos/AB_Logo_DarkBlue.png" alt="app brilliance">
+      <img src="assets/images/client-logos/hip-hop-heads-logo-black.png" alt="hip hop heads">
+      <img src="assets/images/client-logos/rabbithole-logo.png" alt="rabbithole">
+      <img src="assets/images/client-logos/jude-ai-logo-black-text.png" alt="jude ai">
+      <img src="assets/images/client-logos/otc-shop-logo.png" alt="otc shop">
+    </div>
+  </section>
+
+  <section class="block" id="start">
+    <div class="sec-head"><h2>building an app?</h2><span class="eyebrow mono">two ways forward</span></div>
+    <div class="paths">
+      <div class="path diy">
+        <div class="eyebrow mono">do it yourself</div>
+        <h3>the field guides</h3>
+        <p>the playbooks for shipping apps that don't fall over. every command copy-paste, no fluff.</p>
+        <ul>
+          <li>vibe-code securely: secrets, auth, injection, safe deploys</li>
+          <li>get off the platform: vps, docker, tls, backups, hardening</li>
+        </ul>
+        <a class="cta" href="/guides/">get the guides</a>
+        <div class="dl">
+          <a href="/guides/secure-vibe-coding.pdf">download: vibe-code securely</a>
+          <a href="/guides/self-hosting.pdf">download: get off the platform</a>
+        </div>
+        <div class="shape" aria-hidden="true"></div>
+      </div>
+
+      <div class="path help">
+        <div class="eyebrow mono">not sure where to start?</div>
+        <h3>let's chat</h3>
+        <p>a relaxed, no-pressure call to figure out the right solution for you. no commitment, no pitch.</p>
+        <a class="cta" href="https://calendly.com/geoppls" target="_blank" rel="noopener">schedule a call</a>
+        <div class="shape" aria-hidden="true"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="sec-head"><span class="eyebrow mono">why work with us</span></div>
+    <div class="why">
+      <div class="item"><div class="gm"></div><h4>deep expertise in ai, web3, gaming, and more</h4></div>
+      <div class="item"><div class="gm"></div><h4>human-centered design</h4></div>
+      <div class="item"><div class="gm"></div><h4>agile sprints, idea to shipped</h4></div>
+    </div>
+  </section>
+
+  <section class="block" id="work">
+    <div class="sec-head"><h2>things we've shipped</h2><span class="eyebrow mono">live now</span></div>
+    <div class="grid">
+      <a class="tile" href="https://yapgpt.xyz" target="_blank" rel="noopener"><span><b>yapgpt</b><small>aggregated llm chat</small></span><span class="ar">&gt;</span></a>
+      <a class="tile" href="https://photogen.innovativehype.xyz" target="_blank" rel="noopener"><span><b>fine photo gen</b><small>ai photo generation</small></span><span class="ar">&gt;</span></a>
+      <a class="tile" href="https://minnesotalakesonchain.com" target="_blank" rel="noopener"><span><b>mn lakes on chain</b><small>lake data visualizer</small></span><span class="ar">&gt;</span></a>
+    </div>
+  </section>
+
+  <section class="block pw">
+    <div class="sec-head"><h2>past work</h2><span class="eyebrow mono">client builds</span></div>
+    <div class="grid">
+      <div class="tile"><span><b>ellomix</b><small>designed a music app from scratch</small></span></div>
+      <div class="tile"><span><b>rabbithole</b><small>built a partner campaign dashboard</small></span></div>
+      <div class="tile"><span><b>shield</b><small>created a blockchain security scanner</small></span></div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="brand"><span class="marks"><i class="m-tri"></i><i class="m-sq"></i><i class="m-ci"></i></span> innovative hype</div>
+    <div class="ch mono">
+      <a href="https://innovativehype.substack.com/" target="_blank" rel="noopener">newsletter</a>
+      <a href="https://open.spotify.com/show/4BOYK9pMvz8X4jq1Pk3ML7" target="_blank" rel="noopener">podcast</a>
+      <a href="https://twitter.com/innovativehype/" target="_blank" rel="noopener">twitter</a>
+      <a href="https://instagram.com/innovativehype/" target="_blank" rel="noopener">instagram</a>
+    </div>
+  </footer>
+</div>
+<script>
+  const t=document.getElementById('toggle'),r=document.documentElement;
+  const saved=localStorage.getItem('ih-theme'); if(saved)r.setAttribute('data-theme',saved);
+  t.addEventListener('click',()=>{const n=r.getAttribute('data-theme')==='dark'?'light':'dark';r.setAttribute('data-theme',n);localStorage.setItem('ih-theme',n);});
+</script>
+</body>
+</html>

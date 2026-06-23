@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Innovative Hype — Ship your AI app, the right way</title>
+<meta name="description" content="Building an AI app? Get the field guides and do it yourself, or book a call and we'll build it with you."/>
+<meta property="og:title" content="Innovative Hype — Ship your AI app, the right way"/>
+<meta property="og:description" content="Two paths to a shipped AI app: do-it-yourself guides, or done-with-you builds."/>
+<style>
+  :root{--bg:#0b0d12;--card:#141821;--line:#232a36;--txt:#e8edf5;--mut:#9aa6b8;--acc:#5b8cff;--acc2:#33d6a6}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--txt);font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:980px;margin:0 auto;padding:0 20px}
+  header{padding:28px 0;display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.2px}
+  .dot{width:11px;height:11px;border-radius:50%;background:var(--acc2);box-shadow:0 0 14px var(--acc2)}
+  .hero{padding:56px 0 36px;text-align:center}
+  .hero h1{font-size:clamp(30px,6vw,52px);line-height:1.1;letter-spacing:-.02em;margin-bottom:18px}
+  .hero h1 span{background:linear-gradient(90deg,var(--acc),var(--acc2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .hero p{font-size:clamp(16px,2.5vw,20px);color:var(--mut);max-width:640px;margin:0 auto}
+  .paths{display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:24px 0 48px}
+  @media(max-width:720px){.paths{grid-template-columns:1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:30px;display:flex;flex-direction:column}
+  .card .tag{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--mut);margin-bottom:10px}
+  .card h2{font-size:24px;letter-spacing:-.01em;margin-bottom:10px}
+  .card .sub{color:var(--mut);margin-bottom:18px}
+  .card ul{list-style:none;margin:0 0 24px;display:flex;flex-direction:column;gap:9px}
+  .card li{position:relative;padding-left:24px;color:#cdd6e4;font-size:15px}
+  .card li:before{content:"";position:absolute;left:2px;top:9px;width:8px;height:8px;border-radius:50%;background:var(--acc2)}
+  .card .spacer{flex:1}
+  .btn{display:block;text-align:center;padding:14px 18px;border-radius:11px;font-weight:700;font-size:16px;text-decoration:none;transition:.15s transform}
+  .btn:active{transform:scale(.98)}
+  .btn-primary{background:linear-gradient(90deg,var(--acc),#7aa0ff);color:#06101f}
+  .btn-ghost{background:transparent;color:var(--txt);border:1px solid var(--line)}
+  .price{font-size:14px;color:var(--mut);text-align:center;margin-top:10px}
+  .files{display:flex;gap:10px;justify-content:center;margin-top:12px;flex-wrap:wrap}
+  .files a{font-size:13px;color:var(--acc);text-decoration:none}
+  footer{border-top:1px solid var(--line);padding:28px 0 50px;color:var(--mut);font-size:14px;text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header><span class="dot"></span> Innovative Hype</header>
+
+  <section class="hero">
+    <h1>Building an <span>AI app?</span><br/>Ship it without getting wrecked.</h1>
+    <p>AI writes code fast — and hardcodes your keys, ships injectable endpoints, and locks you to platforms you'll regret. Whether you want to do it yourself or have it built with you, pick your path.</p>
+  </section>
+
+  <section class="paths">
+    <!-- PATH A: DIY -->
+    <div class="card">
+      <div class="tag">Do it yourself</div>
+      <h2>Get the field guides</h2>
+      <div class="sub">The practical playbooks for shipping AI-built apps that don't fall over — every command copy-paste, zero fluff.</div>
+      <ul>
+        <li><b>Vibe-Code Securely</b> — secrets, auth, injection, safe deploys, a pre-ship checklist</li>
+        <li><b>Get Off the Platform</b> — own your stack: VPS, Docker, TLS, backups, hardening</li>
+        <li>~2,000 words each &middot; PDF + Markdown &middot; built for shippers, not security engineers</li>
+      </ul>
+      <div class="spacer"></div>
+      <a class="btn btn-primary" href="/guides/">Get the guides &rarr;</a>
+      <div class="files">
+        <a href="/guides/secure-vibe-coding.pdf">&darr; Vibe-Code Securely (PDF)</a>
+        <a href="/guides/self-hosting.pdf">&darr; Get Off the Platform (PDF)</a>
+      </div>
+    </div>
+
+    <!-- PATH B: Done-with-you -->
+    <div class="card">
+      <div class="tag">Have it built with you</div>
+      <h2>Book a call</h2>
+      <div class="sub">When DIY isn't the move: we'll architect, build, and ship your AI app together — securely, on infrastructure you own.</div>
+      <ul>
+        <li>AI app architecture &amp; build &mdash; from idea to shipped</li>
+        <li>Security &amp; secrets done right, so you don't get wrecked</li>
+        <li>Self-hosting / migration off costly hosted platforms</li>
+        <li>Straight technical guidance &mdash; no agency overhead</li>
+      </ul>
+      <div class="spacer"></div>
+      <!-- TODO: swap href to Micah's Calendly/Cal.com booking link when provided -->
+      <a class="btn btn-ghost" href="mailto:micahgp@gmail.com?subject=AI%20app%20build%20call&amp;body=Tell%20me%20about%20your%20AI%20app%3A">Book a call &rarr;</a>
+      <div class="price">Free intro call &middot; we scope it together</div>
+    </div>
+  </section>
+
+  <footer>Innovative Hype &middot; building &amp; shipping AI apps &middot; <a href="mailto:micahgp@gmail.com" style="color:var(--mut)">micahgp@gmail.com</a></footer>
+</div>
+</body>
+</html>
