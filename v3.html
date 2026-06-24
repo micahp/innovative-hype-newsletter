@@ -44,7 +44,7 @@
 
   /* hero */
   .hero{position:relative;padding:var(--sec) 0 clamp(40px,7vw,72px);overflow:hidden}
-  .hero h1{font-weight:900;font-size:clamp(46px,12.5vw,150px);line-height:.9;letter-spacing:-.035em}
+  .hero h1{font-weight:900;font-size:clamp(46px,12.5vw,100px);line-height:.9;letter-spacing:-.035em}
   .hero h1 .dot{color:var(--red)}
   .hero .lede{margin-top:clamp(24px,4vw,38px);max-width:30em;font-size:clamp(17px,1.9vw,22px);font-weight:400;line-height:1.5}
   .hero .ask{margin-top:clamp(16px,2.2vw,22px);font-size:clamp(15px,1.6vw,18px);max-width:30em}
@@ -58,8 +58,7 @@
 
   /* metrics */
   .metrics{display:grid;grid-template-columns:repeat(3,1fr);border-top:var(--rule) solid var(--fg);border-bottom:var(--rule) solid var(--fg)}
-  .metrics div{padding:clamp(20px,3vw,30px) 0;border-right:var(--hair) solid var(--fg)}
-  .metrics div:last-child{border-right:0}
+  .metrics div{padding:clamp(20px,3vw,30px) 0}
   .metrics b{display:block;font-weight:900;font-size:clamp(36px,5.5vw,58px);line-height:1;letter-spacing:-.02em}
   .metrics span{display:block;margin-top:6px;opacity:.7}
   @media(max-width:680px){.metrics{grid-template-columns:1fr}.metrics div{border-right:0;border-bottom:var(--hair) solid var(--fg)}.metrics div:last-child{border-bottom:0}}
@@ -129,8 +128,10 @@
   <header>
     <div class="brand"><span class="marks"><i class="m-tri"></i><i class="m-sq"></i><i class="m-ci"></i></span> innovative hype</div>
     <nav>
-      <a class="lnk mono" href="#work">work</a>
-      <a class="lnk mono" href="#start">start</a>
+      <a class="lnk mono" href="https://innovativehype.substack.com/" target="_blank" rel="noopener">newsletter</a>
+      <a class="lnk mono" href="https://open.spotify.com/show/4BOYK9pMvz8X4jq1Pk3ML7" target="_blank" rel="noopener">podcast</a>
+      <a class="lnk mono" href="https://twitter.com/innovativehype/" target="_blank" rel="noopener">twitter</a>
+      <a class="lnk mono" href="https://instagram.com/innovativehype/" target="_blank" rel="noopener">instagram</a>
       <button class="toggle" id="toggle" aria-label="toggle theme">
         <svg class="ico sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M19.1 4.9l-1.8 1.8M6.7 17.3l-1.8 1.8"/></svg>
         <svg class="ico moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a7 7 0 1 0 10.5 10.5z"/></svg>
@@ -141,7 +142,7 @@
   <section class="hero">
     <div class="composition" aria-hidden="true"><span class="c"></span><span class="s"></span><span class="t"></span></div>
     <h1>tasteful<br>software<br>that just<br>works<span class="dot">.</span></h1>
-    <p class="lede">design and engineering, shipped without the headaches.</p>
+    <p class="lede">innovative design and engineering, shipped fast without the headaches.</p>
   </section>
 
   <section class="metrics">
@@ -220,12 +221,6 @@
 
   <footer>
     <div class="brand"><span class="marks"><i class="m-tri"></i><i class="m-sq"></i><i class="m-ci"></i></span> innovative hype</div>
-    <div class="ch mono">
-      <a href="https://innovativehype.substack.com/" target="_blank" rel="noopener">newsletter</a>
-      <a href="https://open.spotify.com/show/4BOYK9pMvz8X4jq1Pk3ML7" target="_blank" rel="noopener">podcast</a>
-      <a href="https://twitter.com/innovativehype/" target="_blank" rel="noopener">twitter</a>
-      <a href="https://instagram.com/innovativehype/" target="_blank" rel="noopener">instagram</a>
-    </div>
   </footer>
 </div>
 <script>
