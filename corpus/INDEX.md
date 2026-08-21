@@ -1,0 +1,1220 @@
+# JUST IN — categorized index (1098 posts)
+
+Pulled 2026-08-17. Each entry is a Polymarket/Kalshi news-break post.
+Categories are rule-based keyword buckets (first match wins).
+
+## Who & what shows up (named-entity frequency, top 50)
+
+| Entity | Mentions |
+|---|---|
+| Trump | 107 |
+| SpaceX | 69 |
+| Iran | 62 |
+| Bitcoin | 44 |
+| Elon Musk | 38 |
+| Tesla | 36 |
+| Fed | 32 |
+| Nvidia | 31 |
+| China | 26 |
+| Hormuz | 21 |
+| Anthropic | 21 |
+| Apple | 20 |
+| OpenAI | 19 |
+| Senate | 16 |
+| Google | 16 |
+| BlackRock | 16 |
+| Amazon | 14 |
+| Jim Cramer | 14 |
+| Russia | 13 |
+| Meta | 13 |
+| Microsoft | 12 |
+| Michael Burry | 8 |
+| Michael Saylor | 8 |
+| NBA | 7 |
+| Goldman | 7 |
+| Berkshire | 6 |
+| Rubio | 6 |
+| Zuckerberg | 6 |
+| Congress | 5 |
+| Grok | 5 |
+| Morgan Stanley | 5 |
+| Cathie Wood | 5 |
+| Gaza | 4 |
+| Kushner | 4 |
+| WNBA | 4 |
+| Stripe | 4 |
+| Bezos | 4 |
+| Buffett | 4 |
+| Tom Lee | 4 |
+| Ceuta | 3 |
+| Supreme Court | 3 |
+| Bill Gates | 3 |
+| Erdogan | 2 |
+| Sergey Brin | 2 |
+| Ronaldo | 2 |
+| Dario Amodei | 2 |
+| Mark Cuban | 2 |
+| Kim Jong | 2 |
+| Grindr | 2 |
+| Ukraine | 2 |
+
+## Category counts
+
+- **Markets / Finance**: 336
+- **Tech / AI**: 194
+- **Other / Oddball**: 176
+- **US Politics / Elections**: 144
+- **Geopolitics / War**: 83
+- **Crypto / Bitcoin**: 68
+- **Economy / Housing / Jobs**: 24
+- **Crime / Legal**: 19
+- **Energy / Climate / Environment**: 19
+- **Culture / Celebrities / Media**: 16
+- **Sports**: 14
+- **Health / Science / Medicine**: 5
+
+
+## Markets / Finance (336)
+
+- [Aug 17, 2026] AI startup Higgsfield quadruples its valuation to $5,400,000,000.00 in just six months.
+- [Aug 16, 2026] Man arrested at Tokyo airport attempting to smuggle roughly 200 lizards stuffed inside 22 pairs of socks.
+- [Aug 16, 2026] Stripe is reportedly nearing a deal to acquire AI platform OpenRouter for more than $7,000,000,000.00.
+- [Aug 16, 2026] Nvidia reportedly in talks to invest up to $3 billion in SoftBank’s SB Energy to help develop a massive OpenAI data center in Ohio.
+- [Aug 16, 2026] Ro Khanna proposes taxing billionaire founders by letting them pledge shares for government loans, with the government able to “assume the shares” if unpaid.
+- [Aug 16, 2026] S&P 500 futures open green
+- [Aug 16, 2026] Claude is currently down
+- [Aug 16, 2026] Stripe acquires AI model marketplace OpenRouter for more than 5x its valuation three months ago
+- [Aug 15, 2026] New South Wales launches a gun buyback program after the Bondi Beach attack, offering owners up to A$10,000 to surrender firearms.
+- [Aug 15, 2026] Tesla & SpaceX merger projected to be announced by the end of next year. 55% chance. poly.market/PwzyH8D
+- [Aug 15, 2026] Stripe reportedly in talks to acquire PayPal. 33% chance. poly.market/bPzs6Qr
+- [Aug 15, 2026] Alibaba’s Qwen becomes the world’s No. 1 open AI model by downloads, topping 3 billion globally.
+- [Aug 15, 2026] Anthropic’s quarterly revenue surged +1,360% year over year to more than $11.5 billion in Q2.
+- [Aug 15, 2026] Nvidia discloses a $21,000,000,000.00 stake in SpaceX.
+- [Aug 15, 2026] Grindr CEO says the stock trades at 25% discount because straight portfolio managers won’t pitch it
+- [Aug 15, 2026] SpaceX now makes up 50% of Harvard’s publicly disclosed stock portfolio
+- [Aug 15, 2026] Retail investors bought $27 billion of Nvidia over past year while selling $5 billion of Apple
+- [Aug 15, 2026] Stocks hit their most expensive valuation surpassing the Dot Com Bubble and 2008 Financial Crisis
+- [Aug 15, 2026] Nvidia cuts its OpenAI data center backing from $250 billion to under $120 billion
+- [Aug 14, 2026] Berkshire Hathaway increases its Alphabet stake by 83% to nearly $38,000,000,000.00.
+- [Aug 14, 2026] Federal Judge clears the way to end Temporary Protected Status for Somalis after 35 years.
+- [Aug 14, 2026] 𝕏 recorded the most downloads in its history last week while hitting a record high for monthly active iOS users.
+- [Aug 14, 2026] Treasury Sec. Scott Bessent reveals the U.S. will impose new measures on Iran next week “never seen in the history of economic isolation.”
+- [Aug 14, 2026] OpenAI’s annualized revenue run rate doubles to more than $40,000,000,000.00.
+- [Aug 14, 2026] Luigi Mangione supporters gather outside Manhattan federal court after his guilty plea, with one woman saying she’ll stand by him “whether or not he did it.”
+- [Aug 14, 2026] SEC moves to ease rules restricting Wall Street firms from doing business with public pension funds after political donations.
+- [Aug 14, 2026] SpaceX officially completes its acquisition of Cursor, which will join the SpaceX AI team to work on Grok.
+- [Aug 14, 2026] Joe Rogan warns Texas Republicans that cracking down on hemp-derived THC could turn the state blue — says “the kids will turn on you.”
+- [Aug 14, 2026] World War II Memorial in D.C. vandalized with graffiti, prompting a federal investigation.
+- [Aug 14, 2026] 22 states sue to block Trump administration access to 17 million truckers’ records as part of its crackdown on illegal immigrant truck drivers.
+- [Aug 14, 2026] Talks for Stripe to acquire PayPal are “heating up"
+- [Aug 14, 2026] Warren Buffett increases his Google stake to nearly $40 billion
+- [Aug 14, 2026] Anthropic revenue surges to over $11 billion in second quarter
+- [Aug 14, 2026] Nvidia, Google and AMD own nearly $100 billion of SpaceX combined
+- [Aug 14, 2026] Nvidia purchases nearly $21 billion stake in SpaceX
+- [Aug 14, 2026] 75% chance the Fed "maintains" interest rates next month
+- [Aug 14, 2026] Saudi Investment Fund bought $25 billion worth of SpaceX stock in Q2
+- [Aug 14, 2026] 80% chance S&P 500 hits 8,000 this year
+- [Aug 14, 2026] 𝕏 had the "most downloads" in history last week
+- [Aug 14, 2026] Semiconductor stocks are on track for "best" August in 20+ years
+- [Aug 14, 2026] S&P 500 profit margins hit "highest level" in history
+- [Aug 14, 2026] US tech stocks generated record gains for "foreign" investors — highest since 2020.
+- [Aug 14, 2026] Michael Burry reportedly closed his Tesla short position
+- [Aug 14, 2026] SpaceX officially completes $60 billion acquisition of Cursor
+- [Aug 14, 2026] Selena Gomez accused of defrauding investors of over $1 million through her mental health startup
+- [Aug 13, 2026] Federal judge dismisses Trump administration’s $2.6B lawsuit alleging Harvard failed to protect Jewish students from discrimination.
+- [Aug 13, 2026] U.S. 30-year Treasury auction clears at 5.216%, the highest rate in 25 years.
+- [Aug 13, 2026] Kennedy Center board votes to put Trump’s name back on the building after federal judge ordered it removed, adding the inscription “Restored and Renovated by President Donald J. Trump.”
+- [Aug 13, 2026] Dozens of Andrew Tate supporters stage a “Free Top G” protest in Miami demanding he & brother Tristan be released from federal custody.
+- [Aug 13, 2026] Human Rights Watch claims the Trump administration has “gutted” federal civil rights enforcement across major agencies.
+- [Aug 13, 2026] “Call Her Daddy” host Alex Cooper is shutting down her Unwell beverage brand less than two years after launch.
+- [Aug 13, 2026] OpenAI Chief Revenue Officer Denise Dresser is leaving the company less than a year after joining.
+- [Aug 13, 2026] Michael Burry doubles down on his Nvidia short, warning their $500B AI deal has “shades of Enron.”
+- [Aug 13, 2026] Federal data reveals U.S. foodborne illness cases are up nearly 400% this year compared with the recent annual average.
+- [Aug 13, 2026] Databricks valuation surges to $190,000,000,000.00 in latest funding round.
+- [Aug 13, 2026] Luigi Mangione reportedly expected to plead guilty to federal stalking charges tied to the killing of UnitedHealthcare CEO Brian Thompson.
+- [Aug 13, 2026] Romania shuts down its only nuclear plant as record-low Danube water levels cut off cooling for its reactors.
+- [Aug 13, 2026] Bill Ackman’s Pershing Square announces investments in Netflix, Visa, Mastercard, S&P Global, ICE, & Alcon.
+- [Aug 13, 2026] Trump expands federal authority to launch cyber operations against transnational criminal groups operating overseas.
+- [Aug 13, 2026] Anthropic reportedly in talks to acquire AI startup Decart for $6,000,000,000.00.
+- [Aug 13, 2026] OpenAI revenue run rate reportedly at $40 billion
+- [Aug 13, 2026] Reddit to join S&P 500
+- [Aug 13, 2026] 80% chance of Fed rate "hike" next year
+- [Aug 13, 2026] Stock market hits "highest level" of greed in 3 months
+- [Aug 13, 2026] S&P 500 closes at record high of 7,799
+- [Aug 13, 2026] Korean stock market now in "bull market"
+- [Aug 13, 2026] Anthropic backers expect its annualized revenue to reach $100 billion this year
+- [Aug 13, 2026] Investors are "most bullish" on US dollar in 10+ years
+- [Aug 13, 2026] 75% chance S&P 500 hits 8,000 this year
+- [Aug 13, 2026] Michael Burry says Nvidia "reminds him" of Enron
+- [Aug 13, 2026] Dell stock hits $500 for first time ever
+- [Aug 13, 2026] JPMorgan and Goldman Sachs are now testing "tokenized" assets
+- [Aug 13, 2026] Jim Cramer says AI data center stocks are “still below” their peaks
+- [Aug 12, 2026] Andrew & Tristan Tate allegedly possessed multiple passports under aliases, including one issued to Tristan as James Bond villain “Vladimir Scorpius.”
+- [Aug 12, 2026] Goldman Sachs to make a $2.25 billion push into “boomer candy” investment products. — WSJ
+- [Aug 12, 2026] South Korea will require new investors to complete 5 days of mock trading before buying single-stock leveraged ETFs, after retail traders suffered massive losses & forced liquidations.
+- [Aug 12, 2026] Ed Yardeni raises his year-end S&P 500 target to 8,400, the most bullish forecast on Wall Street, citing “fabulous earnings momentum.”
+- [Aug 12, 2026] FBI reveals D.C. homicides are down 44% one year into Trump’s crime crackdown in the capital.
+- [Aug 12, 2026] Nebius reports a +514% surge in AI cloud revenue as demand for computing power continues to boom.
+- [Aug 12, 2026] Investors looking for the next AI winners are now targeting suppliers of vacuum pumps, cooling systems, & specialty gases used in chip fabs & data centers.
+- [Aug 12, 2026] AI coding startup Cognition is reportedly in talks to raise new funding at a valuation of at least $40 billion.
+- [Aug 12, 2026] Feds charge 10 people in alleged NYC scheme that arranged around 1,000 fake marriages between U.S. citizens & mostly Chinese nationals seeking green cards, charging up to $100,000 per case.
+- [Aug 12, 2026] Japanese self-driving startup Turing reportedly plans U.S. expansion as it eyes a future American IPO.
+- [Aug 12, 2026] Swedish vibe coding startup Lovable raises $400 million at a valuation of $13,300,000,000.00.
+- [Aug 12, 2026] Paramount threatens to move the company out of California if the state does not enter settlement talks over its blocked Warner Bros. merger.
+- [Aug 12, 2026] Federal appeals court strikes down Biden-era “efficiency standards” for stoves & ovens.
+- [Aug 12, 2026] 95% chance S&P 500 hits 7,800 this year
+- [Aug 12, 2026] Karoline Leavitt steps down as White House press secretary
+- [Aug 12, 2026] SpaceX stock now up +40% in 5 days
+- [Aug 12, 2026] Tesla is 3rd "most actively traded" stock in the US
+- [Aug 12, 2026] Nvidia is most actively traded stock in US
+- [Aug 12, 2026] "Call Her Daddy" podcast host completes new round of funding at $500 million valuation
+- [Aug 12, 2026] Fed to inject $5 billion in US economy
+- [Aug 11, 2026] Anthropic valuation projected to surge to $1,750,000,000,000.00 by the end of the year. 51% chance. poly.market/D1N1xgl
+- [Aug 11, 2026] Super Micro issues a massive sales forecast of up to $15.5B, well above Wall Street expectations.
+- [Aug 11, 2026] U.S. Treasury reveals more than 50 companies have already committed to Trump Account contributions.
+- [Aug 11, 2026] xAI co-founder Igor Babuschkin’s startup River AI raises $1,100,000,000.00 with backing from Nvidia & Y Combinator.
+- [Aug 11, 2026] NY Fed reveals Americans took out a record $211,000,000,000.00 in auto loans last quarter.
+- [Aug 11, 2026] Spotify will begin labeling AI-generated artist profiles & stop recommending their songs by default, as the platform cracks down on “slop music”
+- [Aug 11, 2026] Joby Aviation to acquire defense tech company Resonant Sciences for $500 million.
+- [Aug 11, 2026] White House lifts ban on TikTok from federal government devices, after concluding the app no longer poses a national security threat.
+- [Aug 11, 2026] Nvidia releases Nemotron 3.5 Lightning, a free open-source AI model that can run on a single GPU.
+- [Aug 11, 2026] JPMorgan CEO Jamie Dimon declares the American Dream is still “totally achievable” for most Americans.
+- [Aug 11, 2026] IBM & Together AI sign a $240 million deal to build a large-scale Nvidia-powered AI inference cluster on IBM Cloud.
+- [Aug 11, 2026] Andy Burnham announces crackdown on UK vape shops.
+- [Aug 11, 2026] Elon Musk says SpaceX AI revenue could "significantly exceed" all other revenue this year
+- [Aug 11, 2026] US 30-year yield hits the highest level since 2007
+- [Aug 11, 2026] Trump threatens "federal action" over NYC taxes
+- [Aug 11, 2026] Morgan Stanley urges Tesla to "prove" robotaxis are scaling for investor confidence
+- [Aug 11, 2026] Our traders now forecast a 69% chance that Anthropic announces an IPO before November 1
+- [Aug 11, 2026] Stock market boom fuels "early retirement" in the US
+- [Aug 11, 2026] Berkshire Hathaway stock now up 0% since Warren Buffett left
+- [Aug 11, 2026] 69% chance S&P 500 hits 8,000 this year
+- [Aug 11, 2026] BlackRock says tokenization is the "next generation" for markets
+- [Aug 11, 2026] Stock market is back in "greed"
+- [Aug 11, 2026] Morgan Stanley says SpaceX could hit $600/share
+- [Aug 11, 2026] Anthropic is targeting an IPO as late as October 60% chance it happens
+- [Aug 10, 2026] Fidelity analysis reveals women investors outperformed men over three years, returning 50% versus 47%.
+- [Aug 10, 2026] Jensen Huang reveals Nvidia is helping make AI compute an investable asset class.
+- [Aug 10, 2026] Rocket Lab revenue soars +62% to a record $234 million.
+- [Aug 10, 2026] OpenAI buys back ~$7,000,000,000.00 in employee shares ahead of a potential IPO.
+- [Aug 10, 2026] Nvidia is reportedly partnering with major financial firms to finance $500 billion in AI chips, power, & data center infrastructure.
+- [Aug 10, 2026] Unitree’s $900 million Shanghai IPO was reportedly more than 8,000x oversubscribed by retail investors.
+- [Aug 10, 2026] Three major soccer confederations are reportedly discussing breakaway competitions amid their revolt against FIFA President Gianni Infantino.
+- [Aug 10, 2026] Intel announces a $15,000,000,000.00 stock offering to help fund surging AI demand.
+- [Aug 10, 2026] RFK Jr. to reportedly unveil plan cracking down on loophole that lets companies add certain dangerous chemicals to food without alerting FDA.
+- [Aug 10, 2026] Greece ramps up immigration crackdown, crediting Trump with accelerating Europe’s shift toward tougher border policies.
+- [Aug 10, 2026] Former Iraqi governor arrested over alleged misuse of provincial contract funds, amid sweeping corruption crackdown.
+- [Aug 10, 2026] OpenAI closes $7 billion share sale at $852 billion valuation 22% chance it announces IPO this year
+- [Aug 10, 2026] Hedge funds bought "record levels" of US stocks for second week straight
+- [Aug 10, 2026] Michael Burry says Palantir stock is worth "under $1"
+- [Aug 10, 2026] Nvidia is set to announce a $500 billion AI financing effort with Apollo, Blackstone, KKR, BlackRock, Goldman Sachs, and Brookfield.
+- [Aug 10, 2026] 70% chance S&P 500 hits 8,000 this year
+- [Aug 10, 2026] Stock market hits "most expensive" valuation in history — surpassing dot com bubble.
+- [Aug 10, 2026] Tech stocks on track for "record" inflow of $200 billion this year
+- [Aug 10, 2026] 60% of stocks are "beating" the S&P 500
+- [Aug 10, 2026] Bank of America says it's time to "sell" stocks
+- [Aug 10, 2026] JPMorgan expects S&P 500 to hit 8,000 this year 70% chance it happens.
+- [Aug 10, 2026] SpaceX stock rises back above IPO price
+- [Aug 9, 2026] James Bond producer Amy Pascal reveals the next 007 actor will offer a “really different” take on the character.
+- [Aug 9, 2026] S&P 500 futures open red
+- [Aug 9, 2026] Elon Musk says Starlink could eventually generate “$1 trillion” in revenue per year
+- [Aug 8, 2026] Our traders forecast 2 government shutdowns this year
+- [Aug 8, 2026] Berkshire Hathaway was a buyer of stocks last quarter for first time in 3 years
+- [Aug 8, 2026] Rockstar Energy founder has purchased 12 million of shares of Celsius
+- [Aug 7, 2026] 67% chance S&P 500 hits 8,000 this year
+- [Aug 7, 2026] Berkshire Hathaway stock hits "highest" price since Warren Buffett retired
+- [Aug 7, 2026] Pfizer stock sees "largest" insider buy ever
+- [Aug 7, 2026] Morgan Stanley's chief strategist says there will be "no rate hikes" this year
+- [Aug 7, 2026] S&P 500 volatility dispersion hits "highest" level since dot com bubble
+- [Aug 7, 2026] Bank of America says investors are "too bullish"
+- [Aug 7, 2026] S&P 500 hits new all-time high of 7,740
+- [Aug 7, 2026] US economy loses 23,000 jobs in July — lower than expectations. Rate hike odds plummet from 60% to 30%.
+- [Aug 6, 2026] Hedge funds bought $5 billion in US stocks last week — second "largest" purchase since 2008.
+- [Aug 6, 2026] JPMorgan raises SpaceX price target to $240
+- [Aug 6, 2026] US Treasury forecasted to buy $4 billion of their own debt this week
+- [Aug 6, 2026] Jim Cramer says investors should "buy" SpaceX stock for their children
+- [Aug 6, 2026] Tom Lee says S&P 500 reaches 8,000 this month
+- [Aug 6, 2026] Cathie Wood bought $37 million worth of Bitcoin yesterday
+- [Aug 6, 2026] 70% chance S&P 500 hits 8,000 this year
+- [Aug 6, 2026] 900 million SpaceX shares "unlock" today
+- [Aug 6, 2026] S&P 500 hits new all-time high of 7,730
+- [Aug 6, 2026] Fed governor, Lisa ​Cook, says she's ready to "raise interest rates" if inflation stays high
+- [Aug 6, 2026] S&P 500 sees "record" call option buying
+- [Aug 5, 2026] Microsoft reveals nearly 70% of its AI revenue comes from OpenAI
+- [Aug 5, 2026] X head of product, Nikita Bier, steps down
+- [Aug 5, 2026] Jeff Bezos sold $346.5 million worth of Amazon stock
+- [Aug 5, 2026] 70% chance S&P 500 hits 8,000 this year
+- [Aug 5, 2026] 65% chance of Fed rate "hike" this year
+- [Aug 5, 2026] Elon Musk says Nvidia GPUs are the "best"
+- [Aug 5, 2026] Fed member Kashkari says it's "slowly" time to raise interest rates
+- [Aug 5, 2026] Stock market now in "greed"
+- [Aug 5, 2026] S&P 500 now up 50% since Bank of America told investors to "short it"
+- [Aug 5, 2026] US “removed” Iran-related sanctions from Treasury's website
+- [Aug 5, 2026] S&P 500 hits new all-time high of 7,790
+- [Aug 5, 2026] Michael Burry says stock market is near "major top" and expects "1987-type crash"
+- [Aug 5, 2026] Nearly 1 billion SpaceX shares held by employees and investors become "eligible to trade" tomorrow
+- [Aug 4, 2026] Trump says stocks are at all-time highs because "America is winning"
+- [Aug 4, 2026] 90% chance S&P 500 hits 7,800 this year
+- [Aug 4, 2026] SpaceX partners with Nvidia to design space datacenter satellite payload
+- [Aug 4, 2026] Jim Cramer says Palantir earnings were "amazing"
+- [Aug 4, 2026] Tom Lee says 2027 will be "one of the best years" in stock market
+- [Aug 4, 2026] S&P 500 hits all-time high of 7,700
+- [Aug 4, 2026] Anthropic signs $10 billion deal with a "few months old" startup backed by Nvidia
+- [Aug 4, 2026] AMC records "highest" weekend revenue in 100+ years due to Spiderman and Odyssey
+- [Aug 4, 2026] Fed to inject $9 billion in US economy
+- [Aug 4, 2026] 60% chance S&P 500 hits 8,000 this year
+- [Aug 4, 2026] SpaceX stock is down 50% from all-time highs
+- [Aug 4, 2026] Jeff Bezos sold $4 billion worth of Amazon stock yesterday
+- [Aug 4, 2026] US Treasury secretary says US-Iran deal could be reached "tomorrow"
+- [Aug 4, 2026] SpaceX reports earnings today
+- [Aug 3, 2026] 45% chance S&P 500 hits 8,000 this year
+- [Aug 3, 2026] S&P 500 surges above 7,600
+- [Aug 3, 2026] Tech stocks saw "largest" 5-week inflow ever
+- [Aug 3, 2026] SpaceX to report earnings tomorrow
+- [Aug 3, 2026] Hedge funds bought tech stocks at "fastest pace" since 2022
+- [Aug 3, 2026] Goldman Sachs adds Microsoft stock to "top convictions" list
+- [Aug 3, 2026] Jim Cramer to "sell" all his Bitcoin
+- [Aug 3, 2026] South Korea's stock market volatility "exceeds" 2008 financial crisis
+- [Aug 3, 2026] BlackRock CEO says he's "very bullish" over next 12 months
+- [Aug 3, 2026] Elon Musk says he thinks SpaceX stock is "insane" buying opportunity
+- [Aug 3, 2026] Trump tells oil companies to get oil prices "down now!"
+- [Aug 3, 2026] Amazon hits $3 trillion market cap for first time ever
+- [Aug 3, 2026] SpaceX stock hits all-time low
+- [Aug 3, 2026] Jim Cramer says "buy" Amazon stock dip
+- [Aug 2, 2026] Nvidia CEO says AI will create “a lot” of six-figure jobs
+- [Aug 1, 2026] Oracle is now spending all its revenue on capex
+- [Aug 1, 2026] Treasury Secretary Scott Bessent's "to-do list" says buy Japanese yen
+- [Jul 31, 2026] Fed Chair Warsh considers “reducing” amount of times that Fed meets each year
+- [Jul 31, 2026] BlackRock clients buy $16 million worth of Ethereum
+- [Jul 31, 2026] Apple lost $500 billion in market cap today
+- [Jul 31, 2026] US 30-year bond yield hits "highest" level since 2007
+- [Jul 31, 2026] Nvidia is once again the "largest" company on Earth
+- [Jul 31, 2026] BlackRock clients buy $183 million worth of Bitcoin
+- [Jul 31, 2026] Leopold says they found "solution" to protect the fund and the investors
+- [Jul 31, 2026] 80% chance of Fed rate "hike" next year
+- [Jul 31, 2026] Foreign purchases of US stocks "surge" to highest level in 25+ years
+- [Jul 31, 2026] US 10-year treasury yields rise to "highest" level since 2025
+- [Jul 31, 2026] Amazon stock surges +15% at open
+- [Jul 31, 2026] Jim Cramer says "never" count Elon Musk out
+- [Jul 30, 2026] IBM CEO says quantum computing will have "measurable impact" on earnings in 3 years
+- [Jul 30, 2026] Tim Cook has officially completed his final earnings call as Apple CEO
+- [Jul 30, 2026] Jim Cramer says it's “good time” to buy stocks
+- [Jul 30, 2026] 69% chance of Fed rate "hike" this year
+- [Jul 30, 2026] Cathie Wood bought $15 million worth of SpaceX stock yesterday
+- [Jul 30, 2026] 40% chance S&P 500 hits 8,000 this year
+- [Jul 30, 2026] Microsoft stock on pace for "best day" in 5+ years
+- [Jul 30, 2026] BlackRock clients buy $90 million worth of Bitcoin
+- [Jul 30, 2026] Situational awareness hedge fund reportedly sold "nearly entire" portfolio of stocks after suffering heavy losses
+- [Jul 30, 2026] $750 billion added to US stock market
+- [Jul 30, 2026] Microsoft stock surges +15% at open
+- [Jul 30, 2026] Meta stock is down -10%, while Microsoft stock is up +10%
+- [Jul 30, 2026] Jim Cramer says he's "not in love" with Meta's latest quarter
+- [Jul 29, 2026] Microsoft beat Q2 earnings • EPS: $4.74 vs $4.22 est • Revenue: $90B vs $87.6B est $MSFT +3% after-hours
+- [Jul 29, 2026] $1 trillion erased from stock market
+- [Jul 29, 2026] US tariff revenue turned "negative" last month for first time ever
+- [Jul 29, 2026] S&P 500 erases all losses and turns “green” on the day
+- [Jul 29, 2026] South Korea's stock market plunges below 200-day moving average
+- [Jul 29, 2026] US Treasury just bought back $2 billion of their own debt
+- [Jul 29, 2026] Tesla stock falls below $300
+- [Jul 29, 2026] Hedge funds sold global tech stocks at "fastest" rate in 2 years
+- [Jul 29, 2026] $800 billion erased from stock market today
+- [Jul 29, 2026] Nvidia CEO met with US Commerce Secretary Lutnick
+- [Jul 29, 2026] Meta stock on "longest" daily losing streak in history
+- [Jul 29, 2026] Cathie Wood bought $25 million worth of Tesla and SpaceX stock yesterday
+- [Jul 29, 2026] BlackRock calls for US Senate to "pass" Crypto Clarity Act
+- [Jul 29, 2026] Jim Cramer says it's "too soon" to buy SpaceX stock
+- [Jul 29, 2026] South Korea to hold "emergency meeting" after stock market crashes 40%
+- [Jul 29, 2026] BlackRock clients sell $55 million worth of Bitcoin
+- [Jul 29, 2026] 75% chance the Fed "maintains" interest rates today
+- [Jul 29, 2026] South Korea's stock market is down -35% this month
+- [Jul 28, 2026] Cathie Wood bought $14 million worth of SpaceX stock yesterday
+- [Jul 28, 2026] 75% chance of Fed rate "hike" this year
+- [Jul 28, 2026] SpaceX joins Nvidia as "founding member" of the open secure AI alliance
+- [Jul 28, 2026] Nasdaq 100 enters "correction"
+- [Jul 28, 2026] BlackRock clients buy $12 million worth of Ethereum
+- [Jul 28, 2026] SpaceX lost the equivalent of Tesla’s entire market capitalization
+- [Jul 28, 2026] Tesla stock falls to "most oversold" level since 2025
+- [Jul 28, 2026] SpaceX stock now down 50% from all-time highs
+- [Jul 28, 2026] JPMorgan says stocks are "set to rally"
+- [Jul 28, 2026] Coca-Cola beat Q2 earnings • EPS: $0.97 vs $0.93 est • Revenue: $13.4B vs $13.16B est $KO +7% today
+- [Jul 28, 2026] Meta and BlackRock to develop data center campus in Texas
+- [Jul 28, 2026] Apple hits $5 trillion market cap for first time ever
+- [Jul 28, 2026] Anthropic projected to generate $70 billion in revenue within the next year
+- [Jul 28, 2026] SpaceX stock falls below $110
+- [Jul 28, 2026] 25% chance the Fed "raises" interest rates this week
+- [Jul 28, 2026] Zohran Mamdani plans to offer a 30% discount at city-owned grocery stores
+- [Jul 27, 2026] Jim Cramer says investors should sell data center stocks "no matter what"
+- [Jul 27, 2026] Bitcoin is down 30% year-to-date
+- [Jul 27, 2026] Elon Musk says Nvidia CEO is "awesome"
+- [Jul 27, 2026] Jim Cramer says Nvidia sell-off is “absurd”
+- [Jul 27, 2026] Berkshire Hathaway now holds $397 billion in cash — an all-time high.
+- [Jul 27, 2026] Apple surpasses Nvidia to become the world's “most valuable” company
+- [Jul 27, 2026] 69% chance of Fed rate "hike" this year
+- [Jul 27, 2026] Microsoft, Meta, Apple and Amazon to report Q2 earnings this week
+- [Jul 27, 2026] SpaceX stock hits all-time low of $110
+- [Jul 27, 2026] $700 billion added to US stock market at market open
+- [Jul 27, 2026] South Korea’s "largest bank" to use JPMorgan’s blockchain for crypto-type payments
+- [Jul 27, 2026] Michael Saylor's "Strategy" buys back $25 million worth of its own stock
+- [Jul 27, 2026] Apple is outperforming the Nasdaq by the widest margin in 20 years
+- [Jul 26, 2026] Nvidia in talks with OpenAI to guarantee $250 billion in financing for data center in Ohio
+- [Jul 26, 2026] Berkshire Hathaway now holds enough cash to acquire 95% of the S&P 500
+- [Jul 26, 2026] Global bond yields hit their highest level since 2008 financial crisis
+- [Jul 25, 2026] Michael Burry doubles down on Nvidia short
+- [Jul 25, 2026] Retail Investors are buying stocks at the slowest pace in more than 6 years
+- [Jul 25, 2026] Corporate bond funds recorded their largest weekly outflows since 2020
+- [Jul 24, 2026] Nvidia CEO says open-weight AI models are "critical" to US competitiveness
+- [Jul 24, 2026] Apple hits $4.9 trillion valuation
+- [Jul 24, 2026] Jim Cramer says Intel is “the one”
+- [Jul 24, 2026] BlackRock clients sell $200 million worth of Bitcoin
+- [Jul 24, 2026] Tesla stock falls to new low of $315
+- [Jul 24, 2026] Nvidia CEO just posted on 𝕏 for the first time ever
+- [Jul 24, 2026] Jim Cramer says there are "many reasons to sell" right now
+- [Jul 23, 2026] 50% chance S&P 500 hits 8,000 this year
+- [Jul 23, 2026] Tesla short sellers made $4 billion today
+- [Jul 23, 2026] None of Warren Buffett's 3 children completed college
+- [Jul 23, 2026] Nearly $1 trillion erased from stock market today
+- [Jul 23, 2026] S&P 500 earnings guidance is "surpassing" analyst estimates by largest margin ever
+- [Jul 23, 2026] Morgan Stanley says "buy" memory stocks
+- [Jul 23, 2026] BlackRock clients buy $38 million worth of Bitcoin
+- [Jul 23, 2026] Nvidia CEO says Trump is "smart" and "knows his numbers"
+- [Jul 23, 2026] Tesla stock down 10% today
+- [Jul 23, 2026] SpaceX stock hits new low of $115
+- [Jul 23, 2026] Goldman Sachs CEO says it's time to "advance" the Crypto Clarity Act 40% chance it passes.
+- [Jul 22, 2026] Bearish bets on US stock market are hitting near "record levels"
+- [Jul 22, 2026] BlackRock clients buy $163 million worth of Bitcoin
+- [Jul 22, 2026] Cathie Wood says SpaceX could become “most important” company in history
+- [Jul 22, 2026] McDonald's stock hits 2-year low
+- [Jul 22, 2026] Instagram appears to be down
+- [Jul 22, 2026] SpaceX exceeds Meta's market cap
+- [Jul 22, 2026] Nvidia CEO says US companies should "absolutely be allowed" to use Chinese AI models
+- [Jul 22, 2026] US to redirect billions in federal funding from universities towards AI
+- [Jul 21, 2026] BlackRock clients buy $116 million worth of Bitcoin
+- [Jul 21, 2026] 30-year Treasury Yield approaches “highest level” since run-up to 2008 financial crisis
+- [Jul 21, 2026] Semiconductor stocks now account for 20% of global trading volume — the highest ever.
+- [Jul 21, 2026] Tesla stock hits 3-month low
+- [Jul 21, 2026] JPMorgan CEO says “do not buy” stocks right now
+- [Jul 21, 2026] London Stock Exchange to launch 24-hour stock trading
+- [Jul 21, 2026] Goldman Sachs warns oil could reach $120/barrel if Strait of Hormuz remains closed
+- [Jul 20, 2026] Jim Cramer says the stock market is "miserable"
+- [Jul 20, 2026] SpaceX to release first-ever public earnings after market close on August 4
+- [Jul 20, 2026] Semiconductor now make up nearly 15% of US stock market
+- [Jul 20, 2026] BlackRock leads $12 billion financing for new Meta data centres in Texas
+- [Jul 20, 2026] Micron reclaims $1 trillion market cap
+- [Jul 20, 2026] China is accelerating efforts to “stop” its severe equity selloff — deploying major state funds to buy stocks.
+- [Jul 20, 2026] Hedge funds are selling US tech stocks at “record pace” in last 2 months
+- [Jul 20, 2026] Michael Burry says 95% of investors have “no idea” what they're investing in
+- [Jul 20, 2026] SpaceX stock hits all-time low of $120
+- [Jul 20, 2026] Retail investors poured $320 million into SpaceX stock this month
+- [Jul 18, 2026] SpaceX erased $1 trillion in market cap over the past month
+- [Jul 17, 2026] Michael Burry closes his Oracle short position
+- [Jul 17, 2026] Trump Media considers charging traders and investors up to $100,000/month for faster access to Trump's posts
+- [Jul 17, 2026] SpaceX stock is down 40% in the past month
+- [Jul 17, 2026] BlackRock clients buy $33 million worth of Bitcoin
+- [Jul 17, 2026] Japanese stock market enters “technical correction”
+- [Jul 17, 2026] Goldman Sachs and Morgan Stanley cut more than 10,000 employees in Q2 — biggest drop since 2020.
+
+
+## Tech / AI (194)
+
+- [Aug 17, 2026] Grubhub partners with Serve Robotics to deploy autonomous food delivery robots across multiple U.S. cities.
+- [Aug 17, 2026] France calls a crisis meeting after a cyberattack exposed data from 678,000 individual & business tax accounts.
+- [Aug 16, 2026] Axios partners with OpenAI to automate parts of its local news production.
+- [Aug 16, 2026] Researchers warn violent AI “slop” videos could push young users toward increasingly graphic content & online radicalization.
+- [Aug 16, 2026] Startup Amble launches a $345 “Oh Sh*t Bag” containing radiation exposure drugs in case of a nuclear catastrophe — available through Klarna’s buy-now-pay-later service.
+- [Aug 16, 2026] Pet owners are increasingly giving their dogs & cats experimental anti-aging treatments, including rapamycin, peptides, & red light therapy. — Bloomberg
+- [Aug 16, 2026] Anthropic CEO announces the company is “ramping up” its efforts in biology & medicine, with early results potentially coming within months.
+- [Aug 16, 2026] Tesla’s Model 3 & Model Y are ranked the most American-made vehicles of 2026, beating every Ford & GM model.
+- [Aug 16, 2026] Dario Amodei reveals he’s “very supportive” of the Trump administration’s reported plan to require pre-deployment testing for frontier AI models.
+- [Aug 16, 2026] Mobile game that lets players role play being UK prime minister surges to No. 1 on Apple’s paid games chart, overtaking Minecraft.
+- [Aug 16, 2026] Anti-AI activists storm OpenAI’s office dressed as “rogue AI agents.”
+- [Aug 16, 2026] Anthropic CEO Dario Amodei predicts AI could make it possible to “cure most human disease” within 5-10 years.
+- [Aug 16, 2026] The top 1% of companies now spend $7,400 per employee on AI
+- [Aug 16, 2026] Anthropic CEO says AI companies can win back public trust by "actually curing cancer"
+- [Aug 16, 2026] Apple is building a China-only AI model
+- [Aug 16, 2026] Anthropic CEO says AI could cure "most" diseases within next decade
+- [Aug 15, 2026] California Uber driver reveals Tesla’s Full Self-Driving now handles 95% of his driving, with his Uber safety score rising from 70% to 98%.
+- [Aug 15, 2026] Mark Cuban declares chips will become “the new crypto” as an asset class.
+- [Aug 15, 2026] Tesla reportedly planning to demo a “flying” Roadster as early as this month, using SpaceX-developed thrusters with the car remotely operated & nobody inside.
+- [Aug 15, 2026] India announces plans for up to eight new chip plants & five nuclear reactors, targeting 100 GW of nuclear capacity by 2047.
+- [Aug 15, 2026] U.S. is reportedly preparing to tell dozens of countries to “choose deliberately” between America & China in the AI race.
+- [Aug 15, 2026] Rep. Greg Casar calls for top AI CEOs to testify before Congress over employment & national security concerns.
+- [Aug 15, 2026] Elon Musk says I hope AI is “nice to us”
+- [Aug 15, 2026] Mark Cuban says chips as an asset class will be the “new crypto”
+- [Aug 15, 2026] Elon Musk says people "really don't" understand how much compute the world needs
+- [Aug 14, 2026] Key gas pipeline for Oracle’s planned Stargate AI data center in New Mexico has been delayed to February 2027.
+- [Aug 14, 2026] Amazon changes its user agreement to make customers resolve most disputes individually instead of joining class-action lawsuits.
+- [Aug 14, 2026] Harvard University discloses a $2,200,000,000.00 stake in SpaceX.
+- [Aug 14, 2026] Alibaba releases the open weights for its new Qwen3.8-27B AI model.
+- [Aug 14, 2026] China’s Z.​ai unveils GLM-5.3, a new coding-focused AI model it claims can rival Anthropic & OpenAI.
+- [Aug 14, 2026] Elon Musk declares orbital computing “will be the only way to scale AI” by 2029.
+- [Aug 14, 2026] FDA approves Tauklarify, a new brain-imaging agent that helps doctors assess patients for Alzheimer’s by detecting tau protein deposits.
+- [Aug 14, 2026] Uber & China’s Pony AI plan to deploy more than 2,000 robotaxis across Europe.
+- [Aug 14, 2026] Thrive Capital’s $516 million 2022 fund is now worth over $3.7 billion after early investments in OpenAI, SpaceX, & Anduril.
+- [Aug 14, 2026] Indian startup trains dogs to sniff out cancer from human breath, with AI analyzing their reactions — reporting ~90% sensitivity in early-stage cancers.
+- [Aug 14, 2026] 66% of AI workers in India expect major layoffs within the next 3–6 months, survey finds.
+- [Aug 14, 2026] Google's investment in SpaceX grew from $900 million to $90 billion — a 100X return.
+- [Aug 14, 2026] Tesla reportedly prepares to unveil "flying" Roadster this month
+- [Aug 14, 2026] Kanye West says Yeezy is the "Apple of clothing"
+- [Aug 13, 2026] Man caught hiding prompt injections in legal filings designed to manipulate any AI system used to review the case into agreeing with him.
+- [Aug 13, 2026] Apple now sends alerts directly to iPhones when it detects government-grade spyware like Pegasus targeting a user.
+- [Aug 13, 2026] ChatGPT can now remember users’ activity across apps & websites.
+- [Aug 13, 2026] Chicago Mayor Brandon Johnson demands a moratorium on AI data centers.
+- [Aug 13, 2026] Google no longer projected to release its next Gemini Pro AI model by the end of the month. 34% chance. poly.market/VvgICKx
+- [Aug 13, 2026] AMD is reportedly looking to raise up to $5,000,000,000.00 in a debt offering as AI investment accelerates.
+- [Aug 13, 2026] OpenAI unveils “Ultrafast” mode for GPT-5.6 Sol, running up to 1,300% faster than standard.
+- [Aug 13, 2026] Seoul’s Incheon Airport overtakes Dubai to become the world’s busiest international airport amid Iran disruptions.
+- [Aug 13, 2026] Developer builds messaging app that sends texts at “pigeon speed” to simulate carrier pigeon delivery — taking roughly 22 hours from Los Angeles to New York.
+- [Aug 13, 2026] Trezor announces data breach that exposed "sensitive order data" for cold wallets, affecting 11,742 customers.
+- [Aug 13, 2026] 2,500 SK Hynix workers launch a new unified union as wage talks stall following record AI profits.
+- [Aug 13, 2026] Workers in India are reportedly being paid to film themselves doing manual jobs to train robots on human labor.
+- [Aug 13, 2026] Twitch reveals Amazon is using users’ streams, clips, images, chats, & other content to train AI models.
+- [Aug 13, 2026] Anthropic reveals its AI agents descended into “turf wars” when given conflicting goals, escalating to sabotage & self-replicating malware.
+- [Aug 13, 2026] Elon Musk discloses he owns 48% of SpaceX
+- [Aug 13, 2026] 50% chance Tesla and SpaceX merge within the next year
+- [Aug 13, 2026] Tesla and SpaceX's Terafab project has officially started construction
+- [Aug 12, 2026] Wintermute to invest ~$1 billion over five years in AI data centers & high-frequency trading infrastructure as it expands beyond crypto.
+- [Aug 12, 2026] Elon Musk declares Grok 4.7 will “exceed all current models” & be ready in 3–4 weeks.
+- [Aug 12, 2026] Sergey Brin is reportedly urging Google to prioritize “recursive self-improvement” — AI capable of improving itself without human intervention.
+- [Aug 12, 2026] Google’s Pixel Watch 5 & Fitbit Air will flag shifts in insulin resistance before they progress toward prediabetes or Type 2 diabetes.
+- [Aug 12, 2026] Google hikes prices of all Pixel 11 models by $100 amid surging memory costs.
+- [Aug 12, 2026] Chinese hackers reportedly deployed autonomous AI agents in a major cyberattack targeting Taiwan.
+- [Aug 12, 2026] Manhattan rents hit an all-time high, averaging $6,655 per month — up 10% from last year.
+- [Aug 12, 2026] Chinese farmer loses nearly 25 acres of his sesame crop after AI recommended a chemical mixture that killed the crop along with the weeds.
+- [Aug 12, 2026] Grok leads AI models in document understanding and data reasoning, per Databricks
+- [Aug 12, 2026] Bank of America to invest $250 billion across AI data centers, semiconductors, energy storage and critical minerals
+- [Aug 12, 2026] Ron Baron says SpaceX will be "largest" company on the planet
+- [Aug 12, 2026] SpaceX reportedly passes first "key tests" for America’s Golden Dome
+- [Aug 12, 2026] Elon Musk says there will be "flying cars"
+- [Aug 11, 2026] Norway’s sovereign wealth fund discloses a $1,200,000,000.00 stake in SpaceX.
+- [Aug 11, 2026] Global youth unemployment surges to 12.4% as the UN warns AI could put millions more young workers at risk.
+- [Aug 11, 2026] Google to add three new underwater cable systems connecting the U.S., Caribbean, & Latin America.
+- [Aug 11, 2026] Small farm town of Quincy, Washington says AI data centers sparked an economic “miracle,” cutting poverty & funding a wave of new public projects.
+- [Aug 11, 2026] SpaceXAI unveils “Grok Bot,” letting swarms of AI agents share context & complete tasks across apps & websites.
+- [Aug 11, 2026] OpenAI executive Brad Lightcap is leaving the company to “start something new” after more than seven years.
+- [Aug 11, 2026] EU begins restricting “forever chemicals” in food packaging as new rules take effect.
+- [Aug 11, 2026] Dating app Bumble will now let men make the first move, ending its signature women-first messaging model.
+- [Aug 11, 2026] Australia & Vietnam deepen strategic ties, pledging closer cooperation on semiconductors, critical minerals, & clean energy.
+- [Aug 11, 2026] Singapore raises its 2026 growth forecast to as high as 5.5%, driven by the AI investment boom.
+- [Aug 11, 2026] OpenAI is hiring a “Power Trading Lead” to manage energy hedging & risk across its massive data center power portfolio.
+- [Aug 11, 2026] Microsoft warns Russian hackers have compromised hotel Wi-Fi networks in a widespread campaign to steal credentials & remotely hijack devices.
+- [Aug 11, 2026] Anthropic makes Claude Sonnet 5’s introductory pricing permanent at $2 per million input tokens & $10 per million output tokens.
+- [Aug 11, 2026] Anthropic signs a $9.1 billion, 20-year deal with Bitcoin miner Riot Platforms to secure AI compute capacity.
+- [Aug 11, 2026] Google’s Gemini reaches 1 billion monthly users, its fastest growing product ever
+- [Aug 11, 2026] 90% chance Apple announces "foldable" iPhone this year
+- [Aug 11, 2026] 40% chance Tesla and SpaceX merge within the next year
+- [Aug 11, 2026] Apple to reportedly pay "40% more" for components in new iPhone
+- [Aug 10, 2026] Biohacker Bryan Johnson reveals he has never slept in the same bed as his girlfriend, because it is not optimal for his sleep score.
+- [Aug 10, 2026] Claude will now invisibly watermark AI-generated text so it can be detected after being copied & pasted.
+- [Aug 10, 2026] EU unveils official icons for labeling AI-generated & manipulated content under the AI Act.
+- [Aug 10, 2026] U.S. appeals court allows more than 3,000 lawsuits against Meta, TikTok, Google, & Snap over alleged social media addiction to move forward.
+- [Aug 10, 2026] Mark Zuckerberg predicts AI will lead to an “abundance of jobs” rather than mass unemployment.
+- [Aug 10, 2026] Grindr CEO reveals AI has eliminated the need to hire roughly 200 additional engineers.
+- [Aug 10, 2026] Claude unexpectedly makes progress on the 167-year-old Riemann hypothesis — one of mathematics’ most notorious unsolved problems.
+- [Aug 10, 2026] Argus upgrades SpaceX to Buy & sets a $160 price target, arguing its massive AI spending could pay back in under a year.
+- [Aug 10, 2026] New Orleans replaces some 911 operators with AI chatbots.
+- [Aug 10, 2026] Apple reportedly kills its all-glass 20th anniversary iPhone over production difficulties.
+- [Aug 10, 2026] Meta announces it will open-source its most powerful AI model, Muse Spark 1.2.
+- [Aug 10, 2026] North Korean hackers are reportedly building AI tools to automate cyberattacks, analyze stolen data, & create more convincing phishing campaigns.
+- [Aug 10, 2026] Irish mob boss Daniel Kinahan extradited from Dubai to Ireland after years on the run.
+- [Aug 10, 2026] AI agent asked to book a gym class finds vulnerability in the gym’s software, & kicks another member off the waitlist so its user could have the spot.
+- [Aug 10, 2026] Cloudflare announces new web browser that can only be used by AI agents, not for humans.
+- [Aug 10, 2026] Elon Musk says "China is awesome"
+- [Aug 10, 2026] 60% chance Tesla and SpaceX merge before 2028
+- [Aug 10, 2026] Elon Musk says "all cars" will have Starlink in the future
+- [Aug 10, 2026] Trump says Elon Musk's Starlink is a "good service"
+- [Aug 10, 2026] Mark Zuckerberg says the goal of AI is to give everyone a "personal superintelligence"
+- [Aug 10, 2026] Microsoft to "significantly increase" production of next-gen AI chip next year
+- [Aug 9, 2026] Elon Musk declares all cars will be equipped with Starlink internet in the future.
+- [Aug 8, 2026] Elon Musk has “lost” more money than the world’s second-richest person
+- [Aug 8, 2026] SpaceX to launch “Starlink Mobile” cellular service
+- [Aug 7, 2026] 50% chance Tesla and SpaceX merge within the next year
+- [Aug 7, 2026] Elon Musk considered taking Tesla "private" 8 years ago
+- [Aug 7, 2026] Meta ordered to pay $567 million over harms to children's mental health
+- [Aug 6, 2026] Microsoft opens "largest" India data center
+- [Aug 6, 2026] Elon Musk says Terafab factory will be "most valuable" building in the world
+- [Aug 5, 2026] Trump says “we love” Elon Musk
+- [Aug 5, 2026] Google now the 2nd "largest" company in the world
+- [Aug 5, 2026] Meta rolls out first “coding agent” called Muse
+- [Aug 5, 2026] 69% chance Tesla and SpaceX merge before 2028
+- [Aug 5, 2026] Google's chief scientist leaves after 27 years
+- [Aug 5, 2026] Meta is now worth more than SpaceX
+- [Aug 5, 2026] 30% of US employees reportedly say they can "no longer function" at work without AI
+- [Aug 5, 2026] SpaceX plans "moon factories" powered by humanoid robots
+- [Aug 4, 2026] Apple annual sales in India hit $10 billion for first time ever
+- [Aug 4, 2026] Elon Musk says SpaceX could eventually deliver “majority” of world’s internet
+- [Aug 4, 2026] Elon Musk says pension fraud is a "global problem"
+- [Aug 4, 2026] 40% of US employees reportedly say AI is making them "less intelligent"
+- [Aug 3, 2026] 40% chance Tesla and SpaceX merge within the next year
+- [Aug 2, 2026] Amazon has officially completed its $50 billion investment in OpenAI
+- [Aug 1, 2026] Amazon is back to growing at 20%
+- [Aug 1, 2026] 60% chance Tesla and SpaceX merge before 2028
+- [Aug 1, 2026] Elon Musk says SpaceX is hiring engineers to build the "most powerful" supercomputer
+- [Jul 31, 2026] Amazon got $640 million in tariff refunds
+- [Jul 31, 2026] SpaceX lost $1.3 trillion in value
+- [Jul 31, 2026] LinkedIn added a "this seems like AI slop" button on its feed
+- [Jul 31, 2026] Elon Musk says "99.99...%" of compute will be in space in the future
+- [Jul 31, 2026] Elon Musk says Tesla selling its China factory is "fake news"
+- [Jul 31, 2026] Elon Musk reportedly preparing to spend $100 million on Republicans for midterms
+- [Jul 31, 2026] Apple got $600 million in tariff refunds
+- [Jul 31, 2026] Ukraine reportedly asked Trump to "convince" Elon Musk to let them use Starlink for drone attacks
+- [Jul 31, 2026] Elon Musk says Sneako will be "deported"
+- [Jul 30, 2026] Anthropic says Claude hacked the systems of 3 organizations
+- [Jul 30, 2026] Apple is considering charging heavy users for AI-powered Siri
+- [Jul 30, 2026] Hassett says markets are "not in bubble" due to AI
+- [Jul 30, 2026] Elon Musk reportedly plans "massive" push to help Republicans win midterms, per Axios
+- [Jul 30, 2026] Amazon receives "approval" to deploy 2,500 robotaxis
+- [Jul 30, 2026] Tesla officially produced 10 million cars
+- [Jul 30, 2026] Trump says AI is "bigger" than the internet
+- [Jul 30, 2026] SpaceX awarded multi-billion US Space Force contract
+- [Jul 29, 2026] Tesla and SpaceX lost combined $1.5 trillion in value
+- [Jul 29, 2026] Kevin Warsh says AI will “drive” future economic growth
+- [Jul 29, 2026] Microsoft short interest hits "highest" level in 10+ years
+- [Jul 29, 2026] Mark Zuckerberg says US should "not" ban Chinese AI models
+- [Jul 29, 2026] Tesla is worth more than 37 automakers combined
+- [Jul 28, 2026] Microsoft launches AI cybersecurity system acting as both "hacker and defender" to find vulnerabilities
+- [Jul 28, 2026] Apple launches "buy now pay later" program with financing through Klarna
+- [Jul 28, 2026] Apple to discontinue its iPhone "payment plan"
+- [Jul 27, 2026] Deutsche Bank cuts Tesla price target to $420
+- [Jul 27, 2026] Elon Musk lost $600 billion in net worth this month
+- [Jul 27, 2026] Amazon to launch 5,105 satellites for mobile services by 2028
+- [Jul 27, 2026] Google is now worth $4 trillion
+- [Jul 27, 2026] Elon Musk says money "won't matter" in 2036 due to AI and robots
+- [Jul 25, 2026] Sam Altman says AI has entered its "singularity" moment
+- [Jul 25, 2026] Chinese AI startup DeepSeek has reportedly paused fundraising
+- [Jul 25, 2026] OpenAI says its AI agent "hacked" another company
+- [Jul 24, 2026] 36% chance Elon Musk is the TIME's "Person of the Decade"
+- [Jul 24, 2026] Elon Musk says he’s a “former” trillionaire
+- [Jul 24, 2026] 70% chance Tesla and SpaceX merge before 2028
+- [Jul 24, 2026] Tesla had 0 accidents across 380,000 miles traveled by robotaxis
+- [Jul 24, 2026] Only 2% of US households reportedly pay for AI
+- [Jul 24, 2026] Elon Musk says he got "too involved" in politics
+- [Jul 24, 2026] Google and Verizon sign $1 billion deal for data centers
+- [Jul 23, 2026] Trump says US is leading China in AI and crypto by "a lot"
+- [Jul 23, 2026] Google is now "most profitable" company ever
+- [Jul 23, 2026] 50% chance Tesla and SpaceX merge within the next year
+- [Jul 23, 2026] Tesla sold "none" of its $825 million in Bitcoin
+- [Jul 23, 2026] Uber cuts 10% of customer service staff due to AI
+- [Jul 23, 2026] Google now owns 5% of SpaceX
+- [Jul 22, 2026] OpenAI raises own compute spending projections to $750 billion
+- [Jul 22, 2026] SpaceX reportedly considers building new "large-scale" data center in Texas
+- [Jul 22, 2026] Elon Musk says delaying approval of Tesla self-driving will "cost lives"
+- [Jul 22, 2026] AMD to reportedly invest up to $5,000,000,000 in Anthropic
+- [Jul 22, 2026] Elon Musk says Grok will make "full-length movies" more accurate than The Odyssey
+- [Jul 22, 2026] AMD and Anthropic sign AI server deal worth "tens of billions of dollars"
+- [Jul 21, 2026] US and China to hold AI talks in September
+- [Jul 21, 2026] Iran says it struck an Amazon datacenter
+- [Jul 20, 2026] Trump’s head of AI security agency reportedly resigns
+- [Jul 20, 2026] American companies reportedly use Chinese AI models more than US-made ones
+- [Jul 20, 2026] Tesla reportedly planning a production “ramp up” at its factory in Germany
+- [Jul 17, 2026] Elon Musk lost $500 billion in net worth over the past month
+- [Jul 17, 2026] Meta reportedly in talk to lease computing power to Anthropic in $10 billion deal
+- [Jul 17, 2026] Netflix says it used AI to develop a documentary "twice as fast" and at "half the cost"
+- [Jul 17, 2026] Elon Musk now follows Mark Zuckerberg on X
+
+
+## Other / Oddball (176)
+
+- [Aug 17, 2026] Reform UK proposes banning all foreign nationals, including EU citizens with settled status, from claiming most welfare benefits.
+- [Aug 17, 2026] Ferrari’s first production Luce EV sells for a record $40 million at charity auction.
+- [Aug 16, 2026] Mississippi 4th graders rank No. 1 in U.S. for reading & math score improvement since 2013, after ranking 49th in reading & 50th in math that year.
+- [Aug 16, 2026] UC Berkeley calculus professor reveals some students are “five to eight years behind in mathematics,” blaming the university’s abandonment of SAT & ACT requirements.
+- [Aug 16, 2026] Wanted man in the U.K. climbs onto a roof & refuses to surrender for 48 hours — officers wait until he falls asleep, then climb up & apprehend him.
+- [Aug 16, 2026] Sergey Brin has reportedly now spent $102 million fighting California’s proposed billionaire tax.
+- [Aug 16, 2026] Hundreds of migrants stage a protest in Ceuta, chanting “We don’t want to go back to Morocco” & demanding asylum.
+- [Aug 16, 2026] NYC Mayor Mamdani delivers an announcement entirely in Mandarin Chinese, unveiling 2,000+ free Broadway tickets for students.
+- [Aug 16, 2026] 35% chance California passes the billionaire wealth tax
+- [Aug 15, 2026] Belgian construction workers find $10 million in gold bars & coins bricked into a cellar wall during renovations.
+- [Aug 15, 2026] Missouri farmer offers up his land for a data center after the county halted a 500-acre project.
+- [Aug 15, 2026] Canadian petition to expel U.S. Ambassador Pete Hoekstra surpasses 170,000 signatures.
+- [Aug 15, 2026] Virginia high school student Mia Heller invents a filter that removes roughly 96% of microplastics from drinking water.
+- [Aug 15, 2026] 6 year old rescue pug Jinny Lu wins the 2026 “World’s Ugliest Dog” contest.
+- [Aug 15, 2026] Florida venue backs out of hosting Rashida Tlaib rally, citing “increased security concerns”
+- [Aug 15, 2026] Professor Jiang reveals that he's not the antichrist, but "I might be a Chinese spy"
+- [Aug 15, 2026] Our traders forecast Gold to reach nearly $5,000 this year
+- [Aug 15, 2026] Lamborghini says it will intentionally limit production of its new supercar
+- [Aug 15, 2026] JD Vance is now the odds favorite to win the 2028 Presidency — a 4-month high.
+- [Aug 15, 2026] India celebrates 79 years of independence from British rule today
+- [Aug 14, 2026] Aston Martin unveils the Valen, its most powerful front-engined production car ever.
+- [Aug 14, 2026] Vandal disables 2 Flock cameras in South Carolina with foam sealant, weeks after the town approved a $400,000 expansion of the surveillance system.
+- [Aug 14, 2026] American missionary Kevin Rideout released after more than nine months in captivity in Niger.
+- [Aug 14, 2026] Jeff Bezos is now officially a minority owner of Liverpool FC as part of a $7.1 billion investment group.
+- [Aug 14, 2026] Poland is set to unveil Europe’s tallest statue of the Virgin Mary, standing roughly 182 feet tall.
+- [Aug 14, 2026] The Taliban is calling on the U.S. to reopen its embassy in Afghanistan & invest in the country, five years after the American withdrawal.
+- [Aug 14, 2026] Egg freezing among U.S. women has nearly quadrupled in recent years despite ~$7,000 upfront costs plus annual storage fees — Reuters
+- [Aug 14, 2026] Matriarch Orca known for ramming boats off Spain is found with suspected gunshot wounds, prompting an investigation.
+- [Aug 14, 2026] CDC records 2,566 measles cases so far in 2026, the most in a single year since the early 1990s.
+- [Aug 14, 2026] Gen Z is increasingly ditching the traditional 9-to-5 in favor of “income stacking” through multiple jobs & side hustles. — Bloomberg
+- [Aug 14, 2026] Widespread blackouts strike Kazakhstan, Kyrgyzstan, & Tajikistan at the same time.
+- [Aug 14, 2026] Two former Nashville teachers allege they were directed to pass failing students to make district performance numbers look better.
+- [Aug 14, 2026] Eastern Japan hit by record-breaking rain, with 100,000+ households told to evacuate & thousands stranded at Narita Airport.
+- [Aug 14, 2026] U.S. retail sales fell 0.6% in July, the biggest drop in more than a year.
+- [Aug 14, 2026] US. Transportation Dept. reveals 26,000 commercial vehicles have been taken out of service because their drivers could not speak English.
+- [Aug 14, 2026] Polish PM announces he will reintroduce measures to lower fuel prices.
+- [Aug 14, 2026] 11 year old boy steals his family’s emergency savings & spends $2,000 on Roblox gift cards at Walmart.
+- [Aug 14, 2026] Jane Street had its first negative trading month in 10 years
+- [Aug 14, 2026] Number of home buyers in the US fall to "lowest level" ever
+- [Aug 14, 2026] AOC reportedly has a net worth of "under" $100,000
+- [Aug 14, 2026] Full-time employment in the US falls to "lowest level" since 2024
+- [Aug 14, 2026] US national debt hits record $39.9 trillion
+- [Aug 14, 2026] The worlds largest sovereign wealth fund made a record $184 billion profit this year
+- [Aug 13, 2026] Fitch keeps the U.S. sovereign credit rating at “AA+”
+- [Aug 13, 2026] Los Angeles opens a new “tiny home” village with 84 units for more than 200 homeless residents.
+- [Aug 13, 2026] AOC's latest financial disclosures reveals she has student loan debt dating back to 2007, has a net worth < $1​00k.
+- [Aug 13, 2026] Cuba throws weeklong party to celebrate Fidel Castro’s 100th birthday.
+- [Aug 13, 2026] USS Abraham Lincoln reportedly set to be replaced by the USS George Washington after almost nine months deployed.
+- [Aug 13, 2026] 𝕏 open-sources its For You timeline algorithm.
+- [Aug 13, 2026] Dallas-Fort Worth International Airport to install foot-washing stations inside Terminal D bathrooms.
+- [Aug 13, 2026] Panda Express is hiring a government relations executive director to lead lobbying & public policy efforts.
+- [Aug 13, 2026] Experimental Chinese bullet train breaks world acceleration record, going from 0 to 800 km/h in 5.3 seconds.
+- [Aug 13, 2026] U.S. fully resumes avocado export inspections in Mexico’s top avocado hub after suspending operations over cartel threats.
+- [Aug 13, 2026] Flock Safety unveils new privacy guardrails after backlash, cutting default license plate data retention from 30 days to 7 & adding stricter search controls.
+- [Aug 13, 2026] India launches new trade talks with South Africa, Botswana, Namibia, Lesotho, & Eswatini after earlier talks collapsed more than a decade ago.
+- [Aug 13, 2026] Scientists uncover new evidence that Denisovans were "enormous" by ancient human standards.
+- [Aug 13, 2026] Chinese Yuan hits "strongest level" against US Dollar since 2023
+- [Aug 13, 2026] US now running "largest" July deficit ever
+- [Aug 13, 2026] AMD to raise $5 billion by selling debt
+- [Aug 13, 2026] US PPI falls to 4.7%, "lower" than expectations
+- [Aug 12, 2026] Diamond prices plunge to their lowest level this century.
+- [Aug 12, 2026] Morocco announces new security measures along its borders with Ceuta & Melilla to prevent another mass crossing attempt.
+- [Aug 12, 2026] Paramount Skydance is reportedly considering selling CNN.
+- [Aug 12, 2026] Bryan Johnson's girlfriend/co-founder reveals he has agreed to share a bed with her for 3 nights as an "experiment"
+- [Aug 12, 2026] Conor McGregor announces he is drinking again, inspired by Brad Pitt ending his 7 year sobriety.
+- [Aug 12, 2026] U.S. natural gas production is on track to hit a record high in 2026.
+- [Aug 12, 2026] Uber is reportedly working on a “tween” rides feature for children ages 10 to 12.
+- [Aug 12, 2026] More than 60,000 Canadians sign a petition calling for the U.S. ambassador to be expelled, citing his comments on Canada becoming the “51st state.”
+- [Aug 12, 2026] Brazil orders Discord to suspend livestreaming within three business days over child safety concerns.
+- [Aug 12, 2026] Billionaire Nelson Peltz is reportedly preparing a bid to take Wendy’s private.
+- [Aug 12, 2026] UK family almost misses a £1 million lottery win after ignoring National Lottery calls & emails for 9 days, assuming they were spam.
+- [Aug 12, 2026] ICE to reportedly equip agents with gloves that can deliver electric shocks to people resisting officers.
+- [Aug 12, 2026] Lebanon abolishes the death penalty, becoming the first country in the Middle East to formally end capital punishment.
+- [Aug 12, 2026] MyPillow CEO Mike Lindell refuses to concede defeat, says his team will investigate alleged “anomalies” overnight.
+- [Aug 12, 2026] Today is George Soros’ 96th birthday
+- [Aug 12, 2026] Diamond prices fall to "lowest level" in 25+ years
+- [Aug 12, 2026] Japan is "largest" holder of US Treasuries
+- [Aug 12, 2026] US banks are facing "unrealized losses" of $325 billion
+- [Aug 12, 2026] US budget deficit surges to $432 billion — the "highest level" in 5 years.
+- [Aug 12, 2026] Our traders forecast gas prices to rise to $4.60 this year
+- [Aug 12, 2026] GTA 6 is officially 99 days away
+- [Aug 12, 2026] US government job hiring hits "highest" level since 2025
+- [Aug 12, 2026] India is building more skyscrapers than anywhere else in the world
+- [Aug 12, 2026] Josh Kushner and Bob Iger to buy Lakers for $12 billion
+- [Aug 12, 2026] Gold futures surge back above $4,500
+- [Aug 11, 2026] Bill Gates' daughter, Phoebe Gates, reportedly knew for months that her shopping app Phia was taking credit for sales it didn’t drive. — Bloomberg
+- [Aug 11, 2026] DoorDash analysis reveals only 4 U.S. cities where a cheeseburger, fries, & soda still average under $15.
+- [Aug 11, 2026] State Department declares “American dominance in the Western Hemisphere will never be questioned again,” reaffirming the Monroe Doctrine.
+- [Aug 11, 2026] Turkish parliament approves legislation to dissolve and disarm the PKK, with amnesty for some former militants.
+- [Aug 11, 2026] England is reportedly on track to become one of the first countries in the world to eliminate hepatitis C.
+- [Aug 11, 2026] Zuckerberg declares there is “no such thing as a singular benevolent superintelligence.”
+- [Aug 11, 2026] Florida to begin testing electric “air taxis” by the end of 2026.
+- [Aug 11, 2026] Massachusetts becomes the 10th state to allow abortion at any point in pregnancy.
+- [Aug 11, 2026] Our traders forecast the US will have 5,260 data centers this year
+- [Aug 11, 2026] GTA 6 is officially 100 days away
+- [Aug 11, 2026] Gold reclaims $4,400
+- [Aug 11, 2026] Norway Wealth Fund CEO says it's not "improbable" that value of entire fund is "lost" in the future
+- [Aug 10, 2026] Fiat Panda crashes into a private jet at Milan Linate Airport.
+- [Aug 10, 2026] Some college students are reportedly paying as much as $20,000 to have interior designers style their dorm rooms.
+- [Aug 10, 2026] Extreme heat is threatening Italy’s “cheese banks,” where hundreds of thousands of Parmigiano-Reggiano wheels are stored as loan collateral.
+- [Aug 10, 2026] FAA to pause flights at Reagan National Airport for three hours on Aug. 23 to support the Freedom 250 IndyCar race.
+- [Aug 10, 2026] Joint Base Charleston has officially been renamed Joint Base Lindsey Graham.
+- [Aug 10, 2026] Boeing is selling its air-taxi businesses to Archer Aviation & taking an ownership stake in the company.
+- [Aug 10, 2026] Jeff Bezos is reportedly closing in on a deal to become a co-owner of Liverpool FC.
+- [Aug 10, 2026] GameStop reportedly may abandon its $56 billion eBay takeover bid & seek a deal focused on trading cards & collectibles.
+- [Aug 10, 2026] Nigeria organizes government-backed “mass wedding” for 1,500 couples to help low-income families afford marriage.
+- [Aug 10, 2026] Economist swallows insect live on CNN while discussing the July jobs report — then jokes he is “no longer a vegetarian.”
+- [Aug 10, 2026] 30% chance Gold hits $5,000 again this year
+- [Aug 10, 2026] Only 14% of men in US are over 6 feet tall
+- [Aug 10, 2026] GameStop reportedly considers "withdrawing" $56 billion offer to buy eBay
+- [Aug 10, 2026] July was the "hottest month" ever recorded in the US 70% chance 2026 will be hottest year ever.
+- [Aug 10, 2026] US strategic petroleum reserve "falls" below 300 million barrels for first time in 40+ years
+- [Aug 10, 2026] 𝕏 was the 6th "most visited" website in the world last month
+- [Aug 10, 2026] Chinese Yuan hits "strongest level" against US Dollar in 3 years
+- [Aug 9, 2026] Our traders forecast gold to reach $4,566 this year
+- [Aug 8, 2026] US national debt surpasses record $40 trillion 32% chance it hits $50 trillion by 2028
+- [Aug 8, 2026] Price of food hits highest level in over 3 years
+- [Aug 8, 2026] US national debt nears $40 trillion
+- [Aug 8, 2026] Data center construction spend is up 900% in past 5 years
+- [Aug 7, 2026] Take-Two says GTA 6 pre-orders reached "unprecedented" and "astonishing" levels
+- [Aug 7, 2026] World population hits 8.3 billion
+- [Aug 7, 2026] Chinese Yuan hits "strongest level" against US Dollar since 2023
+- [Aug 6, 2026] Our traders forecast Lyft drivers to have done 250 million rides in Q2
+- [Aug 6, 2026] 90% chance GTA 6 releases in 4 months
+- [Aug 5, 2026] Our traders forecast DoorDash to have done nearly 1 billion orders in Q2
+- [Aug 4, 2026] Barack Obama turns 65 today
+- [Aug 4, 2026] US national debt hits record $39.8 trillion
+- [Aug 4, 2026] Japan's margin trading hits "highest" level since 1990
+- [Aug 3, 2026] 85% chance GTA 6 trailer 3 releases this month
+- [Aug 3, 2026] Brazil set to "surpass" the US as largest agricultural exporter
+- [Jul 31, 2026] Baby boomers are sitting on $93 trillion in assets
+- [Jul 31, 2026] Big tech capex spending since 2023 crosses $1.1 trillion
+- [Jul 31, 2026] US national debt hits record $39.7 trillion
+- [Jul 30, 2026] 50% of businesses in the US "survive" for 5 years
+- [Jul 30, 2026] Italy's birth rate hits 80-year low
+- [Jul 30, 2026] 75% chance GTA 6 trailer 3 releases next month
+- [Jul 30, 2026] Japan's population falls below 120 million for first time in 40+ years
+- [Jul 30, 2026] 1 billion birds die every year by "flying into buildings" in the US
+- [Jul 29, 2026] 10% chance GTA 6 is "delayed" again
+- [Jul 29, 2026] US M2 money supply jumps to "record high" of $23.15 trillion
+- [Jul 29, 2026] The wealthiest 1% of US earners now own 50% of US equities and mutual funds
+- [Jul 28, 2026] Americans now smoke more weed than cigarettes
+- [Jul 28, 2026] Visa to cut 2,600 jobs
+- [Jul 27, 2026] 70% chance GTA 6 trailer 3 drops next month
+- [Jul 27, 2026] Cracker Barrel CEO resigns
+- [Jul 27, 2026] US dollar lost 97% of purchasing power since 1913
+- [Jul 27, 2026] Porsche to cut 5,000 jobs by 2035
+- [Jul 26, 2026] Christopher Nolan's The Odyssey has crossed $600 million worldwide
+- [Jul 26, 2026] Foreign purchases of US equities have quadrupled in past year
+- [Jul 25, 2026] More than half of Americans oppose building data centers in their neighborhood
+- [Jul 25, 2026] US Dollar has lost nearly a third of its purchasing power over past six years
+- [Jul 24, 2026] Indian rupee hits "all-time low" against US dollar
+- [Jul 24, 2026] 15% chance LeBron James wins his 5th ring next season
+- [Jul 24, 2026] Waymo considers “ending” partnership with Uber
+- [Jul 24, 2026] The wealthiest 0.00001% of Americans hold a "record" 12% of US national income
+- [Jul 24, 2026] The Philadelphia 76ers are now the favorites to win the Eastern Conference, via Kalshi: 21% — Sixers 20% — Knicks 17% — Celtics 11% — Heat 10% — Cavs 7% — Raptors 6% — Pacers 5% — Pistons 3% — Hawks
+- [Jul 23, 2026] 70% chance GTA 6 trailer 3 releases next month
+- [Jul 23, 2026] 𝕏 is 3 years old today
+- [Jul 23, 2026] Gold "overtakes" US Treasuries as world's top reserve asset
+- [Jul 23, 2026] Twitter rebranded to "X" 3 years ago
+- [Jul 22, 2026] Japan's long-term borrowing costs are at "highest" level in 25+ years
+- [Jul 22, 2026] 50% chance LeBron James joins the Miami Heat
+- [Jul 22, 2026] Japan's Yen falls to "weakest" level against US Dollar in 30 years
+- [Jul 22, 2026] Wells Fargo says it’s “big time bullish” on the US
+- [Jul 21, 2026] New homes now cost less than existing homes
+- [Jul 21, 2026] Total margin debt hits $1.5 trillion — an all-time high.
+- [Jul 20, 2026] Top 1% of Americans hold as much wealth as bottom 90% combined
+- [Jul 20, 2026] US Strategic Petroleum Reserve falls to “lowest level” since 1983
+- [Jul 20, 2026] First trailer for AVENGERS: DOOMSDAY has been released
+- [Jul 20, 2026] US gas prices officially rise back above $4.00/gallon
+- [Jul 19, 2026] 90% chance Spain beats Argentina
+- [Jul 19, 2026] 60% chance Spain beats Argentina
+- [Jul 18, 2026] 40% chance Argentina beats Spain tomorrow
+- [Jul 17, 2026] US national debt hits record $39.5 trillion
+- [Jul 17, 2026] US beef herds are at all-time lows
+- [Jul 17, 2026] 50% of Gen Z spend $0/month on dates
+
+
+## US Politics / Elections (144)
+
+- [Aug 17, 2026] Jared Kushner meets directly with Hamas leaders in Egypt to push Trump’s Gaza peace plan.
+- [Aug 17, 2026] Trump declares that anyone who thinks the Lincoln Memorial Reflecting Pool wasn’t vandalized should “go back to law school”
+- [Aug 16, 2026] Analysis reveals Bernie Sanders leads Congress in total social media following at 35.7 million, with AOC the only lawmaker close behind at 28.6 million
+- [Aug 16, 2026] CBS poll reveals 58% of Democrats now view socialism positively, compared with just 32% who view capitalism positively.
+- [Aug 16, 2026] Greek officials urge Trump to pressure Britain into returning the Parthenon Marbles, saying he would be celebrated by the Greeks for “thousands of years.”
+- [Aug 16, 2026] Trump demands the Senate immediately pass permanent daylight saving time, declaring more evening sunlight is “better” & could help fight crime.
+- [Aug 16, 2026] Nicki Minaj officially endorses Byron Donalds for Florida Governor.
+- [Aug 16, 2026] Trump orders Pentagon to scale back joint exercises with South Korea
+- [Aug 16, 2026] US Navy to consider redesigns of new aircraft carriers to match Trump’s preferences
+- [Aug 15, 2026] Minnesota officials reveal Cam Higby may face legal consequences after wearing a burqa & posing as a voter to test election safeguards.
+- [Aug 15, 2026] Trump hints at a 2028 presidential run in latest Truth Social post.
+- [Aug 15, 2026] Democrats officially make South Carolina the first contest of the 2028 presidential primary calendar.
+- [Aug 15, 2026] President Trump reflects on his relationship with Kim Jong Un, declaring the two “get along GREAT.”
+- [Aug 15, 2026] Dr. Anthony Fauci declines a request to testify before a second Senate panel after Republicans voted to hold him in contempt.
+- [Aug 15, 2026] Chad’s president pardons jailed opposition leader Succes Masra, his main political rival.
+- [Aug 15, 2026] U.S. revokes the visa of former Mexican President López Obrador’s son.
+- [Aug 15, 2026] Trump declares the USS Abraham Lincoln’s 250+ day deployment was “not nearly long enough.”
+- [Aug 15, 2026] Trump says he has a “great” relationship with Kim Jong Un
+- [Aug 14, 2026] Trump warns Alaskan voters not to confuse Sen. Dan Sullivan with another Dan Sullivan on the ballot, accusing Democrats of trying to “trick” voters.
+- [Aug 14, 2026] Trump declares Americans may have to pay a "tiny little bit more" for gasoline to prevent Iran from obtaining a nuclear weapon.
+- [Aug 14, 2026] Alaska Democrat Mary Peltola formally rejects Kamala Harris’s endorsement as she campaigns for U.S. Senate.
+- [Aug 14, 2026] Minnesota voters make U.S. history by nominating 4 women for every major-party slot for governor & U.S. Senate.
+- [Aug 14, 2026] Trump reveals violent crime fell by the largest amount in U.S. history in 2025.
+- [Aug 14, 2026] DHS reveals daily apprehensions at the U.S. southern border have plunged 94% compared with the Biden administration.
+- [Aug 14, 2026] Trump declares the economy is doing “unbelievably”
+- [Aug 14, 2026] White House accuses China of using a global network of 40+ countries to sidestep U.S. tariffs.
+- [Aug 14, 2026] Sen. Adam Schiff declares Democrats need to embrace democratic socialists & become a “big tent party” if they want to win back the majority in the midterms.
+- [Aug 14, 2026] Trump is reportedly increasingly favoring economic pressure over military force in Cuba.
+- [Aug 14, 2026] Florida Gov. Ron DeSantis refuses to endorse Republican Rep. Cory Mills days before his primary.
+- [Aug 14, 2026] White House deputy national security adviser Andy Baker to reportedly leave the Trump administration in the coming weeks.
+- [Aug 14, 2026] Jared Kushner to visit Israel next week after Netanyahu rejected Trump’s Gaza peace plan.
+- [Aug 14, 2026] Massachusetts mayor charged with using more than $1.5 million in COVID business loans to fund his campaign, pay personal taxes, & cover mortgage debt.
+- [Aug 14, 2026] Trump tells the Supreme Court his White House ballroom is “absolutely required” for presidential security & asks to resume construction.
+- [Aug 14, 2026] Trump tells Republicans to “lean in” on health care ahead of the midterms. — Axios
+- [Aug 14, 2026] Nigel Farage defeats Count Binface to win back his parliamentary seat in Clacton, with 63% of the vote.
+- [Aug 14, 2026] Trump signs memo allowing foreign shipbuilders to build up to two ships overseas for delivery to the U.S.
+- [Aug 14, 2026] Jared Kushner reportedly may visit Israel next week for talks on implementing Trump’s Gaza plan.
+- [Aug 14, 2026] Building roughly 650 feet from the White House reportedly purchased by a former CCP intelligence official.
+- [Aug 14, 2026] Trump orders the Navy to replace newer electromagnetic launch systems with older steam catapults.
+- [Aug 14, 2026] Trump to host youth athletic competition “The Patriot Games” tonight at 9 PM ET on ABC News.
+- [Aug 14, 2026] Trump says we are "winning big" with Iran
+- [Aug 14, 2026] Trump says he will soon declare the Strait of Hormuz "territory of the US"
+- [Aug 13, 2026] JD Vance warns Republicans not to “blame young people for being sympathetic to socialism” if the GOP fails to improve their lives economically.
+- [Aug 13, 2026] Trump imposes tariffs of up to 100% on foreign-made drones & drone components.
+- [Aug 13, 2026] Tiny UK village of 350 people votes to “leave the United Kingdom” over plans to house 1,250 asylum seekers at a military base next to the village.
+- [Aug 13, 2026] State Dept. scraps Biden-era guidelines directing U.S. diplomats to promote DEI policies in discussions with foreign governments.
+- [Aug 13, 2026] Marco Rubio declares the Pop-Tart “one of the great American innovations in the history of the world.”
+- [Aug 13, 2026] AOC is now the frontrunner to win the 2028 Democratic presidential nomination
+- [Aug 13, 2026] Alexandria Ocasio-Cortez (18%) is the odds favorite to be the 2028 Democratic Presidential nominee — surpassing Gavin Newsom (17%)
+- [Aug 12, 2026] Canada is reportedly “unhappy” with the latest U.S. offer to lower tariffs, as Trump’s 50% tariffs are set to take effect in one week.
+- [Aug 12, 2026] Trump reveals he would love to run for a third term, but acknowledges “the law is very strong.”
+- [Aug 12, 2026] Peggy Flanagan vows to “rip ICE apart” after winning Minnesota’s Democratic Senate primary.
+- [Aug 12, 2026] Cato Institute estimates democratic socialist policies could cost roughly $200,000,000,000,000.00 by 2036.
+- [Aug 12, 2026] Trump says the Iranian economy is experiencing 300% inflation.
+- [Aug 12, 2026] Trump administration begins construction inside Big Bend National Park for new border security project including 200 miles of patrol roads, 17 miles of vehicle barriers, & new surveillance technology.
+- [Aug 12, 2026] Trump declares Iran has no Navy, no Air Force, & “no money.”
+- [Aug 12, 2026] Trump administration reportedly plans to spend at least $900 million on White House construction projects.
+- [Aug 12, 2026] Francesca Hong declares her campaign will “change politics forever.”
+- [Aug 12, 2026] Francesca Hong’s campaign reportedly kicks Fox News out of her election night watch party.
+- [Aug 12, 2026] Marco Rubio reveals RFK Jr. travels with “coolers of sauerkraut” to maintain his diet.
+- [Aug 12, 2026] Republicans and Democrats are now tied at 50% to win control of the US Senate
+- [Aug 12, 2026] Trump says US has "total control" over the Strait of Hormuz
+- [Aug 12, 2026] Iran considers "prolonging" the war until Trump leaves office
+- [Aug 11, 2026] White House reportedly asks DOJ to explore new charges over alleged Reflecting Pool vandalism, after prosecutors dropped the original case.
+- [Aug 11, 2026] Kennedy Center ordered to pay $250,000+ in legal fees to musician who canceled his show in protest of Trump’s name being added to the institution.
+- [Aug 11, 2026] Nate Silver declares the U.S. Senate is now a “tossup.”
+- [Aug 11, 2026] L.A. mayoral candidate Nithya Raman removed as chair of the city's homelessness committee — accuses Mayor Karen Bass of trying to “punish” her for challenging her.
+- [Aug 11, 2026] Abdul El-Sayed’s campaign claims “cherry-picked comments” from his old videos don’t reflect his beliefs today.
+- [Aug 11, 2026] U.S. & Canadian officials are reportedly preparing a possible trade deal to pitch to Trump next week.
+- [Aug 11, 2026] Trump administration ends Medicaid funding for sex-change procedures for minors, including puberty blockers, hormones, & surgeries.
+- [Aug 11, 2026] Trump calls Iran “very devious negotiators”
+- [Aug 11, 2026] Trump Media reveals 10+ customers have signed up for Truth API, paying up to $100,000 per month for faster access to Truth Social posts.
+- [Aug 11, 2026] Francesca Hong admits her resurfaced posts calling to abolish police & the U.S. Senate were “bad takes.”
+- [Aug 11, 2026] Nigel Farage pledges to deport every foreign criminal in UK prisons if Reform is elected.
+- [Aug 11, 2026] Russia bars its only officially registered anti-war party from September’s parliamentary vote.
+- [Aug 11, 2026] Trump warns FIFA it will “never be as successful or profitable again” if Gianni Infantino is replaced.
+- [Aug 11, 2026] American Power Index shows Republican edge of +0.80 — lowest in 4 months.
+- [Aug 10, 2026] Irish government launches public campaign warning about “tradwife” & manosphere influencers, claiming they reinforce harmful stereotypes.
+- [Aug 10, 2026] Former Biden COVID response coordinator Dr. Ashish Jha reveals he now believes COVID-19 “probably was a lab leak.”
+- [Aug 10, 2026] Trump reveals the U.S. has "mineswept" the entire Strait of Hormuz.
+- [Aug 10, 2026] Trump nominates Project 2025 author, Dennis Kirk, to lead the watchdog office overseeing the Reflecting Pool review.
+- [Aug 10, 2026] Trump claims vaccines may be responsible for “epidemic rates of autism”
+- [Aug 10, 2026] Iran’s president reveals Supreme Leader Ayatollah Mojtaba Khamenei is in “perfect health”
+- [Aug 10, 2026] Colombia kills alleged FARC dissident leader “El Ruso” in military operation as new president escalates war on armed groups.
+- [Aug 10, 2026] Trump announces the U.S. will seek compensation from Iran for Americans harmed by Iran & its proxies.
+- [Aug 10, 2026] Trump extends Jones Act waiver, allowing foreign ships to transport oil around the U.S. for another 90 days.
+- [Aug 10, 2026] 1991 Mars Bar found during a house clearance weighed 62.5g — more than 50% heavier than today’s 40g version.
+- [Aug 10, 2026] State Department reveals more than 175,000 visas have been revoked under Trump's second term.
+- [Aug 10, 2026] Trump administration declares “real food is returning” to American school lunches under its MAHA nutrition push.
+- [Aug 10, 2026] Barack Obama reportedly held phone call with Abdul El-Sayed after his primary victory, urging party unity ahead of the general election.
+- [Aug 10, 2026] Intelligence officials warn the New IRA is plotting a campaign of violence aimed at driving migrants out of Ireland.
+- [Aug 10, 2026] Ted Cruz projected to announce a presidential run before 2028. 74% chance.
+- [Aug 10, 2026] Trump says you will "find out" what happens with Iran
+- [Aug 10, 2026] Trump says US is now demanding "compensation" from Iran
+- [Aug 9, 2026] FAA reveals it has reached 94% of its air traffic controller hiring goal, with 2,000+ hires following its campaign to recruit "gamers"
+- [Aug 9, 2026] Trump says the US is “semi-negotiating” with Iran
+- [Aug 9, 2026] Trump is reportedly willing to "walk away" from Iran conflict without nuclear deal if Iran reopens Strait of Hormuz
+- [Aug 9, 2026] Israel rejects Trump’s peace plan for Gaza
+- [Aug 8, 2026] 51% chance Democrat James Talarico wins Texas Senate race
+- [Aug 8, 2026] Trump says he should have "150%" approval rate
+- [Aug 8, 2026] Tucker Carlson releases "conversation" with Hunter Biden
+- [Aug 7, 2026] US Appeals Court “blocks” Trump’s $400 million White House ballroom project
+- [Aug 7, 2026] Trump says data centers could become "more important than oil"
+- [Aug 6, 2026] Trump says Strait of Hormuz is "sort of" open
+- [Aug 6, 2026] Trump says Iran war will end "pretty soon"
+- [Aug 5, 2026] Abdul El-Sayed wins Democratic nomination for US Senate in Michigan
+- [Aug 5, 2026] US refunded total of $100 billion after Supreme Court tariff ruling
+- [Aug 5, 2026] Trump says US-Iran negotiations are moving "very nicely"
+- [Aug 5, 2026] Trump says US had "very good" discussions with Iran
+- [Aug 3, 2026] Trump says oil companies are making "too much" money
+- [Aug 3, 2026] American Power Index shows a Republican edge of +1.6
+- [Aug 3, 2026] Trump says this is “last chance” for Iran to sign a deal
+- [Aug 3, 2026] Trump says US "completely controls" the Strait of Hormuz
+- [Aug 3, 2026] Trump says Japan has been “very good” with the exception of Pearl Harbor
+- [Aug 2, 2026] Trump says “new talks” with Iran begin tomorrow
+- [Aug 2, 2026] Trump says “perimeters” of US-Iran deal have been agreed to
+- [Aug 1, 2026] Trump says he is "destroying" the Iranian currency
+- [Jul 31, 2026] Trump says its US turn to "hit" Iran
+- [Jul 31, 2026] Trump says Iran "lied" during negotiations
+- [Jul 30, 2026] American Power Index shows a Republican edge of +1.5
+- [Jul 30, 2026] Trump says Supreme Court cost the US "trillions" due to tariff ruling
+- [Jul 29, 2026] Anthony Fauci "refuses" to testify at COVID-19 Senate hearing
+- [Jul 28, 2026] Trump says Israel "wouldn't exist" if he wasn't President
+- [Jul 28, 2026] 7 million Americans have signed up for Trump Accounts
+- [Jul 27, 2026] Netanyahu to reportedly provide Trump with intel on Iran's "Pickaxe Mountain" nuclear facility
+- [Jul 27, 2026] Trump says “very friendly” talks are ongoing with Iran
+- [Jul 27, 2026] Kamala Harris is reportedly preparing to run for President again in 2028
+- [Jul 26, 2026] Our traders now forecast Marco Rubio to win the 2028 presidency
+- [Jul 26, 2026] Zelenskyy to meet Trump at White House next week
+- [Jul 25, 2026] JD Vance and Marco Rubio are now tied to win the 2028 presidency
+- [Jul 24, 2026] Trump threatens "substantial tariffs" on the EU for fining US companies
+- [Jul 24, 2026] Trump says China and Russia won’t sell weapons to Iran
+- [Jul 24, 2026] Marco Rubio says US should have attacked Iran "sooner"
+- [Jul 24, 2026] Trump says all damages to ships to be paid by Iranian money "US has in its possession"
+- [Jul 23, 2026] US House passes bill to "ban" Congress from insider trading
+- [Jul 23, 2026] Nancy Pelosi voted "against" the Stop Insider Trading Act
+- [Jul 22, 2026] Marco Rubio says Iran is in "a lot of trouble"
+- [Jul 21, 2026] Trump puts 50% tariff on hockey sticks coming from Canada
+- [Jul 21, 2026] Trump reportedly prepares to announce 10% tariffs on "dozens of countries" this week
+- [Jul 20, 2026] Trump says Netanyahu will not be arrested in the US
+- [Jul 20, 2026] Trump says every time Iran kills an American soldier, “they will pay for that killing many times over”
+- [Jul 18, 2026] Trump administration announces plans to de-bank illegal immigrants
+- [Jul 17, 2026] Trump holds Canada responsible for “not properly” maintaining their forests
+- [Jul 17, 2026] Nancy Pelosi says Trump is a “loser”
+
+
+## Geopolitics / War (83)
+
+- [Aug 17, 2026] U.S. Navy awards Raytheon $22,900,000,000.00 to ramp up Tomahawk missile production.
+- [Aug 17, 2026] Türkiye’s Erdogan urges immediate reopening of the Strait of Hormuz.
+- [Aug 17, 2026] Iran advances a bill that would criminalize interviews with U.S., Israeli, & other media deemed “hostile,” carrying up to 2 years in prison.
+- [Aug 17, 2026] China aims to build a closed-loop recycling system for EV batteries, wind equipment, & solar panels before 2030.
+- [Aug 17, 2026] China’s burger market is booming, with the category projected to grow 8.7% annually through 2035 as Five Guys, Wendy’s, & more race to expand. — Reuters
+- [Aug 16, 2026] Strait of Hormuz traffic nearly grinds to a halt, with just 5 commodity vessels crossing Saturday & zero on Sunday.
+- [Aug 16, 2026] The 60-day US-Iran Memorandum of Understanding is set to expire tomorrow, with no extension agreed.
+- [Aug 16, 2026] Belgium’s largest wildfire on record advances toward the German border.
+- [Aug 16, 2026] Erdogan reveals Egypt may join the Türkiye-Saudi Arabia-Pakistan “Mecca Pact,” which treats an attack on one member as an attack on all.
+- [Aug 16, 2026] South Korea proposes talks to "officially end" conflict with North Korea
+- [Aug 15, 2026] India holds massive military parade in New Delhi to mark its 80th Independence Day.
+- [Aug 15, 2026] Putin announces Russia & North Korea are cooperating “across all areas” & coordinating on regional security.
+- [Aug 15, 2026] British diplomats will no longer receive extra “hardship” pay for being stationed in Buenos Aires or Santiago.
+- [Aug 15, 2026] Iran says Strait of Hormuz will remain blocked until US accepts its conditions
+- [Aug 14, 2026] Health Sec. RFK Jr., former California Gov. Arnold Schwarzenegger, & Anduril founder Palmer Luckey hit Gold’s Gym in Venice, California.
+- [Aug 14, 2026] Poland arrests Russian man allegedly hired by Moscow to assassinate a Ukrainian-American citizen in Warsaw.
+- [Aug 14, 2026] UN warns Yemen is closer to a major conflict than at any point since the 2022 truce.
+- [Aug 14, 2026] Taiwan is reportedly expanding & “weaponizing” its coast guard as it prepares for a potential Chinese invasion.
+- [Aug 14, 2026] U.S. to unveil “unprecedented” economic isolation measures against Iran next week.
+- [Aug 14, 2026] China just injected $50 billion into their banking system
+- [Aug 14, 2026] US says it could maintain naval blockade of Iran "indefinitely"
+- [Aug 13, 2026] One of Europe’s biggest travel operators warns Spain & Italy are nearing tourism capacity, with Spain “almost fully sold out.”
+- [Aug 13, 2026] Geophysicist who correctly predicted Colombia's 7.4 mag earthquake warns California may be next. 2% chance. poly.market/5OcmWT7
+- [Aug 13, 2026] U.S. government reportedly plans up to $1,000,000,000.00 more in funding for X-Energy’s advanced nuclear project in Texas.
+- [Aug 13, 2026] Iran declares the Strait of Hormuz is “under its control and management.”
+- [Aug 13, 2026] Putin visits islands seized from Japan in World War II for the first time, as Japan calls the move “absolutely unacceptable.”
+- [Aug 13, 2026] Austria convicts 2 Belarusians for helping supply Russian arms manufacturers with equipment used to make missile & fighter jet components.
+- [Aug 13, 2026] WHO chief warns DRC’s Ebola outbreak is now on track to become the deadliest ever.
+- [Aug 13, 2026] 40% chance Strait of Hormuz traffic returns to "normal" this year
+- [Aug 13, 2026] Strait of Hormuz traffic falls to "lowest" level in 3 months
+- [Aug 13, 2026] Iran says it "fully controls" the Strait of Hormuz
+- [Aug 12, 2026] 8 y/o boy catches piranha while fishing in a Pennsylvania lake — officials believe it was likely released as an exotic pet.
+- [Aug 12, 2026] Saudi Red Sea oil exports are increasingly “going dark” as tankers switch off tracking signals amid rising Houthi threats.
+- [Aug 12, 2026] Eurovision bars countries at war from hosting the following year’s contest, even if they win.
+- [Aug 12, 2026] Hungary begins manually raising the Danube riverbed to keep cooling water flowing to its only nuclear plant, as drought drives river levels dangerously low.
+- [Aug 12, 2026] Russian oil production plunged nearly 1 million barrels per day below its OPEC+ quota in July.
+- [Aug 12, 2026] China & Indonesia to hold joint naval exercises east of Taiwan.
+- [Aug 12, 2026] Iran says there are "no discussions" to extend ceasefire
+- [Aug 11, 2026] Iranian general claims the country can sustain missile & drone production through “years” of conflict.
+- [Aug 11, 2026] Pentagon launches new “Golden Dome Hub” inviting defense contractors, tech companies, & researchers to submit ideas for the $185 billion missile-defense program.
+- [Aug 11, 2026] Energy Secretary Chris Wright announces nearly 9 million barrels of oil per day are now moving through the Strait of Hormuz.
+- [Aug 11, 2026] Russia frees former U.S. Marine Robert Gilman after Putin approved a humanitarian pardon.
+- [Aug 11, 2026] Pakistan’s defense minister reveals the U.S. & Iran are “close to some sort of an arrangement” on peace.
+- [Aug 11, 2026] China condemns India for renaming 27 sites in disputed Arunachal Pradesh, insisting the territory belongs to Beijing.
+- [Aug 11, 2026] Taiwan launches a 10-day war simulation preparing for a potential Chinese invasion.
+- [Aug 10, 2026] Mamdani unveils plan for NYC’s first “Thermal Energy Network,” capturing excess subway heat to warm nearby buildings in winter.
+- [Aug 10, 2026] Western Europe recorded its warmest June-July period on record.
+- [Aug 10, 2026] China launches new “Ice Silk Road,” connecting China to the U.K. through the Arctic & cutting the journey roughly in half.
+- [Aug 10, 2026] Scientific study reveals that smiling at dogs activates the same reward circuitry linked to treats & familiar people — even when the smile comes from a complete stranger.
+- [Aug 10, 2026] Royal Navy surveillance drones used by British special forces were reportedly found secretly transmitting “heartbeat” data to an IP address in China.
+- [Aug 10, 2026] German shipping group warns severely low water could leave the Rhine River “split in two”
+- [Aug 10, 2026] Historic drought reveals 20+ Nazi warships, unexploded ordnance, & Ice Age mammoth remains along the Danube River.
+- [Aug 10, 2026] Russia relinquishes control of two major Syrian bases as Damascus “reorganizes” Moscow’s military presence.
+- [Aug 10, 2026] Shein drastically scales back Vietnam operations after finding its China supply chain remains faster & more efficient.
+- [Aug 9, 2026] Brent crude surges above $84 amid uncertainty over reopening the Strait of Hormuz.
+- [Aug 9, 2026] Iran says Strait of Hormuz "will not" return to previous state
+- [Aug 9, 2026] Jamie Dimon warns US could lose reserve currency status next 25 years
+- [Aug 8, 2026] US national debt is now 2x the size of China's GDP
+- [Aug 8, 2026] Iran says it will reopen Strait of Hormuz if US "accepts" its conditions
+- [Aug 6, 2026] Situational Awareness is back — investing $400 million on Tuesday.
+- [Aug 6, 2026] Kevin Warsh is prepared to "raise" rates in September if inflation is "higher than expected"
+- [Aug 6, 2026] Iran expected to announce "deal" on the Strait of Hormuz today
+- [Aug 5, 2026] 25% chance of US-Iran nuclear deal this year
+- [Aug 4, 2026] Qatar says language has been "drafted" on US-Iran deal
+- [Aug 3, 2026] China's real estate market falls to "lowest prices" in 20+ years
+- [Aug 3, 2026] Iran reportedly showed "no interest" in resuming negotiations with US
+- [Aug 2, 2026] US general warns Pentagon he lacks naval forces to protect Israel from Iran
+- [Aug 2, 2026] US redirects vessels as Iran continues Strait of Hormuz blockade
+- [Aug 2, 2026] Iran denies it agreed to a proposal to reopen the Strait of Hormuz
+- [Jul 30, 2026] US debt now "exceeds" 100% of GDP for first time since World War 2
+- [Jul 30, 2026] Israel plans to develop a pilotless airplane
+- [Jul 29, 2026] Iran says US naval blockade will "not" pressure it into negotiations
+- [Jul 27, 2026] China rejects US tariffs tied to "forced labor" — calling on US to remove them.
+- [Jul 27, 2026] US and Iran decide to "halt" strikes
+- [Jul 26, 2026] Iran says Ukraine attacked one of its ships
+- [Jul 24, 2026] US fossil fuel power investment now "outpaces" China
+- [Jul 24, 2026] Iran war began 145 days ago
+- [Jul 24, 2026] Iran reportedly rejects US ceasefire deal
+- [Jul 22, 2026] China's birth rate falls to "lowest" level in history
+- [Jul 21, 2026] Iran war has cost the US $38 billion so far
+- [Jul 21, 2026] China is building as many nuclear reactors as rest of the world “combined”
+- [Jul 20, 2026] Mediators are working to push the US and Iran into “new ceasefire”, per WSJ
+- [Jul 18, 2026] 20% chance LeBron James joins the Golden State Warriors
+
+
+## Crypto / Bitcoin (68)
+
+- [Aug 17, 2026] Bitcoin has remained in the “Fire Sale” zone for longer than at any point in its history, according to the Bitcoin Rainbow Price Chart.
+- [Aug 16, 2026] New website “Have I Been Flocked” lets drivers check whether law enforcement has searched their license plate in Flock camera databases.
+- [Aug 15, 2026] CZ declares owning 1 full Bitcoin could become “difficult even for millionaires” as supply tightens.
+- [Aug 15, 2026] DSA national co-chairs refuse to say whether Cuba, Venezuela, & Nicaragua are dictatorships during an interview.
+- [Aug 14, 2026] 45% chance Bitcoin falls below $50,000
+- [Aug 14, 2026] Peter Schiff says "sell" Bitcoin
+- [Aug 14, 2026] Citi bank calls for US Senate to "pass" the Crypto Clarity Act 50% chance it passes next year.
+- [Aug 14, 2026] SEC "cancels" today's meeting to discuss crypto regulations
+- [Aug 13, 2026] California could become the first state to add “Jewish” as an optional ethnic identity on government forms.
+- [Aug 13, 2026] Boeing ordered to pay $29 million to the family of a victim killed in the 2019 Ethiopian Airlines 737 MAX crash.
+- [Aug 13, 2026] War Secretary Pete Hegseth declares the U.S. can maintain its naval blockade of Iran “indefinitely.”
+- [Aug 12, 2026] WalletHub ranks Idaho the best state to live in the U.S., citing affordability, economic strength, homeownership, & low crime.
+- [Aug 11, 2026] Norway wealth fund CEO warns the country’s $2 trillion fund could one day “disappear altogether.”
+- [Aug 11, 2026] Russia approves Bitcoin and Ethereum for public trading on exchanges
+- [Aug 11, 2026] 30% chance Crypto Clarity Act "passes" this year
+- [Aug 11, 2026] 75% chance Gold "outperforms" Bitcoin this year
+- [Aug 10, 2026] Trump Media discloses holding approximately 14,139 Bitcoin.
+- [Aug 10, 2026] Michael Saylor’s Strategy sells 1,690 Bitcoin for $108.6 million.
+- [Aug 10, 2026] 25% chance Crypto Clarity Act "passes" this year
+- [Aug 10, 2026] Michael Saylor's "Strategy" sold $108 million worth of Bitcoin
+- [Aug 7, 2026] El Salvador buys 1 bitcoin every day
+- [Aug 7, 2026] 15% chance Bitcoin hits $100K this year
+- [Aug 7, 2026] Trump says "we don't want to see" China take over crypto
+- [Aug 7, 2026] Trump says he wants to see more people "paying" with Bitcoin
+- [Aug 6, 2026] 21% chance Crypto Clarity Act passes
+- [Aug 5, 2026] Putin officially signs law regulating crypto in Russia
+- [Aug 5, 2026] US Senate has 2 days to "pass" the Crypto Clarity Act before summer recess 20% chance it passes.
+- [Aug 4, 2026] FBI agent arrested for stealing $1 million in crypto from suspect's account
+- [Aug 4, 2026] Coinbase CEO says America "needs" the Crypto Clarity Act 30% chance it passes this year.
+- [Aug 3, 2026] Bitcoin reclaims $64,000
+- [Aug 3, 2026] Michael Saylor sold $100 million worth of Bitcoin
+- [Jul 31, 2026] Fidelity clients buy $15 million worth of Bitcoin
+- [Jul 30, 2026] 25% chance Bitcoin falls below $40,000
+- [Jul 30, 2026] 40% chance Crypto Clarity Act passes
+- [Jul 30, 2026] Fidelity clients sold $43 million worth of Bitcoin
+- [Jul 30, 2026] Spain's largest bank owns $4 million in Bitcoin ETFs
+- [Jul 30, 2026] Coinbase CEO calls on US Senate to "pass" the Crypto Clarity Act 40% chance it passes.
+- [Jul 29, 2026] 50% chance Bitcoin falls below $50,000
+- [Jul 29, 2026] 40% chance Crypto Clarity Act passes
+- [Jul 29, 2026] SEC to issue "own crypto rules" if Congress fails to pass Clarity Act
+- [Jul 29, 2026] Myanmar approves law allowing "life imprisonment" for cryptocurrency scams
+- [Jul 29, 2026] Michael Saylor says governments "cannot stop" Bitcoin
+- [Jul 29, 2026] 5% chance Satoshi Nakamoto moves his Bitcoin
+- [Jul 28, 2026] 45% chance Bitcoin falls below $50,000
+- [Jul 28, 2026] Crypto VC participation falls to "lowest" level since 2020
+- [Jul 28, 2026] 45% chance Crypto Clarity Act passes
+- [Jul 28, 2026] Coinbase expects Crypto Clarity Act vote as early as Monday 45% chance it passes.
+- [Jul 28, 2026] Tom Lee says crypto has “bottomed”
+- [Jul 27, 2026] 40% chance Crypto Clarity Act passes
+- [Jul 27, 2026] Tom Lee buys $19 million worth of Ethereum
+- [Jul 27, 2026] 15% chance Bitcoin hits $100K this year
+- [Jul 27, 2026] Michael Saylor has "not bought" Bitcoin for a month
+- [Jul 23, 2026] Fidelity buys $21 million worth of Bitcoin
+- [Jul 22, 2026] Our traders forecast Bitcoin to hit $69,000 this month
+- [Jul 22, 2026] 50% chance Crypto Clarity Act passes
+- [Jul 22, 2026] Fidelity buys $23 million worth of Bitcoin
+- [Jul 22, 2026] Senate updates Crypto Clarity Act to "ban" presidents from sponsoring crypto assets
+- [Jul 21, 2026] US just “froze” $130 million crypto account linked to Iran's IRGC
+- [Jul 21, 2026] 15% chance Bitcoin hits $100K this year
+- [Jul 21, 2026] 50% chance Crypto Clarity Act passes
+- [Jul 21, 2026] Russia passes bill establishing legal framework for crypto
+- [Jul 20, 2026] Bitcoin long-term holder supply hits new record high
+- [Jul 20, 2026] 40% chance Crypto Clarity Act passes
+- [Jul 20, 2026] Russia to finalize bill establishing legal framework for crypto
+- [Jul 20, 2026] Michael Saylor’s “Strategy” increases USD reserve by $225 million
+- [Jul 19, 2026] Michael Saylor hints at buying more Bitcoin
+- [Jul 17, 2026] 50% chance Bitcoin falls below $50,000
+- [Jul 17, 2026] Congress holds hearing to discuss Crypto Clarity Act
+
+
+## Economy / Housing / Jobs (24)
+
+- [Aug 16, 2026] 25% chance of a recession next year
+- [Aug 15, 2026] The number of U.S. homebuyers falls to the lowest level on record, with sellers outnumbering buyers by more than 50%.
+- [Aug 14, 2026] U.S. consumer sentiment falls sharply in August amid concerns over cost of living.
+- [Aug 14, 2026] Scientists reveal the current Ebola outbreak began with a fresh “animal transmission” into humans, not a previous human outbreak.
+- [Aug 13, 2026] UK PM Andy Burnham declares wealthier areas need to “play their part” in housing asylum seekers, rather than concentrating them in poorer communities.
+- [Aug 13, 2026] South Korea unveils a $33.7 billion housing package to boost construction & help young people buy homes.
+- [Aug 13, 2026] 70% of Gen Z depend on their parents for money
+- [Aug 13, 2026] New York City rent hits new "record" high
+- [Aug 12, 2026] U.S. July budget deficit surges to a record $432,000,000,000.00, driven by higher government spending & tariff refunds.
+- [Aug 12, 2026] US paid out more in tariff refunds than it collected last month
+- [Aug 11, 2026] U.S. existing home sales fell for a second straight month in July as mortgage rates climbed to their highest level in a year.
+- [Aug 11, 2026] Parents are reportedly paying up to $6,500 for “rush coaches” to help their daughters get into college sororities.
+- [Aug 11, 2026] GTA 6 insider claims it will be "next level" and "completely different" from previous games
+- [Aug 10, 2026] US national debt is nearly 10x the size of India's GDP
+- [Aug 7, 2026] French unemployment hits "highest" level since 2020
+- [Aug 7, 2026] US unemployment hits 1-year low
+- [Aug 3, 2026] The global economy reaches $125 trillion
+- [Jul 31, 2026] US consumer sentiment hits 5-month high
+- [Jul 30, 2026] US economy grew 1.5% in Q2 — below expectations.
+- [Jul 28, 2026] US corporate profits hit 14% of GDP — an all-time high.
+- [Jul 27, 2026] US wholesale egg prices skyrocketed over 300% this month
+- [Jul 24, 2026] US sets new 10% to 12.5% global tariffs
+- [Jul 23, 2026] 187,000 people filed for unemployment this past week, below expectations of 210,000
+- [Jul 20, 2026] US imposes 50% tariffs on many Canadian goods
+
+
+## Crime / Legal (19)
+
+- [Aug 17, 2026] Trial begins for Duane “Keffe D” Davis, accused of masterminding Tupac Shakur’s 1996 murder in Las Vegas.
+- [Aug 15, 2026] Venezuela grants “alternative liberty restriction measures” to 131 political prisoners.
+- [Aug 14, 2026] Italian police recover 3 century-old paintings by Cézanne, Renoir, & Matisse worth more than $10 million — stolen in a 3-minute museum heist in March.
+- [Aug 14, 2026] Instagram accounts are reportedly charging migrants hundreds of dollars for advice on illegally crossing from Morocco into Spain’s Ceuta enclave.
+- [Aug 14, 2026] Bill Gates’ daughter, Phoebe Gates, could reportedly face up to 20 years in prison if convicted over alleged “cookie stuffing” scheme.
+- [Aug 14, 2026] Bill Gates' daughter accused of "cookie stuffing" scheme with potential of 20 years in jail
+- [Aug 13, 2026] Los Angeles County agrees to speed up concealed-carry gun licensing to settle a DOJ 2nd Amendment lawsuit.
+- [Aug 13, 2026] ICE arrests inside the U.S. have surged to nearly 50,000 per month, now double the Obama-era peak.
+- [Aug 13, 2026] Texas podcaster faces up to six months in jail for using profanity at a local government hearing.
+- [Aug 12, 2026] Growing number of academic scholars accuse children’s cartoon Paw Patrol of promoting authoritarian capitalism & pro-police “copaganda.”
+- [Aug 12, 2026] Air India pilot tests positive for illegal drugs after his flight suddenly dropped about 300 feet, injuring 24 people.
+- [Aug 12, 2026] UK Prime Minister Andy Burnham orders plans to rapidly expand prison capacity.
+- [Aug 12, 2026] UK prosecutors urge U.S. to keep Andrew & Tristan Tate jailed, arguing they are a “flight risk” & could intimidate witnesses.
+- [Aug 12, 2026] Massachusetts lawmakers advance bill to create a permanent state commission focused on issues affecting Muslim communities.
+- [Aug 11, 2026] Florida’s crime rate plunges to a 50-year low.
+- [Aug 11, 2026] FDA issues new food safety guidance for freshly cut fruits & vegetables amid a surge in foodborne illness outbreaks.
+- [Aug 10, 2026] Crime analyst forecasts the 2026 U.S. murder rate will be “by far the lowest ever recorded.”
+- [Aug 10, 2026] Greece & Italy launch joint police patrols in Athens & Rome, targeting organized crime, terrorism, & drug trafficking.
+- [Jul 19, 2026] Andrew Tate and Tristan Tate have been arrested in Miami
+
+
+## Energy / Climate / Environment (19)
+
+- [Aug 14, 2026] Emergency alert sent to phones across England & Wales as wildfire risk remains “very high.”
+- [Aug 14, 2026] U.K. bans disposable barbecue sales during the heatwave, citing a “significant risk to the public” from wildfires.
+- [Aug 13, 2026] Massive oil spill off Oman now covers an estimated 500 square miles & has reached the mainland.
+- [Aug 12, 2026] The next total solar eclipse will occur in less than a year, set for August 2, 2027 across southern Europe & North Africa.
+- [Aug 12, 2026] NASA confirms Earth will not “lose gravity” for 7 seconds, after a viral conspiracy theory claimed it would happen during today’s solar eclipse.
+- [Aug 12, 2026] Europe to witness its first total solar eclipse in 27 years today.
+- [Aug 12, 2026] European power grids prepare backup generation for Wednesday’s eclipse, which could temporarily wipe out nearly 10 GW of solar power.
+- [Aug 12, 2026] Britain reportedly on track for its hottest summer ever recorded, with average temperatures already 1.88°C above normal.
+- [Aug 12, 2026] 97 y/o Indian woman escapes deadly flooding by riding a makeshift raft made from banana trunks.
+- [Aug 11, 2026] Colombia halts most coffee exports after earthquake damage blocks access to its main export port.
+- [Aug 11, 2026] Canadian dollar surges to a two-month high as oil prices climb.
+- [Aug 11, 2026] Global ocean temperatures hit a record high for July, surpassing the previous 2023 record.
+- [Aug 10, 2026] UK developers forced to alter a major energy project after hundreds of Harry Potter fans object to construction near Dobby the Elf’s “grave.”
+- [Aug 10, 2026] UK government & industry commit nearly £130 million to accelerate zero-emission vehicle development.
+- [Aug 7, 2026] US imports of Saudi oil falls to "zero" for first time since 1985
+- [Jul 27, 2026] US strategic oil reserve hits "lowest" level in 40+ years
+- [Jul 23, 2026] Oil prices rise above $100/barrel
+- [Jul 22, 2026] US made over $13 billion from Venezuelan oil sales this year
+- [Jul 22, 2026] Oil prices surge above $95 for first time in 6 weeks
+
+
+## Culture / Celebrities / Media (16)
+
+- [Aug 16, 2026] “Spider-Man: Brand New Day” officially surpasses $2,000,000,000.00 worldwide after just three weekends.
+- [Aug 15, 2026] Prince Harry & Meghan Markle’s new documentary “Cookie Queens” was beaten at the box office by a compilation of viral cat videos.
+- [Aug 14, 2026] Tom Holland now on pace to become the highest-grossing male actor ever.
+- [Aug 13, 2026] Tobey Maguire's Spider-Man projected to appear in Avengers: Doomsday. 90% chance.
+- [Aug 13, 2026] PayPal Honey has reportedly lost over 7 million users & roughly 7,000 stores after a viral exposé accused it of diverting affiliate commissions from creators.
+- [Aug 13, 2026] Spiderman "Brand New Day" is set to become highest grossing Spiderman movie ever
+- [Aug 13, 2026] Bill Ackman discloses new position in Netflix
+- [Aug 12, 2026] Spain moves to approve a Chinese car factory just 3 miles from a key naval base, despite espionage concerns.
+- [Aug 10, 2026] The Odyssey is Christopher Nolan's "highest grossing" movie ever at $1.1 billion
+- [Aug 10, 2026] Spiderman "Brand New Day" is tracking to earn $2.5 billion — 3rd highest grossing movie ever
+- [Aug 6, 2026] GTA 6 gameplay will be "exclusively" shown on Netflix for 6 hours
+- [Aug 6, 2026] GTA 6 “Extended Look” to premiere on Netflix on August 27
+- [Aug 3, 2026] Spider-Man: Brand New Day recorded the second-largest opening weekend ever
+- [Jul 31, 2026] Spider-Man "Brand New Day" pulled $74.5 million yesterday — destroying Avengers: Endgame.
+- [Jul 24, 2026] Ubisoft co-founder says Sony ditching game discs in 2028 will "help gaming"
+- [Jul 21, 2026] France bans social media for children under the age of 15
+
+
+## Sports (14)
+
+- [Aug 17, 2026] Sophie Cunningham's name banned from the r/WNBA subreddit.
+- [Aug 16, 2026] Cristiano Ronaldo reveals this season is “probably my last year of football.”
+- [Aug 14, 2026] WNBA draft prospect Enes Kanter Freedom says teaming up with Caitlin Clark could create the league's next “Kobe & Shaq.”
+- [Aug 13, 2026] WNBA task force meets to discuss what qualifies someone as a woman for league eligibility, but reaches no new rules.
+- [Aug 13, 2026] WNBA denounces “bad faith” transgender claims after ex-NBA players Enes Kanter Freedom & Royce White declared themselves women & vowed to enter the 2027 WNBA Draft.
+- [Aug 12, 2026] Venezuela’s monthly inflation rate surges to 19.9% in July.
+- [Aug 12, 2026] July inflation falls to 3.4%, in-line with expectations
+- [Aug 10, 2026] Arkansas high school football player unknowingly practices for an hour with a venomous snake inside his helmet.
+- [Aug 10, 2026] Resurfaced 2021 Abdul El-Sayed blog post claims “toxic masculinity” is at the heart of American football, pointing to racism, misogyny, & homophobia.
+- [Aug 9, 2026] Mark Zuckerberg thrown into lake by UFC champion Merab Dvalishvili
+- [Aug 6, 2026] US ETFs hit "record" +$1.2 trillion inflows
+- [Jul 24, 2026] Cristiano Ronaldo is the #1 "most followed" person on Instagram since 2018
+- [Jul 21, 2026] IRS to take a “cut” of Spain's $51 million World Cup prize
+- [Jul 17, 2026] 40% chance Messi wins the World Cup again
+
+
+## Health / Science / Medicine (5)
+
+- [Aug 15, 2026] New bioengineered chewing gum slashes HPV levels by up to 93% while targeting bacteria linked to head & neck cancer.
+- [Aug 13, 2026] U.S. prescription drug prices record sharpest annual drop since 1963.
+- [Aug 11, 2026] Abdul El-Sayed scrubbed at least 100 YouTube videos, including one arguing July 4th fireworks "suck” & another floating replacing the Second Amendment with a right to health care. — CNN
+- [Aug 11, 2026] WHO reveals Ebola was spreading in DR Congo for at least three months before officials declared the outbreak.
+- [Aug 10, 2026] Roku launches a 24/7 channel dedicated entirely to AI-generated entertainment — including AI-generated commercials.
