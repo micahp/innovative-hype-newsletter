@@ -1,0 +1,58 @@
+{
+  "cards": [
+    {
+      "narrative": "The AI data gold rush",
+      "paragraph": "AI data startup Micro1 has grown its gross annual run rate from $100 million to $500 million in eight months, riding the insatiable demand for unique training data. Meanwhile, Starcloud raised $250 million to build orbital data centers, valuing the company at $2.3 billion. The scramble for data and compute is reshaping industries, but it also raises concerns: SpaceX's proposed megaconstellation of 1 million AI satellites would generate about 200,000 decommissioned satellites per year, creating a new e-waste crisis. Investors are pouring billions into the infrastructure that powers AI, but the environmental and economic costs are mounting.",
+      "data_point": "$500M gross run rate",
+      "source_ids": [0, 1, 5]
+    },
+    {
+      "narrative": "Sports money keeps inflating",
+      "paragraph": "Sports franchise valuations are skyrocketing. The Minnesota Timberwolves sold for $4.5 billion, the Seattle Seahawks for a record $9.612 billion, and the Los Angeles Lakers for $12.5 billion. Private equity firms are piling in, with Arctos adding a 10% stake in the Falcons at a $10.6 billion valuation. The US Open raised prize money to $108 million, a 20% increase, to fend off player protests. As team prices soar, the economics of sports are becoming a playground for billionaires and institutional investors, with fans and players feeling the squeeze through higher ticket prices and intense financial pressures.",
+      "data_point": "$12.5B Lakers valuation",
+      "source_ids": [2, 5, 9]
+    },
+    {
+      "narrative": "Media power and who owns it",
+      "paragraph": "The US Open's record $108 million prize purse is a response to player unrest, while NFL Network's preseason ratings dipped 3% under ESPN ownership. Clay Travis launched a new media company, Sport & State, aiming to blend sports and politics. Meanwhile, Hollywood battles piracy as leaks of major films like 'Spider-Man' and 'The Odyssey' spread, with one bootleg reaching 5.9 million X accounts. The media landscape is shifting as traditional players adapt to digital disruption, and new entrants like Travis seek to capture audiences with a mix of sports and political commentary.",
+      "data_point": "$108M US Open prize money",
+      "source_ids": [2, 6, 7]
+    },
+    {
+      "narrative": "Crypto's leverage problem",
+      "paragraph": "Bitcoin's surge past $79,000 triggered a record $3 billion in short liquidations, with XRP jumping 30% in a week. The rally was fueled by regulatory optimism and a US Treasury buyback pledge, but it also exposed the fragility of leveraged positions. The SEC proposed new rules allowing token issuers to raise up to $75 million without registration, potentially reshaping the market. As crypto prices climb, the risk of violent corrections grows, and regulators are scrambling to catch up with the fast-moving industry.",
+      "data_point": "$3B in short liquidations",
+      "source_ids": [0, 1, 3]
+    },
+    {
+      "narrative": "AI surveillance creep",
+      "paragraph": "Prince Harry, Elton John, and other claimants were ordered to pay $13 million to the Daily Mail's publisher after losing a privacy lawsuit. The ruling underscores the legal risks of challenging media power. Meanwhile, AI notetaker apps are walking a fine line between convenience and surveillance, with one company valued at $1.5 billion vowing not to sell user data to employers. As AI tools become more pervasive, the battle over privacy and consent intensifies, affecting celebrities and ordinary users alike.",
+      "data_point": "$13M legal costs",
+      "source_ids": [1]
+    },
+    {
+      "narrative": "Creator economy consolidation",
+      "paragraph": "AI notetaker startups are raising millions, with one company securing $55 million from Andreessen Horowitz. These tools are becoming essential for workers, but they also raise questions about data ownership and the future of work. As AI assistants automate more tasks, the creator economy is consolidating around a few powerful platforms, leaving individual creators to navigate an increasingly complex landscape.",
+      "data_point": "$55M raised",
+      "source_ids": [1]
+    },
+    {
+      "narrative": "Energy and climate thresholds",
+      "paragraph": "Floods cause roughly $50 billion in annual damages worldwide, and AI is being deployed to improve flood forecasts. HyTerra, an Australian company, found hydrogen concentrations up to 96% in Nebraska and Kansas, signaling a potential new source of clean energy. These developments offer hope for mitigating climate impacts, but they also highlight the urgency of investing in climate adaptation and sustainable energy.",
+      "data_point": "$50B annual flood damages",
+      "source_ids": [0]
+    },
+    {
+      "narrative": "AI trust and accountability",
+      "paragraph": "The Coldcard hack, which cost users over $100 million in bitcoin, has cast doubt on the meaning of 'open source' in crypto. Meanwhile, AI safety startups are emerging, with one aiming to raise $100-150 million to address alignment issues. As AI becomes more powerful, the need for transparency and accountability grows, but the industry is still struggling to define standards that protect users.",
+      "data_point": "$100M lost in Coldcard hack",
+      "source_ids": [0, 2]
+    },
+    {
+      "narrative": "Prediction markets go mainstream",
+      "paragraph": "Google's generative AI for weather forecasting requires a 10,000-member ensemble to accurately predict rare events, highlighting the complexity of uncertainty quantification. This technology could transform how we prepare for natural disasters, but it also shows the limits of current models. As prediction markets and AI forecasting tools gain traction, they promise better decision-making but also raise questions about reliability and trust.",
+      "data_point": "10,000-member ensemble",
+      "source_ids": [0]
+    }
+  ]
+}

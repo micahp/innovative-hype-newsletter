@@ -1,0 +1,58 @@
+{
+  "cards": [
+    {
+      "narrative": "The AI data gold rush is minting new unicorns at breakneck speed.",
+      "paragraph": "Micro1, a four-year-old startup, has expanded its gross annual run rate from $100 million to $500 million in eight months, riding the near-bottomless demand for unique AI training data from top labs and corporations.",
+      "data_point": "$500M gross run rate",
+      "source_ids": [0, 1]
+    },
+    {
+      "narrative": "Sports franchise valuations are exploding as private equity and billionaires pour in.",
+      "paragraph": "The Minnesota Timberwolves and WNBA's Lynx have been sold at a $4.5 billion valuation, while the Seahawks sale is set at a record $9.612 billion, and the Lakers are valued at $12.5 billion in a separate deal. Private equity firm Arctos has added a 10% stake in the Falcons, valuing the franchise at $10.6 billion.",
+      "data_point": "$12.5B Lakers valuation",
+      "source_ids": [1, 4, 5, 9]
+    },
+    {
+      "narrative": "Hollywood's piracy battle is entering a new era as leaks spread to millions.",
+      "paragraph": "A bootleg version of 'Spider-Man' played for 5.9 million X accounts on opening day before the studio shut it down, highlighting the scale of modern piracy that threatens blockbuster releases like 'The Odyssey'.",
+      "data_point": "5.9M X accounts",
+      "source_ids": [0]
+    },
+    {
+      "narrative": "Bitcoin's surge is liquidating shorts at a record pace.",
+      "paragraph": "Bitcoin punched above $72,000, triggering over $3 billion in short liquidations over two days, the most on record. The squeeze was fueled by positive regulatory news and a U.S. Treasury buyback pledge.",
+      "data_point": "$3B in shorts liquidated",
+      "source_ids": [1]
+    },
+    {
+      "narrative": "AI surveillance tools are facing a privacy reckoning.",
+      "paragraph": "Prince Harry, Elton John, and other claimants who lost a privacy lawsuit against the Daily Mail's publisher have been ordered to pay $13 million in legal costs, underscoring the high stakes in the fight over media surveillance.",
+      "data_point": "$13M legal costs",
+      "source_ids": [1]
+    },
+    {
+      "narrative": "The creator economy is consolidating as startups raise big rounds.",
+      "paragraph": "Town, a company that came out of stealth in June, has raised $55 million from Andreessen Horowitz, while other creator-focused startups have raised over $47 million from investors like Accel and Coatue, signaling a wave of consolidation.",
+      "data_point": "$55M raised",
+      "source_ids": [1]
+    },
+    {
+      "narrative": "Climate thresholds are being crossed as natural disasters double.",
+      "paragraph": "Floods cause roughly $50 billion in annual damages worldwide, and the rate of flood-related disasters has more than doubled since 2000, driving the need for AI-based forecasting.",
+      "data_point": "$50B annual damages",
+      "source_ids": [0]
+    },
+    {
+      "narrative": "AI accountability is under scrutiny after a major security failure.",
+      "paragraph": "The Coldcard hack, which lost users over $100 million in bitcoin, has cast doubt on what 'open source' really means in the crypto industry, raising questions about trust in AI and software incentives.",
+      "data_point": "$100M lost",
+      "source_ids": [0]
+    },
+    {
+      "narrative": "Prediction markets are going mainstream with new forecasting tools.",
+      "paragraph": "Google Research has developed a generative AI model for weather forecasting that quantifies uncertainty, noting that a 10,000-member ensemble is needed to forecast 1% probability events with low error, highlighting the growing role of probabilistic predictions.",
+      "data_point": "10,000-member ensemble",
+      "source_ids": [0]
+    }
+  ]
+}
