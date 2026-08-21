@@ -608,16 +608,20 @@ function renderCard(article) {
 function renderSections(articles) {
   const container = document.getElementById('contentSections');
   container.innerHTML = '';
-  
+
   const grouped = {};
   CATEGORY_ORDER.forEach(c => { grouped[c] = []; });
   // Score desc: the highest-ranked story leads each category grid.
   const ranked = [...articles].sort((a, b) => (b._score || 0) - (a._score || 0));
   ranked.forEach(a => {
-    if (grouped[a.category]) grouped[a.category].push(a);
+    // Unknown categories (e.g. recovered stories tagged 'news') get their own
+    // group instead of being silently dropped below the fold.
+    if (!grouped[a.category]) grouped[a.category] = [];
+    grouped[a.category].push(a);
   });
 
-  CATEGORY_ORDER.forEach(cat => {
+  const cats = [...CATEGORY_ORDER, ...Object.keys(grouped).filter(c => !CATEGORY_ORDER.includes(c))];
+  cats.forEach(cat => {
     const items = grouped[cat];
     if (!items || items.length === 0) return;
     const section = document.createElement('div');
@@ -638,30 +642,20 @@ function filterArticles(articles, category) {
 
 function render(data, activeCat = 'all') {
   const filtered = filterArticles(data.articles, activeCat);
-  
+
   if (filtered.length === 0) {
-    document.getElementById('heroCard').innerHTML = '<div class="empty-state">No articles yet — refresh soon.</div>';
-    document.getElementById('contentSections').innerHTML = '';
+    document.getElementById('topGrid').innerHTML =
+      '<div class="empty-state">No articles yet — refresh soon.</div>';
     return;
   }
 
-  renderHero(filtered[0]);
-  renderTopSection(data.articles, data.ranking);
-  
-  // If showing all, render per-category sections. If filtered, render as single grid.
-  if (activeCat === 'all') {
-    renderSections(filtered);
-  } else {
-    const container = document.getElementById('contentSections');
-    container.innerHTML = `
-      <h2 class="section-title">${activeCat}</h2>
-      <div class="card-grid">
-        ${filtered.slice(1).map(renderCard).join('')}
-      </div>
-    `;
-  }
+  // Homepage is the TOP NEWS list only (Micah, 2026-08-21): no hero card
+  // above it and no per-category sections below it. Hero used feed order
+  // (newest) while Top News ranked by _score, so the two contradicted.
+  // Nav pills now filter the Top News list itself.
+  document.getElementById('heroSection').style.display = 'none';
+  renderTopSection(filtered, data.ranking);
 
-  // Update timestamp
   const ts = data.updated ? formatDate(data.updated) : '';
   document.getElementById('updatedLabel').textContent = `Updated ${ts}`;
 }
