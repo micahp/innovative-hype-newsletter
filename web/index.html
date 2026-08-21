@@ -642,20 +642,37 @@ function filterArticles(articles, category) {
 
 function render(data, activeCat = 'all') {
   const filtered = filterArticles(data.articles, activeCat);
+  const topSection = document.getElementById('topSection');
 
   if (filtered.length === 0) {
-    document.getElementById('topGrid').innerHTML =
-      '<div class="empty-state">No articles yet — refresh soon.</div>';
+    document.getElementById('heroCard').innerHTML = '<div class="empty-state">No articles yet — refresh soon.</div>';
+    if (topSection) topSection.style.display = 'none';
+    document.getElementById('contentSections').innerHTML = '';
     return;
   }
 
-  // Homepage is the TOP NEWS list only (Micah, 2026-08-21): no hero card
-  // above it and no per-category sections below it. Hero used feed order
-  // (newest) while Top News ranked by _score, so the two contradicted.
-  // Nav pills now filter the Top News list itself.
-  document.getElementById('heroSection').style.display = 'none';
-  renderTopSection(filtered, data.ranking);
+  // Top News list lives on the HOMEPAGE ONLY — never on category tabs.
+  // (Micah 2026-08-21: it was rendering on every tab.)
+  // Hero renders on every view with that view's newest story (original
+  // behavior); tab grids skip their first story since it IS the hero.
+  const isHome = activeCat === 'all';
+  if (topSection) topSection.style.display = isHome ? '' : 'none';
 
+  renderHero(filtered[0]);
+  if (isHome) {
+    renderTopSection(data.articles, data.ranking);
+    renderSections(filtered);
+  } else {
+    const container = document.getElementById('contentSections');
+    container.innerHTML = `
+      <h2 class="section-title">${activeCat}</h2>
+      <div class="card-grid">
+        ${filtered.slice(1).map(renderCard).join('')}
+      </div>
+    `;
+  }
+
+  // Update timestamp
   const ts = data.updated ? formatDate(data.updated) : '';
   document.getElementById('updatedLabel').textContent = `Updated ${ts}`;
 }
