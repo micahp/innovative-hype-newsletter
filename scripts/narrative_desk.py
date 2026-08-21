@@ -67,10 +67,14 @@ _SYSTEM = (
     "articles.\n"
     "DECLINE WEAK CLUSTERS. If a cluster has no shared theme worth a card, "
     'output {"narrative": null} for it.\n'
+    "SOURCE IDS ARE PER-CLUSTER. Each cluster's article list starts at 0. "
+    "source_ids must be the LOCAL indexes within THAT cluster's list — never "
+    "a global count across clusters. If you cite only the first article of "
+    'cluster 2, source_ids is [0], not [2] or any larger number.\n'
     "Output STRICT JSON only: "
     '{"cards": [{"narrative": "...", "paragraph": "...", '
     '"data_point": "...", "source_ids": [0, 2]}]} where source_ids are the '
-    "indexes of the articles in that cluster's list that the card grounds in."
+    "LOCAL indexes of the articles in that cluster's list that the card grounds in."
 )
 
 
@@ -87,13 +91,21 @@ def render_brief_html(clusters, parsed, run_dir):
         cl = clusters[ci] if ci < len(clusters) else None
         sources = []
         for sid in card.get("source_ids", []):
-            if cl and sid < len(cl["items"]):
+            if cl and 0 <= sid < len(cl["items"]):
                 a = cl["items"][sid]["article"]
                 sources.append(
                     f'<li><a href="{a.get("link","#")}" target="_blank" rel="noopener">{_html.escape(a.get("title",""))} <span class="src">({a.get("source","")})</span></a></li>'
                 )
         if not sources:
-            continue  # card with no real articles = no receipts, skip
+            # Try the lead article as a fallback so a card never silently
+            # vanishes because of a bad source_id
+            if cl and cl["items"]:
+                a = cl["items"][0]["article"]
+                sources.append(
+                    f'<li><a href="{a.get("link","#")}" target="_blank" rel="noopener">{_html.escape(a.get("title",""))} <span class="src">({a.get("source","")})</span></a></li>'
+                )
+            else:
+                continue
         dp_html = f'<p class="brief-dp">▸ {_html.escape(card.get("data_point",""))}</p>' if card.get("data_point") else ""
         para_html = f'<p class="brief-para">{_html.escape(card.get("paragraph",""))}</p>' if card.get("paragraph") else ""
         cards_html.append(f"""
@@ -174,28 +186,68 @@ def pool_key(clusters):
 
 
 def load_clusters():
-    """Load clusters from the deterministic brief pipeline."""
+    """Load clusters + one-off qualifiers from the deterministic layer.
+
+    v4 (NEWS-ENGINE-SPEC.md R1/R3): no admission gate — the desk sees
+    signature clusters PLUS quote/moment stories that don't cluster."""
     sys.path.insert(0, os.path.join(REPO, "scripts"))
     import brief
     with open(os.path.join(WEB, "articles.json")) as f:
         data = json.load(f)
-    md, cards = brief.make_brief(data["articles"])
-    # Rebuild the enriched clusters the same way make_brief does
+
     scored = [a for a in data["articles"] if not a.get("_noise")]
     scored.sort(key=lambda x: -x.get("_score", 0))
+
+    from collections import OrderedDict
     enriched = []
     for a in scored:
         points = brief.mine_data_points(a)
         sig, hits = brief.signature_for(a, points)
-        if sig and points:
-            enriched.append({"article": a, "points": points, "sig": sig, "hits": hits})
-    from collections import OrderedDict
+        quote = brief._quote_from_article(a)
+        moment = brief._moment_from_article(a)
+        seed_hits = brief._seed_match(a)
+        enriched.append({
+            "article": a, "points": points, "sig": sig, "hits": hits,
+            "quote": quote, "moment": moment, "seed_hits": seed_hits,
+        })
+
+    # Signature clusters
     clusters = OrderedDict()
     for e in enriched:
-        name = e["sig"]["name"]
-        clusters.setdefault(name, {"sig": e["sig"], "items": []})
-        clusters[name]["items"].append(e)
-    return list(clusters.values())
+        if e["sig"]:
+            name = e["sig"]["name"]
+            clusters.setdefault(name, {"sig": e["sig"], "items": []})
+            clusters[name]["items"].append(e)
+
+    # One-off qualifiers: quote or moment stories with no signature, but
+    # with a tweet-seed hit (the voice cares). These get their own cluster
+    # so the desk can card them individually.
+    one_offs = OrderedDict()
+    for e in enriched:
+        if e["sig"]:
+            continue
+        if (e["quote"] or e["moment"]) and e["seed_hits"] > 0:
+            name = e["article"].get("title", "")[:50]
+            one_offs.setdefault(name, {"sig": {"name": "One-off: " + name[:40], "voice_weight": 1.0}, "items": []})
+            one_offs[name]["items"].append(e)
+
+    all_clusters = list(clusters.values()) + list(one_offs.values())
+
+    # Rank clusters by voice weight × (seed boost + size) × lead score, cap
+    # the desk input so it doesn't drown in one-offs. Seed hits are the
+    # voice's own priorities — they outrank generic volume.
+    def cluster_score(cl):
+        sig = cl["sig"]
+        vw = sig.get("voice_weight", 0.5)
+        items = cl["items"]
+        total_seed = sum(i.get("seed_hits", 0) for i in items)
+        lead_score = items[0]["article"].get("_score", 0)
+        return (vw, total_seed, len(items), lead_score)
+
+    all_clusters.sort(key=cluster_score, reverse=True)
+    # Keep the strongest 14 for the desk (12 signature clusters + top 2-6
+    # one-offs), balanced so a single huge cluster doesn't crowd the field
+    return all_clusters[:14]
 
 
 def call_model(clusters):

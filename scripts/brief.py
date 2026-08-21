@@ -172,7 +172,14 @@ NARRATIVE_SIGNATURES = [
 
 
 def _kw_match(keyword, text):
-    return re.search(rf"\b{re.escape(keyword)}\b", text) is not None
+    """Word-boundary keyword match, plural-aware (NEWS-ENGINE-SPEC.md R5).
+
+    'camera' matches 'cameras' and 'track' matches 'tracking', but 'ban'
+    must NOT match 'band'. Strategy: match the keyword, its plural (s/es),
+    and its -ing form at word boundaries — never a raw substring."""
+    kw = re.escape(keyword)
+    pattern = rf"\b{kw}(?:s|es|ing|'s)?\b"
+    return re.search(pattern, text) is not None
 
 
 def signature_for(article, data_points):
@@ -227,31 +234,51 @@ def _narrative_title(sig_name, lead, data_point):
 
 # === 4. THE BRIEF BUILDER ===
 def make_brief(articles, max_cards=5, stories_per_card=3):
+    """Build the deterministic layer for the narrative desk.
+
+    v4 (NEWS-ENGINE-SPEC.md R1/R2/R3): NO admission gate. Every eligible
+    article enters the pool with a score. Signatures are boosts, not
+    filters. An article qualifies for the desk via ANY of:
+      - a data point (number crossing a threshold)
+      - a quote (named person saying something contestable)
+      - a moment (weird/local/symbolic/first/rule-bent)
+    The deterministic layer RANKS, it does not admit."""
     scored = [a for a in articles if not a.get("_noise")]
     scored.sort(key=lambda x: -x.get("_score", 0))
 
-    # For each article: mine data points, find narrative signature
+    # Enrich every eligible article — no gate
     enriched = []
     for a in scored:
         points = mine_data_points(a)
         sig, hits = signature_for(a, points)
-        if sig and points:
-            enriched.append({"article": a, "points": points, "sig": sig, "hits": hits})
+        quote = _quote_from_article(a)
+        moment = _moment_from_article(a)
+        # Boost: tweet-corpus seed match (R4)
+        seed_hits = _seed_match(a)
+        enriched.append({
+            "article": a,
+            "points": points,
+            "sig": sig,
+            "hits": hits,
+            "quote": quote,
+            "moment": moment,
+            "seed_hits": seed_hits,
+        })
 
-    # Cluster by signature
+    # Build clusters from signature matches (loose), plus one-off cards
+    # from quote/moment stories that don't cluster.
     clusters = OrderedDict()
     for e in enriched:
-        name = e["sig"]["name"]
-        clusters.setdefault(name, {"sig": e["sig"], "items": []})
-        clusters[name]["items"].append(e)
+        if e["sig"]:
+            name = e["sig"]["name"]
+            clusters.setdefault(name, {"sig": e["sig"], "items": []})
+            clusters[name]["items"].append(e)
 
-    # Rank clusters: voice weight × cluster strength, then lead score.
-    # A bucket the Innovative Hype voice cares about (AI, media, creator,
-    # cities) outranks a lukewarm bucket even with fewer stories.
+    # Rank clusters: voice weight × size × lead score (seed boost included)
     ranked = []
     for name, cl in clusters.items():
         strength = len(cl["items"])
-        lead = cl["items"][0]  # highest score
+        lead = cl["items"][0]
         vw = cl["sig"].get("voice_weight", 0.5)
         ranked.append((name, cl, lead, strength, vw))
     ranked.sort(key=lambda x: (-x[4], -x[3], -x[2]["article"].get("_score", 0)))
@@ -280,6 +307,62 @@ def make_brief(articles, max_cards=5, stories_per_card=3):
         })
 
     return "\n".join(lines).strip(), cards
+
+
+def _quote_from_article(article):
+    """Find a quotable sentence: a named person saying something contestable.
+    Returns (speaker, quote) or None."""
+    body = _clean_entities(article.get("_body", "") or "")
+    if len(body) < 150:
+        return None
+    sents = re.split(r"(?<=[.!?])\s+", body)
+    for s in sents:
+        m = re.search(r'["“](.+?)["”]', s)
+        if m and re.search(r"\b(said|says|told|argued|claimed|warned|called|urged)\b", s, re.I):
+            quote = m.group(1)
+            if 15 <= len(quote) <= 250:
+                return quote
+    return None
+
+
+def _moment_from_article(article):
+    """Moment test: a symbol, a first, a rule bent, something weird/local.
+    Returns the matching phrase or None."""
+    title = article.get("title", "")
+    body = (article.get("_body", "") or "")[:2000]
+    text = f"{title} {body}".lower()
+    for pat in [
+        r"\bfirst\s+(?:time|ever|player|woman|man|team|city)\b",
+        r"\bbanned\b|\barrested\b|\bfired\b|\bquits\b|\bwalked\s+off\b",
+        r"\b(?:40|50|60|70)-year-old\b",
+        r"\bstolen\b|\btheft\b",
+        r"\bdraped\s+in\b|\bamerican\s+flag\b",
+        r"\bsurveillance\b|\bprivacy\b",
+        r"\btexas\b|\baustin\b",
+        r"\bfireworks\b|\bconcert\b|\bfestival\b",
+    ]:
+        if re.search(pat, text):
+            return pat
+    return None
+
+
+# === TWEET-CORPUS SEED MATCHING (R4) ===
+# Entities and recurring subjects from the @geoppls + @innovativehype tweet
+# corpora. An article touching one of these gets a boost — the voice is
+# the seed list, exactly like LP's human-dictated conversation seeds.
+_TWEET_SEEDS = [
+    "flock", "kalshi", "polymarket", "prediction market", "texas", "austin",
+    "wnba", "nba", "ncaa", "longhorns", "messi", "soccer", "promotion",
+    "relegation", "oatmeal", "zuckerberg", "meta", "tiktok", "marijuana",
+    "cannabis", "surveillance", "privacy", "sovereignty", "media",
+    "ownership", "creator", "royalt", "fireworks", "kanye", "wnba draft",
+]
+
+
+def _seed_match(article):
+    """Count tweet-corpus seeds present in the article (title+body)."""
+    text = f"{article.get('title','')} {article.get('summary','')} {article.get('_body','')[:1500]}".lower()
+    return sum(1 for seed in _TWEET_SEEDS if seed in text)
 
 
 def main():

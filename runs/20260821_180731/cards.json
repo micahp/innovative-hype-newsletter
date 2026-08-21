@@ -1,0 +1,54 @@
+{
+  "cards": [
+    {
+      "narrative": "Compass's market cap surpasses Zillow's for the first time as Zillow's stock plunges over 50% this year, signaling a shift in real estate platform dominance.",
+      "paragraph": "Compass has overtaken Zillow in market capitalization for the first time, after Zillow's stock dropped more than 50% this year. The milestone marks a dramatic reversal for Zillow, which once dominated the online real estate space, and raises questions about whether Zillow is facing an 'AOL moment'\u2014losing its status as the primary gateway for home buyers and sellers.",
+      "data_point": "Compass's market cap surpasses Zillow's for the first time; Zillow's stock down over 50% this year.",
+      "source_ids": [
+        0,
+        1
+      ]
+    },
+    {
+      "narrative": "The US Open boosts player compensation to a record $108 million, a 20% increase, to preempt player protests over pay.",
+      "paragraph": "The USTA announced the 2026 US Open will offer $108 million in total player compensation, up 20% from last year's $90 million. The record purse comes amid threats of player protests over pay, with singles winners taking home $5.5 million each. The increase aims to address player concerns and maintain the tournament's standing.",
+      "data_point": "$108 million total player compensation, a 20% increase from $90 million last year.",
+      "source_ids": [
+        0,
+        1
+      ]
+    },
+    {
+      "narrative": "Deel expands its DLUSD stablecoin wallet to over 80 countries, leveraging its $22 billion annual payroll platform to offer dollar balances to contractors in markets with limited dollar access.",
+      "paragraph": "Deel's DLUSD stablecoin wallet is now live in more than 80 countries, just 11 weeks after launching in Argentina. The expansion routes the company's payroll platform\u2014which processes $22 billion a year\u2014into distributing dollar balances to contractors in markets where local banks make dollar access difficult. This move could reshape how global contractors receive payments.",
+      "data_point": "DLUSD wallet live in 80+ countries, 11 weeks after launch; processes $22 billion annually.",
+      "source_ids": [
+        0
+      ]
+    },
+    {
+      "narrative": "New York City surpasses the San Francisco Bay Area in tech jobs for the first time in an annual survey, marking a shift in the geography of the tech industry.",
+      "paragraph": "New York City now leads the nation in tech jobs, with 394,300, edging out the San Francisco Bay Area's 375,730, according to CBRE's annual survey. This is the first time New York has topped the list, reflecting the ongoing diversification of tech hubs beyond Silicon Valley and the Bay Area's challenges.",
+      "data_point": "NYC has 394,300 tech jobs vs. Bay Area's 375,730, first time NYC leads.",
+      "source_ids": [
+        0
+      ]
+    },
+    {
+      "narrative": "AI data labeling startup Micro1 scales gross annual run rate from $100 million to $500 million in eight months, riding the AI training boom.",
+      "paragraph": "Micro1, a four-year-old startup in the AI data labeling space, has expanded its gross annual run rate from $100 million to $500 million over the past eight months, according to a person familiar with the matter. The growth reflects the near-bottomless demand for unique AI training data from top labs and corporations, driving a boom for data-labeling startups.",
+      "data_point": "Micro1's gross annual run rate grew from $100M to $500M in eight months.",
+      "source_ids": [
+        0
+      ]
+    },
+    {
+      "narrative": "A jury awards former Alabama basketball player Kai Spears $9.25 million in a defamation suit against the New York Times for falsely identifying him in a fatal shooting.",
+      "paragraph": "A Tuscaloosa jury awarded Kai Spears, a former Alabama basketball player, $9.25 million after he sued the New York Times for defamation. The Times falsely identified Spears as a passenger in a car at the site of a fatal shooting in January 2023, when 23-year-old Jamea Harris was killed. The verdict highlights the consequences of misidentification in reporting.",
+      "data_point": "$9.25 million awarded to Kai Spears in defamation verdict against the New York Times.",
+      "source_ids": [
+        0
+      ]
+    }
+  ]
+}

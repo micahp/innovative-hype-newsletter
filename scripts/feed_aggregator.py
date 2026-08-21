@@ -103,6 +103,18 @@ FEEDS = [
     {"name": "HousingWire", "url": "https://www.housingwire.com/category/real-estate/feed", "category": "business"},
     # Media/platform power — who owns the platforms
     {"name": "Platformer", "url": "https://www.platformer.news/feed", "category": "culture"},
+    # SPORTS FEED FIX (2026-08-21, NEWS-ENGINE-SPEC.md R7): ESPN/Athletic/
+    # Bleacher/SBJ all dead. Winsidr + Swish Appeal cover WNBA (Sophie
+    # Cunningham, NBA→WNBA draft), On3 + ClutchPoints cover college/Texas
+    # (Longhorns, NCAAF age stories), Texas Monthly covers state politics
+    # (marijuana law) + culture.
+    {"name": "Winsidr", "url": "https://winsidr.com/feed/", "category": "sports"},
+    {"name": "Swish Appeal", "url": "https://www.swishappeal.com/rss/index.xml", "category": "sports"},
+    {"name": "On3", "url": "https://www.on3.com/feed/", "category": "sports"},
+    {"name": "ClutchPoints", "url": "https://clutchpoints.com/feed", "category": "sports"},
+    {"name": "Texas Monthly", "url": "https://www.texasmonthly.com/feed/", "category": "business"},
+    {"name": "Texas Tribune", "url": "https://www.texastribune.org/feed/", "category": "business"},
+    {"name": "Austin Chronicle", "url": "https://www.austinchronicle.com/feeds/news/", "category": "culture"},
 ]
 
 # === RANKING: source tiers ===
@@ -168,6 +180,14 @@ SOURCE_TIERS = {
     "Connect CRE Texas": 2,
     "HousingWire": 2,
     "Platformer": 1,
+    # SPORTS FEED FIX (2026-08-21)
+    "Winsidr": 2,
+    "Swish Appeal": 2,
+    "On3": 2,
+    "ClutchPoints": 2,
+    "Texas Monthly": 1,
+    "Texas Tribune": 1,
+    "Austin Chronicle": 2,
 }
 
 # Negative markers — LP-style news-vs-noise filter. Any hit hard-caps the score.

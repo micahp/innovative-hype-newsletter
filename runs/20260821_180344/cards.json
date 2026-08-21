@@ -1,0 +1,68 @@
+{
+  "cards": [
+    {
+      "narrative": "Compass's market cap has surpassed Zillow's for the first time, after Zillow's stock dropped more than 50% this year.",
+      "paragraph": "Compass's market cap has surpassed Zillow's for the first time, after Zillow's stock dropped more than 50% this year. The shift signals a changing of the guard in the online real estate industry, as Compass's brokerage model gains favor over Zillow's lead-generation approach. For homebuyers and sellers, this means the platform they use to find homes and agents may increasingly be Compass, not Zillow.",
+      "data_point": "Compass market cap surpasses Zillow's for first time",
+      "source_ids": [
+        0
+      ]
+    },
+    {
+      "narrative": "The US Open is offering a record $108 million in total player compensation, a 20% increase from last year, to head off player protests.",
+      "paragraph": "The US Open is offering a record $108 million in total player compensation, a 20% increase from last year, to head off player protests. The move comes as top players have been pushing for a larger share of revenue. For the players, this means significantly higher paychecks, with singles winners taking home $5.5 million each.",
+      "data_point": "$108 million total player compensation at 2026 US Open",
+      "source_ids": [
+        3
+      ]
+    },
+    {
+      "narrative": "NFL Network's first preseason under ESPN ownership averaged 1.93 million viewers in Week 1, a 3% rise from last year's average.",
+      "paragraph": "NFL Network's first preseason under ESPN ownership averaged 1.93 million viewers in Week 1, a 3% rise from last year's average. The increase suggests that ESPN's stewardship is attracting more viewers to preseason football. For fans, this means more accessible and engaging preseason coverage.",
+      "data_point": "NFL Network preseason ratings up 3% under ESPN",
+      "source_ids": [
+        7
+      ]
+    },
+    {
+      "narrative": "Deel's DLUSD stablecoin wallet is now live in more than 80 countries, expanding from Argentina to a global payroll platform processing $22 billion a year.",
+      "paragraph": "Deel's DLUSD stablecoin wallet is now live in more than 80 countries, expanding from Argentina to a global payroll platform processing $22 billion a year. This expansion lets contractors in markets with weak local banks receive dollar balances directly. For these workers, it means faster, cheaper access to their earnings.",
+      "data_point": "Deel's stablecoin wallet expands to 80+ countries",
+      "source_ids": [
+        12
+      ]
+    },
+    {
+      "narrative": "Crypto influencer Ansem launched a site where token teams pay for his promotion by giving supply to holders of his memecoin.",
+      "paragraph": "Crypto influencer Ansem launched a site where token teams pay for his promotion by giving supply to holders of his memecoin. This new model replaces traditional cash payments with token airdrops. For his followers, it means they can benefit from his promotions, but it also raises questions about transparency and conflicts of interest.",
+      "data_point": "Ansem launches site for airdrop-based influencer deals",
+      "source_ids": [
+        17
+      ]
+    },
+    {
+      "narrative": "AI data startup Micro1 has grown its gross annual run rate from $100 million to $500 million in eight months, riding the AI training data boom.",
+      "paragraph": "AI data startup Micro1 has grown its gross annual run rate from $100 million to $500 million in eight months, riding the AI training data boom. The demand for unique training data from top labs and corporations is fueling rapid growth for data-labeling startups. For AI developers, this means a more competitive market for high-quality data.",
+      "data_point": "Micro1 gross run rate hits $500M",
+      "source_ids": [
+        18
+      ]
+    },
+    {
+      "narrative": "A Tuscaloosa jury awarded former Alabama basketball player Kai Spears $9.25 million in a defamation lawsuit against the New York Times.",
+      "paragraph": "A Tuscaloosa jury awarded former Alabama basketball player Kai Spears $9.25 million in a defamation lawsuit against the New York Times. The Times had falsely identified Spears as a passenger in a car at the site of a fatal shooting. For Spears, the verdict vindicates his reputation, but for the Times, it's a costly reminder of the stakes in accurate reporting.",
+      "data_point": "$9.25M defamation verdict against NYT",
+      "source_ids": [
+        27
+      ]
+    },
+    {
+      "narrative": "Researchers have devised an attack against Grok that exfiltrates user data when malicious instructions are encrypted.",
+      "paragraph": "Researchers have devised an attack against Grok that exfiltrates user data when malicious instructions are encrypted. This follows a similar attack on Microsoft 365 Copilot. For users of AI assistants, this highlights the risk of data theft, and for developers, it underscores the need for better security measures.",
+      "data_point": "Grok vulnerable to encrypted data exfiltration attack",
+      "source_ids": [
+        37
+      ]
+    }
+  ]
+}
