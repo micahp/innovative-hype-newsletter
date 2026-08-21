@@ -421,6 +421,38 @@ def main():
             deduped.append(a)
     all_articles = deduped
 
+    # === Story persistence (2026-08-21 evening) ===
+    # The feed window (~20 items per feed) forgets stories within HOURS.
+    # Measured: the Winona/Flock camera story was CARDED by the desk at 18:02
+    # and the Texas THC-ban lawsuit in four consecutive runs (18:13→20:11),
+    # then both silently vanished from the pool because newer posts pushed
+    # them past entries[:20]. The desk can only card what the aggregator
+    # keeps. Fix: merge back articles from the previous run that the fresh
+    # fetch no longer carries, bounded by RETENTION_HOURS, so a story lives
+    # for days instead of hours. Scores/flags are recomputed below with
+    # current time, so decay stays honest.
+    RETENTION_HOURS = 72
+    prev_path = os.path.join(WEB, "articles.json")
+    if os.path.exists(prev_path):
+        try:
+            with open(prev_path) as f:
+                prev = json.load(f)
+            now_ts = time.time()
+            kept = 0
+            for pa in prev.get("articles", []):
+                ts = pa.get("_ts", 0)
+                if not ts or now_ts - ts > RETENTION_HOURS * 3600:
+                    continue
+                pnorm = re.sub(r"[^a-z0-9]+", " ", pa["title"].lower()).strip()
+                if pnorm and pnorm not in seen_titles:
+                    seen_titles[pnorm] = pa
+                    all_articles.append(pa)
+                    kept += 1
+            if kept:
+                print(f"  PERSISTED {kept} stories carried over from the previous run (< {RETENTION_HOURS}h old)")
+        except Exception as e:
+            print(f"  persist merge skipped: {e}")
+
     all_articles.sort(key=lambda x: -x["_ts"])
 
     # Score every article, then flag the top N (skipping noise-capped ones).
