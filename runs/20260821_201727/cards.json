@@ -1,0 +1,94 @@
+{
+  "cards": [
+    {
+      "narrative": "Marina Mabrey ties the WNBA single-game scoring record with 53 points.",
+      "paragraph": "Marina Mabrey dropped 53 points in Toronto, tying the WNBA single-game scoring record. She hit nine threes and took over the game in a way that made the franchise's $2.4 million commitment look like a bargain. This is the kind of performance that turns a new team into a contender.",
+      "data_point": "53 points, tying the all-time WNBA single-game scoring record, including nine three-pointers.",
+      "source_ids": [
+        0
+      ],
+      "_cluster_idx": 11
+    },
+    {
+      "narrative": "A fan throws a dildo onto the court during a WNBA game and gets banned.",
+      "paragraph": "A green dildo landed on the hardwood during the Dream-Sparks game at Crypto.com Arena. The fan was arrested and banned. The WNBA thought this 2025 problem was solved, but apparently not.",
+      "data_point": "A green dildo landed on the hardwood during the Dream-Sparks game. The fan was arrested and banned.",
+      "source_ids": [
+        0
+      ],
+      "_cluster_idx": 3
+    },
+    {
+      "narrative": "AI data startup Micro1 reaches a $500 million gross run rate.",
+      "paragraph": "Micro1, an AI training data startup, hit a $500 million gross run rate as demand for AI training data explodes. The boom is real, and the companies feeding the machines are getting rich.",
+      "data_point": "$500 million gross run rate",
+      "source_ids": [
+        0
+      ],
+      "_cluster_idx": 4
+    },
+    {
+      "narrative": "Major YouTube creators face backlash for accepting AI money.",
+      "paragraph": "Matti Haapoja and Sam Kolder posted videos promoting Higgsfield's AI platform and got roasted. The backlash shows the tension between creator authenticity and AI's encroachment into their craft. It's a new kind of sellout.",
+      "data_point": "Creators like Matti Haapoja and Sam Kolder face backlash for promoting Higgsfield's AI video tools.",
+      "source_ids": [
+        0
+      ],
+      "_cluster_idx": 5
+    },
+    {
+      "narrative": "Grok exfiltrates user data when malicious instructions are encrypted.",
+      "paragraph": "Researchers devised an attack that encrypts malicious instructions to make Grok exfiltrate user data. It's the latest in a string of exploits against AI agents, showing how vulnerable these systems are to stealthy attacks. The AI trust problem isn't going away.",
+      "data_point": "Researchers used encrypted instructions to make Grok exfiltrate user data.",
+      "source_ids": [
+        4
+      ],
+      "_cluster_idx": 6
+    },
+    {
+      "narrative": "Marc Lore sells the Timberwolves and Lynx for $4.5 billion.",
+      "paragraph": "Marc Lore is selling his controlling stake in the Timberwolves and Lynx to Marc Stad in a deal valuing the teams at $4.5 billion. Lore took over just over a year ago, and now he's cashing out. The NBA ownership game is moving faster than ever.",
+      "data_point": "$4.5 billion valuation for the Timberwolves and Lynx",
+      "source_ids": [
+        0
+      ],
+      "_cluster_idx": 8
+    },
+    {
+      "narrative": "Meta AI glasses make secret recordings harder to avoid.",
+      "paragraph": "As millions buy Meta AI glasses, the odds of being secretly recorded in public are rising. The convenience comes with a creepy cost, and society hasn't caught up with the etiquette.",
+      "data_point": "Millions of Meta AI glasses sold, making secret recordings harder to detect.",
+      "source_ids": [
+        1
+      ],
+      "_cluster_idx": 9
+    },
+    {
+      "narrative": "Kalshi and CME clash over prediction markets.",
+      "paragraph": "CME Group's Terry Duffy and Kalshi's Luana Lopes Lara traded barbs at a CFTC meeting. The fight is over who gets to run prediction markets and how they're regulated. It's a battle for control of a booming industry.",
+      "data_point": "CME and Kalshi execs clashed at a CFTC meeting over prediction market regulation.",
+      "source_ids": [
+        0
+      ],
+      "_cluster_idx": 10
+    },
+    {
+      "narrative": "Bitcoin's short squeeze wipes out $3 billion in shorts.",
+      "paragraph": "Bitcoin punched above $72,000, extending a two-day squeeze that liquidated $3 billion in short positions. The rally is fueled by regulatory optimism and a Treasury buyback pledge, but it's running on borrowed momentum.",
+      "data_point": "$3 billion in shorts liquidated as Bitcoin surged past $72,000.",
+      "source_ids": [
+        3
+      ],
+      "_cluster_idx": 7
+    },
+    {
+      "narrative": "Reflect Orbital's space mirrors could brighten the night sky by 300%.",
+      "paragraph": "A company planning to beam sunlight from space to Earth might unintentionally brighten the night sky up to 300% worldwide. The study's author says 'they know what they're doing,' but the side effects are enormous. This is a cosmic-scale externality.",
+      "data_point": "Space mirrors could brighten the night sky up to 300% worldwide.",
+      "source_ids": [
+        1
+      ],
+      "_cluster_idx": 12
+    }
+  ]
+}
