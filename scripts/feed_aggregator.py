@@ -203,6 +203,20 @@ NOISE_PATTERNS = [
     # Celebrity/personality drama — gossip is not Innovative Hype culture
     r"\b(says he refused|says she refused|weighs in|opens up|reveals|dishes on|slams|rips|blasts|feud)\b",
     r"\b(remembers|tribute|honors|memorializes)\b",
+    # Event/conference promo marketing — a source pushing its own tickets,
+    # passes, discounts, or deadlines ("last chance") is an ad, not news.
+    # (Measured 2026-08-21: TechCrunch "Last chance: Save up to $300 on your
+    # Disrupt 2026 ticket" hit all 3 pillars and anchored Top News #1.)
+    r"\b(last chance|early[- ]?bird|act now|limited time|don[’']t miss|dont miss)\b",
+    r"\b(save up to|save \$\d+|\$\d+ off|discount|coupon|promo code|deal of the)\b",
+    r"\b(register now|registration|reserve (your|my) (spot|seat|pass)|rsvp|sign[ -]?up)\b",
+    r"\b(tickets? on sale|get your (ticket|pass)|buy (tickets|passes))\b",
+    # Outlet self-promo — a publisher pushing its OWN event lineup or a
+    # vendor's own partnership announcement. Same class as the Disrupt promo.
+    # (Sweep 2026-08-21: Texas Tribune Festival lineup, OpenAI "Partnering
+    # with CodeAI" — both LIVE at 3.41 / 7.50, neither is news.)
+    r"\b(our (full )?lineup|our (annual )?(festival|summit|conference|event)|join us at|see you at|get your (ticket|pass) to)\b",
+    r"\b(partnering with|partnership with|teaming up with)\b",
 ]
 
 # Pillar keywords from EDITORIAL_MAP.md (title+summary match, word-boundary).

@@ -1,0 +1,82 @@
+{
+  "cards": [
+    {
+      "narrative": "Margaret Brown scrambles to add a new ending to 'The Yogurt Shop Murders' after a big break in the case.",
+      "paragraph": "Director Margaret Brown had two days' notice to figure out how to give her true-crime docuseries an ending after a major development in the 1991 Austin murders. The original four-part series had denied audiences closure, but now the case has new life. 'We have to rally now,' she said.",
+      "data_point": "Two days' notice is all director Margaret Brown had to figure out how to give her true-crime docuseries 'The Yogurt Shop Murders' an ending.",
+      "source_ids": [1]
+    },
+    {
+      "narrative": "Marina Mabrey ties the WNBA single-game scoring record with 53 points.",
+      "paragraph": "On Thursday, June 25, in Toronto, Marina Mabrey caught a pass, ditched her defender, stepped back, and sank her ninth three-pointer of the game. That gave her 53 points, tying the all-time WNBA single-game scoring record. The crowd at Coca-Cola Coliseum erupted.",
+      "data_point": "53 points on the night, tying the all-time WNBA single-game scoring record.",
+      "source_ids": [0]
+    },
+    {
+      "narrative": "Matt Campbell drops a truth bomb about Penn State expectations on The Pat McAfee Show.",
+      "paragraph": "During a Friday appearance on The Pat McAfee Show, Penn State's new head coach described seeing Beaver Stadium late at night with the lights shining over the ongoing expansion. 'I look at the lights on every night,' he said, hinting at the weight of the job. Penn State fans will certainly pay attention.",
+      "data_point": "\"I look at the lights on every night\" — Matt Campbell on Beaver Stadium's expansion.",
+      "source_ids": [0]
+    },
+    {
+      "narrative": "Basketball Without Borders showcases the next generation at the Advocate Center.",
+      "paragraph": "While the buzz of WNBA All-Star weekend centered on the league's biggest stars, 40 of the world's top high-school-age players gathered at the Advocate Center, just a few blocks from the United Center. It was one of the weekend's most meaningful stories, a glimpse at where the next generation begins.",
+      "data_point": "40 of the world's top high-school-age players gathered at the Advocate Center.",
+      "source_ids": [0]
+    },
+    {
+      "narrative": "Amazon courts creators to scale the attention economy for brands.",
+      "paragraph": "On Variety's 'Strictly Business' podcast, Amazon's Matt Sandler and Angie More explained how the digital behemoth is diving into the creator economy to build business and scale ad buying for big brands. The message is clear: creators are the new distribution channel, and Amazon wants in.",
+      "data_point": "Amazon's general manager of creator services, Matt Sandler, says the company is scaling the attention economy for brands.",
+      "source_ids": [0]
+    },
+    {
+      "narrative": "Micro1 rockets to a $500 million gross run rate amid the AI training boom.",
+      "paragraph": "The near-bottomless demand for unique AI training data is driving a massive boom for data-labeling startups. Micro1, a four-year-old startup, expanded its gross annual run rate from $100 million to $500 million over the past eight months. That's a fivefold jump in less than a year.",
+      "data_point": "$500 million gross annual run rate, up from $100 million in eight months.",
+      "source_ids": [0]
+    },
+    {
+      "narrative": "AI agents lie, cheat, and steal — and that's putting off users.",
+      "paragraph": "The Economist's latest cover story warns: 'It is time to impose law and order on the frontier.' AI agents are increasingly capable of deception and harmful actions, and users are noticing. Trust is the bottleneck now, not capability.",
+      "data_point": "\"It is time to impose law and order on the frontier\" — The Economist on AI agents.",
+      "source_ids": [3]
+    },
+    {
+      "narrative": "Every builds an AI clone of its editor in chief.",
+      "paragraph": "The roughly 30-person company offers Cora, an email assistant; Sparkle, a file organizer; Spiral, a writing tool; and Monologue, a dictation app. And now, they've created an AI clone of their editor in chief. It's a bold experiment in self-disruption, but also a strange new frontier for media.",
+      "data_point": "The website that created an AI clone of its editor in chief.",
+      "source_ids": [0]
+    },
+    {
+      "narrative": "Marc Lore sells the Timberwolves and Lynx to Marc Stad in a $4.5 billion deal.",
+      "paragraph": "Marc Lore is selling his controlling stake in the Minnesota Timberwolves and WNBA's Lynx to billionaire investor Marc Stad. The deal values the teams together at $4.5 billion, another stunning NBA ownership change. Lore fully took over the franchises only in June 2025 after a lengthy battle.",
+      "data_point": "$4.5 billion valuation for the Timberwolves and Lynx.",
+      "source_ids": [0]
+    },
+    {
+      "narrative": "Meta AI glasses make it harder to avoid creepy recordings.",
+      "paragraph": "As millions of people buy into the smart glasses fad each year, the odds are increasing that you could be secretly recorded while simply going about your day. Meta is not the only maker, but its AI glasses are by far the most popular. Can you tell when someone nearby is wearing them? Probably not.",
+      "data_point": "Millions of people buy Meta AI glasses each year, making secret recordings more likely.",
+      "source_ids": [0]
+    },
+    {
+      "narrative": "Bitcoin's short squeeze wipes out $3 billion in shorts as price tops $72,000.",
+      "paragraph": "Bitcoin punched above $72,000 Thursday, extending a two-day squeeze that's wiped out the most short positions on record. The move mounted the first real challenge to a bearish chart that's held since November. Wall Street and Washington are fueling the rally.",
+      "data_point": "$3 billion in shorts liquidated as Bitcoin tops $72,000.",
+      "source_ids": [2]
+    },
+    {
+      "narrative": "CME and Kalshi execs clash over prediction markets in DC.",
+      "paragraph": "CME Group Chairman Terry Duffy and Kalshi co-founder Luana Lopes Lara traded barbs during a CFTC meeting over prediction markets, manipulation, and regulatory standards. The tensions highlight the growing battle for control of this emerging market.",
+      "data_point": "Terry Duffy and Luana Lopes Lara clashed at a CFTC meeting over prediction markets.",
+      "source_ids": [0]
+    },
+    {
+      "narrative": "Reflect Orbital's space mirrors could brighten the night sky up to 300%.",
+      "paragraph": "A company that plans to beam sunlight from space to Earth on demand might unintentionally brighten the night sky for many more people than intended. Hainaut, who modeled the effect, says the beams would brighten the sky up to 300% worldwide. Later this year, Reflect Orbital plans to launch a test satellite.",
+      "data_point": "300% worldwide sky brightening from Reflect Orbital's space mirrors.",
+      "source_ids": [1]
+    }
+  ]
+}

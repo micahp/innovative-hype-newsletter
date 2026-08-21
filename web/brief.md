@@ -1,5 +1,5 @@
 # INNOVATIVE HYPE — BRIEF
-_Generated 2026-08-21 20:32 UTC · 31/55 feeds · 495 articles_
+_Generated 2026-08-21 20:59 UTC · 32/55 feeds · 500 articles_
 
 ## Can we trust the machines we're building?
 
@@ -9,11 +9,11 @@ _Generated 2026-08-21 20:32 UTC · 31/55 feeds · 495 articles_
 - The Download: threats from space mirrors and credit for AI drugs (MIT Technology Review)
 
 ## The AI data layer is printing money
-_Once that window closes, your chance to save up to $300 on your pass, or get an even larger discount on group pricing, will come to an end._
+_One of these fast-growing businesses is Micro1, a four-year-old startup that expanded its gross annual run rate from $100 million to $500 million over the past eight months, according to a person familiar with the company._
 
-- Last chance: Save up to $300 on your TechCrunch Disrupt 2026 ticket today (TechCrunch)
 - AI data startup Micro1 reaches $500M gross run rate amid AI training boom (TechCrunch)
 - Import AI 467: Self-sustaining AI viruses; pacing AI progress; confusion about AI and creativity (Import AI)
+- Superintelligence is a dragon (Platformer)
 
 ## The creator economy is consolidating
 
