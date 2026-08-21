@@ -1,12 +1,27 @@
 #!/usr/bin/env python3
-"""brief.py — generate a LinkedIn-style news brief from web/articles.json.
+"""brief.py — narrative news brief for the Innovative Hype site.
 
-Reads the scored articles, buckets them by theme, picks leads per bucket,
-and renders a brief. v2 (2026-08-21): buckets carry multi-story coverage and
-per-bucket commentary hooks written in the Innovative Hype voice. Still
-deterministic (no LLM) so it's cron-safe.
+The pipeline (v3, narrative-focused, modeled on the LP news desk + the
+Polymarket/Kalshi JUST IN corpus):
 
-Output: web/brief.md (markdown, human-readable)
+  1. MINE data points from article bodies — dollar figures, percentages,
+     ratios, market-implied probabilities.
+  2. FILTER for "moment-ness" — a data point makes the brief only when it
+     crosses a meaningful threshold: a record, a first, a multi-year level,
+     a market-implied probability, a structural imbalance. (This is the
+     JUST IN lesson: not every number matters.)
+  3. CLUSTER articles that share a recurring theme (narrative buckets, NOT
+     category buckets).
+  4. ASK the story question — what does this data point tell a story about?
+     The answer becomes the narrative title.
+  5. RENDER narrative cards: narrative title (the conversation) + the data
+     point as the hook + supporting articles as receipts.
+
+Deterministic (no LLM) in v3: moment detection + narrative templates are
+rule-based. An LLM desk pass can replace step 4 later (LP does exactly this
+with a DeepSeek call).
+
+Output: web/brief.md + web/brief.html
 """
 
 import json
@@ -19,68 +34,14 @@ WEB = os.path.join(os.path.dirname(__file__), "..", "web")
 
 
 def _md_escape(text):
-    """Escape HTML special chars so titles with quotes/ampersands render."""
     return text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
 
 
 def _md_inline(text):
-    """Convert **bold** and _italic_ to HTML."""
     text = _md_escape(text)
     text = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", text)
     text = re.sub(r"_(.+?)_", r"<em>\1</em>", text)
     return text
-
-
-# === Bucket definitions ===
-# Each bucket has a display name, an emoji, keyword rules, and a hook
-# template. The hook is a short editorial line that frames the theme —
-# written once per bucket, applied to the lead story.
-BUCKETS = [
-    {
-        "name": "Startups & Venture",
-        "emoji": "🚀",
-        "hook": "Capital is flowing to whoever builds the picks-and-shovels. The founders who win aren't selling dreams — they're selling infrastructure.",
-        "keywords": ["startup", "venture", "vc", "funding", "raises", "seed", "series", "ipo", "unicorn", "founder", "acquisition", "acquires", "million", "billion", "gross run rate", "investor"],
-    },
-    {
-        "name": "AI & Models",
-        "emoji": "🤖",
-        "hook": "The model wars are the new space race. Every release resets the bar — and the money follows the compute.",
-        "keywords": ["ai", "artificial intelligence", "llm", "gpt", "claude", "gemini", "openai", "anthropic", "deepseek", "mistral", "model release", "machine learning", "neural network", "ai model", "ai training", "training data", "inference", "ai agent", "robot", "robotics", "generative", "chatbot"],
-    },
-    {
-        "name": "Crypto & Markets",
-        "emoji": "📈",
-        "hook": "Markets are a rumor mill with a scoreboard. The signal is where the money moves — and where it doesn't.",
-        "keywords": ["bitcoin", "crypto", "ethereum", "solana", "nft", "blockchain", "coin", "token", "defi", "web3", "prediction market", "kalshi", "polymarket", "stock", "market", "fed", "inflation", "rate"],
-        # Security/scam stories that merely mention crypto are NOT market stories
-        "not": ["hacker", "malware", "scam", "phishing", "ransomware", "lure", "security researcher", "exploit", "breach", "attack"],
-    },
-    {
-        "name": "Sports & Business",
-        "emoji": "🏀",
-        "hook": "Sports is becoming the most watched business in America. The athletes have the leverage now — and the owners know it.",
-        "keywords": ["nfl", "nba", "mlb", "nhl", "wnba", "ufc", "soccer", "football", "tennis", "us open", "prize money", "player", "college", "draft", "league", "stadium", "athlete", "training camp", "merchandise", "tickets"],
-    },
-    {
-        "name": "Big Tech & Policy",
-        "emoji": "🏛️",
-        "hook": "The platforms write the rules until someone writes them for them. Every hearing, every ban, every lawsuit is a renegotiation of power.",
-        "keywords": ["google", "meta", "facebook", "apple", "amazon", "microsoft", "nvidia", "tesla", "antitrust", "regulation", "ban", "lawsuit", "sues", "senate", "congress", "ftc", "doj", "eu", "supreme court", "judge"],
-    },
-    {
-        "name": "Culture & Music",
-        "emoji": "🎬",
-        "hook": "Culture is the last uncommodified asset — until someone commodifies it. Watch the creators, the drops, the moments.",
-        "keywords": ["music", "album", "song", "artist", "band", "festival", "tour", "concert", "film", "movie", "hollywood", "show", "streaming", "netflix", "hip-hop", "rap", "fashion", "streetwear", "sneaker", "lineup"],
-    },
-    {
-        "name": "Other",
-        "emoji": "🗞️",
-        "hook": "",
-        "keywords": [],
-    },
-]
 
 
 def strip_html(s):
@@ -89,114 +50,242 @@ def strip_html(s):
     return re.sub(r"<[^>]+>", " ", s)
 
 
-def bucket_for(article):
-    # Use title + summary + full body (when present) for theming.
-    text = f"{article.get('title','')} {article.get('summary','')} {article.get('_body','')}".lower()
-    text = strip_html(text)
-    for bucket in BUCKETS:
-        if not bucket["keywords"]:
+def _clean_entities(s):
+    return (s.replace("&#8217;", "'").replace("&#8220;", '"').replace("&#8221;", '"')
+             .replace("&#8230;", "...").replace("&amp;", "&").replace("&#8211;", "-")
+             .replace("&#8212;", "—"))
+
+
+# === 1. DATA MINING ===
+# Patterns for dollar figures, percentages, and large counts.
+_NUM_PAT = re.compile(
+    r"\$\s?\d[\d,]*(?:\.\d+)?\s?(million|billion|bn|m|k)?"
+    r"|\d+(?:\.\d+)?%"
+    r"|\d[\d,]*\s*(million|billion|trillion)\b"
+    r"|\d+(?:\.\d+)?\s?(?:x|fold)\b",
+    re.I,
+)
+
+# === 2. MOMENT FILTER ===
+# A data point matters when it crosses a meaningful threshold. This is the
+# JUST IN lesson: records, firsts, multi-year levels, market-implied
+# probabilities, structural imbalances.
+_MOMENT_PAT = re.compile(
+    r"first\s+time|ever\s+record|highest\s+(?:level|since|ever|grossing)"
+    r"|lowest\s+(?:level|since|ever)|record\s+(?:high|low|prize|amount|purse)"
+    r"|largest|biggest|fastest|most\s+ever|since\s+19\d\d|since\s+20\d\d"
+    r"|in\s+40\s+years|in\s+\d+\s+years|first\s+(?:country|company|team|player|city|state)"
+    r"|officially|%\s+chance|chance\s+of|crosses?|surpasses?|plunges?\s+to"
+    r"|hits?\s+(?:a\s+)?record|clears?\s+\$|exceeds?\s+\$|topped\s+\$"
+    r"|\$[\d.,]+[mb]\s+(?:valuation|deal|acquisition|investment)"
+    r"|one\s+of\s+the\s+(?:first|largest|biggest|only)",
+    re.I,
+)
+
+
+def mine_data_points(article):
+    """Return a list of (data_point) sentences from the article body.
+
+    v3 fix: don't require a moment marker — a striking number itself is the
+    hook (JUST IN: '$500M gross run rate', '80-90% margins'). Moment phrases
+    (record/first/highest) are a BOOST for ranking, not a gate."""
+    body = _clean_entities(article.get("_body", "") or "")
+    if len(body) < 200:
+        return []
+    sents = re.split(r"(?<=[.!?])\s+", body)
+    points = []
+    for s in sents:
+        nums = _NUM_PAT.findall(s)
+        if not nums:
             continue
-        # 'not' keywords veto a match
-        if any(_kw_match(nk, text) for nk in bucket.get("not", [])):
-            continue
-        if any(_kw_match(kw, text) for kw in bucket["keywords"]):
-            return bucket
-    return BUCKETS[-1]
+        s_clean = s.strip()
+        if 30 <= len(s_clean) <= 260:
+            points.append(s_clean)
+    return points[:3]
+
+
+# === 3. NARRATIVE CLUSTERING ===
+# Theme signatures: (name, keywords, voice_weight). An article joins a
+# narrative bucket when it matches the theme AND carries a moment-worthy
+# data point (or is a high-score anchor).
+#
+# voice_weight comes from cross-referencing the @geoppls + @innovativehype
+# tweet corpora (the Innovative Hype voice) against the article feed:
+#   1.0 = the voice talks about this theme a lot (AI/tools 145, media 58,
+#         cities 52, creator 43) — buckets get priority
+#   0.7 = moderate voice interest (crypto/markets 34, sports 28,
+#         prediction markets 25, sovereignty 25)
+#   0.4 = feed pushes it but the voice is lukewarm — can still surface
+#         when the data point is strong, but doesn't dominate
+NARRATIVE_SIGNATURES = [
+    {
+        "name": "The AI data gold rush",
+        "voice_weight": 1.0,
+        "keywords": ["training data", "data labeling", "data center", "gross run rate", "ai training", "compute", "gpu", "data infra"],
+    },
+    {
+        "name": "AI trust and accountability",
+        "voice_weight": 1.0,
+        "keywords": ["zero data retention", "safety", "oversight", "national security", "agent", "lie", "cheat", "hallucinat", "alignment", "guardrail", "red team"],
+    },
+    {
+        "name": "Media power and who owns it",
+        "voice_weight": 1.0,
+        "keywords": ["media", "zuckerberg", "meta", "network", "broadcast", "streaming", "newsroom", "journalism", "platform", "ownership"],
+    },
+    {
+        "name": "Creator economy consolidation",
+        "voice_weight": 1.0,
+        "keywords": ["creator", "influencer", "deal", "studio", "tiktok", "youtube", "substack", "content deal", "royalt"],
+    },
+    {
+        "name": "Sports money keeps inflating",
+        "voice_weight": 0.7,
+        "keywords": ["prize money", "valuation", "stadium", "media deal", "broadcast", "rights deal", "nfl", "nba", "mlb", "premier league", "franchise", "billion", "revenue"],
+    },
+    {
+        "name": "Prediction markets go mainstream",
+        "voice_weight": 0.7,
+        "keywords": ["kalshi", "polymarket", "prediction market", "cftc", "election", "odds", "probability", "contract"],
+    },
+    {
+        "name": "Crypto's leverage problem",
+        "voice_weight": 0.7,
+        "keywords": ["short squeeze", "liquidation", "leverage", "borrow", "etf flow", "plung", "xrp", "bitcoin", "token"],
+    },
+    {
+        "name": "AI surveillance creep",
+        "voice_weight": 0.7,
+        "keywords": ["surveillance", "glasses", "recording", "police", "track", "camera", "privacy", "facial", "driver"],
+    },
+    {
+        "name": "Energy and climate thresholds",
+        "voice_weight": 0.4,
+        "keywords": ["hydrogen", "geothermal", "solar", "grid", "emission", "climate", "flood", "space mirror", "temperature", "carbon"],
+    },
+    {
+        "name": "Cities, housing and where America lives",
+        "voice_weight": 1.0,
+        "keywords": ["texas", "austin", "housing", "rent", "suburb", "relocation", "move to", "city", "real estate", "zoning", "migration", "cost of living"],
+    },
+]
 
 
 def _kw_match(keyword, text):
-    """Word-boundary keyword match. 'ban' matches 'ban' but not 'band'."""
     return re.search(rf"\b{re.escape(keyword)}\b", text) is not None
 
 
-def title_clean(title):
-    return strip_html(title or "").strip()
+def signature_for(article, data_points):
+    """Assign an article to a narrative signature (theme), if any.
+
+    v3: require at least 2 keyword hits (or 1 strong hit + a data point) so
+    passing mentions don't pollute a cluster. Returns (signature, hit_count)."""
+    text = f"{article.get('title','')} {article.get('summary','')} {article.get('_body','')}".lower()
+    text = _clean_entities(strip_html(text))
+    moment_text = " ".join(data_points).lower()
+
+    best = None
+    best_hits = 0
+    for sig in NARRATIVE_SIGNATURES:
+        hits = sum(1 for kw in sig["keywords"] if _kw_match(kw, text))
+        if hits == 0:
+            continue
+        if any(_kw_match(kw, moment_text) for kw in sig["keywords"]):
+            hits += 1
+        if hits > best_hits:
+            best = sig
+            best_hits = hits
+
+    # Purity gate: passing mentions (1 hit, no data point) don't join a cluster
+    if best is None or best_hits < 2:
+        return None, 0
+    return best, best_hits
 
 
-def _detail_from_body(body, max_chars=220):
-    """Pull the strongest single sentence from an article body:
-    1) a sentence with a hard number ($, %, millions, stats)
-    2) otherwise a quote (someone saying something)
-    3) otherwise the first substantive sentence."""
-    if not body:
-        return ""
-    # Clean entities & split into sentences
-    clean = strip_html(body)
-    clean = clean.replace("&#8217;", "'").replace("&#8220;", '"').replace("&#8221;", '"')
-    clean = clean.replace("&#8230;", "...").replace("&amp;", "&")
-    sents = re.split(r"(?<=[.!?])\s+", clean)
-
-    # Pass 1: number-bearing sentence (concrete fact)
-    for s in sents:
-        if re.search(r"\$\s?\d|million|billion|\d+%|percent|\d+(\.\d+)?\s?(bn|m)\b", s):
-            s = s.strip()
-            if 40 <= len(s) <= max_chars:
-                return s
-    # Pass 2: a quote
-    for s in sents:
-        if '"' in s or "“" in s or "said" in s or "told" in s:
-            s = s.strip()
-            if 40 <= len(s) <= max_chars:
-                return s
-    # Pass 3: first long sentence
-    for s in sents:
-        s = s.strip()
-        if 60 <= len(s) <= max_chars:
-            return s
-    return ""
+def _narrative_title(sig_name, lead, data_point):
+    """Rule-based narrative title: the story the data point tells, not the
+    category. Uses the strongest moment phrasing from the article."""
+    # Common shapes
+    if "Sports money" in sig_name:
+        return f"{lead.get('source','')}: the money keeps inflating"
+    if "AI data gold rush" in sig_name:
+        return "The AI data layer is printing money"
+    if "AI trust" in sig_name:
+        return "Can we trust the machines we're building?"
+    if "Prediction markets" in sig_name:
+        return "Prediction markets are becoming the newsroom"
+    if "AI surveillance" in sig_name:
+        return "AI watches everyone now"
+    if "Creator economy" in sig_name:
+        return "The creator economy is consolidating"
+    if "Crypto's leverage" in sig_name:
+        return "Crypto's rally is running on borrowed money"
+    if "Energy and climate" in sig_name:
+        return "The energy transition is hitting thresholds"
+    return sig_name
 
 
-def make_brief(articles, top_n=16, buckets_per_brief=5, stories_per_bucket=2):
+# === 4. THE BRIEF BUILDER ===
+def make_brief(articles, max_cards=5, stories_per_card=3):
     scored = [a for a in articles if not a.get("_noise")]
     scored.sort(key=lambda x: -x.get("_score", 0))
 
-    # Bucket the whole scored set first, then take the top story per bucket
-    # so every theme gets represented (not just AI/startup-heavy scores).
-    all_bucketed = OrderedDict()
+    # For each article: mine data points, find narrative signature
+    enriched = []
     for a in scored:
-        b = bucket_for(a)
-        all_bucketed.setdefault(b["name"], {"bucket": b, "articles": []})
-        all_bucketed[b["name"]]["articles"].append(a)
+        points = mine_data_points(a)
+        sig, hits = signature_for(a, points)
+        if sig and points:
+            enriched.append({"article": a, "points": points, "sig": sig, "hits": hits})
 
-    # Rank buckets by their lead story's score, drop Other, cap count
+    # Cluster by signature
+    clusters = OrderedDict()
+    for e in enriched:
+        name = e["sig"]["name"]
+        clusters.setdefault(name, {"sig": e["sig"], "items": []})
+        clusters[name]["items"].append(e)
+
+    # Rank clusters: voice weight × cluster strength, then lead score.
+    # A bucket the Innovative Hype voice cares about (AI, media, creator,
+    # cities) outranks a lukewarm bucket even with fewer stories.
     ranked = []
-    for name, entry in all_bucketed.items():
-        if name == "Other":
-            continue
-        lead = max(entry["articles"], key=lambda a: a.get("_score", 0))
-        ranked.append((name, entry, lead))
-    ranked.sort(key=lambda x: -x[2].get("_score", 0))
-    ranked = ranked[:buckets_per_brief]
+    for name, cl in clusters.items():
+        strength = len(cl["items"])
+        lead = cl["items"][0]  # highest score
+        vw = cl["sig"].get("voice_weight", 0.5)
+        ranked.append((name, cl, lead, strength, vw))
+    ranked.sort(key=lambda x: (-x[4], -x[3], -x[2]["article"].get("_score", 0)))
+    ranked = ranked[:max_cards]
 
     lines = []
-    for name, entry, lead in ranked:
-        b = entry["bucket"]
-        emoji = b["emoji"]
-        hook = b["hook"]
+    cards = []
+    for name, cl, lead, strength, vw in ranked:
+        sig = cl["sig"]
+        lead_article = lead["article"]
+        data_point = lead["points"][0] if lead["points"] else ""
+        title = _narrative_title(sig["name"], lead_article, data_point)
 
-        lead_line = title_clean(lead.get("title", ""))
-        lead_src = lead.get("source", "")
-        lines.append(f"{emoji} **{name}** — {lead_line} ({lead_src})")
-        if hook:
-            lines.append(f"   _{hook}_")
-
-        # When we have full article text, add the strongest fact/quote.
-        detail = _detail_from_body(lead.get("_body", ""))
-        if detail:
-            lines.append(f"   ▸ {detail}")
-
-        others = [a for a in entry["articles"] if a is not lead]
-        for a in others[:stories_per_bucket - 1]:
-            lines.append(f"   · {title_clean(a.get('title',''))} ({a.get('source','')})")
+        lines.append(f"## {title}")
+        lines.append(f"_{data_point}_" if data_point else "")
+        lines.append("")
+        for item in cl["items"][:stories_per_card]:
+            a = item["article"]
+            lines.append(f"- {a.get('title','')} ({a.get('source','')})")
         lines.append("")
 
-    return "\n".join(lines).strip()
+        cards.append({
+            "title": title,
+            "data_point": data_point,
+            "stories": [(i["article"].get("title",""), i["article"].get("source",""), i["article"].get("link","#")) for i in cl["items"][:stories_per_card]],
+        })
+
+    return "\n".join(lines).strip(), cards
 
 
 def main():
     with open(os.path.join(WEB, "articles.json")) as f:
         data = json.load(f)
-    brief = make_brief(data["articles"])
+    md, cards = make_brief(data["articles"])
 
     header = (
         "# INNOVATIVE HYPE — BRIEF\n"
@@ -204,72 +293,33 @@ def main():
         f"{data.get('feeds_ok',0)}/{data.get('feeds_total',0)} feeds · "
         f"{len(data['articles'])} articles_\n\n"
     )
-    out = header + brief + "\n"
+    out = header + md + "\n"
 
     out_path = os.path.join(WEB, "brief.md")
     with open(out_path, "w") as f:
         f.write(out)
     print(out)
 
-    # Also emit a standalone brief.html (self-contained, links to stories)
-    html = _render_html(out, data)
+    html = _render_html(cards)
     html_path = os.path.join(WEB, "brief.html")
     with open(html_path, "w") as f:
         f.write(html)
     print(f"\nWrote {out_path} and {html_path}")
 
 
-def _render_html(md, data):
-    """Render the markdown brief into a self-contained HTML page."""
-    # Parse the markdown: each bucket block starts with emoji **Name** — line,
-    # then _hook_ italic, then · bullets.
-    blocks = []
-    for raw_block in md.strip().split("\n\n"):
-        lines = raw_block.strip().split("\n")
-        if not lines:
-            continue
-        # Skip the title line (starts with #) and the italic _Generated_ header
-        if lines[0].startswith("#"):
-            continue
-        if lines[0].startswith("_Generated"):
-            continue
-        lead_match = re.match(r"^(?P<emoji>\S+)\s+\*\*(?P<name>.+?)\*\*\s+—\s+(?P<title>.+?)\s+\((?P<src>.+?)\)$", lines[0])
-        if not lead_match:
-            continue
-        g = lead_match.groupdict()
-        hook = ""
-        detail = ""
-        bullets = []
-        for line in lines[1:]:
-            s = line.strip()
-            if s.startswith("_") and s.endswith("_") and not hook:
-                hook = s[1:-1]
-            elif s.startswith("▸") and not detail:
-                detail = s[1:].strip()
-            elif s.startswith("·"):
-                bullets.append(s[1:].strip())
-        blocks.append((g["emoji"], g["name"], g["title"], g["src"], hook, detail, bullets))
-
-    # Need links: look up title → link from articles
-    title_to_link = {a.get("title", ""): a.get("link", "#") for a in data["articles"]}
-
-    cards = []
-    for emoji, name, title, src, hook, detail, bullets in blocks:
-        link = title_to_link.get(title, "#")
-        bullets_html = "".join(
-            f'<li><a href="{title_to_link.get(_extract_title(b), "#")}" target="_blank" rel="noopener">{_md_inline(_extract_title(b))}</a></li>'
-            for b in bullets
+def _render_html(cards):
+    card_html = []
+    for c in cards:
+        stories = "".join(
+            f'<li><a href="{link}" target="_blank" rel="noopener">{_md_inline(title)} <span class="src">({src})</span></a></li>'
+            for title, src, link in c["stories"]
         )
-        hook_html = f'<p class="brief-hook">{_md_inline(hook)}</p>' if hook else ""
-        detail_html = f'<p class="brief-detail">▸ {_md_inline(detail)}</p>' if detail else ""
-        cards.append(f"""
+        dp_html = f'<p class="brief-dp">▸ {_md_inline(c["data_point"])}</p>' if c["data_point"] else ""
+        card_html.append(f"""
     <article class="brief-card">
-      <div class="brief-head"><span class="brief-emoji">{emoji}</span><h3 class="brief-name">{_md_inline(name)}</h3></div>
-      <h4 class="brief-lead"><a href="{link}" target="_blank" rel="noopener">{_md_inline(title)}</a></h4>
-      <div class="brief-src">{_md_inline(src)}</div>
-      {hook_html}
-      {detail_html}
-      <ul class="brief-list">{bullets_html}</ul>
+      <h3 class="brief-title">{_md_inline(c["title"])}</h3>
+      {dp_html}
+      <ul class="brief-list">{stories}</ul>
     </article>""")
 
     return f"""<!DOCTYPE html>
@@ -286,42 +336,30 @@ def _render_html(md, data):
   * {{ margin:0; padding:0; box-sizing:border-box; }}
   body {{ font-family:'DM Sans',system-ui,sans-serif; background:var(--white); color:var(--ink); -webkit-font-smoothing:antialiased; }}
   .wrap {{ max-width:760px; margin:0 auto; padding:2.5rem 1.5rem; }}
-  .brief-title {{ font-family:'Oswald',sans-serif; font-weight:700; font-size:2rem; text-transform:uppercase; letter-spacing:-0.02em; margin-bottom:.25rem; }}
-  .brief-meta {{ font-size:.75rem; color:var(--ink-muted); text-transform:uppercase; letter-spacing:.05em; margin-bottom:2rem; }}
+  .page-title {{ font-family:'Oswald',sans-serif; font-weight:700; font-size:2rem; text-transform:uppercase; letter-spacing:-0.02em; margin-bottom:.25rem; }}
+  .page-meta {{ font-size:.75rem; color:var(--ink-muted); text-transform:uppercase; letter-spacing:.05em; margin-bottom:2rem; }}
   .brief-card {{ background:var(--off-white); border:1px solid var(--border); border-top:3px solid var(--gold); padding:1.25rem 1.5rem; margin-bottom:1.25rem; }}
-  .brief-head {{ display:flex; align-items:center; gap:.5rem; margin-bottom:.4rem; }}
-  .brief-emoji {{ font-size:1.1rem; }}
-  .brief-name {{ font-family:'Oswald',sans-serif; font-weight:600; font-size:1rem; text-transform:uppercase; letter-spacing:.04em; color:var(--gold-dark); }}
-  .brief-lead {{ font-family:'Oswald',sans-serif; font-weight:600; font-size:1.2rem; line-height:1.25; margin-bottom:.25rem; }}
-  .brief-lead a {{ color:var(--ink); text-decoration:none; }}
-  .brief-lead a:hover {{ color:var(--gold-dark); }}
-  .brief-src {{ font-size:.7rem; color:var(--ink-muted); text-transform:uppercase; letter-spacing:.04em; margin-bottom:.5rem; }}
-  .brief-hook {{ font-size:.9rem; line-height:1.5; color:var(--ink-light); font-style:italic; margin-bottom:.5rem; }}
-  .brief-detail {{ font-size:.85rem; line-height:1.5; color:var(--ink); margin-bottom:.5rem; padding-left:.9rem; border-left:2px solid var(--gold); }}
-  .brief-list {{ list-style:none; padding-left:0; margin-top:.25rem; }}
+  .brief-title {{ font-family:'Oswald',sans-serif; font-weight:600; font-size:1.15rem; line-height:1.25; margin-bottom:.5rem; }}
+  .brief-dp {{ font-size:.9rem; line-height:1.5; color:var(--ink); margin-bottom:.6rem; padding-left:.9rem; border-left:2px solid var(--gold); font-style:italic; }}
+  .brief-list {{ list-style:none; padding-left:0; }}
   .brief-list li {{ font-size:.85rem; line-height:1.5; color:var(--ink-light); padding:.15rem 0 .15rem 1.1rem; position:relative; }}
   .brief-list li::before {{ content:'·'; position:absolute; left:0; color:var(--gold-dark); }}
   .brief-list a {{ color:var(--ink-light); text-decoration:none; }}
   .brief-list a:hover {{ color:var(--gold-dark); }}
+  .brief-list .src {{ color:var(--ink-muted); font-size:.7rem; text-transform:uppercase; letter-spacing:.03em; }}
   .back {{ display:inline-block; margin-top:2rem; font-family:'Oswald',sans-serif; font-size:.8rem; text-transform:uppercase; letter-spacing:.05em; color:var(--ink); text-decoration:none; border-bottom:2px solid var(--gold); padding-bottom:2px; }}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <h1 class="brief-title">Innovative Hype — Brief</h1>
-  <div class="brief-meta">_Generated {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}_</div>
-  {''.join(cards)}
+  <h1 class="page-title">Innovative Hype — Brief</h1>
+  <div class="page-meta">Narrative brief · data-point anchored · updated {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}</div>
+  {''.join(card_html)}
   <a class="back" href="index.html">← Back to feed</a>
 </div>
 </body>
 </html>
 """
-
-
-def _extract_title(bullet):
-    """Bullets are plain 'title (source)' strings — return just the title."""
-    m = re.match(r"^(.*?)\s*\([^)]*\)$", bullet)
-    return m.group(1).strip() if m else bullet
 
 
 if __name__ == "__main__":
