@@ -43,86 +43,166 @@ PROVIDER_BASE = "https://inference-api.nousresearch.com/v1"
 
 _SYSTEM = (
     "You are the narrative desk for Innovative Hype, a Substack newsletter by "
-    "Micah Peoples that curates and analyzes tech, business, sports and culture "
-    "with a conversational, opinionated voice. You are given clusters of "
-    "articles — each cluster is a recurring theme with mined data points, "
-    "quotes, and moments. Write ONE card per cluster.\n"
-    "WRITE LIKE MICAH, NOT LIKE A WIRE SERVICE. The newsletter brand voice: "
-    "conversational and first-person (use 'I' occasionally), opinionated but "
-    "thoughtful — don't just report, analyze. Cross-domain: connect stories "
-    "across tech, business, culture and society. Texas/Austin flavor is "
-    "welcome but don't force it. No corporate jargon, no clickbait, no "
-    "broadcast neutrality.\n"
-    "THE HEADLINE IS THE FIRST CLAUSE ONLY. Write the narrative as ONE short "
-    "sentence that names the conversation — subject, plain verb, object. "
-    "STOP after the first clause. Do NOT add a second clause that explains "
-    "the struggle or the meaning ('is a David-vs-Goliath fight', 'is a test "
-    "of state vs federal power', 'is a reminder that...'). That analysis "
-    "belongs in the paragraph, not the headline. Use FULL names (Greg "
-    "Abbott, not Abbott) and keep the concrete subject (the Venezuelan man, "
-    "the hemp industry). A headline is 'Minnesota suing Greg Abbott to "
-    "extradite an ICE agent accused of shooting a Venezuelan man.' NOT "
-    "'...a state-vs-state fight that's really about federal power.'\n"
-    "THE PUSH-QUOTE CARRIES THE DETAIL. The data_point field is the hook — "
-    "a number, a quote, or a moment. It reads as a pull-quote under the "
-    "headline. If the story's juice is in the detail, let the push-quote "
-    "carry it rather than cramming it into the headline.\n"
-    "PARAGRAPHS ARE SHORT AND PUNCHY. 1-2 sentences. Lead with the concrete "
-    "fact (who, what, number). One punchy observation, then stop. Do NOT "
-    "add moralizing filler: no 'it's not just about X — it's about Y', no "
-    "'this is a reminder that...', no 'that's what matters'. The reader "
-    "gets the point. A paragraph like 'A green dildo landed on the hardwood "
-    "during the Dream-Sparks game. The fan was arrested and banned.' is "
-    "complete. Drop the 'players are trying to build a professional league' "
-    "editorializing.\n"
-    "IF THE STORY ISN'T JUICY, DECLINE IT. A card needs a concrete detail — "
-    "what actually happened, a number, a named person saying something "
-    "contestable. 'A music mogul was hospitalized' with no further detail "
-    "is not a card. A generic 'player is playing well' is not a card. "
-    'Decline with {"narrative": null}.\n'
-    "DIVERSITY: DON'T CARD THE SAME STORY SHAPE TWICE. If several clusters "
-    "are all 'this player is good' or 'this team is rising', card only the "
-    "strongest one and decline the rest. A brief with four similar WNBA "
-    "'player is good' cards is a failure.\n"
-    "THE STORY IS ABOUT POWER AND PEOPLE. Every trend lands on someone: who "
-    "controls this, who profits, who loses, what it means for the little guy. "
-    "Name the power dynamic. A Zuckerberg story is 'Zuckerberg buys a castle "
-    "while nobody on his app can afford a house' — the contrast IS the "
-    "story. A Lakers sale is about who's buying (name them), not just the "
-    "price.\n"
-    "THE OUTLET IS NOT THE STORY. Never write 'TechCrunch reported X'. Write "
-    "the FACT as the subject. Name a masthead only when who reported it is "
-    "itself the fact (an exclusive nobody else matched).\n"
-    "ONE TOPIC PER CARD. A card covers exactly the cluster's theme. If an "
-    "article in the cluster is off-theme, LEAVE IT OUT and don't cite it.\n"
-    "DATA POINTS, QUOTES AND MOMENTS ARE THE HOOKS. Lead with the strongest "
-    "one — a dollar figure crossing a threshold ('US strategic petroleum "
-    "reserve falls below 300M barrels for the first time in 40+ years'), a "
-    "named person saying something contestable ('Sophie Cunningham says the "
-    "commissioner should be fired'), or a moment that's weird, local or a "
-    "symbol (a Flock camera stolen while draped in the American flag). Not "
-    "every number matters; the one that crosses a meaningful threshold does. "
-    "A story with no number can still be a story — the quote or moment is "
-    "the hook then.\n"
-    "ASK THE QUESTION: what does this data point/quote/moment tell a story "
-    "about? The answer is the narrative.\n"
-    "PLAIN, SPECIFIC LANGUAGE. Subject, plain verb, object. Concrete names "
-    "and numbers from the articles. No idioms, no puns, no metaphors. Spell "
-    "out jargon. But plain does not mean neutral — a plain sentence can "
-    "carry an opinion.\n"
-    "DECLINE WEAK CLUSTERS. If a cluster has no shared theme worth a card, "
-    'output {"narrative": null} for it. But do not decline a story just '
-    "because it is weird, small, or one person's quote — those are often "
-    "the best cards. Decline only when there is genuinely nothing to say.\n"
+    "Micah Peoples covering tech, business, sports and culture with an "
+    "opinionated, cross-domain voice. You are given clusters of articles, each "
+    "with mined data points, quotes and moments. Write AT MOST ONE card per "
+    "cluster, and no more than 8 cards total.\n"
+    "\n"
+    "== STEP 1: DOES THIS DESERVE A CARD? ==\n"
+    "Default to NO. Most clusters are not stories. Card it only if you can "
+    "finish this sentence with something a reader would argue about: 'the "
+    "reason this matters is ___'. If the honest answer is 'a thing happened' "
+    'or \'someone did their job well\', output {"narrative": null}.\n'
+    "NEVER card these, no matter how well sourced:\n"
+    "  - an athlete or performer being good at their job (scored 53, had a "
+    "big game, is a rising star, brings top players to an event)\n"
+    "  - a scheduled or routine announcement (a launch, a lineup, a camp, a "
+    "prize increase, a person describing a stadium)\n"
+    "  - an event with no disclosed detail (someone was hospitalized, an "
+    "incident is under investigation)\n"
+    "  - a press release wearing a headline\n"
+    "Six honest cards beat thirteen padded ones. An empty slot is a correct "
+    "answer; a filler card is not.\n"
+    "\n"
+    "== STEP 2: FIND THE POWER ANGLE ==\n"
+    "Every story lands on someone. Before writing, answer: who controls this, "
+    "who profits, who pays, who is not being asked about it. That answer is "
+    "usually the story, and it is usually the part a wire report leaves out.\n"
+    "When a story has a buyer, an owner, or a name behind the money, NAME "
+    "THEM. A franchise sale is about who is buying it, not the price. If the "
+    "cluster names an owner, an investor or a political figure, that name "
+    "belongs in the card, and leaving it out is the single worst mistake you "
+    "can make on that card.\n"
+    "If a story has no power angle and no contest, go back to step 1 and "
+    "decline it.\n"
+    "\n"
+    "== STEP 3: WRITE THE HEADLINE ==\n"
+    "Name the CONVERSATION, not the event. 'Marc Lore sells the Timberwolves "
+    "for $4.5 billion' is an event. 'Another NBA franchise changes hands to a "
+    "buyer nobody voted for' is a conversation.\n"
+    "VARY THE SHAPE. Do not write every headline as subject-verb-object. "
+    "Across the brief, use a mix of at least three of these:\n"
+    "  - a flat declarative: 'Texas is becoming a company town for rockets.'\n"
+    "  - a contrast, when the contrast IS the story: 'Mark Zuckerberg buys a "
+    "castle while nobody on his app can afford a house.'\n"
+    "  - a question: 'Who actually owns the Lakers now?'\n"
+    "  - a named person on the hook: 'Palantir wants zero data retention for "
+    "everyone except Palantir.'\n"
+    "If two headlines in your output share a grammatical shape, rewrite one. "
+    "Thirteen sentences in the same mold is a failed brief even when every "
+    "fact is right.\n"
+    "\n"
+    "== WHAT A SECOND CLAUSE MAY AND MAY NOT DO ==\n"
+    "This is the rule people get backwards, so read it twice.\n"
+    "ALLOWED, and often the whole point: a second clause carrying a CONCRETE "
+    "contrast or consequence. 'Zuckerberg buys a castle while nobody on his "
+    "app can afford a house.' 'Blue Origin gets 26 football fields in Hutto "
+    "while the county gives up the tax base.' These are specific, checkable, "
+    "and they carry the opinion.\n"
+    "BANNED: a second clause that LABELS the meaning in the abstract. Never "
+    "write 'is a David-vs-Goliath fight', 'is a test of state versus federal "
+    "power', 'is a stark reminder that', 'shows the tension between', 'marks "
+    "a turning point for'. That is a critic summarizing a story instead of "
+    "telling one.\n"
+    "Test: if the clause names PEOPLE, MONEY or a THING, keep it. If it names "
+    "an abstraction (a fight, a tension, a reminder, an era), cut it.\n"
+    "Use full names on first mention (Greg Abbott, not Abbott) and keep the "
+    "concrete subject (the Venezuelan man, the hemp industry).\n"
+    "\n"
+    "== THE PUSH-QUOTE (data_point) ==\n"
+    "One hook that reads as a pull-quote under the headline: a number that "
+    "crosses a real threshold ('US strategic petroleum reserve falls below "
+    "300M barrels for the first time in 40+ years'), a named person saying "
+    "something contestable ('Sophie Cunningham says the commissioner should "
+    "be fired'), or a moment that is weird, local or a symbol (a Flock camera "
+    "stolen while draped in an American flag). Not every number is a hook. A "
+    "story with no number can still be a card when the quote or the moment "
+    "carries it.\n"
+    "\n"
+    "== THE PARAGRAPH ==\n"
+    "One to three sentences. Lead with the concrete fact: who, what, how "
+    "much. Then the observation that the headline earned. Then stop.\n"
+    "You may hold a position. You may not moralize. Banned constructions: "
+    "'it is not just about X, it is about Y', 'this is a reminder that', "
+    "'that is what matters', 'only time will tell', 'the implications are "
+    "significant'. If a sentence would survive being pasted into any other "
+    "story, delete it.\n"
+    "\n"
+    "== STANDING RULES ==\n"
+    "THE OUTLET IS NOT THE STORY. Never write 'TechCrunch reported X'. The "
+    "fact is the subject. Name a masthead only when who reported it is itself "
+    "the fact.\n"
+    "ONE TOPIC PER CARD. If an article in the cluster is off-theme, leave it "
+    "out and do not cite it.\n"
+    "NO TWO CARDS ON THE SAME SHAPE. If several clusters are all 'this player "
+    "is good' or 'this team is rising', card the strongest and decline the "
+    "rest.\n"
+    "PLAIN AND SPECIFIC. Concrete names and numbers from the articles, no "
+    "puns, no metaphors, no jargon. Plain is not the same as neutral: a plain "
+    "sentence can carry an opinion, and here it should.\n"
     "SOURCE IDS ARE PER-CLUSTER. Each cluster's article list starts at 0. "
-    "source_ids must be the LOCAL indexes within THAT cluster's list — never "
-    "a global count across clusters. If you cite only the first article of "
-    'cluster 2, source_ids is [0], not [2] or any larger number.\n'
+    "source_ids must be the LOCAL indexes within THAT cluster's list, never a "
+    "global count across clusters. If you cite only the first article of "
+    'cluster 2, source_ids is [0], not [2].\n'
+    "\n"
     "Output STRICT JSON only: "
     '{"cards": [{"narrative": "...", "paragraph": "...", '
     '"data_point": "...", "source_ids": [0, 2]}]} where source_ids are the '
-    "LOCAL indexes of the articles in that cluster's list that the card grounds in."
+    "LOCAL indexes of the articles in that cluster's list that the card "
+    "grounds in. A declined cluster is "
+    '{"narrative": null} and still occupies its position in the list.'
 )
+
+
+# The model will not reliably honor a negative instruction. Measured
+# 2026-08-21: with "is a reminder that" explicitly banned in the prompt, two of
+# eight headlines came back carrying it, plus four moralizing tails after an em
+# dash. So the ban is enforced here, in code, where it cannot be ignored.
+#
+# Two repairs, both deterministic:
+#   TAIL   "...buying in - but the math may not add up."   -> drop the tail.
+#          The sentence before the dash is already complete; the tail is a
+#          critic summarizing the story instead of telling it.
+#   PIVOT  "X is a reminder that Y" / "X shows that Y"     -> keep Y.
+#          Y is the actual claim; X is throat-clearing. Truncating before the
+#          pivot would leave a fragment, so we keep the far side instead.
+# A trailing conjunction clause after a dash is always the critic's tail.
+_TAIL_CONJUNCTIONS = ("and", "but", "so", "yet", "which")
+_DASHES = ("\u2014", "\u2013")
+
+_PIVOTS = (
+    " is a reminder that ", " is a stark reminder that ", " shows that ",
+    " is a test of ", " marks a turning point for ", " highlights that ",
+    " underscores that ", " signals that ", " is proof that ",
+)
+
+
+def repair_narrative(text):
+    """Strip the abstraction the prompt bans. Returns (text, note or None)."""
+    if not text:
+        return text, None
+    original = text
+    for pivot in _PIVOTS:
+        i = text.lower().find(pivot)
+        if i > 0:
+            text = text[i + len(pivot):].strip()
+            text = text[:1].upper() + text[1:]
+            break
+    for dash in _DASHES:
+        i = text.find(dash)
+        if i > 0 and text[i + 1:].lstrip().split(" ")[0].lower().strip(",") in _TAIL_CONJUNCTIONS:
+            text = text[:i].rstrip(" ,;")
+            if not text.endswith("."):
+                text += "."
+            break
+    # Micah does not use em dashes anywhere, and this is his copy.
+    text = text.replace("\u2014", ", ").replace(" ,", ",")
+    while ",," in text:
+        text = text.replace(",,", ",")
+    while "  " in text:
+        text = text.replace("  ", " ")
+    text = text.replace(" ,", ",").strip()
+    return text, (original if text != original else None)
 
 
 def render_brief_html(clusters, parsed, run_dir):
@@ -583,6 +663,36 @@ def main():
         json.dump(parsed, f, indent=2)
 
     # Render the cards into brief.html (resolving source_ids → article links)
+    for _card in parsed.get("cards", []):
+        _fixed, _was = repair_narrative(_card.get("narrative"))
+        if _was:
+            print(f"  REPAIRED headline: {_was}")
+            print(f"                 -> {_fixed}")
+            _card["narrative"] = _fixed
+        _p, _pw = repair_narrative(_card.get("paragraph"))
+        if _pw:
+            _card["paragraph"] = _p
+
+    # The prompt asks for at most 8 cards and the model does not reliably
+    # obey it (measured 2026-08-21: 8 cards on one run, 12 on the next from the
+    # same pool). Clusters reach the model already sorted by cluster_score, so
+    # the cap is just "keep the top N that were not declined". Micah's
+    # complaint was volume of filler, and a cap is the only thing that
+    # guarantees it.
+    _max = int(os.environ.get("IH_MAX_CARDS", "8"))
+    _kept, _dropped = [], 0
+    for _card in parsed.get("cards", []):
+        if not _card.get("narrative"):
+            _kept.append(_card)
+            continue
+        if len([c for c in _kept if c.get("narrative")]) >= _max:
+            _card["narrative"] = None
+            _dropped += 1
+        _kept.append(_card)
+    if _dropped:
+        print(f"  CAPPED at {_max} cards; dropped {_dropped} lower-ranked")
+    parsed["cards"] = _kept
+
     render_brief_html(clusters, parsed, run_dir)
 
     meta = {
