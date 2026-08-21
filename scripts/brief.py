@@ -90,7 +90,8 @@ def strip_html(s):
 
 
 def bucket_for(article):
-    text = f"{article.get('title','')} {article.get('summary','')}".lower()
+    # Use title + summary + full body (when present) for theming.
+    text = f"{article.get('title','')} {article.get('summary','')} {article.get('_body','')}".lower()
     text = strip_html(text)
     for bucket in BUCKETS:
         if not bucket["keywords"]:
@@ -110,6 +111,39 @@ def _kw_match(keyword, text):
 
 def title_clean(title):
     return strip_html(title or "").strip()
+
+
+def _detail_from_body(body, max_chars=220):
+    """Pull the strongest single sentence from an article body:
+    1) a sentence with a hard number ($, %, millions, stats)
+    2) otherwise a quote (someone saying something)
+    3) otherwise the first substantive sentence."""
+    if not body:
+        return ""
+    # Clean entities & split into sentences
+    clean = strip_html(body)
+    clean = clean.replace("&#8217;", "'").replace("&#8220;", '"').replace("&#8221;", '"')
+    clean = clean.replace("&#8230;", "...").replace("&amp;", "&")
+    sents = re.split(r"(?<=[.!?])\s+", clean)
+
+    # Pass 1: number-bearing sentence (concrete fact)
+    for s in sents:
+        if re.search(r"\$\s?\d|million|billion|\d+%|percent|\d+(\.\d+)?\s?(bn|m)\b", s):
+            s = s.strip()
+            if 40 <= len(s) <= max_chars:
+                return s
+    # Pass 2: a quote
+    for s in sents:
+        if '"' in s or "“" in s or "said" in s or "told" in s:
+            s = s.strip()
+            if 40 <= len(s) <= max_chars:
+                return s
+    # Pass 3: first long sentence
+    for s in sents:
+        s = s.strip()
+        if 60 <= len(s) <= max_chars:
+            return s
+    return ""
 
 
 def make_brief(articles, top_n=16, buckets_per_brief=5, stories_per_bucket=2):
@@ -145,6 +179,11 @@ def make_brief(articles, top_n=16, buckets_per_brief=5, stories_per_bucket=2):
         lines.append(f"{emoji} **{name}** — {lead_line} ({lead_src})")
         if hook:
             lines.append(f"   _{hook}_")
+
+        # When we have full article text, add the strongest fact/quote.
+        detail = _detail_from_body(lead.get("_body", ""))
+        if detail:
+            lines.append(f"   ▸ {detail}")
 
         others = [a for a in entry["articles"] if a is not lead]
         for a in others[:stories_per_bucket - 1]:
@@ -199,32 +238,37 @@ def _render_html(md, data):
             continue
         g = lead_match.groupdict()
         hook = ""
+        detail = ""
         bullets = []
         for line in lines[1:]:
             s = line.strip()
             if s.startswith("_") and s.endswith("_") and not hook:
                 hook = s[1:-1]
+            elif s.startswith("▸") and not detail:
+                detail = s[1:].strip()
             elif s.startswith("·"):
                 bullets.append(s[1:].strip())
-        blocks.append((g["emoji"], g["name"], g["title"], g["src"], hook, bullets))
+        blocks.append((g["emoji"], g["name"], g["title"], g["src"], hook, detail, bullets))
 
     # Need links: look up title → link from articles
     title_to_link = {a.get("title", ""): a.get("link", "#") for a in data["articles"]}
 
     cards = []
-    for emoji, name, title, src, hook, bullets in blocks:
+    for emoji, name, title, src, hook, detail, bullets in blocks:
         link = title_to_link.get(title, "#")
         bullets_html = "".join(
             f'<li><a href="{title_to_link.get(_extract_title(b), "#")}" target="_blank" rel="noopener">{_md_inline(_extract_title(b))}</a></li>'
             for b in bullets
         )
         hook_html = f'<p class="brief-hook">{_md_inline(hook)}</p>' if hook else ""
+        detail_html = f'<p class="brief-detail">▸ {_md_inline(detail)}</p>' if detail else ""
         cards.append(f"""
     <article class="brief-card">
       <div class="brief-head"><span class="brief-emoji">{emoji}</span><h3 class="brief-name">{_md_inline(name)}</h3></div>
       <h4 class="brief-lead"><a href="{link}" target="_blank" rel="noopener">{_md_inline(title)}</a></h4>
       <div class="brief-src">{_md_inline(src)}</div>
       {hook_html}
+      {detail_html}
       <ul class="brief-list">{bullets_html}</ul>
     </article>""")
 
@@ -253,6 +297,7 @@ def _render_html(md, data):
   .brief-lead a:hover {{ color:var(--gold-dark); }}
   .brief-src {{ font-size:.7rem; color:var(--ink-muted); text-transform:uppercase; letter-spacing:.04em; margin-bottom:.5rem; }}
   .brief-hook {{ font-size:.9rem; line-height:1.5; color:var(--ink-light); font-style:italic; margin-bottom:.5rem; }}
+  .brief-detail {{ font-size:.85rem; line-height:1.5; color:var(--ink); margin-bottom:.5rem; padding-left:.9rem; border-left:2px solid var(--gold); }}
   .brief-list {{ list-style:none; padding-left:0; margin-top:.25rem; }}
   .brief-list li {{ font-size:.85rem; line-height:1.5; color:var(--ink-light); padding:.15rem 0 .15rem 1.1rem; position:relative; }}
   .brief-list li::before {{ content:'·'; position:absolute; left:0; color:var(--gold-dark); }}

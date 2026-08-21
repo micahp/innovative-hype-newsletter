@@ -22,6 +22,13 @@ import ssl
 import time
 import urllib.request
 import urllib.error
+
+# Optional: full-article fetch for teaser-only feeds. Imported lazily so the
+# aggregator still works if trafilatura isn't installed.
+try:
+    import trafilatura
+except ImportError:
+    trafilatura = None
 from datetime import datetime, timezone
 
 CORPUS = os.path.join(os.path.dirname(__file__), "..", "corpus")
@@ -182,6 +189,9 @@ RECENCY_HALF_LIFE_HOURS = 36
 # How many top stories to flag.
 TOP_N = 7
 
+# How many top-scored stories get full-text fetched (teaser-only feeds).
+FETCH_BODY_TOP_N = 15
+
 def _match_count(text, patterns):
     """Count distinct patterns found in text (word-boundary regex)."""
     low = text.lower()
@@ -281,6 +291,10 @@ def _to_articles(entries, feed_config):
         link = entry.get("link", "#")
         summary = entry.get("summary", "")[:300]
         published = entry.get("published", "")
+        # Full text from content:encoded when the feed ships it (MIT TR,
+        # Front Office Sports, Ars Technica, Verge). Stored as _body for
+        # theming/briefs; stripped of HTML, capped at 6000 chars.
+        body = _extract_body(entry)
         articles.append({
             "title": title,
             "link": link,
@@ -288,8 +302,24 @@ def _to_articles(entries, feed_config):
             "source": feed_config["name"],
             "category": feed_config["category"],
             "published": published,
+            "_body": body,
         })
     return articles
+
+
+def _extract_body(entry):
+    """Pull full text from feedparser content fields, strip HTML, cap size."""
+    html = ""
+    for c in entry.get("content", []):
+        v = c.get("value", "")
+        if len(v) > len(html):
+            html = v
+    if not html:
+        html = entry.get("summary", "")
+    text = re.sub(r"<[^>]+>", " ", html)
+    text = re.sub(r"<script.*?</script>", " ", text, flags=re.S | re.I)
+    text = re.sub(r"\s+", " ", text).strip()
+    return text[:6000]
 
 
 def main():
@@ -368,6 +398,34 @@ def main():
         cat_count[cat] = cat_count.get(cat, 0) + 1
     for a in all_articles:
         a["top"] = id(a) in top_ids
+
+    # === Full article text for the top stories ===
+    # Feeds with content:encoded already have _body. For teaser-only feeds
+    # (TechCrunch, CNBC, OpenAI, Economist, etc.) fetch the page via
+    # trafilatura — only for the top-scored stories, throttled, so we don't
+    # hammer every source on every run.
+    if trafilatura is not None:
+        top_candidates = [a for a in all_articles if not a["_noise"]]
+        top_candidates.sort(key=lambda x: -x.get("_score", 0))
+        fetched = 0
+        for a in top_candidates[:FETCH_BODY_TOP_N]:
+            # Skip stories that already have real body text
+            if len(a.get("_body", "").strip()) >= 400:
+                continue
+            link = a.get("link", "")
+            if not link or link == "#":
+                continue
+            try:
+                dl = trafilatura.fetch_url(link)
+                txt = trafilatura.extract(dl) if dl else None
+                if txt and len(txt.strip()) >= 200:
+                    a["_body"] = re.sub(r"\s+", " ", txt).strip()[:6000]
+                    fetched += 1
+                    print(f"  BODY {a['source']}: {a['title'][:50]}... ({len(a['_body'])} chars)")
+            except Exception as e:
+                print(f"  SKIP {a['source']}: {e}")
+            time.sleep(0.5)  # polite throttle
+        print(f"Fetched full text for {fetched} top stories")
 
     output = {
         "updated": datetime.now(timezone.utc).isoformat(),
