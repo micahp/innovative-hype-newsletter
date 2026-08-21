@@ -578,14 +578,16 @@ function renderTopCard(article, rank) {
 function renderTopSection(articles, ranking) {
   const grid = document.getElementById('topGrid');
   const label = document.getElementById('topAlgoLabel');
-  const tops = articles.filter(a => a.top);
+  // Rank order = score desc, so "Top N" labels match the real ranking.
+  const tops = articles
+    .filter(a => a.top)
+    .sort((a, b) => (b._score || 0) - (a._score || 0))
+    .slice(0, 7);
   if (tops.length === 0) {
     grid.innerHTML = '';
     return;
   }
-  // Keep the hero story out of the top grid (it's already the lead).
-  const rest = tops.slice(0, 7);
-  grid.innerHTML = rest.map((a, i) => renderTopCard(a, i + 1)).join('');
+  grid.innerHTML = tops.map((a, i) => renderTopCard(a, i + 1)).join('');
   if (ranking && ranking.name) {
     label.textContent = `ranked · ${ranking.name.replace(/_/g, ' ')}`;
   }
@@ -609,7 +611,9 @@ function renderSections(articles) {
   
   const grouped = {};
   CATEGORY_ORDER.forEach(c => { grouped[c] = []; });
-  articles.forEach(a => {
+  // Score desc: the highest-ranked story leads each category grid.
+  const ranked = [...articles].sort((a, b) => (b._score || 0) - (a._score || 0));
+  ranked.forEach(a => {
     if (grouped[a.category]) grouped[a.category].push(a);
   });
 
