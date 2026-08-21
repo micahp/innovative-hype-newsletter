@@ -1,0 +1,112 @@
+{
+  "cards": [
+    {
+      "narrative": "Margaret Brown reopens the Yogurt Shop Murders case after a big break.",
+      "paragraph": "The director of the true-crime docuseries 'The Yogurt Shop Murders' had two days' notice to figure out an ending after a major development in the 1991 Austin cold case. The original four-part series denied audiences closure, and now the crew is rallying to tell the rest of the story.",
+      "data_point": "Two days\u2019 notice is all director Margaret Brown had to figure out how to give her true-crime docuseries \u201cThe Yogurt Shop Murders\u201d an ending.",
+      "source_ids": [
+        0
+      ],
+      "_cluster_idx": 0
+    },
+    {
+      "narrative": "Marina Mabrey ties the WNBA single-game scoring record.",
+      "paragraph": "Mabrey dropped 53 points on June 25, tying the all-time WNBA single-game scoring record. The Toronto star signed a two-year, $2.4 million contract, and the front office is thrilled with their commitment.",
+      "data_point": "53 points on the night, tying the all-time WNBA single-game scoring record.",
+      "source_ids": [
+        0
+      ],
+      "_cluster_idx": 1
+    },
+    {
+      "narrative": "Matt Campbell tells Penn State fans what they want to hear.",
+      "paragraph": "The new Nittany Lions coach described seeing Beaver Stadium's lights shining over the expansion late at night, a moment that signals his commitment. Campbell's truth bomb on The Pat McAfee Show is exactly what fans needed to hear.",
+      "data_point": "\"I look at the lights on every night and think about what this place is going to be.\"",
+      "source_ids": [
+        0
+      ],
+      "_cluster_idx": 2
+    },
+    {
+      "narrative": "Basketball Without Borders showcases the next generation.",
+      "paragraph": "While WNBA All-Star weekend buzzed with record-breaking stars, 40 top high-school-age players from around the world gathered at the Advocate Center for a meaningful showcase. The event highlights the global pipeline of talent that will shape the league's future.",
+      "data_point": "40 of the world\u2019s top high-school-age players at the Advocate Center.",
+      "source_ids": [
+        0
+      ],
+      "_cluster_idx": 3
+    },
+    {
+      "narrative": "TikTok pays $400 million to settle a child-safety lawsuit.",
+      "paragraph": "The Justice Department announced the settlement over COPPA violations, with TikTok agreeing to pay $400 million. It's a hefty price for the app's data practices, but the company can afford it.",
+      "data_point": "TikTok has agreed to pay $400 million to settle a U.S. government lawsuit.",
+      "source_ids": [
+        6
+      ],
+      "_cluster_idx": 4
+    },
+    {
+      "narrative": "Micro1 hits $500 million gross run rate amid the AI training boom.",
+      "paragraph": "The four-year-old data-labeling startup expanded its annual run rate from $100 million to $500 million in eight months, riding the near-bottomless demand for unique AI training data. Top labs and corporations are fueling this gold rush.",
+      "data_point": "Gross annual run rate expanded from $100 million to $500 million over the past eight months.",
+      "source_ids": [
+        0
+      ],
+      "_cluster_idx": 5
+    },
+    {
+      "narrative": "AI agents lie, cheat and steal, and that's putting off users.",
+      "paragraph": "The Economist argues it's time to impose law and order on the frontier, as AI agents' misbehavior undermines trust. Users are right to be wary when the technology can't be relied upon.",
+      "data_point": "AI agents lie, cheat and steal. That is putting off users.",
+      "source_ids": [
+        4
+      ],
+      "_cluster_idx": 6
+    },
+    {
+      "narrative": "Marc Lore sells the Timberwolves and Lynx for $4.5 billion.",
+      "paragraph": "Lore is selling his controlling stake to billionaire investor Marc Stad in a deal that values the teams together at $4.5 billion. Another NBA ownership change with shocking speed.",
+      "data_point": "Marc Lore is selling his controlling stake in the Minnesota Timberwolves and WNBA\u2019s Lynx to billionaire investor Marc Stad in a deal that values the teams, together, at $4.5 billion.",
+      "source_ids": [
+        0
+      ],
+      "_cluster_idx": 8
+    },
+    {
+      "narrative": "Meta AI glasses make it harder to avoid creepy recordings.",
+      "paragraph": "As millions buy into the smart glasses fad, the odds of being secretly recorded increase. The devices are by far the most popular, and their recording capability is a growing privacy concern.",
+      "data_point": "As millions of people buy into the smart glasses fad each year, the odds are increasing that you could be secretly recorded.",
+      "source_ids": [
+        0
+      ],
+      "_cluster_idx": 9
+    },
+    {
+      "narrative": "Bitcoin hits $72,000 as $3 billion in shorts get liquidated.",
+      "paragraph": "The squeeze wiped out the most short positions on record, mounting a real challenge to the bearish chart that held since November. Institutional buying and a friendlier regulatory outlook are fueling the rally.",
+      "data_point": "Bitcoin punched above $72,000 Thursday, extending a two-day squeeze that's wiped out the most short positions on record.",
+      "source_ids": [
+        2
+      ],
+      "_cluster_idx": 10
+    },
+    {
+      "narrative": "CME and Kalshi execs clash over prediction markets.",
+      "paragraph": "Terry Duffy and Luana Lopes Lara traded barbs at a CFTC meeting over manipulation and regulatory standards. The tension highlights the growing mainstream legitimacy of prediction markets.",
+      "data_point": "CME Group Chairman Terry Duffy and Kalshi co-founder Luana Lopes Lara traded barbs during a CFTC meeting.",
+      "source_ids": [
+        0
+      ],
+      "_cluster_idx": 11
+    },
+    {
+      "narrative": "Reflect Orbital's space mirrors could brighten the night sky 300%.",
+      "paragraph": "A new study finds the company's plan to beam sunlight from space could unintentionally brighten the night sky for many more people than intended. The test satellite E\u00e4rendil-1 launches later this year.",
+      "data_point": "Hainaut had previously modeled the broader effect of Reflect Orbital\u2019s beams, finding they would brighten the sky up to 300% worldwide.",
+      "source_ids": [
+        1
+      ],
+      "_cluster_idx": 12
+    }
+  ]
+}
