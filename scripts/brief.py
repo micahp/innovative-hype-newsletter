@@ -351,11 +351,17 @@ def _moment_from_article(article):
 # corpora. An article touching one of these gets a boost — the voice is
 # the seed list, exactly like LP's human-dictated conversation seeds.
 _TWEET_SEEDS = [
+    # Micah's explicit named stories (from the 2026-08-21 spec conversation)
+    # — these get a boost whenever they appear, because he asked for them
+    # directly. 'college football', 'wnba draft', '40-year-old', 'all of the
+    # lights', 'commissioner' are his own words.
     "flock", "kalshi", "polymarket", "prediction market", "texas", "austin",
-    "wnba", "nba", "ncaa", "longhorns", "messi", "soccer", "promotion",
-    "relegation", "oatmeal", "zuckerberg", "meta", "tiktok", "marijuana",
-    "cannabis", "surveillance", "privacy", "sovereignty", "media",
-    "ownership", "creator", "royalt", "fireworks", "kanye", "wnba draft",
+    "wnba", "nba", "ncaa", "college football", "longhorns", "messi", "soccer",
+    "promotion", "relegation", "oatmeal", "zuckerberg", "castle", "meta",
+    "tiktok", "marijuana", "cannabis", "surveillance", "privacy", "sovereignty",
+    "media", "ownership", "creator", "royalt", "fireworks", "kanye",
+    "all of the lights", "wnba draft", "commissioner", "40-year-old",
+    "data center", "kushner", "palantir", "elon", "cursor", "blue origin",
 ]
 
 

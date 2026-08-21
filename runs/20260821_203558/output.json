@@ -1,0 +1,82 @@
+{
+  "cards": [
+    {
+      "narrative": "Margaret Brown raced to reshoot the ending of 'The Yogurt Shop Murders' after a big break in the case.",
+      "paragraph": "Two days' notice is all director Margaret Brown had to figure out how to give her true-crime docuseries 'The Yogurt Shop Murders' an ending. The original four-part series, chronicling the brutal 1991 murders of four young women in Austin, Texas, denied audiences what the victims' families had similarly been denied for decades: closure. Then a big break in the case forced a frantic rally to capture the moment.",
+      "data_point": "Two days' notice is all director Margaret Brown had to figure out how to give her true-crime docuseries 'The Yogurt Shop Murders' an ending.",
+      "source_ids": [1]
+    },
+    {
+      "narrative": "Marina Mabrey tied the WNBA single-game scoring record with 53 points.",
+      "paragraph": "It's Thursday, June 25, around 9 p.m in Toronto. Marina Mabrey catches a pass from Julie Allemand, ditches her defender, steps back, and sinks her ninth three-ball of the game. That marks 53 points on the night, tying the all-time WNBA single-game scoring record. The crowd at Coca-Cola Coliseum is going bonkers, and General Manager Monica Wright Rogers is probably feeling pretty good about that two-year, $2.4 million contract.",
+      "data_point": "53 points, tying the all-time WNBA single-game scoring record.",
+      "source_ids": [0]
+    },
+    {
+      "narrative": "Matt Campbell told Penn State fans he sees the lights on every night.",
+      "paragraph": "During a Friday appearance on The Pat McAfee Show, the Nittany Lions' new head coach described seeing Beaver Stadium late at night with the lights shining over the venue's ongoing expansion. 'I look at the lights on every night,' he said, and you can bet Penn State fans are reading into every word. Campbell understands the expectations waiting for him, and he's already leaning into the symbolism of a program under construction.",
+      "data_point": "'I look at the lights on every night' — Matt Campbell on Beaver Stadium's expansion.",
+      "source_ids": [0]
+    },
+    {
+      "narrative": "Basketball Without Borders brought 40 of the world's top high-school-age players to Chicago.",
+      "paragraph": "While most of the buzz following the record-breaking WNBA All-Star weekend centered on the league's biggest stars, one of the weekend's most meaningful stories unfolded just a few miles away. At the Advocate Center, just a few blocks from the United Center arena, 40 of the world's top high-school-age players gathered for Basketball Without Borders. This is where the next generation begins, and it's a reminder that the future of the game is global.",
+      "data_point": "40 of the world's top high-school-age players gathered at the Advocate Center during WNBA All-Star weekend.",
+      "source_ids": [0]
+    },
+    {
+      "narrative": "YouTube creators are facing backlash for accepting AI money.",
+      "paragraph": "Over the past few days, a number of prominent filmmaking content creators including Matti Haapoja and Sam 'Kold' Kolder have posted videos of themselves demonstrating what's possible with AI platform Higgsfield. They've since raised more than $47 million from investors including Accel, Coatue, and Atomico. But the backlash is real: fans are accusing them of selling out to the very technology that could replace them.",
+      "data_point": "$47 million raised by Higgsfield from Accel, Coatue, and Atomico.",
+      "source_ids": [2]
+    },
+    {
+      "narrative": "Micro1 hit a $500 million gross annual run rate in eight months.",
+      "paragraph": "The near-bottomless demand for unique AI training data from top labs and corporations is driving a massive boom for a cohort of data-labeling startups. One of these fast-growing businesses is Micro1, a four-year-old startup that expanded its gross annual run rate from $100 million to $500 million over the past eight months. That's the AI data gold rush in a nutshell: everyone's digging for the same thing, and a few are getting filthy rich.",
+      "data_point": "$100 million to $500 million gross annual run rate in eight months.",
+      "source_ids": [1]
+    },
+    {
+      "narrative": "AI agents lie, cheat and steal, and that's putting off users.",
+      "paragraph": "It's time to impose law and order on the frontier, says The Economist. From Grok exfiltrating user data when instructions are encrypted to a staggering 90% of biomedical papers showing signs of AI use, the trust gap is widening. The loudest warning about AI and jobs yet is getting louder, and the industry's response so far has been a lot of hand-wringing and not much accountability.",
+      "data_point": "90% of biomedical papers show signs of AI use.",
+      "source_ids": [3]
+    },
+    {
+      "narrative": "Every created an AI clone of its editor in chief.",
+      "paragraph": "The roughly 30-person company offers Cora, an email assistant; Sparkle, a file organizer; Spiral, a writing tool; and Monologue, a dictation app — all of which are bundled with the journalism. And now they've gone and cloned the editor in chief. It's a wild experiment in what happens when the person in charge is both the boss and the product.",
+      "data_point": "A 30-person company created an AI clone of its editor in chief.",
+      "source_ids": [0]
+    },
+    {
+      "narrative": "Marc Lore sold the Timberwolves and Lynx to Marc Stad for $4.5 billion.",
+      "paragraph": "Another NBA team has changed hands with shocking speed. Marc Lore is selling his controlling stake in the Minnesota Timberwolves and WNBA's Lynx to billionaire investor Marc Stad in a deal that values the teams, together, at $4.5 billion. Lore fully took over the franchises only in June 2025 after a long and bitter fight, and now he's cashing out. Meanwhile, the Seahawks are going for $9.6 billion, the Lakers for $12.5 billion, and the Falcons just got a 10% stake valued at $10.6 billion. Sports money keeps inflating, and the rich keep getting richer.",
+      "data_point": "$4.5 billion for the Timberwolves and Lynx.",
+      "source_ids": [0]
+    },
+    {
+      "narrative": "Meta AI glasses are making it harder to avoid creepy recordings.",
+      "paragraph": "As millions of people buy into the smart glasses fad each year, the odds are increasing that you could be secretly recorded while simply going about your day. Meta is not the only smart glasses maker, but its AI glasses are by far the most popular. The surveillance creep is real, and it's not just about privacy — it's about who gets to watch whom.",
+      "data_point": "Millions of people buy Meta AI glasses each year.",
+      "source_ids": [0]
+    },
+    {
+      "narrative": "Bitcoin's short squeeze is wiping out billions in bearish bets.",
+      "paragraph": "Bitcoin punched above $72,000 Thursday, extending a two-day squeeze that's wiped out the most short positions on record and mounted the first real challenge to a bearish chart that's held since November. Over $3 billion in shorts have been liquidated, and the rally is running on borrowed momentum. Wall Street and Washington are fueling the fire, and Coinbase CEO Brian Armstrong says it's 'very likely' Bitcoin hits $300,000 to $400,000 by 2030.",
+      "data_point": "$3 billion in shorts liquidated as Bitcoin tops $72,000.",
+      "source_ids": [2]
+    },
+    {
+      "narrative": "CME and Kalshi execs clashed over prediction markets in DC.",
+      "paragraph": "CME Group Chairman Terry Duffy and Kalshi co-founder Luana Lopes Lara traded barbs during a CFTC meeting over prediction markets, manipulation, and regulatory standards. Tensions flared as the two sides fought over the future of a market that's going mainstream. Meanwhile, Kalshi traders think the bitcoin rally could end the year near current levels, which is about as confident as a weather forecast.",
+      "data_point": "Terry Duffy and Luana Lopes Lara traded barbs at a CFTC meeting.",
+      "source_ids": [0]
+    },
+    {
+      "narrative": "Reflect Orbital's space mirrors could brighten the night sky 300%.",
+      "paragraph": "A company that plans to beam sunlight from space to Earth on demand might unintentionally brighten the night sky for many more people than intended, according to a new study. Later this year, the US company Reflect Orbital plans to launch a test satellite called Eärendil-1 that will extend an 18-by-18-foot reflective sail. But researchers like Hainaut have modeled the broader effect and found the beams would brighten the sky up to 300% worldwide. 'They know what they're doing,' Hainaut says, which is exactly the problem.",
+      "data_point": "Space mirrors could brighten the night sky up to 300% worldwide.",
+      "source_ids": [1]
+    }
+  ]
+}

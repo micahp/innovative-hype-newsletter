@@ -1,5 +1,5 @@
 # INNOVATIVE HYPE — BRIEF
-_Generated 2026-08-21 19:15 UTC · 36/55 feeds · 558 articles_
+_Generated 2026-08-21 20:32 UTC · 31/55 feeds · 495 articles_
 
 ## Can we trust the machines we're building?
 
@@ -8,26 +8,26 @@ _Generated 2026-08-21 19:15 UTC · 36/55 feeds · 558 articles_
 - Binance Opens the Door to AI Agents That Can Trade Crypto for You (Decrypt)
 - The Download: threats from space mirrors and credit for AI drugs (MIT Technology Review)
 
-## Cities, housing and where America lives
-_[Sign up for RedRaiderSports now and get a full year for just $29.99, only $2.49/month!] No._
-
-- 15 Days Until Kickoff: Will Hammond & Austin Romaine (On3)
-- 2027 NFL Draft: ESPN ranks top college quarterback prospects in class by tiers (On3)
-- Texas Parks and Wildlife commissioners inundated with border wall concerns during annual meeting (Texas Tribune)
-
 ## The AI data layer is printing money
+_Once that window closes, your chance to save up to $300 on your pass, or get an even larger discount on group pricing, will come to an end._
 
-
+- Last chance: Save up to $300 on your TechCrunch Disrupt 2026 ticket today (TechCrunch)
 - AI data startup Micro1 reaches $500M gross run rate amid AI training boom (TechCrunch)
 - Import AI 467: Self-sustaining AI viruses; pacing AI progress; confusion about AI and creativity (Import AI)
-- Superintelligence is a dragon (Platformer)
 
 ## The creator economy is consolidating
 
 
+- LISTEN: Amazon Courts Creators to Build Businesses and Scale the Attention Economy for Brands (Variety)
 - HBO Max Officially Orders Jimmy Olsen Series, ‘The People v. Gorilla Grodd’ (Hollywood Reporter)
 - Major YouTube creators are facing backlash for accepting AI money (The Verge AI)
-- The case for making your own apps (Platformer)
+
+## Cities, housing and where America lives
+
+
+- ‘The Yogurt Shop Murders’ Crew Thought Their Journey Was Done Until There Was a Big Break in the Case: ‘We Have to Rally Now’ (Variety)
+- Texas Parks and Wildlife commissioners inundated with border wall concerns during annual meeting (Texas Tribune)
+- Amazon aims for delivery drones to reach 500 US neighborhoods by end of 2026 (Ars Technica)
 
 ## Media power and who owns it
 _The roughly 30-person company offers Cora , an email assistant; Sparkle , a file organizer; Spiral , a writing tool; and Monologue , a dictation app &#x2014; all of which are bundled with the journalism into a $20-a-month subscription._
