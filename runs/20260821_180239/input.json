@@ -1,0 +1,1249 @@
+{
+  "clusters": [
+    {
+      "name": "The AI data gold rush",
+      "voice_weight": 1.0,
+      "items": [
+        {
+          "title": "AI data startup Micro1 reaches $500M gross run rate amid AI training boom",
+          "source": "TechCrunch",
+          "link": "https://techcrunch.com/2026/08/20/ai-data-startup-micro1-reaches-500m-gross-run-rate-amid-ai-training-boom/",
+          "points": [
+            "One of these fast-growing businesses is Micro1, a four-year-old startup that expanded its gross annual run rate from $100 million to $500 million over the past eight months, according to a person familiar with the company.",
+            "Like its peers that hire domain experts such as doctors, lawyers, and scientists on a contract basis, Micro1 retains roughly 60% to 70% of that figure, putting its net annual run rate between $150 million and $200 million.",
+            "Additionally, some of the data it generates can be sold to multiple customers, driving gross margins for this \u201coff-the-shelf\u201d data as high as 80% to 90%, a person familiar with the startup\u2019s finances told TechCrunch."
+          ],
+          "body_excerpt": "The near-bottomless demand for unique AI training data from top labs and corporations is driving a massive boom for a cohort of data-labeling startups. One of these fast-growing businesses is Micro1, a four-year-old startup that expanded its gross annual run rate from $100 million to $500 million over the past eight months, according to a person familiar with the company. Like its peers that hire domain experts such as doctors, lawyers, and scientists on a contract basis, Micro1 retains roughly 60% to 70% of that figure, putting its net annual run rate between $150 million and $200 million. Wh"
+        },
+        {
+          "title": "Import AI 467: Self-sustaining AI viruses; pacing AI progress; confusion about AI and creativity",
+          "source": "Import AI",
+          "link": "https://importai.substack.com/p/import-ai-467-self-sustaining-ai",
+          "points": [
+            "It's pretty successful at all of these things, with a ~80% success rate on vulnerability detection, then a ~53% success rate on exploiting these, then an 88% self-replication success rate with some pre-wrapped helper tools for the replication steps.",
+            "Therefore, the overall success rate for a full attack here is ~37% or so, which is significant enough to be concerning, but also poor enough that this also serves as a useful eval for testing open weight models in the future.",
+            "If a true human-level software engineer that could run on an H100 equivalent, at current market rates for software engineers, that H100 should rent for over $250k a year."
+          ],
+          "body_excerpt": "Welcome to Import AI, a newsletter about AI research. Import AI runs on arXiv, cappuccinos, and feedback from readers. If you&#8217;d like to support this, please subscribe. Subscribe now Self-sustaining and self-replicating AI viruses are here: &#8230;Open weight LLMs + a well-designed harness = a persistent, self-sufficient virus&#8230; AI researchers have built a prototype computer virus which uses AI models to compromise computers, then uses their underlying GPU resources to run inference, letting it smartly figure out how to infect more hosts. The results were achieved by researchers from"
+        },
+        {
+          "title": "Superintelligence is a dragon",
+          "source": "Platformer",
+          "link": "https://www.platformer.news/zuckerberg-ai-manifesto-dragons/",
+          "points": [
+            "Zuckerberg&#x2019;s essay mentions Meta&#x2019;s $50 billion data center project in Richland Parish, Louisiana, which will one day cover about six square miles and is projected to use seven times as much energy as the entire city"
+          ],
+          "body_excerpt": "This is a column about AI. My fianc&#xe9; works at Anthropic. See&#xa0;my full ethics disclosure here . On Sunday night, HBO aired the third-season finale of House of the Dragon , the stuffy and unrelentingly bleak prequel to Game of Thrones . The show takes place in a world where one great house holds a near-monopoly on a superweapon &#x2014; dragons &#x2014; and thus rules the world. House of the Dragon begins when the ruling dynasty splits and both sides retain access to their dragons, upending the balance of power in Westeros for the first time in generations. In this world, when only one "
+        },
+        {
+          "title": "SpaceX\u2019s orbital data centers would create a new category of e-waste",
+          "source": "Ars Technica",
+          "link": "https://arstechnica.com/science/2026/08/spacexs-orbital-data-centers-would-create-a-new-category-of-e-waste/",
+          "points": [
+            "Given the roughly five-year expected lifetime for data center GPUs, about 200,000 of the 1 million proposed SpaceX AI1 satellites would be decommissioned each year."
+          ],
+          "body_excerpt": "Elon Musk\u2019s talk about maintaining a million-strong AI data center satellite megaconstellation may not exactly be practical or economical , but it might be unique. It\u2019s about the closest we\u2019ve come to confronting a scheme that would export a considerable amount of valuable materials into space. Humans aren\u2019t doing a great job of material sustainability, but normally we\u2019re talking about stuff escaping a recycling pipeline rather than escaping Earth\u2019s gravitational pull . The commercial space sector likes talking about the allure of mining asteroids for precious metals to bring back to Earth. Un"
+        },
+        {
+          "title": "Learning the importance of training data under concept drift",
+          "source": "Google AI Blog",
+          "link": "http://blog.research.google/2024/02/learning-importance-of-training-data.html",
+          "points": [
+            "For instance, on a recent large-scale benchmark for nonstationary learning (~39M photos over a 10 year period), we show up to 15% relative accuracy gains through learned reweighting of training data."
+          ],
+          "body_excerpt": "Posted by Nishant Jain, Pre-doctoral Researcher, and Pradeep Shenoy, Research Scientist, Google Research The constantly changing nature of the world around us poses a significant challenge for the development of AI models. Often, models are trained on longitudinal data with the hope that the training data used will accurately represent inputs the model may receive in the future. More generally, the default assumption that all training data are equally relevant often breaks in practice. For example, the figure below shows images from the CLEAR nonstationary learning benchmark, and it illustrate"
+        },
+        {
+          "title": "Computer-aided diagnosis for lung cancer screening",
+          "source": "Google AI Blog",
+          "link": "http://blog.research.google/2024/03/computer-aided-diagnosis-for-lung.html",
+          "points": [
+            "Posted by Atilla Kiraly, Software Engineer, and Rory Pilgrim, Product Manager, Google Research Lung cancer is the leading cause of cancer-related deaths globally with 1.8 million deaths reported in 2020.",
+            "Lung cancer screening via computed tomography (CT), which provides a detailed 3D image of the lungs, has been shown to reduce mortality in high-risk populations by at least 20% by detecting potential signs of cancers earlier.",
+            "The United States Preventive Services Task Force recently expanded lung cancer screening recommendations by roughly 80% , which is expected to increase screening access for women and racial and ethnic minority groups."
+          ],
+          "body_excerpt": "Posted by Atilla Kiraly, Software Engineer, and Rory Pilgrim, Product Manager, Google Research Lung cancer is the leading cause of cancer-related deaths globally with 1.8 million deaths reported in 2020. Late diagnosis dramatically reduces the chances of survival. Lung cancer screening via computed tomography (CT), which provides a detailed 3D image of the lungs, has been shown to reduce mortality in high-risk populations by at least 20% by detecting potential signs of cancers earlier. In the US, screening involves annual scans, with some countries or cases recommending more or less frequent s"
+        },
+        {
+          "title": "Cappy: Outperforming and boosting large multi-task language models with a small scorer",
+          "source": "Google AI Blog",
+          "link": "http://blog.research.google/2024/03/cappy-outperforming-and-boosting-large.html",
+          "points": [
+            "We introduce a lightweight pre-trained scorer, Cappy, based on continual pre-training on top of RoBERTa with merely 360 million parameters.",
+            "As a result, we obtain an effective regression dataset of 160 million instances paired with correctness score annotations."
+          ],
+          "body_excerpt": "Posted by Yun Zhu and Lijuan Liu, Software Engineers, Google Research Large language model (LLM) advancements have led to a new paradigm that unifies various natural language processing (NLP) tasks within an instruction-following framework. This paradigm is exemplified by recent multi-task LLMs, such as T0 , FLAN , and OPT-IML . First, multi-task data is gathered with each task following a task-specific template, where each labeled example is converted into an instruction (e.g., \" Put the concepts together to form a sentence: ski, mountain, skier \u201d ) paired with a corresponding response (e.g.,"
+        },
+        {
+          "title": "Croissant: a metadata format for ML-ready datasets",
+          "source": "Google AI Blog",
+          "link": "http://blog.research.google/2024/03/croissant-metadata-format-for-ml-ready.html",
+          "points": [],
+          "body_excerpt": "Posted by Omar Benjelloun, Software Engineer, Google Research, and Peter Mattson, Software Engineer, Google Core ML and President, MLCommons Association Machine learning (ML) practitioners looking to reuse existing datasets to train an ML model often spend a lot of time understanding the data, making sense of its organization, or figuring out what subset to use as features. So much time, in fact, that progress in the field of ML is hampered by a fundamental obstacle: the wide variety of data representations. ML datasets cover a broad range of content types, from text and structured data to ima"
+        }
+      ]
+    },
+    {
+      "name": "Sports money keeps inflating",
+      "voice_weight": 0.7,
+      "items": [
+        {
+          "title": "Debates over AI consciousness are a trap",
+          "source": "MIT Technology Review",
+          "link": "https://www.technologyreview.com/2026/08/20/1142571/ai-consciousness-debate-trap/",
+          "points": [],
+          "body_excerpt": "\u201cRunaway\u201d AI, \u201crogue\u201d agents, and \u201cautonomous\u201d actors\u2014the current rhetoric would have you believe that AI agents are not only awake and aware, but angry at their creators. Prominent tech leaders such as Demis Hassabis, Dario Amodei, and Sam Altman push for regulation of these seemingly \u201csuperhuman\u201d systems, while a separate faction, led by policy organizations and academic philosophers often aligned with the effective altruism movement, debates whether humanity holds the moral right to govern them at all.&nbsp; Upon closer inspection, they are all calling for the same thing: a view of AI syste"
+        },
+        {
+          "title": "Learn what VCs actually want, from a founder who\u2019s raised $1B",
+          "source": "TechCrunch",
+          "link": "https://techcrunch.com/video/learn-what-vcs-actually-want-from-a-founder-whos-raised-1b/",
+          "points": [
+            "In this episode of Build Mode, host Isabelle Johannessen sits down with Sasha Orloff, founder and CEO of Puzzle and Startup Battlefield alum, to talk about what he\u2019s learned from building companies that have raised more than $1 billion collectively.",
+            "They get into: - What raising more than $1 billion across multiple companies taught Sasha about fundraising."
+          ],
+          "body_excerpt": "Investors want founders who understand the financial reality of their business. Messy data, misunderstood metrics, or waiting until you\u2019re nearly out of cash to start fundraising can cost founders leverage, valuation, and even a term sheet. In this episode of Build Mode, host Isabelle Johannessen sits down with Sasha Orloff, founder and CEO of Puzzle and Startup Battlefield alum, to talk about what he\u2019s learned from building companies that have raised more than $1 billion collectively. Sasha breaks down what investors look for during fundraising, which financial metrics founders should know by"
+        },
+        {
+          "title": "Marc Lore Sells Wolves in Another NBA Ownership Stunner",
+          "source": "Front Office Sports",
+          "link": "https://frontofficesports.com/marc-lore-sells-timberwolves/",
+          "points": [
+            "Marc Lore is selling his controlling stake in the Minnesota Timberwolves and WNBA\u2019s Lynx to billionaire investor Marc Stad in a deal that values the teams, together, at $4.5 billion.",
+            "The deal under which Lore and Rodriguez acquired the Timberwolves and Lynx valued the teams at $1.5 billion, showing just how much NBA team valuations have risen in a short period of time.",
+            "Most recently, the Lakers stunned the basketball world with Mark Walter\u2019s planned sale of the team to Joshua Kushner and Bob Iger at a $12.5 billion valuation."
+          ],
+          "body_excerpt": "Another NBA team has changed hands with shocking speed. Marc Lore is selling his controlling stake in the Minnesota Timberwolves and WNBA\u2019s Lynx to billionaire investor Marc Stad in a deal that values the teams, together, at $4.5 billion. Lore fully took over the franchises only in June 2025 after a protracted dispute over his own purchase of the team from Glen Taylor. The deal under which Lore and Rodriguez acquired the Timberwolves and Lynx valued the teams at $1.5 billion, showing just how much NBA team valuations have risen in a short period of time. Lore, Stad, and minority owner Alex Rod"
+        },
+        {
+          "title": "Court Hands NCAA Temporary Win in Fifth Year of Eligibility Ruling",
+          "source": "Front Office Sports",
+          "link": "https://frontofficesports.com/class-of-2022-eligibility-paused/",
+          "points": [],
+          "body_excerpt": "Thousands of athletes from the freshman class of 2022 won\u2019t be eligible for a fifth year of NCAA sports\u2014for the time being, according to a new federal court ruling. On Friday, the Tenth Circuit Court ruled to stay the eligibility injunction granted on July 31 by Colorado district court judge Charlotte Sweeney, which allowed a fifth year of eligibility for players who entered college in 2022 but who had already completed four years of eligibility. Now, their extra year of eligibility has been temporarily suspended until the court reaches a final decision on the appeal, which could take weeks or"
+        },
+        {
+          "title": "The Premier League Has a Star-Power Shortage: \u2018More About the Drama\u2019",
+          "source": "Front Office Sports",
+          "link": "https://frontofficesports.com/the-premier-league-has-a-star-power-shortage/",
+          "points": [
+            "In its first season, all 22 clubs were coached by British or Irish managers, and foreigners played fewer than 8% of the league\u2019s total minutes."
+          ],
+          "body_excerpt": "The Premier League continues to cast a shadow over the rest of the world\u2019s soccer leagues. Nine of the 20 biggest clubs by revenue belong to the English league, according to Deloitte . The Premier League makes more from its overseas broadcasting rights alone (\u00a32.1 billion/$2.8 billion a year) than any other league makes from its total broadcast revenue; its clubs generate almost twice as much from ticket sales (\u00a3920 million/$1.2 billion) as its nearest rival, LaLiga in Spain. The Premier League is turning cash into trophies. Its clubs won the Europa League and the Europa Conference League last"
+        },
+        {
+          "title": "Resellers Have US Open Ticket Prices Sky-High, One Week Before Grand Slam",
+          "source": "Front Office Sports",
+          "link": "https://frontofficesports.com/resellers-have-us-open-ticket-prices-sky-high-one-week-before-grand-slam/",
+          "points": [
+            "The average get-in ticket price to enter the Billie Jean King National Tennis Center for the 2026 US Open main draw is $288 on the secondary market, about 13% more than at the same point last year ($255), according to TicketData .",
+            "13) at Arthur Ashe Stadium is $510\u2014also up 13% from last year.",
+            "One-day grounds pass tickets started for around $65\u2013$135 at face value, depending on the date and time."
+          ],
+          "body_excerpt": "US Open ticket prices remain steep, with the main draw nearly a week away. The average get-in ticket price to enter the Billie Jean King National Tennis Center for the 2026 US Open main draw is $288 on the secondary market, about 13% more than at the same point last year ($255), according to TicketData . The average get-in price for the women\u2019s singles final (Saturday, Sept. 12) and men\u2019s singles final (Sunday, Sept. 13) at Arthur Ashe Stadium is $510\u2014also up 13% from last year. One-day grounds pass tickets started for around $65\u2013$135 at face value, depending on the date and time. Resale price"
+        },
+        {
+          "title": "Key NFL Committees Clear Way for $9.6 Billion Seahawks Sale",
+          "source": "Front Office Sports",
+          "link": "https://frontofficesports.com/key-nfl-committees-clear-way-for-seahawks-sale/",
+          "points": [
+            "Owners on the NFL\u2019s finance and ownership policy committees voted unanimously Wednesday to recommend approval of the league-record $9.612 billion sale of the Seahawks from the Paul G.",
+            "His estimated net worth is $13.3 billion, according to Forbes .",
+            "Under NFL ownership rules, the primary owner must hold at least a 30% ownership stake and the investment group can have no more than 25 members."
+          ],
+          "body_excerpt": "Owners on the NFL\u2019s finance and ownership policy committees voted unanimously Wednesday to recommend approval of the league-record $9.612 billion sale of the Seahawks from the Paul G. Allen estate to a group led by the family of venture capitalist Vinod Khosla. The NFL informed teams Thursday of the unanimous recommendation. It practically ensures that the sale will be ratified by the full group of owners when they meet next Wednesday in Atlanta. The sale is expected to officially close sometime in September, sources familiar with the matter told Front Office Sports . The Khosla group reached "
+        },
+        {
+          "title": "Arctos Adds Stake in 4th NFL Team With Falcons Deal",
+          "source": "Front Office Sports",
+          "link": "https://frontofficesports.com/arctos-adds-stake-4th-nfl-team-falcons-deal/",
+          "points": [
+            "Private equity firm Arctos is adding a fourth NFL team to its portfolio through the reported purchase of a 10% stake in the Falcons.",
+            "The deal values the franchise at $10.6 billion.",
+            "Arctos, which is owned by KKR, will acquire the 10% stake in two stages, starting with a 7.5% stake , according to Sportico ."
+          ],
+          "body_excerpt": "Private equity firm Arctos is adding a fourth NFL team to its portfolio through the reported purchase of a 10% stake in the Falcons. The deal values the franchise at $10.6 billion. The agreement, first reported by CNBC, adds the Falcons to an Arctos portfolio that already includes the Chargers, Bills, and Browns. Arctos, which is owned by KKR, will acquire the 10% stake in two stages, starting with a 7.5% stake , according to Sportico . A vote on the transaction is expected in October. The deal means Arctos can buy stakes in only two more NFL teams, as the league caps the number of franchises "
+        },
+        {
+          "title": "Mark Walter Has Been Here Before. What Happens Next?",
+          "source": "Front Office Sports",
+          "link": "https://frontofficesports.com/mark-walter-has-been-here-before-what-happens-next/",
+          "points": [
+            "One claimed that the insurance company used money she paid into her policy to fund a $35 million loan that was connected to Guggenheim\u2019s purchase of the Dodgers, and that when she requested a refund it was refused.",
+            "But the fact is that they are backpedaling so furiously on the loans, and Walter has suddenly sold the Lakers .\u201d It\u2019s not clear whether any policyholder funds were used as part of Walter\u2019s purchase of the Lakers last year at a $10 billion valuation."
+          ],
+          "body_excerpt": "It\u2019s d\u00e9j\u00e0 vu with Mark Walter right now. More than a decade ago, Walter\u2019s business empire\u2014including his investment firm Guggenheim Partners\u2014faced a proposed class-action lawsuit alleging his purchase of the Dodgers was partially paid for using life insurance policyholder funds, and that the use of those funds was not disclosed in regulatory filings. The 105-page lawsuit , filed in February 2014, also accused his companies of obscuring what are known as \u201caffiliated investments,\u201d or deals between companies under common ownership. The suit was filed by two named plaintiffs who purchased life insu"
+        },
+        {
+          "title": "4 Thunder storylines to look forward to in 2026-27",
+          "source": "ClutchPoints",
+          "link": "https://clutchpoints.com/nba/oklahoma-city-thunder/thunder-news-4-storylines-look-forward-2026-27",
+          "points": [
+            "Gilgeous-Alexander's consistent approach has often set him apart from his competitors, as he has shot 51% or better from the floor for four straight seasons."
+          ],
+          "body_excerpt": "Shai Gilgeous-Alexander, Chet Holmgren, Jalen Williams, and the Oklahoma City Thunder&#8217;s first title defense ended in Game 7 of the Western Conference Finals against the San Antonio Spurs. The odds of the 2026-27 Thunder winning a second title in three years remain high. Even Spurs&#8217; Dylan Harper admitted the Thunder are tougher when Williams is on the floor. After finishing the 2025-26 regular season with the best record in the NBA (64-18), they swept through their first two playoff rounds before Williams and Ajay Mitchell&#8217;s respective absences were felt. The void left by the "
+        },
+        {
+          "title": "Nvidia\u2019s new financial strategy does not compute",
+          "source": "The Verge AI",
+          "link": "https://www.theverge.com/ai-artificial-intelligence/981668/nvidias-goldman-blackrock-gpu-compute-asset",
+          "points": [
+            "Apollo, BlackRock, Blackstone, Brookfield, Goldman Sachs, and KKR are all working with Nvidia to put together $500 billion in financing to turn compute into an asset class ."
+          ],
+          "body_excerpt": "\u201cCompute is an asset class! Compute is an asset class!\u201d I continue to insist as I slowly shrink down and turn into a corncob | Image: Cath Virginia / The Verge, Getty Images April - 1805 Napoleon is master of Europe Only the British fleet stands before him Compute is now an asset class I see it is once again time to talk financial innovation. Apollo, BlackRock, Blackstone, Brookfield, Goldman Sachs, and KKR are all working with Nvidia to put together $500 billion in financing to turn compute into an asset class . \"This is really the first time that technology chips have become an investable as"
+        },
+        {
+          "title": "What should fans expect if owner Mark Walter also ends up selling the Los Angeles Sparks?",
+          "source": "Swish Appeal",
+          "link": "https://www.swishappeal.com/wnba/85117/los-angeles-sparks-sale-sell-owner-mark-walter-financial-scandal-investigation-lakers-dodgers-chelsea-kushner-iger-rebuild-draft-tank-future",
+          "points": [
+            "The Wall Street Journal reported that the federal government is investigating him for fraud involving $16 billion in private credit deals with his insurance companies.",
+            "The LA Sparks have unveiled plans to build a $150M practice facility in El Segundo."
+          ],
+          "body_excerpt": "Sparks fans and Nneka Ogwumike. | NBAE via Getty Images Mark Walter, the controlling owner of the Los Angeles Sparks, is in a heap of financial trouble. The Wall Street Journal reported that the federal government is investigating him for fraud involving $16 billion in private credit deals with his insurance companies. While that investigation is ongoing, it\u2019s clear he\u2019s feeling the heat. Walter sold the Los Angeles Lakers to Bob Iger and Josh Kusher after owning them for under a year. The Athletic reported this week that he is also looking to sell his minority ownership share of Chelsea. Give"
+        },
+        {
+          "title": "Iranian Hacking Crew Charged in Sprawling Theft Case \u2014 Including $6M Bitcoin Ransom",
+          "source": "Bitcoin Magazine",
+          "link": "https://bitcoinmagazine.com/news/iran-hackers-hit-with-criminal-charges",
+          "points": [
+            "institutions had spent some $3.4 billion acquiring the material in the first place.",
+            "Separate victims racked up more than $20 million cleaning up the breaches.",
+            "This post Iranian Hacking Crew Charged in Sprawling Theft Case \u2014 Including $6M Bitcoin Ransom first appeared on Bitcoin Magazine and is written by Mathew Di Salvo ."
+          ],
+          "body_excerpt": "Bitcoin Magazine Iranian Hacking Crew Charged in Sprawling Theft Case \u2014 Including $6M Bitcoin Ransom Feds have hit 17 Iranians with criminal charges for allegedly conducting a years-long campaign of cyber attacks \u2014 including trying to extort HBO for $6 million in bitcoin. The U.S. Department of Justice said Tuesday that the 17 individuals were working with the Mabna Institute, which carried out hacking campaigns on \u200bbehalf of Iran&#8217;s Islamic Revolutionary Guard Corps and other Iranian \u200bgovernment and university clients. Hundreds of U.S. and \u2060international universities, dozens of companies"
+        },
+        {
+          "title": "The Los Angeles Lakers sold for $12.5 billion. Here\u2019s what every NBA team is now worth",
+          "source": "CNBC",
+          "link": "https://www.cnbc.com/2026/08/20/heres-how-the-los-angeles-lakers-12point5b-sale-impacts-the-value-of-all-30-nba-teams.html",
+          "points": [],
+          "body_excerpt": "The pending $12.5 billion Lakers sale would lift CNBC\u2019s average NBA team valuation 21% to $6.68 billion, with the Warriors still No. 1."
+        },
+        {
+          "title": "Replit\u2019s CEO on building a company that can run itself",
+          "source": "Platformer",
+          "link": "https://www.platformer.news/replit-amjad-massad-interview-coding-design-jobs/",
+          "points": [
+            "In March, Replit raised $400 million at a $9 billion valuation &#x2014; triple what it was worth six months earlier.",
+            "The company says more than 50 million people build on it, including 85 percent of the Fortune 500, and that it&apos;s on track for $1 billion in annual recurring revenue by the end of this year.",
+            "This technology has always been accessible to 0.5% of the human population, those who could afford a computer science degree."
+          ],
+          "body_excerpt": "Disclosure: my fianc&#xe9; works at Anthropic, whose models Replit uses and which Masad discusses below. Last week on the Platformer podcast , Granola&apos;s Chris Pedregal told me we are only 5 percent into the AI transformation of work. For the fourth episode of our miniseries on productivity in the AI era, I wanted to talk to someone who is trying to speed up the process &#x2014; building an AI tool for writing software, and a company that can increasingly run itself. Amjad Masad is the co-founder and CEO of Replit , which he started in 2016 with his wife, the designer Haya Odeh. Masad grew"
+        }
+      ]
+    },
+    {
+      "name": "Media power and who owns it",
+      "voice_weight": 1.0,
+      "items": [
+        {
+          "title": "Is Zillow having its AOL moment?",
+          "source": "HousingWire",
+          "link": "https://www.housingwire.com/articles/zillow-compass-listing-control/",
+          "points": [
+            "Compass\u2019s market cap recently surpassed Zillow\u2019s for the first time after Zillow\u2019s stock dropped more than 50% this year."
+          ],
+          "body_excerpt": "America Online, Inc. (AOL) was one of the most powerful companies in America. For millions of people, it was \u201cThe Internet.\u201d While AOL produced some of its own proprietary content, its primary play was that of a master aggregator. It didn\u2019t write most of the news, produce the sports scores or build the vast majority of websites people wanted to visit. AOL simply aggregated it into one easy destination, and for years that was an extraordinarily valuable business. Consumers loved the convenience. Content creators went along with it because AOL had the audience. Then broadband arrived. Content cr"
+        },
+        {
+          "title": "The Download: threats from space mirrors and credit for AI drugs",
+          "source": "MIT Technology Review",
+          "link": "https://www.technologyreview.com/2026/08/21/1142762/the-download-space-mirrors-threats-ai-designed-drugs-credit/",
+          "points": [
+            "( Reuters $) 3 A staggering 90% of biomedical papers show signs of AI use A new study suggests it\u2019s far more common than previously thought.",
+            "( Wired $) 10 Mark Zuckerberg has bought an Irish castle The 440-acre estate reportedly cost up to \u20ac30 million."
+          ],
+          "body_excerpt": "This is today&#8217;s edition of The Download , our weekday newsletter that provides a daily dose of what&#8217;s going on in the world of technology. This company\u2019s plans to deploy space mirrors could jeopardize the night sky for many A company that plans to beam sunlight from space to Earth on demand might unintentionally brighten the night sky for many more people than intended, according to a new study. Later this year, Reflect Orbital plans to launch a test satellite that will extend an 18-by-18-meter mirror in orbit. The goal is to eventually launch up to 50,000 larger satellites that ca"
+        },
+        {
+          "title": "US Open Announces Record Prize Money Amid Player Protest Threat",
+          "source": "Front Office Sports",
+          "link": "https://frontofficesports.com/us-open-announces-record-prize-money-amid-player-protest-threat/",
+          "points": [
+            "The 2026 US Open will offer $108 million in total player compensation, a 20% increase from $90 million last year , the USTA announced Thursday.",
+            "The men\u2019s and women\u2019s singles winners will take home $5.5 million, up from last year\u2019s record $5 million prize.",
+            "The announcement also came with the introduction of a Grand Slam Player Advisory Council and a $2 million fund that will go toward player welfare, two other requests that players have been asking for since last year."
+          ],
+          "body_excerpt": "The US Open has responded to possible player pay protests by awarding another record purse. The 2026 US Open will offer $108 million in total player compensation, a 20% increase from $90 million last year , the USTA announced Thursday. The men\u2019s and women\u2019s singles winners will take home $5.5 million, up from last year\u2019s record $5 million prize. The announcement also came with the introduction of a Grand Slam Player Advisory Council and a $2 million fund that will go toward player welfare, two other requests that players have been asking for since last year. It appears that these have been eno"
+        },
+        {
+          "title": "The Athletic in Talks to Provide Content to NFL Media Properties",
+          "source": "Front Office Sports",
+          "link": "https://frontofficesports.com/the-athletic-talks-content-nfl-media/",
+          "points": [],
+          "body_excerpt": "NFL Media and The Athletic have had talks about expanding their relationship, including the idea of content from the New York Times \u2014owned sports outlet running on the league\u2019s digital platforms, sources told Front Office Sports . It is unclear how far the talks have progressed, but landing spots for Athletic content could include NFL.com and the NFL+ app. Spokespeople for The Athletic and NFL Media declined to comment. Last year, The Athletic struck a deal that gave it the right to use NFL highlight snippets on its site and video podcasts. Quietly, The Athletic has also already reached a synd"
+        },
+        {
+          "title": "The website that created an AI clone of its editor in chief",
+          "source": "Platformer",
+          "link": "https://www.platformer.news/every-dan-shipper-interview-ai-writing/",
+          "points": [
+            "The roughly 30-person company offers Cora , an email assistant; Sparkle , a file organizer; Spiral , a writing tool; and Monologue , a dictation app &#x2014; all of which are bundled with the journalism into a $20-a-month subscription."
+          ],
+          "body_excerpt": "My fianc&#xe9; works at Anthropic, whose models Every reviews and builds on, and which comes up below. Earlier in our miniseries on productivity in the AI era, Replit&apos;s Amjad Masad described a &quot;self-driving company&quot; where most engineers don&apos;t look at the code anymore. For our penultimate episode, I wanted to visit someone running a version of that experiment in a somewhat unexpected place: the media business. Dan Shipper runs a website that reviews new technology alongside a product lab that&#x2019;s building it &#x2014; and for some time now I&#x2019;ve wondered what it&#x"
+        },
+        {
+          "title": "Mark buys a castle",
+          "source": "TechCrunch",
+          "link": "https://techcrunch.com/2026/08/20/mark-buys-a-castle/",
+          "points": [],
+          "body_excerpt": "Mark Zuckerberg just bought a cozy abode somewhat close to Meta\u2019s international headquarters in Ireland."
+        },
+        {
+          "title": "What We Know So Far About Clay Travis\u2019s New Media Company, Sport & State",
+          "source": "Front Office Sports",
+          "link": "https://frontofficesports.com/what-we-know-clay-travis-media-company/",
+          "points": [
+            "In a column laying out his business plan , Travis says his \u201cvision for this site is 70% sports, 15% pop culture, and 15% where politics intersects with sports.\u201d The conservative firebrand writes: \u201cMost of the politics will come from me.",
+            "Travis is expected to announce multiple investors that could give the company an estimated valuation of $100 million, say sources.",
+            "The sportsbook holds a 10% equity stake in Sport & State , say sources."
+          ],
+          "body_excerpt": "Clay Travis\u2019s new media company officially launched on Wednesday. As previously reported by Front Office Sports , the digital media platform is called Sport & State . Also as expected, Travis is leaning heavily into live programming and digital podcasts\u2014starting with a video version of The Clay Travis & Buck Sexton Show . But plenty of unknowns remain. Let\u2019s go under the hood and try to answer some burning questions about the controversial OutKick founder\u2019s latest challenger brand. What is Sport & State about? In a column laying out his business plan , Travis says his \u201cvision for this site is "
+        },
+        {
+          "title": "NFL Network\u2019s Initial ESPN Preseason Ratings Rise 3%",
+          "source": "Front Office Sports",
+          "link": "https://frontofficesports.com/initial-nfl-network-preseason-ratings-similar-espn-ownership/",
+          "points": [
+            "NFL Network\u2019s first preseason under ESPN ownership began with six national game broadcasts in Week 1 that averaged 1.93 million viewers.",
+            "Last year\u2019s eight-game Week 1 preseason slate on NFL Network averaged 2.1 million viewers, which marked an all-time high in the channel\u2019s final season under league ownership.",
+            "Excluding the two Sunday games from last year, NFL Network\u2019s average audience of 1.93 million viewers is up about 3% over 1.88 million viewers for the comparable six non-Sunday games in Week 1 a year ago, according to ESPN."
+          ],
+          "body_excerpt": "NFL Network\u2019s first preseason under ESPN ownership began with six national game broadcasts in Week 1 that averaged 1.93 million viewers. Last year\u2019s eight-game Week 1 preseason slate on NFL Network averaged 2.1 million viewers, which marked an all-time high in the channel\u2019s final season under league ownership. That included two Sunday games; NFL Network did not air any games on Sunday last week. Excluding the two Sunday games from last year, NFL Network\u2019s average audience of 1.93 million viewers is up about 3% over 1.88 million viewers for the comparable six non-Sunday games in Week 1 a year a"
+        },
+        {
+          "title": "The Download: polycrisis support networks and a hydrogen gold rush",
+          "source": "MIT Technology Review",
+          "link": "https://www.technologyreview.com/2026/08/20/1142579/the-download-polycrisis-support-networks-underground-hydrogen-gold-rush/",
+          "points": [],
+          "body_excerpt": "This is today&#8217;s edition of The Download , our weekday newsletter that provides a daily dose of what&#8217;s going on in the world of technology. Support networks aim to help kids through the polycrisis Sometime in the late 2000s, six-year-old Pim Sullivan-Tailyour was sitting in the back of a car in Thailand when she saw a mountain that had been quarried away. It was the first time she recognized that humans could alter the world for the worse. She carried that knowledge with her, later joining an online group for young people worried about climate change. \u201cI realized that I wasn\u2019t alone"
+        },
+        {
+          "title": "Rasheem Biles, Colin Simmons named to Chuck Bednarik Award watch list",
+          "source": "On3",
+          "link": "https://www.on3.com/teams/texas-longhorns/news/rasheem-biles-colin-simmons-named-to-chuck-bednarik-award-watch-list/",
+          "points": [],
+          "body_excerpt": "Texas Football&#8217;s linebacker Rasheem Biles and EDGE Colin Simmons were named to the preseason watch list for the 2026 Chuck Bednarik Award, the Maxwell Football Club announced Friday. It marks the second-consecutive season both players have earned a spot on the award\u2019s preseason watch list. Join InsideTexas.com for 75% off an annual subscription today The Bednarik Award has been presented to the College Defensive Player of the Year since 1994 and is named in honor of Chuck \u201cConcrete Charlie\u201d Bednarik who was an All-American player at the University of Pennsylvania and later a multi-time A"
+        },
+        {
+          "title": "Import AI 456: RSI and economic growth; radical optionality for AI regulation; and a neural computer",
+          "source": "Import AI",
+          "link": "https://importai.substack.com/p/import-ai-456-rsi-and-economic-growth",
+          "points": [],
+          "body_excerpt": "Welcome to Import AI, a newsletter about AI research. Import AI runs on arXiv, cappuccinos, and feedback from readers. If you&#8217;d like to support this, please subscribe. Subscribe now Regulate? Don&#8217;t regulate. There&#8217;s a third way: Radical Optionality: &#8230;Governments should invest in the tools now that they might need in a future crisis&#8230; Researchers with the Institute for Law &amp; AI have written about &#8220;radical optionality&#8221;, an approach whereby governments might give themselves the tools that they may need in the future if powerful AI starts to massively d"
+        },
+        {
+          "title": "Who won the 2026 trade deadline?",
+          "source": "Winsidr",
+          "link": "https://winsidr.com/2026/08/who-won-the-2026-trade-deadline/",
+          "points": [],
+          "body_excerpt": "The 2026 WNBA trade deadline came and went\u2014most teams decided to stick with the rosters they\u2019ve had since May, while a few went out on a limb to make some moves to help with the playoff push as the season winds down. The new CBA and expansion teams have made this season one of the most interesting in the league\u2019s history, and the few trades we saw might make it more so. If you\u2019re wondering what each of these moves means for the teams involved, here\u2019s a breakdown: &nbsp; Aneesah Morrow is headed north for\u2026almost nothing? Toronto Tempo receive: Aneesah Morrow Connecticut Sun receive: Rights to M"
+        },
+        {
+          "title": "Deel Takes Its DLUSD Stablecoin Wallet to More Than 80 Countries",
+          "source": "The Defiant",
+          "link": "https://thedefiant.io/converge/tradfi-and-fintech/deel-dlusd-stablecoin-wallet-80-countries",
+          "points": [
+            "The expansion routes a payroll platform that processes $22 billion a year into distributing dollar balances to contractors in markets where local banks make dollar..."
+          ],
+          "body_excerpt": "Deel said on Aug. 17 that its DLUSD stablecoin wallet is live in more than 80 countries, 11 weeks after a launch limited to Argentina. The expansion routes a payroll platform that processes $22 billion a year into distributing dollar balances to contractors in markets where local banks make dollar... Read the full story at The Defiant"
+        },
+        {
+          "title": "Defined by grace and greatness, Nneka Ogwumike announces she will retire from the WNBA at the end of the season",
+          "source": "Swish Appeal",
+          "link": "https://www.swishappeal.com/wnba-content/85009/nneka-ogwumike-annouce-retirement-surprise-los-angeles-sparks-season-end-project-b-wnbpa-president-impact-legacy-legend-future-game-winner-all-time-scorer",
+          "points": [],
+          "body_excerpt": "Nneka Ogwumike. | Getty Images On June 2, before the Los Angeles Sparks took on the Las Vegas Aces, I conducted an exclusive interview with Nneka Ogwumike and asked her how many more seasons she thought she had left. Her response was short. \u201cI don\u2019t know,\u201d Ogwumike said. Well, two months later, she knows. On Tuesday morning, in an interview with Boardroom\u2019s Taylor Rooks, Ogwumike shocked the basketball world by announcing that her WNBA career would be over at the end of this season. EXCLUSIVE: @nnekaogwumike is calling it a career after this season. pic.twitter.com/wrvFCQpGcK &mdash; Boardroom"
+        }
+      ]
+    },
+    {
+      "name": "AI trust and accountability",
+      "voice_weight": 1.0,
+      "items": [
+        {
+          "title": "Offering Zero Data Retention for frontier models",
+          "source": "OpenAI Blog",
+          "link": "https://openai.com/index/offering-zero-data-retention-for-frontier-models",
+          "points": [],
+          "body_excerpt": "OpenAI reaffirms Zero Data Retention for eligible API customers and previews Private Safety Processing for advanced AI safety without compromising data privacy."
+        },
+        {
+          "title": "Binance Opens the Door to AI Agents That Can Trade Crypto for You",
+          "source": "Decrypt",
+          "link": "https://decrypt.co/376161/binance-ai-agents-trade-crypto",
+          "points": [],
+          "body_excerpt": "In brief - Binance launched Binance Agent OS, a developer platform bundling its APIs, wallet hub, x402 payment layer and a skills marketplace. - Once authorized, agents can read market data, check balances and trade across spot, margin, convert and futures. - The move joins a crowded race to wire AI agents into crypto. Binance is letting AI agents trade on its platform, launching a developer system on Wednesday that connects tools like ChatGPT and Claude directly to the exchange's markets, wallets and trading functions. The world's largest crypto exchange unveiled Binance Agent OS, a platform "
+        },
+        {
+          "title": "AI agents lie, cheat and steal. That is putting off users",
+          "source": "Economist",
+          "link": "https://www.economist.com/business/2026/08/12/ai-agents-lie-cheat-and-steal-that-is-putting-off-users",
+          "points": [],
+          "body_excerpt": "It is time to impose law and order on the frontier"
+        },
+        {
+          "title": "Strengthening democratic oversight in national security",
+          "source": "OpenAI Blog",
+          "link": "https://openai.com/index/strengthening-democratic-oversight-in-national-security",
+          "points": [],
+          "body_excerpt": "OpenAI launches an initiative to strengthen democratic oversight of AI in national security, supporting government institutions with tools, training, and expertise."
+        },
+        {
+          "title": "Grok exfiltrates user data when malicious instructions are encrypted",
+          "source": "Ars Technica",
+          "link": "https://arstechnica.com/security/2026/08/grok-exfiltrates-user-data-when-malicious-instructions-are-encrypted/",
+          "points": [],
+          "body_excerpt": "Earlier this week, researchers outlined an attack that used a secret input provided by Microsoft 365 Copilot for enterprise to cause the AI assistant to exfiltrate a password present in the user\u2019s inbox. Now, a separate team has devised a similar attack against Grok. The new data theft hack employs a deceptively simple trick to force the Elon Musk-owned large language model to steal user chats and other personal information. At the time this post went live, the assistant continued to cough up the data, despite xAI being informed of it in June. The lesson from both this week\u2019s episodes\u2014and the "
+        },
+        {
+          "title": "Open Source vs. Source-Available: What the Coldcard Failure Teaches About Bitcoin Software Incentives",
+          "source": "Bitcoin Magazine",
+          "link": "https://bitcoinmagazine.com/culture/open-source-vs-source-available-what-the-coldcard-failure-teaches-about-bitcoin-software-incentives",
+          "points": [
+            "Yet the recent Coldcard hack, a popular self-custody hardware wallet where users lost over $100 million worth of bitcoin (more than 1,500 BTC), cast doubt over what \u201cOpen Source\u201d actually means."
+          ],
+          "body_excerpt": "Bitcoin Magazine Open Source vs. Source-Available: What the Coldcard Failure Teaches About Bitcoin Software Incentives Closed versus Open Source code has divided the Bitcoin and broader crypto industry for well over a decade. Bitcoin advocates have long argued that the financial infrastructure of the world should be built in public. Transparency and auditability, they say, are non-negotiable when real money is at stake. Yet the app and legacy layers of finance often disagree. Yet the recent Coldcard hack, a popular self-custody hardware wallet where users lost over $100 million worth of bitcoi"
+        },
+        {
+          "title": "How much of my boss's job can AI do?",
+          "source": "Platformer",
+          "link": "https://www.platformer.news/replacing-casey-with-claude/",
+          "points": [
+            "They can even trick Amazon into accidentally spending $1.8 million on menial coding tasks."
+          ],
+          "body_excerpt": "Almost six months ago, full of anxiety about my job prospects in the AI age, I made an AI agent &#x201c;version&#x201d; of myself named Claudella, which took assignments from my editor and wrote the section of this newsletter that I typically write myself. It went pretty well, although I guess not too well, since I still have a job. But since I first set out to benchmark AI&#x2019;s journalism capabilities, AIs have gotten a lot smarter. For example, they can now autonomously hack into companies. They can disprove 87-year-old mathematical conjectures . They can even trick Amazon into accidenta"
+        },
+        {
+          "title": "A big week for AI denialism",
+          "source": "Platformer",
+          "link": "https://www.platformer.news/a-big-week-for-ai-denialism/",
+          "points": [],
+          "body_excerpt": "This is a column about AI. My fianc&#xe9; works at Anthropic. See&#xa0;my full ethics disclosure here . I. Last week, we learned that a group of OpenAI models broke out of their test environment and hacked into Hugging Face to steal the answers to a benchmark they were being tested on. It&#x2019;s the first publicly known case of an autonomous AI agent system designing and successfully executing an attack like this, and the fallout is stretching into this week. One, AI safety experts noted that the incident signaled that OpenAI&#x2019;s models now carry a &#x201c;critical&#x201d; capability th"
+        },
+        {
+          "title": "The loudest warning about AI and jobs yet",
+          "source": "Platformer",
+          "link": "https://www.platformer.news/ai-jobs-warning-brynjolfsson-acemoglu/",
+          "points": [],
+          "body_excerpt": "This is a column about AI. My fianc&#xe9; works at Anthropic. See&#xa0;my full ethics disclosure here . One of my main preoccupations this year has been the extent to which artificial intelligence threatens jobs, either now or in the future. Our Platformer podcast miniseries took the question to seven experts with a variety of perspectives, and the debate ended mostly in optimism &#x2014; with most guests casting doubt on the idea of mass long-term unemployment, even as they acknowledged that AI will likely cause most jobs to change dramatically. Conversations around AI and jobs can often feel"
+        },
+        {
+          "title": "Import AI 468: 23 RSI ideas; PostTrainBench+; and how trust and transparency interplay with AI racing",
+          "source": "Import AI",
+          "link": "https://importai.substack.com/p/import-ai-468-23-rsi-ideas-posttrainbench",
+          "points": [],
+          "body_excerpt": "Welcome to Import AI, a newsletter about AI research. Import AI runs on arXiv, cappuccinos, and feedback from readers. If you&#8217;d like to support this, please subscribe. Subscribe now Want to be able to deal with RSI? Here are 23 actionable policy ideas: &#8230;IFP serves up some &#8220;low-regret&#8221; policy recommendations&#8230; Policy experts with think tank IFP have published a set of ideas meant to help &#8220;policymakers begin addressing the risks of further automating AI R&amp;D&#8221;. The recommendations involve 23 specific ideas falling across 7 specific categories. If adopte"
+        },
+        {
+          "title": "Import AI 464: Fable writes GPU kernels; AI automation; and analog computation",
+          "source": "Import AI",
+          "link": "https://importai.substack.com/p/import-ai-464-fables-writes-gpu-kernels",
+          "points": [
+            "The results: Fable achieved an 18.71X speedup by writing Cuda code on an RTX PRO 6000 Blackwell, compared against an optimized PyTorch baseline.",
+            "For calibration, other attempts at this get 14.4X (Claude Opus 4.8, writing Triton), 11.14X (GLM-5.2, Triton), and 4.34X (GPT 5.5, Triton).",
+            "Specifically, a rise in the success rate of AI systems from 2.5% at launch in October 2025 to 16.1% in July 2026 on the \" Remote Labor Index \"."
+          ],
+          "body_excerpt": "Welcome to Import AI, a newsletter about AI research. Import AI runs on arXiv, cappuccinos, and feedback from readers. If you&#8217;d like to support this, please subscribe. Subscribe now Fable writes a decent GPU kernel, hinting at broader AI R&amp;D automation: &#8230;The start of an RSI loop&#8230; Fable has written &#8220;the first genuine (and fastest) megakernel ever submitted to KernelBench-Mega, according to one of the benchmarks maintainers as well as its official leaderboard. This is a sign of how AI systems are getting better at doing some tasks that are fundamental to AI research a"
+        },
+        {
+          "title": "Import AI 461: \"Alignment is not on track\"; FrontierCode; and synthetic research interns",
+          "source": "Import AI",
+          "link": "https://importai.substack.com/p/import-ai-461-alignment-is-not-on",
+          "points": [
+            "\"Our goal is to raise $100-150M initially, but prepare to raise at least one order of magnitude more if we can demonstrate successful exploration of many parallel research investigations,\" it writes.",
+            "Open weight models already outperform humans: The average human accuracy score for this benchmark across all questions is ~67%, versus 81% for the highest scoring open weight model tested (Qwen-VL-8B-Instruct)."
+          ],
+          "body_excerpt": "Welcome to Import AI, a newsletter about AI research. Import AI runs on arXiv, cappuccinos, and feedback from readers. If you&#8217;d like to support this, please subscribe. Subscribe now AI researchers launch new safety startup because &#8220;alignment is not on track&#8221;: &#8230;Sequent will have a portfolio of under-resourced research bets&#8230; Researchers from the UK AI Security Institute Alignment team as well as alignment theory startup Timaeus have joined forces to form a new nonprofit research organization, Sequent, which will try to create alignment techniques that give us higher"
+        },
+        {
+          "title": "Import AI 459: AI oversight is difficult; scaling laws for protein folding models; and pricing the extinction risk of AI systems",
+          "source": "Import AI",
+          "link": "https://importai.substack.com/p/import-ai-459-ai-oversight-is-difficult",
+          "points": [
+            "Subscribe now The AI economy in the US is growing at 2,000% a year: ...The more directly you measure the AI economy, the weirder and more unprecedented it seems to get...",
+            "Three ways of measuring the AI economy: Nominal compute spending : US compute spending rose from $37 billion in 2023 to $90 billion in 2024 to $219 billion in 2025."
+          ],
+          "body_excerpt": "Welcome to Import AI, a newsletter about AI research. Import AI runs on arXiv, cappuccinos, and feedback from readers. If you&#8217;d like to support this, please subscribe. Subscribe now The AI economy in the US is growing at 2,000% a year: &#8230;The more directly you measure the AI economy, the weirder and more unprecedented it seems to get&#8230; Economists with the University of Virginia* and Anthropic, and the Bank of Canada have written a paper outlining both the tremendous growth of the emerging &#8220;AI economy&#8221; in the US, and wrestling with why this growth is hard to see in ag"
+        },
+        {
+          "title": "Import AI 454: Automating alignment research; safety study of a Chinese model; HiFloat4",
+          "source": "Import AI",
+          "link": "https://importai.substack.com/p/import-ai-454-automating-alignment",
+          "points": [
+            "What they found: \"We conduct a systematic evaluation of the HiFloat4 (HiF4) format and show that it achieves lower relative loss (&#8776; 1.0%) compared to MXFP4 (&#8776; 1.5%) when measured against a full-precision baseline,\" they write.",
+            "For Llama and Qwen, HiF4 attains an error gap of less than 1% with respect to the baseline...",
+            "On the open-weights models we tested (Qwen 3-4B-Base as the strong model, Qwen 1.5-0.5B-Chat as the weak teacher), the humans recovered 23% of the total performance gap (i.e., achieved a PGR of 0.23),\" they write."
+          ],
+          "body_excerpt": "Welcome to Import AI, a newsletter about AI research. Import AI runs on arXiv and feedback from readers. If you&#8217;d like to support this, please subscribe. Subscribe now Huawei&#8217;s HiFloat4 training format beats Western-developed MXFP4 in Ascend chip bakeoff: &#8230;Could this also be a symptom of the impact of export controls in driving Chinese interest towards maximizing training and inference efficiency? Perhaps&#8230; Huawei researchers have tested out HiFloat4, a 4-bit precision format for AI training and inference, against MXFP4, an Open Compute Project 4-bit format, and found th"
+        },
+        {
+          "title": "Import AI 453: Breaking AI agents; MirrorCode; and ten views on gradual disempowerment",
+          "source": "Import AI",
+          "link": "https://importai.substack.com/p/import-ai-453-breaking-ai-agents",
+          "points": [],
+          "body_excerpt": "Welcome to Import AI, a newsletter about AI research. Import AI runs on arXiv and feedback from readers. If you&#8217;d like to support this, please subscribe. A shorter issue than usual as I was attending the 2026 Bilderberg conference this week. Subscribe now AI can reverse engineer software that contains thousands of lines of code: &#8230;MirrorCode demonstrates some of the long-horizon capabilities of modern AI systems&#8230; AI measurement organizations METR and Epoch have built MirrorCode, a benchmark meant to test out how well AI models can autonomously reimplement complex existing soft"
+        },
+        {
+          "title": "Import AI 451: Political superintelligence; Google's society of minds, and a robot drummer",
+          "source": "Import AI",
+          "link": "https://importai.substack.com/p/import-ai-451-political-superintelligence",
+          "points": [],
+          "body_excerpt": "Welcome to Import AI, a newsletter about AI research. Import AI runs on arXiv and feedback from readers. If you&#8217;d like to support this, please subscribe. Subscribe now AI might let us build &#8220;political superintelligence&#8221;: &#8230;But turning this into a societal upside requires lots of intentional work&#8230; As AI systems get more powerful and broaden their real world impact from coding to other domains, it seems likely that they could also become useful for helping people advocate for themselves in politics, and helping politicians better craft policy. But getting to a world "
+        }
+      ]
+    },
+    {
+      "name": "Creator economy consolidation",
+      "voice_weight": 1.0,
+      "items": [
+        {
+          "title": "Major YouTube creators are facing backlash for accepting AI money",
+          "source": "The Verge AI",
+          "link": "https://www.theverge.com/ai-artificial-intelligence/983181/matti-haapoja-sam-kold-kolder-higgsfield-seedance-backlash",
+          "points": [],
+          "body_excerpt": "Over the past few days, a number of prominent filmmaking content creators including Matti Haapoja and Sam \"Kold\" Kolder have posted videos of themselves demonstrating what's possible with AI platform Higgsfield . The videos highlight Higgsfield's recently added Seedance 2.5 functionality and pitch these technologies as the future of video production. In response to these videos, other creators started sharing what appear to be screenshots of partnership offers they'd received from PR firms working on Higgsfield's behalf. All of this led fans to the conclusion that Higgsfield has been trying to"
+        },
+        {
+          "title": "The case for making your own apps",
+          "source": "Platformer",
+          "link": "https://www.platformer.news/glaze-raycast-ceo-thomas-paul-mann-interview-apps/",
+          "points": [
+            "They&#x2019;ve since raised more than $47 million from investors including Accel, Coatue, and Atomico."
+          ],
+          "body_excerpt": "This podcast touches on AI. My fianc&#xe9; works at Anthropic. See&#xa0;my full ethics disclosure here . When I talked to Eugenia Kuyda for the Platformer podcast , she predicted that the long tail of subscription apps on your phone would soon disappear. There will no longer be a need for paid apps for meditation, nutrition tracking, or fitness, she argued, because anyone can now build one for themself.&#xa0; Kuyda is applying that hypothesis to Wabi , a smartphone app for making smartphone apps. But for the second episode of our miniseries on AI and productivity, I wanted to test her predicti"
+        },
+        {
+          "title": "An LLM wiki changed how I work",
+          "source": "Platformer",
+          "link": "https://www.platformer.news/karpathy-llm-wiki-journalism-productivity/",
+          "points": [],
+          "body_excerpt": "This is a column about AI. My fianc&#xe9; works at Anthropic. See&#xa0;my full ethics disclosure here . At the beginning of April, the prominent AI researcher Andrej Karpathy tweeted out an idea that was, for a certain kind of productivity nerd, an infohazard. He described the idea this way: &#x201c;Something I&#x2019;m finding very useful recently: using LLMs to build personal knowledge bases for various topics of research interest.&#x201d; He proceeded to describe his process: adding source documents to a local folder and using an LLM to extract and organize their contents into a Markdown wi"
+        },
+        {
+          "title": "Town's CEO on the self-organizing company",
+          "source": "Platformer",
+          "link": "https://www.platformer.news/town-interview-jean-denis-greze-assistants/",
+          "points": [
+            "Unlike most of the tools we&#x2019;ve featured so far, this one is brand-new: the company only came out of stealth in June, having raised $55 million from Andreessen Horowitz.",
+            "Town isn&#x2019;t cheap: most people pay $49 to $59 a month."
+          ],
+          "body_excerpt": "This podcast touches on AI. My fianc&#xe9; works at Anthropic. See&#xa0;my full ethics disclosure here . Last week on the Platformer podcast , Replit&apos;s Amjad Masad predicted that apps are about to enter a long twilight. Instead of installing individual pieces of software, he said, we&#x2019;re much likelier to outsource work to agents powered by artificial intelligence. And so for the fifth episode of our miniseries about productivity in the AI era, I wanted to talk to someone working to realize that vision. My interest here is more than merely journalistic. My Hard fork co-host Kevin Roo"
+        },
+        {
+          "title": "Leading by Example: Marina Mabrey is becoming Toronto\u2019s newest star in her biggest role yet",
+          "source": "Winsidr",
+          "link": "https://winsidr.com/2026/07/leading-by-example-marina-mabrey-is-becoming-torontos-newest-star-in-her-biggest-role-yet/",
+          "points": [
+            "General Manager Monica Wright Rogers and the rest of the front office were happy to commit to Mabrey in the form of a two-year, $2.4 million contract.",
+            "In free agency, they signed Brittney Sykes to a two-year, $2.3 million deal \u2014 essentially giving the backcourt duo the keys to lead this team."
+          ],
+          "body_excerpt": "It\u2019s Thursday, June 25, around 9 p.m in Toronto. Marina Mabrey catches a pass from Julie Allemand, ditches her defender, steps back, and sinks her ninth three-ball of the game. This marks 53 points on the night, tying the all-time WNBA single-game scoring record. The crowd at Coca-Cola Coliseum is the loudest it\u2019s likely ever been; you could probably hear it in the States. But if you look just past Mabrey, you can see her Toronto Tempo teammates on the bench; they jump up immediately, clapping, cheering, holding up three fingers. Kiki Rice and Teonni Key, two 2026 WNBA draftees, were the first"
+        },
+        {
+          "title": "Ansem Launches Site Where Teams Buy His Attention With Airdrops",
+          "source": "The Defiant",
+          "link": "https://thedefiant.io/news/tokens/ansem-z500-index-teams-airdrop-supply-ansem-holders",
+          "points": [],
+          "body_excerpt": "Crypto influencer Zion &quot;Ansem&quot; Thomas opened ansem.io on Aug. 17, a site where token teams pay for his promotion by giving supply to holders of his memecoin. The trade replaces the standard influencer deal, in which a team pays social media influencers, known as Key Opinion Leaders, in cash or... Read the full story at The Defiant"
+        }
+      ]
+    },
+    {
+      "name": "Crypto's leverage problem",
+      "voice_weight": 0.7,
+      "items": [
+        {
+          "title": "XRP Notches Best Week Since 2024 Election Pump on Bitcoin Short Squeeze",
+          "source": "Decrypt",
+          "link": "https://decrypt.co/376120/xrp-price-best-week-since-2024-election-pump",
+          "points": [],
+          "body_excerpt": "The token's steepest daily and weekly gains in months rode Bitcoin's record liquidation wave\u2014though ETF flows and futures data hint the move is running on borrowed momentum."
+        },
+        {
+          "title": "XRP Erases Its Most Bearish Signal\u2014And the Ripple-Linked Coin Is Flying",
+          "source": "Decrypt",
+          "link": "https://decrypt.co/376186/xrp-price-erases-death-cross",
+          "points": [],
+          "body_excerpt": "The token spent all August trapped under a bearish crossover. Today it closed above both moving averages for the first time since the pattern formed."
+        },
+        {
+          "title": "Bitcoin Hits Highest Price Since June as $3 Billion in Shorts Liquidated",
+          "source": "Decrypt",
+          "link": "https://decrypt.co/376085/bitcoin-price-high-june-3-billion-shorts-liquidated",
+          "points": [
+            "Bitcoin punched above $72,000 Thursday, extending a two-day squeeze that's wiped out the most short positions on record and mounted the first real challenge to a bearish chart that's held since November."
+          ],
+          "body_excerpt": "Bitcoin punched above $72,000 Thursday, extending a two-day squeeze that's wiped out the most short positions on record and mounted the first real challenge to a bearish chart that's held since November."
+        },
+        {
+          "title": "Bitcoin Has Its Best Week Since 2023 as Shortsellers Continue To Get Wiped Out",
+          "source": "Bitcoin Magazine",
+          "link": "https://bitcoinmagazine.com/markets/bitcoin-has-best-week-since-2023",
+          "points": [
+            "It earlier in the day reached as high as $79,319."
+          ],
+          "body_excerpt": "Bitcoin Magazine Bitcoin Has Its Best Week Since 2023 as Shortsellers Continue To Get Wiped Out Bitcoin continued its rise on Friday, having its best week since 2023 as over $1 billion in shortsellers&#8217; positions got ruined and exchange-traded funds received billions in new cash.&nbsp; The leading cryptocurrency on Friday was recently trading 23% higher over a seven-day period after flying past $77,542. It earlier in the day reached as high as $79,319. Bitcoin&#8217;s rise comes after the American investors fast piled into exchange-traded funds, with the vehicles so far this week taking i"
+        },
+        {
+          "title": "Bitcoin Price Roars Towards $80,000 Following Positive Regulatory News, US Buyback Pledge",
+          "source": "Bitcoin Magazine",
+          "link": "https://bitcoinmagazine.com/news/bitcoin-surges-towards-80000",
+          "points": [
+            "Bitcoin Magazine Bitcoin Price Roars Towards $80,000 Following Positive Regulatory News, US Buyback Pledge Bitcoin roared past $79,000 Friday, sustaining the biggest run in years following positive regulatory news and an announcement from the U.S.",
+            "Treasury.&nbsp; The leading cryptocurrency hit as high as $79,319 before dipping slightly.",
+            "It was recently priced at $77,584, a more than 7% rise over the past day."
+          ],
+          "body_excerpt": "Bitcoin Magazine Bitcoin Price Roars Towards $80,000 Following Positive Regulatory News, US Buyback Pledge Bitcoin roared past $79,000 Friday, sustaining the biggest run in years following positive regulatory news and an announcement from the U.S. Treasury.&nbsp; The leading cryptocurrency hit as high as $79,319 before dipping slightly. It was recently priced at $77,584, a more than 7% rise over the past day. Over a seven-day period, the coin has shot up by close to 23%.&nbsp; Bitcoin had spent most of July and June trading below $65,000. Some analysts had said that the bottom was likely in.&n"
+        },
+        {
+          "title": "Bitcoin Climbs Higher as $1.2 Billion in Shorts Liquidated",
+          "source": "Decrypt",
+          "link": "https://decrypt.co/376183/bitcoin-price-higher-1-2-billion-shorts-liquidated",
+          "points": [],
+          "body_excerpt": "The largest cryptocurrency surged 7.9% in a day to around $77,000, triggering a short squeeze that wiped out roughly $1.21 billion in bearish bets amid a wave of favorable news from Washington."
+        },
+        {
+          "title": "Bitcoin Tops $68,000 as Short Liquidations Hit $1.7 Billion",
+          "source": "The Defiant",
+          "link": "https://thedefiant.io/news/markets/bitcoin-tops-68k-as-short-liquidations-hit-1-7-billion",
+          "points": [
+            "Bitcoin traded above $68,000 and ether gained 9% on Wednesday, forcing $1.91 billion of leveraged positions to close, according to Coinglass.",
+            "Shorts made up $1.74 billion of that total, roughly eight times the volume of liquidations recorded over the previous 24 hours."
+          ],
+          "body_excerpt": "Bitcoin traded above $68,000 and ether gained 9% on Wednesday, forcing $1.91 billion of leveraged positions to close, according to Coinglass. Shorts made up $1.74 billion of that total, roughly eight times the volume of liquidations recorded over the previous 24 hours. The trigger came from the... Read the full story at The Defiant"
+        },
+        {
+          "title": "SEC Proposes Token Offering Rules With $75 Million Exemption",
+          "source": "The Defiant",
+          "link": "https://thedefiant.io/news/regulation/sec-proposes-token-offering-rules-75-million-exemption",
+          "points": [
+            "18, a framework that would let token issuers raise up to $75 million a year without registering the offering and, under a separate safe harbor, remove some tokens from the definition of a security altogether."
+          ],
+          "body_excerpt": "The Securities and Exchange Commission proposed Regulation Crypto Assets on Aug. 18, a framework that would let token issuers raise up to $75 million a year without registering the offering and, under a separate safe harbor, remove some tokens from the definition of a security altogether. The... Read the full story at The Defiant"
+        },
+        {
+          "title": "Import AI 457: AI stuxnet; cursed Muon optimizer; and positive alignment",
+          "source": "Import AI",
+          "link": "https://importai.substack.com/p/import-ai-457-ai-stuxnet-cursed-muon",
+          "points": [],
+          "body_excerpt": "Welcome to Import AI, a newsletter about AI research. Import AI runs on arXiv, cappuccinos, and feedback from readers. If you&#8217;d like to support this, please subscribe. Subscribe now Stuxnet before Stuxnet: &#8230;Fast16 bugs software likely used in weapons programs&#8230; Here&#8217;s a fascinating investigation of a ~20+ year old computer virus called fast16.sys. This software is interesting because it &#8220;selectively targets high-precision calculation software, patching code in memory to tamper with results. By combining this payload with self-propagation mechanisms, the attackers a"
+        },
+        {
+          "title": "Bitcoin ETFs Add Over $1B as Investor Sentiment Turns Bullish",
+          "source": "Bitcoin Magazine",
+          "link": "https://bitcoinmagazine.com/news/bitcoin-etfs-receive-over-1-billion",
+          "points": [
+            "It was recently priced at $72,606, a 10% 24-hour rise.",
+            "The flurry of buying comes after investors last week cashed out over $385 million from the U.S.",
+            "Both soared as the dollar weakened following the announcement.&nbsp; This post Bitcoin ETFs Add Over $1B as Investor Sentiment Turns Bullish first appeared on Bitcoin Magazine and is written by Mathew Di Salvo ."
+          ],
+          "body_excerpt": "Bitcoin Magazine Bitcoin ETFs Add Over $1B as Investor Sentiment Turns Bullish Bitcoin exchange-traded funds have taken in over $1 billion in fresh cash over the past three days, helping propel the leading cryptocurrency to nearly $73,000.&nbsp; Just on Wednesday, investors bought over $500 million worth of shares in the funds managed by BlackRock, Fidelity, and Grayscale, according to data from Farside Investors.&nbsp; Bitcoin&#8217;s price has surged this week, and on Thursday reached $72,659 before dropping slightly. It was recently priced at $72,606, a 10% 24-hour rise. Bitcoin is currentl"
+        },
+        {
+          "title": "Coinbase CEO Brian Armstrong Says Bitcoin Will Likely Hit $400,000 By 2030",
+          "source": "Bitcoin Magazine",
+          "link": "https://bitcoinmagazine.com/news/coinbase-ceo-says-bitcoin-will-hit-300000",
+          "points": [
+            "This post Coinbase CEO Brian Armstrong Says Bitcoin Will Likely Hit $400,000 By 2030 first appeared on Bitcoin Magazine and is written by Mathew Di Salvo ."
+          ],
+          "body_excerpt": "Bitcoin Magazine Coinbase CEO Brian Armstrong Says Bitcoin Will Likely Hit $400,000 By 2030 Coinbase CEO Brian Armstrong has said that it&#8217;s &#8220;very likely&#8221; Bitcoin will hit between $300,000 to $400,000 by 2030.&nbsp; Speaking on Fox Business Network&#8217;s Varney &amp; Co. show Thursday, the crypto entrepreneur also said that the U.S. was moving in the right direction with crypto legislation following a meeting at the White House.&nbsp; President Donald Trump on Wednesday hosted crypto executives and traditional finance bigwigs at the White House and urged for lawmakers to mov"
+        },
+        {
+          "title": "Bitcoin Rockets Past $72,000 After Trump Pushes For Clarity Act",
+          "source": "Bitcoin Magazine",
+          "link": "https://bitcoinmagazine.com/news/bitcoin-price-rockets-past-72000",
+          "points": [
+            "It touched as high as $72,344 earlier in the day.&nbsp; Bitcoin was last trading this high at the beginning of June.",
+            "The coin has spent most of July and August priced under $65,000.&nbsp; JUST IN: $72,066 Bitcoin!",
+            "Both soared as the dollar weakened following the announcement.&nbsp; Bitcoin's price has suffered in 2026 despite notching a new all-time high of $126,080 in October."
+          ],
+          "body_excerpt": "Bitcoin Magazine Bitcoin Rockets Past $72,000 After Trump Pushes For Clarity Act Bitcoin&#8217;s price surged further on Thursday, blowing past $72,000 the day after President Trump held a meeting with crypto executives and urged lawmakers to get the long-awaited Clarity Act over the line.&nbsp; The leading cryptocurrency was trading for $71,758 at 8am in New York, after jumping nearly 12% over a 24-hour period. It touched as high as $72,344 earlier in the day.&nbsp; Bitcoin was last trading this high at the beginning of June. The coin has spent most of July and August priced under $65,000.&nb"
+        },
+        {
+          "title": "Optimism Redirects $49.7 Million Airdrop Reserve After Late Deciding Vote",
+          "source": "The Defiant",
+          "link": "https://thedefiant.io/news/blockchains/optimism-redirects-49-7-million-airdrop-reserve-after-late-deciding-vote",
+          "points": [
+            "Optimism governance approved a proposal to move 546.9 million OP tokens, valued at roughly $49.7 million at the time of the vote, from an allocation reserved for future user airdrops into a Strategic Ecosystem Fund administered by the Optimism Foundation."
+          ],
+          "body_excerpt": "Optimism governance approved a proposal to move 546.9 million OP tokens, valued at roughly $49.7 million at the time of the vote, from an allocation reserved for future user airdrops into a Strategic Ecosystem Fund administered by the Optimism Foundation. The change removes the remaining dedicated... Read the full story at The Defiant"
+        },
+        {
+          "title": "VideoPrism: A foundational visual encoder for video understanding",
+          "source": "Google AI Blog",
+          "link": "http://blog.research.google/2024/02/videoprism-foundational-visual-encoder.html",
+          "points": [
+            "We pre-train VideoPrism on a massive and diverse dataset: 36 million high-quality video-text pairs and 582 million video clips with noisy or machine-generated parallel text.",
+            "This includes 36 million carefully selected videos with high-quality captions, along with an additional 582 million clips with varying levels of noisy text (like auto-generated transcripts)."
+          ],
+          "body_excerpt": "Posted by Long Zhao, Senior Research Scientist, and Ting Liu, Senior Staff Software Engineer, Google Research An astounding number of videos are available on the Web, covering a variety of content from everyday moments people share to historical moments to scientific observations, each of which contains a unique record of the world. The right tools could help researchers analyze these videos, transforming how we understand the world around us. Videos offer dynamic visual content far more rich than static images, capturing movement, changes, and dynamic relationships between entities. Analyzing"
+        }
+      ]
+    },
+    {
+      "name": "AI surveillance creep",
+      "voice_weight": 0.7,
+      "items": [
+        {
+          "title": "As demand for Meta AI glasses explodes, it\u2019s harder to avoid creepy recordings",
+          "source": "Ars Technica",
+          "link": "https://arstechnica.com/tech-policy/2026/08/meta-ai-glasses-may-get-creepier-and-apps-that-detect-them-arent-perfect/",
+          "points": [],
+          "body_excerpt": "Can you tell when someone nearby is wearing Meta AI glasses? As millions of people buy into the smart glasses fad each year, the odds are increasing that you could be secretly recorded while simply going about your day. Meta is not the only smart glasses maker, but its AI glasses are by far the most popular. And as the devices become more common, some public places, including schools, courts, restaurants, and entertainment venues, have begun to ban them. Even tech lovers have rejected Meta glasses in certain settings. The hackers behind DEF CON 2026 reportedly banned smart glasses with no exce"
+        },
+        {
+          "title": "Flock's New AI Police Tool Can Track Drivers Without a Name or License Plate",
+          "source": "Decrypt",
+          "link": "https://decrypt.co/375978/flock-ai-police-tool-track-drivers",
+          "points": [],
+          "body_excerpt": "The underlying code for \"OS Investigate\" has 69 preloaded AI prompts that turn Flock cameras into a super-charged surveillance system that identifies people by how they move."
+        },
+        {
+          "title": "This AI notetaker won't sell surveillance to your boss",
+          "source": "Platformer",
+          "link": "https://www.platformer.news/granola-chris-pedregal-interview/",
+          "points": [
+            "(The app&#x2019;s surprisingly good summaries were ultimately what prompted me to become a paying customer.) The company was most recently valued at $1.5 billion."
+          ],
+          "body_excerpt": "This podcast mentions Anthropic a few times; my fianc&#xe9; works there. See&#xa0;my full ethics disclosure here . Last week on the Platformer podcast , Raycast&#x2019;s Thomas Paul Mann predicted that within a few years, as much as half the apps on your Mac could be ones you made yourself. For the third episode of our miniseries on work in the AI era, I wanted to learn more about a tool that may already know more about your job than any other: the AI notetakers that increasingly listen to every meeting we take. And so this week I talked to Chris Pedregal. Pedregal is the co-founder and CEO of"
+        },
+        {
+          "title": "Here\u2019s Why Drake Fans Think New Music Could Be on the\u00a0Way",
+          "source": "Billboard",
+          "link": "https://www.billboard.com/music/rb-hip-hop/drake-new-music-coming-fans-think-heres-why-1236321901/",
+          "points": [],
+          "body_excerpt": "Just months after dropping a trifecta of albums, could Drake be hinting at more new music in 2026? The 6 God posted a &#8220;FEAR OF MISSING OUT&#8221; CD case to Instagram on Friday (Aug. 21), and OVO fans are speculating that&#8217;s the title of his next project. Related &#8216;Shabang&#8217; Scores Drake a 4th Rhythmic Airplay No. 1 From &#8216;ICEMAN&#8217; Drake Shares &#8216;Degrassi&#8217; Throwback to Prove His Goth Fascination Is &#8216;Not&nbsp;New&#8217; Everything We Learned From Drake&#8217;s 9th Anniversary Stake&nbsp;Livestream The CD case features a black backdrop and white le"
+        },
+        {
+          "title": "The Download: AI\u2019s self-improvement problem, and what\u2019s driving the heat",
+          "source": "MIT Technology Review",
+          "link": "https://www.technologyreview.com/2026/08/19/1140195/the-download-ai-recursive-self-improvement-problem-heatwave-causes/",
+          "points": [
+            "( AP News ) 2 Chinese humanoid maker Unitree surged 629% in its stock market debut The IPO has underscored China\u2019s lead in humanoid robots.",
+            "( MIT Technology Review ) 8 X\u2019s algorithm learns what you hate\u2014and shows you more of it A study found the impact was even stronger among Democrats."
+          ],
+          "body_excerpt": "This is today&#8217;s edition of The Download , our weekday newsletter that provides a daily dose of what&#8217;s going on in the world of technology. AI\u2019s recursive self-improvement might not come so quickly after all The AI industry\u2019s boldest promise right now is that AI will soon improve itself, with almost no need for human oversight. But a new study suggests it might take a while to get there. Researchers found that AI agents still can\u2019t conduct open-ended AI research\u2014free-form investigations with no clear-cut answers that require the judgment and creativity needed to make genuine breakth"
+        },
+        {
+          "title": "Import AI 463: Self-improving robots; a 10k Chinese GPU cluster; and an elegiac essay for the human era",
+          "source": "Import AI",
+          "link": "https://importai.substack.com/p/import-ai-463-self-improving-robots",
+          "points": [],
+          "body_excerpt": "Welcome to Import AI, a newsletter about AI research. Import AI runs on arXiv, cappuccinos, and feedback from readers. If you&#8217;d like to support this, please subscribe. Subscribe now NVIDIA sets up a crude self-improvement loop for real world robotics: &#8230;What if you could take the best ideas from AI agents and put them into the real world?... Researchers with NVIDIA have developed ENPIRE, software to get physical robotics to go through the same kind of autonomous experimentation and execution loop that AI agents go through. The research gives us a taste of what it might look like for"
+        }
+      ]
+    },
+    {
+      "name": "Energy and climate thresholds",
+      "voice_weight": 0.4,
+      "items": [
+        {
+          "title": "Using AI to expand global access to reliable flood forecasts",
+          "source": "Google AI Blog",
+          "link": "http://blog.research.google/2024/03/using-ai-to-expand-global-access-to.html",
+          "points": [
+            "Posted by Yossi Matias, VP Engineering & Research, and Grey Nearing, Research Scientist, Google Research Floods are the most common natural disaster , and are responsible for roughly $50 billion in annual financial damages worldwide.",
+            "Nearly 1.5 billion people , making up 19% of the world\u2019s population, are exposed to substantial risks from severe flood events."
+          ],
+          "body_excerpt": "Posted by Yossi Matias, VP Engineering &amp; Research, and Grey Nearing, Research Scientist, Google Research Floods are the most common natural disaster , and are responsible for roughly $50 billion in annual financial damages worldwide. The rate of flood-related disasters has more than doubled since the year 2000 partly due to climate change . Nearly 1.5 billion people , making up 19% of the world\u2019s population, are exposed to substantial risks from severe flood events. Upgrading early warning systems to make accurate and timely information accessible to these populations can save thousands of"
+        },
+        {
+          "title": "This company\u2019s plans to deploy space mirrors could jeopardize the night sky for many",
+          "source": "MIT Technology Review",
+          "link": "https://www.technologyreview.com/2026/08/21/1142755/space-mirrors-night-sky/",
+          "points": [
+            "\u201cThey know what they\u2019re doing.\u201d Hainaut had previously modeled the broader effect of Reflect Orbital\u2019s beams, finding they would brighten the sky up to 300% worldwide."
+          ],
+          "body_excerpt": "A company that plans to beam sunlight from space to Earth on demand might unintentionally brighten the night sky for many more people than intended, according to a new study. Later this year, the US company Reflect Orbital plans to launch a test satellite called E\u00e4rendil-1 that will extend an 18-by-18-meter mirror in orbit. The goal is to test the feasibility of the company\u2019s plans to launch up to 50,000 larger satellites, measuring 54 by 54 meters, and reflect sunlight to Earth on demand. The case for doing this remains somewhat uncertain, but Reflect Orbital has said the goal is to prolong t"
+        },
+        {
+          "title": "The next big thing in hydrogen could be underground",
+          "source": "MIT Technology Review",
+          "link": "https://www.technologyreview.com/2026/08/20/1142512/geologic-hydrogen-hunt/",
+          "points": [
+            "HyTerra, an Australian company, is searching for hydrogen across Nebraska and Kansas, and it\u2019s already found samples of gas with hydrogen concentrations up to 96%.",
+            "Koloma, one of the most capitalized companies in the space with total funding over $400 million, is prospecting in the region as well."
+          ],
+          "body_excerpt": "There\u2019s a hunt for new sources of hydrogen, and the gas (or at least the right conditions to make it) could be hiding beneath our feet. Hydrogen can be used as a fuel in everything from large trucks to planes to steelmaking. It\u2019s often hailed as a climate solution because when burned, it produces water and oxygen\u2014none of the carbon emissions that contribute to climate change. In a new story for our latest print issue, freelance reporter James Dineen took a look at the 21st-century gold rush for naturally occurring hydrogen gas. This is an area of research I\u2019ve been fascinated by lately, so let"
+        },
+        {
+          "title": "Support networks aim to help kids through the polycrisis",
+          "source": "MIT Technology Review",
+          "link": "https://www.technologyreview.com/2026/08/20/1141686/support-networks-help-kids-polycrisis/",
+          "points": [
+            "In fact, more than 60% reported problems \u2014difficulty regulating emotion, symptoms of depression, and lower overall mental and physical well-being\u2014that they attributed to the cumulative stress of world affairs.",
+            "Around 60% reported being very or extremely worried about climate change, with more than 45% saying that eco-anxiety affected th"
+          ],
+          "body_excerpt": "Sometime in the late 2000s, Pim Sullivan-Tailyour was sitting in the back of a car, headed toward her great-grandmother\u2019s tiny town in the south of Thailand. She watched big mountains pass by out the window. She was just six years old but was about to be hit by an adult-size realization. \u201cThey were just quarried out,\u201d she says. \u201cLike half the mountain just dug out and disappeared, and so there was just this huge orange face.\u201d&nbsp; Although she probably didn\u2019t know the word \u201cquarry\u201d back then, she sensed that what she was seeing was unnatural. She also knew, from family stories, that her mothe"
+        }
+      ]
+    },
+    {
+      "name": "Prediction markets go mainstream",
+      "voice_weight": 0.7,
+      "items": [
+        {
+          "title": "Tensions Flare as CME, Kalshi Execs Clash Over Prediction Markets in DC",
+          "source": "Decrypt",
+          "link": "https://decrypt.co/376158/tensions-flare-cme-kalshi-clash-prediction-markets-dc",
+          "points": [],
+          "body_excerpt": "CME Group Chairman Terry Duffy and Kalshi co-founder Luana Lopes Lara traded barbs during a CFTC meeting over prediction markets, manipulation, and regulatory standards."
+        },
+        {
+          "title": "Generative AI to quantify uncertainty in weather forecasting",
+          "source": "Google AI Blog",
+          "link": "http://blog.research.google/2024/03/generative-ai-to-quantify-uncertainty.html",
+          "points": [
+            "For instance, one would need a 10,000-member ensemble to forecast the likelihood of events with 1% probability of occurrence with a relative error less than 10%."
+          ],
+          "body_excerpt": "Posted by Lizao (Larry) Li, Software Engineer, and Rob Carver, Research Scientist, Google Research Accurate weather forecasts can have a direct impact on people\u2019s lives, from helping make routine decisions, like what to pack for a day\u2019s activities, to informing urgent actions, for example, protecting people in the face of hazardous weather conditions. The importance of accurate and timely weather forecasts will only increase as the climate changes. Recognizing this, we at Google have been investing in weather and climate research to help ensure that the forecasting technology of tomorrow can m"
+        },
+        {
+          "title": "Bitcoin Is Pumping But Prediction Market Traders Aren't Convinced",
+          "source": "Decrypt",
+          "link": "https://decrypt.co/376103/bitcoin-price-pumping-prediction-next-move",
+          "points": [],
+          "body_excerpt": "Bitcoin's sharpest rally in five months flipped prediction-market odds from bearish to a coin flip\u2014but the longer-term bets still price in a crash."
+        },
+        {
+          "title": "Kalshi traders think the bitcoin rally could end the year near current levels",
+          "source": "CNBC",
+          "link": "https://www.cnbc.com/2026/08/21/kalshi-traders-say-bitcoin-rally-wont-go-much-higher-by-end-of-2026.html",
+          "points": [],
+          "body_excerpt": "Speculators on the prediction market platform think it's most likely that the cryptocurrency will end 2026 close to where it's now trading."
+        },
+        {
+          "title": "From Undrafted to Unstoppable: The Story of Sydney Taylor",
+          "source": "Winsidr",
+          "link": "https://winsidr.com/2026/08/from-undrafted-to-unstoppable-the-story-of-sydney-taylor/",
+          "points": [],
+          "body_excerpt": "Every season in the WNBA, there always seems to be a player who shocks the world with a breakout game and even a breakout season. This year, that player is an undrafted rookie: Sydney Taylor. Not only has Sydney Taylor taken the league by storm by breaking rookie records and leading the Chicago Sky in the midst of an injury-filled season, but she has also made a name for herself in the W, proving that she can compete and dominate with some of the best in the league despite going undrafted. Taylor\u2019s Journey to the W Taylor\u2019s story about her road to achieving such a crucial role for the Sky is o"
+        },
+        {
+          "title": "WNBA gameday discussion: Even with a 12-game losing streak, the Toronto Tempo, not the Portland Fire, are the 2026 expansion winners",
+          "source": "Swish Appeal",
+          "link": "https://www.swishappeal.com/wnba/85152/games-watch-tor-tempo-por-fire-vancouver-canada-expansion-losing-streak-tanking-mabrey-sykes-draft-playoffs-goals-process-results-mascots",
+          "points": [
+            "Toronto now holds the second-best odds (24%) of securing the No."
+          ],
+          "body_excerpt": "Brittney Sykes. | NBAE via Getty Images The Toronto Tempo skid into Vancouver on a 12-game losing streak, now 15 games under .500 and officially eliminated from playoff contention. Their expansion opponent on Friday night (10 p.m. ET, ION), the Portland Fire, are holding steady in the No. 9 spot in the WNBA standings, a respectable five games under .500. Heyyyy Vancouver \ud83c\udf0a Did you miss us? Because we missed you! pic.twitter.com/AlEopQuRea &mdash; Toronto Tempo (@TempoBasketball) August 20, 2026 Of the 2026 expansion teams, Portland, clearly, is the greater success, right? That Toronto is falli"
+        }
+      ]
+    },
+    {
+      "name": "Cities, housing and where America lives",
+      "voice_weight": 1.0,
+      "items": [
+        {
+          "title": "New York Is Now The Capital Of Tech Jobs, Edging Out SF Bay Area For First Time In Annual Survey",
+          "source": "Deadline",
+          "link": "https://deadline.com/2026/08/new-york-city-tech-jobs-san-francisco-ai-1237047497/",
+          "points": [],
+          "body_excerpt": "New York City now has the most tech jobs of any market in the country, edging the San Francisco Bay Area for the first time in an annual survey. Commercial real estate firm CBRE ranked New York at the top with 394,300 tech jobs, compared with the Bay Area\u2019s 375,730. It&#8217;s the first time New [&#8230;]"
+        },
+        {
+          "title": "Amazon aims for delivery drones to reach 500 US neighborhoods by end of 2026",
+          "source": "Ars Technica",
+          "link": "https://arstechnica.com/gadgets/2026/08/amazon-aims-for-delivery-drones-to-reach-500-us-neighborhoods-by-end-of-2026/",
+          "points": [],
+          "body_excerpt": "Amazon wants to grow its Prime Air delivery drone service sixfold to reach nearly 500 cities and towns across the United States by the end of 2026. The planned expansions from Amazon and its rivals could make the convenience of delivery drone services available to tens of millions more people in the coming months\u2014but will also test more communities\u2019 tolerance for increased noise from daily drone flights. On August 19, Amazon announced it would soon launch Prime Air in the metropolitan areas of Chicago; Cleveland; Atlanta; Syracuse, New York; and Boise, Idaho, with more to come later in the yea"
+        }
+      ]
+    },
+    {
+      "name": "One-off: Testing ads in ChatGPT",
+      "voice_weight": 1.0,
+      "items": [
+        {
+          "title": "Testing ads in ChatGPT",
+          "source": "OpenAI Blog",
+          "link": "https://openai.com/index/testing-ads-in-chatgpt",
+          "points": [],
+          "body_excerpt": "OpenAI begins testing ads in ChatGPT to support free access, with clear labeling, answer independence, strong privacy protections, and user control."
+        }
+      ]
+    },
+    {
+      "name": "One-off: Judge Rules Players Can Go From NFL Trai",
+      "voice_weight": 1.0,
+      "items": [
+        {
+          "title": "Judge Rules Players Can Go From NFL Training Camp Back to College",
+          "source": "Front Office Sports",
+          "link": "https://frontofficesports.com/judge-rules-players-can-go-from-nfl-training-camp-back-to-college/",
+          "points": [],
+          "body_excerpt": "As the NCAA continues to lose rulings challenging the implementation of its new eligibility rules, a new consequence has emerged: Some football players who have participated in NFL training camps\u2014and in some cases, even NFL preseason games\u2014can now return to college. On Wednesday night, a local judge in Louisiana granted a temporary restraining order allowing 16 former college football players a fifth year of eligibility. A number of these players have participated in NFL training camps and/or appeared in NFL preseason games. Among the group are three former Ole Miss players: Zxavian Harris par"
+        }
+      ]
+    },
+    {
+      "name": "One-off: Raiders\u2019 Klint Kubiak sounded like a bro",
+      "voice_weight": 1.0,
+      "items": [
+        {
+          "title": "Raiders\u2019 Klint Kubiak sounded like a broken record when evaluating Fernando Mendoza after brutal pick-6",
+          "source": "ClutchPoints",
+          "link": "https://clutchpoints.com/nfl/las-vegas-raiders/raiders-news-klint-kubiak-broken-record-evaluating-fernando-mendoza-brutal-pick-6",
+          "points": [],
+          "body_excerpt": "Yes, the toss by Las Vegas Raiders quarterback Fernando Mendoza was soft and ugly. But he still hasn\u2019t completely lost his shot at the starting job. However, head coach Klint Kubiak sounded like a broken record when evaluating Mendoza after the brutal pick-six. It\u2019s clean up on aisle 15 , according to The Athletic. \u201cI think it\u2019s plenty to clean up, plenty to get better at,\u201d Kubiak said. \u201cPlenty that we can do better for him as coaches, and plenty that he can learn from.\u201d And did he mention plenty? Raiders QB Fernando Mendoza struggling early It\u2019s not like NFL observers expected Mendoza to expl"
+        }
+      ]
+    },
+    {
+      "name": "One-off: Show HN: Bounded GenAI metrics from Otel",
+      "voice_weight": 1.0,
+      "items": [
+        {
+          "title": "Show HN: Bounded GenAI metrics from Otel traces with O raw prompts",
+          "source": "HN (Show)",
+          "link": "https://github.com/llm-measurement/otelcol-genai-sketches",
+          "points": [],
+          "body_excerpt": "Hi friends, Author here. Like to present a project I've been working on - Otelcol-GenAI-Sketches, a Otel connector that works on genai/agent traces, and summarizes them (via sketches), to produce: ( ) exact request counts/totals for tokens; ( ) distinct users/prompts (estimates) (*) 'heavy' items in terms of tokens Why does this exist: I'm a data scientist by profession, and needed to look at Otel traces, but soon ran into cardinality and portability issues, along with privacy issues (raw prompts being transported elsewhere, like for analysis in a notebook env is a no-no). I wrote a sketchlib "
+        }
+      ]
+    },
+    {
+      "name": "One-off: Where the Next Generation Begins: Inside",
+      "voice_weight": 1.0,
+      "items": [
+        {
+          "title": "Where the Next Generation Begins: Inside Basketball Without Borders",
+          "source": "Winsidr",
+          "link": "https://winsidr.com/2026/08/where-the-next-generation-begins-inside-basketball-without-borders/",
+          "points": [],
+          "body_excerpt": "While most of the buzz following the record-breaking WNBA All-Star weekend centered on the league\u2019s biggest stars, one of the weekend\u2019s most meaningful stories unfolded just a few miles away. At the Advocate Center, just a few blocks from the United Center arena, 40 of the world\u2019s top high-school-aged prospects gathered for the fourth Women\u2019s Basketball Without Borders (BWB) All-Star Camp.Over three days, they trained, competed, and learned from current and former players and industry professionals, getting a first look at what it takes to play at the highest level. For many of them, this wasn"
+        }
+      ]
+    },
+    {
+      "name": "One-off: New York Times Loses $9.25M Defamation V",
+      "voice_weight": 1.0,
+      "items": [
+        {
+          "title": "New York Times Loses $9.25M Defamation Verdict to Ex-Alabama Player",
+          "source": "Front Office Sports",
+          "link": "https://frontofficesports.com/new-york-times-defamation-verdict-ex-alabama-player/",
+          "points": [
+            "Former Alabama basketball player Kai Spears has been awarded $9.25 million by a Tuscaloosa jury after he sued the New York Times for defamation for falsely identifying him as a passenger in a car at the site of a fatal shooting.",
+            "Spears sued the outlet later that year and was awarded the $9.25 million in damages on Thursday following a nine-day trial.",
+            "The post New York Times Loses $9.25M Defamation Verdict to Ex-Alabama Player appeared first on Front Office Sports ."
+          ],
+          "body_excerpt": "Former Alabama basketball player Kai Spears has been awarded $9.25 million by a Tuscaloosa jury after he sued the New York Times for defamation for falsely identifying him as a passenger in a car at the site of a fatal shooting. In January 2023, 23-year-old Jamea Harris was killed in a shooting. Former Alabama basketball player Darius Miles was accused of \u201caiding and abetting\u201d the alleged shooter, Michael Davis, who has since been convicted of capital murder and sentenced to life in prison. Miles\u2019s case is currently awaiting trial. Former Alabama basketball player Brandon Miller, now an NBA st"
+        }
+      ]
+    },
+    {
+      "name": "One-off: Newest WNBA Dildo Thrower Arrested and B",
+      "voice_weight": 1.0,
+      "items": [
+        {
+          "title": "Newest WNBA Dildo Thrower Arrested and Banned",
+          "source": "Front Office Sports",
+          "link": "https://frontofficesports.com/sex-toy-thrown-at-dream-sparks-game-reviving-wnbas-2025-issue/",
+          "points": [],
+          "body_excerpt": "While the WNBA has been dealing with a new culture war this season, it seemed a 2025 problem had been addressed: fans throwing dildos on the court. That was until Thursday night. During the third quarter of the Dream-Sparks game at Crypto.com Arena, a green dildo landed on the hardwood. The object was tossed in front of the Sparks bench as Los Angeles forward Jihyun Park was at the free-throw line. At the scorer\u2019s table, Dream star Angel Reese gestured to the stands: \u201cAngel Reese is pointing out the perpetrator,\u201d Amazon Prime announcer Mike Watts said. An unidentified person from the Lakers be"
+        }
+      ]
+    },
+    {
+      "name": "One-off: College Football Landscape Fueled by New",
+      "voice_weight": 1.0,
+      "items": [
+        {
+          "title": "College Football Landscape Fueled by New Off-Field Drama",
+          "source": "Front Office Sports",
+          "link": "https://frontofficesports.com/college-football-landscape-fueled-by-new-off-field-drama/",
+          "points": [
+            "This year, the rev-share cap is just over $21 million (up from $20.5 million last year) for all sports combined in an athletic department.",
+            "At the power conference level, multiple football rosters are rumored to be in the $40 million range alone.",
+            "Results of the Coaching Carousel The biggest drama last season was a coaching carousel that spun out of control\u2014as well as commanding more than $100 million in buyouts."
+          ],
+          "body_excerpt": "One week out from the start of college football\u2019s 2026\u201327 season, the sport is already packed with changes, quirks, and unresolved questions from the offseason. The NCAA has been unable to enforce rules around eligibility and player compensation due to a string of lawsuits, with no clarity in sight. Meanwhile, the seismic round of realignment due to the rebuilding of the Pac-12 in 2024, as well as the equally earth-shattering coaching carousel from 2025, have created an entirely new landscape of staff and conference make up. Plus, there\u2019s a new in-game accessory for many schools: multimillion-"
+        }
+      ]
+    },
+    {
+      "name": "One-off: OpenAI seeks to one-up Anthropic with ne",
+      "voice_weight": 1.0,
+      "items": [
+        {
+          "title": "OpenAI seeks to one-up Anthropic with new customer privacy protections",
+          "source": "TechCrunch AI",
+          "link": "https://techcrunch.com/2026/08/19/openai-seeks-to-one-up-anthropic-with-new-customer-privacy-protections/",
+          "points": [],
+          "body_excerpt": "A competition is developing between OpenAI and Anthropic over who can provide the best privacy protections for enterprise customer data."
+        }
+      ]
+    },
+    {
+      "name": "One-off: Trump Urges Senate to Pass Crypto\u2019s CLAR",
+      "voice_weight": 1.0,
+      "items": [
+        {
+          "title": "Trump Urges Senate to Pass Crypto\u2019s CLARITY Act, Teases More Bitcoin Buys",
+          "source": "Bitcoin Magazine",
+          "link": "https://bitcoinmagazine.com/news/trump-teases-bitcoin-buys",
+          "points": [],
+          "body_excerpt": "Bitcoin Magazine Trump Urges Senate to Pass Crypto&#8217;s CLARITY Act, Teases More Bitcoin Buys U.S. President Donald Trump urged lawmakers to pass the Clarity Act on Wednesday \u2014 and also hinted that the government may accumulate more bitcoin.&nbsp; After gathering with crypto executives at the White House, President Trump said that getting the Clarity Act over the line would keep the U.S. ahead of China.&nbsp; Lawmakers were hoping to get a vote on the crypto market structure bill, or Clarity Act, in August. A vote will now go ahead in September. The bill will establish a framework for disti"
+        }
+      ]
+    },
+    {
+      "name": "One-off: Reverse-lookup service exposed millions ",
+      "voice_weight": 1.0,
+      "items": [
+        {
+          "title": "Reverse-lookup service exposed millions of photos of people\u2019s faces",
+          "source": "Ars Technica",
+          "link": "https://arstechnica.com/gadgets/2026/08/reverse-lookup-service-exposed-millions-of-photos-of-peoples-faces/",
+          "points": [],
+          "body_excerpt": "When someone uploads a photo to the people-search tool ClarityCheck, the website has a clear message: \u201cYour reverse image search is private and secure.\u201d New research , though, shows that the website left more than 9 million image files, including photographs of people\u2019s faces, publicly exposed . And a second misconfiguration publicly exposed people\u2019s email addresses and phone numbers. Overall, according to findings from independent security researcher Jeremiah Fowler, the exposed ClarityCheck database contained roughly 450 GB of images, including what appeared to be profile images, screenshots"
+        }
+      ]
+    },
+    {
+      "name": "One-off: Live updates: Notre Dame HC Marcus Freem",
+      "voice_weight": 1.0,
+      "items": [
+        {
+          "title": "Live updates: Notre Dame HC Marcus Freeman Aug. 21 fall camp press conference",
+          "source": "On3",
+          "link": "https://www.on3.com/teams/notre-dame-fighting-irish/news/notre-dame-fighting-irish-football-head-coach-marcus-freeman-press-conference-august-21/",
+          "points": [],
+          "body_excerpt": "Notre Dame coach&nbsp; Marcus Freeman &nbsp;is speaking to the media on Friday afternoon to discuss the Fighting Irish football team with his squad a couple of weeks into fall camp. Watch the&nbsp; press conference &nbsp;and/or follow along with live updates of it from Blue &amp; Gold. Watch the press conference in the video player above. Live updates: What Notre Dame HC Marcus Freeman is saying Keep refreshing this page for live updates of what Freeman is saying \u2026 Updates are in reverse chronological order . By: Mike Singer Marcus Freeman&#8217;s press conference begins at 2 p.m. ET 08/21/202"
+        }
+      ]
+    },
+    {
+      "name": "One-off: Will Anyone Play Texas Tech Softball Thi",
+      "voice_weight": 1.0,
+      "items": [
+        {
+          "title": "Will Anyone Play Texas Tech Softball This Year?",
+          "source": "On3",
+          "link": "https://www.on3.com/sites/red-raider-sports/news/will-anyone-play-texas-tech-softball-this-year/",
+          "points": [],
+          "body_excerpt": "Chapters: 00:00 &#8211; Intro 01:30 &#8211; Soccer Boise State Preview 09:54 &#8211; Softball Schedule Thoughts 20:30 &#8211; More Five-in-Five Athletes Coming? Summary: Texas Tech Soccer is finally back in Lubbock, but its home opener comes against a Boise State team carrying the longest unbeaten streak in the country. True story they haven&#8217;t &#8220;technically&#8221; lost a game in 17 straight outings. We break down the Broncos, their standout freshman scorer, elite goalkeeper and what Sunday night\u2019s matchup could reveal about the Red Raiders. Then it\u2019s time for softball. Texas Tech is"
+        }
+      ]
+    },
+    {
+      "name": "One-off: Mark Mitchell officially enters NCAA tra",
+      "voice_weight": 1.0,
+      "items": [
+        {
+          "title": "Mark Mitchell officially enters NCAA transfer portal after judge\u2019s order",
+          "source": "On3",
+          "link": "https://www.on3.com/news/mark-mitchell-officially-enters-ncaa-transfer-portal-after-judges-order/",
+          "points": [],
+          "body_excerpt": "Mark Mitchell has officially entered the NCAA transfer portal , On3&#8217;s Pete Nakos has learned. He went in with a &#8216;Do Not Contact&#8217; tag attached. Mitchell spent the last two years playing at Missouri under head coach Dennis Gates . Four years of college basketball have already been played by Mitchell. However, a judge&#8217;s order in Kentucky provided him another season of eligibility. Mitchell obtained a temporary restraining order , becoming one of the many athletes to get back on the court through the courts. Now, Mitchell could turn into one of the more prized players on th"
+        }
+      ]
+    },
+    {
+      "name": "One-off: Olivia Rodrigo\u2019s \u2018Drop Dead\u2019 Rises to No",
+      "voice_weight": 1.0,
+      "items": [
+        {
+          "title": "Olivia Rodrigo\u2019s \u2018Drop Dead\u2019 Rises to No. 1 on Billboard\u2019s Pop Airplay\u00a0Chart",
+          "source": "Billboard",
+          "link": "https://www.billboard.com/music/chart-beat/olivia-rodrigo-drop-dead-number-one-pop-airplay-chart-1236321980/",
+          "points": [],
+          "body_excerpt": "Olivia Rodrigo \u2019s \u201cDrop Dead\u201d kisses the top spot on Billboard \u2019s Pop Airplay chart (dated Aug. 29), lifting two places to No. 1. Rodrigo earns her third Pop Airplay leader, following \u201cDrivers License,\u201d which reigned for five weeks beginning in March 2021, and \u201cGood 4 U,\u201d a No. 1 for six weeks starting that July. Both of those songs were released from her first LP, Sour . \u201cDrop Dead\u201d is from Rodrigo\u2019s third studio album, you seem pretty sad for a girl so in love . Related Olivia Rodrigo Reveals Favorite Song She Wrote for Her New Album &amp; the Inspiration Behind Daisy Chain Festival | All&nb"
+        }
+      ]
+    },
+    {
+      "name": "One-off: Why Louisville basketball dismissed form",
+      "voice_weight": 1.0,
+      "items": [
+        {
+          "title": "Why Louisville basketball dismissed former G League player",
+          "source": "ClutchPoints",
+          "link": "https://clutchpoints.com/ncaa-basketball/louisville-basketball-news-why-cardinals-dismissed-former-g-league-player",
+          "points": [],
+          "body_excerpt": "Louisville men&#8217;s basketball team will be without one of its key players for the upcoming season, as guard London Johnson has been dismissed from the program. &#8220;London Johnson has been dismissed from the University of Louisville men&#8217;s basketball team due to a violation of team rules and University policy. We wish him the best in his future endeavors,&#8221; the statement read. It&#8217;s uncertain what Johnson specifically did, and details may come out at a later time. Johnson spent three seasons in the NBA G League and then joined Louisville midseason in December 2025. After t"
+        }
+      ]
+    },
+    {
+      "name": "One-off: The Roots of Megan DiLeo\u2019s Growth and Su",
+      "voice_weight": 1.0,
+      "items": [
+        {
+          "title": "The Roots of Megan DiLeo\u2019s Growth and Success in Portland",
+          "source": "Winsidr",
+          "link": "https://winsidr.com/2026/08/the-roots-of-megan-dileos-growth-and-success-in-portland/",
+          "points": [],
+          "body_excerpt": "The Portland Fire and Toronto Tempo were the two new expansion teams to debut this WNBA season. But, for Portland, WNBA basketball is not new to the city. The WNBA is back in Portland for the first time since 2002. Currently, the Fire sit with an 11-18 record. Despite the sub-.500 record and sitting in tenth place in the standings, the team is still in the mix for a postseason appearance, chasing after what would most likely be the final playoff spot as the eighth seed. The players have built up a lot of excitement for the future of the franchise. One of the faces of the second iteration of th"
+        }
+      ]
+    },
+    {
+      "name": "One-off: Advances in private training for product",
+      "voice_weight": 1.0,
+      "items": [
+        {
+          "title": "Advances in private training for production on-device language models",
+          "source": "Google AI Blog",
+          "link": "http://blog.research.google/2024/02/advances-in-private-training-for.html",
+          "points": [],
+          "body_excerpt": "Posted by Zheng Xu, Research Scientist, and Yanxiang Zhang, Software Engineer, Google Language models (LMs) trained to predict the next word given input text are the key technology for many applications [ 1 , 2 ]. In Gboard , LMs are used to improve users\u2019 typing experience by supporting features like next word prediction (NWP), Smart Compose , smart completion and suggestion , slide to type , and proofread . Deploying models on users\u2019 devices rather than enterprise servers has advantages like lower latency and better privacy for model usage. While training on-device models directly from user "
+        }
+      ]
+    },
+    {
+      "name": "One-off: Import AI 460: Reward hacking society, R",
+      "voice_weight": 1.0,
+      "items": [
+        {
+          "title": "Import AI 460: Reward hacking society, RSI data from Anthropic; and RL-based quadcopter racing",
+          "source": "Import AI",
+          "link": "https://importai.substack.com/p/import-ai-460-reward-hacking-society",
+          "points": [
+            "\"RL enables LLMs to rediscover historically patched strategies with 61.25% recall and 90.85% precision without direct loophole-exploiting instructions\".",
+            "*** Preliminary signs of the outer loop of recursive self improvement at Anthropic: ...8x increases in lines of code merged in 2026 relative to 2024...",
+            "I spent the last few months at Anthropic compiling together some evidence which supports the idea that prosaic RSI has started at Anthropic - specifically, we observe an 8x increase in the amount of code merged into our codebase in 2026 versus years 2021-2024."
+          ],
+          "body_excerpt": "Welcome to Import AI, a newsletter about AI research. Import AI runs on arXiv, cappuccinos, and feedback from readers. If you&#8217;d like to support this, please subscribe. Subscribe now Society can be reward-hacked, just like cyber environments: &#8230;Imagine an army of credit card point optimizers gaming the system&#8230; forever&#8230; Research from Kings College London, Fudan University, and The Alan Turing Institute have built a benchmark, SocioHack, which tests out how well AI systems can learn to &#8216;beat the system&#8217; in a variety of real world scenarios, ranging from maximizi"
+        }
+      ]
+    },
+    {
+      "name": "One-off: Reign Judge Takes the Wheel for \u201cOverdri",
+      "voice_weight": 1.0,
+      "items": [
+        {
+          "title": "Reign Judge Takes the Wheel for \u201cOverdrive\u201d",
+          "source": "Highsnobiety",
+          "link": "https://www.highsnobiety.com/p/reign-judge-takes-the-wheel-for-overdrive/",
+          "points": [],
+          "body_excerpt": "By the age of 23, Reign Judge had shot campaigns for Miu Miu and Gucci and walked for Tommy Hilfiger and Sandy Liang. She was signed to IMG, the prestigious modeling agency whose starry roster of catwalk queens includes Gigi Hadid, Anok Yai, and Alex Consani. On social media, she flaunted the uncomplicated, high-low personal style that\u2019s made her every fashion girl\u2019s favorite follow. Judge seemed to be living the dream\u2014but it didn\u2019t feel that way. \u201cI love modeling. I love fashion. But I felt quite unfulfilled by being the canvas all the time,\u201d Judge, now 24, tells Highsnobiety . \u201cI had the tal"
+        }
+      ]
+    },
+    {
+      "name": "One-off: ZZ Top Drummer Frank Beard Dies at 77",
+      "voice_weight": 1.0,
+      "items": [
+        {
+          "title": "ZZ Top Drummer Frank Beard Dies at 77",
+          "source": "Pitchfork",
+          "link": "https://pitchfork.com/story/zz-top-drummer-frank-beard-dies-at-77/",
+          "points": [],
+          "body_excerpt": "The Texas shuffle master played with the group for more than 50 years"
+        }
+      ]
+    },
+    {
+      "name": "One-off: WPD won't replace stolen Flock cameras, ",
+      "voice_weight": 1.0,
+      "items": [
+        {
+          "title": "WPD won't replace stolen Flock cameras, citing public trust",
+          "source": "HN (General)",
+          "link": "https://www.winonapost.com/news/wpd-wont-replace-stolen-flock-cameras-citing-public-trust/article_06a67859-2d97-414b-aa8f-d8751ad214bb.html",
+          "points": [],
+          "body_excerpt": "Article URL: https://www.winonapost.com/news/wpd-wont-replace-stolen-flock-cameras-citing-public-trust/article_06a67859-2d97-414b-aa8f-d8751ad214bb.html Comments URL: https://news.ycombinator.com/item?id=49388682 Points: 86 # Comments: 44"
+        }
+      ]
+    },
+    {
+      "name": "One-off: The X-Factor: Kaitlyn Chen\u2019s meteoric ri",
+      "voice_weight": 1.0,
+      "items": [
+        {
+          "title": "The X-Factor: Kaitlyn Chen\u2019s meteoric rise",
+          "source": "Winsidr",
+          "link": "https://winsidr.com/2026/08/the-x-factor-kaitlyn-chens-meteoric-rise/",
+          "points": [],
+          "body_excerpt": "Kaitlyn Chen is currently putting the league on notice with the surprisingly successful Golden State Valkyries, but her road to doing so was anything but linear. Chen started her collegiate career at Princeton University, averaging 14.2 points, 3.9 assists, 3.5 rebounds, and 1.1 steals across three seasons in the Ivy League (her freshman year was cancelled due to the Covid-19 pandemic). The guard won three straight Ivy League Tournaments with Princeton and was named Most Outstanding Player of the Tournament in all three of those years, as well as winning first-team All-Ivy honors in 2023 and 2"
+        }
+      ]
+    },
+    {
+      "name": "One-off: Winsidr\u201826 Power Rankings \u2014 Volume 6",
+      "voice_weight": 1.0,
+      "items": [
+        {
+          "title": "Winsidr\u201826 Power Rankings \u2014 Volume 6",
+          "source": "Winsidr",
+          "link": "https://winsidr.com/2026/08/winsidr26-power-rankings-volume-6/",
+          "points": [],
+          "body_excerpt": "With the league back from the All-Star break, but only a couple of weeks away from the FIBA break, it\u2019s crunch time for a lot of teams. While the bottom half of the standings is staying pretty consistent, things could get interesting up top before the regular season comes to a close. A couple of teams came back from break looking fully rejuvenated, while others have plummeted. Here are a few teams we\u2019ve seen leap, a couple who\u2019ve been knocked down, and some surprising takeaways. Teams on the Rise Washington Mystics The Washington Mystics are quickly becoming the most threatening team in the le"
+        }
+      ]
+    },
+    {
+      "name": "One-off: SCIN: A new resource for representative ",
+      "voice_weight": 1.0,
+      "items": [
+        {
+          "title": "SCIN: A new resource for representative dermatology images",
+          "source": "Google AI Blog",
+          "link": "http://blog.research.google/2024/03/scin-new-resource-for-representative.html",
+          "points": [
+            "The majority of images in the SCIN dataset show early-stage concerns \u2014 more than half arose less than a week before the photo, and 30% arose less than a day before the image was taken.",
+            "Over 97.5% of contributions were genuine images of skin conditions.",
+            "After performing further filtering steps to exclude images that were out of scope for the SCIN dataset and to remove duplicates, we were able to release nearly 90% of the contributions received over the 8-month study period."
+          ],
+          "body_excerpt": "Posted by Pooja Rao, Research Scientist, Google Research Health datasets play a crucial role in research and medical education, but it can be challenging to create a dataset that represents the real world. For example, dermatology conditions are diverse in their appearance and severity and manifest differently across skin tones. Yet, existing dermatology image datasets often lack representation of everyday conditions (like rashes, allergies and infections) and skew towards lighter skin tones. Furthermore, race and ethnicity information is frequently missing, hindering our ability to assess dis"
+        }
+      ]
+    },
+    {
+      "name": "One-off: Social learning: Collaborative learning ",
+      "voice_weight": 1.0,
+      "items": [
+        {
+          "title": "Social learning: Collaborative learning with large language models",
+          "source": "Google AI Blog",
+          "link": "http://blog.research.google/2024/03/social-learning-collaborative-learning.html",
+          "points": [],
+          "body_excerpt": "Posted by Amirkeivan Mohtashami, Research Intern, and Florian Hartmann, Software Engineer, Google Research Large language models (LLMs) have significantly improved the state of the art for solving tasks specified using natural language, often reaching performance close to that of people. As these models increasingly enable assistive agents, it could be beneficial for them to learn effectively from each other, much like people do in social settings, which would allow LLM-based agents to improve each other\u2019s performance. To discuss the learning processes of humans, Bandura and Walters described "
+        }
+      ]
+    },
+    {
+      "name": "One-off: DP-Auditorium: A flexible library for au",
+      "voice_weight": 1.0,
+      "items": [
+        {
+          "title": "DP-Auditorium: A flexible library for auditing differential privacy",
+          "source": "Google AI Blog",
+          "link": "http://blog.research.google/2024/02/dp-auditorium-flexible-library-for.html",
+          "points": [],
+          "body_excerpt": "Posted by M\u00f3nica Ribero D\u00edaz, Research Scientist, Google Research Differential privacy (DP) is a property of randomized mechanisms that limit the influence of any individual user\u2019s information while processing and analyzing data. DP offers a robust solution to address growing concerns about data protection, enabling technologies across industries and government applications (e.g., the US census ) without compromising individual user identities. As its adoption increases, it\u2019s important to identify the potential risks of developing mechanisms with faulty implementations. Researchers have recent"
+        }
+      ]
+    },
+    {
+      "name": "One-off: WNBA gameday discussion: By finally beat",
+      "voice_weight": 1.0,
+      "items": [
+        {
+          "title": "WNBA gameday discussion: By finally beating the Minnesota Lynx, the Golden State Valkyries can burnish their championship credentials",
+          "source": "Swish Appeal",
+          "link": "https://www.swishappeal.com/wnba/84974/games-watch-gsv-valkyries-min-lynx-playoffs-matchups-winless-losses-championship-natalie-nakase-olivia-miles-naphessa-collier-all-star-game",
+          "points": [],
+          "body_excerpt": "Veronica Burton and Kiah Stokes defend Olivia Miles. | NBAE via Getty Images When the Golden State Valkyries host WNBA All-Star 2027, the organization certainly would be satisfied if a championship banner was hanging over the Chase Center court. To make it conceivable that such a Bay Area dream could become a reality, they must win on Wednesday night, when they welcome the arguable title favorites, the league-leading Minnesota Lynx, into Ballhalla (10 p.m. ET, USA Network). WNBay Area \ud83c\udf1f @WNBA All-Star 2027 is coming to Ballhalla. pic.twitter.com/qdh4p024rS &mdash; Golden State Valkyries (@valk"
+        }
+      ]
+    },
+    {
+      "name": "One-off: How these three young WNBA players are e",
+      "voice_weight": 1.0,
+      "items": [
+        {
+          "title": "How these three young WNBA players are elevating the championship-hopeful Fever, Valkyries and Liberty",
+          "source": "Swish Appeal",
+          "link": "https://www.swishappeal.com/wnba/84861/wnba-kaitlyn-chen-makayla-timpson-pauline-astier-natalie-nakase-chris-demarco-young-players-playoffs-fever-valkyries-liberty-championship",
+          "points": [],
+          "body_excerpt": "Makayla Timpson has turned out to be the perfect fit next to the Indiana Fever\u2019s star players. | NBAE via Getty Images When it comes to the WNBA\u2019s playoff-caliber teams, it\u2019s natural to gravitate towards the big names. Teams like the Indiana Fever, Golden State Valkyries and New York Liberty are not short on star players, and it\u2019s easy to give them most of the attention as they keep winning games. Even on these veteran-laden squads, though, there are a handful of younger players who have made valuable contributions. Let\u2019s give these first- and second-year players their flowers as their teams c"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "timestamp": "2026-08-21T18:07:40.323083+00:00",
+  "code_version": "c8acf6d",
+  "model": "deepseek/deepseek-v4-flash-0731",
+  "pool_key": "3692a778bfd45870",
+  "n_clusters": 14,
+  "prompt_hash": "19ec195015de"
+}

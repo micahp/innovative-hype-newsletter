@@ -1,0 +1,88 @@
+{
+  "cards": [
+    {
+      "narrative": "Sports team valuations are hitting record highs as billionaire investors buy in, with the Lakers selling for $12.5 billion and the Seahawks for $9.6 billion.",
+      "paragraph": "Billionaires are paying record prices for sports franchises. The Lakers are being sold to a group led by Joshua Kushner and Bob Iger at a $12.5 billion valuation, and the Seahawks are set to sell for $9.6 billion. The Timberwolves and Lynx are valued at $4.5 billion in a sale to Marc Stad. Private equity is also getting in on the action, with Arctos buying a 10% stake in the Falcons at a $10.6 billion valuation.",
+      "data_point": "$12.5 billion Lakers sale; $9.6 billion Seahawks sale",
+      "source_ids": [
+        0,
+        3,
+        5
+      ]
+    },
+    {
+      "narrative": "The US Open is boosting prize money to a record $108 million, a 20% increase, to head off player protests over pay.",
+      "paragraph": "The USTA announced that the 2026 US Open will offer $108 million in total player compensation, a 20% increase from last year's $90 million. The men's and women's singles winners will each take home $5.5 million. The move comes amid threats of player protests over prize money distribution.",
+      "data_point": "$108 million total player compensation, up 20%",
+      "source_ids": [
+        1
+      ]
+    },
+    {
+      "narrative": "Spotify's stock jumps 5.5% after its board approves a fresh $1.5 billion buyback program, signaling confidence in its streaming business.",
+      "paragraph": "Spotify's stock rose nearly 5.5% on Friday after the company announced its board had approved up to $1.5 billion in additional stock buybacks. The company still had $723 million from a previous authorization, indicating a strong cash position and commitment to returning value to shareholders.",
+      "data_point": "$1.5 billion buyback; stock up 5.5%",
+      "source_ids": [
+        2
+      ]
+    },
+    {
+      "narrative": "AI-powered cloud platform Railway raises $100 million to challenge AWS, having amassed two million developers without marketing spend.",
+      "paragraph": "Railway, a San Francisco-based cloud platform, announced a $100 million Series B funding round. The company has quietly grown to two million developers without spending on marketing, and aims to leverage AI-native infrastructure to compete with legacy cloud providers like AWS.",
+      "data_point": "$100 million Series B; 2 million developers",
+      "source_ids": [
+        8
+      ]
+    },
+    {
+      "narrative": "Deel expands its stablecoin wallet to over 80 countries, routing $22 billion in annual payroll through dollar-based digital payments.",
+      "paragraph": "Deel announced that its DLUSD stablecoin wallet is now live in more than 80 countries, just 11 weeks after launching in Argentina. The expansion leverages Deel's payroll platform, which processes $22 billion annually, to offer contractors in markets with limited dollar access a stable digital payment option.",
+      "data_point": "80+ countries; $22 billion annual payroll",
+      "source_ids": [
+        9
+      ]
+    },
+    {
+      "narrative": "Blue Origin's proposed $674 million facility in Hutto, Texas, moves forward after county commissioners approve the development deal.",
+      "paragraph": "Williamson County commissioners approved a development agreement with Blue Origin, clearing the way for a $674 million manufacturing facility in Hutto. The project, about the size of 26 football fields, is part of a broader expansion of space-related industry in Central Texas.",
+      "data_point": "$674 million facility approved",
+      "source_ids": [
+        12,
+        13
+      ]
+    },
+    {
+      "narrative": "Google's AI-powered flood forecasting expands globally, addressing floods that cause $50 billion in annual damages.",
+      "paragraph": "Google researchers announced the expansion of AI-based flood forecasting to more regions, using machine learning to predict floods earlier and more accurately. Floods are the most common natural disaster, causing roughly $50 billion in damages each year, and the rate of flood-related disasters has more than doubled since 2000.",
+      "data_point": "$50 billion annual flood damages; AI forecasts expanded",
+      "source_ids": [
+        14
+      ]
+    },
+    {
+      "narrative": "A new AI safety startup, Sequent, launches with plans to raise $100-150 million, citing that 'alignment is not on track'.",
+      "paragraph": "A group of AI researchers has launched Sequent, a safety-focused startup, with the goal of raising $100-150 million initially and potentially ten times more. The founders argue that current alignment efforts are insufficient, and the startup aims to explore parallel research directions to ensure AI systems remain safe.",
+      "data_point": "$100-150 million initial raise target",
+      "source_ids": [
+        20
+      ]
+    },
+    {
+      "narrative": "Bitcoin's price surge past $72,000 triggers over $3 billion in short liquidations, the most on record, as regulatory news boosts sentiment.",
+      "paragraph": "Bitcoin climbed above $72,000, extending a two-day rally that has liquidated over $3 billion in short positions, the largest on record. The surge follows positive regulatory developments and a U.S. Treasury buyback pledge, with some analysts predicting further gains toward $80,000.",
+      "data_point": "$3 billion in short liquidations",
+      "source_ids": [
+        21,
+        22
+      ]
+    },
+    {
+      "narrative": "The SEC proposes new rules allowing token issuers to raise up to $75 million a year without SEC registration, a potential boon for crypto startups.",
+      "paragraph": "The SEC proposed Regulation Crypto Assets, which would permit token issuers to raise up to $75 million annually without registering the offering. The proposal also includes a safe harbor to remove some tokens from the definition of a security, potentially easing regulatory burdens for the crypto industry.",
+      "data_point": "$75 million annual exemption",
+      "source_ids": [
+        23
+      ]
+    }
+  ]
+}
