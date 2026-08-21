@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>INNOVATIVE HYPE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --white: #ffffff;
+  --off-white: #f8f8f8;
+  --ink: #0a0a0a;
+  --ink-light: #3a3a3a;
+  --ink-muted: #888888;
+  --gold: #d4af37;
+  --gold-light: #f5e6a3;
+  --gold-dark: #b8860B;
+  --border: #e8e8e8;
+  --shadow: rgba(0,0,0,0.06);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+  background: var(--white);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* === HEADER === */
+.site-header {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  padding: 0 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+}
+
+.brand {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, var(--gold-dark), var(--gold), var(--gold-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.brand:hover {
+  filter: brightness(1.1);
+}
+
+.nav-pills {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.nav-pill {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 500;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--white);
+  color: var(--ink);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.nav-pill:hover {
+  border-color: var(--ink);
+}
+
+.nav-pill.active {
+  background: var(--ink);
+  color: var(--white);
+  border-color: var(--ink);
+}
+
+.updated {
+  font-size: 0.7rem;
+  color: var(--ink-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* === HERO === */
+.hero {
+  background: var(--off-white);
+  border-bottom: 1px solid var(--border);
+  padding: 2.5rem 2rem;
+}
+
+.hero-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.hero-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+.hero-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.hero-category {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--gold-dark);
+}
+
+.hero-source {
+  font-size: 0.75rem;
+  color: var(--ink-muted);
+}
+
+.hero-title {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: 2.5rem;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+}
+
+.hero-title a {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.hero-title a:hover {
+  color: var(--gold-dark);
+}
+
+.hero-summary {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--ink-light);
+  margin-bottom: 1.25rem;
+}
+
+.hero-read {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 500;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 2px solid var(--gold);
+  padding-bottom: 2px;
+}
+
+.hero-read:hover {
+  color: var(--gold-dark);
+}
+
+/* === TOP NEWS === */
+.top-section {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem 2rem 0;
+}
+
+.top-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid var(--ink);
+  padding-bottom: 0.5rem;
+}
+
+.top-title {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.top-algo {
+  font-size: 0.7rem;
+  color: var(--ink-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.top-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.top-card {
+  background: var(--off-white);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--gold);
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.2s ease;
+}
+
+.top-card:hover {
+  border-color: var(--ink);
+  box-shadow: 0 4px 20px var(--shadow);
+}
+
+.top-rank {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: var(--gold-dark);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+
+.top-card-title {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 600;
+  font-size: 1.15rem;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.5rem;
+  flex-grow: 1;
+}
+
+.top-card-title a {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.top-card-title a:hover {
+  color: var(--gold-dark);
+}
+
+.top-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.72rem;
+  color: var(--ink-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-top: 1px solid var(--border);
+  padding-top: 0.5rem;
+}
+
+.top-cat {
+  font-weight: 600;
+  color: var(--gold-dark);
+}
+
+.top-pillars {
+  margin-left: auto;
+  font-size: 0.65rem;
+  color: var(--ink-muted);
+}
+
+/* === GRID === */
+.content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2.5rem 2rem;
+}
+
+.section-title {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--ink);
+  display: inline-block;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  padding: 1.5rem;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  border-color: var(--ink);
+  box-shadow: 0 4px 20px var(--shadow);
+}
+
+.card-category {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 600;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--gold-dark);
+  margin-bottom: 0.5rem;
+}
+
+.card-title {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 600;
+  font-size: 1.15rem;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.5rem;
+  flex-grow: 1;
+}
+
+.card-title a {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.card-title a:hover {
+  color: var(--gold-dark);
+}
+
+.card-summary {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--ink-light);
+  margin-bottom: 0.75rem;
+  flex-grow: 1;
+}
+
+.card-source {
+  font-size: 0.75rem;
+  color: var(--ink-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-top: 1px solid var(--border);
+  padding-top: 0.5rem;
+}
+
+/* === FOOTER === */
+.footer {
+  background: var(--ink);
+  color: var(--white);
+  text-align: center;
+  padding: 2rem;
+  margin-top: 2rem;
+}
+
+.footer-brand {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  background: linear-gradient(135deg, var(--gold-dark), var(--gold), var(--gold-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.5rem;
+}
+
+.footer-tagline {
+  font-size: 0.8rem;
+  color: var(--ink-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 900px) {
+  .hero-card {
+    grid-template-columns: 1fr;
+  }
+  .hero-title {
+    font-size: 1.75rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .site-header {
+    padding: 0 1rem;
+  }
+  .hero {
+    padding: 1.5rem 1rem;
+  }
+  .content {
+    padding: 1.5rem 1rem;
+  }
+  .card-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .header-inner {
+    flex-wrap: wrap;
+    height: auto;
+    padding: 0.5rem 0;
+    gap: 0.5rem;
+  }
+  .nav-pills {
+    order: 3;
+    width: 100%;
+    overflow-x: auto;
+    padding-bottom: 0.25rem;
+  }
+}
+
+/* === EMPTY STATE === */
+.empty-state {
+  text-align: center;
+  padding: 3rem;
+  color: var(--ink-muted);
+}
+
+/* === ANIMATIONS === */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.card {
+  animation: fadeUp 0.4s ease both;
+}
+
+.card:nth-child(2) { animation-delay: 0.05s; }
+.card:nth-child(3) { animation-delay: 0.1s; }
+.card:nth-child(4) { animation-delay: 0.15s; }
+.card:nth-child(5) { animation-delay: 0.2s; }
+.card:nth-child(6) { animation-delay: 0.25s; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="brand">INNOVATIVE HYPE</div>
+    <nav class="nav-pills" id="navPills">
+      <a class="nav-pill active" data-cat="all">All</a>
+      <a class="nav-pill" data-cat="technology">Technology</a>
+      <a class="nav-pill" data-cat="business">Business</a>
+      <a class="nav-pill" data-cat="sports">Sports</a>
+      <a class="nav-pill" data-cat="culture">Culture</a>
+    </nav>
+    <div class="updated" id="updatedLabel">—</div>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="heroSection">
+    <div class="hero-inner">
+      <div class="hero-card" id="heroCard">
+        <!-- filled by JS -->
+      </div>
+    </div>
+  </section>
+
+  <section class="top-section" id="topSection">
+    <div class="top-header">
+      <span class="top-title">Top News</span>
+      <span class="top-algo" id="topAlgoLabel">—</span>
+    </div>
+    <div class="top-grid" id="topGrid">
+      <!-- filled by JS -->
+    </div>
+  </section>
+
+  <section class="content" id="contentSections">
+    <!-- filled by JS -->
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer-brand">INNOVATIVE HYPE</div>
+  <div class="footer-tagline">gm. own your edge.</div>
+</footer>
+
+<script>
+const CATEGORY_ORDER = ['technology', 'business', 'sports', 'culture'];
+
+async function loadArticles() {
+  try {
+    const res = await fetch('articles.json');
+    const data = await res.json();
+    return data;
+  } catch (e) {
+    console.error('Failed to load articles:', e);
+    return { articles: [] };
+  }
+}
+
+function formatDate(s) {
+  try {
+    const d = new Date(s);
+    return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+  } catch { return ''; }
+}
+
+function stripHtml(s) {
+  const div = document.createElement('div');
+  div.innerHTML = s || '';
+  return div.textContent || '';
+}
+
+function renderHero(article) {
+  const hero = document.getElementById('heroCard');
+  const summary = stripHtml(article.summary).slice(0, 180);
+  hero.innerHTML = `
+    <div>
+      <div class="hero-meta">
+        <span class="hero-category">${article.category}</span>
+        <span class="hero-source">${article.source} · ${formatDate(article.published)}</span>
+      </div>
+      <h1 class="hero-title"><a href="${article.link}" target="_blank" rel="noopener">${article.title}</a></h1>
+      <p class="hero-summary">${summary}</p>
+      <a href="${article.link}" target="_blank" rel="noopener" class="hero-read">Read the full story →</a>
+    </div>
+    <div style="background:var(--border);min-height:200px;display:flex;align-items:center;justify-content:center;color:var(--ink-muted);font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:0.06em;font-size:0.85rem;">
+      ${article.category}
+    </div>
+  `;
+}
+
+function renderTopCard(article, rank) {
+  const pillars = (article._pillars || []).map(p => p.replace(/-/g, ' ')).join(' · ');
+  return `
+    <article class="top-card">
+      <div class="top-rank">Top ${rank}</div>
+      <h3 class="top-card-title"><a href="${article.link}" target="_blank" rel="noopener">${article.title}</a></h3>
+      <div class="top-card-meta">
+        <span class="top-cat">${article.category}</span>
+        <span>${article.source} · ${formatDate(article.published)}</span>
+        ${pillars ? `<span class="top-pillars">${pillars}</span>` : ''}
+      </div>
+    </article>
+  `;
+}
+
+function renderTopSection(articles, ranking) {
+  const grid = document.getElementById('topGrid');
+  const label = document.getElementById('topAlgoLabel');
+  const tops = articles.filter(a => a.top);
+  if (tops.length === 0) {
+    grid.innerHTML = '';
+    return;
+  }
+  // Keep the hero story out of the top grid (it's already the lead).
+  const rest = tops.slice(0, 7);
+  grid.innerHTML = rest.map((a, i) => renderTopCard(a, i + 1)).join('');
+  if (ranking && ranking.name) {
+    label.textContent = `ranked · ${ranking.name.replace(/_/g, ' ')}`;
+  }
+}
+
+function renderCard(article) {
+  const summary = stripHtml(article.summary).slice(0, 120);
+  return `
+    <article class="card">
+      <div class="card-category">${article.category}</div>
+      <h3 class="card-title"><a href="${article.link}" target="_blank" rel="noopener">${article.title}</a></h3>
+      <p class="card-summary">${summary}</p>
+      <div class="card-source">${article.source}</div>
+    </article>
+  `;
+}
+
+function renderSections(articles) {
+  const container = document.getElementById('contentSections');
+  container.innerHTML = '';
+  
+  const grouped = {};
+  CATEGORY_ORDER.forEach(c => { grouped[c] = []; });
+  articles.forEach(a => {
+    if (grouped[a.category]) grouped[a.category].push(a);
+  });
+
+  CATEGORY_ORDER.forEach(cat => {
+    const items = grouped[cat];
+    if (!items || items.length === 0) return;
+    const section = document.createElement('div');
+    section.innerHTML = `
+      <h2 class="section-title">${cat}</h2>
+      <div class="card-grid">
+        ${items.map(renderCard).join('')}
+      </div>
+    `;
+    container.appendChild(section);
+  });
+}
+
+function filterArticles(articles, category) {
+  if (category === 'all') return articles;
+  return articles.filter(a => a.category === category);
+}
+
+function render(data, activeCat = 'all') {
+  const filtered = filterArticles(data.articles, activeCat);
+  
+  if (filtered.length === 0) {
+    document.getElementById('heroCard').innerHTML = '<div class="empty-state">No articles yet — refresh soon.</div>';
+    document.getElementById('contentSections').innerHTML = '';
+    return;
+  }
+
+  renderHero(filtered[0]);
+  renderTopSection(data.articles, data.ranking);
+  
+  // If showing all, render per-category sections. If filtered, render as single grid.
+  if (activeCat === 'all') {
+    renderSections(filtered);
+  } else {
+    const container = document.getElementById('contentSections');
+    container.innerHTML = `
+      <h2 class="section-title">${activeCat}</h2>
+      <div class="card-grid">
+        ${filtered.slice(1).map(renderCard).join('')}
+      </div>
+    `;
+  }
+
+  // Update timestamp
+  const ts = data.updated ? formatDate(data.updated) : '';
+  document.getElementById('updatedLabel').textContent = `Updated ${ts}`;
+}
+
+function setupNav(data) {
+  const pills = document.querySelectorAll('.nav-pill');
+  pills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      pills.forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      render(data, pill.dataset.cat);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+}
+
+async function init() {
+  const data = await loadArticles();
+  render(data);
+  setupNav(data);
+}
+
+init();
+</script>
+</body>
+</html>
