@@ -1,0 +1,80 @@
+{
+  "cards": [
+    {
+      "narrative": "The AI data layer is printing money",
+      "paragraph": "Micro1, a four-year-old startup, expanded its gross annual run rate from $100 million to $500 million in eight months, riding the near-bottomless demand for unique AI training data from top labs and corporations. The boom is fueling a cohort of data-labeling startups as AI models consume ever more specialized data.",
+      "data_point": "$500M gross run rate",
+      "source_ids": [
+        0
+      ]
+    },
+    {
+      "narrative": "Sports team valuations hit record highs as investors pile in",
+      "paragraph": "The Minnesota Timberwolves and WNBA's Lynx sold at a $4.5 billion valuation, while the Seahawks sale is set at a league-record $9.612 billion. Private equity firm Arctos added a 10% stake in the Falcons at a $10.6 billion valuation, its fourth NFL team. Sports franchises are becoming prime assets for billionaires and PE firms.",
+      "data_point": "$9.612 billion Seahawks sale",
+      "source_ids": [
+        1,
+        5,
+        6
+      ]
+    },
+    {
+      "narrative": "Hollywood's piracy battle enters a new era as leaks spread",
+      "paragraph": "A bootleg version of 'Spider-Man' played for 5.9 million X accounts on opening day before the studio shut it down. Piracy is evolving with AI and social media, challenging studios' traditional release strategies.",
+      "data_point": "5.9 million X accounts",
+      "source_ids": [
+        0
+      ]
+    },
+    {
+      "narrative": "Bitcoin's short squeeze fuels record liquidations",
+      "paragraph": "Bitcoin surged past $72,000, wiping out $3 billion in short positions in two days, the most on record. The rally was driven by a U.S. Treasury buyback plan and positive regulatory news, with Bitcoin ETFs adding over $1 billion in fresh cash.",
+      "data_point": "$3 billion in shorts liquidated",
+      "source_ids": [
+        1,
+        0,
+        4
+      ]
+    },
+    {
+      "narrative": "AI notetaker refuses to sell surveillance to employers",
+      "paragraph": "An AI notetaker company, valued at $1.5 billion, has declined to sell surveillance features to bosses, despite lucrative offers. The decision highlights a growing tension between AI's productivity potential and worker privacy.",
+      "data_point": "$1.5 billion valuation",
+      "source_ids": [
+        0
+      ]
+    },
+    {
+      "narrative": "Creator economy startups raise big bucks to build self-organizing tools",
+      "paragraph": "Town, a startup that emerged from stealth in June with $55 million from Andreessen Horowitz, is building tools for self-organizing companies. The creator economy is consolidating as platforms raise massive funding to automate and streamline content creation.",
+      "data_point": "$55 million from Andreessen Horowitz",
+      "source_ids": [
+        1
+      ]
+    },
+    {
+      "narrative": "AI flood forecasting expands globally as disasters double",
+      "paragraph": "Floods cause roughly $50 billion in annual damages, and the rate of flood-related disasters has more than doubled. Google is using AI to expand reliable flood forecasts worldwide, potentially saving lives and reducing economic losses.",
+      "data_point": "$50 billion annual damages",
+      "source_ids": [
+        0
+      ]
+    },
+    {
+      "narrative": "AI safety startup launches with $100M+ goal as alignment concerns grow",
+      "paragraph": "A new AI safety startup, Sequent, aims to raise $100-150 million initially, citing that 'alignment is not on track.' The AI economy in the US is growing at 2,000% a year, intensifying concerns about oversight and safety.",
+      "data_point": "$100-150M initial raise goal",
+      "source_ids": [
+        2
+      ]
+    },
+    {
+      "narrative": "Prediction markets face accuracy limits for rare events",
+      "paragraph": "Generative AI for weather forecasting requires a 10,000-member ensemble to predict events with 1% probability within 10% relative error. This highlights the challenge of quantifying uncertainty in rare, high-impact events.",
+      "data_point": "10,000-member ensemble needed for 1% events",
+      "source_ids": [
+        0
+      ]
+    }
+  ]
+}
