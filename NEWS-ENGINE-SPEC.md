@@ -266,7 +266,27 @@ Report the fixture as a table on every run: for each item, one of
 `ABSENT_FROM_FEED` / `DROPPED_BY_<gate name>` / `REACHED_DESK` / `CARDED`.
 "Absent" and "dropped" are both failures, and they have different fixes.
 
-### Status (updated 2026-08-21, after the R1-R8 fixes)
+### Status (corrected 2026-08-21 evening — the earlier table below was fiction)
+
+The FIRST version of this fixture used loose ANY-match keywords ('texas',
+'camera', 'surveillance') and reported 3/8 REACHED_DESK while grepping the
+actual desk input showed ZERO flock/marijuana/longhorn articles. With
+specific keywords the honest number is **1/8**: the feed does not carry six
+of the eight stories at all. The engine cannot sound like Innovative Hype
+when the pool doesn't contain Innovative Hype stories.
+
+| # | Story | Honest status (2026-08-21 21:4x UTC) | What it needs |
+|---|---|---|---|
+| 1 | Flock cameras | ABSENT_FROM_FEED | a source carrying Austin/local surveillance stories |
+| 2 | Data centers | REACHED_DESK (Starcloud orbital variant) | ✓ |
+| 3 | Marijuana Texas | ABSENT_FROM_FEED | Texas politics/legal feed (Tribune alone doesn't headline it) |
+| 4 | Longhorns vs Texas State | ABSENT_FROM_FEED | live Texas-sports feed (On3 summaries only) |
+| 5 | Kanye fireworks | ABSENT_FROM_FEED | music/culture feed |
+| 6 | NBA→WNBA draft | ABSENT_FROM_FEED (aged out; summaries mention it, no headline carries it) | WNBA beat feed with depth |
+| 7 | 40-yr NCAAF | DROPPED_BY_GATE (in feed, ranked out) | seeded-first ranking didn't save it |
+| 8 | Sophie Cunningham | ABSENT_FROM_FEED | WNBA-quote/sports feed |
+
+### Status (2026-08-21 afternoon — SUPERSEDED by the correction above)
 
 | # | Story | 2026-08-21 14:00 (before) | Now (after fixes) | What it needs |
 |---|---|---|---|---|

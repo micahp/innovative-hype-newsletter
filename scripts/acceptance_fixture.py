@@ -16,16 +16,29 @@ REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 WEB = os.path.join(REPO, "web")
 RUNS = os.path.join(REPO, "runs")
 
-# Micah's eight named stories: (label, title keywords — ANY match suffices)
+# Micah's eight named stories: (label, SPECIFIC title keywords — ANY match).
+# CORRECTED 2026-08-21 evening: the first keyword set was so loose it lied.
+# 'texas' matched any Texas article, 'camera'/'surveillance' matched unrelated
+# surveillance stories, so Flock/Marijuana reported REACHED_DESK while the
+# actual stories were nowhere in the feed or the desk input. Verified with a
+# specific-keyword grep: 6 of 8 stories had ZERO articles. The fixture must
+# match the STORY, not a topic adjacent to it. (failure-modes: a check that
+# cannot fail is not a check.)
+# (label, keywords, title_only) — summary matching caused two lies:
+# 'thc' substring-matched inside a Ray Dalio debt story (→ fake Marijuana
+# DROPPED) and 'longhorn' matched a generic On3 playoff piece (→ fake
+# Longhorns DROPPED). Those two must match TITLE only, because the status
+# decides the fix: ABSENT = add a feed, DROPPED = fix ranking. Wrong label,
+# wrong fix. (failure-modes: a check that cannot fail is not a check.)
 FIXTURE = [
-    ("Flock cameras", ["flock", "stolen flock cameras", "camera", "surveillance"]),
-    ("Data centers/Texas", ["data center", "williamson county", "blue origin"]),
-    ("Marijuana Texas", ["marijuana", "cannabis", "texas"]),
-    ("Longhorns vs Texas State", ["longhorn", "texas state"]),
-    ("Kanye fireworks", ["kanye", "fireworks", "all of the lights"]),
-    ("NBA->WNBA draft", ["wnba draft", "declare for the wnba"]),
-    ("40-yr NCAAF", ["40-year-old", "college football", "age limit"]),
-    ("Sophie Cunningham", ["sophie cunningham", "wnba commissioner"]),
+    ("Flock cameras", ["flock"], True),
+    ("Data centers/Texas", ["data center", "williamson county", "blue origin", "starcloud"], False),
+    ("Marijuana Texas", ["marijuana", "thc", "cannabis"], True),
+    ("Longhorns vs Texas State", ["longhorn"], True),
+    ("Kanye fireworks", ["kanye", "all of the lights"], True),
+    ("NBA->WNBA draft", ["wnba draft", "declare for the wnba"], True),
+    ("40-yr NCAAF", ["40-year-old", "college football"], True),
+    ("Sophie Cunningham", ["sophie cunningham", "wnba commissioner"], True),
 ]
 
 
@@ -57,10 +70,13 @@ def main():
 
     failures = 0
     print("=== ACCEPTANCE FIXTURE ===")
-    for label, kws in FIXTURE:
-        # Check feed presence (ANY keyword in title OR summary)
+    for label, kws, title_only in FIXTURE:
+        # Check feed presence (ANY keyword in title, or title+summary when
+        # title_only is False)
+        def _has(kw, text):
+            return kw in text
         in_feed = any(
-            any(k in a.get("title", "").lower() or k in (a.get("summary", "") or "").lower() for k in kws)
+            any(_has(k, a.get("title", "").lower()) or (not title_only and _has(k, (a.get("summary", "") or "").lower())) for k in kws)
             for a in feed.get("articles", [])
         )
         reached = any(
