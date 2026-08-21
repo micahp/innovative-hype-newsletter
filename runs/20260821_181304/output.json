@@ -1,0 +1,88 @@
+{
+  "cards": [
+    {
+      "narrative": "Marina Mabrey's 53-point night ties a WNBA record and marks her arrival as Toronto's newest star, but the real story is how the expansion Tempo built a team around her and what that means for the league's competitive balance.",
+      "paragraph": "Marina Mabrey scored 53 points on a Thursday night in Toronto, tying the WNBA single-game record. She's not just having a career year — she's the face of an expansion team that bet on her with a two-year, $2.4 million deal. That's the new WNBA: expansion teams aren't just collecting scraps, they're landing stars and making noise. The league's parity is real, and it's terrifying for the old guard.",
+      "data_point": "53 points, tying the WNBA single-game scoring record",
+      "source_ids": [0]
+    },
+    {
+      "narrative": "From border walls in Big Bend to Amazon drones in your neighborhood, this cluster is about who gets to shape the physical spaces where Americans live — and who's left out of the decision.",
+      "paragraph": "Texas Parks and Wildlife commissioners faced a room full of people angry about border wall projects in Big Bend. Meanwhile, Amazon wants delivery drones in 500 neighborhoods by end of 2026. One is about government bulldozing land for a wall, the other about a corporation filling the sky with machines. Both are about power: who decides what happens to the space above and around us, and whether the people who live there get a say.",
+      "data_point": "Amazon aims for delivery drones to reach 500 US neighborhoods by end of 2026",
+      "source_ids": [1, 2]
+    },
+    {
+      "narrative": "Basketball Without Borders is where the WNBA's next generation starts, and it's a reminder that the league's future isn't just about the stars we see on TV — it's about the pipeline.",
+      "paragraph": "While everyone was talking about the All-Star game, 40 high-school-age players from around the world were working out at the Advocate Center. That's the WNBA's future, and it's happening a few blocks from the main event. The league is growing, and it's not just about expansion teams — it's about investing in the kids who'll carry it for the next decade.",
+      "data_point": "40 high-school-age players from around the world at Basketball Without Borders",
+      "source_ids": [0]
+    },
+    {
+      "narrative": "A fan threw a dildo on the court during a WNBA game and got arrested and banned. It's a weird moment, but it shows how the league's culture war has become a recurring problem that officials can't ignore.",
+      "paragraph": "A green dildo landed on the hardwood during the Dream-Sparks game. The fan was arrested and banned. This isn't a one-off — it's a pattern that's been plaguing the WNBA all season. The league has a culture war on its hands, and it's not just about politics. It's about whether fans can behave, and whether the league will actually do something about it.",
+      "data_point": "A fan was arrested and banned for throwing a dildo during a WNBA game",
+      "source_ids": [0]
+    },
+    {
+      "narrative": "Kaitlyn Chen's rise from Princeton to the Valkyries shows that the WNBA's new teams are finding gems in unexpected places, and that the league's scouting is getting smarter.",
+      "paragraph": "Kaitlyn Chen went from Princeton to the Golden State Valkyries, and now she's putting the league on notice. Her path wasn't linear — she averaged 14.2 points at Princeton, then made the leap. The Valkyries are winning, and Chen is a big reason. That's the new WNBA: expansion teams are finding players who were overlooked, and it's making the league deeper than ever.",
+      "data_point": "Kaitlyn Chen averaged 14.2 points at Princeton before her WNBA rise",
+      "source_ids": [0]
+    },
+    {
+      "narrative": "Minnesota is suing Abbott to force extradition of an ICE agent accused of shooting a Venezuelan man. It's a test of state vs. federal power and a reminder that immigration enforcement has real consequences.",
+      "paragraph": "Minnesota is taking Greg Abbott to court over an ICE agent accused of shooting a Venezuelan man. The state wants him extradited, and Abbott is standing in the way. This is a fight about jurisdiction and about who answers for violence at the border. It's also a reminder that immigration policy isn't abstract — it's about people's lives, and it's playing out in courtrooms.",
+      "data_point": "Minnesota sues Abbott to force extradition of an ICE agent",
+      "source_ids": [0]
+    },
+    {
+      "narrative": "The New York Times lost a $9.25 million defamation verdict to a former Alabama basketball player who was falsely identified in a shooting story. It's a warning to media: accuracy isn't optional.",
+      "paragraph": "A Tuscaloosa jury awarded Kai Spears $9.25 million after the New York Times falsely identified him as a passenger in a car at a fatal shooting. The Times made a mistake, and now it's paying for it. This is a reminder that journalism has consequences, and that when you name someone in a crime story, you better be right.",
+      "data_point": "$9.25 million defamation verdict against the New York Times",
+      "source_ids": [0]
+    },
+    {
+      "narrative": "The hemp industry is suing over Texas's THC ban, claiming it's killing jobs and creating a monopoly for medical marijuana. It's a classic case of regulation picking winners and losers.",
+      "paragraph": "Texas banned THC, and now the hemp industry is fighting back in court. They say the ban is costing jobs and handing a monopoly to medical marijuana companies. This is a battle over who gets to sell what, and it's not just about weed — it's about small businesses vs. big players, and about whether the state can legislate an industry out of existence.",
+      "data_point": "Hemp industry files new lawsuit over Texas THC ban",
+      "source_ids": [0]
+    },
+    {
+      "narrative": "Texas Tech softball might not have a season this year, and that's a sign of how fragile college sports programs can be when they don't have enough players or support.",
+      "paragraph": "Texas Tech softball's schedule is in doubt, and the question is whether anyone will play. This isn't just about one team — it's about the state of college athletics, where smaller programs struggle to stay afloat. If Texas Tech can't field a team, what does that say about the sport's future?",
+      "data_point": "Texas Tech softball's season is in question",
+      "source_ids": [0]
+    },
+    {
+      "narrative": "Megan DiLeo's growth in Portland is a story about the WNBA's expansion teams building from the ground up, and about how players can thrive when given a real chance.",
+      "paragraph": "The Portland Fire are back in the WNBA after more than two decades, and Megan DiLeo is one of the reasons they're building something. Despite a sub-.500 record, the Fire are finding their identity. DiLeo's success shows that expansion teams aren't just about star power — they're about developing players and creating a culture.",
+      "data_point": "Portland Fire sit at 11-18 in their first season back",
+      "source_ids": [0]
+    },
+    {
+      "narrative": "Google's SCIN dataset is trying to make dermatology AI more representative, but the fact that most images show early-stage concerns reveals a bias in how we train medical AI.",
+      "paragraph": "Google released SCIN, a dataset for dermatology images, but the data shows a problem: most images are early-stage conditions. That's a bias. If we train AI on mostly mild cases, it might miss the severe ones. This is about making sure medical AI works for everyone, not just the lucky few who catch things early.",
+      "data_point": "30% of SCIN images arose less than a day before the photo was taken",
+      "source_ids": [0]
+    },
+    {
+      "narrative": "The Valkyries beating the Lynx would prove they're championship material, and it's a test of whether the new kids on the block can hang with the established powers.",
+      "paragraph": "The Golden State Valkyries are hosting the Minnesota Lynx, and a win would burnish their championship credentials. This is a statement game. The Valkyries are new, but they're not just happy to be here — they want a title. Beating the Lynx would say something to the rest of the league.",
+      "data_point": "Valkyries host the Lynx in a key matchup",
+      "source_ids": [0]
+    },
+    {
+      "narrative": "Three young WNBA players are elevating championship contenders, and it's a reminder that playoff teams aren't just about stars — it's about the role players who step up.",
+      "paragraph": "Makayla Timpson, and two others, are making a difference for the Fever, Valkyries, and Liberty. These aren't the big names, but they're the ones who fill the gaps. That's how you win championships — not just with superstars, but with players who fit perfectly next to them.",
+      "data_point": "Makayla Timpson has turned out to be the perfect fit next to the Fever's stars",
+      "source_ids": [0]
+    },
+    {
+      "narrative": "The AI data gold rush is on: startups like Micro1 are scaling from $100M to $500M in eight months, but the real story is who's controlling the data and what it means for the rest of us.",
+      "paragraph": "Micro1 went from $100 million to $500 million in gross run rate in eight months. That's the AI data boom. But behind the numbers is a power shift: a few companies are hoarding the world's data, and they're building the infrastructure — from satellites to data centers — to process it. The question is whether this benefits everyone or just a few billionaires.",
+      "data_point": "Micro1's gross annual run rate grew from $100M to $500M in eight months",
+      "source_ids": [0, 1, 2, 3, 4]
+    }
+  ]
+}

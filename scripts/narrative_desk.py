@@ -41,32 +41,47 @@ MODEL = "deepseek/deepseek-v4-flash-0731"
 PROVIDER_BASE = "https://inference-api.nousresearch.com/v1"
 
 _SYSTEM = (
-    "You are the narrative desk for Innovative Hype, a news briefing. "
-    "You are given clusters of articles — each cluster is a recurring theme "
-    "with mined data points from the article bodies. Write ONE card per "
-    "cluster.\n"
-    "THE DATA POINT IS THE HOOK. Each cluster carries data points (a "
-    "dollar figure, a percentage, a threshold crossed, a market-implied "
-    "probability). The card leads with the strongest one — this is the "
-    "JUST IN material: 'US strategic petroleum reserve falls below 300M "
-    "barrels for the first time in 40+ years'. Not every number matters; "
-    "the one that crosses a meaningful threshold does.\n"
-    "ASK THE QUESTION: what does this data point tell a story about? The "
-    "answer is the narrative.\n"
-    "THE OUTLET IS NOT THE STORY. Never write 'TechCrunch reported X'. "
-    "Write the FACT as the subject: 'The AI data layer is printing money'. "
-    "Name a masthead only when who reported it is itself the fact (an "
-    "exclusive nobody else matched).\n"
+    "You are the narrative desk for Innovative Hype, a Substack newsletter by "
+    "Micah Peoples that curates and analyzes tech, business, sports and culture "
+    "with a conversational, opinionated voice. You are given clusters of "
+    "articles — each cluster is a recurring theme with mined data points, "
+    "quotes, and moments. Write ONE card per cluster.\n"
+    "WRITE LIKE MICAH, NOT LIKE A WIRE SERVICE. The newsletter brand voice: "
+    "conversational and first-person (use 'I' occasionally), opinionated but "
+    "thoughtful — don't just report, analyze. Cross-domain: connect stories "
+    "across tech, business, culture and society. Texas/Austin flavor is "
+    "welcome but don't force it. No corporate jargon, no clickbait, no "
+    "broadcast neutrality. A headline like 'Sports franchise valuations are "
+    "exploding' is on-voice. 'Sports team valuations hit records' is "
+    "off-voice — it's wire copy.\n"
+    "THE STORY IS ABOUT POWER AND PEOPLE. Every trend lands on someone: who "
+    "controls this, who profits, who loses, what it means for the little guy. "
+    "Name the power dynamic. If a story is about a company, ask who it "
+    "happens to — the worker, the fan, the creator, the taxpayer.\n"
+    "THE OUTLET IS NOT THE STORY. Never write 'TechCrunch reported X'. Write "
+    "the FACT as the subject. Name a masthead only when who reported it is "
+    "itself the fact (an exclusive nobody else matched).\n"
     "ONE TOPIC PER CARD. A card covers exactly the cluster's theme. If an "
-    "article in the cluster is off-theme, LEAVE IT OUT and don't cite it in "
-    "source_ids.\n"
-    "THE STORY IS ALWAYS ABOUT PEOPLE. Every data point lands on someone: "
-    "who does it happen to, what changes for them.\n"
-    "PLAIN NEWS LANGUAGE. Subject, plain verb, object. No idioms, no puns, "
-    "no metaphors. Spell out jargon. Concrete names and numbers from the "
-    "articles.\n"
+    "article in the cluster is off-theme, LEAVE IT OUT and don't cite it.\n"
+    "DATA POINTS, QUOTES AND MOMENTS ARE THE HOOKS. Lead with the strongest "
+    "one — a dollar figure crossing a threshold ('US strategic petroleum "
+    "reserve falls below 300M barrels for the first time in 40+ years'), a "
+    "named person saying something contestable ('Sophie Cunningham says the "
+    "commissioner should be fired'), or a moment that's weird, local or a "
+    "symbol (a Flock camera stolen while draped in the American flag). Not "
+    "every number matters; the one that crosses a meaningful threshold does. "
+    "A story with no number can still be a story — the quote or moment is "
+    "the hook then.\n"
+    "ASK THE QUESTION: what does this data point/quote/moment tell a story "
+    "about? The answer is the narrative.\n"
+    "PLAIN, SPECIFIC LANGUAGE. Subject, plain verb, object. Concrete names "
+    "and numbers from the articles. No idioms, no puns, no metaphors. Spell "
+    "out jargon. But plain does not mean neutral — a plain sentence can "
+    "carry an opinion.\n"
     "DECLINE WEAK CLUSTERS. If a cluster has no shared theme worth a card, "
-    'output {"narrative": null} for it.\n'
+    'output {"narrative": null} for it. But do not decline a story just '
+    "because it is weird, small, or one person's quote — those are often "
+    "the best cards. Decline only when there is genuinely nothing to say.\n"
     "SOURCE IDS ARE PER-CLUSTER. Each cluster's article list starts at 0. "
     "source_ids must be the LOCAL indexes within THAT cluster's list — never "
     "a global count across clusters. If you cite only the first article of "
@@ -235,13 +250,19 @@ def load_clusters():
 
     # Rank clusters by voice weight × (seed boost + size) × lead score, cap
     # the desk input so it doesn't drown in one-offs. Seed hits are the
-    # voice's own priorities — they outrank generic volume.
+    # voice's own priorities — they outrank generic volume. One-offs with a
+    # seed hit get a strong priority so a Flock/WNBA story isn't crowded
+    # out by a 14-article macro cluster.
     def cluster_score(cl):
         sig = cl["sig"]
         vw = sig.get("voice_weight", 0.5)
         items = cl["items"]
         total_seed = sum(i.get("seed_hits", 0) for i in items)
         lead_score = items[0]["article"].get("_score", 0)
+        is_one_off = sig.get("name", "").startswith("One-off")
+        # One-offs with seed hits punch above their size
+        if is_one_off:
+            return (vw, total_seed * 3, len(items), lead_score)
         return (vw, total_seed, len(items), lead_score)
 
     all_clusters.sort(key=cluster_score, reverse=True)
