@@ -1,37 +1,35 @@
 # INNOVATIVE HYPE — BRIEF
-_Generated 2026-08-21 17:14 UTC · 31/48 feeds · 474 articles_
-
-## Media power and who owns it
-_( Reuters $) 3 A staggering 90% of biomedical papers show signs of AI use A new study suggests it’s far more common than previously thought._
-
-- The Download: threats from space mirrors and credit for AI drugs (MIT Technology Review)
-- US Open Announces Record Prize Money Amid Player Protest Threat (Front Office Sports)
-- Spotify’s Stock Up 5.5% on Fresh $1.5B Stock Buyback Program (Billboard)
-
-## The AI data layer is printing money
-_It's pretty successful at all of these things, with a ~80% success rate on vulnerability detection, then a ~53% success rate on exploiting these, then an 88% self-replication success rate with some pre-wrapped helper tools for the replication steps._
-
-- Import AI 467: Self-sustaining AI viruses; pacing AI progress; confusion about AI and creativity (Import AI)
-- Superintelligence is a dragon (Platformer)
-- SpaceX’s orbital data centers would create a new category of e-waste (Ars Technica)
+_Generated 2026-08-21 18:13 UTC · 32/55 feeds · 496 articles_
 
 ## Can we trust the machines we're building?
-_Yet the recent Coldcard hack, a popular self-custody hardware wallet where users lost over $100 million worth of bitcoin (more than 1,500 BTC), cast doubt over what “Open Source” actually means._
 
-- Open Source vs. Source-Available: What the Coldcard Failure Teaches About Bitcoin Software Incentives (Bitcoin Magazine)
-- How much of my boss's job can AI do? (Platformer)
-- Claude Code costs up to $200 a month. Goose does the same thing for free. (VentureBeat AI)
 
-## The creator economy is consolidating
-_They&#x2019;ve since raised more than $47 million from investors including Accel, Coatue, and Atomico._
+- Offering Zero Data Retention for frontier models (OpenAI Blog)
+- Binance Opens the Door to AI Agents That Can Trade Crypto for You (Decrypt)
+- The Download: threats from space mirrors and credit for AI drugs (MIT Technology Review)
 
-- The case for making your own apps (Platformer)
-- Town's CEO on the self-organizing company (Platformer)
-- Williamson County Greenlights $674M Blue Origin Development Deal (Connect CRE Austin)
+## The AI data layer is printing money
+_One of these fast-growing businesses is Micro1, a four-year-old startup that expanded its gross annual run rate from $100 million to $500 million over the past eight months, according to a person familiar with the company._
+
+- AI data startup Micro1 reaches $500M gross run rate amid AI training boom (TechCrunch)
+- Import AI 467: Self-sustaining AI viruses; pacing AI progress; confusion about AI and creativity (Import AI)
+- Superintelligence is a dragon (Platformer)
 
 ## Cities, housing and where America lives
-_Vantage Communities has obtained a $103 million refinancing for a three-property, 864-unit multifamily portfolio located in the Austin and San Antonio metro areas._
 
-- Vantage Inks $103M Refi on Three Texas Rental Assets (Connect CRE Austin)
-- Bezos’ Aerospace Company Could Land in Hutto (Connect CRE Austin)
-- Prominent Austin Office Tower Trades for $208M (Connect CRE Austin)
+
+- Texas Parks and Wildlife commissioners inundated with border wall concerns during annual meeting (Texas Tribune)
+- Amazon aims for delivery drones to reach 500 US neighborhoods by end of 2026 (Ars Technica)
+- TribCast: Should we believe the polls about Paxton and Talarico? (Texas Tribune)
+
+## The creator economy is consolidating
+
+
+- Major YouTube creators are facing backlash for accepting AI money (The Verge AI)
+- The case for making your own apps (Platformer)
+- The Athletic in Talks to Provide Content to NFL Media Properties (Front Office Sports)
+
+## Media power and who owns it
+_The roughly 30-person company offers Cora , an email assistant; Sparkle , a file organizer; Spiral , a writing tool; and Monologue , a dictation app &#x2014; all of which are bundled with the journalism into a $20-a-month subscription._
+
+- The website that created an AI clone of its editor in chief (Platformer)

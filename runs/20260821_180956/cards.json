@@ -1,0 +1,29 @@
+{
+  "cards": [
+    {
+      "narrative": "The creator economy is consolidating around AI platforms, and top YouTube creators are facing backlash for promoting them.",
+      "paragraph": "Prominent filmmaking YouTubers including Matti Haapoja and Sam 'Kold' Kolder posted videos showcasing Higgsfield's Seedance 2.5 AI video tool, drawing criticism from fans who see the promotions as selling out to AI. The backlash reflects growing tension between creators and the AI tools that threaten their craft.",
+      "data_point": "Higgsfield raised $47 million from Accel, Coatue, and Atomico.",
+      "source_ids": [
+        0,
+        2
+      ]
+    },
+    {
+      "narrative": "New York has overtaken the Bay Area as the top U.S. tech job market for the first time, reshaping the geography of the tech industry.",
+      "paragraph": "New York City now leads the nation with 394,300 tech jobs, surpassing the San Francisco Bay Area's 375,730 in CBRE's annual survey. The shift marks a milestone in the tech industry's geographic diversification, as more companies and workers choose the East Coast.",
+      "data_point": "New York's 394,300 tech jobs top the Bay Area's 375,730 for the first time.",
+      "source_ids": [
+        0
+      ]
+    },
+    {
+      "narrative": "AI data labeling is a booming business as demand for training data skyrockets.",
+      "paragraph": "Micro1, a four-year-old startup, has grown its gross annual run rate from $100 million to $500 million in eight months, riding the boom in AI training data demand from top labs and corporations. The growth highlights the critical role of data labeling in the AI supply chain.",
+      "data_point": "Micro1's gross annual run rate jumped from $100M to $500M in eight months.",
+      "source_ids": [
+        0
+      ]
+    }
+  ]
+}

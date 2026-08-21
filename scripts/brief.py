@@ -126,27 +126,27 @@ NARRATIVE_SIGNATURES = [
     {
         "name": "AI trust and accountability",
         "voice_weight": 1.0,
-        "keywords": ["zero data retention", "safety", "oversight", "national security", "agent", "lie", "cheat", "hallucinat", "alignment", "guardrail", "red team"],
+        "keywords": ["zero data retention", "safety", "oversight", "national security", "lie", "cheat", "hallucinat", "alignment", "guardrail", "red team", "ai agents"],
     },
     {
         "name": "Media power and who owns it",
         "voice_weight": 1.0,
-        "keywords": ["media", "zuckerberg", "meta", "network", "broadcast", "streaming", "newsroom", "journalism", "platform", "ownership"],
+        "keywords": ["zuckerberg", "media ownership", "newsroom", "journalism", "platform power", "antitrust media", "who owns", "masthead"],
     },
     {
         "name": "Creator economy consolidation",
         "voice_weight": 1.0,
-        "keywords": ["creator", "influencer", "deal", "studio", "tiktok", "youtube", "substack", "content deal", "royalt"],
+        "keywords": ["creator", "influencer", "studio", "tiktok", "youtube", "substack", "content deal", "royalt", "creator economy"],
     },
     {
         "name": "Sports money keeps inflating",
         "voice_weight": 0.7,
-        "keywords": ["prize money", "valuation", "stadium", "media deal", "broadcast", "rights deal", "nfl", "nba", "mlb", "premier league", "franchise", "billion", "revenue"],
+        "keywords": ["prize money", "valuation", "stadium", "media deal", "broadcast", "rights deal", "nfl", "nba", "mlb", "premier league", "franchise", "revenue share", "team sale"],
     },
     {
         "name": "Prediction markets go mainstream",
         "voice_weight": 0.7,
-        "keywords": ["kalshi", "polymarket", "prediction market", "cftc", "election", "odds", "probability", "contract"],
+        "keywords": ["kalshi", "polymarket", "prediction market", "cftc", "election odds", "probability", "market contract"],
     },
     {
         "name": "Crypto's leverage problem",
@@ -166,7 +166,7 @@ NARRATIVE_SIGNATURES = [
     {
         "name": "Cities, housing and where America lives",
         "voice_weight": 1.0,
-        "keywords": ["texas", "austin", "housing", "rent", "suburb", "relocation", "move to", "city", "real estate", "zoning", "migration", "cost of living"],
+        "keywords": ["texas", "austin", "housing", "rent", "suburb", "relocation", "move to", "real estate", "zoning", "migration", "cost of living", "neighborhood"],
     },
 ]
 
