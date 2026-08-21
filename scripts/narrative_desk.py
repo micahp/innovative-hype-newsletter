@@ -135,24 +135,37 @@ def render_brief_html(clusters, parsed, run_dir):
     for ci, card in enumerate(parsed.get("cards", [])):
         if not card.get("narrative"):
             continue  # declined cluster
-        cl = clusters[ci] if ci < len(clusters) else None
+        # Use the content-aligned cluster index when present
+        cluster_idx = card.get("_cluster_idx", ci)
+        cl = clusters[cluster_idx] if cluster_idx < len(clusters) else None
+        if not cl:
+            continue
         sources = []
-        for sid in card.get("source_ids", []):
-            if cl and 0 <= sid < len(cl["items"]):
-                a = cl["items"][sid]["article"]
+        # Don't trust model source_ids (they drift after re-alignment) —
+        # match the card text against each article in the cluster to find
+        # which ones the card actually cites.
+        card_text = f"{card.get('narrative','')} {card.get('paragraph','')}".lower()
+        card_tokens = set(re.findall(r"[a-z']{4,}", card_text))
+        # Strongly prefer articles whose title shares multiple card tokens
+        scored_items = []
+        for sid, item in enumerate(cl["items"]):
+            a = item["article"]
+            title = a.get("title", "").lower()
+            title_tokens = set(re.findall(r"[a-z']{4,}", title))
+            overlap = len(card_tokens & title_tokens)
+            scored_items.append((overlap, sid, a))
+        scored_items.sort(key=lambda x: -x[0])
+        for overlap, sid, a in scored_items[:3]:
+            if overlap >= 2:
                 sources.append(
                     f'<li><a href="{a.get("link","#")}" target="_blank" rel="noopener">{_html.escape(a.get("title",""))} <span class="src">({a.get("source","")})</span></a></li>'
                 )
-        if not sources:
-            # Try the lead article as a fallback so a card never silently
-            # vanishes because of a bad source_id
-            if cl and cl["items"]:
-                a = cl["items"][0]["article"]
-                sources.append(
-                    f'<li><a href="{a.get("link","#")}" target="_blank" rel="noopener">{_html.escape(a.get("title",""))} <span class="src">({a.get("source","")})</span></a></li>'
-                )
-            else:
-                continue
+        if not sources and cl["items"]:
+            # Fallback: lead article of the cluster
+            a = cl["items"][0]["article"]
+            sources.append(
+                f'<li><a href="{a.get("link","#")}" target="_blank" rel="noopener">{_html.escape(a.get("title",""))} <span class="src">({a.get("source","")})</span></a></li>'
+            )
         dp_html = f'<p class="brief-dp">▸ {_html.escape(card.get("data_point",""))}</p>' if card.get("data_point") else ""
         para_html = f'<p class="brief-para">{_html.escape(card.get("paragraph",""))}</p>' if card.get("paragraph") else ""
         cards_html.append(f"""
@@ -523,6 +536,38 @@ def main():
     if kept:
         print(f"Kept {kept} existing cards (unchanged story sets)")
     parsed["cards"] = new_cards
+
+    # === FIX CARD-CLUSTER ALIGNMENT (measured 2026-08-21) ===
+    # The model sometimes returns cards out of order or skips a cluster, so
+    # positional mapping (cards[i] -> clusters[i]) attaches the wrong sources.
+    # Re-align content-based: find each card's best-matching cluster by
+    # keyword overlap between the card text and the cluster's article titles.
+    aligned = []
+    used_clusters = set()
+    for card in parsed.get("cards", []):
+        if not card.get("narrative"):
+            aligned.append(card)  # declined — keep placeholder
+            continue
+        card_text = f"{card.get('narrative','')} {card.get('paragraph','')}".lower()
+        best_ci = None
+        best_score = 0
+        for ci, cl in enumerate(clusters):
+            if ci in used_clusters:
+                continue
+            cl_text = " ".join(
+                item["article"].get("title", "") for item in cl["items"]
+            ).lower()
+            # Count shared meaningful tokens
+            tokens = set(re.findall(r"[a-z']{4,}", card_text))
+            overlap = sum(1 for t in tokens if t in cl_text)
+            if overlap > best_score:
+                best_score = overlap
+                best_ci = ci
+        if best_ci is not None and best_score > 0:
+            used_clusters.add(best_ci)
+            card["_cluster_idx"] = best_ci
+        aligned.append(card)
+    parsed["cards"] = aligned
 
     with open(os.path.join(run_dir, "cards.json"), "w") as f:
         json.dump(parsed, f, indent=2)
