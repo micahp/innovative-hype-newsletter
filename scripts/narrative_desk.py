@@ -348,11 +348,21 @@ def load_clusters():
     # are unaffected. (NEWS-ENGINE-SPEC R3: one-offs qualify, they don't
     # dominate — Micah: 'how many f*cking cards are we gonna be talking
     # about how womens sports has good players'.)
+    # Seed-matched one-offs (stories Micah explicitly posts about) get FIRST
+    # dibs on the slots — a 40-yr NCAAF or NBA->WNBA story must not lose a
+    # slot to a generic player story on raw score. (Measured: College
+    # Football Landscape, seed=1, 3 data points, was ranked out.)
     one_off_clusters = [c for c in all_clusters if c["sig"]["name"].startswith("One-off")]
     sig_clusters = [c for c in all_clusters if not c["sig"]["name"].startswith("One-off")]
-    one_off_clusters.sort(key=cluster_score, reverse=True)
-    print(f"  {len(one_off_clusters)} one-offs, capping to 3")
-    all_clusters = sig_clusters + one_off_clusters[:3]
+
+    seeded = [c for c in one_off_clusters if sum(i.get("seed_hits", 0) for i in c["items"]) > 0]
+    unseeded = [c for c in one_off_clusters if sum(i.get("seed_hits", 0) for i in c["items"]) == 0]
+    seeded.sort(key=cluster_score, reverse=True)
+    unseeded.sort(key=cluster_score, reverse=True)
+    # Seeded one-offs fill the cap first, then unseeded by score.
+    kept_one_offs = seeded[:3] + unseeded[: max(0, 3 - len(seeded[:3]))]
+    print(f"  {len(one_off_clusters)} one-offs ({len(seeded)} seeded), keeping 3 (seeded first)")
+    all_clusters = sig_clusters + kept_one_offs
 
     all_clusters.sort(key=cluster_score, reverse=True)
     # Keep the strongest 14 for the desk (12 signature clusters + top 2-6

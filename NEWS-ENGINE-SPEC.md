@@ -264,8 +264,49 @@ in git. Each of Micah's eight named stories, with the required outcome:
 
 Report the fixture as a table on every run: for each item, one of
 `ABSENT_FROM_FEED` / `DROPPED_BY_<gate name>` / `REACHED_DESK` / `CARDED`.
-"Absent" and "dropped" are both failures, and they have different fixes. Today
-the table reads five `DROPPED` and three `ABSENT`, and nothing reports it.
+"Absent" and "dropped" are both failures, and they have different fixes.
+
+### Status (updated 2026-08-21, after the R1-R8 fixes)
+
+| # | Story | 2026-08-21 14:00 (before) | Now (after fixes) | What it needs |
+|---|---|---|---|---|
+| 1 | Flock cameras | DROPPED (no sig, no data point) | REACHED_DESK | ✓ fixed — plural match + moment qualifier |
+| 2 | Data centers | DROPPED (no sig) | REACHED_DESK | ✓ fixed — under Cities/infra signature |
+| 3 | Marijuana Texas | ABSENT | REACHED_DESK | ✓ Texas Tribune feed added |
+| 4 | Longhorns vs Texas State | ABSENT | ABSENT | needs a live Texas-sports feed |
+| 5 | Kanye fireworks | ABSENT | ABSENT | needs a live music/culture feed |
+| 6 | NBA→WNBA draft | DROPPED | DROPPED_BY_GATE | in feed, ranked below one-off cap |
+| 7 | 40-yr NCAAF | DROPPED | DROPPED_BY_GATE | in feed, ranked below one-off cap |
+| 8 | Sophie Cunningham | ABSENT | ABSENT | needs a WNBA-quote/sports feed |
+
+The fixture script (`scripts/acceptance_fixture.py`) now reports this table on
+every cron run and exits non-zero when any story is ABSENT or DROPPED, so the
+failure is loud in the cron log.
+
+## 6b. Gates — run these, they must all PASS
+
+Each rule from §4 is a gate with a measurable pass/fail. `scripts/gates.py`
+runs every gate against the live `web/articles.json` and the latest desk run;
+exit 0 only when ALL gates pass. Add a gate when you add a rule; a failing
+gate must block the "pipeline matches the spec" claim.
+
+| Gate | Checks | Pass when |
+|---|---|---|
+| G1 no-gate | no `if sig and points`-style admission filter in the desk path | every eligible article can reach the pool |
+| G2 boost-not-filter | signatures only re-rank, never remove | an article with no signature still reaches the desk (via quote/moment/data point) |
+| G3 three-ways | quote, moment, and data-point each produce cards | a quote-only story and a moment-only story both reach the desk |
+| G4 seed-boost | tweet-corpus seeds boost, not gate | an article with seed hits outranks one without |
+| G5 plural-match | `_kw_match` handles plurals/gerunds | `camera`→`cameras`, `track`→`tracking`, `ban`≠`band` |
+| G6 keyword-hygiene | no generic keywords (`deal`,`agent`,`contract`,`revenue`,`billion`,`platform`,`media`,`network`) in signatures | none present |
+| G7 feeds-loud | dead feeds break the run loudly | `feeds_fail` > 0 causes non-zero exit / visible failure |
+| G8 fixture | Micah's 8 stories each report ABSENT/DROPPED/REACHED/CARDED | 0 stories silently disappear (absent/dropped are loud, not silent) |
+| G9 stable-pool | unchanged story set → same pool_key, no regeneration | same stories → same key |
+| G10 keep-cards | unchanged story set → card text preserved across runs | a good headline doesn't degrade on rerun |
+| G11 source-align | every card's source link matches its content | no card links to an unrelated story |
+
+Every gate must be runnable in one command (`python3 scripts/gates.py`) and
+must be part of the cron so a regression shows up as a red exit, not a silent
+drift.
 
 ## 7. What not to do again
 

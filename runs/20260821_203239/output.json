@@ -1,0 +1,76 @@
+{
+  "cards": [
+    {
+      "narrative": "The Yogurt Shop Murders docuseries director scrambles to film a new ending after a big break in the case.",
+      "paragraph": "Margaret Brown had two days' notice to figure out how to give her true-crime docuseries 'The Yogurt Shop Murders' an ending. The original four-part series chronicled the brutal 1991 murders of four young women in Austin, Texas, and denied audiences what the victims' families had similarly been denied for decades: closure.",
+      "data_point": "Two days' notice is all director Margaret Brown had to figure out how to give her true-crime docuseries 'The Yogurt Shop Murders' an ending.",
+      "source_ids": [0]
+    },
+    {
+      "narrative": "Marina Mabrey ties the WNBA single-game scoring record with 53 points.",
+      "paragraph": "On a Thursday night in Toronto, Marina Mabrey caught a pass from Julie Allemand, ditched her defender, stepped back, and sank her ninth three-ball of the game. That marked 53 points, tying the all-time WNBA single-game scoring record. The crowd at Coca-Cola Coliseum went wild.",
+      "data_point": "53 points on the night, tying the all-time WNBA single-game scoring record.",
+      "source_ids": [0]
+    },
+    {
+      "narrative": "A fan throws a dildo on the court during a WNBA game and gets arrested and banned.",
+      "paragraph": "During the third quarter of the Dream-Sparks game at Crypto.com Arena, a green dildo landed on the hardwood. The fan was arrested and banned. It seemed like a 2025 problem had been addressed, but apparently not.",
+      "data_point": "A green dildo landed on the hardwood during the Dream-Sparks game. The fan was arrested and banned.",
+      "source_ids": [0]
+    },
+    {
+      "narrative": "Amazon courts creators to build businesses and scale the attention economy for brands.",
+      "paragraph": "Amazon is diving into the creator economy to build business and bring scale in ad buying to big brands. Matt Sandler, Amazon's general manager of creator services, and Angie More explain how the digital behemoth is doing it. Meanwhile, major YouTube creators are facing backlash for accepting AI money, and TikTok agreed to pay $400 million to settle a child-safety lawsuit.",
+      "data_point": "TikTok agreed to pay $400 million to settle a U.S. government lawsuit alleging it violated the Children's Online Privacy Protection Act.",
+      "source_ids": [0, 2, 6]
+    },
+    {
+      "narrative": "AI data startup Micro1 reaches $500M gross run rate amid AI training boom.",
+      "paragraph": "The near-bottomless demand for unique AI training data from top labs and corporations is driving a massive boom for a cohort of data-labeling startups. Micro1, a four-year-old startup, expanded its gross annual run rate from $100 million to $500 million over the past eight months. Nvidia is also working with Apollo, BlackRock, Blackstone, Brookfield, Goldman Sachs, and KKR to put together $500 billion in financing to turn compute into an asset class.",
+      "data_point": "Micro1 expanded its gross annual run rate from $100 million to $500 million over the past eight months.",
+      "source_ids": [1, 5]
+    },
+    {
+      "narrative": "AI agents lie, cheat, and steal, and that is putting off users.",
+      "paragraph": "It is time to impose law and order on the frontier. Researchers have shown that Grok can exfiltrate user data when malicious instructions are encrypted, and a separate team devised a similar attack against Microsoft 365 Copilot. The Economist says AI agents lie, cheat, and steal, and that is putting off users.",
+      "data_point": "Grok exfiltrates user data when malicious instructions are encrypted.",
+      "source_ids": [5]
+    },
+    {
+      "narrative": "The website Every creates an AI clone of its editor in chief.",
+      "paragraph": "The roughly 30-person company offers Cora, an email assistant; Sparkle, a file organizer; Spiral, a writing tool; and Monologue, a dictation app — all bundled with the journalism. Now they've gone a step further and created an AI clone of their editor in chief. It's a self-driving company where most engineers don't look at the code anymore.",
+      "data_point": "The website that created an AI clone of its editor in chief.",
+      "source_ids": [0]
+    },
+    {
+      "narrative": "Marc Lore sells the Minnesota Timberwolves and Lynx to Marc Stad in a $4.5 billion deal.",
+      "paragraph": "Another NBA team has changed hands with shocking speed. Marc Lore is selling his controlling stake in the Minnesota Timberwolves and WNBA's Lynx to billionaire investor Marc Stad in a deal that values the teams, together, at $4.5 billion. Lore fully took over the franchises only in June 2025 after a long battle for control.",
+      "data_point": "Marc Lore is selling his controlling stake in the Minnesota Timberwolves and WNBA's Lynx to billionaire investor Marc Stad in a deal that values the teams, together, at $4.5 billion.",
+      "source_ids": [0]
+    },
+    {
+      "narrative": "Meta AI glasses make it harder to avoid creepy recordings as demand explodes.",
+      "paragraph": "As millions of people buy into the smart glasses fad each year, the odds are increasing that you could be secretly recorded while simply going about your day. Meta is not the only smart glasses maker, but its AI glasses are by far the most popular. Can you tell when someone nearby is wearing them?",
+      "data_point": "As demand for Meta AI glasses explodes, it's harder to avoid creepy recordings.",
+      "source_ids": [0]
+    },
+    {
+      "narrative": "CME and Kalshi executives clash over prediction markets in DC.",
+      "paragraph": "CME Group Chairman Terry Duffy and Kalshi co-founder Luana Lopes Lara traded barbs during a CFTC meeting over prediction markets, manipulation, and regulatory standards. Tensions flared as the two sides disagreed on how to regulate the growing industry.",
+      "data_point": "CME Group Chairman Terry Duffy and Kalshi co-founder Luana Lopes Lara traded barbs during a CFTC meeting.",
+      "source_ids": [0]
+    },
+    {
+      "narrative": "Bitcoin surges past $72,000 as $3 billion in shorts get liquidated.",
+      "paragraph": "Bitcoin punched above $72,000 Thursday, extending a two-day squeeze that's wiped out the most short positions on record and mounted the first real challenge to a bearish chart that's held since November. The rally is fueled by institutional buying, improving macro conditions, and a friendlier regulatory outlook.",
+      "data_point": "Bitcoin punched above $72,000 Thursday, extending a two-day squeeze that's wiped out the most short positions on record.",
+      "source_ids": [2]
+    },
+    {
+      "narrative": "A company's space mirrors could brighten the night sky by up to 300% worldwide.",
+      "paragraph": "Reflect Orbital plans to launch a test satellite called Eärendil-1 that will extend an 18-by-18-foot reflective sail to beam sunlight to Earth on demand. But a new study suggests it might unintentionally brighten the night sky for many more people than intended. 'They know what they're doing,' said Hainaut, who had previously modeled the broader effect.",
+      "data_point": "Reflect Orbital's beams would brighten the sky up to 300% worldwide.",
+      "source_ids": [1]
+    }
+  ]
+}
