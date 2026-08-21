@@ -93,6 +93,16 @@ FEEDS = [
     {"name": "Hollywood Reporter", "url": "https://www.hollywoodreporter.com/feed/", "category": "culture"},
     # CROSS
     {"name": "HN (General)", "url": "https://hnrss.org/frontpage", "category": "technology", "fallback": "https://rsshub.app/hacker-news/frontpage"},
+    # GAP-CLOSING FEEDS (2026-08-21, from FEED-GAP-MAP.md)
+    # AI tools/building — the voice is a builder, feed barely covers dev tools
+    {"name": "HN (Show)", "url": "https://hnrss.org/show", "category": "technology", "fallback": "https://rsshub.app/hacker-news/show"},
+    {"name": "Indie Hackers", "url": "https://www.indiehackers.com/feed", "category": "technology"},
+    # Cities/urbanism — the #1 voice theme, half-covered
+    {"name": "Connect CRE Austin", "url": "https://www.connectcre.com/feed?story-market=austin", "category": "business"},
+    {"name": "Connect CRE Texas", "url": "https://www.connectcre.com/feed?story-market=texas", "category": "business"},
+    {"name": "HousingWire", "url": "https://www.housingwire.com/category/real-estate/feed", "category": "business"},
+    # Media/platform power — who owns the platforms
+    {"name": "Platformer", "url": "https://www.platformer.news/feed", "category": "culture"},
 ]
 
 # === RANKING: source tiers ===
@@ -151,6 +161,13 @@ SOURCE_TIERS = {
     "Hollywood Reporter": 2,
     # CROSS
     "HN (General)": 4,
+    # GAP-CLOSING (2026-08-21)
+    "HN (Show)": 2,
+    "Indie Hackers": 2,
+    "Connect CRE Austin": 2,
+    "Connect CRE Texas": 2,
+    "HousingWire": 2,
+    "Platformer": 1,
 }
 
 # Negative markers — LP-style news-vs-noise filter. Any hit hard-caps the score.
