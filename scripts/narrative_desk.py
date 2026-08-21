@@ -28,6 +28,7 @@ import argparse
 import hashlib
 import json
 import os
+import re
 import subprocess
 import sys
 from datetime import datetime, timezone
@@ -51,13 +52,44 @@ _SYSTEM = (
     "thoughtful — don't just report, analyze. Cross-domain: connect stories "
     "across tech, business, culture and society. Texas/Austin flavor is "
     "welcome but don't force it. No corporate jargon, no clickbait, no "
-    "broadcast neutrality. A headline like 'Sports franchise valuations are "
-    "exploding' is on-voice. 'Sports team valuations hit records' is "
-    "off-voice — it's wire copy.\n"
+    "broadcast neutrality.\n"
+    "THE HEADLINE IS THE FIRST CLAUSE ONLY. Write the narrative as ONE short "
+    "sentence that names the conversation — subject, plain verb, object. "
+    "STOP after the first clause. Do NOT add a second clause that explains "
+    "the struggle or the meaning ('is a David-vs-Goliath fight', 'is a test "
+    "of state vs federal power', 'is a reminder that...'). That analysis "
+    "belongs in the paragraph, not the headline. Use FULL names (Greg "
+    "Abbott, not Abbott) and keep the concrete subject (the Venezuelan man, "
+    "the hemp industry). A headline is 'Minnesota suing Greg Abbott to "
+    "extradite an ICE agent accused of shooting a Venezuelan man.' NOT "
+    "'...a state-vs-state fight that's really about federal power.'\n"
+    "THE PUSH-QUOTE CARRIES THE DETAIL. The data_point field is the hook — "
+    "a number, a quote, or a moment. It reads as a pull-quote under the "
+    "headline. If the story's juice is in the detail, let the push-quote "
+    "carry it rather than cramming it into the headline.\n"
+    "PARAGRAPHS ARE SHORT AND PUNCHY. 1-2 sentences. Lead with the concrete "
+    "fact (who, what, number). One punchy observation, then stop. Do NOT "
+    "add moralizing filler: no 'it's not just about X — it's about Y', no "
+    "'this is a reminder that...', no 'that's what matters'. The reader "
+    "gets the point. A paragraph like 'A green dildo landed on the hardwood "
+    "during the Dream-Sparks game. The fan was arrested and banned.' is "
+    "complete. Drop the 'players are trying to build a professional league' "
+    "editorializing.\n"
+    "IF THE STORY ISN'T JUICY, DECLINE IT. A card needs a concrete detail — "
+    "what actually happened, a number, a named person saying something "
+    "contestable. 'A music mogul was hospitalized' with no further detail "
+    "is not a card. A generic 'player is playing well' is not a card. "
+    'Decline with {"narrative": null}.\n'
+    "DIVERSITY: DON'T CARD THE SAME STORY SHAPE TWICE. If several clusters "
+    "are all 'this player is good' or 'this team is rising', card only the "
+    "strongest one and decline the rest. A brief with four similar WNBA "
+    "'player is good' cards is a failure.\n"
     "THE STORY IS ABOUT POWER AND PEOPLE. Every trend lands on someone: who "
     "controls this, who profits, who loses, what it means for the little guy. "
-    "Name the power dynamic. If a story is about a company, ask who it "
-    "happens to — the worker, the fan, the creator, the taxpayer.\n"
+    "Name the power dynamic. A Zuckerberg story is 'Zuckerberg buys a castle "
+    "while nobody on his app can afford a house' — the contrast IS the "
+    "story. A Lakers sale is about who's buying (name them), not just the "
+    "price.\n"
     "THE OUTLET IS NOT THE STORY. Never write 'TechCrunch reported X'. Write "
     "the FACT as the subject. Name a masthead only when who reported it is "
     "itself the fact (an exclusive nobody else matched).\n"
@@ -133,6 +165,7 @@ def render_brief_html(clusters, parsed, run_dir):
 
     ts = datetime.now(_tz.utc).strftime("%Y-%m-%d %H:%M UTC")
     meta = json.load(open(os.path.join(run_dir, "meta.json"))) if os.path.exists(os.path.join(run_dir, "meta.json")) else {}
+    run_ts = (meta.get("timestamp") or ts)[:19].replace("T", " ")
     html = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -165,7 +198,7 @@ def render_brief_html(clusters, parsed, run_dir):
 <body>
 <div class="wrap">
   <h1 class="page-title">Innovative Hype — Brief</h1>
-  <div class="page-meta">Narrative brief · LLM desk · run {meta.get('code_version','?')} · {ts}</div>
+  <div class="page-meta">Narrative brief · LLM desk · run {meta.get('code_version','?')} · {run_ts} · updated {ts}</div>
   {''.join(cards_html)}
   <a class="back" href="index.html">← Back to feed</a>
 </div>
@@ -189,14 +222,17 @@ def git_sha():
 
 
 def pool_key(clusters):
-    """Hash of cluster membership + data points — used for dedup."""
-    material = []
+    """Hash of the STORY IDENTITY — sorted article titles+links across all
+    clusters. Excludes cluster order, one-off names, and anything volatile,
+    so an unchanged set of stories never regenerates (fixes the 'good
+    headline became bad' regression: same stories, different hash, bad rerun).
+    """
+    stories = set()
     for cl in clusters:
-        material.append(cl["sig"]["name"])
         for item in cl["items"]:
-            material.append(item["article"].get("title", ""))
-            material.append(item["article"].get("link", ""))
-            material.extend(item["points"])
+            a = item["article"]
+            stories.add(a.get("link", "") or a.get("title", ""))
+    material = sorted(stories)
     return hashlib.sha256("\n".join(material).encode()).hexdigest()[:16]
 
 
@@ -248,6 +284,34 @@ def load_clusters():
 
     all_clusters = list(clusters.values()) + list(one_offs.values())
 
+    # Dedup same-shape one-offs (NEWS-ENGINE-SPEC: no four 'player is good'
+    # cards). If multiple one-off clusters match the same story-shape regex,
+    # keep only the highest-scored one and drop the rest. This collapses
+    # 'Marina Mabrey is good', 'Kaitlyn Chen is good', 'Megan DiLeo is
+    # good' into one slot so the brief has room for actual narratives.
+    _PLAYER_GOOD = re.compile(
+        r"(meteoric rise|leading by example|is (?:a|the) (?:star|reason|key|face)"
+        r"|growth and success|elevating|championship|newest star"
+        r"|finding (?:their|its) (?:identity|gems|way)|rise in|is (?:putting|taking)"
+        r"|meteoric|has been (?:a|the) (?:revelation|breakout)|is thriving|is finding)",
+        re.I,
+    )
+    seen_shape = {}
+    deduped = []
+    for cl in all_clusters:
+        if not cl["sig"]["name"].startswith("One-off"):
+            deduped.append(cl)
+            continue
+        title = cl["sig"]["name"]
+        shape = "player_good" if _PLAYER_GOOD.search(title) else "other"
+        if shape == "player_good":
+            if shape in seen_shape:
+                print(f"  DROPPED same-shape one-off: {title[:60]}")
+                continue  # already have one 'player is good' card
+            seen_shape[shape] = True
+        deduped.append(cl)
+    all_clusters = deduped
+
     # Rank clusters by voice weight × (seed boost + size) × lead score, cap
     # the desk input so it doesn't drown in one-offs. Seed hits are the
     # voice's own priorities — they outrank generic volume. One-offs with a
@@ -264,6 +328,18 @@ def load_clusters():
         if is_one_off:
             return (vw, total_seed * 3, len(items), lead_score)
         return (vw, total_seed, len(items), lead_score)
+
+    # Hard cap on one-offs: keep at most 3 one-off clusters (the strongest
+    # by seed+score) so single stories can't crowd the real narratives.
+    # A brief should be themes first, one-offs as spice. Signature clusters
+    # are unaffected. (NEWS-ENGINE-SPEC R3: one-offs qualify, they don't
+    # dominate — Micah: 'how many f*cking cards are we gonna be talking
+    # about how womens sports has good players'.)
+    one_off_clusters = [c for c in all_clusters if c["sig"]["name"].startswith("One-off")]
+    sig_clusters = [c for c in all_clusters if not c["sig"]["name"].startswith("One-off")]
+    one_off_clusters.sort(key=cluster_score, reverse=True)
+    print(f"  {len(one_off_clusters)} one-offs, capping to 3")
+    all_clusters = sig_clusters + one_off_clusters[:3]
 
     all_clusters.sort(key=cluster_score, reverse=True)
     # Keep the strongest 14 for the desk (12 signature clusters + top 2-6
@@ -327,6 +403,39 @@ def call_model(clusters):
     return data["choices"][0]["message"]["content"]
 
 
+def _prev_cards_by_story():
+    """Map story-link → existing card from the latest run, for keep-good-cards."""
+    latest = os.path.join(RUNS, "latest")
+    cards_path = os.path.join(latest, "cards.json")
+    inp_path = os.path.join(latest, "input.json")
+    if not (os.path.exists(cards_path) and os.path.exists(inp_path)):
+        return {}
+    try:
+        cards = json.load(open(cards_path)).get("cards", [])
+        inp = json.load(open(inp_path)).get("clusters", [])
+    except Exception:
+        return {}
+    result = {}
+    for ci, card in enumerate(cards):
+        if not card.get("narrative"):
+            continue
+        cl = inp[ci] if ci < len(inp) else None
+        if not cl:
+            continue
+        # The cluster's story set = its article links
+        links = frozenset(it.get("link", "") for it in cl.get("items", []))
+        if links:
+            result[links] = card
+    return result
+
+
+def _cluster_links(cl):
+    return frozenset(
+        item["article"].get("link", "") or item["article"].get("title", "")
+        for item in cl["items"]
+    )
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--force", action="store_true", help="regenerate even if pool unchanged")
@@ -387,6 +496,34 @@ def main():
         f.write(raw)
 
     parsed = json.loads(raw)
+
+    # Keep-good-cards: if a cluster's story set was already carded in the
+    # previous run, prefer that card over a fresh (possibly worse) generation.
+    # This stops a good headline from degrading when the pool shifts and
+    # forces a rerun of everything. (Measured 2026-08-21: same Minnesota
+    # story, two runs, good headline → vague headline.)
+    prev_cards = _prev_cards_by_story()
+    kept = 0
+    new_cards = []
+    for ci, card in enumerate(parsed.get("cards", [])):
+        if not card.get("narrative"):
+            new_cards.append(card)
+            continue
+        cl = clusters[ci] if ci < len(clusters) else None
+        if cl is None:
+            new_cards.append(card)
+            continue
+        links = _cluster_links(cl)
+        prev = prev_cards.get(links)
+        if prev and prev.get("narrative"):
+            kept += 1
+            new_cards.append(prev)  # keep the old, known-good card
+        else:
+            new_cards.append(card)
+    if kept:
+        print(f"Kept {kept} existing cards (unchanged story sets)")
+    parsed["cards"] = new_cards
+
     with open(os.path.join(run_dir, "cards.json"), "w") as f:
         json.dump(parsed, f, indent=2)
 

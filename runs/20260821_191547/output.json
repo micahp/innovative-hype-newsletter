@@ -1,0 +1,82 @@
+{
+  "cards": [
+    {
+      "narrative": "Central Texas is becoming an aerospace hub, and Hutto is the next landing spot.",
+      "paragraph": "Blue Origin is eyeing Hutto for a 1.3 million square foot plant, the size of 26 football fields, at a cost of $650 million. This isn't just another warehouse—it's a sign that the space economy is moving to Central Texas in a big way. Hutto, a small town northeast of Austin, is about to get a massive neighbor. The question is who benefits: the company gets cheap land and a pro-business state, but what do the locals get? Jobs, sure, but also traffic, housing pressure, and a fundamental shift in what their town is. This is the same story we've seen across the region—tech and space money rolling in, and the little guy left to figure out what it means for their home.",
+      "data_point": "The proposed Project Blue Hub plant will be about the size of 26 football fields – 1.3 million square feet at a cost of $650 million.",
+      "source_ids": [2]
+    },
+    {
+      "narrative": "Marina Mabrey's 53-point night shows the WNBA's new expansion teams are for real.",
+      "paragraph": "Marina Mabrey tied the WNBA single-game scoring record with 53 points in Toronto, and it wasn't just a stat line—it was a statement. The Tempo, an expansion team, are not just here to participate. Mabrey's two-year, $2.4 million deal is a bet that she can be the face of a franchise, and she's delivering. This is what the WNBA's growth looks like: new cities, new stars, and records falling. The league's expansion is working, and players like Mabrey are proving they belong on the big stage.",
+      "data_point": "Marina Mabrey tied the WNBA single-game scoring record with 53 points in Toronto, and she signed a two-year, $2.4 million contract.",
+      "source_ids": [0]
+    },
+    {
+      "narrative": "The WNBA's dildo-throwing problem is back, and it's a security failure.",
+      "paragraph": "A fan threw a dildo onto the court during a Dream-Sparks game, and they got arrested and banned. This was supposed to be a 2025 problem, but here we are in 2026. The league and arenas need to step up security because this is not just a joke—it's a safety issue for players and a bad look for a league trying to grow. The WNBA has been dealing with a culture war all season, and this incident only adds fuel to the fire. It's time to treat this with the seriousness it deserves.",
+      "data_point": "During the third quarter of the Dream-Sparks game at Crypto.com Arena, a green dildo landed on the hardwood.",
+      "source_ids": [0]
+    },
+    {
+      "narrative": "Kaitlyn Chen's rise from Princeton to the Valkyries is a lesson in perseverance.",
+      "paragraph": "Kaitlyn Chen went from Princeton, where she averaged 14.2 points, to becoming a key player for the Golden State Valkyries. Her path wasn't linear, but she's putting the league on notice. This is what makes the WNBA's expansion so exciting—it gives overlooked players a chance to shine. Chen's story is a reminder that talent can come from anywhere, and the Valkyries are reaping the benefits.",
+      "data_point": "Kaitlyn Chen averaged 14.2 points, 3.9 assists, 3.5 rebounds, and 1.1 steals across three seasons at Princeton.",
+      "source_ids": [0]
+    },
+    {
+      "narrative": "Matt Campbell's 'truth bomb' about Penn State's expectations might be a warning.",
+      "paragraph": "Matt Campbell told Pat McAfee about the lights shining over Beaver Stadium's expansion, and it's a 'truth bomb' that Penn State fans might not want to hear. He's acknowledging the weight of the program, but also hinting that the expectations are enormous. Campbell is walking into a pressure cooker, and he knows it. The question is whether he can handle the heat or if he's already feeling the burn.",
+      "data_point": "Matt Campbell described seeing Beaver Stadium late at night with the lights shining over the venue’s ongoing expansion.",
+      "source_ids": [0]
+    },
+    {
+      "narrative": "Minnesota's lawsuit against Abbott is a federalism showdown with a human cost.",
+      "paragraph": "Minnesota is suing Governor Abbott to force the extradition of an ICE agent accused of shooting a Venezuelan man. This is a clash between states, but it's also about who holds power over immigration enforcement. The case is a reminder that immigration policy has real consequences, and when states refuse to cooperate, it's people who suffer. The question is whether the courts will force Texas to hand over the agent, and what that means for federal-state relations.",
+      "data_point": "Minnesota is suing Governor Abbott to force the extradition of an ICE agent accused of shooting a Venezuelan man.",
+      "source_ids": [0]
+    },
+    {
+      "narrative": "The New York Times' $9.25 million loss is a warning to media about rushing to judgment.",
+      "paragraph": "A Tuscaloosa jury awarded $9.25 million to former Alabama basketball player Kai Spears, who the Times falsely identified as a passenger in a car at a fatal shooting. This is a huge verdict that should make every newsroom pause. The Times got it wrong, and it cost them. It's a reminder that accuracy matters more than being first, and that real people are hurt when media outlets get sloppy.",
+      "data_point": "Former Alabama basketball player Kai Spears has been awarded $9.25 million by a Tuscaloosa jury.",
+      "source_ids": [0]
+    },
+    {
+      "narrative": "The hemp industry's lawsuit against Texas' THC ban is a fight for survival.",
+      "paragraph": "The hemp industry is suing over Texas' THC ban, claiming job losses and a medical marijuana monopoly. This is a battle between small businesses and a state government that's cracking down hard. The ban is already hurting people's livelihoods, and the lawsuit is a last resort. The question is whether the courts will side with the industry or the state, and what that means for the future of hemp in Texas.",
+      "data_point": "The hemp industry is suing over Texas' THC ban, claiming job losses and a medical marijuana monopoly.",
+      "source_ids": [0]
+    },
+    {
+      "narrative": "Pierre 'P' Thomas's hospitalization is a reminder of the fragility behind the music business.",
+      "paragraph": "Quality Control CEO Pierre 'P' Thomas is hospitalized after a medical emergency, and the company had to clarify he's 'alive.' It's a scary moment for hip-hop, and it shows that even the biggest players are vulnerable. Thomas built an empire with Migos, and his health is a concern for the whole industry. The news is a reminder that behind the music, there are real people with real lives.",
+      "data_point": "In 2023, HYBE acquired QC Media Holdings for $300 million.",
+      "source_ids": [0]
+    },
+    {
+      "narrative": "Megan DiLeo's story shows that WNBA expansion teams are building something real.",
+      "paragraph": "Megan DiLeo's growth in Portland is a microcosm of what the Fire are building. The WNBA is back in Portland for the first time since 2002, and despite a sub-.500 record, the team is laying a foundation. DiLeo's success is a testament to the opportunities expansion creates. It's not just about winning now—it's about building a culture that can last.",
+      "data_point": "The Portland Fire sit with an 11-18 record.",
+      "source_ids": [0]
+    },
+    {
+      "narrative": "Google's SCIN dataset is a step toward making dermatology AI inclusive.",
+      "paragraph": "Google's new SCIN dataset aims to fix the problem of unrepresentative dermatology images. Most images in the dataset show early-stage concerns, which is exactly what's missing from many AI training sets. This matters because AI trained on biased data can fail patients with darker skin or less severe conditions. SCIN is a move toward more equitable healthcare tech, but it's only as good as the data it's built on.",
+      "data_point": "More than half of the images in SCIN arose less than a week before the photo, and 30% arose less than a day before.",
+      "source_ids": [0]
+    },
+    {
+      "narrative": "The Valkyries' win over the Lynx could be the moment they become title contenders.",
+      "paragraph": "The Golden State Valkyries finally beat the Minnesota Lynx, and it might be the statement they needed. With WNBA All-Star 2027 coming to Chase Center, a championship banner would be the dream. This win shows they can compete with the best, and it's a signal that the Valkyries are not just a feel-good story—they're a real threat.",
+      "data_point": "The Golden State Valkyries finally beat the Minnesota Lynx.",
+      "source_ids": [0]
+    },
+    {
+      "narrative": "Young players like Makayla Timpson are the secret weapons for WNBA contenders.",
+      "paragraph": "Makayla Timpson has become the perfect fit next to the Fever's stars, and she's not the only one. Young players are elevating the Fever, Valkyries, and Liberty, proving that championships aren't just won by big names. These rookies and sophomores are making an impact, and it's a sign that the WNBA's future is bright.",
+      "data_point": "Makayla Timpson has turned out to be the perfect fit next to the Indiana Fever’s star players.",
+      "source_ids": [0]
+    }
+  ]
+}
