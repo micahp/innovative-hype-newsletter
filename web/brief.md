@@ -1,5 +1,5 @@
 # INNOVATIVE HYPE — BRIEF
-_Generated 2026-08-21 21:17 UTC · 36/55 feeds · 563 articles_
+_Generated 2026-08-21 21:55 UTC · 36/55 feeds · 596 articles_
 
 ## Can we trust the machines we're building?
 
@@ -8,19 +8,19 @@ _Generated 2026-08-21 21:17 UTC · 36/55 feeds · 563 articles_
 - Binance Opens the Door to AI Agents That Can Trade Crypto for You (Decrypt)
 - The Download: threats from space mirrors and credit for AI drugs (MIT Technology Review)
 
-## The AI data layer is printing money
-
-
-- AI data startup Micro1 reaches $500M gross run rate amid AI training boom (TechCrunch)
-- Import AI 467: Self-sustaining AI viruses; pacing AI progress; confusion about AI and creativity (Import AI)
-- Superintelligence is a dragon (Platformer)
-
 ## Cities, housing and where America lives
 
 
 - ‘The Yogurt Shop Murders’ Crew Thought Their Journey Was Done Until There Was a Big Break in the Case: ‘We Have to Rally Now’ (Variety)
 - Texas Parks and Wildlife commissioners inundated with border wall concerns during annual meeting (Texas Tribune)
 - Amazon aims for delivery drones to reach 500 US neighborhoods by end of 2026 (Ars Technica)
+
+## The AI data layer is printing money
+
+
+- AI data startup Micro1 reaches $500M gross run rate amid AI training boom (TechCrunch)
+- Import AI 467: Self-sustaining AI viruses; pacing AI progress; confusion about AI and creativity (Import AI)
+- Superintelligence is a dragon (Platformer)
 
 ## The creator economy is consolidating
 
