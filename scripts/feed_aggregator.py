@@ -131,13 +131,14 @@ SOURCE_TIERS = {
     "VentureBeat AI": 2,
     "The Defiant": 2,
     "Decrypt": 2,
-    "OpenAI Blog": 1,
-    "Google AI Blog": 2,
-    "Import AI": 2,
-    "Wired": 1,
-    "DeepMind Blog": 2,
-    "Anthropic Research": 2,
-    "Meta AI Blog": 3,
+    # VENDOR BLOGS demoted from T1 (2026-08-21): their announcements are
+    # self-promotion, not reporting — "Offering Zero Data Retention" (undated,
+    # 0 recency) sat on the Top shelf at 7.50 on tier+pillars alone.
+    "OpenAI Blog": 4,
+    "Google AI Blog": 3,
+    "DeepMind Blog": 3,
+    "Meta AI Blog": 4,
+    "Anthropic Research": 3,
     "Hacker News (AI)": 3,
     "CoinDesk": 2,
     # BUSINESS
@@ -193,7 +194,12 @@ SOURCE_TIERS = {
 # Negative markers — LP-style news-vs-noise filter. Any hit hard-caps the score.
 NOISE_PATTERNS = [
     r"\b(listicle|roundup|recap|best of|top \d+|n best|ways to)\b",
-    r"\b(review|reviewed|hands-?on|we tried|i tried)\b",
+    # "The 9 Best X of 2026, Tried and Tested" — number+Best and
+    # tried/tested are the same review-register as the patterns above.
+    # (Measured 2026-08-21: Rolling Stone earbuds roundup hit the Top shelf.)
+    r"\b\d+ best\b",
+    r"\b(tried and tested|tested and reviewed|hands-?on)\b",
+    r"\b(review|reviewed|we tried|i tried)\b",
     r"\b(opinion|op-?ed|column|hot take|take:)\b",
     r"\b(how to|guide|tutorial|explainer|cheat sheet|primer)\b",
     r"\b(5 |10 |25 |50 |100 )(things|reasons|ways|signs|lessons)\b",
@@ -217,20 +223,31 @@ NOISE_PATTERNS = [
     # with CodeAI" — both LIVE at 3.41 / 7.50, neither is news.)
     r"\b(our (full )?lineup|our (annual )?(festival|summit|conference|event)|join us at|see you at|get your (ticket|pass) to)\b",
     r"\b(partnering with|partnership with|teaming up with)\b",
+    # Podcast/media-player prefixes — "LISTEN:" is an episode, not a story.
+    # (Measured 2026-08-21: "LISTEN: Amazon Courts Creators…" hit 8.38, #4 on
+    # the Top shelf, on pillar keywords in its summary alone.)
+    r"^listen:|^watch:|^read:|^stream:",
+    r"\b(podcast|episode \d+|ep\. ?\d+)\b",
 ]
 
 # Pillar keywords from EDITORIAL_MAP.md (title+summary match, word-boundary).
 # Each entry maps a pillar to the keyword list that signals it.
 PILLAR_KEYWORDS = {
+    # CORRECTED 2026-08-21 evening: 'creator(s)' appeared in THREE lists
+    # (ownership, build-consume, community-moat), so a single word bought
+    # +4.5 pillar score and soft culture features out-ranked hard news
+    # ("For Comedy Writers..." hit 3 pillars on creator/community/ownership).
+    # Rule now: a keyword may belong to ONE pillar only — the most specific.
+    # 'ai' also lived in ai-defining while 'agent' inflated every crypto story.
     "sovereignty": ["sovereignty", "self-custody", "self custody", "de-dollarization", "de-dollarisation", "sound money", "censorship", "surveillance", "data privacy", "financial freedom", "sanctions"],
-    "ownership": ["ownership", "creator", "creators", "royalt", "rent-seeking", "middleman", "middlemen", "platform fee", "take rate", "commission", "upside"],
-    "ai-defining": ["ai", "artificial intelligence", "llm", "gpt", "claude", "gemini", "sora", "agent", "model release", "open source model", "deepseek", "mistral", "openai", "anthropic", "machine learning", "robotics", "automation", "agi"],
-    "build-consume": ["build", "builder", "making", "maker", "creators", "startup", "founder", "founders", "entrepreneur", "side project", "indie", "open source", "diy"],
-    "community-moat": ["community", "network effect", "creators", "fans", "fandom", "audience", "subscribers", "members", "guild", "co-op", "cooperative"],
-    "culture-onchain": ["nft", "on-chain", "onchain", "web3", "blockchain", "ethereum", "solana", "base", "token", "tokenization", "digital art", "metaverse", "crypto"],
-    "tech-optimism": ["future", "breakthrough", "next generation", "frontier", "innovation", "disrupt", "pioneer", "milestone", "record"],
+    "ownership": ["ownership", "royalt", "rent-seeking", "middleman", "middlemen", "platform fee", "take rate"],
+    "ai-defining": ["ai", "artificial intelligence", "llm", "gpt", "claude", "gemini", "sora", "model release", "deepseek", "mistral", "machine learning", "robotics", "agi"],
+    "build-consume": ["build", "builder", "making", "maker", "startup", "founder", "founders", "entrepreneur", "side project", "indie", "diy"],
+    "community-moat": ["community", "network effect", "fandom", "audience", "subscribers", "members", "guild", "co-op", "cooperative"],
+    "culture-onchain": ["nft", "on-chain", "onchain", "web3", "blockchain", "ethereum", "solana", "tokenization", "digital art", "metaverse", "crypto"],
+    "tech-optimism": ["breakthrough", "next generation", "innovation", "pioneer", "milestone"],
     "self-mastery": ["discipline", "consistency", "training", "workout", "stoic", "mindset", "compounding", "grind", "hustle", "routine", "longevity", "peak performance"],
-    "access-uplift": ["democrati", "access", "opportunity", "generation", "uplift", "inclusive", "financial inclusion", "financial literacy", "learn", "education"],
+    "access-uplift": ["democrati", "uplift", "inclusive", "financial inclusion", "financial literacy"],
 }
 
 # How long until a story is half as relevant (hours). 36h keeps a morning
@@ -461,10 +478,13 @@ def main():
 
     # Top stories: highest score, exclude noise-capped items (they can still
     # show in the feed below, just never as TOP NEWS).
+    # Dated-only rule (2026-08-21): an article with no parseable date has
+    # unknown freshness ("Offering Zero Data Retention" was undated, age=∞,
+    # recency≈0, yet took a Top slot on tier+pillars). No date → never TOP.
     # Diversity constraints: max 2 per source, max 2 per category in top N —
     # one vendor (OpenAI Blog) or one beat (all business) must not own the
     # top shelf.
-    scored = [a for a in all_articles if not a["_noise"]]
+    scored = [a for a in all_articles if not a["_noise"] and a.get("_ts", 0) > 0]
     scored.sort(key=lambda x: -x["_score"])
     top_ids = set()
     src_count = {}

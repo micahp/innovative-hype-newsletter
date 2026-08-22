@@ -1,0 +1,52 @@
+{
+  "cards": [
+    {
+      "narrative": "Jeff Bezos’ Blue Origin is quietly planting a 1.3-million-square-foot factory in Hutto, Texas, while the town gives up the tax base to get it.",
+      "paragraph": "Blue Origin's proposed manufacturing plant in Hutto would span 26 football fields and cost $650 million, joining a cluster of spaceflight companies in Central Texas. The county is likely to offer tax incentives, trading near-term revenue for the promise of jobs and prestige—a deal small towns increasingly make to land big names.",
+      "data_point": "The proposed Project Blue Hub plant will be about the size of 26 football fields – 1.3 million square feet at a cost of $650 million.",
+      "source_ids": [0]
+    },
+    {
+      "narrative": "Marina Mabrey’s 53-point night is a reminder that the WNBA’s new money is already changing who gets to be a star.",
+      "paragraph": "Marina Mabrey tied the WNBA single-game scoring record with 53 points, and the Toronto franchise locked her up with a two-year, $2.4 million contract. The league’s growth is creating opportunities for players beyond the usual marquee names, making the race for attention as competitive as the games.",
+      "data_point": "General Manager Monica Wright Rogers and the rest of the front office were happy to commit to Mabrey in the form of a two-year, $2.4 million contract.",
+      "source_ids": [0]
+    },
+    {
+      "narrative": "Nvidia is turning compute into an asset class, and Wall Street’s biggest names are buying in—but the math may not add up.",
+      "paragraph": "Apollo, BlackRock, Blackstone, Brookfield, Goldman Sachs, and KKR are working with Nvidia to put together $500 billion in financing to treat compute as an investable asset. This financial engineering could accelerate AI infrastructure buildout, but it also risks creating a bubble where the value of chips and data centers is divorced from actual demand.",
+      "data_point": "Apollo, BlackRock, Blackstone, Brookfield, Goldman Sachs, and KKR are all working with Nvidia to put together $500 billion in financing to turn compute into an asset class.",
+      "source_ids": [0]
+    },
+    {
+      "narrative": "TikTok’s $400 million child-privacy settlement is a fine, not a fix—and it’s the cost of doing business for the attention economy.",
+      "paragraph": "TikTok agreed to pay $400 million to settle a U.S. government lawsuit alleging it violated children's privacy laws. For a company that makes billions, this is pocket change, and it raises the question: will any penalty actually change how platforms treat kids, or is it just a line item?",
+      "data_point": "TikTok, the company behind the namesake popular short-form video app, has agreed to pay $400 million to settle a U.S. government lawsuit alleging it violated the country’s Children’s Online Privacy Protection Act (COPPA).",
+      "source_ids": [0]
+    },
+    {
+      "narrative": "OpenAI’s zero data retention promise is good PR, but the fine print leaves the door open for safety processing—and that’s a trade-off users should question.",
+      "paragraph": "OpenAI reaffirmed its Zero Data Retention policy for API customers, but also previewed 'Private Safety Processing' that could scan data for safety without storing it. The promise of privacy is undercut by the need to monitor for abuse, and users are left trusting the company’s judgment on what counts as safety.",
+      "data_point": "OpenAI reaffirms Zero Data Retention for eligible API customers and previews Private Safety Processing for advanced AI safety without compromising data privacy.",
+      "source_ids": [0]
+    },
+    {
+      "narrative": "Marc Lore’s quick flip of the Timberwolves shows that NBA ownership is now a trading card game for billionaires, not a long-term commitment.",
+      "paragraph": "Marc Lore is selling his controlling stake in the Timberwolves and Lynx to Marc Stad at a $4.5 billion valuation, just over a year after taking full control. With 11 change-of-control sales since 2020 totaling $54.1 billion, the league is becoming a playground for investors who buy low and sell high, leaving fans to wonder who actually cares about the teams.",
+      "data_point": "Marc Lore is selling his controlling stake in the Minnesota Timberwolves and WNBA’s Lynx to billionaire investor Marc Stad in a deal that values the teams, together, at $4.5 billion.",
+      "source_ids": [0]
+    },
+    {
+      "narrative": "Flock’s new AI tool can track drivers by how they move, and it’s a surveillance leap that comes with no public vote.",
+      "paragraph": "Flock's 'OS Investigate' uses 69 preloaded AI prompts to identify people by their movement patterns, even without a name or license plate. This turns existing camera networks into a powerful tracking system, but the deployment is happening with little public oversight, raising questions about who gets to watch whom.",
+      "data_point": "The underlying code for 'OS Investigate' has 69 preloaded AI prompts that turn Flock cameras into a super-charged surveillance system that identifies people by how they move.",
+      "source_ids": [0]
+    },
+    {
+      "narrative": "Bitcoin’s rally is being driven by short squeezes and regulatory headlines, not by fundamental adoption—and that’s a fragile foundation.",
+      "paragraph": "Bitcoin surged past $72,000, wiping out over $3 billion in short positions, fueled by positive news from Washington and institutional buying. But the move is built on leverage and sentiment, not on real-world usage, making it vulnerable to a sharp reversal when the headlines fade.",
+      "data_point": "Bitcoin punched above $72,000 Thursday, extending a two-day squeeze that's wiped out the most short positions on record and mounted the first real challenge to a bearish chart that's held since November.",
+      "source_ids": [0]
+    }
+  ]
+}

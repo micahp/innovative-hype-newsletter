@@ -1,0 +1,61 @@
+{
+  "cards": [
+    {
+      "narrative": "Blue Origin's proposed 1.3 million-square-foot plant in Hutto shows Texas handing over prime land and tax base to Jeff Bezos' space ambitions.",
+      "paragraph": "Jeff Bezos' Blue Origin is planning a 1.3 million-square-foot manufacturing plant in Hutto, Texas, costing $650 million and spanning 26 football fields. The city, which has become a hub for spaceflight companies, is likely to offer incentives, raising questions about what Hutto taxpayers get in return.",
+      "data_point": "The proposed Project Blue Hub plant will be about the size of 26 football fields \u2013 1.3 million square feet at a cost of $650 million.",
+      "source_ids": [
+        1
+      ],
+      "_cluster_idx": 0
+    },
+    {
+      "narrative": "Marina Mabrey's 53-point game ties a WNBA record, but her $2.4 million contract highlights the league's pay gap.",
+      "paragraph": "Marina Mabrey scored 53 points, tying the WNBA single-game record, and signed a two-year, $2.4 million contract with Toronto. That's a fraction of what NBA bench players earn, underscoring the ongoing disparity in women's sports compensation.",
+      "data_point": "General Manager Monica Wright Rogers and the rest of the front office were happy to commit to Mabrey in the form of a two-year, $2.4 million contract.",
+      "source_ids": [
+        0
+      ],
+      "_cluster_idx": 8
+    },
+    {
+      "narrative": "Marc Lore's quick resale of the Timberwolves for $4.5 billion shows NBA ownership is now a speculative asset class.",
+      "paragraph": "Marc Lore is selling his controlling stake in the Timberwolves and Lynx to Marc Stad at a $4.5 billion valuation, just over a year after taking over. With 25 change-of-control sales since 2010 and $54.1 billion in deals since 2020, team ownership has become a Wall Street-style flip, not a civic commitment.",
+      "data_point": "Marc Lore is selling his controlling stake in the Minnesota Timberwolves and WNBA\u2019s Lynx to billionaire investor Marc Stad in a deal that values the teams, together, at $4.5 billion.",
+      "source_ids": [
+        0,
+        5
+      ],
+      "_cluster_idx": 10
+    },
+    {
+      "narrative": "OpenAI's zero data retention policy applies only to API customers, not to the millions using ChatGPT, raising questions about who gets privacy.",
+      "paragraph": "OpenAI is touting Zero Data Retention for eligible API customers and previewing 'Private Safety Processing.' But this privacy promise does not extend to consumer ChatGPT users, whose conversations are used for training. The policy creates a two-tier privacy system where paying developers get protection and everyday users do not.",
+      "data_point": "OpenAI reaffirms Zero Data Retention for eligible API customers and previews Private Safety Processing for advanced AI safety without compromising data privacy.",
+      "source_ids": [
+        0
+      ],
+      "_cluster_idx": 6
+    },
+    {
+      "narrative": "Bitcoin's rally to $79,000 is fueled by short squeezes and political promises, not fundamentals, making it a market on borrowed time.",
+      "paragraph": "Bitcoin surged past $79,000, its best week since 2023, after $3 billion in shorts were liquidated and President Trump pushed for the CLARITY Act. Coinbase CEO Brian Armstrong predicts $400,000 by 2030, but the rally is driven by leverage and regulatory news, not adoption. When the shorts are gone, so is the momentum.",
+      "data_point": "Bitcoin roared past $79,000 Friday, sustaining the biggest run in years following positive regulatory news and an announcement from the U.S. Treasury.",
+      "source_ids": [
+        3,
+        5,
+        7
+      ],
+      "_cluster_idx": 11
+    },
+    {
+      "narrative": "Flock's new AI tool can track drivers by how they move, turning every camera into a surveillance device without warrants.",
+      "paragraph": "Flock's 'OS Investigate' uses 69 preloaded AI prompts to identify people by movement patterns, even without a license plate. This expands police surveillance capabilities beyond what the public has consented to, and the code is designed to infer identity from behavior, a significant privacy intrusion.",
+      "data_point": "The underlying code for \"OS Investigate\" has 69 preloaded AI prompts that turn Flock cameras into a super-charged surveillance system that identifies people by how they move.",
+      "source_ids": [
+        2
+      ],
+      "_cluster_idx": 9
+    }
+  ]
+}
