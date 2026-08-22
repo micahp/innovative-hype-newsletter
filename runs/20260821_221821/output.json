@@ -1,0 +1,52 @@
+{
+  "cards": [
+    {
+      "narrative": "Blue Origin gets 26 football fields in Hutto while the county gives up the tax base.",
+      "paragraph": "Jeff Bezos' Blue Origin is planning a 1.3 million-square-foot manufacturing plant in Hutto, Texas, a facility the size of 26 football fields at a cost of $650 million. The deal joins a wave of spaceflight companies in Central Texas, but it raises the question of who benefits when a town trades its land and tax revenue for a billionaire's rocket factory.",
+      "data_point": "The proposed Project Blue Hub plant will be about the size of 26 football fields – 1.3 million square feet at a cost of $650 million.",
+      "source_ids": [6]
+    },
+    {
+      "narrative": "Marina Mabrey ties the WNBA scoring record, but the real story is Toronto's front office betting $2.4 million on a player who just became the face of the franchise.",
+      "paragraph": "Marina Mabrey scored 53 points to tie the WNBA single-game record, and the Toronto front office signed her to a two-year, $2.4 million contract. The deal makes her the centerpiece of a team that's betting on a star to carry them, but it also raises the question of whether one game — however historic — justifies that kind of investment.",
+      "data_point": "General Manager Monica Wright Rogers and the rest of the front office were happy to commit to Mabrey in the form of a two-year, $2.4 million contract.",
+      "source_ids": [0]
+    },
+    {
+      "narrative": "Matt Campbell's Penn State honeymoon is already over — he's talking about 'the process' while the fanbase wants wins.",
+      "paragraph": "New Penn State head coach Matt Campbell told The Pat McAfee Show that he looks at the lights on Beaver Stadium's expansion and thinks about the process, not the pressure. But in a program that expects championships, that kind of talk will only last so long before the results have to speak.",
+      "data_point": null,
+      "source_ids": [0]
+    },
+    {
+      "narrative": "OpenAI promises zero data retention for frontier models, but the fine print is that it's only for eligible API customers — everyone else is still the product.",
+      "paragraph": "OpenAI reaffirmed its Zero Data Retention policy for API customers and previewed Private Safety Processing, but the promise comes with an asterisk: it applies only to eligible API customers. For the millions of consumers using ChatGPT, the data still flows through the company's servers, and the 'privacy' narrative doesn't extend to them.",
+      "data_point": null,
+      "source_ids": [0]
+    },
+    {
+      "narrative": "Marc Lore sells the Timberwolves for $4.5 billion — another NBA franchise changes hands to a buyer nobody voted for.",
+      "paragraph": "Marc Lore is selling his controlling stake in the Minnesota Timberwolves and Lynx to billionaire Marc Stad in a deal valuing the teams at $4.5 billion. The sale is part of a wave of 11 change-of-control deals since 2020 worth $54.1 billion, as franchise valuations skyrocket and a new class of wealthy investors enters the market.",
+      "data_point": "Just since 2020, there have been 11 change-of-control sales with a combined value of $54.1 billion.",
+      "source_ids": [0, 4]
+    },
+    {
+      "narrative": "Flock's new AI police tool can track drivers without a name or license plate — and it's already being deployed.",
+      "paragraph": "Flock's 'OS Investigate' uses 69 preloaded AI prompts to turn its cameras into a surveillance system that identifies people by how they move. The tool goes beyond license plate recognition, allowing police to track individuals without any identifying information, raising serious civil liberties concerns.",
+      "data_point": null,
+      "source_ids": [7]
+    },
+    {
+      "narrative": "Bitcoin's rally is a short squeeze, not a bull market — and the SEC's new rules could make it worse.",
+      "paragraph": "Bitcoin surged past $79,000 on Friday, its best week since 2023, as shortsellers were wiped out and the SEC proposed new token offering rules that would allow issuers to raise up to $75 million a year without registration. The move is fueled by leverage and regulatory optimism, but the underlying volatility remains a ticking time bomb.",
+      "data_point": "Bitcoin roared past $79,000 Friday, sustaining the biggest run in years following positive regulatory news and an announcement from the U.S. Treasury.",
+      "source_ids": [7]
+    },
+    {
+      "narrative": "Kalshi traders think bitcoin will end the year near current levels — a bet that defies the rally's momentum.",
+      "paragraph": "Prediction market Kalshi traders are betting that bitcoin will end 2026 close to its current trading price, a contrarian view against the recent surge. The platform's forecasts suggest that the rally may be overhyped, and that the market could be in for a correction despite the short squeeze.",
+      "data_point": null,
+      "source_ids": [2]
+    }
+  ]
+}

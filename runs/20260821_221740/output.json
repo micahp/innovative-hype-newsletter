@@ -1,0 +1,76 @@
+{
+  "cards": [
+    {
+      "narrative": "Jeff Bezos’ Blue Origin is quietly buying up Texas, and Hutto is about to hand over 26 football fields of land for a $650 million plant while the county gives up the tax base.",
+      "paragraph": "Blue Origin, the aerospace company owned by Jeff Bezos, is planning a 1.3 million-square-foot manufacturing plant in Hutto, Texas, about the size of 26 football fields and costing $650 million. The project, dubbed Project Blue Hub, would join a cluster of spaceflight companies in Central Texas, but it raises the question of what the community gets in return as it surrenders land and potential tax revenue to a billionaire’s venture.",
+      "data_point": "The proposed Project Blue Hub plant will be about the size of 26 football fields – 1.3 million square feet at a cost of $650 million.",
+      "source_ids": [12]
+    },
+    {
+      "narrative": "Marina Mabrey tied the WNBA single-game scoring record with 53 points, but the real story is how a two-year, $2.4 million contract is making Toronto a destination for stars.",
+      "paragraph": "Marina Mabrey scored 53 points on June 25, tying the WNBA single-game scoring record, and she did it in Toronto, a city that just committed $2.4 million over two years to keep her. The contract, handed out by general manager Monica Wright Rogers, signals that Toronto is serious about building a contender, and Mabrey is thriving in her biggest role yet.",
+      "data_point": "General Manager Monica Wright Rogers and the rest of the front office were happy to commit to Mabrey in the form of a two-year, $2.4 million contract.",
+      "source_ids": [0]
+    },
+    {
+      "narrative": "Matt Campbell’s truth bomb about Penn State’s expectations will catch fans’ attention, but it’s also a warning about the pressure he’s walking into.",
+      "paragraph": "New Penn State head coach Matt Campbell described seeing Beaver Stadium’s lights shining on the ongoing expansion during a Friday appearance on The Pat McAfee Show, and his comments are already making waves. Campbell understands the weight of expectations at a program where the fan base is hungry for a title, and his honesty about the challenge is a refreshing change from the usual coachspeak.",
+      "data_point": null,
+      "source_ids": [0]
+    },
+    {
+      "narrative": "Nvidia’s plan to turn compute into an asset class with $500 billion in financing is a bet that could reshape the AI industry, but it’s also a sign of how desperate the company is to keep growing.",
+      "paragraph": "Apollo, BlackRock, Blackstone, Brookfield, Goldman Sachs, and KKR are all working with Nvidia to put together $500 billion in financing to turn compute into an asset class. The Verge calls Nvidia’s new financial strategy a move that doesn’t compute, and the skepticism is warranted: this is a massive bet on the idea that AI infrastructure will be as valuable as real estate or energy, and it could either create a new market or fuel a bubble.",
+      "data_point": "Apollo, BlackRock, Blackstone, Brookfield, Goldman Sachs, and KKR are all working with Nvidia to put together $500 billion in financing to turn compute into an asset class.",
+      "source_ids": [9]
+    },
+    {
+      "narrative": "YouTube creators are facing backlash for accepting AI money, and the real issue is that they’re selling out their audiences for a paycheck.",
+      "paragraph": "Prominent filmmaking content creators including Matti Haapoja and Sam Kolder have posted videos demonstrating what’s possible with AI platform Higgsfield, and the backlash has been swift. The creators are accused of promoting a tool that could replace the very skills their audiences admire, and the AI company has raised more than $47 million from investors including Accel, Coatue, and Atomico to push its product.",
+      "data_point": "They’ve since raised more than $47 million from investors including Accel, Coatue, and Atomico.",
+      "source_ids": [2]
+    },
+    {
+      "narrative": "OpenAI’s zero data retention promise is a marketing move, not a privacy guarantee, and it’s aimed at winning over enterprise customers who are worried about AI safety.",
+      "paragraph": "OpenAI is reaffirming its Zero Data Retention policy for eligible API customers and previewing a new feature called Private Safety Processing, which it says will allow advanced AI safety without compromising data privacy. But the timing is telling: as competitors like Anthropic and Google push their own privacy features, OpenAI is trying to reassure businesses that their data won’t be used for training, even as it offers a product that depends on vast amounts of data.",
+      "data_point": null,
+      "source_ids": [0]
+    },
+    {
+      "narrative": "The website that created an AI clone of its editor in chief is a dystopian preview of what’s coming to media, and it’s not just a gimmick.",
+      "paragraph": "The roughly 30-person company behind the productivity apps Cora, Sparkle, Spiral, and Monologue has created an AI clone of its editor in chief, and the implications are unsettling. The clone is part of a broader trend where AI is being used to replicate human voices and decision-making, and it raises the question of who is really in charge when the editor is an algorithm.",
+      "data_point": "The roughly 30-person company offers Cora, an email assistant; Sparkle, a file organizer; Spiral, a writing tool; and Monologue, a dictation app — all of which are bundled with the journali",
+      "source_ids": [0]
+    },
+    {
+      "narrative": "Marc Lore sells the Timberwolves for $4.5 billion, but the real story is that no one can afford to own a team anymore except billionaires like Marc Stad.",
+      "paragraph": "Marc Lore is selling his controlling stake in the Minnesota Timberwolves and WNBA’s Lynx to billionaire investor Marc Stad in a deal that values the teams at $4.5 billion. The sale is part of a wave of NBA team sales that has seen 11 change-of-control deals worth $54.1 billion since 2020, and it raises the question of whether the league is becoming a playground for the ultra-rich at the expense of fans.",
+      "data_point": "Marc Lore is selling his controlling stake in the Minnesota Timberwolves and WNBA’s Lynx to billionaire investor Marc Stad in a deal that values the teams, together, at $4.5 billion.",
+      "source_ids": [0, 4]
+    },
+    {
+      "narrative": "Flock’s new AI police tool can track drivers without a name or license plate, and it’s a surveillance nightmare that’s being sold as a safety feature.",
+      "paragraph": "Flock’s new AI police tool, called OS Investigate, has 69 preloaded AI prompts that turn its cameras into a super-charged surveillance system that identifies people by how they move. The tool can track individuals without a name or license plate, raising serious privacy concerns, and it’s part of a growing trend of AI-powered policing that is being adopted with little public oversight.",
+      "data_point": "The underlying code for \"OS Investigate\" has 69 preloaded AI prompts that turn Flock cameras into a super-charged surveillance system that identifies people by how they move.",
+      "source_ids": [6]
+    },
+    {
+      "narrative": "Bitcoin’s rally is being fueled by short squeezes and regulatory news, but the real story is that the market is more leveraged than ever.",
+      "paragraph": "Bitcoin punched above $72,000 Thursday, extending a two-day squeeze that wiped out $3 billion in shorts, and the rally has been driven by institutional buying and a friendlier regulatory outlook. But the move is running on borrowed momentum, with ETF flows and futures data hinting that the gains are not sustainable, and the risk of a sharp correction is growing.",
+      "data_point": "Bitcoin punched above $72,000 Thursday, extending a two-day squeeze that's wiped out the most short positions on record and mounted the first real challenge to a bearish chart that's held since November.",
+      "source_ids": [3]
+    },
+    {
+      "narrative": "Kalshi traders think bitcoin will end the year near current levels, and that’s a bet on stability, not a boom.",
+      "paragraph": "Speculators on the prediction market platform Kalshi think it’s most likely that bitcoin will end 2026 close to where it’s now trading, according to CNBC. The prediction comes amid a volatile rally that has seen short squeezes and regulatory headlines, but the market is signaling that the current price is near a ceiling, not a launching pad.",
+      "data_point": null,
+      "source_ids": [2]
+    },
+    {
+      "narrative": "Reflect Orbital’s space mirrors could brighten the night sky by 300%, and the company is doing it to sell sunlight to solar farms.",
+      "paragraph": "Reflect Orbital, a US company, plans to launch a test satellite called Eärendil-1 that will extend an 18-by-18-foot mirror to beam sunlight to Earth on demand. But a new study finds the beams would brighten the night sky up to 300% worldwide, affecting astronomers and wildlife, and the company’s plans are moving forward despite the risks.",
+      "data_point": "They know what they’re doing. Hainaut had previously modeled the broader effect of Reflect Orbital’s beams, finding they would brighten the sky up to 300% worldwide.",
+      "source_ids": [1]
+    }
+  ]
+}

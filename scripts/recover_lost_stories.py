@@ -62,7 +62,7 @@ for path in sorted(glob.glob(os.path.join(RUNS, "2026*", "input.json"))):
                 "link": item.get("link", "#"),
                 "summary": "",
                 "source": item.get("source", ""),
-                "category": "news",
+                "category": "culture",  # recovered features are culture/media; never a bare 'news' (renders nowhere on tabs)
                 "published": "",
                 "_body": (item.get("body_excerpt", "") or "")[:6000],
                 "_ts": run_ts,
