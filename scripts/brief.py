@@ -389,8 +389,16 @@ def main():
         f.write(out)
     print(out)
 
+    # NOT brief.html. brief.py and narrative_desk.py both used to write that
+    # one filename, and cron_news.py runs brief.py FIRST. So on any run where
+    # the desk failed, brief.py's deterministic page silently became the live
+    # brief, under a fresh timestamp, and it is the version Micah rejected on
+    # 2026-08-21 ("i dont like this brief. at all."). That happened on the
+    # 15:54 UTC run of 2026-08-23 and went unnoticed because the page looked
+    # freshly updated. The desk owns brief.html; this file is the debug view of
+    # the deterministic layer that feeds it.
     html = _render_html(cards)
-    html_path = os.path.join(WEB, "brief.html")
+    html_path = os.path.join(WEB, "brief-clusters.html")
     with open(html_path, "w") as f:
         f.write(html)
     print(f"\nWrote {out_path} and {html_path}")
