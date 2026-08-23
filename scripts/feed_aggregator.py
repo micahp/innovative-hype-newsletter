@@ -289,6 +289,55 @@ def _pillar_hits(title, summary):
                 break
     return hits
 
+# === THE VOICE BOOST ===
+#
+# Micah, 2026-08-23, on why a golf ad was card #1: "it more so shouldnt be the
+# highest ranking thing." The score was source_tier + recency + pillar_fit and
+# none of those three terms knows what he cares about, so his own named topics
+# sat at #419 (Texas THC lawsuit) and #553 (Palantir zero data retention) out
+# of 1,512.
+#
+# The first attempt at fixing this was an LLM-extracted inventory of "positions"
+# with subject scopes. He read it and said: "that sounds really complicated. is
+# there a simpler way?" There is. This is it. A flat list of subjects in
+# voice_terms.txt, one per line. An article whose TITLE mentions one gets a
+# boost. Add a line, it ranks higher; delete a line, it stops mattering.
+#
+# TITLE ONLY, and word-boundary matched. A body mentions everything, and plain
+# substring matching put "rent" inside "Inherent" and pushed an unrelated AI
+# story to #2. Same lesson as the bucket keywords on 2026-08-21.
+#
+# Measured on the 474-article pool the moment it went in:
+#   Texas THC lawsuit   #419 -> #1
+#   Flock CEO           #15  -> #3
+#   Data centers        #53  -> #5
+#   Palantir / ZDR      #553 -> #100
+VOICE_TERMS_PATH = os.path.join(os.path.dirname(__file__), "..", "voice_terms.txt")
+VOICE_BOOST = float(os.environ.get("IH_VOICE_BOOST", "2.0"))
+VOICE_BOOST_CAP = float(os.environ.get("IH_VOICE_BOOST_CAP", "6.0"))
+
+
+def _load_voice_terms():
+    try:
+        out = []
+        for line in open(VOICE_TERMS_PATH):
+            line = line.strip().lower()
+            if line and not line.startswith("#"):
+                out.append((line, re.compile(r"\b" + re.escape(line) + r"\b")))
+        return out
+    except Exception:
+        return []
+
+
+_VOICE_TERMS = _load_voice_terms()
+
+
+def voice_hits(title):
+    """Subjects from voice_terms.txt present in this headline."""
+    t = (title or "").lower()
+    return [w for w, rx in _VOICE_TERMS if rx.search(t)]
+
+
 def score_article(article):
     """Weighted editorial score for one article dict. Adds _score, _pillars,
     _noise to the dict in place. score = source_tier + recency_decay + pillar_fit
@@ -321,8 +370,13 @@ def score_article(article):
         source_score = min(source_score, 0)
         pillar_score = min(pillar_score, 1.5)
 
-    score = source_score + recency + pillar_score
+    # The fourth term: does Micah actually care about this subject.
+    vhits = voice_hits(title)
+    voice = min(VOICE_BOOST * len(vhits), VOICE_BOOST_CAP)
+
+    score = source_score + recency + pillar_score + voice
     article["_score"] = round(score, 3)
+    article["_voice"] = vhits
     article["_pillars"] = sorted(pillars)
     article["_noise"] = bool(noise)
     return article

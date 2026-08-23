@@ -1,0 +1,64 @@
+# What Micah cares about. One subject per line, lowercase.
+# An article whose TITLE mentions one of these gets a ranking boost.
+# That is the whole mechanism. Add a line, it ranks higher. Delete a line,
+# it stops mattering. No LLM, nothing to curate but this file.
+# Seeded 2026-08-23 from his tweets + what he named in chat.
+
+flock
+surveillance
+license plate
+facial recognition
+palantir
+data retention
+privacy
+
+texas
+austin
+houston
+hutto
+housing
+rent
+real estate
+zoning
+data center
+
+kalshi
+polymarket
+prediction market
+asset class
+securitization
+private equity
+blackrock
+ownership stake
+franchise sale
+
+nvidia
+compute
+gpu
+local inference
+open source
+deepseek
+anthropic
+openai
+cursor
+elon musk
+zuckerberg
+
+creator economy
+substack
+youtube
+tiktok
+media ownership
+platform
+
+wnba
+promotion and relegation
+nil
+eligibility
+commissioner
+
+marijuana
+thc
+hemp
+jury
+lawsuit
