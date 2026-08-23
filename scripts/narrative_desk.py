@@ -213,6 +213,80 @@ _SHAPES = [
 ]
 
 
+# === THE TYPE GATE ===
+#
+# Micah, 2026-08-21: "how many cards are we just gonna be talking about how
+# womens sports has good players and there playing well??? thats like 4 cards".
+# The prompt has told the model to decline these since that day and it declines
+# unreliably: on 2026-08-23 it still carded Angel Reese's 31 points and
+# Alabama's quarterback competition. Third time learning the same thing, so it
+# is written down here instead of in another prompt sentence: A NEGATIVE
+# INSTRUCTION IS NOT A GATE.
+#
+# The test is two-sided on purpose, because a one-sided keyword ban would kill
+# the stories he most wants. "Sophie Cunningham says the WNBA commissioner
+# should be fired" is a WNBA story full of performance vocabulary and it is
+# exactly the kind of card the brief exists for. So:
+#
+#   DECLINE only when the card is about someone doing their job well
+#   (_PERFORMANCE) AND carries no money, power, law or rule angle (_POWER).
+#
+# The power list wins ties. A false keep costs one mediocre card; a false
+# decline throws away the story he asked for.
+_PERFORMANCE = (
+    "career-high", "career high", "season-high", "points", "rebounds",
+    "assists", "yards", "touchdown", "home run", "goals", "hat trick",
+    "scoring record", "single-game", "triple-double", "double-double",
+    "starting quarterback", "named starter", "starting job", "depth chart",
+    "player of the week", "player of the month", "mvp race", "rookie of the",
+    "breakout", "meteoric rise", "is becoming a star", "leads the league",
+    "big game", "stat line", "all-star selection", "lineup", "roster move",
+    "quarterback battle", "quarterback competition", "wins the job",
+    # The adjacent no-story type: a routine roster or showcase event. Same
+    # verdict, same veto. "Basketball Without Borders brings 40 top
+    # high-school players to Chicago" carded on 2026-08-23 and is a calendar
+    # entry, not a story.
+    "high-school players", "top players", "showcase", "all-star weekend",
+    "training camp opens", "schedule released", "lineup announced",
+    "roster announced", "draft class", "recruiting class", "signing day",
+)
+_POWER = (
+    # money and ownership
+    "sells", "sold", "sale", "buys", "acquisition", "valuation", "stake",
+    "owner", "ownership", "investor", "private equity", "billion", "million",
+    "revenue", "media deal", "rights deal", "sponsorship", "payroll", "salary cap",
+    # law, rule and governance
+    "lawsuit", "sues", "sued", "judge", "court", "ruling", "rules that",
+    "settlement", "arrested", "banned", "suspended", "investigation",
+    "eligibility", "age limit", "rule change", "commissioner", "fired",
+    "union", "strike", "collective bargaining", "antitrust", "congress",
+    "regulator", "subpoena", "fine", "violation", "protest", "boycott",
+    # someone with a platform saying something contestable
+    "should be fired", "called out", "accused", "criticized", "slammed",
+    "demanded", "walked out", "refused",
+)
+
+
+def performance_only(text):
+    """True when this is 'an athlete did their job well' and nothing more."""
+    low = (text or "").lower()
+    if not any(k in low for k in _PERFORMANCE):
+        return False
+    return not any(k in low for k in _POWER)
+
+
+def card_is_performance_only(card, cluster):
+    """The gate, over everything the card and its cluster actually say."""
+    parts = [card.get("narrative") or "", card.get("data_point") or "",
+             card.get("paragraph") or ""]
+    if cluster:
+        for item in cluster.get("items", []):
+            a = item.get("article", {})
+            parts.append(a.get("title", ""))
+            parts.append((a.get("summary") or "")[:400])
+    return performance_only(" ".join(parts))
+
+
 def repair_narrative(text):
     """Strip the abstraction the prompt bans. Returns (text, note or None)."""
     if not text:
@@ -712,6 +786,18 @@ def main():
         json.dump(parsed, f, indent=2)
 
     # Render the cards into brief.html (resolving source_ids → article links)
+    _typed_out = 0
+    for _ci, _card in enumerate(parsed.get("cards", [])):
+        if not _card.get("narrative"):
+            continue
+        _cl = clusters[_ci] if _ci < len(clusters) else None
+        if card_is_performance_only(_card, _cl):
+            print(f"  TYPE-GATE declined (performance only): {_card['narrative'][:70]}")
+            _card["narrative"] = None
+            _typed_out += 1
+    if _typed_out:
+        print(f"  TYPE-GATE removed {_typed_out} card(s)")
+
     for _card in parsed.get("cards", []):
         _fixed, _was = repair_narrative(_card.get("narrative"))
         if _was:
