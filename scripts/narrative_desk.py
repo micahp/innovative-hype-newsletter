@@ -254,9 +254,14 @@ def render_brief_html(clusters, parsed, run_dir):
     import html as _html
 
     cards_html = []
+    _max = int(os.environ.get("IH_MAX_CARDS", "8"))
+    _shown = 0
     for ci, card in enumerate(parsed.get("cards", [])):
         if not card.get("narrative"):
             continue  # declined cluster
+        if _shown >= _max:
+            continue
+        _shown += 1
         # Use the content-aligned cluster index when present
         cluster_idx = card.get("_cluster_idx", ci)
         cl = clusters[cluster_idx] if cluster_idx < len(clusters) else None
@@ -736,6 +741,11 @@ def main():
     if _dropped:
         print(f"  CAPPED at {_max} cards; dropped {_dropped} lower-ranked")
     parsed["cards"] = _kept
+
+    with open(os.path.join(run_dir, "meta.json"), "w") as _f:
+        json.dump({"timestamp": datetime.now(timezone.utc).isoformat(),
+                   "code_version": git_sha(), "model": MODEL,
+                   "pool_key": pool_key(clusters)}, _f, indent=2)
 
     render_brief_html(clusters, parsed, run_dir)
 
