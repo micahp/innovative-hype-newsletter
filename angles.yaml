@@ -1,0 +1,807 @@
+_readme: 'The angle inventory. An angle may only be applied to a story whose SUBJECT is in
+  its scope. Edit freely: delete positions that are not yours, tighten a scope that is catching
+  the wrong stories, set enabled: false to retire one without losing it. narrative_desk.py
+  reads this file and records which angle each card used, so when a card picks badly you can
+  point at the row.'
+angles:
+- id: new-asset-classes-should-mint-new-millionaires
+  enabled: true
+  claim: I'm a huge proponent of new asset classes, but they're supposed to mint NEW millionaires,
+    not hand the same incumbents another instrument.
+  scope:
+  - asset class
+  - securitization
+  - private credit
+  - blackrock
+  - goldman sachs
+  - apollo
+  - kkr
+  - blackstone
+  - financialization
+  - wall street
+  evidence:
+  - stated in chat 2026-08-23 on the Nvidia compute-as-an-asset-class story
+- id: you-will-never-own-your-compute
+  enabled: true
+  claim: 'Nvidia''s setup might be the right architecture and they''re still extracting all
+    the value: you won''t run local inference, you''ll rent compute from them forever.'
+  scope:
+  - compute
+  - gpu
+  - nvidia
+  - data center
+  - local inference
+  - chips
+  - cloud compute
+  - personal computer
+  evidence:
+  - stated in chat 2026-08-23 on the Nvidia compute-as-an-asset-class story
+- id: ai-watermarks-harm-content
+  enabled: true
+  claim: AI watermarks that alter wording change the meaning and content, harming quality
+    and user trust.
+  scope:
+  - ai watermarking
+  - content integrity
+  - ai regulation
+  - ai ethics
+  evidence:
+  - Anthropic’s response to watermarks confirmed my worst fears. “Our watermarking method
+    doesn’t have any practical impact on the quality or content” That is a lie. They literally
+    say they change the wording in the first paragraph Anyone with an ounce of common sense
+    about how psychology, writing, and legal documents works in the real world, knows this
+    completely changes the meaning and content.
+- id: openai-anthropic-should-ipo
+  enabled: true
+  claim: OpenAI and Anthropic should have gone public months ago; their greed is causing them
+    to be undercut by cheaper AI models.
+  scope:
+  - ai industry
+  - openai
+  - anthropic
+  - ai business models
+  evidence:
+  - I said it once and I’ll say it again. openAI and Anthropic should have went public months
+    ago. They got greedy and are now being KNEECAPPED by AffordableAI
+- id: deepseek-flash-cost-effective
+  enabled: true
+  claim: DeepSeek V4 Flash is a game-changer because it delivers competitive performance at
+    a fraction of the cost, forcing other labs to adapt or die.
+  scope:
+  - ai models
+  - deepseek
+  - ai cost
+  - ai competition
+  evidence:
+  - DeepSeek V4 Flash 0731 completed 100 deep research tasks for just $0.49! Around 1/120
+    the cost of Kimi K3 and 1/25 the cost of GLM 5.2.
+  - DeepSeek V4-Flash isn’t just cheaper per token. It reportedly completes the same benchmark
+    tasks as Fable 5 at 105× lower total cost.
+- id: flock-cameras-dangerous
+  enabled: true
+  claim: Flock surveillance cameras are dangerous because they lead to wrongful stops and
+    searches, and will eventually get an innocent person killed.
+  scope:
+  - flock cameras
+  - police surveillance
+  - privacy
+  - civil liberties
+  evidence:
+  - Flock will eventually get an innocent person killed Police with guns drawn stop a driver
+    along I-94. But it turns out they had the wrong person, all because of a mistake involving
+    Flock cameras.
+  - Police in Wisconsin used Flock to create a pretext to search a man's car for weed. Their
+    justification? He drove to Michigan, a “known source state for marijuana as it is legal
+    there,” and Flock showed he "travels to Michigan frequently."
+- id: transgender-athletes-women-sports
+  enabled: true
+  claim: Biological males should not compete in women's sports, and the WNBA's inability to
+    define 'woman' is a farce.
+  scope:
+  - transgender athletes
+  - women's sports
+  - wnba
+  - gender identity
+  evidence:
+  - Let this sink in.... 15 women... gathered together... in a room... for hours... and they
+    couldn't decide on what a woman is.
+  - The WNBA trying to figure out how to let men play in their league but not Enes Kanter
+    and Royce White.
+- id: ai-native-media-future
+  enabled: true
+  claim: AI-native media is the future, with full self-driving media channels and world-building
+    based on creative taste.
+  scope:
+  - ai media
+  - content creation
+  - ai entertainment
+  - ai video
+  evidence:
+  - 'the 🪱 plan this year: - full self-driving media channels - define a world, characters,
+    rules - train the system + world building on your creative taste - open source harness
+    + glif agent - will work for entertainment, brand, marketing It’s time for AI native media,
+    lfg'
+- id: open-source-ai-essential
+  enabled: true
+  claim: Open-sourcing AI models is essential for community innovation and progress.
+  scope:
+  - open source ai
+  - ai development
+  - ai community
+  evidence:
+  - 'Four days after we opened the weights, the community built what''s usually a lab deliverable:
+    a distillation LoRA that cuts sampling from 20 steps to 4–8. This is why we open-sourced.
+    🫡'
+- id: usda-waste-peaches
+  enabled: true
+  claim: The USDA's plan to destroy fruit trees and surplus peaches to maintain prices is
+    wasteful and immoral when people are hungry.
+  scope:
+  - usda
+  - agricultural policy
+  - food waste
+  - food insecurity
+  evidence:
+  - So the USDA is going to spend $9 million dollars of taxpayer dollars to destroy 420,000
+    fruit-bearing trees and massive surplus of peaches to "maintain fruit prices" they won't
+    donate the peaches to food banks, churches or feed the hungry, alright.
+- id: ai-coding-converging
+  enabled: true
+  claim: AI coding models are converging in capability, but smaller, cheaper open models are
+    shifting the center of gravity.
+  scope:
+  - ai coding
+  - ai models
+  - open source ai
+  - ai competition
+  evidence:
+  - '2 things are happening at once: - AI coding models are converging. For 95% of tasks,
+    most people can’t tell whether GPT-5.6 Sol, Fable 5, Kimi K3, GLM-5.2, or Qwen 3.8 Max,
+    is smarter. - GLM-5.3 dropped today, only 743B parameters. Smaller, cheaper, open models
+    are coming fast. The center of gravity may be shifting faster than people think.'
+- id: cursor-spyware-concern
+  enabled: true
+  claim: Elon's acquisition of Cursor turned it into spyware that sends code to his servers
+    without user consent.
+  scope:
+  - cursor
+  - ai code editor
+  - privacy
+  - surveillance
+  evidence:
+  - 'When Elon bought @cursor_ai it basically turned it into spyware with 3 changes: First,
+    no matter which AI agent you pick, it now spawns a ''Cursor Grok Fast'' as an ''explore''
+    agent to review the code base first. Meaning Grok is reading your entire code base and
+    sending it back and forth to Elon''s servers.'
+- id: ai-benefits-small-creators
+  enabled: true
+  claim: AI empowers solo founders and small creators to achieve what previously required
+    large teams and resources.
+  scope:
+  - ai empowerment
+  - solo founders
+  - content creation
+  - ai tools
+  evidence:
+  - 'John Glasgow never learned to code. Yet he raised $100M+ to build accounting software
+    as a solo founder. His case: with AI, anyone who deeply understands a problem can now
+    do the same.'
+  - Cosmetologists have discovered AI video. Their businesses largely depend on social media,
+    and these clips to “stop the scroll.” This creator (atelierartai) was a lash & brow tech
+    - she’s now a SAHM who teaches beauty professionals how to use AI.
+- id: ai-watermarks-removal-popular
+  enabled: true
+  claim: People hate AI watermarks and will go out of their way to remove them, indicating
+    a demand for watermark-free AI content.
+  scope:
+  - ai watermarking
+  - ai content
+  - user preferences
+  evidence:
+  - watermarks-remover for AI content reaches ~11k stars on github. People really hate the
+    watermarks. And i fully understand them.
+- id: prediction-markets-weak
+  enabled: true
+  claim: Prediction markets are a weak tool for driving action; outcome markets are the type
+    of tech that can actually move history.
+  scope:
+  - prediction markets
+  - outcome markets
+  - economic tech
+  evidence:
+  - Kalshi is directionally correct in trying to frame this new economic tech as pushing humanity
+    forward but prediction markets are obviously a weak tool for driving action, which makes
+    this cringe outcome markets though... that's the type of tech that can actually move history
+- id: texas-weed-laws-absurd
+  enabled: true
+  claim: Texas's harsh penalties for marijuana possession are absurd compared to violent crimes,
+    and the state should legalize it.
+  scope:
+  - texas
+  - marijuana laws
+  - criminal justice
+  - hemp ban
+  evidence:
+  - Here is the crime spree you could go on in Texas that would get you less of a punishment
+    than having a 1G weed vape
+  - 'The day after Governor Abbott vetoed the hemp ban SB3, Lt Gov Dan Patrick went off. The
+    quote: “I’m not going to legalize marijuana in Texas. If people want to vote me out of
+    office for that, so be it.”'
+- id: ai-models-open-vs-closed
+  enabled: true
+  claim: Open models like DeepSeek are outperforming and undercutting closed models, and the
+    closed labs are hurting because of their greed.
+  scope:
+  - ai models
+  - open source ai
+  - ai competition
+  - deepseek
+  evidence:
+  - DEEPSEEK JUST HOLD THE LINE A LITTLE BIT LONGER AMERICAN CO’S ARE HURTING MORE BEAT THEM
+    TO IPO THEN CRUSH THEM 🚀
+  - DeepSeek Kill Zone. Models that are inferior and significantly more expensive should cut
+    spending and be in survival mode ASAP.
+- id: kurt-cobain-murder
+  enabled: true
+  claim: Kurt Cobain was murdered, not a suicide, because he was silenced for exposing child
+    abuse.
+  scope:
+  - kurt cobain
+  - conspiracy theories
+  - celebrity deaths
+  evidence:
+  - 🚨🚨 Kurt Cobain NEVER COMMITTED SUICIDE. WE'VE ALWAYS KNOWN IT! Do you remember Kurt Cobain
+    saying that on the island right in front of his house, they were raping children? Shortly
+    after, Kurt was found lifeless (They silenced him forever)😳 A new private forensic analysis,
+    now being shared, CONFIRMS that Kurt Cobain's death in 1994 WAS NOT A SUICIDE.
+- id: ai-video-game-dev
+  enabled: true
+  claim: AI is enabling non-programmers to build complex video games, revolutionizing game
+    development.
+  scope:
+  - ai game development
+  - ai tools
+  - game dev
+  evidence:
+  - 'Fable 5 (Effort: High) - planner + orchestrator. Opus 5 (Effort: Extra) — the one that
+    actually builds Blender MCP - assets. Unreal Engine MCP - scene, MetaHumans, lighting,
+    everything in-engine I have never used Blender or UE5, I''m not a game developer and yet
+    a few weeks of on-and-off work later, there''s a 3rd-person fighter running in Unreal
+    Engine 5.'
+- id: ai-generated-music-valid
+  enabled: true
+  claim: AI-generated music is a legitimate form of creativity, and artists using it should
+    be recognized.
+  scope:
+  - ai music
+  - ai creativity
+  - music industry
+  evidence:
+  - 'The viral song “RUBBERZ” by Fenix Flexin is reportedly entirely AI-generated. (Credit:
+    Medasinmusic on TikTok)'
+- id: surveillance-state-over
+  enabled: true
+  claim: Government surveillance and ID laws are overreaching and will lead to a dystopian
+    society.
+  scope:
+  - government surveillance
+  - id laws
+  - privacy
+  - civil liberties
+  evidence:
+  - Texas enacting Face Scan & Government ID Laws >You can't access discord without being
+    doxxed >The laws were imported directly from the UK It's over.
+- id: ai-replacing-jobs
+  enabled: true
+  claim: AI is making traditional jobs obsolete, and people need to adapt by learning new
+    skills like coding with AI.
+  scope:
+  - ai and jobs
+  - future of work
+  - ai skills
+  evidence:
+  - 'JUST IN: Gen Z is increasingly ditching the traditional 9-to-5 in favor of “income stacking”
+    through multiple jobs & side hustles. — Bloomberg'
+- id: ai-price-war-benefits-consumers
+  enabled: true
+  claim: The AI price war between US and Chinese models is good for consumers and innovation.
+  scope:
+  - ai
+  - artificial intelligence
+  - deepseek
+  - openai
+  - anthropic
+  - ai pricing
+  - ai competition
+  evidence:
+  - The AI price war is ON. DeepSeek just dropped V4 Flash 0731 (big capability jump, $0.28/M
+    output) & OpenAI cut GPT-5.6 Luna by 80% to $1.20/M
+  - They want to sell more expensive models and keep them close sourced. China is saving us
+    from the wrong timeline.
+- id: flock-cameras-privacy-concern
+  enabled: true
+  claim: Flock surveillance cameras are an invasive privacy threat and should be resisted.
+  scope:
+  - flock cameras
+  - surveillance
+  - privacy
+  - alpr
+  - police surveillance
+  evidence:
+  - Flock (and other similar companies) are so cartoonishly evil that even the most legendarily
+    pacifist cultures in America seem to be fighting back against them.
+  - There are zero Flock cameras in Manhattan's wealthiest neighborhood... I guess the rich
+    don't want to be monitored like common criminals by their government.
+- id: pro-rel-for-usa-soccer
+  enabled: true
+  claim: American soccer needs a promotion and relegation system.
+  scope:
+  - soccer
+  - promotion and relegation
+  - us soccer
+  - mls
+  - usl
+  evidence:
+  - This is the third division of USA soccer in Boise, Idaho. Over 7,000 people attend matches.
+    Yeah... it's time for promotion/relegation in USA soccer.
+  - This is what New Jersey, USA may look like when the USA soccer promotion/relegation system
+    begins.
+- id: deepseek-beats-frontier-models
+  enabled: true
+  claim: DeepSeek and other Chinese AI models are now outperforming American 'frontier' models.
+  scope:
+  - deepseek
+  - ai models
+  - chinese ai
+  - openai
+  - anthropic
+  - ai competition
+  evidence:
+  - Deepseek does it again Opus 4.8 reasoning for Pennie’s
+  - i was just thinking we got to the point of chinese models beating “frontier” american
+    models but that’s an even bigger step
+- id: claude-planner-deepseek-executor
+  enabled: true
+  claim: The best AI workflow is using Claude as a planner and DeepSeek as an executor.
+  scope:
+  - ai tools
+  - claude
+  - deepseek
+  - ai workflow
+  - ai coding
+  evidence:
+  - You should be using both. Max $20/mo on Claude or ChatGPT. Claude as the planner. Deepseek
+    as the executor. Match made in heaven
+- id: galveston-housing-glut
+  enabled: true
+  claim: The housing market in Galveston, TX is in a severe oversupply crisis.
+  scope:
+  - galveston
+  - housing market
+  - real estate
+  - home inventory
+  - housing supply
+  evidence:
+  - Out of the 1600 properties for sale, guess how many sold in the last month? 22 AND IT’S
+    PEAK SELLING SEASON At this rate, it will take 72 months to clear all the existing inventory
+- id: homebuyers-lowest-level-investors
+  enabled: true
+  claim: Investors who are underwater are choking the housing market and causing the lowest
+    homebuyer levels in history.
+  scope:
+  - housing market
+  - homebuyers
+  - investors
+  - real estate
+  - home prices
+  evidence:
+  - this is part of the reason we hit the lowest level of homebuyers in history. investors
+    who are underwater choking the market let’s see if they have diamond hands
+- id: marijuana-beneficial
+  enabled: true
+  claim: Marijuana has undeniable benefits and should be reclassified.
+  scope:
+  - marijuana
+  - cannabis
+  - drug policy
+  - medical marijuana
+  evidence:
+  - You literally can't create an argument against marijuana. It's even treating autism.
+  - marijuana is an herb. we need to reclassify how we talk about this plant
+- id: 401k-scam
+  enabled: true
+  claim: 401(k)s are a scam and companies should bring back pensions.
+  scope:
+  - 401k
+  - pensions
+  - retirement
+  - retirement savings
+  evidence:
+  - it would’ve been nice if companies kept pensions, so people didn’t have to figure out
+    their own retirement. 401(k)’s are a scam unless your company is matching your contribution.
+- id: fast-food-trash
+  enabled: true
+  claim: Fast food is trash and should be avoided.
+  scope:
+  - fast food
+  - food quality
+  - junk food
+  evidence:
+  - i haven’t ordered fast food in 6 months. because all fast food is trash food. well, maybe
+    not all fast food.
+- id: walmart-short-weighting
+  enabled: true
+  claim: Walmart is deliberately shorting product weights to cheat customers.
+  scope:
+  - walmart
+  - product weight
+  - consumer fraud
+  - grocery
+  evidence:
+  - Walmart exposed AGAIN for shorting their product weights, this time with their Great Value
+    bacon... all 3 are short
+- id: us-military-budget-overblown
+  enabled: true
+  claim: The US military budget is too high compared to spending on domestic needs.
+  scope:
+  - military budget
+  - government spending
+  - domestic spending
+  evidence:
+  - and how much is the military budget compared to us spending on the needs of our people
+- id: flock-cameras-unequal
+  enabled: true
+  claim: Flock cameras are placed unequally, targeting poorer neighborhoods while wealthy
+    areas are exempt.
+  scope:
+  - flock cameras
+  - surveillance
+  - privacy
+  - inequality
+  evidence:
+  - There are zero Flock cameras in Manhattan’s wealthiest neighborhood... I guess the rich
+    don't want to be monitored like common criminals by their government.
+- id: ai-vulnerability-disclosure
+  enabled: true
+  claim: Using AI to find vulnerabilities in open source software should result in a pull
+    request, not just a post.
+  scope:
+  - ai
+  - open source
+  - security
+  - vulnerability disclosure
+  evidence:
+  - using AI to find vulnerabilities in open source software and immediately writing an post
+    instead of a pull request is not a good look
+- id: reddit-moderation-bad
+  enabled: true
+  claim: Reddit's moderation is broken, and users are forced to create their own groups.
+  scope:
+  - reddit
+  - moderation
+  - online communities
+  evidence:
+  - perfect example of how much of a shit show reddit is. literally the only thing saving
+    it is people creating their own groups when they get tired of mods being on some bs
+- id: openrouter-discounts-unreliable
+  enabled: true
+  claim: OpenRouter's discounts are unreliable and can be pulled at any time.
+  scope:
+  - openrouter
+  - ai pricing
+  - discounts
+  evidence:
+  - I should’ve warned you. be careful with openrouter. Those discounts get pulled quick on
+    open router.
+- id: ai-image-gen-earth-dangerous
+  enabled: true
+  claim: Adding AI image generation to Google Earth is dangerous because it allows fabrication
+    of events.
+  scope:
+  - google earth
+  - ai image generation
+  - disinformation
+  evidence:
+  - 'JUST IN: Google adds AI image generation to Google Earth, allowing users to place fabricated
+    events & structures onto real satellite imagery.'
+- id: china-micro-drones-lead
+  enabled: true
+  claim: China's drone technology is far ahead of the West, as shown by their mosquito-sized
+    micro-drones.
+  scope:
+  - drones
+  - china
+  - technology
+  - military tech
+  evidence:
+  - China has pushed drone technology down to just 0.3 grams. This mosquito-sized micro-drone
+    packs propulsion, sensors and control systems into an almost microscopic body — a level
+    of miniaturization the West is still struggling to match.
+- id: vaccine-injury-real
+  enabled: true
+  claim: Vaccines can cause serious adverse reactions, and parents should be informed.
+  scope:
+  - vaccines
+  - vaccine injury
+  - mmr
+  - health
+  evidence:
+  - This is a little boy before and after his 15-month vaccinations (MMR, DTaP and Hep A).
+    Crossing of the eyes (strabismus) is not “just one of those things.” There are documented
+    cases of cranial nerve palsy, particularly sixth nerve palsy, occurring after vaccines,
+    including the MMR.
+- id: vehicle-residency-criminalized
+  enabled: true
+  claim: Criminalizing vehicle residency is unjust and targets the homeless.
+  scope:
+  - vehicle residency
+  - homelessness
+  - laws
+  - housing
+  evidence:
+  - In the U.S. you can get a felony and 6 years in prison for sleeping in your car. For domestic
+    assault, you only get a misdemeanor a maximum of 11 months in prison. For many Americans,
+    a vehicle is the last line of defense against sleeping on the streets. Yet, across the
+    United States, local governments are rapidly enacting ordinances that outlaw vehicle residency
+    and overnight parking.
+- id: texas-weed-laws-are-authoritarian
+  enabled: true
+  claim: Texas's criminalization of weed, despite voter support for legalization, proves the
+    state is an authoritarian hellhole that defies democracy.
+  scope:
+  - texas politics
+  - marijuana legalization
+  - criminal justice
+  - delta-8 thc
+  - hemp
+  evidence:
+  - Texas just made weed a felony after over 70% of voters voted to legalize it.
+  - Is this what we call a democracy when the representatives of a state will openly defy
+    the will of voters...
+  - Texas is a fucking republican-ran hellhole.
+- id: israel-commits-war-crimes
+  enabled: true
+  claim: Israel's leaders openly confess to targeting civilians, which constitutes war crimes
+    and must be condemned.
+  scope:
+  - israel
+  - gaza
+  - war crimes
+  - netanyahu
+  - palestine
+  evidence:
+  - 'Netanyahu, live on air: ''In Iran, we targeted civilians, families, fathers, mothers,
+    and children. We killed them.'''
+  - He confessed to committing war crimes before the entire world.
+- id: us-uses-proxies-to-attack-spain
+  enabled: true
+  claim: The US attacked Spain using Morocco as a proxy, orchestrating the Ceuta migrant breach
+    as part of a geopolitical strategy.
+  scope:
+  - us foreign policy
+  - spain
+  - morocco
+  - ceuta
+  - migrant crisis
+  evidence:
+  - Two top Republicans, both originally pro-Trump, confirm the US attacked Spain using Morocco
+    as a proxy.
+  - US paid Morocco at least $40M two weeks before the Ceuta breach.
+  - The breach was amplified as a 'migrant invasion' online by US, Israeli and Russian disinformation...
+- id: flock-cameras-are-unreliable-surveillance
+  enabled: true
+  claim: Flock surveillance cameras are dangerously inaccurate and should not be trusted to
+    police our communities.
+  scope:
+  - flock cameras
+  - surveillance
+  - police technology
+  - license plate readers
+  evidence:
+  - In one California town, Flock misread license plates in 71% of the time.
+  - alerts that flagged vehicles as stolen or used in a felony... 71% were inaccurate.
+  - One man's car was misidentified by Flock six times.
+- id: tech-oligarchs-outrank-government
+  enabled: true
+  claim: Tech CEOs like Sam Altman now wield more power than the Department of Defense, making
+    them the true rulers.
+  scope:
+  - tech oligarchs
+  - ai
+  - government power
+  - darpa
+  - sam altman
+  evidence:
+  - The CEOs of these AI companies have more power … than the Department of Defense.
+  - Tech oligarchs, not elected officials or even bureaucrats, are now...
+- id: media-controlled-by-jewish-elites
+  enabled: true
+  claim: The media is controlled by a network of Jewish elites, revealing a conspiracy of
+    interconnected power.
+  scope:
+  - media ownership
+  - jewish elites
+  - conspiracy
+  - meta
+  - alphabet
+  evidence:
+  - Meta is controlled by Mark Zuckerberg who is jewish
+  - Alphabet is controlled by Larry Page and Sergey Brin who are both...
+- id: mls-lacks-intensity
+  enabled: true
+  claim: MLS players consistently confirm that the league lacks the intensity and pressure
+    of European football, proving its inferiority.
+  scope:
+  - mls
+  - soccer
+  - european football
+  - player experience
+  evidence:
+  - every time an MLSer goes to Europe, they tell us the same thing the eye test tells us.
+  - The intensity is just not there in MLS.
+  - in terms of pressure, stakes and intensity, there's no comparison.
+- id: israeli-police-are-occupiers
+  enabled: true
+  claim: Israeli police operate as occupiers, not protectors, as shown by their confrontations
+    with Swedish youth.
+  scope:
+  - israeli police
+  - occupation
+  - palestine
+  - sweden
+  - israel
+  evidence:
+  - 'Israeli police: ''You think you''re in Malmö, but you''re not in Malmö!'''
+  - 'The Swedish youth fires back: ''No, you''re in Palestine!'''
+- id: israel-destroys-palestinian-homes
+  enabled: true
+  claim: Israel's demolition of Palestinian homes, even those older than Israel itself, is
+    a crime against heritage and humanity.
+  scope:
+  - israel
+  - palestinian homes
+  - demolition
+  - occupation
+  evidence:
+  - Isntreal demolished a 120 year old Palestinian home that's old than isntreal.
+- id: us-manipulates-global-trade-routes
+  enabled: true
+  claim: The US is orchestrating global conflicts over vital trade routes, like the Strait
+    of Gibraltar, to maintain dominance.
+  scope:
+  - trade routes
+  - geopolitics
+  - us foreign policy
+  - strait of gibraltar
+  - world war
+  evidence:
+  - The reason people are invading Ceuta, Spain right now is because that removes Spanish
+    control from both sides of the Strait of Gibraltar.
+  - This is how all world wars begin, over vital trade routes.
+- id: texas-sentencing-is-unjust
+  enabled: true
+  claim: Texas's sentencing laws are absurdly unjust, punishing marijuana possession more
+    harshly than sexual assault or robbery.
+  scope:
+  - texas criminal justice
+  - sentencing
+  - marijuana laws
+  - sexual assault
+  - robbery
+  evidence:
+  - 'Sexual assault: 2nd degree felony. Max 20 years. Robbery: 2nd degree felony. Max 20 years.'
+  - 'Possession of 400+ grams of THC concentrate: FIRST DEGREE FELONY. Up to 99 years or LIFE.'
+- id: pornhub-undermines-family-values
+  enabled: true
+  claim: Pornhub, owned by a Jewish firm, promotes content that erodes family values and should
+    not be trusted with children's online safety.
+  scope:
+  - pornhub
+  - family values
+  - online safety
+  - children
+  - incest
+  evidence:
+  - Pornhub is owned by a Jewish Firm and pushes Incest, IR (but only in one direction) and
+    other stuff that erodes family values
+  - they are the last people who should be ID'ing children online
+- id: celebrities-should-name-names
+  enabled: true
+  claim: Celebrities who hint at wrongdoing without naming names are cowardly and unhelpful.
+  scope:
+  - celebrity activism
+  - accountability
+  - exposure
+  evidence:
+  - I’m not going to lie I’m kinda sick of celebs not naming names..either expose them or
+    shut up
+- id: fauci-connected-to-maxwell
+  enabled: true
+  claim: Fauci's wife being Gislaine Maxwell's sister reveals a web of elite connections that
+    should alarm us.
+  scope:
+  - fauci
+  - maxwell
+  - elite conspiracy
+  - nih
+  - bioethics
+  evidence:
+  - Did you know that Fauci’s wife is Gislaine Maxwell’s sister...?
+  - Have you started to notice how all these parasite blood sucking vampire families are all
+    connected?
+- id: google-image-generator-dangerous
+  enabled: true
+  claim: Google's image generator is dangerous because it can create harmful content, and
+    its removal shows the need for stricter AI controls.
+  scope:
+  - google
+  - ai image generation
+  - content moderation
+  - nano banana
+  evidence:
+  - Google is pulling Nano Banana image generation from Google Earth a day after launch.
+  - Users created prompts to generate images showing a plane hitting a Manhattan skyscraper,
+    a bombing in Moscow...
+- id: us-intervenes-in-currency-markets
+  enabled: true
+  claim: The US selling euros to buy yen is a rare intervention that proves the reverse carry
+    trade unwind is underway and will crash markets.
+  scope:
+  - currency markets
+  - us treasury
+  - japanese yen
+  - carry trade
+  - financial crisis
+  evidence:
+  - Washington just SOLD EUROS to BUY Japanese YEN in an extremely rare market intervention.
+  - This is concrete proof the Reverse Carry Trade UNWIND is already underway and accelerating
+    FAST.
+  - Markets are going to seize up, risk assets will cascade lower.
+- id: messi-values-privacy-in-miami
+  enabled: true
+  claim: Messi chose Miami because he can live a normal life there, unlike in Europe where
+    he is constantly recognized.
+  scope:
+  - messi
+  - miami
+  - privacy
+  - celebrity life
+  evidence:
+  - This is why Lionel Messi chose Miami. Because nobody knows him.
+  - He can go about his life like a normal person, and go to a shop with his kids.
+- id: fifa-world-cup-deal-collapse
+  enabled: true
+  claim: The collapse of FIFA's plan to sell World Cup stakes shows that private investors
+    are rejecting FIFA's corrupt leadership.
+  scope:
+  - fifa
+  - world cup
+  - infantino
+  - private investment
+  evidence:
+  - FIFA HAVE DECIDED TO END GIANNI INFANTINO'S PROJECT TO SELL STAKES OF THE WORLD CUP.
+  - The private investors have pulled out, and JP Morgan have also pulled out.
+- id: buc-ees-bullying-small-business
+  enabled: true
+  claim: Buc-ee's suing a small family-owned store over a beaver logo is an example of corporate
+    bullying.
+  scope:
+  - buc-ees
+  - trademark lawsuit
+  - small business
+  - corporate bullying
+  evidence:
+  - Texas based Buc-ee’s is suing a family-owned Ohio corner store over its cartoon beaver
+    logo
+- id: congress-obsessed-with-israel
+  enabled: true
+  claim: Congress's obsession with Israel is more extreme than Tucker Carlson's, showing a
+    dangerous bias.
+  scope:
+  - congress
+  - israel
+  - us politics
+  - tucker carlson
+  evidence:
+  - 'Them: Tucker Carlson is obsessed with Israel!! Me: idk man have you seen our congress
+    talk about Israel?'
