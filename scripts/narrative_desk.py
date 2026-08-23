@@ -277,6 +277,11 @@ _PERFORMANCE = (
     # verdict, same veto. "Basketball Without Borders brings 40 top
     # high-school players to Chicago" carded on 2026-08-23 and is a calendar
     # entry, not a story.
+    # Abbreviations. "starting quarterback" was a marker; "starting QB" was not,
+    # and publishers write the short form. Same for the award acronyms.
+    "starting qb", "qb battle", "qb competition", "qb1", "starting rb",
+    "starting job", "dpoy", "poy", "all-american", "all-conference",
+    "five-star", "four-star", "recruit", "signee", "snaps in",
     "starting point guard", "new starting", "who will start", "starting lineup",
     "players from", "has not beaten", "winless", "losing streak", "power rankings",
     "preseason rankings", "brings sun belt", "transfer portal move",
@@ -315,18 +320,50 @@ def performance_only(text):
     return not any(k in low for k in _POWER)
 
 
-def card_is_performance_only(card, cluster):
-    """The gate, judged on what the CARD says.
+def _lead_source_text(card, cluster):
+    """Title (+ short summary) of the article this card is actually built on.
 
-    The marker must come from the card's own text. The cluster is only allowed
-    to VETO. Measured 2026-08-23: pooling cluster articles into the marker side
-    declined "Good Good Golf deletes a violent ad while Callaway stays silent",
-    a card Micah named as the good example, because the card had been aligned
-    to a cluster carrying sports vocabulary. A mis-aligned cluster must not get
-    to veto a good card, but more text on the protective side is always safe.
+    Stable across runs. The generated headline is not: the desk rewrites it
+    every two hours, so the same story arrives as "Angel Reese's career-high 31
+    points" on one run and "Angel Reese's 31-point night makes Dream history"
+    on the next. A keyword gate over regenerated text leaks on rephrasings, and
+    it leaked twice on 2026-08-23 while I topped the vocabulary up. The
+    publisher's headline does not move.
     """
-    # HEADLINE ONLY. Including the paragraph let a roster card survive whenever
-    # its body happened to mention money: "UCLA coach brings Sun Belt DPOY in
+    for srec in (card.get("_sources") or []):
+        if srec.get("headline"):
+            return srec["headline"]
+    if cluster:
+        for item in cluster.get("items", []):
+            a = item.get("article", {})
+            t = a.get("title", "")
+            if t:
+                return t + " " + (a.get("summary") or "")[:300]
+    return ""
+
+
+def card_is_performance_only(card, cluster):
+    """Decline 'someone did their job well' / roster churn, judged on SOURCE.
+
+    Two-sided as always: performance or roster markers present AND no money,
+    ownership, law, rule or someone-said-something angle. The power side wins
+    ties, because a false keep costs one mediocre card and a false decline
+    loses a story Micah asked for.
+
+    The generated headline is still consulted as a SECOND route in, so a card
+    that invents roster framing the source did not have is still caught. But
+    the source alone can decline, and that is what makes the verdict stable.
+    """
+    src = _lead_source_text(card, cluster).lower()
+    head = (card.get("narrative") or "").lower()
+    for text in (src, head):
+        if not text:
+            continue
+        if any(k in text for k in _PERFORMANCE) and not any(k in text for k in _POWER):
+            return True
+    return False
+
+
     # huge transfer portal move" kept passing because its paragraph said
     # "million". The headline is the thing being judged, and the paragraph is
     # where the taste lives by design, so the gate reads the headline.
@@ -500,9 +537,16 @@ def merge_into_feed(new_cards):
     # source set.
     declined_subjects = {_headline_subject(d.get("headline"))
                          for d in _LAST_DECLINES if d.get("headline")}
+    # Also evict on the SOURCE headline. The generated one is rewritten every
+    # run, so matching only on it lets a card the gate just declined survive in
+    # the feed under a different phrasing.
+    declined_subjects |= {_headline_subject(d.get("source_headline"))
+                          for d in _LAST_DECLINES if d.get("source_headline")}
     declined_subjects.discard(())
     for k in [k for k, c in existing.items()
-              if _headline_subject(c.get("narrative")) in declined_subjects]:
+              if _headline_subject(c.get("narrative")) in declined_subjects
+              or _headline_subject((c.get("sources") or [{}])[0].get("headline"))
+              in declined_subjects]:
         print(f"  EVICTED (now declined): {existing[k].get('narrative','')[:64]}")
         existing.pop(k, None)
 
@@ -575,6 +619,17 @@ _ABSTRACT_LEADINS = ("the true ", "the real ", "the broader ", "the deeper ",
                      "the underlying ", "the bigger ", "the wider ")
 _CONNECTORS = (", while ", ", but ", ", and ", ", as ", " while ")
 
+# Same interpretive move, participial form, which the connector list cannot see:
+# "...without a name or license plate, raising privacy concerns". There is no
+# subject at all, which is exactly the tell. The clause is the writer telling
+# you how to feel about the fact they just reported.
+_PARTICIPIAL_TAILS = (
+    ", raising ", ", sparking ", ", highlighting ", ", underscoring ",
+    ", signaling ", ", signalling ", ", marking ", ", fueling ", ", fuelling ",
+    ", prompting questions", ", drawing scrutiny", ", reflecting ",
+    ", suggesting ", ", leaving questions", ", adding to concerns",
+)
+
 
 def _clause_subject(clause):
     """Head noun of the clause's subject, lowercased."""
@@ -595,6 +650,10 @@ def trim_interpretive_tail(text):
     """Cut a trailing clause whose SUBJECT is a concept rather than an actor."""
     if not text:
         return text, None
+    for tail in _PARTICIPIAL_TAILS:
+        i = text.lower().find(tail)
+        if i > 0:
+            return text[:i].rstrip(" ,;") + ".", text[i:]
     for conn in _CONNECTORS:
         i = text.lower().rfind(conn)
         if i <= 0:
@@ -637,9 +696,21 @@ def dedupe_feed(cards, threshold=0.45):
     for c in cards:
         toks = _headline_tokens(c.get("narrative"))
         subj = _headline_subject(c.get("narrative"))
+        # Source identity is stable where the generated headline is not: two
+        # runs phrase the same story differently and would stop deduping.
+        srcs = {x.get("url") for x in (c.get("sources") or []) if x.get("url")}
+        ssubj = _headline_subject((c.get("sources") or [{}])[0].get("headline"))
         dup = None
         for k in kept:
             ktoks = _headline_tokens(k.get("narrative"))
+            ksrcs = {x.get("url") for x in (k.get("sources") or []) if x.get("url")}
+            if srcs and ksrcs and srcs & ksrcs:
+                dup = k
+                break
+            if ssubj and ssubj == _headline_subject(
+                    (k.get("sources") or [{}])[0].get("headline")):
+                dup = k
+                break
             # Same subject is enough on its own: two cards that open on the
             # same entity are the same story told twice.
             if subj and subj == _headline_subject(k.get("narrative")):
@@ -760,7 +831,24 @@ def render_brief_html(clusters, parsed, run_dir):
     # first appeared yesterday keeps yesterday's stamp and stays visible; a new
     # story lands on top. Nothing is capped: Micah is still exploring and wants
     # to see the lower-ranked cards so he can cut from the full picture himself.
-    feed = dedupe_feed(merge_into_feed(json_cards))
+    # RE-GATE THE WHOLE FEED, not just this run's cards. The feed accumulates,
+    # so a card admitted by an older run was never judged again: four roster
+    # cards sat in the feed on 2026-08-23 carrying obvious markers while the
+    # run reported zero declines, because the gate only ever saw new cards.
+    # The feed is the artifact, so the gate has to run over the feed.
+    feed = merge_into_feed(json_cards)
+    _kept, _evicted = [], 0
+    for _c in feed:
+        _probe = {"narrative": _c.get("narrative"),
+                  "_sources": _c.get("sources") or []}
+        if card_is_performance_only(_probe, None):
+            print(f"  RE-GATE evicted: {(_c.get('narrative') or '')[:66]}")
+            _evicted += 1
+            continue
+        _kept.append(_c)
+    if _evicted:
+        print(f"  RE-GATE removed {_evicted} card(s) already in the feed")
+    feed = dedupe_feed(_kept)
     cards_html = []
     for c in feed:
         src_bits = []
@@ -1325,6 +1413,11 @@ def main():
         # almost verbatim still said none). A self-reported field is a claim,
         # so the record keeps what was OFFERED and what the text actually
         # resembles, both of which are checkable, alongside what it said.
+        if _cl and not _card.get("_sources"):
+            _card["_sources"] = [
+                {"headline": it["article"].get("title", ""),
+                 "url": it["article"].get("link", "")}
+                for it in _cl.get("items", [])[:3]]
         _offered = [a["id"] for a, _ in eligible_angles(_cl, _angles_used)] if _cl else []
         _inferred = None
         if _offered:
@@ -1354,6 +1447,7 @@ def main():
             print(f"  TYPE-GATE declined (performance only): {_headline[:70]}")
             _decisions.append({"cluster": _ci, "verdict": "declined_type_gate",
                                "reason": "performance_only", "angle": _aid,
+                               "source_headline": _lead_source_text(_card, _cl)[:160],
                                "angle_offered": _offered, "angle_inferred": _inferred,
                                "cluster_name": _kicker, "headline": _headline})
             _card["narrative"] = None

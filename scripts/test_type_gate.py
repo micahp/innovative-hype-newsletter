@@ -140,6 +140,9 @@ class InterpretiveTailTests(unittest.TestCase):
         "Mark Zuckerberg buys a castle while nobody on his app can afford a house.",
         "TikTok pays a $400 million fine while ByteDance keeps collecting data on kids.",
         "Binance lets AI agents trade crypto for you while users shoulder the oversight.",
+        # An appositive is not an interpretation; it names the thing.
+        "Cousins Properties sold One Eleven Congress for $208 million, a major "
+        "downtown Austin office tower.",
     ]
     CUT = [
         "Good Good Golf removes a controversial ad featuring a man shoving a woman, "
@@ -147,6 +150,11 @@ class InterpretiveTailTests(unittest.TestCase):
         "Nvidia is turning compute into an asset class with $500 billion in financing "
         "from major investors, while the value flows to incumbents.",
         "Flock's tool can track drivers without a plate, and the broader implications are unclear.",
+        # Participial form of the same move. No subject at all, which is the
+        # tell: the writer telling you how to feel about the fact just reported.
+        "Flock's new AI police tool can track drivers without a name or license plate, "
+        "raising privacy concerns.",
+        "TikTok pays a $400 million fine, sparking debate over children's safety.",
     ]
 
     def test_actor_clauses_survive(self):
