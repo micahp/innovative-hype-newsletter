@@ -31,6 +31,7 @@ import os
 import re
 import subprocess
 import sys
+import urllib.request
 from datetime import datetime, timezone
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -64,7 +65,20 @@ _SYSTEM = (
     "Six honest cards beat thirteen padded ones. An empty slot is a correct "
     "answer; a filler card is not.\n"
     "\n"
-    "== STEP 2: FIND THE POWER ANGLE ==\n"
+    "== STEP 2: THE ANGLE ==\n"
+    "EVERY CARD MUST REPORT angle_id, and it is never omitted. Its value is "
+    "either one of the angle ids offered on that cluster or the string "
+    '"none". A card without angle_id is a failed card.\n'
+    "Each cluster lists the angles legal for it. Those are positions the author "
+    "actually holds, and the list is the ONLY place an opinion may come from. "
+    "Pick at most one, and only if it genuinely fits this story. Report the "
+    "one you used as angle_id. If none of the listed angles fits, or the "
+    "cluster says no angle is in scope, then report the story straight with no "
+    "editorial turn, or decline it. Never import an opinion that is not on the "
+    "list for this cluster: an angle about housing does not belong on a story "
+    "about chip financing no matter how strongly the author feels about "
+    "housing.\n"
+    "== FIND THE POWER ANGLE ==\n"
     "Every story lands on someone. Before writing, answer: who controls this, "
     "who profits, who pays, who is not being asked about it. That answer is "
     "usually the story, and it is usually the part a wire report leaves out.\n"
@@ -144,7 +158,8 @@ _SYSTEM = (
     "printed on the CLUSTER line it was written from. Without it the card gets "
     "matched to the wrong cluster and cited to the wrong publishers.\n"
     "Output STRICT JSON only: "
-    '{"cards": [{"cluster_index": 0, "narrative": "...", "paragraph": "...", '
+    '{"cards": [{"cluster_index": 0, "angle_id": "..." or null, '
+    '"narrative": "...", "paragraph": "...", '
     '"data_point": "...", "source_ids": [0, 2]}]} where source_ids are the '
     "LOCAL indexes of the articles in that cluster's list that the card "
     "grounds in. A declined cluster is "
@@ -288,6 +303,83 @@ def card_is_performance_only(card, cluster):
             parts.append(a.get("title", ""))
             parts.append((a.get("summary") or "")[:400])
     return performance_only(" ".join(parts))
+
+
+# === THE ANGLE INVENTORY ===
+#
+# 2026-08-23. A card read "Nvidia is turning compute into an asset class while
+# the average person can't afford a home." No affordability claim was in the
+# grounding. That was not a hallucination: it was a REAL position of Micah's,
+# correctly retrieved, welded onto the wrong subject.
+#
+# The obvious fix (reject any clause not present in the article) is wrong. His
+# right angle for that piece, that you will rent compute forever and never run
+# local inference, is not in the article either. A presence check kills both.
+#
+# The distinction is SUBJECT SCOPE. An angle fires only on a story that is
+# about the thing the angle is about. Housing cannot attach to a GPU financing
+# story because it is out of scope, not because the words are missing.
+#
+# Scope is matched against TITLES and mined data points, never bodies. A body
+# mentions everything; a title states the subject. Matching on bodies is how a
+# housing angle finds a chip story in the first place.
+ANGLES_PATH = os.path.join(REPO, "angles.yaml")
+
+
+def load_angles():
+    """The enabled angles from angles.yaml. Missing file is not an error: the
+    desk runs angle-free and writes everything straight."""
+    try:
+        import yaml
+    except ImportError:
+        return []
+    if not os.path.exists(ANGLES_PATH):
+        return []
+    try:
+        doc = yaml.safe_load(open(ANGLES_PATH)) or {}
+    except Exception as exc:
+        print(f"  angles.yaml unreadable ({exc}); running angle-free")
+        return []
+    out = []
+    for a in doc.get("angles", []):
+        if not a.get("enabled", True):
+            continue
+        scope = [str(x).lower().strip() for x in (a.get("scope") or []) if str(x).strip()]
+        if a.get("id") and a.get("claim") and scope:
+            out.append({"id": a["id"], "claim": a["claim"], "scope": scope})
+    return out
+
+
+def cluster_subject_text(cl):
+    """What the cluster is ABOUT: titles and data points only."""
+    bits = []
+    for item in cl.get("items", []):
+        bits.append(item["article"].get("title", ""))
+        bits.extend(item.get("points", []) or [])
+    return " ".join(bits).lower()
+
+
+def eligible_angles(cl, angles):
+    """Angles whose scope covers this cluster's subject."""
+    subject = cluster_subject_text(cl)
+    hits = []
+    for a in angles:
+        matched = [t for t in a["scope"] if t in subject]
+        if not matched:
+            continue
+        # SPECIFICITY, not count. A single generic word ("texas", "compute",
+        # "ai models") matches almost any cluster, and offering an angle on
+        # that basis is how "texas-weed-laws-absurd" got offered to a housing
+        # cluster and "you-will-never-own-your-compute" to a sports-money one.
+        # A multi-word scope term is evidence about the subject; a one-word
+        # term is a coincidence until a second one agrees.
+        multi = [t for t in matched if " " in t]
+        if not multi and len(matched) < 2:
+            continue
+        score = 2 * len(multi) + len(matched)
+        hits.append((score, a, matched))
+    hits.sort(key=lambda x: -x[0])
+    return [(a, m) for _, a, m in hits[:2]]
 
 
 def repair_narrative(text):
@@ -615,12 +707,9 @@ def load_clusters():
     return all_clusters[:14]
 
 
-def call_model(clusters):
-    """Call the LLM with the cluster material. Returns raw JSON string."""
-    import urllib.request
-
-    # Use NOUS_PORTAL_KEY — the DEEPSEEK_API_KEY in config is dead/out of funds
-    # (measured 2026-08-21: 401 on chat, portal key returns 200).
+def _api_key():
+    """NOUS_PORTAL_KEY. The DEEPSEEK_API_KEY in config is dead/out of funds
+    (measured 2026-08-21: 401 on chat, portal key returns 200)."""
     key = os.environ.get("NOUS_PORTAL_KEY", "")
     if not key:
         env_path = "/root/.hermes/.env"
@@ -631,12 +720,33 @@ def call_model(clusters):
                     break
     if not key:
         raise RuntimeError("No NOUS_PORTAL_KEY found in /root/.hermes/.env")
+    return key
 
+
+def call_model(clusters):
+    """Call the LLM with the cluster material. Returns raw JSON string."""
+    import urllib.request  # noqa: F401  (call_llm uses it)
+
+    key = _api_key()
+
+    _angles = load_angles()
+    print(f"  angle inventory: {len(_angles)} enabled")
     prompt_lines = ["Today's date: %s" % datetime.now(timezone.utc).strftime("%Y-%m-%d"), ""]
     for ci, cl in enumerate(clusters):
         _shape_name, _shape_rule = _SHAPES[ci % len(_SHAPES)]
         prompt_lines.append(f"CLUSTER {ci}: {cl['sig']['name']} (voice_weight {cl['sig'].get('voice_weight','?')})")
         prompt_lines.append(f"  REQUIRED HEADLINE SHAPE = {_shape_name}. {_shape_rule}")
+        _elig = eligible_angles(cl, _angles)
+        if _elig:
+            _ids = ", ".join(f'"{_a["id"]}"' for _a, _ in _elig)
+            prompt_lines.append(f'  angle_id MUST be one of {_ids} or "none":')
+            for _a, _m in _elig:
+                prompt_lines.append(f"    [{_a['id']}] {_a['claim']}")
+        else:
+            prompt_lines.append('  angle_id MUST be "none". No angle is in '
+                                "scope for this cluster: report it straight or "
+                                "decline it, and do not supply an opinion from "
+                                "somewhere else.")
         # THE REAL STARVATION POINT. This loop used to hand the model 300
         # characters of each article. Measured 2026-08-23 on The Verge's
         # "Nvidia's new financial strategy does not compute": 300 chars is the
@@ -659,14 +769,23 @@ def call_model(clusters):
                 prompt_lines.append(f"    {body}")
         prompt_lines.append("")
 
+    return call_llm(_SYSTEM, "\n".join(prompt_lines), max_tokens=3000, key=key)
+
+
+def call_llm(system, user, max_tokens=3000, key=None):
+    """One strict-JSON chat completion. Shared by the desk and by
+    extract_angles.py so there is exactly one place that knows the auth, the
+    User-Agent and the reasoning flag."""
+    if key is None:
+        key = _api_key()
     body = json.dumps({
         "model": MODEL,
         "messages": [
-            {"role": "system", "content": _SYSTEM},
-            {"role": "user", "content": "\n".join(prompt_lines)},
+            {"role": "system", "content": system},
+            {"role": "user", "content": user},
         ],
         "temperature": 0.7,
-        "max_tokens": 3000,
+        "max_tokens": max_tokens,
         "reasoning": {"enabled": False},  # we want content, not a thinking dump
         "response_format": {"type": "json_object"},
     }).encode()
@@ -681,7 +800,7 @@ def call_model(clusters):
             "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) narrative-desk/1.0",
         },
     )
-    with urllib.request.urlopen(req, timeout=120) as resp:
+    with urllib.request.urlopen(req, timeout=180) as resp:
         data = json.loads(resp.read().decode())
     return data["choices"][0]["message"]["content"]
 
@@ -888,6 +1007,7 @@ def main():
     # runs/<ts>/decisions.json for this run, and an append-only
     # runs/decisions.jsonl so the record survives and can be read back. A gate
     # you cannot audit after the fact is a gate you cannot tune.
+    _angles_used = load_angles()
     _decisions = []
     _typed_out = 0
     for _ci, _card in enumerate(parsed.get("cards", [])):
@@ -898,15 +1018,55 @@ def main():
             continue
         _cl = clusters[_ci] if _ci < len(clusters) else None
         _kicker = ((_cl or {}).get("sig", {}) or {}).get("name", "")
+        # An angle_id the model reports is a CLAIM. Check it against the angles
+        # that were actually offered for THIS cluster. A card built on an
+        # out-of-scope angle is the housing-on-a-GPU-story failure, and the
+        # only safe verdict is to drop it: the opinion in it was never legal
+        # for this subject, so the sentence cannot be repaired by trimming.
+        _aid = _card.get("angle_id")
+        if isinstance(_aid, str) and _aid.strip().lower() in ("none", "null", ""):
+            _aid = None  # "none" is the legal way to say no angle, not an id
+        # The model reports "none" even when it plainly used one (measured
+        # 2026-08-23: a card that restated the prediction-markets-weak claim
+        # almost verbatim still said none). A self-reported field is a claim,
+        # so the record keeps what was OFFERED and what the text actually
+        # resembles, both of which are checkable, alongside what it said.
+        _offered = [a["id"] for a, _ in eligible_angles(_cl, _angles_used)] if _cl else []
+        _inferred = None
+        if _offered:
+            _ctoks = set(re.findall(r"[a-z']{4,}", (_headline + " " +
+                                                    (_card.get("paragraph") or "")).lower()))
+            _best, _bs = None, 0.0
+            for _a, _ in eligible_angles(_cl, _angles_used):
+                _atoks = set(re.findall(r"[a-z']{4,}", _a["claim"].lower()))
+                if not _atoks:
+                    continue
+                _ov = len(_ctoks & _atoks) / float(len(_atoks))
+                if _ov > _bs:
+                    _best, _bs = _a["id"], _ov
+            if _bs >= 0.30:
+                _inferred = _best
+        if _aid and _cl is not None:
+            _legal = {a["id"] for a, _ in eligible_angles(_cl, _angles_used)}
+            if _aid not in _legal:
+                print(f"  ANGLE-GATE declined (angle '{_aid}' not in scope for "
+                      f"this cluster): {_headline[:60]}")
+                _decisions.append({"cluster": _ci, "verdict": "declined_angle_gate",
+                                   "reason": "angle_out_of_scope", "angle": _aid,
+                                   "cluster_name": _kicker, "headline": _headline})
+                _card["narrative"] = None
+                continue
         if card_is_performance_only(_card, _cl):
             print(f"  TYPE-GATE declined (performance only): {_headline[:70]}")
             _decisions.append({"cluster": _ci, "verdict": "declined_type_gate",
-                               "reason": "performance_only",
+                               "reason": "performance_only", "angle": _aid,
+                               "angle_offered": _offered, "angle_inferred": _inferred,
                                "cluster_name": _kicker, "headline": _headline})
             _card["narrative"] = None
             _typed_out += 1
         else:
-            _decisions.append({"cluster": _ci, "verdict": "kept",
+            _decisions.append({"cluster": _ci, "verdict": "kept", "angle": _aid,
+                               "angle_offered": _offered, "angle_inferred": _inferred,
                                "cluster_name": _kicker, "headline": _headline})
     if _typed_out:
         print(f"  TYPE-GATE removed {_typed_out} card(s)")
