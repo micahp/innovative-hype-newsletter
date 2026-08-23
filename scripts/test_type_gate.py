@@ -38,6 +38,12 @@ DECLINE = [
     "Why did Donovan Dent commit to LSU?",
     "Linebacker Ty'Anthony Smith leaves Texas football program before the season",
     "Bob Chesney's UCLA is poaching Sun Belt DPOY Trent Hendricks",
+    # Second sweep, from the live run of 2026-08-23 after the first fix.
+    "UCLA coach Bob Chesney brings Sun Belt DPOY to Bruins in huge transfer portal move.",
+    "Who is LSU's new starting point guard?",
+    "Missouri football has not beaten a team that finished with 10 or more wins since 2018.",
+    "4,900 players from 149 countries have passed through Basketball Without Borders since 2001.",
+    "Why is Tennessee left out of ESPN's preseason power rankings?",
 ]
 
 KEEP = [
@@ -50,6 +56,11 @@ KEEP = [
     "Newest WNBA dildo thrower arrested and banned.",
     # Roster vocabulary with a real ruling behind it must still survive.
     "A judge granted Mark Mitchell a fifth year of eligibility.",
+    "The Chicago Sky will prosecute fans who throw sex toys on the court.",
+    # Micah named this one as the GOOD headline. It must never be declined,
+    # including when the aligner drops it into a sports-heavy cluster, which is
+    # why the gate reads the CARD and not the cluster.
+    "Good Good Golf deletes a violent ad while Callaway stays silent on its involvement.",
     # Money, ownership and power stories that use performance vocabulary.
     "Marc Lore sells the Timberwolves for $4.5 billion.",
     "The US Open raises prize money to a record $108 million after a player protest.",
@@ -108,6 +119,50 @@ class DedupeTests(unittest.TestCase):
             {"narrative": "Jeff Bezos' Blue Origin is building a plant in Hutto, Texas"},
         ])
         self.assertEqual(len(out), 3)
+
+
+class InterpretiveTailTests(unittest.TestCase):
+    """The last subtle rule, from Micah comparing two cards on one story.
+
+    GOOD: "...while Callaway stays silent on its involvement."
+    BAD:  "...while the true power dynamics behind creator-brand partnerships
+           remain hidden."
+    BAD:  "...while the value flows to incumbents."
+
+    Both bad clauses look concrete and both obey the CONTRAST shape. They fail
+    because a CONCEPT is the subject, which means the sentence stopped
+    reporting and started interpreting. Interpretation is the paragraph's job.
+    """
+
+    KEEP = [
+        "Good Good Golf deletes a violent ad while Callaway stays silent on its involvement.",
+        "Jeff Bezos' Blue Origin is building a plant in Hutto while the county gives up the tax base.",
+        "Mark Zuckerberg buys a castle while nobody on his app can afford a house.",
+        "TikTok pays a $400 million fine while ByteDance keeps collecting data on kids.",
+        "Binance lets AI agents trade crypto for you while users shoulder the oversight.",
+    ]
+    CUT = [
+        "Good Good Golf removes a controversial ad featuring a man shoving a woman, "
+        "while the true power dynamics behind creator-brand partnerships remain hidden.",
+        "Nvidia is turning compute into an asset class with $500 billion in financing "
+        "from major investors, while the value flows to incumbents.",
+        "Flock's tool can track drivers without a plate, and the broader implications are unclear.",
+    ]
+
+    def test_actor_clauses_survive(self):
+        from narrative_desk import trim_interpretive_tail
+        for t in self.KEEP:
+            with self.subTest(t=t):
+                self.assertIsNone(trim_interpretive_tail(t)[1],
+                                  "actor clause must survive: " + t)
+
+    def test_concept_clauses_are_cut(self):
+        from narrative_desk import trim_interpretive_tail
+        for t in self.CUT:
+            with self.subTest(t=t):
+                out, cut = trim_interpretive_tail(t)
+                self.assertIsNotNone(cut, "concept clause must be cut: " + t)
+                self.assertTrue(out.endswith("."))
 
 
 if __name__ == "__main__":
