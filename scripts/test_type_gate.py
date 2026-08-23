@@ -33,6 +33,11 @@ DECLINE = [
     "Leading by Example: Marina Mabrey is becoming a star in Toronto.",
     "Basketball Without Borders brings 40 top high-school players to Chicago.",
     "Alabama names Keelon Russell starting quarterback for the season opener.",
+    # Roster churn. All three shipped 2026-08-23 and are the same no-story type:
+    # recruiting, transfers and staff moves are not a conversation.
+    "Why did Donovan Dent commit to LSU?",
+    "Linebacker Ty'Anthony Smith leaves Texas football program before the season",
+    "Bob Chesney's UCLA is poaching Sun Belt DPOY Trent Hendricks",
 ]
 
 KEEP = [
@@ -43,6 +48,8 @@ KEEP = [
     "A 40-year-old is playing NCAA football after an eligibility ruling.",
     "NBA players are declaring for the WNBA draft.",
     "Newest WNBA dildo thrower arrested and banned.",
+    # Roster vocabulary with a real ruling behind it must still survive.
+    "A judge granted Mark Mitchell a fifth year of eligibility.",
     # Money, ownership and power stories that use performance vocabulary.
     "Marc Lore sells the Timberwolves for $4.5 billion.",
     "The US Open raises prize money to a record $108 million after a player protest.",
@@ -74,6 +81,33 @@ class TypeGateTests(unittest.TestCase):
         self.assertFalse(performance_only("Hutto is becoming a company town."))
         self.assertFalse(performance_only(""))
         self.assertFalse(performance_only(None))
+
+
+class DedupeTests(unittest.TestCase):
+    """Two publishers covering one event must not become two cards.
+
+    Shipped 2026-08-23: two Good Good Golf ad cards in the same feed. The feed
+    key is a hash of source URLs, so the same story from two clusters gets two
+    keys. Token overlap alone did not catch it (the paraphrases shared only
+    "good" and "golf"), so the subject of the headline decides.
+    """
+
+    def test_same_subject_collapses(self):
+        from narrative_desk import dedupe_feed
+        out = dedupe_feed([
+            {"narrative": "Good Good Golf deletes a violent ad while Callaway stays silent"},
+            {"narrative": "Good Good Golf removes a controversial ad featuring a man shoving a club"},
+        ])
+        self.assertEqual(len(out), 1)
+
+    def test_distinct_stories_survive(self):
+        from narrative_desk import dedupe_feed
+        out = dedupe_feed([
+            {"narrative": "Flock's new AI police tool can track drivers without a license plate"},
+            {"narrative": "Marc Lore sells the Timberwolves and Lynx for $4.5 billion"},
+            {"narrative": "Jeff Bezos' Blue Origin is building a plant in Hutto, Texas"},
+        ])
+        self.assertEqual(len(out), 3)
 
 
 if __name__ == "__main__":
