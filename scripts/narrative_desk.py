@@ -47,7 +47,8 @@ _SYSTEM = (
     "Micah Peoples covering tech, business, sports and culture with an "
     "opinionated, cross-domain voice. You are given clusters of articles, each "
     "with mined data points, quotes and moments. Write AT MOST ONE card per "
-    "cluster, and no more than 8 cards total.\n"
+    "cluster. There is no cap on the number of cards: write one for every "
+    "cluster that earns it and decline the rest.\n"
     "\n"
     "== STEP 1: DOES THIS DESERVE A CARD? ==\n"
     "Default to NO. Most clusters are not stories. Card it only if you can "
@@ -416,6 +417,78 @@ def repair_narrative(text):
     return text, (original if text != original else None)
 
 
+# === THE RUNNING FEED ===
+#
+# Micah, 2026-08-23: "it's kinda more like the legendary picks one where I just
+# want it to be timestamped... we don't have to be saying the same exact thing
+# every single day and just adding to it, but every single day there is a new
+# thing to talk about."
+#
+# So the brief stops being a digest that is thrown away and rebuilt every two
+# hours, and becomes an accumulating feed. A card is identified by the set of
+# article links behind it. First time that story set produces a card it enters
+# the feed with a first_seen stamp. On later runs the same story set updates
+# its text in place and KEEPS its original first_seen, so the feed reads as
+# "this appeared at 2pm" rather than re-dating yesterday's story to now.
+FEED_PATH = os.path.join(WEB, "brief-feed.json")
+_LAST_DECLINES = []
+FEED_MAX_AGE_H = float(os.environ.get("IH_FEED_MAX_AGE_H", "72"))
+
+
+def load_feed():
+    try:
+        return json.load(open(FEED_PATH)).get("cards", [])
+    except Exception:
+        return []
+
+
+def merge_into_feed(new_cards):
+    """Add/refresh cards in the running feed. Returns the feed, newest first."""
+    from datetime import datetime as _dt, timezone as _tz, timedelta as _td
+    now = _dt.now(_tz.utc)
+    existing = {c.get("story_key"): c for c in load_feed() if c.get("story_key")}
+    for c in new_cards:
+        k = c.get("story_key")
+        if not k:
+            continue
+        prev = existing.get(k)
+        if prev:
+            # Keep the original first_seen; the story did not just happen.
+            c["first_seen"] = prev.get("first_seen") or now.isoformat()
+            c["updated"] = now.isoformat()
+        else:
+            c["first_seen"] = now.isoformat()
+            c["updated"] = now.isoformat()
+        existing[k] = c
+    cutoff = now - _td(hours=FEED_MAX_AGE_H)
+    out = []
+    for c in existing.values():
+        try:
+            seen = _dt.fromisoformat(c.get("first_seen"))
+        except Exception:
+            continue
+        if seen >= cutoff:
+            out.append(c)
+    out.sort(key=lambda c: c.get("first_seen", ""), reverse=True)
+    return out
+
+
+def rel_time(iso):
+    from datetime import datetime as _dt, timezone as _tz
+    try:
+        t = _dt.fromisoformat(iso)
+    except Exception:
+        return ""
+    mins = int((_dt.now(_tz.utc) - t).total_seconds() // 60)
+    if mins < 1:
+        return "just now"
+    if mins < 60:
+        return f"{mins}m ago"
+    if mins < 48 * 60:
+        return f"{mins // 60}h ago"
+    return f"{mins // 1440}d ago"
+
+
 def render_brief_html(clusters, parsed, run_dir):
     """Render the LLM cards into web/brief.html with article links resolved
     from source_ids (indexes into each cluster's item list)."""
@@ -424,7 +497,7 @@ def render_brief_html(clusters, parsed, run_dir):
 
     cards_html = []
     json_cards = []
-    _max = int(os.environ.get("IH_MAX_CARDS", "8"))
+    _max = int(os.environ.get("IH_MAX_CARDS", "0")) or 10**6
     _shown = 0
     for ci, card in enumerate(parsed.get("cards", [])):
         if not card.get("narrative"):
@@ -503,6 +576,8 @@ def render_brief_html(clusters, parsed, run_dir):
       <div class="brief-sources">{''.join(src_bits)}{more}</div>
     </article>""")
         json_cards.append({
+            "story_key": hashlib.sha256(
+                "|".join(sorted(x["url"] for x in sources)).encode()).hexdigest()[:16],
             "kicker": kicker,
             "narrative": card.get("narrative", ""),
             "paragraph": card.get("paragraph", ""),
@@ -510,6 +585,47 @@ def render_brief_html(clusters, parsed, run_dir):
             "sources": sources[:3],
             "source_count": len(sources),
         })
+
+    # The page renders the RUNNING FEED, not just this run's cards. A story that
+    # first appeared yesterday keeps yesterday's stamp and stays visible; a new
+    # story lands on top. Nothing is capped: Micah is still exploring and wants
+    # to see the lower-ranked cards so he can cut from the full picture himself.
+    feed = merge_into_feed(json_cards)
+    cards_html = []
+    for c in feed:
+        src_bits = []
+        for i, srec in enumerate(c.get("sources", [])[:3]):
+            sep = '<span class="src-dot">·</span>' if i else ""
+            src_bits.append(
+                f'{sep}<a href="{srec["url"]}" target="_blank" rel="noopener" '
+                f'title="{_html.escape(srec.get("headline",""))}">'
+                f'{_html.escape(srec.get("source",""))}</a>')
+        more = ('<span class="src-more">and more</span>'
+                if c.get("source_count", 0) > 3 else "")
+        para = (f'<p class="brief-para">{_html.escape(c.get("paragraph",""))}</p>'
+                if c.get("paragraph") else "")
+        cards_html.append(f"""
+    <article class="brief-card">
+      <p class="brief-kicker">{_html.escape(c.get("kicker",""))}<span class="brief-age">{rel_time(c.get("first_seen",""))}</span></p>
+      <h3 class="brief-title">{_html.escape(c.get("narrative",""))}</h3>
+      {para}
+      <div class="brief-sources">{''.join(src_bits)}{more}</div>
+    </article>""")
+
+    with open(FEED_PATH, "w") as f:
+        json.dump({"updated": datetime.now(_tz.utc).isoformat(),
+                   "cards": feed}, f, indent=2)
+
+    # What the gates dropped, shown so he can disagree with a decline instead of
+    # never learning it happened.
+    declined_html = ""
+    if _LAST_DECLINES:
+        rows = "".join(
+            f'<li><span class="dq-why">{_html.escape(d.get("reason") or d.get("verdict",""))}</span>'
+            f'{_html.escape((d.get("headline") or "")[:130])}</li>'
+            for d in _LAST_DECLINES)
+        declined_html = (f'<details class="declined"><summary>Declined this run '
+                         f'({len(_LAST_DECLINES)})</summary><ul>{rows}</ul></details>')
 
     ts = datetime.now(_tz.utc).strftime("%Y-%m-%d %H:%M UTC")
     meta = json.load(open(os.path.join(run_dir, "meta.json"))) if os.path.exists(os.path.join(run_dir, "meta.json")) else {}
@@ -538,6 +654,12 @@ def render_brief_html(clusters, parsed, run_dir):
   .brief-sources a:hover {{ color:var(--gold-dark); }}
   .src-dot {{ color:var(--border); margin:0 .1rem; }}
   .src-more {{ color:var(--ink-muted); opacity:.7; }}
+  .brief-age {{ float:right; text-transform:none; letter-spacing:0; opacity:.75; }}
+  .declined {{ margin-top:2rem; border-top:1px solid var(--border); padding-top:1rem; }}
+  .declined summary {{ font-size:.75rem; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-muted); cursor:pointer; }}
+  .declined ul {{ list-style:none; padding:.6rem 0 0; }}
+  .declined li {{ font-size:.8rem; line-height:1.5; color:var(--ink-muted); padding:.2rem 0; }}
+  .dq-why {{ display:inline-block; min-width:11rem; font-size:.68rem; text-transform:uppercase; letter-spacing:.05em; color:var(--gold-dark); }}
   .back {{ display:inline-block; margin-top:2rem; font-family:'Oswald',sans-serif; font-size:.8rem; text-transform:uppercase; letter-spacing:.05em; color:var(--ink); text-decoration:none; border-bottom:2px solid var(--gold); padding-bottom:2px; }}
 </style>
 </head>
@@ -546,6 +668,7 @@ def render_brief_html(clusters, parsed, run_dir):
   <h1 class="page-title">Innovative Hype — Brief</h1>
   <div class="page-meta">Narrative brief · LLM desk · run {meta.get('code_version','?')} · {run_ts} · updated {ts}</div>
   {''.join(cards_html)}
+  {declined_html}
   <a class="back" href="index.html">← Back to feed</a>
 </div>
 </body>
@@ -556,7 +679,7 @@ def render_brief_html(clusters, parsed, run_dir):
     with open(os.path.join(WEB, "brief-cards.json"), "w") as f:
         json.dump({"updated": datetime.now(_tz.utc).isoformat(),
                    "run": meta.get("code_version", "?"),
-                   "cards": json_cards}, f, indent=2)
+                   "cards": feed}, f, indent=2)
     print(f"Rendered web/brief.html + brief-cards.json with {len(cards_html)} cards")
 
 
@@ -697,8 +820,9 @@ def load_clusters():
     seeded.sort(key=cluster_score, reverse=True)
     unseeded.sort(key=cluster_score, reverse=True)
     # Seeded one-offs fill the cap first, then unseeded by score.
-    kept_one_offs = seeded[:3] + unseeded[: max(0, 3 - len(seeded[:3]))]
-    print(f"  {len(one_off_clusters)} one-offs ({len(seeded)} seeded), keeping 3 (seeded first)")
+    _keep_n = int(os.environ.get("IH_ONE_OFFS", "12"))
+    kept_one_offs = seeded[:_keep_n] + unseeded[: max(0, _keep_n - len(seeded[:_keep_n]))]
+    print(f"  {len(one_off_clusters)} one-offs ({len(seeded)} seeded), keeping {_keep_n} (seeded first)")
     all_clusters = sig_clusters + kept_one_offs
 
     all_clusters.sort(key=cluster_score, reverse=True)
@@ -1087,7 +1211,7 @@ def main():
     # the cap is just "keep the top N that were not declined". Micah's
     # complaint was volume of filler, and a cap is the only thing that
     # guarantees it.
-    _max = int(os.environ.get("IH_MAX_CARDS", "8"))
+    _max = int(os.environ.get("IH_MAX_CARDS", "0")) or 10**6
     _kept, _dropped = [], 0
     for _card in parsed.get("cards", []):
         if not _card.get("narrative"):
@@ -1118,6 +1242,10 @@ def main():
         json.dump({"timestamp": datetime.now(timezone.utc).isoformat(),
                    "code_version": git_sha(), "model": MODEL,
                    "pool_key": pool_key(clusters)}, _f, indent=2)
+
+    globals()["_LAST_DECLINES"] = [d for d in _decisions
+                                   if d["verdict"].startswith("declined")
+                                   and d.get("headline")]
 
     render_brief_html(clusters, parsed, run_dir)
 
