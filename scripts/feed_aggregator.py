@@ -260,6 +260,12 @@ TOP_N = 7
 # How many top-scored stories get full-text fetched (teaser-only feeds).
 FETCH_BODY_TOP_N = 15
 
+# How much body text means "we plausibly have the whole article". A real news
+# story is thousands of characters; anything under this is a teaser, a partial
+# content:encoded payload, or an intro. See the 2026-08-23 note in the fetch
+# loop for what a low bar cost us.
+BODY_LOOKS_COMPLETE = int(os.environ.get("IH_BODY_COMPLETE", "2500"))
+
 def _match_count(text, patterns):
     """Count distinct patterns found in text (word-boundary regex)."""
     low = text.lower()
@@ -512,8 +518,20 @@ def main():
         top_candidates.sort(key=lambda x: -x.get("_score", 0))
         fetched = 0
         for a in top_candidates[:FETCH_BODY_TOP_N]:
-            # Skip stories that already have real body text
-            if len(a.get("_body", "").strip()) >= 400:
+            # 400 was the old skip threshold and it was the wrong test.
+            # Measured 2026-08-23: The Verge ships PARTIAL content:encoded.
+            # "Nvidia's new financial strategy does not compute" arrived with
+            # 854 chars, cleared 400, so the fetch never ran and 854 chars
+            # counted as "we have the article". The desk then had to pick an
+            # angle from an opening corncob joke and one financing sentence,
+            # and it welded on an unrelated housing take because there was
+            # nothing else in there to work with. A partial feed passing a low
+            # bar is indistinguishable from a full one, so raise the bar and,
+            # when we do fetch, KEEP THE LONGER of the two rather than
+            # assuming either source wins.
+            have = len(a.get("_body", "").strip())
+            if have >= BODY_LOOKS_COMPLETE:
+                a["_body_source"] = a.get("_body_source") or "feed"
                 continue
             link = a.get("link", "")
             if not link or link == "#":
@@ -522,9 +540,15 @@ def main():
                 dl = trafilatura.fetch_url(link)
                 txt = trafilatura.extract(dl) if dl else None
                 if txt and len(txt.strip()) >= 200:
-                    a["_body"] = re.sub(r"\s+", " ", txt).strip()[:6000]
-                    fetched += 1
-                    print(f"  BODY {a['source']}: {a['title'][:50]}... ({len(a['_body'])} chars)")
+                    cand = re.sub(r"\s+", " ", txt).strip()[:6000]
+                    if len(cand) > have:
+                        a["_body"] = cand
+                        a["_body_source"] = "fetch"
+                        fetched += 1
+                        print(f"  BODY {a['source']}: {a['title'][:50]}... "
+                              f"({have} -> {len(cand)} chars)")
+                    else:
+                        a["_body_source"] = a.get("_body_source") or "feed"
             except Exception as e:
                 print(f"  SKIP {a['source']}: {e}")
             time.sleep(0.5)  # polite throttle
