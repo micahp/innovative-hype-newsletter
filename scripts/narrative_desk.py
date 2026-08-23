@@ -217,10 +217,22 @@ _SHAPES = [
     ("FLAT", "One flat declarative sentence stating the claim. No second "
              "clause, no conjunction, no question. Example: 'Texas is "
              "becoming a company town for rockets.'"),
-    ("CONTRAST", "Two concrete halves joined by 'while' or 'but', where "
-                 "the second half names people, money or a thing, never an "
-                 "abstraction. Example: 'Mark Zuckerberg buys a castle while "
-                 "nobody on his app can afford a house.'"),
+    ("CONTRAST", "Two halves joined by 'while' or 'but'. THE SECOND HALF "
+                 "MUST BE ABOUT AN ACTOR DOING AN OBSERVABLE THING, never "
+                 "about a concept. Test the SUBJECT of that clause: if it is "
+                 "a person, a company or a group, keep it; if it is value, "
+                 "dynamics, implications, the real story, the true anything, "
+                 "cut the clause and stop after the first half. The paragraph "
+                 "adds the taste; the headline does not. "
+                 "GOOD: 'Good Good Golf deletes a violent ad while Callaway "
+                 "stays silent on its involvement.' "
+                 "GOOD: 'Mark Zuckerberg buys a castle while nobody on his "
+                 "app can afford a house.' "
+                 "BAD: '...while the true power dynamics behind creator-brand "
+                 "partnerships remain hidden.' "
+                 "BAD: '...while the value flows to incumbents.' "
+                 "Both BAD lines look concrete and obey the shape. They fail "
+                 "because a concept is doing the acting."),
     ("QUESTION", "A direct question the card then answers in the paragraph. "
                  "Example: 'Who actually owns the Lakers now?'"),
     ("FACT", "A single startling fact stated bare, with the number in it and "
@@ -265,6 +277,9 @@ _PERFORMANCE = (
     # verdict, same veto. "Basketball Without Borders brings 40 top
     # high-school players to Chicago" carded on 2026-08-23 and is a calendar
     # entry, not a story.
+    "starting point guard", "new starting", "who will start", "starting lineup",
+    "players from", "has not beaten", "winless", "losing streak", "power rankings",
+    "preseason rankings", "brings sun belt", "transfer portal move",
     "commit to", "commits to", "committed to", "commitment", "decommit",
     "transfer portal", "enters the portal", "signs with", "signing with",
     "poaching", "reuniting with", "football program", "basketball program",
@@ -301,15 +316,24 @@ def performance_only(text):
 
 
 def card_is_performance_only(card, cluster):
-    """The gate, over everything the card and its cluster actually say."""
-    parts = [card.get("narrative") or "", card.get("data_point") or "",
-             card.get("paragraph") or ""]
-    if cluster:
-        for item in cluster.get("items", []):
-            a = item.get("article", {})
-            parts.append(a.get("title", ""))
-            parts.append((a.get("summary") or "")[:400])
-    return performance_only(" ".join(parts))
+    """The gate, judged on what the CARD says.
+
+    The marker must come from the card's own text. The cluster is only allowed
+    to VETO. Measured 2026-08-23: pooling cluster articles into the marker side
+    declined "Good Good Golf deletes a violent ad while Callaway stays silent",
+    a card Micah named as the good example, because the card had been aligned
+    to a cluster carrying sports vocabulary. A mis-aligned cluster must not get
+    to veto a good card, but more text on the protective side is always safe.
+    """
+    # HEADLINE ONLY. Including the paragraph let a roster card survive whenever
+    # its body happened to mention money: "UCLA coach brings Sun Belt DPOY in
+    # huge transfer portal move" kept passing because its paragraph said
+    # "million". The headline is the thing being judged, and the paragraph is
+    # where the taste lives by design, so the gate reads the headline.
+    own = card.get("narrative") or ""
+    if not any(k in own.lower() for k in _PERFORMANCE):
+        return False
+    return not any(k in own.lower() for k in _POWER)
 
 
 # === THE ANGLE INVENTORY ===
@@ -415,6 +439,7 @@ def repair_narrative(text):
             break
     # Micah does not use em dashes anywhere, and this is his copy.
     text = text.replace("\u2014", ", ").replace(" ,", ",")
+    text, _cut = trim_interpretive_tail(text)
     while ",," in text:
         text = text.replace(",,", ",")
     while "  " in text:
@@ -466,6 +491,21 @@ def merge_into_feed(new_cards):
             c["first_seen"] = now.isoformat()
             c["updated"] = now.isoformat()
         existing[k] = c
+    # A card the gates decline NOW must leave the feed, not linger for 72h
+    # because an earlier run let it through. Measured 2026-08-23: the type gate
+    # correctly declined "Why is Tennessee left out of ESPN's preseason power
+    # rankings?" and it stayed on the page anyway, carried by the accumulating
+    # store from a run twenty minutes earlier. Evict by headline subject, the
+    # same identity the deduper uses, because the story key changes with the
+    # source set.
+    declined_subjects = {_headline_subject(d.get("headline"))
+                         for d in _LAST_DECLINES if d.get("headline")}
+    declined_subjects.discard(())
+    for k in [k for k, c in existing.items()
+              if _headline_subject(c.get("narrative")) in declined_subjects]:
+        print(f"  EVICTED (now declined): {existing[k].get('narrative','')[:64]}")
+        existing.pop(k, None)
+
     cutoff = now - _td(hours=FEED_MAX_AGE_H)
     out = []
     for c in existing.values():
@@ -493,6 +533,80 @@ def rel_time(iso):
     if mins < 48 * 60:
         return f"{mins // 60}h ago"
     return f"{mins // 1440}d ago"
+
+
+# The last subtle thing, Micah 2026-08-23, comparing two cards on one story:
+#
+#   GOOD "Good Good Golf deletes a violent ad while Callaway stays silent on
+#         its involvement."
+#   BAD  "Good Good Golf removes a controversial ad featuring a man shoving a
+#         woman, while the true power dynamics behind creator-brand
+#         partnerships remain hidden."
+#   BAD  "Nvidia is turning compute into an asset class with $500 billion in
+#         financing, while the value flows to incumbents."
+#
+# "just leave off the 'while value flows to the incumbents', the paragraph does
+# the work of adding our taste."
+#
+# Both bad clauses LOOK concrete and both obey the CONTRAST shape. The
+# difference is one word wide: what the clause is ABOUT. "Callaway" is an actor
+# doing an observable thing (staying silent). "the value" and "the true power
+# dynamics" are concepts, and a concept as the subject means the sentence has
+# stopped reporting and started interpreting. Interpretation is the paragraph's
+# job.
+#
+# So the test is on the clause's SUBJECT, not on whether it sounds specific.
+# These survive, because their subjects are actors:
+#   "while the county gives up the tax base"
+#   "while nobody on his app can afford a house"
+#   "while ByteDance keeps collecting data on kids"
+_ABSTRACT_SUBJECTS = {
+    "value", "values", "dynamic", "dynamics", "implication", "implications",
+    "tension", "tensions", "reality", "truth", "story", "question",
+    "questions", "cost", "costs", "stake", "stakes", "incentive", "incentives",
+    "structure", "system", "balance", "gap", "divide", "future", "landscape",
+    "picture", "trend", "trends", "shift", "pattern", "patterns", "force",
+    "forces", "control", "influence", "access", "transparency",
+    "accountability", "consequence", "consequences", "impact", "impacts",
+    "issue", "issues", "problem", "irony", "contrast", "difference",
+    "meaning", "significance", "risk", "risks", "danger", "point",
+}
+_ABSTRACT_LEADINS = ("the true ", "the real ", "the broader ", "the deeper ",
+                     "the underlying ", "the bigger ", "the wider ")
+_CONNECTORS = (", while ", ", but ", ", and ", ", as ", " while ")
+
+
+def _clause_subject(clause):
+    """Head noun of the clause's subject, lowercased."""
+    words = re.findall(r"[A-Za-z'-]+", clause)
+    skip = {"the", "a", "an", "its", "their", "his", "her", "our", "this",
+            "that", "these", "those", "true", "real", "broader", "deeper",
+            "underlying", "bigger", "wider", "actual", "whole"}
+    for w in words:
+        if w[0].isupper():
+            return None  # a named actor; not abstract
+        if w.lower() in skip:
+            continue
+        return w.lower()
+    return None
+
+
+def trim_interpretive_tail(text):
+    """Cut a trailing clause whose SUBJECT is a concept rather than an actor."""
+    if not text:
+        return text, None
+    for conn in _CONNECTORS:
+        i = text.lower().rfind(conn)
+        if i <= 0:
+            continue
+        head, clause = text[:i], text[i + len(conn):]
+        if any(clause.lower().startswith(p) for p in _ABSTRACT_LEADINS):
+            return head.rstrip(" ,;") + ".", clause
+        subj = _clause_subject(clause)
+        if subj and subj in _ABSTRACT_SUBJECTS:
+            return head.rstrip(" ,;") + ".", clause
+        return text, None
+    return text, None
 
 
 def _headline_tokens(text):
