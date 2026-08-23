@@ -536,12 +536,16 @@ def merge_into_feed(new_cards):
     # same identity the deduper uses, because the story key changes with the
     # source set.
     declined_subjects = {_headline_subject(d.get("headline"))
-                         for d in _LAST_DECLINES if d.get("headline")}
+                         for d in _LAST_DECLINES
+                         if d.get("headline")
+                         and d.get("verdict") != "demoted_type_gate"}
     # Also evict on the SOURCE headline. The generated one is rewritten every
     # run, so matching only on it lets a card the gate just declined survive in
     # the feed under a different phrasing.
     declined_subjects |= {_headline_subject(d.get("source_headline"))
-                          for d in _LAST_DECLINES if d.get("source_headline")}
+                          for d in _LAST_DECLINES
+                          if d.get("source_headline")
+                          and d.get("verdict") != "demoted_type_gate"}
     declined_subjects.discard(())
     for k in [k for k, c in existing.items()
               if _headline_subject(c.get("narrative")) in declined_subjects
@@ -559,8 +563,38 @@ def merge_into_feed(new_cards):
             continue
         if seen >= cutoff:
             out.append(c)
-    out.sort(key=lambda c: c.get("first_seen", ""), reverse=True)
+    out.sort(key=feed_rank, reverse=True)
     return out
+
+
+# Micah, 2026-08-23: "i also dont think we necessarily need to gate that out.
+# it more so shouldnt be the highest ranking thing. like why is this the first
+# card?"
+#
+# Right, and the answer was embarrassing: the feed sorted by first_seen. There
+# was no editorial rank in it at all, so card #1 was whichever story happened
+# to land most recently. Everything I had built to that point was a GATE (keep
+# or delete) when the actual complaint was ORDER.
+#
+# So the performance/roster signal stops deleting cards and becomes a heavy
+# demotion. The card stays, he can see it, and it sits where it belongs.
+FEED_RECENCY_HALFLIFE_H = float(os.environ.get("IH_FEED_HALFLIFE_H", "18"))
+SOFT_PENALTY = float(os.environ.get("IH_SOFT_PENALTY", "4.0"))
+
+
+def feed_rank(card):
+    """Editorial rank for one feed card. Higher sorts first."""
+    from datetime import datetime as _dt, timezone as _tz
+    score = float(card.get("lead_score") or 0)
+    score *= float(card.get("voice_weight") or 0.5) + 0.5   # 0.5x .. 1.5x
+    try:
+        age_h = (_dt.now(_tz.utc) - _dt.fromisoformat(
+            card.get("first_seen") or "")).total_seconds() / 3600.0
+    except Exception:
+        age_h = 0.0
+    score += 2.0 * (0.5 ** (max(age_h, 0) / FEED_RECENCY_HALFLIFE_H))
+    score -= SOFT_PENALTY * float(card.get("soft_penalty") or 0)
+    return score
 
 
 def rel_time(iso):
@@ -825,6 +859,13 @@ def render_brief_html(clusters, parsed, run_dir):
             "data_point": card.get("data_point", ""),
             "sources": sources[:3],
             "source_count": len(sources),
+            # The lead article's editorial score, so the feed can be ORDERED.
+            # Without this the feed sorted by first_seen and a golf ad ended up
+            # as card #1 purely because of when it landed.
+            "lead_score": max(
+                [it["article"].get("_score", 0) for it in (cl["items"] if cl else [])] or [0]),
+            "voice_weight": (cl.get("sig", {}) or {}).get("voice_weight", 0.5) if cl else 0.5,
+            "soft_penalty": 1.0 if card.get("_soft_penalty") else 0.0,
         })
 
     # The page renders the RUNNING FEED, not just this run's cards. A story that
@@ -837,17 +878,17 @@ def render_brief_html(clusters, parsed, run_dir):
     # run reported zero declines, because the gate only ever saw new cards.
     # The feed is the artifact, so the gate has to run over the feed.
     feed = merge_into_feed(json_cards)
-    _kept, _evicted = [], 0
+    _kept, _demoted = [], 0
     for _c in feed:
         _probe = {"narrative": _c.get("narrative"),
                   "_sources": _c.get("sources") or []}
-        if card_is_performance_only(_probe, None):
-            print(f"  RE-GATE evicted: {(_c.get('narrative') or '')[:66]}")
-            _evicted += 1
-            continue
+        _pen = 1.0 if card_is_performance_only(_probe, None) else 0.0
+        if _pen and not _c.get("soft_penalty"):
+            _demoted += 1
+        _c["soft_penalty"] = _pen
         _kept.append(_c)
-    if _evicted:
-        print(f"  RE-GATE removed {_evicted} card(s) already in the feed")
+    if _demoted:
+        print(f"  RE-RANK demoted {_demoted} card(s) already in the feed")
     feed = dedupe_feed(_kept)
     cards_html = []
     for c in feed:
@@ -1444,7 +1485,17 @@ def main():
                 _card["narrative"] = None
                 continue
         if card_is_performance_only(_card, _cl):
-            print(f"  TYPE-GATE declined (performance only): {_headline[:70]}")
+            # DEMOTE, do not delete. The card stays visible and sinks. Deleting
+            # it was me making his cut for him, and he is still exploring.
+            _card["_soft_penalty"] = True
+            print(f"  DEMOTED (performance only): {_headline[:70]}")
+            _decisions.append({"cluster": _ci, "verdict": "demoted_type_gate",
+                               "reason": "performance_only", "angle": _aid,
+                               "source_headline": _lead_source_text(_card, _cl)[:160],
+                               "cluster_name": _kicker, "headline": _headline})
+            _typed_out += 1
+            continue
+        if False:
             _decisions.append({"cluster": _ci, "verdict": "declined_type_gate",
                                "reason": "performance_only", "angle": _aid,
                                "source_headline": _lead_source_text(_card, _cl)[:160],
@@ -1457,7 +1508,7 @@ def main():
                                "angle_offered": _offered, "angle_inferred": _inferred,
                                "cluster_name": _kicker, "headline": _headline})
     if _typed_out:
-        print(f"  TYPE-GATE removed {_typed_out} card(s)")
+        print(f"  DEMOTED {_typed_out} card(s) to the bottom of the feed")
 
     for _card in parsed.get("cards", []):
         _fixed, _was = repair_narrative(_card.get("narrative"))
