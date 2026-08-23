@@ -637,13 +637,26 @@ def call_model(clusters):
         _shape_name, _shape_rule = _SHAPES[ci % len(_SHAPES)]
         prompt_lines.append(f"CLUSTER {ci}: {cl['sig']['name']} (voice_weight {cl['sig'].get('voice_weight','?')})")
         prompt_lines.append(f"  REQUIRED HEADLINE SHAPE = {_shape_name}. {_shape_rule}")
-        for item in cl["items"]:
+        # THE REAL STARVATION POINT. This loop used to hand the model 300
+        # characters of each article. Measured 2026-08-23 on The Verge's
+        # "Nvidia's new financial strategy does not compute": 300 chars is the
+        # piece's opening corncob joke and a Napoleon gag, and none of its
+        # argument. The desk could not pick an angle because it had never been
+        # shown one, and it filled the gap with an unrelated housing take.
+        # Micah could not pick the angle from the excerpt either, which is the
+        # whole point: this was never a model-capability problem.
+        #
+        # Budget: the LEAD articles of a cluster are what a card gets written
+        # from, so they get real text. The tail is there for context and stays
+        # short, which keeps the whole prompt sane across ~13 clusters.
+        for _i, item in enumerate(cl["items"]):
             a = item["article"]
             prompt_lines.append(f"  {item['points'][0][:200] if item['points'] else 'no data point'}")
             prompt_lines.append(f"  {a.get('title','')} ({a.get('source','')})")
-            body = (a.get("_body", "") or "")[:600]
+            _cap = 1800 if _i < 3 else 400
+            body = (a.get("_body", "") or "")[:_cap]
             if body:
-                prompt_lines.append(f"    {body[:300]}")
+                prompt_lines.append(f"    {body}")
         prompt_lines.append("")
 
     body = json.dumps({
@@ -749,7 +762,7 @@ def main():
                                 "source": item["article"].get("source"),
                                 "link": item["article"].get("link"),
                                 "points": item["points"],
-                                "body_excerpt": (item["article"].get("_body") or "")[:600],
+                                "body_excerpt": (item["article"].get("_body") or "")[:2500],
                             }
                             for item in cl["items"]
                         ],
@@ -809,13 +822,14 @@ def main():
         # The model now names its own cluster. Trust it when it is in range and
         # unclaimed: it knows which block it wrote from, and no similarity
         # heuristic can beat that.
+        # A model-declared index is a CLAIM, not a fact, and I shipped it as a
+        # fact. Measured 2026-08-23: once the prompt grew (real article bodies
+        # instead of 300-char stubs) the model started numbering its cards
+        # 0..N sequentially regardless of which cluster it wrote from, and
+        # every kicker went wrong at once: the Flock card filed under "The AI
+        # data gold rush", a Timberwolves sale under "AI trust and
+        # accountability". Trust it only when the content agrees.
         declared = card.get("cluster_index")
-        if isinstance(declared, int) and 0 <= declared < len(clusters) \
-                and declared not in used_clusters:
-            used_clusters.add(declared)
-            card["_cluster_idx"] = declared
-            aligned.append(card)
-            continue
         best_ci = None
         best_score = 0.0
         tokens = set(re.findall(r"[a-z']{4,}", card_text))
@@ -839,6 +853,25 @@ def main():
             if overlap > best_score:
                 best_score = overlap
                 best_ci = ci
+        # Accept the declared index when it is in range, unclaimed, and its
+        # own content score is at least as good as the best free cluster's.
+        # Otherwise the content wins, because the kicker and the source chips
+        # both come from this decision and a wrong one cites the card to a
+        # publisher that never covered it.
+        if isinstance(declared, int) and 0 <= declared < len(clusters) \
+                and declared not in used_clusters:
+            dcl_tokens = set()
+            for item in clusters[declared]["items"]:
+                dcl_tokens |= set(re.findall(
+                    r"[a-z']{4,}", item["article"].get("title", "").lower()))
+            dscore = (len(tokens & dcl_tokens) / float(len(tokens | dcl_tokens))
+                      if tokens and dcl_tokens else 0.0)
+            if dscore >= best_score * 0.9:
+                best_ci, best_score = declared, dscore
+            else:
+                print(f"  ALIGN: model said cluster {declared} "
+                      f"(score {dscore:.3f}) but content says {best_ci} "
+                      f"(score {best_score:.3f}); using content")
         if best_ci is not None and best_score > 0:
             used_clusters.add(best_ci)
             card["_cluster_idx"] = best_ci
