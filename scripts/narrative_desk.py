@@ -265,6 +265,12 @@ _PERFORMANCE = (
     # verdict, same veto. "Basketball Without Borders brings 40 top
     # high-school players to Chicago" carded on 2026-08-23 and is a calendar
     # entry, not a story.
+    "commit to", "commits to", "committed to", "commitment", "decommit",
+    "transfer portal", "enters the portal", "signs with", "signing with",
+    "poaching", "reuniting with", "football program", "basketball program",
+    "leaves the program", "leaves the team", "joins the program",
+    "steps down", "hired as", "named head coach", "walk-on",
+    "fifth year of eligibility", "redshirt", "depth chart", "starting job",
     "high-school players", "top players", "showcase", "all-star weekend",
     "training camp opens", "schedule released", "lineup announced",
     "roster announced", "draft class", "recruiting class", "signing day",
@@ -489,6 +495,56 @@ def rel_time(iso):
     return f"{mins // 1440}d ago"
 
 
+def _headline_tokens(text):
+    stop = {"the", "and", "for", "with", "that", "this", "from", "into", "over",
+            "while", "after", "about", "than", "they", "their", "have", "has"}
+    return {t for t in re.findall(r"[a-z']{4,}", (text or "").lower())
+            if t not in stop}
+
+
+def _headline_subject(text):
+    """The first few significant tokens: who or what the card is about."""
+    toks = [t for t in re.findall(r"[a-z0-9']{3,}", (text or "").lower())
+            if t not in {"the", "and", "for", "why", "who", "how", "did", "has"}]
+    return tuple(toks[:3])
+
+
+def dedupe_feed(cards, threshold=0.45):
+    """Drop cards that retell a story already in the feed.
+
+    The feed key is a hash of source URLs, so the same event covered by two
+    publishers produces two keys and two cards. Two Good Good Golf ad cards
+    shipped together on 2026-08-23. Similarity is judged on the HEADLINE,
+    which is the only thing that actually says what the card is about.
+    Earlier cards win: the feed is newest-first, so the survivor is the one
+    that has been on the page longest and the reader has already seen.
+    """
+    kept, dropped = [], []
+    for c in cards:
+        toks = _headline_tokens(c.get("narrative"))
+        subj = _headline_subject(c.get("narrative"))
+        dup = None
+        for k in kept:
+            ktoks = _headline_tokens(k.get("narrative"))
+            # Same subject is enough on its own: two cards that open on the
+            # same entity are the same story told twice.
+            if subj and subj == _headline_subject(k.get("narrative")):
+                dup = k
+                break
+            if not toks or not ktoks:
+                continue
+            if len(toks & ktoks) / float(min(len(toks), len(ktoks))) >= threshold:
+                dup = k
+                break
+        if dup is None:
+            kept.append(c)
+        else:
+            dropped.append((c.get("narrative", "")[:70], dup.get("narrative", "")[:70]))
+    for new, old in dropped:
+        print(f"  DEDUPE dropped: {new}\n            same as: {old}")
+    return kept
+
+
 def render_brief_html(clusters, parsed, run_dir):
     """Render the LLM cards into web/brief.html with article links resolved
     from source_ids (indexes into each cluster's item list)."""
@@ -590,7 +646,7 @@ def render_brief_html(clusters, parsed, run_dir):
     # first appeared yesterday keeps yesterday's stamp and stays visible; a new
     # story lands on top. Nothing is capped: Micah is still exploring and wants
     # to see the lower-ranked cards so he can cut from the full picture himself.
-    feed = merge_into_feed(json_cards)
+    feed = dedupe_feed(merge_into_feed(json_cards))
     cards_html = []
     for c in feed:
         src_bits = []
