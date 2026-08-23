@@ -466,6 +466,17 @@ body {
 .card:nth-child(4) { animation-delay: 0.15s; }
 .card:nth-child(5) { animation-delay: 0.2s; }
 .card:nth-child(6) { animation-delay: 0.25s; }
+
+  .brief-section { max-width:1280px; margin:0 auto; padding:0 1.5rem 2rem; }
+  .brief-feed { display:grid; gap:.75rem; }
+  .ih-brief-card { border:1px solid var(--border,#e8e8e8); border-left:3px solid var(--gold,#d4af37); background:#fafafa; padding:.9rem 1.1rem; }
+  .ih-brief-kicker { font-size:.66rem; font-weight:600; text-transform:uppercase; letter-spacing:.09em; color:#8a8a8a; }
+  .ih-brief-title { font-family:'Oswald',sans-serif; font-weight:600; font-size:1.05rem; line-height:1.3; margin:.3rem 0 .35rem; color:#0a0a0a; }
+  .ih-brief-para { font-size:.86rem; line-height:1.55; color:#3a3a3a; margin:0; }
+  .ih-brief-src { margin-top:.6rem; font-size:.7rem; text-transform:uppercase; letter-spacing:.05em; color:#8a8a8a; }
+  .ih-brief-src a { color:#8a8a8a; text-decoration:none; }
+  .ih-brief-src a:hover { color:#b8860b; }
+  .ih-brief-src .dot { color:#d8d8d8; margin:0 .35rem; }
 </style>
 </head>
 <body>
@@ -491,6 +502,16 @@ body {
       <div class="hero-card" id="heroCard">
         <!-- filled by JS -->
       </div>
+    </div>
+  </section>
+
+  <section class="brief-section" id="briefSection">
+    <div class="top-header">
+      <span class="top-title">The Brief</span>
+      <a class="top-algo" href="brief.html">full brief &rarr;</a>
+    </div>
+    <div class="brief-feed" id="briefFeed">
+      <!-- filled by JS from brief-cards.json -->
     </div>
   </section>
 
@@ -575,6 +596,37 @@ function renderTopCard(article, rank) {
   `;
 }
 
+
+// The Brief on the homepage, above Top News. Reads brief-cards.json, which the
+// narrative desk writes alongside brief.html, so the homepage and the brief
+// page can never disagree about what the cards are.
+function renderBriefFeed(cards) {
+  const el = document.getElementById('briefFeed');
+  if (!el) return;
+  if (!cards || !cards.length) {
+    el.innerHTML = '<p class="ih-brief-para">No brief yet.</p>';
+    return;
+  }
+  el.innerHTML = cards.map(c => {
+    const srcs = (c.sources || []).map((s, i) =>
+      (i ? '<span class="dot">&middot;</span>' : '') +
+      `<a href="${s.url}" target="_blank" rel="noopener" title="${(s.headline||'').replace(/"/g,'&quot;')}">${s.source}</a>`
+    ).join('');
+    const more = (c.source_count > (c.sources||[]).length) ? '<span class="dot">&middot;</span>and more' : '';
+    return `<article class="ih-brief-card">
+      <p class="ih-brief-kicker">${c.kicker || ''}</p>
+      <h3 class="ih-brief-title">${c.narrative || ''}</h3>
+      <p class="ih-brief-para">${c.paragraph || ''}</p>
+      <div class="ih-brief-src">${srcs}${more}</div>
+    </article>`;
+  }).join('');
+}
+
+fetch('brief-cards.json?t=' + Date.now())
+  .then(r => r.ok ? r.json() : null)
+  .then(d => renderBriefFeed(d && d.cards))
+  .catch(() => {});
+
 function renderTopSection(articles, ranking) {
   const grid = document.getElementById('topGrid');
   const label = document.getElementById('topAlgoLabel');
@@ -657,6 +709,8 @@ function render(data, activeCat = 'all') {
   // behavior); tab grids skip their first story since it IS the hero.
   const isHome = activeCat === 'all';
   if (topSection) topSection.style.display = isHome ? '' : 'none';
+  const briefSection = document.getElementById('briefSection');
+  if (briefSection) briefSection.style.display = isHome ? '' : 'none';
 
   renderHero(filtered[0]);
   if (isHome) {

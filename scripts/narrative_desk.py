@@ -140,8 +140,11 @@ _SYSTEM = (
     "global count across clusters. If you cite only the first article of "
     'cluster 2, source_ids is [0], not [2].\n'
     "\n"
+    "EVERY CARD MUST NAME ITS CLUSTER. Include cluster_index, the number "
+    "printed on the CLUSTER line it was written from. Without it the card gets "
+    "matched to the wrong cluster and cited to the wrong publishers.\n"
     "Output STRICT JSON only: "
-    '{"cards": [{"narrative": "...", "paragraph": "...", '
+    '{"cards": [{"cluster_index": 0, "narrative": "...", "paragraph": "...", '
     '"data_point": "...", "source_ids": [0, 2]}]} where source_ids are the '
     "LOCAL indexes of the articles in that cluster's list that the card "
     "grounds in. A declined cluster is "
@@ -328,6 +331,7 @@ def render_brief_html(clusters, parsed, run_dir):
     import html as _html
 
     cards_html = []
+    json_cards = []
     _max = int(os.environ.get("IH_MAX_CARDS", "8"))
     _shown = 0
     for ci, card in enumerate(parsed.get("cards", [])):
@@ -358,24 +362,62 @@ def render_brief_html(clusters, parsed, run_dir):
         scored_items.sort(key=lambda x: -x[0])
         for overlap, sid, a in scored_items[:3]:
             if overlap >= 2:
-                sources.append(
-                    f'<li><a href="{a.get("link","#")}" target="_blank" rel="noopener">{_html.escape(a.get("title",""))} <span class="src">({a.get("source","")})</span></a></li>'
-                )
+                sources.append({"source": a.get("source", ""),
+                                "url": a.get("link", "#"),
+                                "headline": a.get("title", "")})
         if not sources and cl["items"]:
             # Fallback: lead article of the cluster
             a = cl["items"][0]["article"]
-            sources.append(
-                f'<li><a href="{a.get("link","#")}" target="_blank" rel="noopener">{_html.escape(a.get("title",""))} <span class="src">({a.get("source","")})</span></a></li>'
-            )
-        dp_html = f'<p class="brief-dp">▸ {_html.escape(card.get("data_point",""))}</p>' if card.get("data_point") else ""
-        para_html = f'<p class="brief-para">{_html.escape(card.get("paragraph",""))}</p>' if card.get("paragraph") else ""
+            sources.append({"source": a.get("source", ""),
+                            "url": a.get("link", "#"),
+                            "headline": a.get("title", "")})
+        # LP news-card shape (components/News/LeagueSection.tsx
+        # AiNarrativeCard): kicker, narrative, paragraph, then a compact row of
+        # publisher NAMES. Micah, 2026-08-23: "that pull quote below the
+        # headline isnt necessary. and the sources should be shown as a list
+        # like that." So data_point is no longer rendered as its own line; it
+        # still rides in the JSON because ranking and grounding use it, and the
+        # prompt already requires the paragraph to lead with the concrete fact.
+        # LP's kicker is a TOPIC label, not a headline. A one-off cluster's
+        # sig name is just the article's own title, which would print the
+        # headline twice, so those fall back to the article category.
+        _sig_name = (cl.get("sig", {}) or {}).get("name", "") or ""
+        if _sig_name.startswith("One-off"):
+            _lead = cl["items"][0]["article"] if cl.get("items") else {}
+            kicker = (_lead.get("category") or "").title() or "What everyone's talking about"
+        else:
+            kicker = _sig_name or "What everyone's talking about"
+        para_html = (f'<p class="brief-para">{_html.escape(card.get("paragraph",""))}</p>'
+                     if card.get("paragraph") else "")
+        _seen, _uniq = set(), []
+        for srec in sources:
+            if srec["source"] in _seen:
+                continue
+            _seen.add(srec["source"])
+            _uniq.append(srec)
+        sources = _uniq
+        src_bits = []
+        for i, srec in enumerate(sources[:3]):
+            sep = '<span class="src-dot">·</span>' if i else ""
+            src_bits.append(
+                f'{sep}<a href="{srec["url"]}" target="_blank" rel="noopener" '
+                f'title="{_html.escape(srec["headline"])}">{_html.escape(srec["source"])}</a>')
+        more = '<span class="src-more">and more</span>' if len(sources) > 3 else ""
         cards_html.append(f"""
     <article class="brief-card">
+      <p class="brief-kicker">{_html.escape(kicker)}</p>
       <h3 class="brief-title">{_html.escape(card.get("narrative",""))}</h3>
-      {dp_html}
       {para_html}
-      <ul class="brief-list">{''.join(sources)}</ul>
+      <div class="brief-sources">{''.join(src_bits)}{more}</div>
     </article>""")
+        json_cards.append({
+            "kicker": kicker,
+            "narrative": card.get("narrative", ""),
+            "paragraph": card.get("paragraph", ""),
+            "data_point": card.get("data_point", ""),
+            "sources": sources[:3],
+            "source_count": len(sources),
+        })
 
     ts = datetime.now(_tz.utc).strftime("%Y-%m-%d %H:%M UTC")
     meta = json.load(open(os.path.join(run_dir, "meta.json"))) if os.path.exists(os.path.join(run_dir, "meta.json")) else {}
@@ -398,14 +440,12 @@ def render_brief_html(clusters, parsed, run_dir):
   .page-meta {{ font-size:.75rem; color:var(--ink-muted); text-transform:uppercase; letter-spacing:.05em; margin-bottom:2rem; }}
   .brief-card {{ background:var(--off-white); border:1px solid var(--border); border-top:3px solid var(--gold); padding:1.25rem 1.5rem; margin-bottom:1.25rem; }}
   .brief-title {{ font-family:'Oswald',sans-serif; font-weight:600; font-size:1.15rem; line-height:1.25; margin-bottom:.5rem; }}
-  .brief-dp {{ font-size:.9rem; line-height:1.5; color:var(--ink); margin-bottom:.6rem; padding-left:.9rem; border-left:2px solid var(--gold); font-style:italic; }}
-  .brief-para {{ font-size:.9rem; line-height:1.55; color:var(--ink-light); margin-bottom:.6rem; }}
-  .brief-list {{ list-style:none; padding-left:0; }}
-  .brief-list li {{ font-size:.85rem; line-height:1.5; color:var(--ink-light); padding:.15rem 0 .15rem 1.1rem; position:relative; }}
-  .brief-list li::before {{ content:'·'; position:absolute; left:0; color:var(--gold-dark); }}
-  .brief-list a {{ color:var(--ink-light); text-decoration:none; }}
-  .brief-list a:hover {{ color:var(--gold-dark); }}
-  .brief-list .src {{ color:var(--ink-muted); font-size:.7rem; text-transform:uppercase; letter-spacing:.03em; }}
+  .brief-kicker {{ font-size:.68rem; font-weight:600; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-muted); margin-bottom:.35rem; }}
+  .brief-sources {{ display:flex; flex-wrap:wrap; align-items:center; gap:.35rem; margin-top:.7rem; font-size:.72rem; }}
+  .brief-sources a {{ color:var(--ink-muted); text-decoration:none; text-transform:uppercase; letter-spacing:.04em; }}
+  .brief-sources a:hover {{ color:var(--gold-dark); }}
+  .src-dot {{ color:var(--border); margin:0 .1rem; }}
+  .src-more {{ color:var(--ink-muted); opacity:.7; }}
   .back {{ display:inline-block; margin-top:2rem; font-family:'Oswald',sans-serif; font-size:.8rem; text-transform:uppercase; letter-spacing:.05em; color:var(--ink); text-decoration:none; border-bottom:2px solid var(--gold); padding-bottom:2px; }}
 </style>
 </head>
@@ -421,7 +461,11 @@ def render_brief_html(clusters, parsed, run_dir):
 """
     with open(os.path.join(WEB, "brief.html"), "w") as f:
         f.write(html)
-    print(f"Rendered web/brief.html with {len(cards_html)} cards")
+    with open(os.path.join(WEB, "brief-cards.json"), "w") as f:
+        json.dump({"updated": datetime.now(_tz.utc).isoformat(),
+                   "run": meta.get("code_version", "?"),
+                   "cards": json_cards}, f, indent=2)
+    print(f"Rendered web/brief.html + brief-cards.json with {len(cards_html)} cards")
 
 
 def git_sha():
@@ -762,17 +806,36 @@ def main():
             aligned.append(card)  # declined — keep placeholder
             continue
         card_text = f"{card.get('narrative','')} {card.get('paragraph','')}".lower()
+        # The model now names its own cluster. Trust it when it is in range and
+        # unclaimed: it knows which block it wrote from, and no similarity
+        # heuristic can beat that.
+        declared = card.get("cluster_index")
+        if isinstance(declared, int) and 0 <= declared < len(clusters) \
+                and declared not in used_clusters:
+            used_clusters.add(declared)
+            card["_cluster_idx"] = declared
+            aligned.append(card)
+            continue
         best_ci = None
-        best_score = 0
+        best_score = 0.0
+        tokens = set(re.findall(r"[a-z']{4,}", card_text))
         for ci, cl in enumerate(clusters):
             if ci in used_clusters:
                 continue
-            cl_text = " ".join(
-                item["article"].get("title", "") for item in cl["items"]
-            ).lower()
-            # Count shared meaningful tokens
-            tokens = set(re.findall(r"[a-z']{4,}", card_text))
-            overlap = sum(1 for t in tokens if t in cl_text)
+            cl_tokens = set()
+            for item in cl["items"]:
+                cl_tokens |= set(re.findall(
+                    r"[a-z']{4,}", item["article"].get("title", "").lower()))
+            if not cl_tokens or not tokens:
+                continue
+            # NORMALISE. The old score was a raw count of card tokens appearing
+            # anywhere in the cluster's concatenated titles, so the BIGGEST
+            # cluster won every card by having more text to hit. Measured
+            # 2026-08-23: a Blue Origin card landed in "Sports money keeps
+            # inflating" and was cited to On3, a college sports site, and a
+            # Timberwolves sale landed in "Crypto's leverage problem" cited to
+            # Bitcoin Magazine. Jaccard removes the size advantage.
+            overlap = len(tokens & cl_tokens) / float(len(tokens | cl_tokens))
             if overlap > best_score:
                 best_score = overlap
                 best_ci = ci
@@ -786,15 +849,32 @@ def main():
         json.dump(parsed, f, indent=2)
 
     # Render the cards into brief.html (resolving source_ids → article links)
+    # Micah, 2026-08-23: "do we have that stuff being saved to a file whenever
+    # it does like this decline and keep?" It did not; the verdicts only went
+    # to stdout and the cron log rotates. Every verdict is now written twice:
+    # runs/<ts>/decisions.json for this run, and an append-only
+    # runs/decisions.jsonl so the record survives and can be read back. A gate
+    # you cannot audit after the fact is a gate you cannot tune.
+    _decisions = []
     _typed_out = 0
     for _ci, _card in enumerate(parsed.get("cards", [])):
-        if not _card.get("narrative"):
+        _headline = _card.get("narrative")
+        if not _headline:
+            _decisions.append({"cluster": _ci, "verdict": "declined_by_model",
+                               "headline": None})
             continue
         _cl = clusters[_ci] if _ci < len(clusters) else None
+        _kicker = ((_cl or {}).get("sig", {}) or {}).get("name", "")
         if card_is_performance_only(_card, _cl):
-            print(f"  TYPE-GATE declined (performance only): {_card['narrative'][:70]}")
+            print(f"  TYPE-GATE declined (performance only): {_headline[:70]}")
+            _decisions.append({"cluster": _ci, "verdict": "declined_type_gate",
+                               "reason": "performance_only",
+                               "cluster_name": _kicker, "headline": _headline})
             _card["narrative"] = None
             _typed_out += 1
+        else:
+            _decisions.append({"cluster": _ci, "verdict": "kept",
+                               "cluster_name": _kicker, "headline": _headline})
     if _typed_out:
         print(f"  TYPE-GATE removed {_typed_out} card(s)")
 
@@ -827,6 +907,19 @@ def main():
     if _dropped:
         print(f"  CAPPED at {_max} cards; dropped {_dropped} lower-ranked")
     parsed["cards"] = _kept
+
+    _now = datetime.now(timezone.utc).isoformat()
+    with open(os.path.join(run_dir, "decisions.json"), "w") as _f:
+        json.dump({"timestamp": _now, "run": os.path.basename(run_dir),
+                   "kept": sum(1 for d in _decisions if d["verdict"] == "kept"),
+                   "declined_type_gate": _typed_out,
+                   "decisions": _decisions}, _f, indent=2)
+    with open(os.path.join(RUNS, "decisions.jsonl"), "a") as _f:
+        for _d in _decisions:
+            _f.write(json.dumps(dict(_d, timestamp=_now,
+                                     run=os.path.basename(run_dir))) + "\n")
+    print(f"  decisions -> {os.path.join(run_dir, 'decisions.json')} "
+          f"and runs/decisions.jsonl")
 
     with open(os.path.join(run_dir, "meta.json"), "w") as _f:
         json.dump({"timestamp": datetime.now(timezone.utc).isoformat(),
