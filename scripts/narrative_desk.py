@@ -80,17 +80,12 @@ _SYSTEM = (
     "Name the CONVERSATION, not the event. 'Marc Lore sells the Timberwolves "
     "for $4.5 billion' is an event. 'Another NBA franchise changes hands to a "
     "buyer nobody voted for' is a conversation.\n"
-    "VARY THE SHAPE. Do not write every headline as subject-verb-object. "
-    "Across the brief, use a mix of at least three of these:\n"
-    "  - a flat declarative: 'Texas is becoming a company town for rockets.'\n"
-    "  - a contrast, when the contrast IS the story: 'Mark Zuckerberg buys a "
-    "castle while nobody on his app can afford a house.'\n"
-    "  - a question: 'Who actually owns the Lakers now?'\n"
-    "  - a named person on the hook: 'Palantir wants zero data retention for "
-    "everyone except Palantir.'\n"
-    "If two headlines in your output share a grammatical shape, rewrite one. "
-    "Thirteen sentences in the same mold is a failed brief even when every "
-    "fact is right.\n"
+    "EACH CLUSTER CARRIES A REQUIRED HEADLINE SHAPE, written on the cluster "
+    "as 'REQUIRED HEADLINE SHAPE = ...'. Obey it exactly. It is not a "
+    "suggestion. A card whose headline is in the wrong shape is a failed card "
+    "even when every fact in it is right. If the assigned shape genuinely "
+    "cannot carry the story, decline the cluster rather than writing it in a "
+    "different shape.\n"
     "\n"
     "== WHAT A SECOND CLAUSE MAY AND MAY NOT DO ==\n"
     "This is the rule people get backwards, so read it twice.\n"
@@ -176,6 +171,47 @@ _PIVOTS = (
     " underscores that ", " signals that ", " is proof that ",
 )
 
+# Turns that answer nothing. A headline ending in one of these is a shrug and
+# the card reads as formula. Cut the clause; the first half stands alone.
+# The same abstraction wearing a concrete costume. Measured 2026-08-23: four
+# of eight headlines used one of these. They are CUT, not pivoted: the claim
+# is the half before the turn, and the half after is the shrug.
+_EMPTY_TURNS = (
+    ", but the real story is", ", but the real cost is",
+    ", but the real issue is", ", and the real story is",
+    ", but the real question is", ", but the real winners are",
+    ", and the nba's ownership shuffle continues",
+    ", but who benefits?", ", and that's the point.", ", but at what cost?",
+    ", and that's the problem.", ", but the story continues.",
+    ", and the shuffle continues.", ", but it's complicated.",
+    ", and the nba's ownership shuffle continues.",
+)
+
+
+# Measured 2026-08-23: telling the model to "vary the shape" does not vary the
+# shape. Given one approved example (the concrete contrast clause), it wrote
+# eight of eight headlines as "[fact], but [the real thing]". The previous
+# prompt produced thirteen of thirteen as subject-verb-object. A rule phrased
+# as a constraint on a shape teaches that shape, so the shape is now ASSIGNED
+# per cluster and rotated, not requested.
+_SHAPES = [
+    ("FLAT", "One flat declarative sentence stating the claim. No second "
+             "clause, no conjunction, no question. Example: 'Texas is "
+             "becoming a company town for rockets.'"),
+    ("CONTRAST", "Two concrete halves joined by 'while' or 'but', where "
+                 "the second half names people, money or a thing, never an "
+                 "abstraction. Example: 'Mark Zuckerberg buys a castle while "
+                 "nobody on his app can afford a house.'"),
+    ("QUESTION", "A direct question the card then answers in the paragraph. "
+                 "Example: 'Who actually owns the Lakers now?'"),
+    ("FACT", "A single startling fact stated bare, with the number in it and "
+             "no commentary at all. Example: 'In the US you can get a felony "
+             "and six years in prison for sleeping in your car.'"),
+    ("NAMED", "A named person or company on the hook for something. Example: "
+              "'Palantir wants zero data retention for everyone except "
+              "Palantir.'"),
+]
+
 
 def repair_narrative(text):
     """Strip the abstraction the prompt bans. Returns (text, note or None)."""
@@ -187,6 +223,12 @@ def repair_narrative(text):
         if i > 0:
             text = text[i + len(pivot):].strip()
             text = text[:1].upper() + text[1:]
+            break
+    low0 = text.lower()
+    for turn in _EMPTY_TURNS:
+        i = low0.find(turn.lower())
+        if i > 0:
+            text = text[:i].rstrip(" ,;") + "."
             break
     for dash in _DASHES:
         i = text.find(dash)
@@ -469,7 +511,9 @@ def call_model(clusters):
 
     prompt_lines = ["Today's date: %s" % datetime.now(timezone.utc).strftime("%Y-%m-%d"), ""]
     for ci, cl in enumerate(clusters):
+        _shape_name, _shape_rule = _SHAPES[ci % len(_SHAPES)]
         prompt_lines.append(f"CLUSTER {ci}: {cl['sig']['name']} (voice_weight {cl['sig'].get('voice_weight','?')})")
+        prompt_lines.append(f"  REQUIRED HEADLINE SHAPE = {_shape_name}. {_shape_rule}")
         for item in cl["items"]:
             a = item["article"]
             prompt_lines.append(f"  {item['points'][0][:200] if item['points'] else 'no data point'}")
