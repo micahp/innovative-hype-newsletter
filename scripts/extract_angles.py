@@ -160,3 +160,68 @@ def main():
 
 if __name__ == "__main__":
     sys.exit(main())
+
+
+# === ARCHIVE MODE (2026-08-23) ===
+#
+# The first inventory was read off ~260 nitter-scraped posts and came back
+# article-shaped: 62 rows, most of them a FACT about one story ("The housing
+# market in Galveston TX is in oversupply") rather than a position that can be
+# applied to next week's news. Micah: "it's not generic enough. it's too
+# specific to the articles."
+#
+# The real corpus was on the box the whole time: the official X export at
+# /root/Downloads/twitter-2026-05-17-*.zip, 33,143 tweets from 2016 to
+# 2026-05-17. That is what VOICE-AND-WORLDVIEW.md was mined from.
+#
+# Two choices that matter:
+#
+#   ORIGINALS ONLY. Replies (19,590) are conversation, retweets (8,036) are
+#   endorsement. Neither is a stated position in his own words, and mixing them
+#   in is how the first pass ended up asserting things he had quoted rather
+#   than claimed.
+#
+#   WEIGHTED TO RECENT. A worldview moves. 2021-2022 is the volume peak (1,601
+#   originals) but 2025-2026 is what he believes now, so recent years are taken
+#   whole and older years are sampled. A position he held in 2021 and still
+#   posts about survives the sampling by repetition, which is the point.
+# In the repo, not in /tmp. This file IS the specification for the voice
+# profile (VOICE-AND-WORLDVIEW.md was mined from it), and it spent a day
+# living in a session scratchpad that gets cleaned, where a missing file made
+# load_archive_originals() return [] with nothing to say about it.
+ARCHIVE_JSON = os.environ.get(
+    "IH_ARCHIVE_JSON",
+    os.path.join(os.path.dirname(__file__), "..", "corpus", "x_archive_all_tweets.json"))
+
+# year -> fraction of that year's originals to read
+_YEAR_WEIGHT = {"2026": 1.0, "2025": 1.0, "2024": 0.6, "2023": 0.5,
+                "2022": 0.35, "2021": 0.35}
+_YEAR_WEIGHT_DEFAULT = 0.25
+
+
+def load_archive_originals(min_len=60):
+    """His own declarative posts, weighted toward the present."""
+    import random
+    if not os.path.exists(ARCHIVE_JSON):
+        raise FileNotFoundError(
+            "the X archive is missing at %s. Every position extracted from it "
+            "silently disappears if this returns empty, so it raises instead. "
+            "Set IH_ARCHIVE_JSON to point at it." % ARCHIVE_JSON)
+    posts = json.load(open(ARCHIVE_JSON))
+    by_year = {}
+    for p in posts:
+        if p.get("is_reply") or p.get("is_rt"):
+            continue
+        text = (p.get("text") or "").strip()
+        if len(text) < min_len:
+            continue
+        year = (p.get("date") or "").split()[-1]
+        by_year.setdefault(year, []).append((year, text))
+    random.seed(7)
+    out = []
+    for year, items in sorted(by_year.items()):
+        frac = _YEAR_WEIGHT.get(year, _YEAR_WEIGHT_DEFAULT)
+        take = max(1, int(len(items) * frac))
+        out.extend(random.sample(items, min(take, len(items))))
+    out.sort(key=lambda x: x[0], reverse=True)  # newest years first
+    return out
