@@ -35,10 +35,33 @@ FIXTURE = [
 ]
 
 
+# The gate roster from NEWS-ENGINE-SPEC.md §6b. It lives here so a gate that is
+# in the spec and not in this file reports as a FAIL rather than as nothing.
+# Before 2026-08-24 the runner implemented 9 of these 11 and printed
+# "8/9 gates passed", a denominator that silently redefined itself to whatever
+# had been written. G2 and G10 had never existed.
+SPEC_GATES = {
+    "G1": "no-admission-gate",
+    "G2": "boost-not-filter",
+    "G3": "three-ways-qualify",
+    "G4": "seed-boost",
+    "G5": "plural-match",
+    "G6": "keyword-hygiene",
+    "G7": "feeds-loud",
+    "G8": "no-silent-drop",
+    "G9": "stable-pool",
+    "G10": "keep-cards",
+    "G11": "source-align",
+}
+
+_RAN = []
+
+
 def run_gate(name, check, detail=""):
     ok = check()
     status = "PASS" if ok else "FAIL"
     print(f"  [{status}] {name}" + (f" — {detail}" if detail and not ok else ""))
+    _RAN.append((name.split()[0], name, ok))
     return ok
 
 
@@ -113,10 +136,26 @@ def main():
     results.append(run_gate("G4 seed-boost", g4))
 
     # --- G7: feed failures are loud ---
+    #
+    # This used to be `"feeds_fail" in feed and "feed_failures" in feed`, a
+    # presence check on a JSON key. It answered "did something write this key",
+    # which was never the question. It was green on 2026-08-24 with 18 of 55
+    # feeds dead, and green on 08-21 with 17 of 48 dead. The spec says the gate
+    # passes when a dead feed causes a visible failure, so now a dead feed fails
+    # the gate and the names are printed.
     def g7():
-        # feeds_fail must be present in the JSON; the fixture/gates must check it
-        return "feeds_fail" in feed and "feed_failures" in feed
-    results.append(run_gate("G7 feeds-loud (reported in JSON)", g7))
+        if "feeds_fail" not in feed or "feed_failures" not in feed:
+            print("      articles.json does not report feed failures at all")
+            return False
+        n = feed.get("feeds_fail") or 0
+        if n:
+            names = feed.get("feed_failures") or []
+            print("      %d of %d feeds dead: %s"
+                  % (n, feed.get("feeds_total") or 0, ", ".join(names[:12])))
+            if len(names) > 12:
+                print("      ...and %d more" % (len(names) - 12))
+        return n == 0
+    results.append(run_gate("G7 feeds-loud", g7))
 
     # --- G8: no SILENT disappearance ---
     # Per spec: absent/dropped are loud, not silent. The failure is a story
@@ -176,9 +215,18 @@ def main():
         return has_data_card and has_one_off
     results.append(run_gate("G3 three-ways-qualify", g3))
 
+    # A gate in the spec with no implementation here is a FAIL, not an absence.
+    ran_ids = {gid for gid, _, _ in _RAN}
+    missing = [g for g in SPEC_GATES if g not in ran_ids]
+    for gid in sorted(missing, key=lambda g: int(g[1:])):
+        print(f"  [FAIL] {gid} {SPEC_GATES[gid]} — in NEWS-ENGINE-SPEC.md §6b, "
+              f"not implemented in gates.py")
+        results.append(False)
+
     print()
     passed = sum(1 for r in results if r)
-    print(f"  {passed}/{len(results)} gates passed")
+    print(f"  {passed}/{len(SPEC_GATES)} gates passed "
+          f"({len(ran_ids)} implemented, {len(missing)} missing)")
     return 0 if all(results) else 1
 
 
