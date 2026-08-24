@@ -317,15 +317,29 @@ VOICE_BOOST = float(os.environ.get("IH_VOICE_BOOST", "2.0"))
 VOICE_BOOST_CAP = float(os.environ.get("IH_VOICE_BOOST_CAP", "6.0"))
 
 
+# The term file failing to load is NOT a soft failure. If it comes back empty
+# the fourth score term silently becomes zero and every article ranks exactly
+# as it did before the boost existed, with no error anywhere. That is why the
+# load error is kept and written into the run meta rather than swallowed.
+_VOICE_LOAD_ERROR = None
+
+
 def _load_voice_terms():
+    global _VOICE_LOAD_ERROR
     try:
         out = []
         for line in open(VOICE_TERMS_PATH):
             line = line.strip().lower()
             if line and not line.startswith("#"):
                 out.append((line, re.compile(r"\b" + re.escape(line) + r"\b")))
+        if not out:
+            _VOICE_LOAD_ERROR = "voice_terms.txt loaded but contains no terms"
+            print("WARNING: " + _VOICE_LOAD_ERROR)
         return out
-    except Exception:
+    except Exception as e:
+        _VOICE_LOAD_ERROR = "%s: %s" % (type(e).__name__, e)
+        print("WARNING: voice terms did not load (%s). The fourth score term "
+              "is OFF for this run." % _VOICE_LOAD_ERROR)
         return []
 
 
@@ -536,6 +550,23 @@ def main():
     for a in all_articles:
         score_article(a)
 
+    # Which voice terms actually fired. A term that matches nothing and a term
+    # that is doing all the work look identical from outside the run, so both
+    # the per-term counts and the dead list go into the meta. On 2026-08-24,
+    # 24 of 52 terms fired zero times, including palantir, thc and deepseek,
+    # the exact subjects the term was added to rescue.
+    voice_counts = {}
+    for a in all_articles:
+        for t in a.get("_voice") or []:
+            voice_counts[t] = voice_counts.get(t, 0) + 1
+    voice_dead = sorted(t for t, _ in _VOICE_TERMS if t not in voice_counts)
+    voice_hit_articles = sum(1 for a in all_articles if a.get("_voice"))
+    print("Voice terms: %d loaded, %d fired, %d dead; %d/%d articles boosted"
+          % (len(_VOICE_TERMS), len(voice_counts), len(voice_dead),
+             voice_hit_articles, len(all_articles)))
+    if voice_dead:
+        print("  never fired: " + ", ".join(voice_dead))
+
     # Top stories: highest score, exclude noise-capped items (they can still
     # show in the feed below, just never as TOP NEWS).
     # Dated-only rule (2026-08-21): an article with no parseable date has
@@ -615,12 +646,26 @@ def main():
         "feeds_total": len(FEEDS),
         "feed_failures": fail_log,
         "ranking": {
-            "name": "weighted_editorial_v1",
+            # v2 = the fourth term. The name changes with the formula so a
+            # stored articles.json says which scorer produced it.
+            "name": "weighted_editorial_v2_voice",
             "source_tiers": "T1=4,T2=3,T3=2,T4=1",
             "recency_half_life_hours": RECENCY_HALF_LIFE_HOURS,
             "pillar_cap": 3,
             "noise_penalty": "hard_cap",
             "top_n": TOP_N,
+            "voice_terms_path": os.path.relpath(
+                VOICE_TERMS_PATH,
+                os.path.join(os.path.dirname(__file__), "..")),
+            "voice_terms_loaded": len(_VOICE_TERMS),
+            "voice_terms_fired": len(voice_counts),
+            "voice_terms_dead": voice_dead,
+            "voice_term_hits": dict(sorted(voice_counts.items(),
+                                           key=lambda kv: -kv[1])),
+            "voice_articles_boosted": voice_hit_articles,
+            "voice_boost_per_hit": VOICE_BOOST,
+            "voice_boost_cap": VOICE_BOOST_CAP,
+            "voice_load_error": _VOICE_LOAD_ERROR,
         },
         "articles": all_articles,
     }
