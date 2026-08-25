@@ -395,26 +395,39 @@ ANGLES_PATH = os.path.join(REPO, "angles.yaml")
 
 
 def load_angles():
-    """The enabled angles from angles.yaml. Missing file is not an error: the
-    desk runs angle-free and writes everything straight."""
-    try:
-        import yaml
-    except ImportError:
-        return []
+    """The enabled angles from angles.yaml.
+
+    This used to return [] on a missing yaml module, a missing file, or an
+    unreadable one, and the desk would run "angle-free" while every card
+    reported angle_id none. That is indistinguishable from a healthy run in
+    which nothing happened to be eligible, which is exactly the state that hid
+    the inventory being the rejected v1 for a day. It raises now.
+    """
+    import yaml
     if not os.path.exists(ANGLES_PATH):
-        return []
-    try:
-        doc = yaml.safe_load(open(ANGLES_PATH)) or {}
-    except Exception as exc:
-        print(f"  angles.yaml unreadable ({exc}); running angle-free")
-        return []
-    out = []
-    for a in doc.get("angles", []):
+        raise FileNotFoundError(
+            "angles.yaml is missing at %s. Without it every card is written "
+            "with no position and the brief still looks finished, so this "
+            "raises rather than running angle-free." % ANGLES_PATH)
+    doc = yaml.safe_load(open(ANGLES_PATH)) or {}
+    rows = doc.get("angles", [])
+    out, disabled, malformed = [], 0, 0
+    for a in rows:
         if not a.get("enabled", True):
+            disabled += 1
             continue
         scope = [str(x).lower().strip() for x in (a.get("scope") or []) if str(x).strip()]
         if a.get("id") and a.get("claim") and scope:
-            out.append({"id": a["id"], "claim": a["claim"], "scope": scope})
+            out.append({"id": a["id"], "claim": a["claim"],
+                        "subject": (a.get("subject") or "").strip(),
+                        "scope": scope})
+        else:
+            malformed += 1
+    if not out:
+        raise RuntimeError(
+            "angles.yaml parsed to 0 usable angles (%d rows, %d disabled, %d "
+            "malformed). Every card would be written position-free."
+            % (len(rows), disabled, malformed))
     return out
 
 
@@ -427,27 +440,67 @@ def cluster_subject_text(cl):
     return " ".join(bits).lower()
 
 
+# Cosine floor for an angle to be OFFERED on a cluster. Measured 2026-08-24 on
+# the three stories that broke:
+#
+#   Marc Lore sells the Timberwolves for $4.5bn -> sports valuations 0.456,
+#                                                  rent-vs-own compute  0.109
+#   Nvidia turns compute into an asset class    -> rent-vs-own compute  0.427
+#   Blue Origin's $674M factory in Williamson   -> housing              0.174
+#
+# The keyword version offered the housing angle on that last one, because the
+# housing signature and the housing scope both contained the word `texas`.
+# 0.30 sits above every wrong pair measured and below every right one. It is a
+# tuned constant, not a law: scripts/calibrate_angles.py re-measures it against
+# the current pool and prints what moves.
+ANGLE_SIM_FLOOR = float(os.environ.get("IH_ANGLE_FLOOR", "0.30"))
+ANGLE_MAX_OFFERED = 2
+
+
+def angle_probe_text(a):
+    """What an angle looks like to the embedding model.
+
+    The claim alone is a sentence in his voice and embeds toward its rhetoric;
+    the scope alone is a bag of nouns. Together with the extrapolated subject
+    line they describe the CATEGORY the position is about, which is the thing
+    a story has to be about for the position to be legal.
+    """
+    parts = [a["claim"]]
+    if a.get("subject"):
+        parts.append(a["subject"])
+    parts.append("Subjects this covers: " + ", ".join(a["scope"]) + ".")
+    return " ".join(parts)
+
+
 def eligible_angles(cl, angles):
-    """Angles whose scope covers this cluster's subject."""
-    subject = cluster_subject_text(cl)
-    hits = []
-    for a in angles:
-        matched = [t for t in a["scope"] if t in subject]
-        if not matched:
-            continue
-        # SPECIFICITY, not count. A single generic word ("texas", "compute",
-        # "ai models") matches almost any cluster, and offering an angle on
-        # that basis is how "texas-weed-laws-absurd" got offered to a housing
-        # cluster and "you-will-never-own-your-compute" to a sports-money one.
-        # A multi-word scope term is evidence about the subject; a one-word
-        # term is a coincidence until a second one agrees.
-        multi = [t for t in matched if " " in t]
-        if not multi and len(matched) < 2:
-            continue
-        score = 2 * len(multi) + len(matched)
-        hits.append((score, a, matched))
+    """Angles whose SUBJECT covers this cluster's subject, by meaning.
+
+    This was substring matching against a hand-written scope list until
+    2026-08-24. Two failures, one mechanism: a scope wide enough to catch the
+    right story caught every story (the housing angle fired on a rocket factory
+    because both mention Texas), and a scope narrow enough to be safe caught
+    nothing (53 of 62 angles were never once eligible across 758 cards).
+
+    A word is not a subject. Similarity is computed between the cluster's
+    titles and mined data points and the angle's claim + subject + scope, so a
+    story about hyperscaler leasing can reach a position about renting your
+    compute with no shared vocabulary at all.
+    """
+    if not cl or not angles:
+        return []
+    subject = cluster_subject_text(cl).strip()
+    if not subject:
+        # A cluster with no titles and no data points is an upstream failure.
+        # Scoring it against everything would return whatever is nearest to
+        # empty text, so it gets no angle and says so.
+        print("  angle-match: cluster '%s' has no subject text; no angle offered"
+              % (cl.get("sig", {}) or {}).get("name", "?"))
+        return []
+    import embed
+    sims = embed.similarity([subject], [angle_probe_text(a) for a in angles])[0]
+    hits = [(float(sc), a) for sc, a in zip(sims, angles) if sc >= ANGLE_SIM_FLOOR]
     hits.sort(key=lambda x: -x[0])
-    return [(a, m) for _, a, m in hits[:2]]
+    return [(a, sc) for sc, a in hits[:ANGLE_MAX_OFFERED]]
 
 
 def repair_narrative(text):
@@ -1022,9 +1075,16 @@ def load_clusters():
     scored.sort(key=lambda x: -x.get("_score", 0))
 
     from collections import OrderedDict
+    import embed
+    # Embed the whole pool in batches before clustering it. signature_for()
+    # embeds one story at a time, so without this a 2,000-article pool is 2,000
+    # sequential round trips.
+    _points = {id(a): brief.mine_data_points(a) for a in scored}
+    brief.warm_signatures([(a, _points[id(a)]) for a in scored])
+    print("  " + embed.stats_line())
     enriched = []
     for a in scored:
-        points = brief.mine_data_points(a)
+        points = _points[id(a)]
         sig, hits = brief.signature_for(a, points)
         quote = brief._quote_from_article(a)
         moment = brief._moment_from_article(a)
@@ -1154,6 +1214,10 @@ def call_model(clusters):
 
     _angles = load_angles()
     print(f"  angle inventory: {len(_angles)} enabled")
+    import embed as _embed
+    _embed.warm([cluster_subject_text(c) for c in clusters]
+                + [angle_probe_text(a) for a in _angles])
+    print("  " + _embed.stats_line())
     prompt_lines = ["Today's date: %s" % datetime.now(timezone.utc).strftime("%Y-%m-%d"), ""]
     for ci, cl in enumerate(clusters):
         _shape_name, _shape_rule = _SHAPES[ci % len(_SHAPES)]
@@ -1459,23 +1523,29 @@ def main():
                 {"headline": it["article"].get("title", ""),
                  "url": it["article"].get("link", "")}
                 for it in _cl.get("items", [])[:3]]
-        _offered = [a["id"] for a, _ in eligible_angles(_cl, _angles_used)] if _cl else []
-        _inferred = None
-        if _offered:
-            _ctoks = set(re.findall(r"[a-z']{4,}", (_headline + " " +
-                                                    (_card.get("paragraph") or "")).lower()))
-            _best, _bs = None, 0.0
-            for _a, _ in eligible_angles(_cl, _angles_used):
-                _atoks = set(re.findall(r"[a-z']{4,}", _a["claim"].lower()))
-                if not _atoks:
-                    continue
-                _ov = len(_ctoks & _atoks) / float(len(_atoks))
-                if _ov > _bs:
-                    _best, _bs = _a["id"], _ov
-            if _bs >= 0.30:
-                _inferred = _best
+        _elig = eligible_angles(_cl, _angles_used) if _cl else []
+        _offered = [a["id"] for a, _ in _elig]
+        _offered_scores = {a["id"]: round(sc, 3) for a, sc in _elig}
+        _inferred, _inferred_score = None, 0.0
+        if _elig:
+            # The model reports "none" even when it plainly used one (measured
+            # 2026-08-23: a card restating the prediction-markets claim almost
+            # verbatim still said none). This was word overlap between the card
+            # and the claim, which only caught a card that reused his nouns. It
+            # is the same similarity the offer used, so a card that argues the
+            # position in different words is still recognised as having used
+            # it.
+            import embed as _embed
+            _ctext = (_headline + " " + (_card.get("paragraph") or "")).strip()
+            _sims = _embed.similarity([_ctext],
+                                      [_a["claim"] for _a, _ in _elig])[0]
+            for (_a, _), _sc in zip(_elig, _sims):
+                if float(_sc) > _inferred_score:
+                    _inferred, _inferred_score = _a["id"], float(_sc)
+            if _inferred_score < 0.45:
+                _inferred, _inferred_score = None, 0.0
         if _aid and _cl is not None:
-            _legal = {a["id"] for a, _ in eligible_angles(_cl, _angles_used)}
+            _legal = set(_offered)
             if _aid not in _legal:
                 print(f"  ANGLE-GATE declined (angle '{_aid}' not in scope for "
                       f"this cluster): {_headline[:60]}")
@@ -1499,13 +1569,19 @@ def main():
             _decisions.append({"cluster": _ci, "verdict": "declined_type_gate",
                                "reason": "performance_only", "angle": _aid,
                                "source_headline": _lead_source_text(_card, _cl)[:160],
-                               "angle_offered": _offered, "angle_inferred": _inferred,
+                               "angle_offered": _offered,
+                               "angle_offered_scores": _offered_scores,
+                               "angle_inferred": _inferred,
+                               "angle_inferred_score": round(_inferred_score, 3),
                                "cluster_name": _kicker, "headline": _headline})
             _card["narrative"] = None
             _typed_out += 1
         else:
             _decisions.append({"cluster": _ci, "verdict": "kept", "angle": _aid,
-                               "angle_offered": _offered, "angle_inferred": _inferred,
+                               "angle_offered": _offered,
+                               "angle_offered_scores": _offered_scores,
+                               "angle_inferred": _inferred,
+                               "angle_inferred_score": round(_inferred_score, 3),
                                "cluster_name": _kicker, "headline": _headline})
     if _typed_out:
         print(f"  DEMOTED {_typed_out} card(s) to the bottom of the feed")

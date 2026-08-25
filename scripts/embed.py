@@ -42,6 +42,7 @@ import hashlib
 import json
 import os
 import sys
+import time
 import urllib.error
 import urllib.request
 
@@ -91,12 +92,34 @@ def _fetch(batch):
         headers={"Content-Type": "application/json",
                  "Authorization": "Bearer " + _api_key(),
                  "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) ih-embed/1.0"})
-    try:
-        with urllib.request.urlopen(req, timeout=180) as resp:
-            data = json.loads(resp.read().decode())
-    except urllib.error.HTTPError as e:
-        raise RuntimeError("embeddings HTTP %s: %s"
-                           % (e.code, e.read()[:400].decode("utf-8", "replace")))
+    # 429/500/502/503/504 are the provider being busy, which is not a fact
+    # about our data: retry those. A 400/401/403/404 is a permanent refusal
+    # (bad key, bad model id, malformed body) and retrying it just burns time,
+    # so it raises on the first response.
+    data, last = None, None
+    for attempt in range(4):
+        try:
+            with urllib.request.urlopen(req, timeout=180) as resp:
+                data = json.loads(resp.read().decode())
+            break
+        except urllib.error.HTTPError as e:
+            detail = e.read()[:400].decode("utf-8", "replace")
+            if e.code not in (429, 500, 502, 503, 504):
+                raise RuntimeError("embeddings HTTP %s (permanent): %s"
+                                   % (e.code, detail))
+            last = "HTTP %s: %s" % (e.code, detail)
+        except (urllib.error.URLError, TimeoutError) as e:
+            last = str(e)
+        if attempt < 3:
+            wait = 2 ** attempt
+            print("  embeddings transient (%s); retry %d/3 in %ds"
+                  % (last, attempt + 1, wait))
+            time.sleep(wait)
+    if data is None:
+        raise RuntimeError(
+            "embeddings failed after 4 attempts: %s. Returning zero vectors "
+            "here would score 0.0 against everything and read as 'nothing "
+            "matches', so this raises." % last)
     rows = data.get("data") or []
     if len(rows) != len(batch):
         raise RuntimeError(
@@ -154,6 +177,21 @@ def embed(texts):
             out[i] = v
             _stats["fetched"] += 1
     return out
+
+
+def warm(texts):
+    """Pre-fetch vectors for many texts, batched.
+
+    similarity() is called once per article by signature_for() and once per
+    cluster by eligible_angles(). Without this each of those calls fetches a
+    batch of one, so a 400-article pool costs 400 sequential round trips.
+    Callers warm the whole pool first and every per-item call is then a cache
+    hit.
+    """
+    texts = [t for t in ((x or "").strip()[:MAX_CHARS] for x in texts) if t]
+    if not texts:
+        return
+    embed(sorted(set(texts)))
 
 
 def similarity(a_texts, b_texts):
