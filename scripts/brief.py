@@ -120,51 +120,61 @@ def mine_data_points(article):
 NARRATIVE_SIGNATURES = [
     {
         "name": "The AI data gold rush",
+        "subject": 'The buildout underneath AI and who is getting paid for it: training data and the people who label it, GPUs and chip supply, data centres and the power and land they need, cloud capacity deals, and the money being raised against all of it.',
         "voice_weight": 1.0,
         "keywords": ["training data", "data labeling", "data center", "gross run rate", "ai training", "compute", "gpu", "data infra"],
     },
     {
         "name": "AI trust and accountability",
+        "subject": 'Whether AI systems can be trusted and who is answerable when they are not: models that deceive or hallucinate, safety and alignment work, red teaming, audits, regulation, liability, and what happens to the people affected.',
         "voice_weight": 1.0,
         "keywords": ["zero data retention", "safety", "oversight", "national security", "lie", "cheat", "hallucinat", "alignment", "guardrail", "red team", "ai agents"],
     },
     {
         "name": "Media power and who owns it",
+        "subject": 'Who controls what gets published and seen: ownership of newsrooms and studios, consolidation and acquisitions, the platforms that distribute news, editorial independence, and antitrust pressure on any of it.',
         "voice_weight": 1.0,
         "keywords": ["zuckerberg", "media ownership", "newsroom", "journalism", "platform power", "antitrust media", "who owns", "masthead"],
     },
     {
         "name": "Creator economy consolidation",
+        "subject": 'Independent creators and the businesses forming around them: the platforms they publish on, revenue splits and royalties, deals with studios and labels, and the consolidation that turns independence back into employment.',
         "voice_weight": 1.0,
         "keywords": ["creator", "influencer", "studio", "tiktok", "youtube", "substack", "content deal", "royalt", "creator economy"],
     },
     {
         "name": "Sports money keeps inflating",
+        "subject": 'The economics of professional sport rather than the games: franchise valuations and team sales, broadcast and streaming rights, stadium finance, player pay and revenue sharing, sponsorship, and betting money entering the sport.',
         "voice_weight": 0.7,
         "keywords": ["prize money", "valuation", "stadium", "media deal", "broadcast", "rights deal", "nfl", "nba", "mlb", "premier league", "franchise", "revenue share", "team sale"],
     },
     {
         "name": "Prediction markets go mainstream",
+        "subject": 'Markets where people trade on the probability of real events: prediction and event contract exchanges, their regulators, election and sports odds, and the argument about whether their prices actually forecast anything.',
         "voice_weight": 0.7,
         "keywords": ["kalshi", "polymarket", "prediction market", "cftc", "election odds", "probability", "market contract"],
     },
     {
         "name": "Crypto's leverage problem",
+        "subject": 'Borrowed money inside crypto markets: leveraged positions, liquidations and short squeezes, lending against tokens, ETF and fund flows, and the collapses that follow when the borrowing unwinds.',
         "voice_weight": 0.7,
         "keywords": ["short squeeze", "liquidation", "leverage", "borrow", "etf flow", "plung", "xrp", "bitcoin", "token"],
     },
     {
         "name": "AI surveillance creep",
+        "subject": 'Automated watching of ordinary people: cameras and licence plate readers, facial recognition, phone and location tracking, always-on recording devices, police and employer use of it, and the privacy law around it.',
         "voice_weight": 0.7,
         "keywords": ["surveillance", "glasses", "recording", "police", "track", "camera", "privacy", "facial", "driver"],
     },
     {
         "name": "Energy and climate thresholds",
+        "subject": 'How energy gets produced and what the climate does in response: grid capacity and demand, solar, geothermal, nuclear and hydrogen, emissions and carbon accounting, and the floods, heat and storms already arriving.',
         "voice_weight": 0.4,
         "keywords": ["hydrogen", "geothermal", "solar", "grid", "emission", "climate", "flood", "space mirror", "temperature", "carbon"],
     },
     {
         "name": "Cities, housing and where America lives",
+        "subject": 'Where people can afford to live and what that does to a place: home prices and rents, supply and construction, zoning and permitting, landlords and investor ownership, cost of living, and the migration between cities and regions that follows.',
         "voice_weight": 1.0,
         "keywords": ["texas", "austin", "housing", "rent", "suburb", "relocation", "move to", "real estate", "zoning", "migration", "cost of living", "neighborhood"],
     },
@@ -182,22 +192,66 @@ def _kw_match(keyword, text):
     return re.search(pattern, text) is not None
 
 
-# Cosine floor for a story to JOIN a signature cluster. Measured 2026-08-24:
-# the Blue Origin $674M Williamson County factory scored 0.174 against housing,
-# and its only keyword hit against that signature was `texas`. A Timberwolves
-# sale scored 0.456 against sports valuations and 0.109 against compute. 0.32
-# sits above the wrong pairs and below the right ones; the margin between the
-# best and second-best signature has to clear SIG_SIM_MARGIN as well, so a
-# story that is equally near two themes joins neither rather than joining the
-# one that happened to win by a hair.
-SIG_SIM_FLOOR = float(os.environ.get("IH_SIG_FLOOR", "0.32"))
+# Cosine floor for a story to JOIN a signature cluster, calibrated 2026-08-24
+# against a 400-article slice of the live pool. Against the prose subject
+# probes:
+#
+#   Padres roster moves            housing 0.031   (the OLD rule clustered it
+#   Mystics WNBA championship      housing 0.038    into housing, on `texas`)
+#   Texas A&M fall camp            housing 0.065
+#   First-time buyers priced out   housing 0.264
+#   Austin rents fall 12%          housing 0.274
+#
+# 0.26 is the widest gap in that ordering. It also keeps out "Texans' 53-man
+# roster prediction" (0.254 against prediction markets, matched on the word
+# prediction). Known cost at this floor: "Oceans hit highest temperature on
+# record" scores 0.252 against energy and climate and stays unclustered.
+#
+# Known cost at this floor, beyond the oceans story: two genuine housing items
+# ("W Properties Mixing BTR and Garden-Style Apartments" 0.214, "VIC Partners
+# Obtains Construction Loan for a 268-Unit Workforce Rental Community" 0.231)
+# rank housing FIRST and still miss. Terse trade-press headlines carry little
+# text to embed.
+#
+# A confidence clause was tried to recover them: admit anything above 0.21 that
+# beats its runner-up by 0.08. It recovered both, and readmitted eleven others,
+# including "Brenda Song Loves the Los Angeles Rams" into sports money and a
+# Notre Dame recruiting page into the AI data gold rush. Rejected: the margin
+# is high on short headlines because there is not enough text for a second
+# theme to score at all, so it measures brevity rather than confidence.
+#
+# The margin rule that remains is separate: the best signature must beat the
+# runner-up by SIG_SIM_MARGIN, so a story equally near two themes joins neither
+# rather than joining whichever won by a hair.
+SIG_SIM_FLOOR = float(os.environ.get("IH_SIG_FLOOR", "0.26"))
 SIG_SIM_MARGIN = float(os.environ.get("IH_SIG_MARGIN", "0.02"))
 
 
 def _sig_probe_text(sig):
-    """What a signature looks like to the embedding model: the theme it is
-    named for, plus its keywords as examples of what belongs to it."""
-    return "%s. Stories about: %s." % (sig["name"], ", ".join(sig["keywords"]))
+    """What a signature looks like to the embedding model.
+
+    Not the keyword list. The keywords were written to be FOUND in text, so
+    they carry the vocabulary's accidents: `texas` and `austin` sat in the
+    housing list because that is where he lives, and feeding them to an
+    embedding pulls the whole vector toward Texas. Measured 2026-08-24, a
+    Texas A&M fall-camp story scored 0.148 against the keyword probe and 0.054
+    once the place names came out.
+
+    Stripping them is not enough either, because a bare noun list is a thin
+    description of a category: it also dropped a real story ("Austin rents
+    fall 12% as new apartments finish") from 0.360 to 0.279, under the floor.
+
+    So each signature carries a `subject` sentence describing the CATEGORY in
+    prose, the same thing angles.yaml now carries. Keywords stay for the
+    non-semantic uses elsewhere in this file.
+    """
+    subject = (sig.get("subject") or "").strip()
+    if not subject:
+        raise RuntimeError(
+            "signature %r has no subject sentence. Falling back to its keyword "
+            "list would silently reintroduce the place-name bias this replaced."
+            % sig.get("name"))
+    return "%s. %s" % (sig["name"], subject)
 
 
 def signature_subject_text(article, data_points):
