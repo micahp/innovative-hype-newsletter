@@ -182,31 +182,84 @@ def _kw_match(keyword, text):
     return re.search(pattern, text) is not None
 
 
+# Cosine floor for a story to JOIN a signature cluster. Measured 2026-08-24:
+# the Blue Origin $674M Williamson County factory scored 0.174 against housing,
+# and its only keyword hit against that signature was `texas`. A Timberwolves
+# sale scored 0.456 against sports valuations and 0.109 against compute. 0.32
+# sits above the wrong pairs and below the right ones; the margin between the
+# best and second-best signature has to clear SIG_SIM_MARGIN as well, so a
+# story that is equally near two themes joins neither rather than joining the
+# one that happened to win by a hair.
+SIG_SIM_FLOOR = float(os.environ.get("IH_SIG_FLOOR", "0.32"))
+SIG_SIM_MARGIN = float(os.environ.get("IH_SIG_MARGIN", "0.02"))
+
+
+def _sig_probe_text(sig):
+    """What a signature looks like to the embedding model: the theme it is
+    named for, plus its keywords as examples of what belongs to it."""
+    return "%s. Stories about: %s." % (sig["name"], ", ".join(sig["keywords"]))
+
+
+def signature_subject_text(article, data_points):
+    """What a story is ABOUT, for matching: its title and its mined data
+    points. Never the body. A body mentions everything; a title states the
+    subject, and matching on bodies is how a housing theme finds a chip story
+    in the first place."""
+    title = strip_html(article.get("title", "") or "").strip()
+    return " ".join([title] + list(data_points or [])).strip()
+
+
+def warm_signatures(pairs):
+    """Batch-embed a whole pool before clustering it.
+
+    signature_for() embeds one article at a time, so without this a 400-article
+    pool is 400 sequential provider round trips. Pass [(article, points), ...]
+    and every later signature_for() call is a cache hit.
+    """
+    import embed
+    texts = [_sig_probe_text(x) for x in NARRATIVE_SIGNATURES]
+    texts += [signature_subject_text(a, p) for a, p in pairs]
+    embed.warm(texts)
+
+
 def signature_for(article, data_points):
     """Assign an article to a narrative signature (theme), if any.
 
-    v3: require at least 2 keyword hits (or 1 strong hit + a data point) so
-    passing mentions don't pollute a cluster. Returns (signature, hit_count)."""
-    text = f"{article.get('title','')} {article.get('summary','')} {article.get('_body','')}".lower()
-    text = _clean_entities(strip_html(text))
-    moment_text = " ".join(data_points).lower()
+    Until 2026-08-24 this counted substring hits from the signature's keyword
+    list and required 2. That is how `texas`, sitting in the housing
+    signature's keywords, put a Blue Origin rocket factory in "Cities, housing
+    and where America lives" and let the desk offer it a housing angle. The
+    same list has `valuation` and `broadcast` under sports and `compute` under
+    the AI data gold rush, so a team sale and a compute-financing story land
+    next to each other on generic finance nouns.
 
-    best = None
-    best_hits = 0
-    for sig in NARRATIVE_SIGNATURES:
-        hits = sum(1 for kw in sig["keywords"] if _kw_match(kw, text))
-        if hits == 0:
-            continue
-        if any(_kw_match(kw, moment_text) for kw in sig["keywords"]):
-            hits += 1
-        if hits > best_hits:
-            best = sig
-            best_hits = hits
+    Broadening the list attaches everything and narrowing it attaches nothing.
+    Both are the same defect, which is that a word is not a subject. Matching
+    is on meaning now: the article's title and mined data points against the
+    signature's theme and its keywords-as-examples. Returns (signature, score)
+    where score is the cosine, kept in the second slot so existing callers that
+    treat it as a strength number still work.
+    """
+    import embed
+    subject = signature_subject_text(article, data_points)
+    if not subject:
+        # No title and no mined points is an upstream failure, not a story that
+        # belongs to no theme. Say it rather than silently returning None.
+        print("  signature: article has no title or data points; unclustered")
+        return None, 0.0
 
-    # Purity gate: passing mentions (1 hit, no data point) don't join a cluster
-    if best is None or best_hits < 2:
-        return None, 0
-    return best, best_hits
+    sims = embed.similarity([subject], [_sig_probe_text(x)
+                                        for x in NARRATIVE_SIGNATURES])[0]
+    order = sorted(zip(sims, NARRATIVE_SIGNATURES), key=lambda t: -t[0])
+    best_score, best = float(order[0][0]), order[0][1]
+    runner = float(order[1][0]) if len(order) > 1 else 0.0
+
+    if best_score < SIG_SIM_FLOOR:
+        return None, 0.0
+    if best_score - runner < SIG_SIM_MARGIN:
+        # Equally near two themes means the subject is not one of them.
+        return None, 0.0
+    return best, best_score
 
 
 def _narrative_title(sig_name, lead, data_point):
