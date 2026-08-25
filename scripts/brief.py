@@ -105,7 +105,9 @@ def mine_data_points(article):
 
 
 # === 3. NARRATIVE CLUSTERING ===
-# Theme signatures: (name, keywords, voice_weight). An article joins a
+# Theme signatures. `subject` is what decides membership (see _sig_probe_text);
+# `keywords` is documentation only and is read by nothing.
+# An article joins a
 # narrative bucket when it matches the theme AND carries a moment-worthy
 # data point (or is a high-score anchor).
 #
@@ -242,8 +244,11 @@ def _sig_probe_text(sig):
     fall 12% as new apartments finish") from 0.360 to 0.279, under the floor.
 
     So each signature carries a `subject` sentence describing the CATEGORY in
-    prose, the same thing angles.yaml now carries. Keywords stay for the
-    non-semantic uses elsewhere in this file.
+    prose, the same thing angles.yaml now carries.
+
+    The `keywords` lists are kept as human documentation of what each theme is
+    meant to hold, and they DECIDE NOTHING: nothing in the pipeline reads them
+    any more. Do not add a keyword expecting it to change what clusters.
     """
     subject = (sig.get("subject") or "").strip()
     if not subject:
