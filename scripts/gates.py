@@ -10,6 +10,7 @@ longer matches the spec — fix the code or the spec, don't ignore it.
 """
 
 import json
+import re
 import os
 import re
 import subprocess
@@ -104,25 +105,85 @@ def main():
         return "if sig and points" not in src and "if sig and data" not in src
     results.append(run_gate("G1 no-admission-gate", g1))
 
-    # --- G5: plural matching ---
+    # --- G5: the matcher separates the cases it is there to separate ---
     sys.path.insert(0, SCRIPTS)
     import brief as brief_mod
+    # This gate used to assert brief._kw_match() handled plurals. As of
+    # 2026-08-24 nothing in the pipeline calls _kw_match: clustering is
+    # embedding similarity. A green assertion about a function that decides
+    # nothing is the §2e failure, so the gate moves to the surface that now
+    # decides, keeping the spec's intent (the matcher matches the right
+    # things) and dropping a test of dead code.
     def g5():
-        return (
-            brief_mod._kw_match("camera", "stolen flock cameras")
-            and brief_mod._kw_match("track", "license plate tracking")
-            and not brief_mod._kw_match("ban", "the band played on")
-        )
-    results.append(run_gate("G5 plural-match", g5))
-
-    # --- G6: no generic keywords in signatures ---
-    def g6():
-        for sig in brief_mod.NARRATIVE_SIGNATURES:
-            for kw in sig["keywords"]:
-                if kw in GENERIC_KEYWORDS:
-                    return False
+        h = [x for x in brief_mod.NARRATIVE_SIGNATURES
+             if x["name"].startswith("Cities")][0]
+        probes = {
+            # (text, must_cluster_here_or_None)
+            "Padres make flurry of roster moves before Pirates series": None,
+            "Mystics take big first step toward WNBA championship": None,
+            "Texas A&M fall camp intel: Aggies secondary starting to take shape": None,
+            "Austin rents fall 12% as a wave of new apartments finishes": h["name"],
+        }
+        import embed
+        keys = list(probes)
+        sims = embed.similarity(keys, [brief_mod._sig_probe_text(x)
+                                       for x in brief_mod.NARRATIVE_SIGNATURES])
+        for i, text in enumerate(keys):
+            order = sorted(zip(sims[i], brief_mod.NARRATIVE_SIGNATURES),
+                           key=lambda t: -t[0])
+            best, sig = float(order[0][0]), order[0][1]
+            runner = float(order[1][0])
+            joins = (sig["name"] if best >= brief_mod.SIG_SIM_FLOOR
+                     and best - runner >= brief_mod.SIG_SIM_MARGIN else None)
+            want = probes[text]
+            if joins != want:
+                print(f"      G5: {text[:52]!r} joins {joins} (want {want}), "
+                      f"best {best:.3f}")
+                return False
         return True
-    results.append(run_gate("G6 keyword-hygiene", g6))
+    results.append(run_gate("G5 subject-match", g5))
+
+    # --- G6: hygiene, on every list that steers matching ---
+    # The spec's rule is that generic or accidental vocabulary must not steer
+    # what a story is judged to be about. It used to check only signature
+    # keywords. Since 2026-08-24 the signature `subject` sentence and the
+    # angles.yaml `scope` do that job and the keywords do not, so the gate
+    # covers all three. Place names are barred by name: `texas` sitting in the
+    # housing keyword list is what put a WNBA story in that cluster.
+    PLACES = ("texas", "austin", "houston", "dallas", "galveston", "america",
+              "american", "minnesota", "california", "florida")
+
+    def g6():
+        bad = []
+        for sig in brief_mod.NARRATIVE_SIGNATURES:
+            subj = (sig.get("subject") or "").strip()
+            if not subj:
+                bad.append(f"signature {sig['name']!r} has no subject sentence")
+                continue
+            low = subj.lower()
+            for pl in PLACES:
+                if re.search(r"\b%s\b" % pl, low):
+                    bad.append(f"signature {sig['name']!r} subject names {pl!r}")
+        angles_path = os.path.join(REPO, "angles.yaml")
+        if os.path.exists(angles_path):
+            import yaml
+            doc = yaml.safe_load(open(angles_path)) or {}
+            for a in doc.get("angles", []):
+                for term in (a.get("scope") or []):
+                    t = str(term).lower().strip()
+                    if t in GENERIC_KEYWORDS:
+                        bad.append(f"angle {a.get('id')!r} scope has generic {t!r}")
+                    if t in PLACES:
+                        bad.append(f"angle {a.get('id')!r} scope has place {t!r}")
+        else:
+            # Evidence unavailable is a FAIL, never a skip.
+            bad.append("angles.yaml is missing, so its scope cannot be checked")
+        for b in bad[:8]:
+            print("      " + b)
+        if len(bad) > 8:
+            print(f"      ...and {len(bad) - 8} more")
+        return not bad
+    results.append(run_gate("G6 matching-hygiene", g6))
 
     # --- G4: seed matching exists and boosts ---
     def g4():
