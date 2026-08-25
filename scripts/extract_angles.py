@@ -21,7 +21,7 @@ on and the posts it came from. Micah edits that file directly. This is the
 answer to "without having me fine-tune an LLM on my tweets" — the corpus seeds
 the inventory, but the inventory is text he owns and corrects, not weights.
 
-    python scripts/extract_angles.py            # write angles.yaml (candidates)
+    python scripts/extract_angles.py            # write angles.candidates.yaml
     python scripts/extract_angles.py --dry-run  # print, don't write
 
 Nothing schedules this. It is a developer tool: re-run it when the corpus has
@@ -37,7 +37,7 @@ import narrative_desk as nd  # noqa: E402  (reuse its provider + auth path)
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CORPUS = os.path.join(REPO, "corpus")
-OUT = os.path.join(REPO, "angles.yaml")
+OUT = os.path.join(REPO, "angles.candidates.yaml")
 
 _SYSTEM = (
     "You are reading one person's social posts to extract the POSITIONS they "
@@ -265,7 +265,9 @@ def main():
     with open(OUT, "w") as f:
         f.write(out)
     print(f"wrote {OUT}")
-    print("EDIT IT. These are candidates read off the corpus, not your ruling.")
+    print("These are RAW candidates, one pass over the corpus in batches, so "
+          "near-duplicates are expected. Run scripts/consolidate_angles.py to "
+          "merge them into angles.yaml.")
     return 0
 
 
