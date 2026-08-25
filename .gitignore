@@ -8,3 +8,6 @@ pipeline.log
 *.log
 __pycache__/
 *.pyc
+
+# derived embedding vectors, safe to delete and regenerate
+.embed-cache/
