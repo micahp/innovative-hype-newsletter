@@ -388,10 +388,22 @@ def make_brief(articles, max_cards=5, stories_per_card=3):
     scored = [a for a in articles if not a.get("_noise")]
     scored.sort(key=lambda x: -x.get("_score", 0))
 
+    # Embed the whole pool in ONE batched pass before clustering it.
+    # signature_for() embeds one article at a time, so without this a 2,580
+    # article pool is 2,580 sequential provider round trips. Measured
+    # 2026-08-25: that ran past 400s and the cron's 900s per-script timeout was
+    # the only thing standing between it and running forever. load_clusters()
+    # in narrative_desk.py already warmed; this loop did not, and it is the one
+    # the cron reaches first.
+    _points = {id(a): mine_data_points(a) for a in scored}
+    warm_signatures([(a, _points[id(a)]) for a in scored])
+    import embed as _embed
+    print("  " + _embed.stats_line())
+
     # Enrich every eligible article — no gate
     enriched = []
     for a in scored:
-        points = mine_data_points(a)
+        points = _points[id(a)]
         sig, hits = signature_for(a, points)
         quote = _quote_from_article(a)
         moment = _moment_from_article(a)

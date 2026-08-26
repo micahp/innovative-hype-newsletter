@@ -46,7 +46,25 @@ import time
 import urllib.error
 import urllib.request
 
-import numpy as np
+try:
+    import numpy as np
+except ImportError:  # pragma: no cover
+    # This cost nine consecutive pipeline runs on 2026-08-24/25. The hermes
+    # cron invokes the scripts with ITS OWN interpreter
+    # (/usr/local/lib/hermes-agent/venv/bin/python3, 3.11) while development
+    # here happens under /usr/bin/python3 (3.8). numpy was installed in the
+    # second and not the first, so brief.py and narrative_desk.py exited 1
+    # every two hours while feed_aggregator.py kept returning 0. articles.json
+    # stayed fresh, the desk went dark, and the page still rendered its last
+    # good cards, so nothing looked broken from outside.
+    raise ImportError(
+        "numpy is required by scripts/embed.py and is missing from this "
+        "interpreter (%s). Semantic clustering and angle matching cannot run "
+        "without it. Install it into THIS interpreter, not the one on your "
+        "PATH:\n    %s -m pip install numpy\n"
+        "Dev and cron use different interpreters here; a package present in "
+        "one says nothing about the other."
+        % (sys.executable, sys.executable))
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CACHE_DIR = os.environ.get("IH_EMBED_CACHE", os.path.join(REPO, ".embed-cache"))
