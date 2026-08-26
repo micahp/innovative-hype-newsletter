@@ -259,6 +259,36 @@ def _sig_probe_text(sig):
     return "%s. %s" % (sig["name"], subject)
 
 
+def local_ts(when=None, fmt="%Y-%m-%d %H:%M %Z"):
+    """Format a moment in the box's LOCAL timezone, for DISPLAY only.
+
+    Micah, 2026-08-25, reading the brief footer: "everything should be in local
+    time on the webpage." The footer said "2026-08-25 00:29 UTC", which is
+    19:29 CDT the previous evening, and it read as a run from earlier today
+    when it was nineteen hours stale. A timestamp whose job is to tell you how
+    fresh the page is must not need arithmetic first.
+
+    Storage stays UTC on purpose: run directory names, meta.json timestamps and
+    each card's first_seen are keys and comparisons, and a local-time key
+    repeats itself for an hour every autumn. This converts at the edge.
+
+    Accepts a datetime, an ISO string, or None for now. A naive datetime is
+    assumed to be UTC, which is what every stored timestamp in this pipeline
+    is.
+    """
+    from datetime import datetime as _d, timezone as _tzz
+    if when is None:
+        when = _d.now(_tzz.utc)
+    elif isinstance(when, str):
+        try:
+            when = _d.fromisoformat(when)
+        except ValueError:
+            return when  # unparseable: show it as stored rather than guessing
+    if when.tzinfo is None:
+        when = when.replace(tzinfo=_tzz.utc)
+    return when.astimezone().strftime(fmt)
+
+
 def signature_subject_text(article, data_points):
     """What a story is ABOUT, for matching: its title and its mined data
     points. Never the body. A body mentions everything; a title states the
@@ -490,7 +520,7 @@ def main():
 
     header = (
         "# INNOVATIVE HYPE — BRIEF\n"
-        f"_Generated {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')} · "
+        f"_Generated {local_ts()} · "
         f"{data.get('feeds_ok',0)}/{data.get('feeds_total',0)} feeds · "
         f"{len(data['articles'])} articles_\n\n"
     )
@@ -562,7 +592,7 @@ def _render_html(cards):
 <body>
 <div class="wrap">
   <h1 class="page-title">Innovative Hype — Brief</h1>
-  <div class="page-meta">Narrative brief · data-point anchored · updated {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}</div>
+  <div class="page-meta">Narrative brief · data-point anchored · updated {local_ts()}</div>
   {''.join(card_html)}
   <a class="back" href="index.html">← Back to feed</a>
 </div>

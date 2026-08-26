@@ -979,9 +979,12 @@ def render_brief_html(clusters, parsed, run_dir):
         declined_html = (f'<details class="declined"><summary>Declined this run '
                          f'({len(_LAST_DECLINES)})</summary><ul>{rows}</ul></details>')
 
-    ts = datetime.now(_tz.utc).strftime("%Y-%m-%d %H:%M UTC")
+    # Displayed in LOCAL time. The stored timestamps stay UTC; see
+    # brief.local_ts() for why the conversion happens at the edge.
+    import brief as _brief
+    ts = _brief.local_ts()
     meta = json.load(open(os.path.join(run_dir, "meta.json"))) if os.path.exists(os.path.join(run_dir, "meta.json")) else {}
-    run_ts = (meta.get("timestamp") or ts)[:19].replace("T", " ")
+    run_ts = _brief.local_ts(meta["timestamp"]) if meta.get("timestamp") else ts
     html = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
