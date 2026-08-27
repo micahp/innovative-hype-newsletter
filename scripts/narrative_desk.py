@@ -662,6 +662,9 @@ def merge_into_feed(new_cards):
 # demotion. The card stays, he can see it, and it sits where it belongs.
 FEED_RECENCY_HALFLIFE_H = float(os.environ.get("IH_FEED_HALFLIFE_H", "18"))
 SOFT_PENALTY = float(os.environ.get("IH_SOFT_PENALTY", "4.0"))
+# A card graded F (take is wrong for the story) drops this far, but stays on
+# the page: he cuts, the desk does not silently disappear its misses.
+QUALITY_F_PENALTY = float(os.environ.get("IH_QUALITY_F_PENALTY", "4.0"))
 
 
 def feed_rank(card):
@@ -676,6 +679,9 @@ def feed_rank(card):
         age_h = 0.0
     score += 2.0 * (0.5 ** (max(age_h, 0) / FEED_RECENCY_HALFLIFE_H))
     score -= SOFT_PENALTY * float(card.get("soft_penalty") or 0)
+    # The F here grades the CARD's take (grade_feed), not the story's size.
+    if (card.get("quality_grade") or "").strip().upper() == "F":
+        score -= QUALITY_F_PENALTY
     return score
 
 
@@ -855,11 +861,15 @@ def _top_ten_grade(i):
 
 def _brief_card_html(c):
     """One brief-card <article>. Shared by the desk render and regrade_feed
-    so the page has exactly one shape. c["grade"] ("" = none) is the badge."""
+    so the page has exactly one shape. The badge is the CARD's quality grade
+    (grade_feed) when one exists; the story-rank grade is the fallback."""
     import html as _html
-    grade = c.get("grade") or ""
-    grade_html = (f'<span class="brief-grade{" lead" if grade == "A+" else ""}">'
-                  f'{grade}</span>') if grade else ""
+    qg, qn = (c.get("quality_grade") or "").strip().upper(), c.get("quality_note") or ""
+    grade = qg or c.get("grade") or ""
+    cls = f' {qg.lower()}' if qg in ("D", "F") else (" lead" if grade == "A+" else "")
+    tip = f' title="{_html.escape(qn)}"' if (qn and qg) else ""
+    grade_html = (f'<span class="brief-grade{cls}"{tip}>{grade}</span>'
+                  ) if grade else ""
     src_bits = []
     for i, srec in enumerate(c.get("sources", [])[:3]):
         sep = '<span class="src-dot">·</span>' if i else ""
@@ -909,6 +919,8 @@ def _brief_page(cards_html, declined_html, code_version, run_ts, ts):
   .brief-age {{ float:right; text-transform:none; letter-spacing:0; opacity:.75; }}
   .brief-grade {{ float:right; font-family:'Oswald',sans-serif; font-size:.72rem; font-weight:600; letter-spacing:.05em; color:var(--gold-dark); border:1.5px solid var(--gold); padding:0 .5rem; margin-left:.6rem; }}
   .brief-grade.lead {{ background:var(--gold); color:#fff; }}
+  .brief-grade.d {{ color:#8a5b00; border-color:#d97706; }}
+  .brief-grade.f {{ color:#b91c1c; border-color:#dc2626; background:rgba(220,38,38,.06); }}
   .declined {{ margin-top:2rem; border-top:1px solid var(--border); padding-top:1rem; }}
   .declined summary {{ font-size:.75rem; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-muted); cursor:pointer; }}
   .declined ul {{ list-style:none; padding:.6rem 0 0; }}
@@ -930,18 +942,23 @@ def _brief_page(cards_html, declined_html, code_version, run_ts, ts):
 """
 
 
-def regrade_feed():
-    """Re-render web/brief.html from the stored feed, no desk run.
+def _declined_html(declines):
+    """The declined-this-run block; he disagrees with declines on the page."""
+    import html as _html
+    if not declines:
+        return ""
+    rows = "".join(
+        f'<li><span class="dq-why">{_html.escape(d.get("reason") or d.get("verdict",""))}</span>'
+        f'{_html.escape((d.get("headline") or "")[:130])}</li>'
+        for d in declines)
+    return (f'<details class="declined"><summary>Declined this run '
+            f'({len(declines)})</summary><ul>{rows}</ul></details>')
 
-    The stored feed (web/brief-feed.json) is already the ranked, gated,
-    deduped artifact the last render wrote; grades are re-derived from its
-    order. Use when the grading or the template changes and the page should
-    not wait for the next desk cycle: no merge, no store write, no model
-    call. The declined-this-run block is run commentary and comes back with
-    the next real render.
-    """
+
+def _write_feed_page(feed, declines=()):
+    """Stamp rank grades, write the feed files, render brief.html. The one
+    writer for the feed artifacts; regrade_feed and grade_feed both land here."""
     import brief as _brief
-    feed = load_feed()
     for i, c in enumerate(feed):
         c["grade"] = _top_ten_grade(i)
     with open(FEED_PATH, "w") as f:
@@ -957,11 +974,119 @@ def regrade_feed():
     run_ts = _brief.local_ts(meta["timestamp"]) if meta.get("timestamp") else ts
     cards_html = ''.join(_brief_card_html(c) for c in feed)
     with open(os.path.join(WEB, "brief.html"), "w") as f:
-        f.write(_brief_page(cards_html, "", meta.get("code_version", "?"),
-                            run_ts, ts))
+        f.write(_brief_page(cards_html, _declined_html(declines),
+                            meta.get("code_version", "?"), run_ts, ts))
+    return len(feed)
+
+
+def regrade_feed():
+    """Re-render web/brief.html from the stored feed, no desk run.
+
+    The stored feed (web/brief-feed.json) is already the ranked, gated,
+    deduped artifact the last render wrote; grades are re-derived from its
+    order. Use when the grading or the template changes and the page should
+    not wait for the next desk cycle: no merge, no store write, no model
+    call.
+    """
+    n = _write_feed_page(load_feed())
     print(f"regrade: re-rendered web/brief.html from the stored feed "
-          f"({sum(1 for c in feed[:10] if c.get('grade'))} graded of "
-          f"{len(feed)} cards)")
+          f"({n} cards)")
+
+
+_GRADE_SYSTEM = """You grade news cards for an editor who despises hype-laundering.
+A card is a THESIS (headline) plus a PARAGRAPH, supposedly grounded in cited SOURCES.
+Grade the CARD, never the story's size or importance.
+
+Scale:
+A  sharp take that holds up against every source and adds something the sources don't say
+B  sound and specific; says something real the sources only imply
+C  accurate but generic; a wire digest, no point of view
+D  mostly supported but weak: mild selective emphasis, or a frame only loosely tied to the sources
+F  the take does not survive the sources, in either way:
+   - the thesis is unsupported by or contradicts the cited sources, or
+   - it minimizes or spins a serious event with calm-down/PR framing (e.g. "it seems
+     scarier than it is" told over sources describing a real security incident)
+
+Judge the THESIS hardest. A paragraph can quote real facts beneath a headline whose
+frame is false; that is an F, not an A. Grade EVERY card. Return STRICT JSON:
+{"grades":[{"i":<card index>,"grade":"A|B|C|D|F","note":"<one short sentence>"}]}"""
+
+
+def grade_feed(run_dir=None):
+    """Grade every feed CARD's take A-F against its cited sources.
+
+    The rank badge graded the STORY (publisher tier, freshness, cluster size);
+    Micah 2026-08-27 called the #2-ranked "A" card an F: its thesis was
+    canned spin ("AI leaders have failed at messaging...") over a genuinely
+    alarming agent-hack story. Story ranking can never see that. One batch
+    model call judges each thesis+paragraph against the sources' own words;
+    grades land on the feed cards, an F drops the card QUALITY_F_PENALTY in
+    feed_rank, and the page re-renders. Cards already carrying a quality
+    grade keep it: they are only regraded when their text is regenerated.
+    """
+    run_dir = run_dir or os.path.realpath(os.path.join(RUNS, "latest"))
+    feed = load_feed()
+    todo = [i for i, c in enumerate(feed) if not c.get("quality_grade")]
+    if not todo:
+        print("grade_feed: every card already carries a quality grade")
+        return 0
+
+    # Ground each card's grader in what its publishers actually said: cite
+    # the run's cluster items by URL for excerpts; headline-only elsewhere.
+    excerpts = {}
+    inp = os.path.join(run_dir, "input.json")
+    if os.path.exists(inp):
+        for cl in json.load(open(inp)).get("clusters", []):
+            for it in cl.get("items") or []:
+                if it.get("link"):
+                    excerpts[it["link"]] = (it.get("title") or "",
+                                            (it.get("body_excerpt") or "")[:240])
+
+    blocks = []
+    for i in todo:
+        c = feed[i]
+        src_lines = []
+        for s in (c.get("sources") or [])[:3]:
+            title, ex = excerpts.get(s.get("url", ""), (s.get("headline", ""), ""))
+            src_lines.append(f"- {s.get('source','')}: {title}"
+                             + (f" — {ex}" if ex else ""))
+        blocks.append(
+            f"CARD {i} | cluster: {c.get('kicker','')}\n"
+            f"THESIS: {c.get('narrative','')}\n"
+            f"PARAGRAPH: {c.get('paragraph','')}\n"
+            + ("SOURCES:\n" + "\n".join(src_lines) if src_lines else
+               "SOURCES: (none recorded)"))
+    raw = call_llm(_GRADE_SYSTEM,
+                   "CARDS:\n\n" + "\n\n".join(blocks), max_tokens=4000)
+    data = json.loads(raw)
+
+    graded, bad = 0, []
+    for g in data.get("grades", []):
+        i = g.get("i")
+        if not isinstance(i, int) or i not in todo:
+            bad.append(i)
+            continue
+        gr = str(g.get("grade", "")).strip().upper()
+        if gr not in ("A", "B", "C", "D", "F"):
+            bad.append(i)
+            continue
+        feed[i]["quality_grade"] = gr
+        feed[i]["quality_note"] = (g.get("note") or "")[:300]
+        graded += 1
+    if bad:
+        print(f"  grade_feed: {len(bad)} grade(s) missing/invalid "
+              f"(indexes {bad[:8]}); those cards keep the rank-grade badge")
+
+    # The F penalty changes feed_rank, so the order must be re-derived here.
+    feed.sort(key=feed_rank, reverse=True)
+    n = _write_feed_page(feed, globals().get("_LAST_DECLINES") or ())
+    fs = [f"{feed[i].get('quality_grade')}:{feed[i].get('narrative','')[:48]}"
+          for i in todo if feed[i].get("quality_grade")]
+    print(f"grade_feed: {graded}/{len(todo)} cards graded, page re-rendered "
+          f"({n} cards)")
+    for line in sorted(fs):
+        print(f"  {line}")
+    return graded
 
 
 def render_brief_html(clusters, parsed, run_dir):
@@ -1090,50 +1215,10 @@ def render_brief_html(clusters, parsed, run_dir):
     if _demoted:
         print(f"  RE-RANK demoted {_demoted} card(s) already in the feed")
     feed = dedupe_feed(_kept)
-    cards_html = []
-    for fi, c in enumerate(feed):
-        # The feed order IS the desk's editorial judgment (feed_rank). The top
-        # ten get a letter grade so that judgment is visible on the page
-        # instead of living only in sort order. Everything past ten renders
-        # ungraded: he wanted to see and cut the lower cards himself.
-        grade = _top_ten_grade(fi)
-        if grade:
-            c["grade"] = grade
-        cards_html.append(_brief_card_html(c))
-
-    with open(FEED_PATH, "w") as f:
-        json.dump({"updated": datetime.now(_tz.utc).isoformat(),
-                   "cards": feed}, f, indent=2)
-
-    # What the gates dropped, shown so he can disagree with a decline instead of
-    # never learning it happened.
-    declined_html = ""
-    if _LAST_DECLINES:
-        rows = "".join(
-            f'<li><span class="dq-why">{_html.escape(d.get("reason") or d.get("verdict",""))}</span>'
-            f'{_html.escape((d.get("headline") or "")[:130])}</li>'
-            for d in _LAST_DECLINES)
-        declined_html = (f'<details class="declined"><summary>Declined this run '
-                         f'({len(_LAST_DECLINES)})</summary><ul>{rows}</ul></details>')
-
-    # Displayed in LOCAL time. The stored timestamps stay UTC; see
-    # brief.local_ts() for why the conversion happens at the edge.
-    import brief as _brief
-    ts = _brief.local_ts()
-    meta = json.load(open(os.path.join(run_dir, "meta.json"))) if os.path.exists(os.path.join(run_dir, "meta.json")) else {}
-    run_ts = _brief.local_ts(meta["timestamp"]) if meta.get("timestamp") else ts
-    html = _brief_page(''.join(cards_html), declined_html,
-                       meta.get('code_version', '?'), run_ts, ts)
-    with open(os.path.join(WEB, "brief.html"), "w") as f:
-        f.write(html)
-    with open(os.path.join(WEB, "brief-cards.json"), "w") as f:
-        json.dump({"updated": datetime.now(_tz.utc).isoformat(),
-                   "run": meta.get("code_version", "?"),
-                   "cards": feed}, f, indent=2)
-    print(f"Rendered web/brief.html + brief-cards.json with {len(cards_html)} cards")
-    _g = sum(1 for c in feed[:10] if c.get("grade"))
-    if _g:
-        print(f"  graded top {_g}: 1=A+, 2-3=A, 4-6=B+, 7-10=B")
+    # Feed files + page: one writer, which also stamps the rank grades. The
+    # badge prefers the CARD's quality grade (grade_feed) over the rank grade.
+    _write_feed_page(feed, _LAST_DECLINES)
+    print(f"Rendered web/brief.html + brief-cards.json with {len(feed)} cards")
 
 
 def git_sha():
@@ -1794,6 +1879,7 @@ def main():
                                    and d.get("headline")]
 
     render_brief_html(clusters, parsed, run_dir)
+    grade_feed(run_dir)
 
     meta = {
         "timestamp": datetime.now(timezone.utc).isoformat(),
@@ -1816,5 +1902,8 @@ def main():
 if __name__ == "__main__":
     if "--regrade" in sys.argv:
         regrade_feed()  # re-render brief.html from the stored feed, no desk run
+        sys.exit(0)
+    if "--grade" in sys.argv:
+        grade_feed()  # quality-grade the feed's cards (one model call)
         sys.exit(0)
     sys.exit(main())
