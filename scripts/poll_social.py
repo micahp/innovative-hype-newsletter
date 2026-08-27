@@ -238,9 +238,48 @@ def newest_age_h(rows, now=None):
 
 # ------------------------------------------------------------------ poll
 
+def fetch_syndication_timeline(screen):
+    """X's OFFICIAL embed surface: syndication.twitter.com timeline widget.
+
+    This is the endpoint websites use to legally embed an account's tweets —
+    it was not touched by the Aug 24 cease-and-desist (which killed nitter
+    and its mirrors). Verified live 2026-08-27: 200 with a __NEXT_DATA__
+    JSON blob carrying full tweet objects (id_str, created_at, full_text).
+
+    Caveat, measured on @geoppls: it currently serves the account's
+    PREMIUM-era pinned window (~101 posts, Feb 2023 → Jun 2025), NOT the
+    newest posts. Treat it as a working transport whose ordering may lag;
+    staleness accounting stays honest because every row carries real dates.
+    Returns list of {id, date(datetime-aware in _dt), text} or raises.
+    """
+    raw = _get(f"https://syndication.twitter.com/srv/timeline-profile/screen-name/{screen}")
+    html = raw.decode("utf-8", "replace")
+    m = re.search(r'<script id="__NEXT_DATA__"[^>]*>(.*?)</script>', html, re.S)
+    if not m:
+        raise RuntimeError("syndication page had no __NEXT_DATA__ blob")
+    pp = json.loads(m.group(1))["props"]["pageProps"]
+    entries = ((pp.get("timeline") or {}).get("entries")) or []
+    out = []
+    for e in entries:
+        if e.get("type") != "tweet":
+            continue
+        t = (e.get("content") or {}).get("tweet") or {}
+        tid = t.get("id_str")
+        text = _clean(t.get("full_text") or "")
+        if not tid or not text:
+            continue
+        dt = parse_date(t.get("created_at") or "")
+        out.append({"id": tid,
+                    "date": fmt_date(dt) if dt else "",
+                    "_dt": dt,
+                    "text": text})
+    return out
+
+
 def pick_transport():
     """Try each transport host ONCE with a cheap probe on the first account.
-    Returns (base_url, None) or (None, reason)."""
+    RSS mirrors first; if all fail, the official syndication embed surface.
+    Returns (transport_name, None) or (None, reason)."""
     probe_acct = ACCOUNTS[0]
     reasons = []
     for base in TRANSPORTS:
@@ -253,16 +292,28 @@ def pick_transport():
             reasons.append(f"{base}: 200 but 0 items parsed")
         except Exception as e:
             reasons.append(f"{base}: {getattr(e, 'code', '')} {repr(e)[:80]}")
+    # Official X syndication surface (not affected by the C&D). One attempt.
+    try:
+        posts = fetch_syndication_timeline(probe_acct)
+        if posts:
+            return "syndication.twitter.com", None
+        reasons.append(f"syndication.twitter.com: 200 but 0 entries")
+    except Exception as e:
+        reasons.append(f"syndication.twitter.com: {repr(e)[:80]}")
     return None, "; ".join(reasons)
 
 
 def poll_account(base, screen):
-    """Fetch the latest RSS page for one account, append only new rows.
+    """Fetch one page of posts for an account via `base` transport.
+    base is either an RSS mirror host or 'syndication.twitter.com'.
     Returns dict(new=, page=, error=, rows_after=)."""
     path = corpus_path(screen)
     existing = {r.get("id") for r in load_rows(path)}
     try:
-        posts = parse_rss(_get(f"{base}/{screen}/rss"))
+        if base == "syndication.twitter.com":
+            posts = fetch_syndication_timeline(screen)
+        else:
+            posts = parse_rss(_get(f"{base}/{screen}/rss"))
     except Exception as e:
         return {"new": 0, "page": 0,
                 "error": f"{getattr(e, 'code', '')} {repr(e)[:100]}"}
