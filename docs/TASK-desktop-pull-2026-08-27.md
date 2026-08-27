@@ -16,11 +16,13 @@ and push it to this repo so the server can ingest it.
 
 Two handles: `geoppls`, `innovativehype`.
 
-Cutoffs (collect everything STRICTLY AFTER these, up to now):
+Cutoffs (collect everything STRICTLY AFTER these, up to now). Derived from the corpus's
+true newest rows by parsed date (the corpus file is not date-sorted; the last line is not
+the newest row):
 
 | handle         | corpus ends at              | what we are missing            |
 |----------------|-----------------------------|--------------------------------|
-| geoppls        | Jul 04, 2025 (id 1941268795185823886) | ~14 months. NOTE: his post-Aug-24-2026 tweets are deleted at X; whatever the logged-in profile shows IS the truth. If you see nothing after the cutoff, that is the finding. |
+| geoppls        | Aug 24, 2026 3:20 PM UTC (id 2091908436988436800) | ~3 days. NOTE: his post-Aug-24-2026 tweets are deleted at X; whatever the logged-in profile shows IS the truth. If you see nothing after the cutoff, that is the finding. |
 | innovativehype | Aug 24, 2026 6:16 PM UTC (id 2091952898003390877) | ~3 days |
 
 Include replies and retweets-as-displayed; do not filter. Scroll the profile until you
