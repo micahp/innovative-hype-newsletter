@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""feed_aggregator.py — fetch all 42 RSS feeds, output JSON for the web page.
+"""feed_aggregator.py — fetch all RSS feeds (66 configured), output JSON for the web page.
 
 Handles blocking: rotates User-Agent, short timeout, per-feed isolation,
 RSSHub fallbacks for blocked sources. Failed feeds are logged and skipped.
@@ -65,7 +65,8 @@ FEEDS = [
     {"name": "Hacker News (AI)", "url": "https://hnrss.org/frontpage?q=AI+OR+ML+OR+LLM+OR+GPT+OR+Claude+OR+Gemini", "category": "technology", "fallback": "https://rsshub.app/hacker-news/top"},
     # BUSINESS
     {"name": "CNBC", "url": "https://www.cnbc.com/id/100003114/device/rss/rss.html", "category": "business"},
-    {"name": "Reuters Business", "url": "https://www.rss.reuters.com/news/business", "category": "business", "fallback": "https://rsshub.app/reuters"},
+    # "Reuters Business" (rss.reuters.com 404 + dead rsshub fallback) removed
+    # 2026-08-27 evening — replaced by the Google News "Reuters" feed above.
     {"name": "Economist", "url": "https://www.economist.com/business/rss.xml", "category": "business"},
     {"name": "HN (Business)", "url": "https://hnrss.org/frontpage?q=business+OR+startup+OR+IPO+OR+acquisition", "category": "business", "fallback": "https://rsshub.app/hacker-news/top"},
     {"name": "TechCrunch", "url": "https://techcrunch.com/feed/", "category": "business"},
@@ -101,6 +102,30 @@ FEEDS = [
     # Insider and Fortune still publish free RSS. BI/Fortune also carry the
     # tech-nepotism beat ("nepotism in tech darlings", Micah 2026-08-27),
     # which no current feed covers at all.
+    #
+    # GATED OUTLETS VIA GOOGLE NEWS RSS (2026-08-27 evening, Micah's
+    # "archive.ph or wayback machine" direction): archive.ph is 429 from this
+    # box and Wayback only holds Reuters/Bloomberg's 401/403 GATE pages for
+    # their section URLs — the archive carries the wall, not the paper. But
+    # Google's index serves every gated outlet as an RSS search result:
+    # site:<outlet> when:2d returns 100 fresh items each, one uniform surface.
+    # Probed once per host, all 200 (items verified, not just headers). The
+    # pubDate is RFC2822 with a "GMT" zone, which datetime.strptime's %z
+    # rejects — the main() date parse carries a parsedate_to_datetime
+    # fallback. Titles carry a " - Outlet" suffix, stripped in _to_articles
+    # via the "gnews" flag.
+    {"name": "Reuters", "url": "https://news.google.com/rss/search?q=site%3Areuters.com+when:2d&hl=en-US&gl=US&ceid=US:en", "category": "business", "gnews": True},
+    # AP + CNN answer 200 from this box (only their RSS is gated), and both
+    # publish Google news-format sitemaps: the publisher's own titles, real
+    # article URLs, ISO publication dates. Verified 2026-08-27 (AP 627 URLs,
+    # CNN 225). Real URLs mean the trafilatura top-15 body fetch can reach
+    # their article pages, so AP/CNN enter the pool as full articles where
+    # they rank — NOT headline-only like the gnews outlets. Replaces the
+    # gnews AP/CNN feeds (same coverage, no Google dependency).
+    {"name": "AP", "url": "https://apnews.com/news-sitemap-content.xml", "category": "business", "kind": "sitemap"},
+    {"name": "CNN", "url": "https://www.cnn.com/sitemap/news.xml", "category": "business", "kind": "sitemap"},
+    {"name": "Axios", "url": "https://news.google.com/rss/search?q=site%3Aaxios.com+when:2d&hl=en-US&gl=US&ceid=US:en", "category": "business", "gnews": True},
+    {"name": "Bloomberg", "url": "https://news.google.com/rss/search?q=site%3Abloomberg.com+when:2d&hl=en-US&gl=US&ceid=US:en", "category": "business", "gnews": True},
     {"name": "NYT Business", "url": "https://rss.nytimes.com/services/xml/rss/nyt/Business.xml", "category": "business"},
     {"name": "WSJ Markets", "url": "https://feeds.a.dj.com/rss/RSSMarketsMain.xml", "category": "business"},
     {"name": "Fox Business", "url": "https://feeds.foxnews.com/foxnews/business", "category": "business"},
@@ -164,7 +189,13 @@ SOURCE_TIERS = {
     # BUSINESS
     "CNBC": 1,
     "Economist": 1,
-    "Reuters Business": 1,
+    # WIRE-GRADE GATED OUTLETS (2026-08-27, Google News RSS surfaces): these
+    # are the exact outlets the JUST IN desks crib from. T1 by definition.
+    "Reuters": 1,
+    "AP": 1,
+    "CNN": 1,
+    "Axios": 1,
+    "Bloomberg": 1,
     "TechCrunch": 1,
     "NYT Business": 1,
     "WSJ Markets": 1,
@@ -424,6 +455,8 @@ def score_article(article):
 
 def fetch_feed(feed_config, ua_index=0):
     """Try to fetch a single feed, with RSSHub fallback. Returns list of articles or []."""
+    if feed_config.get("kind") == "sitemap":
+        return fetch_sitemap(feed_config, ua_index)
     url = feed_config["url"]
     fallback = feed_config.get("fallback")
     ua = UA_ROTATE[ua_index % len(UA_ROTATE)]
@@ -450,24 +483,128 @@ def fetch_feed(feed_config, ua_index=0):
     return []
 
 
+def _rfc2822_from_iso(v):
+    """Sitemap publication_date is ISO 8601 (often 'Z'-suffixed); the pool
+    stores RFC 2822. Normalize so main()'s date parse sees a known shape."""
+    from email.utils import format_datetime
+    try:
+        dt = datetime.fromisoformat((v or "").replace("Z", "+00:00"))
+        return format_datetime(dt)
+    except ValueError:
+        return ""
+
+
+def fetch_sitemap(feed_config, ua_index=0):
+    """Google news-format sitemap: <url> entries carrying <loc>, <news:title>,
+    <news:publication_date>. Returns the same article dicts as fetch_feed.
+    Titles and dates are the publisher's own; links are real article pages,
+    so the trafilatura body fetch applies to them like any other source."""
+    import xml.etree.ElementTree as ET
+    url = feed_config["url"]
+    ua = UA_ROTATE[ua_index % len(UA_ROTATE)]
+    req = urllib.request.Request(url, headers={
+        "User-Agent": ua,
+        "Accept": "application/xml, text/xml, */*",
+    })
+    try:
+        with urllib.request.urlopen(req, timeout=30) as r:
+            data = r.read()
+    except (urllib.error.URLError, OSError) as exc:
+        print(f"  sitemap {feed_config['name']}: FETCH FAILED {exc}")
+        return []
+    try:
+        root = ET.fromstring(data)
+    except ET.ParseError as exc:
+        print(f"  sitemap {feed_config['name']}: PARSE FAILED {exc}")
+        return []
+    ns = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9",
+          "news": "http://www.google.com/schemas/sitemap-news/0.9"}
+    rows = []
+    for u in root.findall("sm:url", ns):
+        n = u.find("news:news", ns)
+        title_el = n.find("news:title", ns) if n is not None else None
+        pd_el = n.find("news:publication_date", ns) if n is not None else None
+        pub_el = n.find("news:publication", ns) if n is not None else None
+        lang_el = pub_el.find("news:language", ns) if pub_el is not None else None
+        loc_el = u.find("sm:loc", ns)
+        title = (title_el.text or "").strip() if title_el is not None and title_el.text else ""
+        pdate = (pd_el.text or "").strip() if pd_el is not None and pd_el.text else ""
+        loc = (loc_el.text or "").strip() if loc_el is not None else ""
+        lang = (lang_el.text or "").strip().lower() if lang_el is not None and lang_el.text else ""
+        if not title or not loc:
+            continue
+        # video pages have no extractable article text
+        if "/video/" in loc:
+            continue
+        # AP's news sitemap ships its Spanish edition (news:language "spa");
+        # CNN's carries cnn-underscored commerce rows. Neither is the news
+        # surface this desk reads.
+        if lang and lang not in ("eng", "en"):
+            continue
+        if "cnn-underscored" in loc:
+            continue
+        # Parse for sorting: ISO strings with mixed offsets ("-04:00" vs "Z")
+        # do not compare correctly as strings.
+        try:
+            dt = datetime.fromisoformat(pdate.replace("Z", "+00:00"))
+        except ValueError:
+            dt = datetime.min.replace(tzinfo=timezone.utc)
+        rows.append((dt, pdate, title, loc))
+    # A news sitemap's order is not guaranteed; take the 20 newest by date.
+    # Rows with unparseable dates sort last and so effectively drop out.
+    rows.sort(key=lambda r: r[0], reverse=True)
+    articles = []
+    for _dt, pdate, title, loc in rows[:20]:
+        articles.append({
+            "title": title,
+            "link": loc,
+            "summary": "",
+            "kind": "sitemap",
+            "source": feed_config["name"],
+            "category": feed_config["category"],
+            "published": _rfc2822_from_iso(pdate),
+            "_body": "",
+        })
+    return articles
+
+
 def _to_articles(entries, feed_config):
     """Convert feed entries to our article dict format."""
+    # Google News search feeds stamp every title with " - <Outlet>" (the
+    # <source> tag's name). Strip it so titles dedupe against the same story
+    # from other feeds and read clean in the pool. Only strips the outlet
+    # suffixes this file's gnews feeds can produce.
+    _GNEWS_SUFFIXES = ("Reuters", "AP News", "CNN", "Axios", "Bloomberg.com")
+    gnews = feed_config.get("gnews")
     articles = []
     for entry in entries[:20]:
         title = entry.get("title", "").strip()
+        if gnews and title:
+            for sfx in _GNEWS_SUFFIXES:
+                if title.endswith(" - " + sfx):
+                    title = title[: -len(" - " + sfx)].strip()
+                    break
         if not title:
             continue
+        # A Google News description is an HTML anchor to the news.google.com
+        # redirect page, never editorial text — keep it out of the pool
+        # rather than storing markup that reads like a summary.
         link = entry.get("link", "#")
-        summary = entry.get("summary", "")[:300]
+        if gnews:
+            summary = ""
+            body = ""
+        else:
+            summary = entry.get("summary", "")[:300]
+            # Full text from content:encoded when the feed ships it (MIT TR,
+            # Front Office Sports, Ars Technica, Verge). Stored as _body for
+            # theming/briefs; stripped of HTML, capped at 6000 chars.
+            body = _extract_body(entry)
         published = entry.get("published", "")
-        # Full text from content:encoded when the feed ships it (MIT TR,
-        # Front Office Sports, Ars Technica, Verge). Stored as _body for
-        # theming/briefs; stripped of HTML, capped at 6000 chars.
-        body = _extract_body(entry)
         articles.append({
             "title": title,
             "link": link,
             "summary": summary,
+            "gnews": bool(gnews),
             "source": feed_config["name"],
             "category": feed_config["category"],
             "published": published,
@@ -510,13 +647,20 @@ def main():
         # Be polite — short sleep between feeds
         time.sleep(0.3)
 
-    # Sort: articles with a parseable date first, then by source
+    # Sort: articles with a parseable date first, then by source.
+    # strptime's %z never accepts the "GMT" zone name (Google News pubDates,
+    # among others), so fall back to the RFC2822 parser before calling a
+    # date undated — an undated article silently sinks in every sort.
+    from email.utils import parsedate_to_datetime
     for a in all_articles:
         try:
             dt = datetime.strptime(a["published"], "%a, %d %b %Y %H:%M:%S %z")
             a["_ts"] = dt.timestamp()
-        except:
-            a["_ts"] = 0
+        except ValueError:
+            try:
+                a["_ts"] = parsedate_to_datetime(a["published"]).timestamp()
+            except Exception:
+                a["_ts"] = 0
 
     # Dedupe by normalized title (keep the highest-tier source for dupes).
     # Same story hits multiple feeds (TechCrunch + TechCrunch AI); a dupe
@@ -629,7 +773,15 @@ def main():
         top_candidates = [a for a in all_articles if not a["_noise"]]
         top_candidates.sort(key=lambda x: -x.get("_score", 0))
         fetched = 0
+        gnews_skipped = 0
         for a in top_candidates[:FETCH_BODY_TOP_N]:
+            # Google News items link to news.google.com JS interstitials, and
+            # their real article pages are the same 401/403 walls that gated
+            # the RSS. A trafilatura hit there is Google boilerplate at best
+            # and a wasted top-15 slot at worst — count them, don't fetch.
+            if a.get("gnews"):
+                gnews_skipped += 1
+                continue
             # 400 was the old skip threshold and it was the wrong test.
             # Measured 2026-08-23: The Verge ships PARTIAL content:encoded.
             # "Nvidia's new financial strategy does not compute" arrived with
@@ -664,7 +816,8 @@ def main():
             except Exception as e:
                 print(f"  SKIP {a['source']}: {e}")
             time.sleep(0.5)  # polite throttle
-        print(f"Fetched full text for {fetched} top stories")
+        print(f"Fetched full text for {fetched} top stories "
+              f"({gnews_skipped} gnews items skipped, headline-only by design)")
 
     output = {
         "updated": datetime.now(timezone.utc).isoformat(),
