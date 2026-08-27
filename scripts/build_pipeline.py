@@ -164,6 +164,21 @@ def main():
     except Exception as e:  # fail loud on the page, not silent in a chip list
         seeds, seed_error = [], f"seeds unavailable: {e}"
 
+    # perspectives: stance + verbatim exemplars (scripts/build_voice_profile.py)
+    try:
+        with open(os.path.join(REPO, "voice_profile.json")) as f:
+            _vpf = json.load(f)
+        perspectives = {
+            "built": _vpf.get("built"), "n_posts": _vpf.get("n_posts"),
+            "entries": [{"topic": e.get("topic"), "stance": e.get("stance"),
+                         "tone": e.get("tone"),
+                         "exemplars": (e.get("exemplars") or [])[:2]}
+                        for e in _vpf.get("entries", [])],
+        }
+    except Exception as e:
+        perspectives = {"built": None, "entries": [],
+                        "error": f"voice profile unavailable: {e}"}
+
     data = {
         "run": os.path.basename(latest),
         "generated": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
@@ -178,6 +193,7 @@ def main():
         },
         "undecided_indexes": undecided,
         "seeds": seeds, "seed_error": seed_error,
+        "perspectives": perspectives,
         "corpus": corpus_inventory(),
         "clusters": cluster_views,
         "cards": cards,
@@ -259,6 +275,8 @@ th { color:var(--dim); font-weight:500; }
 </header>
 <div class="grid">
   <div class="col col-k">
+    <h2>Voice perspectives</h2>
+    <div class="panel" id="vpersp"></div>
     <h2>Keywords &middot; corpus seeds</h2>
     <div class="panel" id="seeds"></div>
     <h2>Corpus</h2>
@@ -299,6 +317,19 @@ const seedEl = document.getElementById('seeds');
 if (D.seed_error) seedEl.innerHTML = '<div class="err">'+esc(D.seed_error)+'</div>';
 else seedEl.innerHTML = D.seeds.map(s => '<span class="seed">'+esc(s.term)+'</span>').join('')
   + '<div class="vw" style="margin-top:6px">lift-scored by scripts/brief.py: rate in the last 14 days vs everything older, from corpus/innovativehype + corpus/geoppls</div>';
+
+// voice perspectives (stance + verbatim exemplars)
+const vp = D.perspectives || {entries:[]};
+const vpEl = document.getElementById('vpersp');
+if (vp.error) vpEl.innerHTML = '<div class="err">'+esc(vp.error)+'</div>';
+else if (!vp.entries.length) vpEl.innerHTML = '<div class="err">no perspective entries (run scripts/build_voice_profile.py)</div>';
+else vpEl.innerHTML =
+  '<div class="vw" style="margin-bottom:6px">built '+esc(vp.built||'?')+' from '+vp.n_posts+' posts; injected into the desk prompt verbatim</div>'
+  + vp.entries.map(e =>
+    '<div style="margin-bottom:9px"><b>'+esc(e.topic)+'</b> <span class="vw">'+esc(e.tone||'')+'</span>'
+    + '<div style="font-size:12.5px;margin:2px 0">'+esc(e.stance)+'</div>'
+    + (e.exemplars||[]).map(x => '<div class="vw" style="border-left:2px solid var(--edge);padding-left:7px;margin-top:3px">&ldquo;'+esc(x)+'&rdquo;</div>').join('')
+    + '</div>').join('');
 
 // corpus
 document.getElementById('corpus').innerHTML =
