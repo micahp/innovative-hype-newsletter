@@ -1238,6 +1238,47 @@ def _api_key():
     return key
 
 
+_VOICE_PROFILE_PATH = os.path.join(
+    os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+    "voice_profile.json")
+_VOICE_PROFILE_CACHE = None
+
+
+def _load_voice_profile():
+    """Perspective entries extracted from the corpus by
+    scripts/build_voice_profile.py. The unigram seeds carry the topic; these
+    carry the stance. Missing or corrupt file = empty list, reported loudly
+    in the run log, never a crash: the desk renders without perspective
+    rather than not at all."""
+    global _VOICE_PROFILE_CACHE
+    if _VOICE_PROFILE_CACHE is None:
+        try:
+            with open(_VOICE_PROFILE_PATH) as f:
+                _VOICE_PROFILE_CACHE = json.load(f).get("entries", [])
+        except Exception:
+            _VOICE_PROFILE_CACHE = []
+    return _VOICE_PROFILE_CACHE
+
+
+def _voice_entries_for(cl):
+    """Profile entries that color this cluster: category-name match first,
+    else topic terms all present in the cluster name or item titles."""
+    name = (cl.get("sig") or {}).get("name", "")
+    hay = " ".join(
+        [name] + [(i.get("title") or "") for i in (cl.get("items") or [])[:20]]
+    ).lower()
+    out = []
+    for e in _load_voice_profile():
+        if name in (e.get("categories") or []):
+            out.append(e)
+            continue
+        twords = [w for w in re.split(r"\W+", (e.get("topic") or "").lower())
+                  if len(w) > 3]
+        if twords and all(w in hay for w in twords):
+            out.append(e)
+    return out[:2]
+
+
 def call_model(clusters):
     """Call the LLM with the cluster material. Returns raw JSON string."""
     import urllib.request  # noqa: F401  (call_llm uses it)
@@ -1246,6 +1287,11 @@ def call_model(clusters):
 
     _angles = load_angles()
     print(f"  angle inventory: {len(_angles)} enabled")
+    _vp = _load_voice_profile()
+    _vpc = sum(1 for _c in clusters if _voice_entries_for(_c))
+    print(f"  voice profile: {len(_vp)} entries; perspective injected into "
+          f"{_vpc}/{len(clusters)} clusters"
+          + ("" if _vp else " (empty; run scripts/build_voice_profile.py)"))
     import embed as _embed
     _embed.warm([cluster_subject_text(c) for c in clusters]
                 + [angle_probe_text(a) for a in _angles])
@@ -1254,6 +1300,14 @@ def call_model(clusters):
     for ci, cl in enumerate(clusters):
         _shape_name, _shape_rule = _SHAPES[ci % len(_SHAPES)]
         prompt_lines.append(f"CLUSTER {ci}: {cl['sig']['name']} (voice_weight {cl['sig'].get('voice_weight','?')})")
+        # Perspective injection: the stance and verbatim exemplars behind the
+        # seed hits, so the card lands in his register, not just on his topic.
+        for _pe in _voice_entries_for(cl):
+            prompt_lines.append(
+                f"  HOW MICAH TALKS ABOUT THIS: on {_pe['topic']}, his stance "
+                f"is: {_pe['stance']} (tone: {_pe['tone']})")
+            for _ex in _pe.get("exemplars", [])[:2]:
+                prompt_lines.append(f'    his exact words: "{_ex}"')
         prompt_lines.append(f"  REQUIRED HEADLINE SHAPE = {_shape_name}. {_shape_rule}")
         _elig = eligible_angles(cl, _angles)
         if _elig:
