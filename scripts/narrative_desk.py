@@ -846,6 +846,124 @@ def dedupe_feed(cards, threshold=0.45):
     return kept
 
 
+def _top_ten_grade(i):
+    """Letter grade for the i-th (0-based) card in feed_rank order, "" past ten."""
+    if i >= 10:
+        return ""
+    return "A+" if i == 0 else "A" if i < 3 else "B+" if i < 6 else "B"
+
+
+def _brief_card_html(c):
+    """One brief-card <article>. Shared by the desk render and regrade_feed
+    so the page has exactly one shape. c["grade"] ("" = none) is the badge."""
+    import html as _html
+    grade = c.get("grade") or ""
+    grade_html = (f'<span class="brief-grade{" lead" if grade == "A+" else ""}">'
+                  f'{grade}</span>') if grade else ""
+    src_bits = []
+    for i, srec in enumerate(c.get("sources", [])[:3]):
+        sep = '<span class="src-dot">·</span>' if i else ""
+        src_bits.append(
+            f'{sep}<a href="{srec["url"]}" target="_blank" rel="noopener" '
+            f'title="{_html.escape(srec.get("headline",""))}">'
+            f'{_html.escape(srec.get("source",""))}</a>')
+    more = ('<span class="src-more">and more</span>'
+            if c.get("source_count", 0) > 3 else "")
+    para = (f'<p class="brief-para">{_html.escape(c.get("paragraph",""))}</p>'
+            if c.get("paragraph") else "")
+    return f"""
+    <article class="brief-card">
+      <p class="brief-kicker">{_html.escape(c.get("kicker",""))}<span class="brief-age">{rel_time(c.get("first_seen",""))}</span>{grade_html}</p>
+      <h3 class="brief-title">{_html.escape(c.get("narrative",""))}</h3>
+      {para}
+      <div class="brief-sources">{''.join(src_bits)}{more}</div>
+    </article>"""
+
+
+def _brief_page(cards_html, declined_html, code_version, run_ts, ts):
+    """Full brief.html wrapper. Shared by the desk render and regrade_feed."""
+    return f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>INNOVATIVE HYPE — BRIEF</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {{ --white:#fff; --off-white:#f8f8f8; --ink:#0a0a0a; --ink-light:#3a3a3a; --ink-muted:#888; --gold:#d4af37; --gold-dark:#b8860b; --border:#e8e8e8; }}
+  * {{ margin:0; padding:0; box-sizing:border-box; }}
+  body {{ font-family:'DM Sans',system-ui,sans-serif; background:var(--white); color:var(--ink); -webkit-font-smoothing:antialiased; }}
+  .wrap {{ max-width:760px; margin:0 auto; padding:2.5rem 1.5rem; }}
+  .page-title {{ font-family:'Oswald',sans-serif; font-weight:700; font-size:2rem; text-transform:uppercase; letter-spacing:-0.02em; margin-bottom:.25rem; }}
+  .page-meta {{ font-size:.75rem; color:var(--ink-muted); text-transform:uppercase; letter-spacing:.05em; margin-bottom:2rem; }}
+  .brief-card {{ background:var(--off-white); border:1px solid var(--border); border-top:3px solid var(--gold); padding:1.25rem 1.5rem; margin-bottom:1.25rem; }}
+  .brief-title {{ font-family:'Oswald',sans-serif; font-weight:600; font-size:1.15rem; line-height:1.25; margin-bottom:.5rem; }}
+  .brief-kicker {{ font-size:.68rem; font-weight:600; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-muted); margin-bottom:.35rem; }}
+  .brief-sources {{ display:flex; flex-wrap:wrap; align-items:center; gap:.35rem; margin-top:.7rem; font-size:.72rem; }}
+  .brief-sources a {{ color:var(--ink-muted); text-decoration:none; text-transform:uppercase; letter-spacing:.04em; }}
+  .brief-sources a:hover {{ color:var(--gold-dark); }}
+  .src-dot {{ color:var(--border); margin:0 .1rem; }}
+  .src-more {{ color:var(--ink-muted); opacity:.7; }}
+  .brief-age {{ float:right; text-transform:none; letter-spacing:0; opacity:.75; }}
+  .brief-grade {{ float:right; font-family:'Oswald',sans-serif; font-size:.72rem; font-weight:600; letter-spacing:.05em; color:var(--gold-dark); border:1.5px solid var(--gold); padding:0 .5rem; margin-left:.6rem; }}
+  .brief-grade.lead {{ background:var(--gold); color:#fff; }}
+  .declined {{ margin-top:2rem; border-top:1px solid var(--border); padding-top:1rem; }}
+  .declined summary {{ font-size:.75rem; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-muted); cursor:pointer; }}
+  .declined ul {{ list-style:none; padding:.6rem 0 0; }}
+  .declined li {{ font-size:.8rem; line-height:1.5; color:var(--ink-muted); padding:.2rem 0; }}
+  .dq-why {{ display:inline-block; min-width:11rem; font-size:.68rem; text-transform:uppercase; letter-spacing:.05em; color:var(--gold-dark); }}
+  .back {{ display:inline-block; margin-top:2rem; font-family:'Oswald',sans-serif; font-size:.8rem; text-transform:uppercase; letter-spacing:.05em; color:var(--ink); text-decoration:none; border-bottom:2px solid var(--gold); padding-bottom:2px; }}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1 class="page-title">Innovative Hype — Brief</h1>
+  <div class="page-meta">Narrative brief · LLM desk · run {code_version} · {run_ts} · updated {ts}</div>
+  {cards_html}
+  {declined_html}
+  <a class="back" href="index.html">← Back to feed</a>
+</div>
+</body>
+</html>
+"""
+
+
+def regrade_feed():
+    """Re-render web/brief.html from the stored feed, no desk run.
+
+    The stored feed (web/brief-feed.json) is already the ranked, gated,
+    deduped artifact the last render wrote; grades are re-derived from its
+    order. Use when the grading or the template changes and the page should
+    not wait for the next desk cycle: no merge, no store write, no model
+    call. The declined-this-run block is run commentary and comes back with
+    the next real render.
+    """
+    import brief as _brief
+    feed = load_feed()
+    for i, c in enumerate(feed):
+        c["grade"] = _top_ten_grade(i)
+    with open(FEED_PATH, "w") as f:
+        json.dump({"updated": datetime.now(timezone.utc).isoformat(),
+                   "cards": feed}, f, indent=2)
+    meta = json.load(open(os.path.join(RUNS, "latest", "meta.json"))) \
+        if os.path.exists(os.path.join(RUNS, "latest", "meta.json")) else {}
+    with open(os.path.join(WEB, "brief-cards.json"), "w") as f:
+        json.dump({"updated": datetime.now(timezone.utc).isoformat(),
+                   "run": meta.get("code_version", "?"), "cards": feed},
+                  f, indent=2)
+    ts = _brief.local_ts()
+    run_ts = _brief.local_ts(meta["timestamp"]) if meta.get("timestamp") else ts
+    cards_html = ''.join(_brief_card_html(c) for c in feed)
+    with open(os.path.join(WEB, "brief.html"), "w") as f:
+        f.write(_brief_page(cards_html, "", meta.get("code_version", "?"),
+                            run_ts, ts))
+    print(f"regrade: re-rendered web/brief.html from the stored feed "
+          f"({sum(1 for c in feed[:10] if c.get('grade'))} graded of "
+          f"{len(feed)} cards)")
+
+
 def render_brief_html(clusters, parsed, run_dir):
     """Render the LLM cards into web/brief.html with article links resolved
     from source_ids (indexes into each cluster's item list)."""
@@ -973,25 +1091,15 @@ def render_brief_html(clusters, parsed, run_dir):
         print(f"  RE-RANK demoted {_demoted} card(s) already in the feed")
     feed = dedupe_feed(_kept)
     cards_html = []
-    for c in feed:
-        src_bits = []
-        for i, srec in enumerate(c.get("sources", [])[:3]):
-            sep = '<span class="src-dot">·</span>' if i else ""
-            src_bits.append(
-                f'{sep}<a href="{srec["url"]}" target="_blank" rel="noopener" '
-                f'title="{_html.escape(srec.get("headline",""))}">'
-                f'{_html.escape(srec.get("source",""))}</a>')
-        more = ('<span class="src-more">and more</span>'
-                if c.get("source_count", 0) > 3 else "")
-        para = (f'<p class="brief-para">{_html.escape(c.get("paragraph",""))}</p>'
-                if c.get("paragraph") else "")
-        cards_html.append(f"""
-    <article class="brief-card">
-      <p class="brief-kicker">{_html.escape(c.get("kicker",""))}<span class="brief-age">{rel_time(c.get("first_seen",""))}</span></p>
-      <h3 class="brief-title">{_html.escape(c.get("narrative",""))}</h3>
-      {para}
-      <div class="brief-sources">{''.join(src_bits)}{more}</div>
-    </article>""")
+    for fi, c in enumerate(feed):
+        # The feed order IS the desk's editorial judgment (feed_rank). The top
+        # ten get a letter grade so that judgment is visible on the page
+        # instead of living only in sort order. Everything past ten renders
+        # ungraded: he wanted to see and cut the lower cards himself.
+        grade = _top_ten_grade(fi)
+        if grade:
+            c["grade"] = grade
+        cards_html.append(_brief_card_html(c))
 
     with open(FEED_PATH, "w") as f:
         json.dump({"updated": datetime.now(_tz.utc).isoformat(),
@@ -1014,50 +1122,8 @@ def render_brief_html(clusters, parsed, run_dir):
     ts = _brief.local_ts()
     meta = json.load(open(os.path.join(run_dir, "meta.json"))) if os.path.exists(os.path.join(run_dir, "meta.json")) else {}
     run_ts = _brief.local_ts(meta["timestamp"]) if meta.get("timestamp") else ts
-    html = f"""<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>INNOVATIVE HYPE — BRIEF</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root {{ --white:#fff; --off-white:#f8f8f8; --ink:#0a0a0a; --ink-light:#3a3a3a; --ink-muted:#888; --gold:#d4af37; --gold-dark:#b8860b; --border:#e8e8e8; }}
-  * {{ margin:0; padding:0; box-sizing:border-box; }}
-  body {{ font-family:'DM Sans',system-ui,sans-serif; background:var(--white); color:var(--ink); -webkit-font-smoothing:antialiased; }}
-  .wrap {{ max-width:760px; margin:0 auto; padding:2.5rem 1.5rem; }}
-  .page-title {{ font-family:'Oswald',sans-serif; font-weight:700; font-size:2rem; text-transform:uppercase; letter-spacing:-0.02em; margin-bottom:.25rem; }}
-  .page-meta {{ font-size:.75rem; color:var(--ink-muted); text-transform:uppercase; letter-spacing:.05em; margin-bottom:2rem; }}
-  .brief-card {{ background:var(--off-white); border:1px solid var(--border); border-top:3px solid var(--gold); padding:1.25rem 1.5rem; margin-bottom:1.25rem; }}
-  .brief-title {{ font-family:'Oswald',sans-serif; font-weight:600; font-size:1.15rem; line-height:1.25; margin-bottom:.5rem; }}
-  .brief-kicker {{ font-size:.68rem; font-weight:600; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-muted); margin-bottom:.35rem; }}
-  .brief-sources {{ display:flex; flex-wrap:wrap; align-items:center; gap:.35rem; margin-top:.7rem; font-size:.72rem; }}
-  .brief-sources a {{ color:var(--ink-muted); text-decoration:none; text-transform:uppercase; letter-spacing:.04em; }}
-  .brief-sources a:hover {{ color:var(--gold-dark); }}
-  .src-dot {{ color:var(--border); margin:0 .1rem; }}
-  .src-more {{ color:var(--ink-muted); opacity:.7; }}
-  .brief-age {{ float:right; text-transform:none; letter-spacing:0; opacity:.75; }}
-  .declined {{ margin-top:2rem; border-top:1px solid var(--border); padding-top:1rem; }}
-  .declined summary {{ font-size:.75rem; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-muted); cursor:pointer; }}
-  .declined ul {{ list-style:none; padding:.6rem 0 0; }}
-  .declined li {{ font-size:.8rem; line-height:1.5; color:var(--ink-muted); padding:.2rem 0; }}
-  .dq-why {{ display:inline-block; min-width:11rem; font-size:.68rem; text-transform:uppercase; letter-spacing:.05em; color:var(--gold-dark); }}
-  .back {{ display:inline-block; margin-top:2rem; font-family:'Oswald',sans-serif; font-size:.8rem; text-transform:uppercase; letter-spacing:.05em; color:var(--ink); text-decoration:none; border-bottom:2px solid var(--gold); padding-bottom:2px; }}
-</style>
-</head>
-<body>
-<div class="wrap">
-  <h1 class="page-title">Innovative Hype — Brief</h1>
-  <div class="page-meta">Narrative brief · LLM desk · run {meta.get('code_version','?')} · {run_ts} · updated {ts}</div>
-  {''.join(cards_html)}
-  {declined_html}
-  <a class="back" href="index.html">← Back to feed</a>
-</div>
-</body>
-</html>
-"""
+    html = _brief_page(''.join(cards_html), declined_html,
+                       meta.get('code_version', '?'), run_ts, ts)
     with open(os.path.join(WEB, "brief.html"), "w") as f:
         f.write(html)
     with open(os.path.join(WEB, "brief-cards.json"), "w") as f:
@@ -1065,6 +1131,9 @@ def render_brief_html(clusters, parsed, run_dir):
                    "run": meta.get("code_version", "?"),
                    "cards": feed}, f, indent=2)
     print(f"Rendered web/brief.html + brief-cards.json with {len(cards_html)} cards")
+    _g = sum(1 for c in feed[:10] if c.get("grade"))
+    if _g:
+        print(f"  graded top {_g}: 1=A+, 2-3=A, 4-6=B+, 7-10=B")
 
 
 def git_sha():
@@ -1745,4 +1814,7 @@ def main():
 
 
 if __name__ == "__main__":
+    if "--regrade" in sys.argv:
+        regrade_feed()  # re-render brief.html from the stored feed, no desk run
+        sys.exit(0)
     sys.exit(main())
