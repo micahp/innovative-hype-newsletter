@@ -51,7 +51,7 @@ FEEDS = [
     {"name": "The Verge AI", "url": "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml", "category": "technology"},
     {"name": "VentureBeat AI", "url": "https://venturebeat.com/category/ai/feed/", "category": "technology"},
     {"name": "MIT Technology Review", "url": "https://www.technologyreview.com/feed/", "category": "technology"},
-    {"name": "Wired", "url": "https://www.wired.com/feed/latest/rss", "category": "technology", "fallback": "https://rsshub.app/wired"},
+    {"name": "Wired", "url": "https://www.wired.com/feed/rss", "category": "technology", "fallback": "https://rsshub.app/wired"},
     {"name": "Ars Technica", "url": "https://feeds.arstechnica.com/arstechnica/index", "category": "technology"},
     {"name": "The Defiant", "url": "https://newsletter.thedefiant.io/feed", "category": "technology"},
     {"name": "Decrypt", "url": "https://decrypt.co/feed", "category": "technology"},
@@ -86,13 +86,33 @@ FEEDS = [
     {"name": "Rolling Stone", "url": "https://www.rollingstone.com/feed/", "category": "culture"},
     {"name": "Pitchfork", "url": "https://pitchfork.com/rss/news/", "category": "culture"},
     {"name": "Stereogum", "url": "https://www.stereogum.com/feed/", "category": "culture"},
-    {"name": "The FADER", "url": "https://www.thefader.com/feed/rss", "category": "culture", "fallback": "https://rsshub.app/the-fader"},
+    {"name": "The FADER", "url": "https://www.thefader.com/feed", "category": "culture", "fallback": "https://rsshub.app/the-fader"},
     {"name": "XXL", "url": "https://www.xxlmag.com/feed/", "category": "culture"},
     {"name": "Deadline", "url": "https://deadline.com/feed/", "category": "culture"},
     {"name": "Variety", "url": "https://variety.com/feed/", "category": "culture"},
     {"name": "Hollywood Reporter", "url": "https://www.hollywoodreporter.com/feed/", "category": "culture"},
     # CROSS
     {"name": "HN (General)", "url": "https://hnrss.org/frontpage", "category": "technology", "fallback": "https://rsshub.app/hacker-news/frontpage"},
+    # JUST IN-OUTLET FEEDS (2026-08-27): the polymarket/kalshi corpus names
+    # Bloomberg, Reuters, Axios, WSJ, CNN, AP, NYT as the desks' upstream.
+    # Reuters/Axios/CNN/AP have no free RSS left (404/401/403, probed once
+    # each 2026-08-27) and Bloomberg/FT never did; rsshub.app fallbacks are
+    # 403-dead fleet-wide. NYT, WSJ (Dow Jones public host), Fox, Business
+    # Insider and Fortune still publish free RSS. BI/Fortune also carry the
+    # tech-nepotism beat ("nepotism in tech darlings", Micah 2026-08-27),
+    # which no current feed covers at all.
+    {"name": "NYT Business", "url": "https://rss.nytimes.com/services/xml/rss/nyt/Business.xml", "category": "business"},
+    {"name": "WSJ Markets", "url": "https://feeds.a.dj.com/rss/RSSMarketsMain.xml", "category": "business"},
+    {"name": "Fox Business", "url": "https://feeds.foxnews.com/foxnews/business", "category": "business"},
+    {"name": "Business Insider", "url": "https://www.businessinsider.com/rss", "category": "business"},
+    {"name": "Fortune", "url": "https://fortune.com/feed/", "category": "business"},
+    # TOPIC-GAP FEEDS (2026-08-27, from the voice-coverage audit): Kanye/Yeezy
+    # had ZERO pool coverage in 14d (8 tweets, no music feed carries the
+    # tabloid beat) -> Vibe (HipHopDX's RSS is a frozen Apr-2026 archive,
+    # hotnewhiphop 404). Houston Dynamo/MLS/Messi was thin (ESPN, Athletic,
+    # Bleacher all dead) -> BBC Football.
+    {"name": "Vibe", "url": "https://vibe.com/feed/", "category": "culture"},
+    {"name": "BBC Football", "url": "https://feeds.bbci.co.uk/sport/football/rss.xml", "category": "sports"},
     # GAP-CLOSING FEEDS (2026-08-21, from FEED-GAP-MAP.md)
     # AI tools/building — the voice is a builder, feed barely covers dev tools
     {"name": "HN (Show)", "url": "https://hnrss.org/show", "category": "technology", "fallback": "https://rsshub.app/hacker-news/show"},
@@ -146,6 +166,11 @@ SOURCE_TIERS = {
     "Economist": 1,
     "Reuters Business": 1,
     "TechCrunch": 1,
+    "NYT Business": 1,
+    "WSJ Markets": 1,
+    "Fortune": 2,
+    "Business Insider": 3,
+    "Fox Business": 3,
     "Bitcoin Magazine": 2,
     "HN (Business)": 3,
     "CoinDesk Markets": 2,
@@ -169,6 +194,7 @@ SOURCE_TIERS = {
     "Stereogum": 2,
     "The FADER": 2,
     "XXL": 2,
+    "Vibe": 2,
     "Deadline": 2,
     "Variety": 2,
     "Hollywood Reporter": 2,
@@ -186,6 +212,7 @@ SOURCE_TIERS = {
     "Swish Appeal": 2,
     "On3": 2,
     "ClutchPoints": 2,
+    "BBC Football": 2,
     "Texas Monthly": 1,
     "Texas Tribune": 1,
     "Austin Chronicle": 2,
