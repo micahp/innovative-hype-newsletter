@@ -187,8 +187,12 @@ def main():
     results.append(run_gate("G6 matching-hygiene", g6))
 
     # --- G4: seed matching exists and boosts ---
+    # brief.py's seeds moved from the hardcoded _TWEET_SEEDS list to
+    # _PINNED_SEEDS + corpus-derived live seeds (commit 543dedf). The gate
+    # follows the surface that now decides: all_seeds() must be populated,
+    # and a seeded article must still outrank an unseeded one.
     def g4():
-        seeds = brief_mod._TWEET_SEEDS
+        seeds = brief_mod.all_seeds()
         if len(seeds) < 10:
             return False
         # An article mentioning a seed should get more seed_hits than one that doesn't
