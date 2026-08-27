@@ -323,6 +323,7 @@ gate must block the "pipeline matches the spec" claim.
 | G9 stable-pool | unchanged story set → same pool_key, no regeneration | same stories → same key |
 | G10 keep-cards | unchanged story set → card text preserved across runs | a good headline doesn't degrade on rerun |
 | G11 source-align | every card's source link matches its content | no card links to an unrelated story |
+| G12 no-card-deleted | the durable card store (`cards.jsonl`, Phase 2) never loses rows: row count is monotonic across runs, every live brief card exists in the store, and nothing aged_out renders | previous count read from the store's own ledger (`_prev_row_count`), not a fixture; `cur >= prev` and every `brief-cards.json` story_key present |
 
 Every gate must be runnable in one command (`python3 scripts/gates.py`) and
 must be part of the cron so a regression shows up as a red exit, not a silent

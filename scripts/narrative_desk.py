@@ -600,23 +600,52 @@ def merge_into_feed(new_cards):
                           if d.get("source_headline")
                           and d.get("verdict") != "demoted_type_gate"}
     declined_subjects.discard(())
+    evicted_keys = set()
     for k in [k for k, c in existing.items()
               if _headline_subject(c.get("narrative")) in declined_subjects
               or _headline_subject((c.get("sources") or [{}])[0].get("headline"))
               in declined_subjects]:
         print(f"  EVICTED (now declined): {existing[k].get('narrative','')[:64]}")
-        existing.pop(k, None)
+        # PHASE 2 (2026-08-27): eviction is a STATE, not a deletion. The card
+        # stops rendering, but its row survives in cards.jsonl with state
+        # "evicted" so nothing is ever thrown away by this path again.
+        evicted_keys.add(k)
 
     cutoff = now - _td(hours=FEED_MAX_AGE_H)
     out = []
-    for c in existing.values():
+    aged_keys = set()
+    for k, c in existing.items():
+        # Evicted cards do NOT render again, ever — the eviction stands, the
+        # row survives only in the store.
+        if k in evicted_keys:
+            continue
         try:
             seen = _dt.fromisoformat(c.get("first_seen"))
         except Exception:
             continue
         if seen >= cutoff:
             out.append(c)
+        else:
+            # PHASE 2: aging out is recorded, not applied by absence.
+            aged_keys.add(k)
+    if aged_keys:
+        print(f"  FEED aged_out {len(aged_keys)} card(s) past the "
+              f"{FEED_MAX_AGE_H:g}h window (recorded in cards.jsonl)")
     out.sort(key=feed_rank, reverse=True)
+
+    # --- DURABLE STORE WRITE-THROUGH (Phase 2) ---
+    # Every run writes every card it processed into cards.jsonl: still
+    # rendering as "live", evictions as "evicted", fallen out of the window
+    # as "aged_out" — nothing is dropped on the floor anymore. If anything
+    # here breaks, the run fails loudly rather than rendering a brief over a
+    # silent hole in the record.
+    import card_store as _store
+    _overrides = {k: "evicted" for k in evicted_keys}
+    _overrides.update({k: "aged_out" for k in aged_keys})
+    _store.record_run(list(existing.values()),
+                      state_overrides=_overrides,
+                      run_ts=now.isoformat())
+
     return out
 
 
