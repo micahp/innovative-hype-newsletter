@@ -1,35 +1,37 @@
 # INNOVATIVE HYPE — BRIEF
-_Generated 2026-08-22 00:03 UTC · 32/55 feeds · 694 articles_
+_Generated 2026-08-27 14:46 CDT · 37/55 feeds · 3274 articles_
+
+## The AI data layer is printing money
+
+
+- Anthropic continues compute-gobbling streak in $45B deal with Nscale (TechCrunch)
+- Nvidia closes in on Hugging Face acquisition (TechCrunch)
+- This AI notetaker won't sell surveillance to your boss (Platformer)
 
 ## Can we trust the machines we're building?
 
 
-- Binance Opens the Door to AI Agents That Can Trade Crypto for You (Decrypt)
-- The Download: threats from space mirrors and credit for AI drugs (MIT Technology Review)
-- Grok exfiltrates user data when malicious instructions are encrypted (Ars Technica)
-
-## The AI data layer is printing money
-_One of these fast-growing businesses is Micro1, a four-year-old startup that expanded its gross annual run rate from $100 million to $500 million over the past eight months, according to a person familiar with the company._
-
-- AI data startup Micro1 reaches $500M gross run rate amid AI training boom (TechCrunch)
-- Nvidia partners with data center developer Cloverleaf (TechCrunch)
-- Superintelligence is a dragon (Platformer)
+- OpenAI, Anthropic, Google, and 100 other companies call for action to defend against rogue AI (TechCrunch)
+- Show HN: A Layer for robotics dataset quality (HN (Show))
+- Alabama launches investigation into OpenAI’s hack of Hugging Face (TechCrunch)
 
 ## The creator economy is consolidating
 
 
-- The Athletic in Talks to Provide Content to NFL Media Properties (Front Office Sports)
-- An LLM wiki changed how I work (Platformer)
-- Town's CEO on the self-organizing company (Platformer)
+- Tech Optimism Has a Hold Over Hip-Hop’s Mogul Generation (Rolling Stone)
+- YouTube’s Pedro Pina Says Platform Can Fuel Britain’s Next TV ‘Golden Age,’ Unveils $4 Million Pledge: We’re ‘Not the Villain’ (Variety)
+- Show HN: LLM-powered webapp to build LLM-powered webapps (HN (Show))
+
+## Media power and who owns it
+
+
+- Your vote matters! Decide which Audience Choice sessions will make it to TechCrunch Founder Summit (TechCrunch)
+- BBC Director-General Matt Brittin Says Its News Service Is ‘A Disinfectant for Misinformation’ (Variety)
+- Is the consumer getting lost in real estate’s battle for control? (HousingWire)
 
 ## Cities, housing and where America lives
 
 
-- ‘The Yogurt Shop Murders’ Crew Thought Their Journey Was Done Until There Was a Big Break in the Case: ‘We Have to Rally Now’ (Variety)
-- 15 Days Until Kickoff: Will Hammond & Austin Romaine (On3)
-- Texas Parks and Wildlife commissioners inundated with border wall concerns during annual meeting (Texas Tribune)
-
-## Media power and who owns it
-_The roughly 30-person company offers Cora , an email assistant; Sparkle , a file organizer; Spiral , a writing tool; and Monologue , a dictation app &#x2014; all of which are bundled with the journalism into a $20-a-month subscription._
-
-- The website that created an AI clone of its editor in chief (Platformer)
+- A new Texas law declaws neighborhood groups that oppose housing projects (Texas Tribune)
+- UMusic Unveils Plans for Austin Hotel & Residential Community Built Around Live Music (Billboard)
+- Property taxes are the housing affordability crisis no one wants to touch (HousingWire)

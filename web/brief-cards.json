@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-27T19:57:06.031923+00:00",
+  "updated": "2026-08-27T20:46:07.505572+00:00",
   "run": "a6b1ff4",
   "cards": [
     {
@@ -32,8 +32,8 @@
       "first_seen": "2026-08-27T19:47:09.135968+00:00",
       "updated": "2026-08-27T19:47:09.135968+00:00",
       "grade": "A+",
-      "quality_grade": "A",
-      "quality_note": "Sharp, critical take that connects the hack, investigation, and OpenAI's inadequate response, adding a pointed observation beyond the sources."
+      "quality_grade": "B",
+      "quality_note": "Sharp take linking the hack to OpenAI's weak response, but the headline overstates the 'call for security' as the main story."
     },
     {
       "story_key": "b92ee783df41f995",
@@ -61,7 +61,7 @@
       "updated": "2026-08-27T09:35:25.237199+00:00",
       "grade": "A",
       "quality_grade": "D",
-      "quality_note": "The thesis about messaging is a stretch; the sources focus on the hack details, not on the company's messaging."
+      "quality_note": "The thesis about messaging is a stretch; the story is about the hack itself, not PR failures."
     },
     {
       "story_key": "27f72da3d5a94d00",
@@ -93,8 +93,8 @@
       "first_seen": "2026-08-26T19:20:18.587508+00:00",
       "updated": "2026-08-26T19:20:18.587508+00:00",
       "grade": "A",
-      "quality_grade": "D",
-      "quality_note": "The sources don't support the thesis about tech workers' parenting; they're unrelated."
+      "quality_grade": "C",
+      "quality_note": "Accurate but generic; the story is about one parent's experience, not a systemic claim about tech workers."
     },
     {
       "story_key": "0a580fed34b2d035",
@@ -126,8 +126,8 @@
       "first_seen": "2026-08-27T19:47:09.135968+00:00",
       "updated": "2026-08-27T19:47:09.135968+00:00",
       "grade": "B+",
-      "quality_grade": "C",
-      "quality_note": "Accurate but disjointed; the sources don't support a coherent thesis about passing danger thresholds."
+      "quality_grade": "D",
+      "quality_note": "Ties together disparate items; the Gates quote is tangential, and the 'danger thresholds' framing is not the story's focus."
     },
     {
       "story_key": "90e90a3af9a92cb5",
@@ -149,8 +149,8 @@
       "first_seen": "2026-08-24T20:25:30.600908+00:00",
       "updated": "2026-08-24T20:25:30.600908+00:00",
       "grade": "B+",
-      "quality_grade": "C",
-      "quality_note": "Accurate summary of the settlement, but lacks a distinctive point of view."
+      "quality_grade": "B",
+      "quality_note": "Sound summary of the settlement, but adds little beyond the facts."
     },
     {
       "story_key": "0bf7fc2a4c276151",
@@ -178,7 +178,7 @@
       "updated": "2026-08-26T23:24:59.194576+00:00",
       "grade": "B+",
       "quality_grade": "B",
-      "quality_note": "Sound and specific, tying Anthropic's deal to the broader AI infrastructure boom."
+      "quality_note": "Accurate reporting on the deal, but the paragraph includes extra context that dilutes the thesis."
     },
     {
       "story_key": "190f3ff11966f90e",
@@ -205,8 +205,8 @@
       "first_seen": "2026-08-27T13:39:24.244172+00:00",
       "updated": "2026-08-27T13:39:24.244172+00:00",
       "grade": "B",
-      "quality_grade": "B",
-      "quality_note": "Effectively contrasts AI hype with real-world failures, though the connection between examples is loose."
+      "quality_grade": "F",
+      "quality_note": "The thesis is a broad anti-AI-hype rant that doesn't match the specific stories; it's about something else entirely."
     },
     {
       "story_key": "01a1264ef204a577",
@@ -234,7 +234,7 @@
       "updated": "2026-08-27T19:47:09.135968+00:00",
       "grade": "B",
       "quality_grade": "B",
-      "quality_note": "Perceptive contrast between YouTube's defense and BBC's mimicry, supported by sources."
+      "quality_note": "Good contrast between YouTube's defense and BBC's mimicry, but the 'old guard mimicking' angle is implied, not explicit."
     },
     {
       "story_key": "1d686cbd75b48121",
@@ -266,8 +266,8 @@
       "first_seen": "2026-08-27T13:39:24.244172+00:00",
       "updated": "2026-08-27T13:39:24.244172+00:00",
       "grade": "B",
-      "quality_grade": "C",
-      "quality_note": "Generic claim about gatekeepers falling; sources don't fully support the 'anyone can make it' thesis."
+      "quality_grade": "B",
+      "quality_note": "Captures the trend of platforms empowering creators, but the thesis is a bit vague."
     },
     {
       "story_key": "5ab3e5afa0cadb0f",
@@ -289,8 +289,8 @@
       "first_seen": "2026-08-26T09:06:32.771284+00:00",
       "updated": "2026-08-27T03:29:16.506228+00:00",
       "grade": "B",
-      "quality_grade": "D",
-      "quality_note": "The source is about school takeovers, not parenting in the AI age."
+      "quality_grade": "C",
+      "quality_note": "Generic summary; lacks a point of view beyond the obvious."
     },
     {
       "story_key": "1277919909d8a1ff",
@@ -317,8 +317,8 @@
       "first_seen": "2026-08-26T13:11:58.963365+00:00",
       "updated": "2026-08-26T13:11:58.963365+00:00",
       "grade": "",
-      "quality_grade": "B",
-      "quality_note": "Raises a relevant question about ownership, though the sources are more about agency moves than the question."
+      "quality_grade": "C",
+      "quality_note": "Lists examples of agencies moving into creator space, but the thesis question is unanswered."
     },
     {
       "story_key": "59a8cddc56cc63aa",
@@ -340,8 +340,8 @@
       "first_seen": "2026-08-26T11:09:04.957015+00:00",
       "updated": "2026-08-27T03:29:16.506228+00:00",
       "grade": "",
-      "quality_grade": "C",
-      "quality_note": "Accurate but vague; doesn't go beyond the source's description."
+      "quality_grade": "D",
+      "quality_note": "The thesis is vague and doesn't engage with the story's specifics about hip-hop moguls and AI."
     },
     {
       "story_key": "641a0ecf59aad591",
@@ -373,8 +373,8 @@
       "first_seen": "2026-08-27T03:29:16.506228+00:00",
       "updated": "2026-08-27T03:29:16.506228+00:00",
       "grade": "",
-      "quality_grade": "D",
-      "quality_note": "Overgeneralizes about billionaires; sources are about specific deals, not a broad pattern."
+      "quality_grade": "B",
+      "quality_note": "Correctly identifies consolidation trend, but the paragraph is a list of deals without a strong through-line."
     },
     {
       "story_key": "26eb1e7a7d0af60f",
@@ -401,8 +401,8 @@
       "first_seen": "2026-08-26T23:24:59.194576+00:00",
       "updated": "2026-08-27T01:27:09.379634+00:00",
       "grade": "",
-      "quality_grade": "D",
-      "quality_note": "The personal reflection is not supported by the cited sources; they're unrelated."
+      "quality_grade": "C",
+      "quality_note": "Repeats the story's narrative without adding insight; the Zuckerberg mention is unsupported."
     },
     {
       "story_key": "c90ff0eeb0a032b1",
@@ -425,7 +425,7 @@
       "updated": "2026-08-27T19:47:09.135968+00:00",
       "grade": "",
       "quality_grade": "C",
-      "quality_note": "Accurate but purely factual; no point of view beyond the announcement."
+      "quality_note": "Straightforward announcement; no analysis or point of view."
     },
     {
       "story_key": "25f0c67339f6fed2",
@@ -448,7 +448,7 @@
       "updated": "2026-08-27T03:29:16.506228+00:00",
       "grade": "",
       "quality_grade": "C",
-      "quality_note": "Accurate but lacks analysis; just states the settlement."
+      "quality_note": "Accurate but extremely brief; lacks context or commentary."
     },
     {
       "story_key": "87a71b57c6fc7207",
@@ -471,7 +471,7 @@
       "updated": "2026-08-27T13:39:24.244172+00:00",
       "grade": "",
       "quality_grade": "C",
-      "quality_note": "Accurate but trivial; no deeper insight."
+      "quality_note": "A trivial story; the card adds nothing beyond the fact."
     },
     {
       "story_key": "e94dd92244ef494c",
@@ -493,8 +493,8 @@
       "first_seen": "2026-08-27T17:44:05.515921+00:00",
       "updated": "2026-08-27T17:44:05.515921+00:00",
       "grade": "",
-      "quality_grade": "F",
-      "quality_note": "The source does not support the claim about Pollack's concerns; it's about Texas A&M recruiting."
+      "quality_grade": "C",
+      "quality_note": "Summarizes Pollack's comments but doesn't add analysis; the thesis is just a quote."
     },
     {
       "story_key": "84c48cc85d0e4278",
@@ -516,8 +516,8 @@
       "first_seen": "2026-08-27T17:44:05.515921+00:00",
       "updated": "2026-08-27T17:44:05.515921+00:00",
       "grade": "",
-      "quality_grade": "C",
-      "quality_note": "Accurate but merely repeats the rule; no added perspective."
+      "quality_grade": "B",
+      "quality_note": "Correctly highlights the ambiguity in the WNBA's rule, but the thesis is a direct quote."
     },
     {
       "story_key": "d0036c033fcd7a9e",
@@ -540,7 +540,7 @@
       "updated": "2026-08-27T19:47:09.135968+00:00",
       "grade": "",
       "quality_grade": "B",
-      "quality_note": "Provides specific details and context beyond the sources."
+      "quality_note": "Accurate recounting of the ban, but the thesis is just a statement of events."
     },
     {
       "story_key": "fa57f867dc9ce0bd",
@@ -562,8 +562,8 @@
       "first_seen": "2026-08-27T13:39:24.244172+00:00",
       "updated": "2026-08-27T19:47:09.135968+00:00",
       "grade": "",
-      "quality_grade": "C",
-      "quality_note": "Accurate but doesn't add much beyond the quote."
+      "quality_grade": "B",
+      "quality_note": "Captures Brink's blunt quote, but the thesis is just a quote."
     },
     {
       "story_key": "249909a30b402c80",
@@ -586,7 +586,7 @@
       "updated": "2026-08-26T17:18:04.529948+00:00",
       "grade": "",
       "quality_grade": "C",
-      "quality_note": "Accurate but generic; no specific insight."
+      "quality_note": "Generic praise of freshman class; lacks specifics or a point of view."
     },
     {
       "story_key": "f7d7222522dd120f",
@@ -609,7 +609,7 @@
       "updated": "2026-08-26T11:09:04.957015+00:00",
       "grade": "",
       "quality_grade": "C",
-      "quality_note": "Accurate but simply reports the plan; no analysis."
+      "quality_note": "Recounts Kanter's plans; no analysis or angle."
     },
     {
       "story_key": "3deba5e2c1796cc2",
@@ -631,8 +631,8 @@
       "first_seen": "2026-08-26T07:03:24.733815+00:00",
       "updated": "2026-08-26T13:11:58.963365+00:00",
       "grade": "",
-      "quality_grade": "A",
-      "quality_note": "Sharp take connecting the elimination of public comment to eminent domain for data centers, with a strong point."
+      "quality_grade": "B",
+      "quality_note": "Good connection between eliminating public comment and corporate interests, but the thesis is slightly overstated."
     },
     {
       "story_key": "080c1684445038fb",
@@ -654,8 +654,8 @@
       "first_seen": "2026-08-27T17:44:05.515921+00:00",
       "updated": "2026-08-27T17:44:05.515921+00:00",
       "grade": "",
-      "quality_grade": "F",
-      "quality_note": "The source is about robotics dataset quality, not Pollack or Texas football."
+      "quality_grade": "C",
+      "quality_note": "Same as card 17; just repeats Pollack's quotes."
     },
     {
       "story_key": "e92f480eb7074273",
@@ -678,7 +678,7 @@
       "updated": "2026-08-25T00:29:44.606020+00:00",
       "grade": "",
       "quality_grade": "B",
-      "quality_note": "Raises a good question about accountability, supported by the lawsuit details."
+      "quality_note": "Raises a valid question about accountability, but the thesis is a bit broad."
     },
     {
       "story_key": "fbbecd6fd3e19296",
@@ -701,7 +701,7 @@
       "updated": "2026-08-25T00:29:44.606020+00:00",
       "grade": "",
       "quality_grade": "C",
-      "quality_note": "Accurate but trivial; no deeper point."
+      "quality_note": "Anecdotal; no larger point made."
     },
     {
       "story_key": "3901720046dd978c",
@@ -724,7 +724,7 @@
       "updated": "2026-08-25T00:29:44.606020+00:00",
       "grade": "",
       "quality_grade": "C",
-      "quality_note": "Accurate but just reports the interest; no analysis."
+      "quality_note": "Reports the transfer interest; no analysis."
     },
     {
       "story_key": "98239394f896d655",
@@ -746,8 +746,8 @@
       "first_seen": "2026-08-27T09:35:25.237199+00:00",
       "updated": "2026-08-27T19:47:09.135968+00:00",
       "grade": "",
-      "quality_grade": "C",
-      "quality_note": "Accurate but simply paraphrases Barkley's comments."
+      "quality_grade": "B",
+      "quality_note": "Accurately captures Barkley's nuanced stance, but the thesis is just a summary."
     },
     {
       "story_key": "e543378480ab206d",
@@ -770,7 +770,7 @@
       "updated": "2026-08-27T19:47:09.135968+00:00",
       "grade": "",
       "quality_grade": "C",
-      "quality_note": "Accurate but trivial; no deeper point."
+      "quality_note": "Recounts a trivial incident; no point of view."
     },
     {
       "story_key": "d13872c481915ca7",
@@ -793,7 +793,7 @@
       "updated": "2026-08-25T00:29:44.606020+00:00",
       "grade": "",
       "quality_grade": "B",
-      "quality_note": "Provides good context on the legal battle and its implications."
+      "quality_note": "Highlights the legal battle, but the thesis is just a statement of events."
     },
     {
       "story_key": "1bfbdeecd7496811",
@@ -816,7 +816,7 @@
       "updated": "2026-08-27T03:29:16.506228+00:00",
       "grade": "",
       "quality_grade": "B",
-      "quality_note": "Effectively captures the chaos of new rules with a specific quote."
+      "quality_note": "Connects rule changes to Sarkisian's concern, but the thesis is a bit broad."
     },
     {
       "story_key": "90b75acb4338e1a2",
@@ -839,7 +839,7 @@
       "updated": "2026-08-25T00:29:44.606020+00:00",
       "grade": "",
       "quality_grade": "B",
-      "quality_note": "Highlights the frustration and the 'different world' of college football."
+      "quality_note": "Accurately summarizes Day's frustration, but the thesis is just a quote."
     },
     {
       "story_key": "e33ccfa0ad414c7d",
@@ -862,7 +862,7 @@
       "updated": "2026-08-27T19:47:09.135968+00:00",
       "grade": "",
       "quality_grade": "C",
-      "quality_note": "Accurate but just reports the list cut; no analysis."
+      "quality_note": "Reports recruiting news; no analysis."
     }
   ]
 }

@@ -139,19 +139,56 @@ def main():
                 for k, v in ((dec or {}).get("angle_offered_scores") or {}).items()],
         })
 
+    # grades: the CARD's quality grade from the desk's --grade pass. The feed
+    # rephrases headlines between runs, so match exact text first, then the
+    # dedupe's own similarity metric (token overlap >= 0.45 = same story).
+    grades, grade_pool = {}, []
+    kickers = {}
+    try:
+        with open(os.path.join(REPO, "web", "brief-feed.json")) as f:
+            for c in json.load(f).get("cards", []):
+                kickers[c["narrative"]] = c.get("kicker") or ""
+                if c.get("quality_grade"):
+                    rec = (c["quality_grade"], c.get("quality_note") or "")
+                    grades[c["narrative"]] = rec
+                    grade_pool.append(
+                        (set(tokens(c["narrative"])), rec))
+    except Exception:
+        grades, grade_pool, kickers = {}, [], {}
+
+    def _grade_for(narrative):
+        g = grades.get(narrative)
+        if g:
+            return g
+        toks = set(tokens(narrative))
+        if not toks:
+            return None
+        best, best_rec = 0.0, None
+        for ftoks, rec in grade_pool:
+            if not ftoks:
+                continue
+            ov = len(toks & ftoks) / float(min(len(toks), len(ftoks)))
+            if ov > best:
+                best, best_rec = ov, rec
+        return best_rec if best >= 0.45 else None
+
     card_by_cluster = {c["cluster_index"]: c for c in output.get("cards", [])}
     cards = []
     for idx, cv in enumerate(cluster_views):
         card = card_by_cluster.get(idx)
         if not card:
             continue
+        g = _grade_for(card.get("narrative") or "")
         cards.append({
             "cluster_index": idx, "name": cv["name"],
             "verdict": cv["verdict"],
             "narrative": card.get("narrative") or "",
+            "kicker": kickers.get(card.get("narrative") or "")
+                      or card.get("kicker") or "",
             "paragraph": card.get("paragraph") or "",
             "data_point": card.get("data_point") or "",
             "angle_id": card.get("angle_id") or "none",
+            "grade": g[0] if g else "", "grade_note": g[1] if g else "",
             "sources": [cv["items"][j]["link"] for j in card.get("source_ids", [])
                         if j < len(cv["items"])],
         })
@@ -179,6 +216,26 @@ def main():
         perspectives = {"built": None, "entries": [],
                         "error": f"voice profile unavailable: {e}"}
 
+    # grade feedback: the misses the desk prompt is told not to repeat
+    misses = []
+    try:
+        with open(os.path.join(REPO, "runs", "grades.jsonl")) as f:
+            latest_g = {}
+            for line in f:
+                try:
+                    r = json.loads(line)
+                except ValueError:
+                    continue
+                if r.get("grade") in ("D", "F"):
+                    latest_g[r.get("story_key") or r.get("narrative", "")] = r
+            misses = sorted(latest_g.values(),
+                            key=lambda r: r.get("timestamp", ""))[-8:]
+        misses = [{"grade": m.get("grade"), "narrative": (m.get("narrative") or "")[:110],
+                   "angle": m.get("angle_id") or "", "note": m.get("note") or ""}
+                  for m in misses]
+    except Exception:
+        misses = []
+
     data = {
         "run": os.path.basename(latest),
         "generated": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
@@ -194,6 +251,7 @@ def main():
         "undecided_indexes": undecided,
         "seeds": seeds, "seed_error": seed_error,
         "perspectives": perspectives,
+        "misses": misses,
         "corpus": corpus_inventory(),
         "clusters": cluster_views,
         "cards": cards,
@@ -221,7 +279,7 @@ PAGE = """<!DOCTYPE html>
           --mark:#fdeeba; --markink:#8a5b00; }
 }
 * { box-sizing:border-box; margin:0; padding:0; }
-body { background:var(--bg); color:var(--ink); font:14px/1.45 -apple-system,'Segoe UI',Roboto,sans-serif; padding:16px; }
+body { background:var(--bg); color:var(--ink); font:14px/1.45 -apple-system,'Segoe UI',Roboto,sans-serif; padding:16px; overflow-wrap:break-word; }
 a { color:var(--amber); text-decoration:none; } a:hover { text-decoration:underline; }
 mark { background:var(--mark); color:var(--markink); padding:0 2px; border-radius:3px; }
 header { margin-bottom:14px; }
@@ -232,7 +290,12 @@ h1 { font-size:19px; letter-spacing:.4px; }
 .chip b { font-weight:600; }
 .grid { display:grid; grid-template-columns:280px minmax(430px,1fr) minmax(360px,1fr); gap:14px; align-items:start; }
 @media (max-width:1250px){ .grid{grid-template-columns:1fr 1fr;} .col-k{grid-column:1/-1;} }
-@media (max-width:860px){ .grid{grid-template-columns:1fr;} }
+@media (max-width:860px){
+  .grid{grid-template-columns:1fr;}
+  body{padding:10px;}
+  h1{font-size:17px;}
+  .col h2{position:static;}
+}
 .col h2 { font-size:12px; text-transform:uppercase; letter-spacing:1.4px; color:var(--dim); margin-bottom:8px; position:sticky; top:0; background:var(--bg); padding:4px 0; z-index:2; }
 .panel { background:var(--panel); border:1px solid var(--edge); border-radius:8px; padding:10px 12px; margin-bottom:10px; }
 .seed { display:inline-block; background:var(--bg); border:1px solid var(--edge); border-radius:4px; padding:1px 7px; margin:0 4px 5px 0; font-size:12px; }
@@ -265,6 +328,19 @@ th { color:var(--dim); font-weight:500; }
 .tag.verdict.demoted_type_gate { background:rgba(245,158,11,.14); color:var(--amber); }
 .undecided-note { border:1px solid var(--red); background:rgba(239,68,68,.08); color:var(--red); border-radius:8px; padding:9px 12px; font-size:13px; margin-bottom:10px; }
 .err { border:1px solid var(--red); color:var(--red); border-radius:8px; padding:8px 12px; font-size:13px; }
+.qgrade { display:inline-block; font-size:11px; font-weight:700; border-radius:4px; padding:0 6px; vertical-align:1px; }
+.qgrade.a { background:rgba(34,197,94,.14); color:var(--green); }
+.qgrade.b { background:var(--bg); border:1px solid var(--edge); color:var(--ink); }
+.qgrade.c { background:var(--bg); border:1px solid var(--edge); color:var(--dim); }
+.qgrade.d { background:rgba(245,158,11,.14); color:var(--amber); }
+.qgrade.f { background:rgba(239,68,68,.14); color:var(--red); }
+.vbtns { margin-top:7px; display:flex; gap:6px; align-items:center; flex-wrap:wrap; }
+.vbtn { font:inherit; font-size:12px; font-weight:600; padding:2px 11px; border-radius:5px;
+  border:1px solid var(--edge); background:var(--bg); color:var(--dim); cursor:pointer; }
+.vbtn:hover { color:var(--ink); }
+.vbtn.good.on { background:rgba(34,197,94,.15); border-color:var(--green); color:var(--green); }
+.vbtn.bad.on { background:rgba(239,68,68,.15); border-color:var(--red); color:var(--red); }
+.vsaved { font-size:11px; color:var(--dim); }
 </style>
 </head>
 <body>
@@ -278,10 +354,12 @@ th { color:var(--dim); font-weight:500; }
   <div class="col col-k">
     <h2>Voice perspectives</h2>
     <div class="panel" id="vpersp"></div>
+    <h2>Grade log</h2>
+    <div class="panel" id="misses"></div>
     <h2>Keywords &middot; corpus seeds</h2>
     <div class="panel" id="seeds"></div>
     <h2>Corpus</h2>
-    <div class="panel"><table id="corpus"></table></div>
+    <div class="panel" style="overflow-x:auto"><table id="corpus"></table></div>
   </div>
   <div class="col">
     <h2>Clusters (14 in &rarr; desk)</h2>
@@ -332,6 +410,19 @@ else vpEl.innerHTML =
     + (e.exemplars||[]).map(x => '<div class="vw" style="border-left:2px solid var(--edge);padding-left:7px;margin-top:3px">&ldquo;'+esc(x)+'&rdquo;</div>').join('')
     + '</div>').join('');
 
+// grade feedback loop (runs/grades.jsonl; the desk prompt reads these back)
+const ms = D.misses || [];
+const msEl = document.getElementById('misses');
+if (!ms.length) msEl.innerHTML = '<div class="vw">no D/F grades logged yet</div>';
+else msEl.innerHTML =
+  '<div class="vw" style="margin-bottom:6px">display only: nothing here feeds the desk prompt. The good/bad verdicts on each card are the judgment of record.</div>'
+  + ms.map(m =>
+    '<div style="margin-bottom:8px"><span class="qgrade '+esc((m.grade||'').toLowerCase())+'">'+esc(m.grade)+'</span> '
+    + (m.angle ? '<span class="term">'+esc(m.angle)+'</span>' : '')
+    + '<div style="font-size:12.5px;margin-top:3px">'+esc(m.narrative)+'</div>'
+    + (m.note ? '<div class="vw">'+esc(m.note)+'</div>' : '')
+    + '</div>').join('');
+
 // corpus
 document.getElementById('corpus').innerHTML =
   '<tr><th>file</th><th class="num">rows</th><th class="num">ids</th><th>newest</th></tr>'
@@ -361,12 +452,59 @@ document.getElementById('cards').innerHTML = D.cards.map(c => {
   return '<div class="panel card">'
     + '<span class="tag '+(c.angle_id==='none'?'noangle':'verdict')+'">'+(c.angle_id==='none'?'no angle':esc(c.angle_id))+'</span>'
     + '<span class="tag verdict '+esc(c.verdict)+'">'+esc(c.verdict)+'</span>'
+    + (c.grade ? '<span class="qgrade '+esc(c.grade.toLowerCase())+'" title="'+esc(c.grade_note||'')+'">'+esc(c.grade)+'</span>' : '')
     + '<div class="narr">'+hi(c.narrative,cl.terms)+'</div>'
     + '<div class="para">'+hi(c.paragraph,cl.terms)+'</div>'
     + (c.data_point?'<div class="dp">'+hi(c.data_point,cl.terms)+'</div>':'')
     + '<div class="vw">cluster #'+c.cluster_index+' \\u00b7 '+esc(c.name)+'</div>'
+    + '<div class="vbtns" data-n="'+esc(c.narrative)+'" data-g="'+esc(c.grade)+'" data-k="'+esc(c.kicker||'')+'">'
+      + '<button class="vbtn good" type="button">good card</button>'
+      + '<button class="vbtn bad" type="button">bad card</button>'
+      + '<span class="vsaved"></span>'
+      + '</div>'
     + '</div>';
 }).join('');
+
+// manual verdicts (Micah 2026-08-27): his good/bad call is the judgment of
+// record; the model grade is just a first-pass signal beside it. State
+// persists in card_verdicts.jsonl via scripts/serve.py on this origin.
+const verdicts = {};
+function paintVerdicts() {
+  document.querySelectorAll('.vbtns').forEach(box => {
+    const v = (verdicts[box.getAttribute('data-n')] || {}).verdict;
+    box.querySelector('.good').classList.toggle('on', v === 'good');
+    box.querySelector('.bad').classList.toggle('on', v === 'bad');
+    const ts = (verdicts[box.getAttribute('data-n')] || {}).ts;
+    box.querySelector('.vsaved').textContent = ts ? ('saved ' + ts) : '';
+  });
+}
+fetch('/api/verdicts').then(r => r.json()).then(d => {
+  Object.assign(verdicts, d.verdicts || {});
+  paintVerdicts();
+}).catch(() => {}); // page opened without the API: buttons render, nothing persists
+document.getElementById('cards').addEventListener('click', e => {
+  const btn = e.target.closest('.vbtn');
+  if (!btn) return;
+  const box = btn.closest('.vbtns');
+  const n = box.getAttribute('data-n');
+  const v = btn.classList.contains('good') ? 'good' : 'bad';
+  const next = (verdicts[n] || {}).verdict === v ? 'clear' : v;
+  if (next === 'clear') delete verdicts[n];
+  else verdicts[n] = {verdict: next, ts: 'saving…'};
+  paintVerdicts();
+  fetch('/api/verdict', {method: 'POST', headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({narrative: n, verdict: next,
+      grade: box.getAttribute('data-g'), kicker: box.getAttribute('data-k')})})
+    .then(r => r.json())
+    .then(d => {
+      if (!d.ok) { box.querySelector('.vsaved').textContent = 'save failed'; return; }
+      if (next === 'clear') { delete verdicts[n]; }
+      else verdicts[n] = {verdict: next,
+        ts: new Date().toISOString().slice(0, 16).replace('T', ' ') + ' UTC'};
+      paintVerdicts();
+    })
+    .catch(() => { box.querySelector('.vsaved').textContent = 'save failed'; });
+});
 </script>
 </body>
 </html>
