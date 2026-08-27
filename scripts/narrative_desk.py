@@ -118,6 +118,13 @@ _SYSTEM = (
     "an abstraction (a fight, a tension, a reminder, an era), cut it.\n"
     "Use full names on first mention (Greg Abbott, not Abbott) and keep the "
     "concrete subject (the Venezuelan man, the hemp industry).\n"
+    "REWRITES NEVER TRADE SPECIFICITY FOR ABSTRACTION. A story that already "
+    "has a card keeps its concrete anchors across every rewrite: the named "
+    "companies, the named state, the number. When you rewrite a card that "
+    "carried more detail, cut color, never facts. A rewrite that drops the "
+    "specific clause and keeps only the generalized frame is a failed rewrite "
+    "(Micah 2026-08-27: he reads a shorter rewrite as a downgrade, not a "
+    "tighten).\n"
     "\n"
     "== THE PUSH-QUOTE (data_point) ==\n"
     "One hook that reads as a pull-quote under the headline: a number that "
@@ -1039,7 +1046,24 @@ F  the take does not survive the story: it contradicts it, minimizes a serious e
    is NOT what the story is about is F even when its topic sits adjacent to the story's.
 
 Judge the THESIS hardest. A paragraph can quote real facts beneath a headline whose frame
-is false; that is an F, not an A. Grade EVERY card. Return STRICT JSON:
+is false; that is an F, not an A.
+
+READ THE PARAGRAPH AGAINST THE THESIS, line by line (Micah 2026-08-27: "read the
+paragraph and it's clear that's the wrong title and angle"). The paragraph's facts are the
+source of truth. INTERNAL CONTRADICTION IS AN F: a thesis the paragraph's own facts do not
+support, or a closing sentence that reframes those facts into calm-down/PR spin ("leaving
+the public with a scarier picture than the reality of a test gone wrong" over a breach
+that drew a state subpoena), is an F no matter how clean the reporting underneath is.
+
+HYPE-MAN REGISTER IS A VOICE FAILURE. He is hype-RESISTANT: motivational cheerleading
+("now is the time for anyone to go make something"), childishly excited framing, rah-rah
+opportunist lines are BENEATH HIM, grade those C or D even when the reporting is good.
+This is the opposite of his sarcasm and his stances, which you never grade down.
+
+SPECIFICITY: a thesis that floats an abstract trend without the story's specific anchors
+(companies, people, numbers, places) is a D at best, even when the paragraph names them.
+
+Grade EVERY card. Return STRICT JSON:
 {"grades":[{"i":<card index>,"grade":"A|B|C|D|F","note":"<one short sentence>"}]}"""
 
 
