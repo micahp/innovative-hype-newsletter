@@ -1,6 +1,7 @@
 # Phase 2: cards graduate, they do not expire
 
-Written 2026-08-26. Status: PROPOSAL, not built. Read
+Written 2026-08-26. Status: LANDED 2026-08-27 (store live, G12 in gates.py and
+§6b; digest/topics/social/feedback UI remain Phase 3). Read
 `CONTEXT-2026-08-26-SUMMARY.md` for the state this builds on.
 
 ## 1. The problem, measured

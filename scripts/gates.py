@@ -53,6 +53,7 @@ SPEC_GATES = {
     "G9": "stable-pool",
     "G10": "keep-cards",
     "G11": "source-align",
+    "G12": "no-card-deleted",
 }
 
 _RAN = []
@@ -260,6 +261,59 @@ def main():
                 bad += 1
         return bad == 0
     results.append(run_gate("G11 source-align (smoke)", g11))
+
+    # --- G12: no-card-deleted (Phase 2 durable store) ---
+    # Spec (PHASE-2-CARD-LIFECYCLE.md, acceptance 5): the store's row count
+    # is monotonic across runs. The previous count is read from the store
+    # ITSELF — its own _prev_row_count ledger row, written by card_store on
+    # every append and by --rebuild — not from a fixture. A missing or
+    # unreadable count is a FAIL (fail closed on "cannot check"), because a
+    # store that silently returns zero rows makes the live brief look exactly
+    # like a healthy one with a small pool.
+    def g12():
+        sys.path.insert(0, SCRIPTS)
+        import card_store
+        try:
+            rows = card_store.read_rows()
+        except RuntimeError as e:
+            print(f"      store unreadable: {e}")
+            return False
+        if not rows:
+            print("      cards.jsonl does not exist or is empty — if Phase 2 "
+                  "has landed there should be a store; run "
+                  "scripts/card_store.py --rebuild")
+            return False
+        prev = None
+        for r in reversed(rows):
+            if r.get("_prev_row_count") is not None:
+                prev = r["_prev_row_count"]
+                break
+        if prev is None:
+            print("      no _prev_row_count ledger found in the store itself; "
+                  "cannot verify monotonicity")
+            return False
+        cur = len(rows)
+        if cur < prev:
+            print(f"      row count SHRANK: {cur} < {prev} — a run deleted rows")
+            return False
+        latest = card_store.latest_by_key(rows)
+        brief_keys = {c.get("story_key") for c in
+                      (load_json(os.path.join(WEB, "brief-cards.json"))
+                       or {}).get("cards", [])}
+        uncovered = [k for k in brief_keys if k and k not in latest]
+        if uncovered:
+            print(f"      {len(uncovered)} live brief card(s) absent from the "
+                  f"store: {uncovered[:4]}")
+            return False
+        aged_on_page = [k for k in brief_keys
+                        if k in latest and latest[k].get("state") == "aged_out"]
+        if aged_on_page:
+            print(f"      {len(aged_on_page)} aged_out card(s) still on the page")
+            return False
+        print(f"      {cur} rows >= previous {prev}; all "
+              f"{len(brief_keys)} brief cards present; states consistent")
+        return True
+    results.append(run_gate("G12 no-card-deleted", g12))
 
     # --- G3: three ways to qualify ---
     def g3():
