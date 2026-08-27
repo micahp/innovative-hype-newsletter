@@ -269,6 +269,7 @@ th { color:var(--dim); font-weight:500; }
 </head>
 <body>
 <header>
+  <div style="float:right;margin-top:2px"><a href="/" style="border:1px solid var(--edge);border-radius:6px;padding:4px 12px;font-size:12.5px;font-weight:600;display:inline-block">&larr; Home</a></div>
   <h1>INNOVATIVE HYPE &mdash; PIPELINE</h1>
   <div class="sub" id="subline"></div>
   <div class="chips" id="chips"></div>
