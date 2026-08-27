@@ -501,10 +501,26 @@ def _moment_from_article(article):
 
 
 # === TWEET-CORPUS SEED MATCHING (R4) ===
-# Entities and recurring subjects from the @geoppls + @innovativehype tweet
-# corpora. An article touching one of these gets a boost — the voice is
-# the seed list, exactly like LP's human-dictated conversation seeds.
-_TWEET_SEEDS = [
+#
+# A seed hit is not a tiebreaker. At narrative_desk.py:1144 it is what lets a
+# quote/moment story become a card at all, so this list decides which of
+# Micah's subjects can reach the brief.
+#
+# There are TWO sources and they are ADDITIVE, per Micah 2026-08-26: "the
+# hardcoded seeds and the live ones too".
+#
+#   PINNED   the list below. Things he named directly in conversation. These
+#            are standing instructions and never expire.
+#   LIVE     derived from corpus/*.jsonl on every run, weighted to the last
+#            few weeks. See _live_seeds().
+#
+# Until 2026-08-26 only the pinned list existed, and its own comment admitted
+# what that meant: the seeds came "from the 2026-08-21 spec conversation".
+# Grepping every consumer of corpus/*.jsonl found exactly one, extract_angles.py,
+# a manual dev tool run twice in its life. So poll_social.py had been appending
+# his tweets to a corpus that NOTHING in the ranking path read. Micah, correctly:
+# "it's like it's only incorporated if i say it in the chat." It was.
+_PINNED_SEEDS = [
     # Micah's explicit named stories (from the 2026-08-21 spec conversation)
     # — these get a boost whenever they appear, because he asked for them
     # directly. 'college football', 'wnba draft', '40-year-old', 'all of the
@@ -518,11 +534,270 @@ _TWEET_SEEDS = [
     "data center", "kushner", "palantir", "elon", "cursor", "blue origin",
 ]
 
+# How far back a tweet still counts as "what he is on about lately".
+LIVE_SEED_DAYS = int(os.environ.get("IH_LIVE_SEED_DAYS", "14"))
+# A term must appear in at least this many DISTINCT posts. One mention is a
+# passing reference; two is a subject.
+LIVE_SEED_MIN_POSTS = int(os.environ.get("IH_LIVE_SEED_MIN_POSTS", "3"))
+LIVE_SEED_MAX = int(os.environ.get("IH_LIVE_SEED_MAX", "30"))
+# Loud if the corpus has not moved in this long. The poller died on 2026-08-24
+# and nothing noticed for days, because a frozen corpus and a quiet week look
+# identical from in here.
+LIVE_SEED_STALE_H = float(os.environ.get("IH_LIVE_SEED_STALE_H", "48"))
+
+_STOP = set("""
+a an the and or but if then than that this these those there here it its it's
+is are was were be been being am do does did doing have has had having will
+would can could should may might must shall
+i me my we us our you your he him his she her they them their what which who
+whom when where why how all any both each few more most other some such no nor
+not only own same so too very just now also into onto from with without within
+about above below over under again further once because as at by for of on to
+in out up down off over under s t don ve ll re m d
+new news good great best big get got go going make made like really much many
+one two three first last next time day week month year today tomorrow
+via rt amp http https com www co org net
+people thing things way lot going know think want need see look
+please everybody tired similar setting picked scored throw career estimated
+bench aug toward step leaders fields open close start stop keep put
+""".split())
+# Every word on the two lines above was observed in a live-seed run on
+# 2026-08-26 and removed for being English rather than a subject. Curate this
+# from MEASURED output, never from a guess about what Micah cares about: the
+# whole point of live seeds is that the corpus decides, not the author of this
+# file.
+
+_LIVE_CACHE = {}
+
+
+LIVE_SEED_MAX_POOL_RATE = float(os.environ.get("IH_LIVE_SEED_MAX_POOL_RATE", "0.02"))
+
+
+def _drop_indiscriminate(seeds, pool_limit=1200):
+    """Remove live seeds that match too much of the current article pool.
+
+    Returns seeds unchanged if the pool cannot be read: this is a refinement,
+    and failing to refine must not empty the list. The count is printed either
+    way so a silent no-op is visible."""
+    path = os.path.join(WEB, "articles.json")
+    if not seeds or not os.path.exists(path):
+        print("  seed discrimination: SKIPPED (no pool at %s)" % path)
+        return seeds
+    try:
+        arts = json.load(open(path)).get("articles", [])[:pool_limit]
+    except Exception as exc:
+        print("  seed discrimination: SKIPPED (%s)" % exc)
+        return seeds
+    if not arts:
+        print("  seed discrimination: SKIPPED (pool is empty)")
+        return seeds
+    texts = [(a.get("title", "") + " " + a.get("summary", "")).lower() for a in arts]
+    kept, dropped = [], []
+    for t in seeds:
+        n = sum(1 for x in texts if t in x)
+        (dropped if n / float(len(texts)) > LIVE_SEED_MAX_POOL_RATE
+         else kept).append((t, n))
+    if dropped:
+        print("  seed discrimination: dropped %d of %d for matching >%.0f%% of "
+              "the pool: %s" % (len(dropped), len(seeds),
+                                LIVE_SEED_MAX_POOL_RATE * 100,
+                                ", ".join("%s(%d)" % d for d in dropped[:10])))
+    else:
+        print("  seed discrimination: 0 of %d dropped" % len(seeds))
+    return [t for t, _ in kept]
+
+
+def _tweet_terms(text, caps_out=None):
+    """Candidate subject terms from one post: unigrams and bigrams.
+
+    If `caps_out` is a set, terms that appeared Capitalised mid-sentence are
+    added to it. That is a cheap proper-noun signal, and it is what separates
+    `Galveston` and `Yeezy` from `setting` and `picked`, which lift alone
+    ranked side by side."""
+    t = text.lower()
+    t = re.sub(r"https?://\S+", " ", t)
+    t = re.sub(r"[@#]\w+", " ", t)
+    t = re.sub(r"[^a-z0-9' ]+", " ", t)
+    toks = [w for w in t.split() if len(w) >= 3 and w not in _STOP and not w.isdigit()]
+    out = set(toks)
+    out |= {"%s %s" % (a, b) for a, b in zip(toks, toks[1:])}
+    if caps_out is not None:
+        raw = re.sub(r"https?://\S+", " ", text)
+        raw = re.sub(r"[@#]\w+", " ", raw)
+        words = re.findall(r"[A-Za-z][A-Za-z']+", raw)
+        # Skip index 0: a sentence-initial capital says nothing.
+        for i, w in enumerate(words):
+            if i and w[0].isupper() and not w.isupper():
+                caps_out.add(w.lower())
+    return out
+
+
+def _live_seeds():
+    """Subjects Micah has actually posted about lately, from corpus/*.jsonl.
+
+    Additive to _PINNED_SEEDS, never a replacement. Raises if the corpus is
+    missing: these files are a pipeline input, and returning [] would silently
+    drop every recent subject while the brief still rendered.
+    """
+    if "seeds" in _LIVE_CACHE:
+        return _LIVE_CACHE["seeds"]
+    import datetime as _dtm
+    now = _dtm.datetime.now(_dtm.timezone.utc)
+
+    def _parse(v):
+        v = (v or "").replace("·", "").replace("  ", " ").strip()
+        for f in ("%b %d, %Y %I:%M %p UTC", "%a %b %d %H:%M:%S %z %Y"):
+            try:
+                d = _dtm.datetime.strptime(v, f)
+                return d if d.tzinfo else d.replace(tzinfo=_dtm.timezone.utc)
+            except ValueError:
+                pass
+        return None
+
+    # A term is a SUBJECT when it is elevated against his own baseline, not
+    # when it is common. Measured 2026-08-26: ranking the last 14 days by raw
+    # frequency returned "years, open, after, back, better, every, still" from
+    # 418 posts. Those are English, not subjects.
+    #
+    # So score by LIFT: a term's rate in the recent window against its rate in
+    # everything older. That is also the honest reading of what Micah asked
+    # for, which was what he has been tweeting about LATELY, not what he says
+    # most often in general.
+    recent_counts, old_counts, caps = {}, {}, {}
+    recent = old_n = 0
+    newest = None
+    for name in ("innovativehype.jsonl", "geoppls.jsonl"):
+        path = os.path.join(os.path.dirname(__file__), "..", "corpus", name)
+        if not os.path.exists(path):
+            raise FileNotFoundError(
+                "%s is missing. It is a ranking input: every subject Micah has "
+                "posted about recently would silently stop mattering while the "
+                "brief still rendered. Run scripts/poll_social.py."
+                % os.path.abspath(path))
+        for line in open(path):
+            try:
+                row = json.loads(line)
+            except ValueError:
+                continue
+            d = _parse(row.get("date"))
+            if not d:
+                continue
+            if newest is None or d > newest:
+                newest = d
+            seen_caps = set()
+            terms = _tweet_terms(row.get("text") or "", seen_caps)
+            if (now - d).days <= LIVE_SEED_DAYS:
+                recent += 1
+                for t in terms:
+                    recent_counts[t] = recent_counts.get(t, 0) + 1
+                for w in seen_caps:
+                    caps[w] = caps.get(w, 0) + 1
+            else:
+                old_n += 1
+                for t in terms:
+                    old_counts[t] = old_counts.get(t, 0) + 1
+
+    pinned = set(_PINNED_SEEDS)
+    scored = []
+    for t, c in recent_counts.items():
+        if c < LIVE_SEED_MIN_POSTS or t in pinned:
+            continue
+        recent_rate = c / float(max(recent, 1))
+        # +1 smoothing so a term that is genuinely new is not divided by zero
+        # into infinity, and one that is merely common does not win.
+        base_rate = (old_counts.get(t, 0) + 1) / float(max(old_n, 1) + 1)
+        lift = recent_rate / base_rate
+        # A unigram that is never capitalised in his own posts is almost always
+        # a verb or a filler noun. Require it to clear a higher bar than a
+        # proper noun or a bigram does.
+        if " " not in t:
+            cap_share = caps.get(t, 0) / float(c)
+            if cap_share < 0.5:
+                lift *= 0.35
+        scored.append((lift, c, t))
+    ranked = [(c, t) for _lift, c, t in
+              sorted(scored, key=lambda x: (-x[0], -x[1], x[2]))]
+
+    # A bigram implies its parts. Keep the bigram, drop a unigram that only
+    # ever appears inside one, so "prediction market" does not also seed every
+    # article containing "market".
+    bigrams = [t for _, t in ranked if " " in t]
+    seeds, seen = [], set()
+    for c, t in ranked:
+        if " " not in t and any(t in b.split() for b in bigrams) and c <= LIVE_SEED_MIN_POSTS:
+            continue
+        if t in seen:
+            continue
+        seen.add(t)
+        seeds.append(t)
+        if len(seeds) >= LIVE_SEED_MAX:
+            break
+
+    # A seed must DISCRIMINATE. Measured 2026-08-26: lift plus a proper-noun
+    # signal still promoted `nfl`, `justin` and `basketball`, which between
+    # them admitted 202 extra articles that were almost entirely NFL. A term
+    # frequent in his tweets AND frequent in the pool admits everything, which
+    # makes the sports skew he complained about WORSE. Micah asked for more
+    # variety; a seed matching a tenth of the pool delivers the opposite.
+    #
+    # So drop any live seed that matches more than LIVE_SEED_MAX_POOL_RATE of
+    # the current pool. Pinned seeds are exempt: those are standing
+    # instructions and he is entitled to a broad one.
+    # "justin" and "justin bieber" both surface; the bare first name then
+    # matches every Justin in the news (measured: it admitted an Eagles story
+    # about Jalen Hurts). If we kept the bigram, the unigram is redundant and
+    # strictly more dangerous.
+    _bg_parts = {w for t in seeds if " " in t for w in t.split()}
+    seeds = [t for t in seeds if " " in t or t not in _bg_parts]
+    seeds = _drop_indiscriminate(seeds)
+
+    age_h = (now - newest).total_seconds() / 3600.0 if newest else None
+    # Say the counts every run, healthy or not.
+    print("  live seeds: %d from %d posts in the last %dd (corpus newest %s)"
+          % (len(seeds), recent, LIVE_SEED_DAYS,
+             ("%.1fh ago" % age_h) if age_h is not None else "UNKNOWN"))
+    if age_h is not None and age_h > LIVE_SEED_STALE_H:
+        print("  WARNING: corpus is %.1fh stale (limit %.0fh). Recent tweets are "
+              "NOT ranking anything. Check the social-corpus-poll cron job."
+              % (age_h, LIVE_SEED_STALE_H))
+    if not seeds:
+        print("  WARNING: 0 live seeds. Either nothing was posted in %dd or the "
+              "corpus is not updating. Only the %d pinned seeds are active."
+              % (LIVE_SEED_DAYS, len(_PINNED_SEEDS)))
+    _LIVE_CACHE["seeds"] = seeds
+    return seeds
+
+
+def all_seeds():
+    """Pinned plus live. The order is pinned-first so a pinned term always
+    matches even if the live pass is empty."""
+    return list(_PINNED_SEEDS) + _live_seeds()
+
+
+_LIVE_RE = {}
+
 
 def _seed_match(article):
-    """Count tweet-corpus seeds present in the article (title+body)."""
+    """Count seeds present in the article (title+body). Pinned AND live.
+
+    Pinned seeds match as SUBSTRINGS, deliberately: the list contains stems
+    like `royalt` that are meant to catch royalty/royalties, and it is
+    hand-written so its author owns the consequences.
+
+    Live seeds match on WORD BOUNDARIES. They are derived automatically, and
+    on 2026-08-26 substring matching let `russ` hit Russia/Brussels and `baby`
+    hit a Dolly Parton story. An auto-generated term has nobody to own a
+    false positive, so it gets the stricter rule.
+    """
     text = f"{article.get('title','')} {article.get('summary','')} {article.get('_body','')[:1500]}".lower()
-    return sum(1 for seed in _TWEET_SEEDS if seed in text)
+    n = sum(1 for seed in _PINNED_SEEDS if seed in text)
+    for seed in _live_seeds():
+        rx = _LIVE_RE.get(seed)
+        if rx is None:
+            rx = _LIVE_RE[seed] = re.compile(r"\b" + re.escape(seed) + r"\b")
+        if rx.search(text):
+            n += 1
+    return n
 
 
 def main():
