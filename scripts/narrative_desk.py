@@ -662,9 +662,6 @@ def merge_into_feed(new_cards):
 # demotion. The card stays, he can see it, and it sits where it belongs.
 FEED_RECENCY_HALFLIFE_H = float(os.environ.get("IH_FEED_HALFLIFE_H", "18"))
 SOFT_PENALTY = float(os.environ.get("IH_SOFT_PENALTY", "4.0"))
-# A card graded F (take is wrong for the story) drops this far, but stays on
-# the page: he cuts, the desk does not silently disappear its misses.
-QUALITY_F_PENALTY = float(os.environ.get("IH_QUALITY_F_PENALTY", "4.0"))
 
 
 def feed_rank(card):
@@ -679,9 +676,9 @@ def feed_rank(card):
         age_h = 0.0
     score += 2.0 * (0.5 ** (max(age_h, 0) / FEED_RECENCY_HALFLIFE_H))
     score -= SOFT_PENALTY * float(card.get("soft_penalty") or 0)
-    # The F here grades the CARD's take (grade_feed), not the story's size.
-    if (card.get("quality_grade") or "").strip().upper() == "F":
-        score -= QUALITY_F_PENALTY
+    # Quality grades (grade_feed) deliberately do NOT move rank: Micah
+    # 2026-08-27, the grade is feedback into the system, not a demotion that
+    # hides the card. The badge and the log are the output.
     return score
 
 
@@ -993,36 +990,82 @@ def regrade_feed():
           f"({n} cards)")
 
 
-_GRADE_SYSTEM = """You grade news cards for an editor who despises hype-laundering.
-A card is a THESIS (headline) plus a PARAGRAPH, supposedly grounded in cited SOURCES.
-Grade the CARD, never the story's size or importance.
+GRADES_LOG = os.path.join(RUNS, "grades.jsonl")
+
+
+def _recent_grade_misses(limit=8):
+    """Latest D/F verdict per story from runs/grades.jsonl, oldest first.
+
+    DISPLAY ONLY right now: Micah 2026-08-27, nothing bad grades into the
+    desk prompt automatically; feedback stays manual until he says otherwise.
+    Keyed by story_key (generated headlines get reworded between runs; the
+    story identity does not).
+    """
+    latest = {}
+    try:
+        with open(os.path.join(RUNS, "grades.jsonl")) as f:
+            for line in f:
+                try:
+                    r = json.loads(line)
+                except ValueError:
+                    continue
+                if r.get("grade") in ("D", "F"):
+                    latest[r.get("story_key") or r.get("narrative", "")] = r
+    except FileNotFoundError:
+        return []
+    return sorted(latest.values(),
+                  key=lambda r: r.get("timestamp", ""))[-limit:]
+
+
+_GRADE_SYSTEM = """You grade news cards for an editor. He is SARCASTIC, CONTRARIAN and
+HYPE-RESISTANT, and his actual stances are listed at the end. A card written in his
+register is IN VOICE: never grade a card down for tone, sarcasm, or for holding his stance.
+
+A card is a THESIS (headline) plus a PARAGRAPH, written from a STORY CONTEXT (the articles
+it came from) and rendered with a few CITED SOURCES. The STORY CONTEXT is the actual
+reporting the card was written from; it is authoritative. The CITED SOURCES list is
+produced by a separate resolver and is frequently WRONG (articles the card never used):
+a mismatch between the thesis and the cited sources is NEVER grounds for a lower grade.
+Grade the take against the STORY CONTEXT. If no STORY CONTEXT is present, judge the
+thesis on its face and say so in the note.
 
 Scale:
-A  sharp take that holds up against every source and adds something the sources don't say
-B  sound and specific; says something real the sources only imply
+A  sharp, true take that holds up against the story and adds something the articles don't say
+B  sound and specific; says something real the story implies
 C  accurate but generic; a wire digest, no point of view
-D  mostly supported but weak: mild selective emphasis, or a frame only loosely tied to the sources
-F  the take does not survive the sources, in either way:
-   - the thesis is unsupported by or contradicts the cited sources, or
-   - it minimizes or spins a serious event with calm-down/PR framing (e.g. "it seems
-     scarier than it is" told over sources describing a real security incident)
+D  mostly right but weak: loose connection to the story, or heavy repetition
+F  the take does not survive the story: it contradicts it, minimizes a serious event with
+   calm-down/PR framing, or is about something else entirely. A thesis whose central claim
+   is NOT what the story is about is F even when its topic sits adjacent to the story's.
 
-Judge the THESIS hardest. A paragraph can quote real facts beneath a headline whose
-frame is false; that is an F, not an A. Grade EVERY card. Return STRICT JSON:
+Judge the THESIS hardest. A paragraph can quote real facts beneath a headline whose frame
+is false; that is an F, not an A. Grade EVERY card. Return STRICT JSON:
 {"grades":[{"i":<card index>,"grade":"A|B|C|D|F","note":"<one short sentence>"}]}"""
 
 
+def _voice_for_grader():
+    """The editor's stances (voice_profile.json) for the grading rubric."""
+    try:
+        with open(_VOICE_PROFILE_PATH) as f:
+            vp = json.load(f)
+        return "\n".join(f"- on {e.get('topic','')}: {e.get('stance','')}"
+                         for e in vp.get("entries", []) if e.get("topic"))
+    except Exception:
+        return ""
+
+
 def grade_feed(run_dir=None):
-    """Grade every feed CARD's take A-F against its cited sources.
+    """Grade every feed CARD's take A-F against its story context.
 
     The rank badge graded the STORY (publisher tier, freshness, cluster size);
     Micah 2026-08-27 called the #2-ranked "A" card an F: its thesis was
     canned spin ("AI leaders have failed at messaging...") over a genuinely
     alarming agent-hack story. Story ranking can never see that. One batch
-    model call judges each thesis+paragraph against the sources' own words;
-    grades land on the feed cards, an F drops the card QUALITY_F_PENALTY in
-    feed_rank, and the page re-renders. Cards already carrying a quality
-    grade keep it: they are only regraded when their text is regenerated.
+    model call judges each thesis+paragraph against the cluster it was
+    written from, in his voice. Grades do NOT move rank and do NOT feed the
+    desk prompt: they are display + a log (runs/grades.jsonl) until Micah
+    asks for a feedback loop. Cards already carrying a quality grade keep
+    it; they are only regraded when their text is regenerated.
     """
     run_dir = run_dir or os.path.realpath(os.path.join(RUNS, "latest"))
     feed = load_feed()
@@ -1033,30 +1076,134 @@ def grade_feed(run_dir=None):
 
     # Ground each card's grader in what its publishers actually said: cite
     # the run's cluster items by URL for excerpts; headline-only elsewhere.
-    excerpts = {}
+    excerpts, clusters = {}, []
     inp = os.path.join(run_dir, "input.json")
     if os.path.exists(inp):
-        for cl in json.load(open(inp)).get("clusters", []):
+        clusters = json.load(open(inp)).get("clusters", [])
+        for cl in clusters:
             for it in cl.get("items") or []:
                 if it.get("link"):
                     excerpts[it["link"]] = (it.get("title") or "",
                                             (it.get("body_excerpt") or "")[:240])
 
+    # Story-context resolution, three tiers: (1) the card's cluster_index,
+    # (2) best match across the CURRENT run's clusters, (3) the same across
+    # ARCHIVED run inputs. Tier 3 exists because feed cards persist longer
+    # than the corpus window: the "Tech workers keep their kids off social
+    # media" card was written from run 20260826_110824's "Raised on AI"
+    # (MIT TR) essay, which no current cluster contains. The match score is
+    # unigram + 3x bigram overlap of stopword-filtered stems: bigrams are
+    # what separate "social media / keep kids off" (the story) from a
+    # generic tech-vocabulary collision like a to-do-apps post (Micah
+    # 2026-08-27: "the grading is out of wack"). A match must clear
+    # MIN_CTX_OV or there is NO story context; a weak match is a wrong
+    # match wearing a costume.
+    MIN_CTX_OV = 14
+
+    _STOP = frozenset("""
+        this that with from have has had are was were been their them they there
+        here what when then than into over after before about said says more most
+        some such only also just like even very will would could should because
+        while being against other which whose these those both each once many much
+        down back next first last does did doing done theyve weve youre thats its
+        hes shes and but for the you your yours our ours not has havent dont
+    """.split())
+
+    def _grams(s):
+        t = [w for w in re.findall(r"[a-z']{3,}", (s or "").lower())
+             if w not in _STOP]
+        return frozenset(t), frozenset(zip(t, t[1:]))
+
+    _it_grams = {}  # link -> (unigrams, bigrams), shared across cards and pools
+
+    def _item_grams(it):
+        key = it.get("link") or (it.get("title") or "")
+        g = _it_grams.get(key)
+        if g is None:
+            g = _grams((it.get("title") or "") + " " + (it.get("body_excerpt") or ""))
+            _it_grams[key] = g
+        return g
+
+    def _score(ctoks, it):
+        iu, ib = _item_grams(it)
+        return len(ctoks[0] & iu) + 3 * len(ctoks[1] & ib)
+
+    def _best_over(pools, ctoks):
+        best_cl, best_sc = None, 0
+        for cand in pools:
+            for it in cand.get("items") or []:
+                sc = _score(ctoks, it)
+                if sc > best_sc:
+                    best_cl, best_sc = cand, sc
+        return best_cl, best_sc
+
+    # Archived run pools, newest first, 24 runs = ~48h of corpus window.
+    # Loaded lazily once per grade pass; item grams are cached by link, so
+    # titles repeated across runs tokenize once.
+    _arch = None
+
+    def _arch_pools():
+        nonlocal _arch
+        if _arch is None:
+            names = sorted((n for n in os.listdir(RUNS)
+                            if re.match(r"^\d{8}_\d{6}$", n)), reverse=True)[:24]
+            pools = []
+            for n in names:
+                try:
+                    pools.append(json.load(open(os.path.join(RUNS, n, "input.json")))
+                                 .get("clusters", []))
+                except (OSError, ValueError):
+                    continue
+            _arch = pools
+        return _arch
+
     blocks = []
     for i in todo:
         c = feed[i]
+        # A wrong source resolution must not read as a bad take (Micah
+        # 2026-08-27: the tech-workers card graded D because its citations
+        # were mis-matched; the take itself was an A).
+        cands = []  # (score, cluster)
+        ctoks = _grams(f"{c.get('narrative','')} {c.get('paragraph','')}")
+        ci = c.get("cluster_index")
+        if isinstance(ci, int) and 0 <= ci < len(clusters):
+            cands.append((_best_over([clusters[ci]], ctoks)[1], clusters[ci]))
+        cur_cl, cur_sc = _best_over(clusters, ctoks)
+        cands.append((cur_sc, cur_cl))
+        for pools in _arch_pools():
+            a_cl, a_sc = _best_over(pools, ctoks)
+            cands.append((a_sc, a_cl))
+        cands.sort(key=lambda x: -x[0])
+        cl = cands[0][1] if cands and cands[0][0] >= MIN_CTX_OV else None
+        ctx = []
+        if cl:
+            # Rank the cluster's items by match score with the card text. The
+            # first 6 items of a 92-item mega-cluster are usually unrelated
+            # leads; the card was written from the items that SHARE its
+            # words, so those are the story the grader must see.
+            for it in sorted(cl.get("items") or [],
+                             key=lambda it: -_score(ctoks, it))[:6]:
+                ctx.append(f"- {it.get('source','')}: {it.get('title','')}"
+                           + (f" ({it.get('body_excerpt','')[:180]})"
+                              if it.get('body_excerpt') else ""))
         src_lines = []
         for s in (c.get("sources") or [])[:3]:
             title, ex = excerpts.get(s.get("url", ""), (s.get("headline", ""), ""))
             src_lines.append(f"- {s.get('source','')}: {title}"
-                             + (f" — {ex}" if ex else ""))
+                             + (f" ({ex})" if ex else ""))
         blocks.append(
             f"CARD {i} | cluster: {c.get('kicker','')}\n"
             f"THESIS: {c.get('narrative','')}\n"
             f"PARAGRAPH: {c.get('paragraph','')}\n"
-            + ("SOURCES:\n" + "\n".join(src_lines) if src_lines else
-               "SOURCES: (none recorded)"))
-    raw = call_llm(_GRADE_SYSTEM,
+            + ("STORY CONTEXT:\n" + "\n".join(ctx) + "\n" if ctx else "")
+            + ("CITED SOURCES (may be mis-matched; ignore if unrelated to the "
+               "story context):\n" + "\n".join(src_lines) if src_lines else
+               "CITED SOURCES: (none recorded)"))
+    _voice = _voice_for_grader()
+    system = _GRADE_SYSTEM + (
+        "\n\nTHE EDITOR'S STANCES (in-voice, never grade these down):\n"
+        + _voice if _voice else "")
+    raw = call_llm(system,
                    "CARDS:\n\n" + "\n\n".join(blocks), max_tokens=4000)
     data = json.loads(raw)
 
@@ -1077,8 +1224,23 @@ def grade_feed(run_dir=None):
         print(f"  grade_feed: {len(bad)} grade(s) missing/invalid "
               f"(indexes {bad[:8]}); those cards keep the rank-grade badge")
 
-    # The F penalty changes feed_rank, so the order must be re-derived here.
-    feed.sort(key=feed_rank, reverse=True)
+    # The feedback LOG, append-only: displayed on the pages, read by nothing
+    # in the pipeline. Feeding it back into the desk is a manual decision.
+    _now = datetime.now(timezone.utc).isoformat()
+    with open(GRADES_LOG, "a") as f:
+        for i in todo:
+            if feed[i].get("quality_grade"):
+                f.write(json.dumps({
+                    "timestamp": _now,
+                    "story_key": feed[i].get("story_key"),
+                    "angle_id": feed[i].get("angle_id"),
+                    "kicker": feed[i].get("kicker"),
+                    "grade": feed[i]["quality_grade"],
+                    "note": feed[i].get("quality_note"),
+                    "narrative": feed[i].get("narrative"),
+                }, ensure_ascii=False) + "\n")
+
+    # Grades do not move rank (see feed_rank), so the stored order stands.
     n = _write_feed_page(feed, globals().get("_LAST_DECLINES") or ())
     fs = [f"{feed[i].get('quality_grade')}:{feed[i].get('narrative','')[:48]}"
           for i in todo if feed[i].get("quality_grade")]
@@ -1179,6 +1341,10 @@ def render_brief_html(clusters, parsed, run_dir):
             "story_key": hashlib.sha256(
                 "|".join(sorted(x["url"] for x in sources)).encode()).hexdigest()[:16],
             "kicker": kicker,
+            # Identity of WHERE the card came from: the angle feedback loop
+            # (runs/grades.jsonl) must be able to name the rejected angle.
+            "cluster_index": cluster_idx,
+            "angle_id": card.get("angle_id") or "none",
             "narrative": card.get("narrative", ""),
             "paragraph": card.get("paragraph", ""),
             "data_point": card.get("data_point", ""),
