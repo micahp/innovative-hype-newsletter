@@ -194,6 +194,28 @@ and `pipeline.sh` hardcodes macOS paths under `/Users/micah`.
 - **The interpreter-mismatch lesson is not in the `fail-loudly` skill.** It is
   exactly the shape that skill exists to catch.
 
+## 8b. NEXT PHASE, written up and not built
+
+Micah, on wanting social/digest/topic-articles plus a feedback interface:
+*"i havent' found the right lever for this yet and i don't want to overdo it...
+the cadence of how the cards fall matters too....right now it's just a brief
+that gets regenerated every day with enough cards to be a site. but then they
+go stale and go away forever."*
+
+Measured: **693 distinct cards written, 35 live, 658 gone.** `feed()` at
+`narrative_desk.py:610` keeps what is inside a 72h window and silently drops
+the rest. No archive, no state, no count. The brief is a sliding window that
+happens to render, discarding ~40 written and ranked cards a day.
+
+The lever is that **cards should graduate, not expire**, and the digest, topic
+articles, social posts and the feedback interface all fall out of that one
+change. Notably it reorders the work: a feedback UI built against run output
+would have every judgment evaporate on the same 72h clock, because the object
+being judged does not survive.
+
+Proposal and a scope-locked task in
+[`PHASE-2-CARD-LIFECYCLE.md`](PHASE-2-CARD-LIFECYCLE.md). Not implemented.
+
 ## 9. COMMITS
 
 ```
