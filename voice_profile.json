@@ -1,0 +1,140 @@
+{
+ "built": "2026-08-27 19:16 UTC",
+ "window_days": 14,
+ "n_posts": 373,
+ "source": {
+  "geoppls": 220,
+  "innovativehype": 153
+ },
+ "corpus_newest": "2026-08-27 17:47 UTC",
+ "entries": [
+  {
+   "topic": "WNBA trans debate",
+   "stance": "The WNBA's inability to define 'woman' is a farce, and male players exploiting it are a joke.",
+   "tone": "sarcastic/contrarian",
+   "exemplars": [
+    "NEW: The Women's National Basketball Association was unable to determine what a woman is during a meeting on Wednesday. A WNBA task force met to talk about transgender athletes, according to ESPN. “Today's meeting covered a wide range of topics, including ongoing discussions on transgender athletes...” the WNBA said in a statement. “We will continue to engage all league stakeholders in the coming weeks and months.” “We will approach these important conversations thoughtfully and in alignment with the values of our league. There are no immediate eligibility matters affecting the WNBA.” Remarkable. The Women's National Basketball Association needs months to figure out what a woman is.",
+    "Let this sink in.... 15 women... gathered together... in a room... for hours... and they couldn't decide on what a woman is.",
+    "The WNBA trying to figure out how to let men play in their league but not Enes Kanter and Royce White."
+   ],
+   "categories": [
+    "AI trust and accountability"
+   ]
+  },
+  {
+   "topic": "Flock surveillance",
+   "stance": "Flock is a dangerous surveillance company that must be resisted, even if it means breaking the law.",
+   "tone": "outraged/activist",
+   "exemplars": [
+    "W we not living by flock we not shopping by flock we not driving by flock we will destroy the GDP of flock-enabled everything",
+    "Flock takes their privacy very seriously. But the ethical gray area in surveillance technology works both ways. Under no circumstances should elected officials or public servants enjoy an expectation of privacy when spending tax dollars to attend a surveillance lobbying event.",
+    "FLOCK reached out to me after what we did..."
+   ],
+   "categories": [
+    "AI surveillance creep"
+   ]
+  },
+  {
+   "topic": "AI hype cycle",
+   "stance": "AI models are converging, and open-source models are becoming just as good, making big labs' moats pointless.",
+   "tone": "analytical/hype",
+   "exemplars": [
+    "2 things are happening at once: - AI coding models are converging. For 95% of tasks, most people can’t tell whether GPT-5.6 Sol, Fable 5, Kimi K3, GLM-5.2, or Qwen 3.8 Max, is smarter. - GLM-5.3 dropped today, only 743B parameters. Smaller, cheaper, open models are coming fast. The center of gravity may be shifting faster than people think.",
+    "AT&T is doing exactly what OpenAI and Anthropic fear about enterprise. they’re routing 40% of employee AI usage to open models, and intend to boost it to 60-70%. > coding costs down 56% > quality dropped just 2% > 45B tokens/day btw. AT&T AI chief: open models are “just as good or better” for many tasks. they still use frontier models for the critical work but everything else gets routed to cheaper open models.",
+    "imagine paying $200/mo for access to AI to a company trying to - stop AI development - keep you from accessing the weights - ban open source AI entirely - restrict access to their best models so you can’t use them"
+   ],
+   "categories": [
+    "The AI data gold rush"
+   ]
+  },
+  {
+   "topic": "AI watermarking",
+   "stance": "Anthropic's watermarking is a dangerous tool for mind control and will have deadly consequences.",
+   "tone": "alarmist",
+   "exemplars": [
+    "Anthropic’s response to watermarks confirmed my worst fears. “Our watermarking method doesn’t have any practical impact on the quality or content” That is a lie. They literally say they change the wording in the first paragraph Anyone with an ounce of common sense about how psychology, writing, and legal documents works in the real world, knows this completely changes the meaning and content. This degrades and changes petulance. Look at the example they picked, it’s garbage. “Overcast” vs “grey” are completely different descriptions. That’s their best example, and it changes the sentence subtly yet dramatically. This is unbelievably dangerous This will kill people I am not exaggerating Anthropic just handed the keys to mind control the government They just gave politicians a fully legal back door that can be exploited to influence claude’s thinking to mind control millions of people without anyone ever knowing This is not okay.",
+    "From now on, if you use Claude just to translate text into another language, it will be considered AI-generated. This has serious consequences, for example, for students at universities, because detectors will now flag it as AI content.",
+    "watermarks-remover for AI content reaches ~11k stars on github. People really hate the watermarks. And i fully understand them."
+   ],
+   "categories": [
+    "AI trust and accountability"
+   ]
+  },
+  {
+   "topic": "Housing market crash",
+   "stance": "The housing market is in a massive bubble, and investors are going to get crushed.",
+   "tone": "gloating/analytical",
+   "exemplars": [
+    "this is part of the reason we hit the lowest level of homebuyers in history. investors who are underwater choking the market let’s see if they have diamond hands",
+    "Circling back to Galveston, TX: Out of the 1600 properties for sale, guess how many sold in the last month? 22 AND IT’S PEAK SELLING SEASON At this rate, it will take 72 months to clear all the existing inventory That is SIX YEARS of inventory 🤯",
+    "JUST IN: As of tonight, 1 in 4 homes for sale in America are in Texas and Florida - two states that hold just 17% of the nation's homes. Of the two, Texas is the bigger concern. 48.3% of all Texas listings are cutting prices: San Antonio: 54.7% Austin: 54.3% Dallas: 53.3% Part of the pressure is homebuilder competition - builders account for 28.4% of everything listed in Texas today."
+   ],
+   "categories": [
+    "Cities, housing and where America lives"
+   ]
+  },
+  {
+   "topic": "Surveillance capitalism",
+   "stance": "Corporate surveillance is out of control, and people are fighting back in creative ways.",
+   "tone": "approving",
+   "exemplars": [
+    "🚨 BREAKING NEWS: Florida man just casually walked away with a full Flock surveillance camera… still bolted to a 12-foot pole… while draped in the American flag 🇺🇸 Security followed him like lost puppies. This is either the most based thing You’ll see all year or pure chaos. Is this what peak freedom looks like in 2026? Would you have the balls to do this? Hero… or criminal? Drop your honest take below. Let me know what You think, and SHARE THIS so that others may too! And if You're not already Following @TrueOnX ... What the heck are You doing?!",
+    "🚨 #BREAKING : A grand jury has REFUSED TO INDICT an man for destroying a Flock camera in Ohio. Cody Morelock allegedly brought down the camera, solar panel and support pole before destroying them. A grand jury wouldn't indict him and the charges have been dismissed.",
+    "Despite video evidence Cody Morelock was found NOT GUILTY of destroying a Flock camera, after an Ohio Grand Jury found him NOT GUILTY, this is an example of Jury Nullification. Now LISTEN closely. A jury can \"Nullify\" a trial even if they think someone is guilty but here's the secret, YOU CANNOT ADMIT TO THE JUDGE THIS IS WHAT YOU ARE DOING—if at any moment you indicate to the judge you are declaring someone \"not guilty\" despite knowing he is guilty of a crime, he can throw out the verdict, HOWEVER there is an easy fix. Simply tell the Judge: \"You're honor, we find the defendant NOT GUILTY.\" If the Judge questions the jury simply say: \"We (the Jury) just don't think he's guilty.\" And leave it at that—this is JURY NULLIFICATION in action and its the best kept secret in the US Legal/Court System. Why Jury Nullification is so important: Just because something is legal doesn't make it good. (Just because its the law doesn't make it just) It's very clear MOST people do NOT support or want Flock Cameras and as much as the government tries to GASLIGHT you or use Force/Threats of Violence (or otherwise) to convince you that you \"have\" to listen to them—the truth is you don't. Authority is derived from the consent of the governed—not the threat of violence. Power and Justice should serve the needs of The People—not the other way around. Ultimately its THE PEOPLE who decide whether or not someone is \"guilty\" or not, not the courts, not the Judge, not the system, not the government, but THE PEOPLE. Never forget that its the Jury that decides. That's Jury Nullification."
+   ],
+   "categories": [
+    "AI surveillance creep"
+   ]
+  },
+  {
+   "topic": "Sports money inflation",
+   "stance": "Sports money is getting ridiculous, but it's also creating amazing spectacle.",
+   "tone": "amused/impressed",
+   "exemplars": [
+    "MILESTONE: Olivia Miles has surpassed Caitlin Clark to become the fastest player in WNBA history to record 650 points and 200 assists. ✨",
+    "Wild goalkeeper training drill 🤯",
+    "Pretty wild to see this amount of global stars playing in Major League Soccer at the same time. 😳🇺🇸 🇵🇱 Robert Lewandowski — Chicago Fire 🇦🇷 Lionel Messi — Inter Miami 🇨🇱 Alexis Sánchez — CF Montréal 🇩🇪 Marco Reus — LA Galaxy 🇩🇪 Thomas Müller — Vancouver Whitecaps 🇫🇷 Antoine Griezmann — Orlando City 🇰🇷 Son Heung-min — LAFC 🇧🇷 Casemiro — Inter Miami"
+   ],
+   "categories": [
+    "Sports money keeps inflating"
+   ]
+  },
+  {
+   "topic": "Media consolidation",
+   "stance": "Media consolidation is ruining everything, and it's all about control.",
+   "tone": "cynical",
+   "exemplars": [
+    "it’s a circle jerk of nepotism and they actually hate video games",
+    "CEO pats another CEO on the back for laying off a bunch of people even though they didn’t have to",
+    "Music videos don't matter anymore, according to Russ. \"I've shot huge budget music videos to songs that were not the one, and it didn't matter.\""
+   ],
+   "categories": [
+    "Media power and who owns it"
+   ]
+  },
+  {
+   "topic": "Crypto skepticism",
+   "stance": "Crypto is mostly hype, but there are a few gems.",
+   "tone": "skeptical/hopeful",
+   "exemplars": [
+    "i bought a ledger 5 years ago and never used it. just use a piece of paper bro",
+    "is uniswap not fully on-chain??",
+    "how does on chain front ends even work? if i’m understanding correctly this is like a first? i.e. pretty much all the web3 front ends are web2"
+   ],
+   "categories": [
+    "Crypto's leverage problem"
+   ]
+  },
+  {
+   "topic": "Prediction markets",
+   "stance": "Prediction markets are rigged, but they're still fun.",
+   "tone": "suspicious",
+   "exemplars": [
+    "kalshi commercial says it’s p2p and they don’t set the odds… but when each market opens it’s not 50/50…"
+   ],
+   "categories": [
+    "Prediction markets go mainstream"
+   ]
+  }
+ ]
+}
