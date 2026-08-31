@@ -1,37 +1,37 @@
 # INNOVATIVE HYPE — BRIEF
-_Generated 2026-08-27 17:01 CDT · 46/66 feeds · 3589 articles_
+_Generated 2026-08-31 07:34 CDT · 52/66 feeds · 3665 articles_
 
 ## The AI data layer is printing money
 
 
-- OpenAI, Nvidia CEOs to speak at tech-focused G20 meeting (Reuters)
-- Tech stocks lead Wall Street after Nvidia, Salesforce and others say AI is creating big growth (AP)
-- Report: Nvidia to acquire AI model repository Hugging Face for $13 billion (Ars Technica)
+- Elon Musk’s xAI used child porn to train Grok models, lawsuit says (Ars Technica)
+- Nvidia’s AI advantage is moving beyond the GPU (TechCrunch)
+- OpenAI to end agreement with SpaceX's AI coding tool Cursor, deepening Musk-Altman clash (Reuters)
 
 ## Can we trust the machines we're building?
 
 
-- OpenAI, Anthropic, Google, and 100 other companies call for action to defend against rogue AI (TechCrunch)
-- OpenAI, Anthropic Urge Cyber Defense Action as AI Models Improve (Bloomberg)
-- Anthropic Tests New Way for Claude to Work With Robots and Scientific Lab Tools (Bloomberg)
+- OpenAI to end model access to Cursor after acquisition by Elon Musk's SpaceX (CNBC)
+- OpenAI, Anthropic, Google, and 100 other companies call for action to defend against rogue AI (TechCrunch AI)
+- An Anthropic researcher just gave us a peek at self-improving AI (TechCrunch)
 
 ## The creator economy is consolidating
 
 
-- Tech Optimism Has a Hold Over Hip-Hop’s Mogul Generation (Rolling Stone)
-- YouTube’s Pedro Pina Says Platform Can Fuel Britain’s Next TV ‘Golden Age,’ Unveils $4 Million Pledge: We’re ‘Not the Villain’ (Variety)
-- YouTube now lets creators tag Amazon products and earn commissions from purchases (TechCrunch)
+- ChatGPT, Reddit, Roblox to adhere to EU's "very large platform" rules (Reuters)
+- YouTube Star Markiplier Is Now GoPro’s Largest Shareholder (Bloomberg)
+- Larenz Tate Boards Vault, New Streaming and Distribution Platform for Indie Filmmakers (EXCLUSIVE) (Variety)
+
+## Cities, housing and where America lives
+
+
+- Aging homes create challenges in Michigan housing crisis (AP)
+- Manhattan's luxury rental market is booming, with units reaching $100,000 a month (CNBC)
+- South Florida's would-be young homebuyers are living with their parents (Axios)
 
 ## Media power and who owns it
 
 
-- Your vote matters! Decide which Audience Choice sessions will make it to TechCrunch Founder Summit (TechCrunch)
-- BBC Director-General Matt Brittin Says Its News Service Is ‘A Disinfectant for Misinformation’ (Variety)
-- Rupert Murdoch wish to re-merge Fox Corp and News Corp 'could happen in future,' court documents and video show (Reuters)
-
-## Cities, housing and where America lives
-_The typical home now goes for around $700,000, according to Zillow data._
-
-- A new Texas law declaws neighborhood groups that oppose housing projects (Texas Tribune)
-- UMusic Unveils Plans for Austin Hotel & Residential Community Built Around Live Music (Billboard)
-- Property taxes are the housing affordability crisis no one wants to touch (HousingWire)
+- Meta’s $18 billion settlement puts TikTok and YouTube on notice. Who's next on the firing line? (CNBC)
+- US Treasury blocks certain journalists from G20 meeting (AP)
+- Trump criticizes NBC over election comment as Treasury denies some NYT, WSJ and Bloomberg reporters G20 credentials (CNBC)
