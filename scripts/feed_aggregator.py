@@ -272,7 +272,13 @@ NOISE_PATTERNS = [
     # (Measured 2026-08-21: TechCrunch "Last chance: Save up to $300 on your
     # Disrupt 2026 ticket" hit all 3 pillars and anchored Top News #1.)
     r"\b(last chance|early[- ]?bird|act now|limited time|don[’']t miss|dont miss)\b",
-    r"\b(save up to|save \$\d+|\$\d+ off|discount|coupon|promo code|deal of the)\b",
+    r"\b(save up to|save \$\d+|\$\d+ off|\d+% off|discount|coupon|promo code|deal of the|sale of the)\b",
+    # Subscription/membership upsell — "Get 75% OFF ANNUAL MEMBERSHIPS", "join
+    # today", "become a member" — an outlet selling its own paywall, not news.
+    # (Measured 2026-09-02: On3 "Get Gators Online for 75% off !!!" hit none
+    # of the existing discount patterns — "% off" has no "$" and "annual
+    # membership" isn't "discount|coupon|promo code" — and anchored #1.)
+    r"\b(annual membership|premium membership|exclusive membership|join .{0,20} today|become a .{0,15} member)\b",
     r"\b(register now|registration|reserve (your|my) (spot|seat|pass)|rsvp|sign[ -]?up)\b",
     r"\b(tickets? on sale|get your (ticket|pass)|buy (tickets|passes))\b",
     # Outlet self-promo — a publisher pushing its OWN event lineup or a

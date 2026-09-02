@@ -688,8 +688,15 @@ function renderSections(articles) {
 }
 
 function filterArticles(articles, category) {
-  if (category === 'all') return articles;
-  return articles.filter(a => a.category === category);
+  // Noise-capped articles (ads, promo/discount copy, listicles) never
+  // render anywhere in the app — not as hero, not as a card, on any tab.
+  // (Micah 2026-09-02: On3 "Get Gators Online for 75% off !!!" was pulled
+  // from the hero but still showed as a plain card on the Sports tab
+  // because only the hero slot checked _noise. Filter it out up front so
+  // no downstream render path can surface it again.)
+  const clean = articles.filter(a => !a._noise);
+  if (category === 'all') return clean;
+  return clean.filter(a => a.category === category);
 }
 
 function render(data, activeCat = 'all') {
@@ -707,6 +714,8 @@ function render(data, activeCat = 'all') {
   // (Micah 2026-08-21: it was rendering on every tab.)
   // Hero renders on every view with that view's newest story (original
   // behavior); tab grids skip their first story since it IS the hero.
+  // filtered is already noise-free (see filterArticles), so filtered[0]
+  // can never be an ad again.
   const isHome = activeCat === 'all';
   if (topSection) topSection.style.display = isHome ? '' : 'none';
   const briefSection = document.getElementById('briefSection');
