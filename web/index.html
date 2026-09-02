@@ -597,14 +597,32 @@ function renderTopCard(article, rank) {
 }
 
 
-// The Brief on the homepage, above Top News. Reads brief-cards.json, which the
-// narrative desk writes alongside brief.html, so the homepage and the brief
-// page can never disagree about what the cards are.
-function renderBriefFeed(cards) {
+// The Brief. Reads brief-cards.json, which the narrative desk writes
+// alongside brief.html, so the homepage and the brief page can never
+// disagree about what the cards are. Cards carry no category of their
+// own — categorizeCard() derives one from the categories of the source
+// articles a card cites, matched against articles.json by URL.
+let allBriefCards = [];
+
+function categoriesForCard(card, articlesByUrl) {
+  const cats = new Set();
+  (card.sources || []).forEach(s => {
+    const cat = articlesByUrl.get(s.url);
+    if (cat) cats.add(cat);
+  });
+  return cats;
+}
+
+function briefCardsForCategory(cards, articlesByUrl, category) {
+  if (category === 'all') return cards;
+  return cards.filter(c => categoriesForCard(c, articlesByUrl).has(category));
+}
+
+function renderBriefFeed(cards, emptyLabel) {
   const el = document.getElementById('briefFeed');
   if (!el) return;
   if (!cards || !cards.length) {
-    el.innerHTML = '<p class="ih-brief-para">No brief yet.</p>';
+    el.innerHTML = `<p class="ih-brief-para">No ${emptyLabel || 'brief'} stories yet.</p>`;
     return;
   }
   el.innerHTML = cards.map(c => {
@@ -622,10 +640,15 @@ function renderBriefFeed(cards) {
   }).join('');
 }
 
-fetch('brief-cards.json?t=' + Date.now())
-  .then(r => r.ok ? r.json() : null)
-  .then(d => renderBriefFeed(d && d.cards))
-  .catch(() => {});
+async function loadBriefCards() {
+  try {
+    const res = await fetch('brief-cards.json?t=' + Date.now());
+    const d = res.ok ? await res.json() : null;
+    return (d && d.cards) || [];
+  } catch (e) {
+    return [];
+  }
+}
 
 function renderTopSection(articles, ranking) {
   const grid = document.getElementById('topGrid');
@@ -703,6 +726,16 @@ function render(data, activeCat = 'all') {
   const filtered = filterArticles(data.articles, activeCat);
   const topSection = document.getElementById('topSection');
 
+  // The Brief shows on every tab now, filtered to that category. Cards
+  // carry no category of their own, so derive one per card from the
+  // categories of the articles it cites (matched by URL against the full,
+  // unfiltered article pool — a card can outlive the article leaving the
+  // noise-free set, so match against everything, not just `filtered`).
+  const articlesByUrl = new Map(data.articles.map(a => [a.link, a.category]));
+  const briefTitle = document.querySelector('#briefSection .top-title');
+  if (briefTitle) briefTitle.textContent = activeCat === 'all' ? 'The Brief' : `The Brief · ${activeCat[0].toUpperCase()}${activeCat.slice(1)}`;
+  renderBriefFeed(briefCardsForCategory(allBriefCards, articlesByUrl, activeCat), activeCat === 'all' ? 'brief' : activeCat);
+
   if (filtered.length === 0) {
     document.getElementById('heroCard').innerHTML = '<div class="empty-state">No articles yet — refresh soon.</div>';
     if (topSection) topSection.style.display = 'none';
@@ -718,8 +751,6 @@ function render(data, activeCat = 'all') {
   // can never be an ad again.
   const isHome = activeCat === 'all';
   if (topSection) topSection.style.display = isHome ? '' : 'none';
-  const briefSection = document.getElementById('briefSection');
-  if (briefSection) briefSection.style.display = isHome ? '' : 'none';
 
   renderHero(filtered[0]);
   if (isHome) {
@@ -753,7 +784,8 @@ function setupNav(data) {
 }
 
 async function init() {
-  const data = await loadArticles();
+  const [data, cards] = await Promise.all([loadArticles(), loadBriefCards()]);
+  allBriefCards = cards;
   render(data);
   setupNav(data);
 }
