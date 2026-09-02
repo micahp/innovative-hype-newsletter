@@ -119,63 +119,85 @@ def mine_data_points(article):
 #         prediction markets 25, sovereignty 25)
 #   0.4 = feed pushes it but the voice is lukewarm — can still surface
 #         when the data point is strong, but doesn't dominate
+# `name` is the INTERNAL clustering identity — it is the dict key for
+# clusters, the string gates.py and voice_profile.json match on, and the
+# label carried in runs/grades.jsonl. It reads like an analyst's note
+# because that is what it is.
+#
+# `label` is what the READER sees on the card. Micah, 2026-09-02: the
+# internal names were being printed as public section kickers — "Media
+# power and who owns it" is an analytic frame, not a section; "Creator
+# economy consolidation" over-specifies a beat that is just Creator
+# Economy; "The AI data gold rush" is a hot take wearing a category's
+# clothes. Publications print short, stable, boring section names. Keep
+# the two apart: rename a label freely, never a name.
 NARRATIVE_SIGNATURES = [
     {
         "name": "The AI data gold rush",
+        "label": "AI Infrastructure",
         "subject": 'The buildout underneath AI and who is getting paid for it: training data and the people who label it, GPUs and chip supply, data centres and the power and land they need, cloud capacity deals, and the money being raised against all of it.',
         "voice_weight": 1.0,
         "keywords": ["training data", "data labeling", "data center", "gross run rate", "ai training", "compute", "gpu", "data infra"],
     },
     {
         "name": "AI trust and accountability",
+        "label": "AI Safety",
         "subject": 'Whether AI systems can be trusted and who is answerable when they are not: models that deceive or hallucinate, safety and alignment work, red teaming, audits, regulation, liability, and what happens to the people affected.',
         "voice_weight": 1.0,
         "keywords": ["zero data retention", "safety", "oversight", "national security", "lie", "cheat", "hallucinat", "alignment", "guardrail", "red team", "ai agents"],
     },
     {
         "name": "Media power and who owns it",
+        "label": "Media",
         "subject": 'Who controls what gets published and seen: ownership of newsrooms and studios, consolidation and acquisitions, the platforms that distribute news, editorial independence, and antitrust pressure on any of it.',
         "voice_weight": 1.0,
         "keywords": ["zuckerberg", "media ownership", "newsroom", "journalism", "platform power", "antitrust media", "who owns", "masthead"],
     },
     {
         "name": "Creator economy consolidation",
+        "label": "Creator Economy",
         "subject": 'Independent creators and the businesses forming around them: the platforms they publish on, revenue splits and royalties, deals with studios and labels, and the consolidation that turns independence back into employment.',
         "voice_weight": 1.0,
         "keywords": ["creator", "influencer", "studio", "tiktok", "youtube", "substack", "content deal", "royalt", "creator economy"],
     },
     {
         "name": "Sports money keeps inflating",
+        "label": "Sports Business",
         "subject": 'The economics of professional sport rather than the games: franchise valuations and team sales, broadcast and streaming rights, stadium finance, player pay and revenue sharing, sponsorship, and betting money entering the sport.',
         "voice_weight": 0.7,
         "keywords": ["prize money", "valuation", "stadium", "media deal", "broadcast", "rights deal", "nfl", "nba", "mlb", "premier league", "franchise", "revenue share", "team sale"],
     },
     {
         "name": "Prediction markets go mainstream",
+        "label": "Prediction Markets",
         "subject": 'Markets where people trade on the probability of real events: prediction and event contract exchanges, their regulators, election and sports odds, and the argument about whether their prices actually forecast anything.',
         "voice_weight": 0.7,
         "keywords": ["kalshi", "polymarket", "prediction market", "cftc", "election odds", "probability", "market contract"],
     },
     {
         "name": "Crypto's leverage problem",
+        "label": "Crypto Markets",
         "subject": 'Borrowed money inside crypto markets: leveraged positions, liquidations and short squeezes, lending against tokens, ETF and fund flows, and the collapses that follow when the borrowing unwinds.',
         "voice_weight": 0.7,
         "keywords": ["short squeeze", "liquidation", "leverage", "borrow", "etf flow", "plung", "xrp", "bitcoin", "token"],
     },
     {
         "name": "AI surveillance creep",
+        "label": "Surveillance",
         "subject": 'Automated watching of ordinary people: cameras and licence plate readers, facial recognition, phone and location tracking, always-on recording devices, police and employer use of it, and the privacy law around it.',
         "voice_weight": 0.7,
         "keywords": ["surveillance", "glasses", "recording", "police", "track", "camera", "privacy", "facial", "driver"],
     },
     {
         "name": "Energy and climate thresholds",
+        "label": "Energy & Climate",
         "subject": 'How energy gets produced and what the climate does in response: grid capacity and demand, solar, geothermal, nuclear and hydrogen, emissions and carbon accounting, and the floods, heat and storms already arriving.',
         "voice_weight": 0.4,
         "keywords": ["hydrogen", "geothermal", "solar", "grid", "emission", "climate", "flood", "space mirror", "temperature", "carbon"],
     },
     {
         "name": "Cities, housing and where America lives",
+        "label": "Housing",
         "subject": 'Where people can afford to live and what that does to a place: home prices and rents, supply and construction, zoning and permitting, landlords and investor ownership, cost of living, and the migration between cities and regions that follows.',
         "voice_weight": 1.0,
         "keywords": ["texas", "austin", "housing", "rent", "suburb", "relocation", "move to", "real estate", "zoning", "migration", "cost of living", "neighborhood"],

@@ -1332,12 +1332,17 @@ def render_brief_html(clusters, parsed, run_dir):
         # LP's kicker is a TOPIC label, not a headline. A one-off cluster's
         # sig name is just the article's own title, which would print the
         # headline twice, so those fall back to the article category.
-        _sig_name = (cl.get("sig", {}) or {}).get("name", "") or ""
+        # The kicker is the READER-facing section label, not the internal
+        # cluster name. See NARRATIVE_SIGNATURES in brief.py: `name` is the
+        # clustering key and reads like an analyst's note, `label` is the
+        # short section name a publication would actually print.
+        _sig = cl.get("sig", {}) or {}
+        _sig_name = _sig.get("name", "") or ""
         if _sig_name.startswith("One-off"):
             _lead = cl["items"][0]["article"] if cl.get("items") else {}
-            kicker = (_lead.get("category") or "").title() or "What everyone's talking about"
+            kicker = (_lead.get("category") or "").title() or "The Brief"
         else:
-            kicker = _sig_name or "What everyone's talking about"
+            kicker = _sig.get("label") or _sig_name or "The Brief"
         para_html = (f'<p class="brief-para">{_html.escape(card.get("paragraph",""))}</p>'
                      if card.get("paragraph") else "")
         _seen, _uniq = set(), []
