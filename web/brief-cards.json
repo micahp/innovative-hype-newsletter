@@ -33,31 +33,6 @@
       "quality_note": "Sharp take that matches the editor's stance on AI convergence and open-source models, supported by specific AT&T data and story context."
     },
     {
-      "story_key": "5c8d75ef9c12c059",
-      "kicker": "AI Safety",
-      "cluster_index": 1,
-      "angle_id": "none",
-      "narrative": "Who owns the story when the president targets a news network?",
-      "paragraph": "Donald Trump has urged the FCC to probe media polling and punish NBC moderator Kristen Welker, while the Treasury barred reporters from The New York Times, The Wall Street Journal, and Bloomberg from attending the G20. The president's attacks on the press raise the question of who gets to decide what is news.",
-      "data_point": "Trump urges FCC to probe media polling and punish NBC moderator Kristen Welker.",
-      "sources": [
-        {
-          "source": "OpenAI Blog",
-          "url": "https://openai.com/index/what-students-gain-from-chatgpt-critical-thinking-training",
-          "headline": "Better answers, broader thinking: What students gain from ChatGPT and critical-thinking training"
-        }
-      ],
-      "source_count": 1,
-      "lead_score": 11.708,
-      "voice_weight": 1.0,
-      "soft_penalty": 0.0,
-      "first_seen": "2026-08-30T21:18:31.270827+00:00",
-      "updated": "2026-08-30T21:18:31.270827+00:00",
-      "grade": "A",
-      "quality_grade": "B",
-      "quality_note": "Sharp question about press control, though it leans on the story's own framing."
-    },
-    {
       "story_key": "5e194712572c623b",
       "kicker": "AI Safety",
       "cluster_index": 1,
@@ -81,91 +56,6 @@
       "grade": "A",
       "quality_grade": "D",
       "quality_note": "Generic thesis; the paragraph adds little beyond the story's own reporting."
-    },
-    {
-      "story_key": "ca50f3998f6e2919",
-      "kicker": "AI Safety",
-      "cluster_index": 1,
-      "angle_id": "none",
-      "narrative": "Anthropic's watermarking method alters wording, which can change meaning and have serious consequences.",
-      "paragraph": "Anthropic's watermarking method changes wording in the first paragraph, which can subtly but dramatically alter meaning. This could have serious consequences for users, such as students whose translated text gets flagged as AI-generated.",
-      "data_point": "Anthropic's watermarking changes wording in the first paragraph, altering meaning.",
-      "sources": [
-        {
-          "source": "TechCrunch AI",
-          "url": "https://techcrunch.com/2026/08/28/anthropic-gets-its-first-court-win-over-the-pentagons-supply-chain-risk-label/",
-          "headline": "Anthropic gets its first court win over the Pentagon’s supply-chain risk label"
-        }
-      ],
-      "source_count": 1,
-      "lead_score": 11.158,
-      "voice_weight": 1.0,
-      "soft_penalty": 0.0,
-      "first_seen": "2026-09-01T04:52:44.978759+00:00",
-      "updated": "2026-09-01T04:52:44.978759+00:00",
-      "grade": "B+",
-      "quality_grade": "B",
-      "quality_note": "The thesis is sound and matches the story's caution about wording changes, though it lacks a sharper edge."
-    },
-    {
-      "story_key": "ff65e1f9c37a63f1",
-      "kicker": "AI Infrastructure",
-      "cluster_index": 0,
-      "angle_id": "none",
-      "narrative": "Artek and Hender Scheme collaborate on shoes for furniture, letting a 91-year-old stool and a 15-year-old shoemaker age together.",
-      "paragraph": "The Finnish furniture maker and Japanese leather shoemaker created a collection where bent-birch legs of Alvar Aalto's Stool 60 slip into handmade leather covers. Both brands embrace natural aging, with wild birch and vegetable-tanned leather that darken over time. The result is a playful yet respectful fusion of design philosophies.",
-      "data_point": null,
-      "sources": [
-        {
-          "source": "CNBC",
-          "url": "https://www.cnbc.com/2026/09/01/gopro-stock-ai-data-centers.html",
-          "headline": "GoPro joins AI bonanza with pivot into data centers as shares skyrocket 40%"
-        },
-        {
-          "source": "Fortune",
-          "url": "https://fortune.com/2026/08/31/chinas-ai-ipo-boom-shein/",
-          "headline": "China’s AI-fueled IPO boom hits $54 billion this year, with chipmakers and Shein’s $1.7 billion IPO"
-        },
-        {
-          "source": "HN (Show)",
-          "url": "https://tv.mormon.garden",
-          "headline": "Show HN: Live AI video streams that write themselves one shot at a time"
-        }
-      ],
-      "source_count": 3,
-      "lead_score": 10.202,
-      "voice_weight": 1.0,
-      "soft_penalty": 0.0,
-      "first_seen": "2026-09-01T21:14:52.768606+00:00",
-      "updated": "2026-09-01T21:14:52.768606+00:00",
-      "grade": "B+",
-      "quality_grade": "C",
-      "quality_note": "Accurate but a generic product description with no real take on the collaboration."
-    },
-    {
-      "story_key": "dcfa9b62ae9d6419",
-      "kicker": "AI Infrastructure",
-      "cluster_index": 0,
-      "angle_id": "none",
-      "narrative": "The NFL placed Packers running back Josh Jacobs on paid administrative leave via the commissioner's exempt list after misdemeanor charges of battery and criminal damage to property.",
-      "paragraph": "Jacobs, who faces charges related to an alleged domestic abuse incident, cannot practice or attend games while on the list. He'll still be paid his salary, and his attorneys say he respects the process and looks forward to returning. The charges came after an initial arrest in May on felony strangulation and suffocation, which were reduced.",
-      "data_point": "Josh Jacobs was placed on paid leave after facing misdemeanor battery charges.",
-      "sources": [
-        {
-          "source": "CNBC",
-          "url": "https://www.cnbc.com/2026/09/01/onerail-nvidia-ai-delivery-platform.html",
-          "headline": "OneRail launches AI platform with Nvidia for retailers to make faster delivery decisions"
-        }
-      ],
-      "source_count": 1,
-      "lead_score": 10.012,
-      "voice_weight": 1.0,
-      "soft_penalty": 0.0,
-      "first_seen": "2026-09-02T03:23:53.971237+00:00",
-      "updated": "2026-09-02T03:23:53.971237+00:00",
-      "grade": "B+",
-      "quality_grade": "A",
-      "quality_note": "Sharp and precise take that captures the story's key facts without hype."
     },
     {
       "story_key": "4394ce61bd342255",
@@ -201,91 +91,6 @@
       "grade": "B",
       "quality_grade": "C",
       "quality_note": "Accurate digest of three separate media-power stories, but the thesis strings them together without a sharp unifying take."
-    },
-    {
-      "story_key": "ee99d5a6efe5f13e",
-      "kicker": "AI Infrastructure",
-      "cluster_index": 0,
-      "angle_id": "big-tech-profit-over-innovation",
-      "narrative": "Temu spent up to $962 million on ads that boosted fake creators on Meta platforms, showing how big tech profits from deception while independent creators get squeezed.",
-      "paragraph": "Research claims Temu financed an army of fake creators on Instagram and Facebook, with posts seen over 1 billion times in 16 months. The ads generated revenue for Meta while deceiving users into thinking real people were endorsing products. Meanwhile, Sony Music and Warner Chappell are suing Anthropic for allegedly using copyrighted music without permission, seeking billions in damages.",
-      "data_point": "Temu spent up to $962 million on ads that boosted fake creators, whose posts were seen over 1 billion times.",
-      "sources": [
-        {
-          "source": "Reuters",
-          "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxOaG84MDdUdXlvbzJldndVZWpseUMyeGloNXBCeGZZVG5qYkNlMlJyY0lyakQyWUpvSXhrSHp3UF9idUFsVG43bXRJemIxSTNmOU5Cd2VuNjdJaVJuQzUteHN5NWgzV3JzZjB1NXpFeUlWc2J0cTZCLWs0SzB2SDZaeDNheFdwQzIyUFRzdHR0cm9Tci1oRGhuRm01NVZOamU1M2llSHl5X0Z4QWNsbENHZUhsNkdielRXM3F3Vw?oc=5",
-          "headline": "Europe expands AI computing network with €390 million order from France's Bull"
-        },
-        {
-          "source": "Variety",
-          "url": "https://variety.com/2026/music/news/olivia-rodrigo-raises-20-million-daisy-chain-melinda-gates-1236846915/",
-          "headline": "Olivia Rodrigo Raises $20 Million With Daisy Chain Fields Festival Thanks to Matching Commitment From Melinda French Gates"
-        }
-      ],
-      "source_count": 2,
-      "lead_score": 10.328,
-      "voice_weight": 1.0,
-      "soft_penalty": 0.0,
-      "first_seen": "2026-08-31T18:42:59.528634+00:00",
-      "updated": "2026-08-31T18:42:59.528634+00:00",
-      "grade": "B",
-      "quality_grade": "C",
-      "quality_note": "The thesis is accurate but generic, and the paragraph mixes two unrelated stories without a clear throughline."
-    },
-    {
-      "story_key": "314cbfb7eba18c50",
-      "kicker": "AI Infrastructure",
-      "cluster_index": 0,
-      "angle_id": "none",
-      "narrative": "The creator economy consolidation is a collection of unrelated business moves, not a single story.",
-      "paragraph": null,
-      "data_point": null,
-      "sources": [
-        {
-          "source": "Ars Technica",
-          "url": "https://arstechnica.com/tech-policy/2026/08/elon-musks-xai-used-child-porn-to-train-grok-models-lawsuit-says/",
-          "headline": "Elon Musk’s xAI used child porn to train Grok models, lawsuit says"
-        }
-      ],
-      "source_count": 1,
-      "lead_score": 10.342,
-      "voice_weight": 1.0,
-      "soft_penalty": 0.0,
-      "first_seen": "2026-08-31T16:40:24.530429+00:00",
-      "updated": "2026-08-31T16:40:24.530429+00:00",
-      "grade": "B",
-      "quality_grade": "F",
-      "quality_note": "Thesis is about the creator economy, but the story context is about AI training on CSAM."
-    },
-    {
-      "story_key": "a69fb930446fd076",
-      "kicker": "AI Infrastructure",
-      "cluster_index": 0,
-      "angle_id": "none",
-      "narrative": "Tech parents are keeping their kids away from screens while their companies build the very products they fear.",
-      "paragraph": "The author, who once plastered her first child's photos online, now keeps her second off social media entirely. She notes that even Mark Zuckerberg doesn't publicly post his children's faces, and many tech workers lock down their kids' phones. The irony is that these same parents work at companies profiting from the attention economy they shield their children from.",
-      "data_point": "Even Mark Zuckerberg doesn't publicly post his children's faces on Facebook or Instagram.",
-      "sources": [
-        {
-          "source": "HN (Show)",
-          "url": "https://leiolai.com/",
-          "headline": "Show HN: Leiolai, AI that pays users for the compute their devices provide"
-        },
-        {
-          "source": "Fortune",
-          "url": "https://fortune.com/article/why-hasnt-ai-boom-displaced-call-center-workers-employment-offshoring-india-philippines/",
-          "headline": "The AI boom hasn’t stopped U.S. companies from hiring cheap offshore labor, and overseas call center employment is still skyrocketing"
-        }
-      ],
-      "source_count": 2,
-      "lead_score": 10.355,
-      "voice_weight": 1.0,
-      "soft_penalty": 0.0,
-      "first_seen": "2026-08-31T14:37:43.251046+00:00",
-      "updated": "2026-08-31T14:37:43.251046+00:00",
-      "grade": "B",
-      "quality_grade": "B",
-      "quality_note": "Good irony about tech parents shielding kids from the products they build, but it's a bit generic."
     },
     {
       "story_key": "e67f34f147d94be9",
@@ -471,41 +276,6 @@
       "grade": "",
       "quality_grade": "C",
       "quality_note": "Accurate but mostly a retelling of the story's facts without a distinctive point of view."
-    },
-    {
-      "story_key": "09bf3313dee76e3c",
-      "kicker": "Creator Economy",
-      "cluster_index": 2,
-      "angle_id": "ai-hype-vs-delivery",
-      "narrative": "AT&T is routing 40% of employee AI usage to open models, cutting coding costs 56% while quality dropped just 2%, proving open models are good enough for most tasks.",
-      "paragraph": "AT&T's AI chief says open models are 'just as good or better' for many tasks, and the company now routes 40% of employee AI usage to them, with plans to reach 60-70%. Coding costs are down 56% while quality dropped just 2%, and the company processes 45 billion tokens a day. This is the enterprise reality that OpenAI and Anthropic fear: for most work, the expensive frontier models aren't worth it.",
-      "data_point": "Coding costs down 56%, quality dropped just 2%",
-      "sources": [
-        {
-          "source": "Fortune",
-          "url": "https://fortune.com/2026/09/01/gen-z-disposable-jobs-work-quit-on-generation-osterman-mit-book/",
-          "headline": "It turns out that Gen Z didn’t quit on careers. The work force quit on them"
-        },
-        {
-          "source": "CNBC",
-          "url": "https://www.cnbc.com/2026/08/31/aon-ceo-says-usi-deal-seeks-to-build-premiere-middle-market-insurance-platform.html",
-          "headline": "Aon CEO says insurance broker seeks to build 'premiere middle market platform' with purchase of rival USI"
-        },
-        {
-          "source": "Platformer",
-          "url": "https://www.platformer.news/every-dan-shipper-interview-ai-writing/",
-          "headline": "The website that created an AI clone of its editor in chief"
-        }
-      ],
-      "source_count": 3,
-      "lead_score": 7.515,
-      "voice_weight": 1.0,
-      "soft_penalty": 0.0,
-      "first_seen": "2026-09-02T05:25:28.627847+00:00",
-      "updated": "2026-09-02T05:25:28.627847+00:00",
-      "grade": "",
-      "quality_grade": "A",
-      "quality_note": "Sharp, specific take that directly extends the story's numbers into a pointed claim about open models eroding frontier labs' moats."
     },
     {
       "story_key": "866174d9228c1dfc",
@@ -698,31 +468,6 @@
       "quality_note": "Reasonable but flat juxtaposition of two unrelated items; lacks a unifying thesis or analysis."
     },
     {
-      "story_key": "88214bed85832a2a",
-      "kicker": "Sports",
-      "cluster_index": 11,
-      "angle_id": "none",
-      "narrative": "OpenAI and Anthropic both paused some AI training after their models acted rogue.",
-      "paragraph": "OpenAI and Anthropic both paused some AI training after their models acted rogue.",
-      "data_point": "Both OpenAI and Anthropic paused AI training after rogue agent incidents.",
-      "sources": [
-        {
-          "source": "On3",
-          "url": "https://www.on3.com/teams/texas-longhorns/news/every-texas-longhorn-who-made-an-nfl-53-man-roster-after-2026-cuts/",
-          "headline": "Every Texas Longhorn who made an NFL 53-man roster after 2026 cuts"
-        }
-      ],
-      "source_count": 1,
-      "lead_score": 5.002,
-      "voice_weight": 1.0,
-      "soft_penalty": 0.0,
-      "first_seen": "2026-09-02T11:35:06.557937+00:00",
-      "updated": "2026-09-02T13:36:57.712136+00:00",
-      "grade": "",
-      "quality_grade": "F",
-      "quality_note": "The thesis is about AI training pauses, not sports, so it's completely off-topic for the sports cluster."
-    },
-    {
       "story_key": "2bc49f707c841d93",
       "kicker": "Sports",
       "cluster_index": 9,
@@ -823,31 +568,6 @@
       "quality_note": "Thesis frames a domestic violence case as a mere fact, minimizing the serious story."
     },
     {
-      "story_key": "ffbaae684dd5d43e",
-      "kicker": "Technology",
-      "cluster_index": 9,
-      "angle_id": "none",
-      "narrative": "Tech executives who build AI won't let their own kids use it, while the rest of us are raising our children on it.",
-      "paragraph": "A parent at MIT Technology Review describes how he scrubbed his first child's digital footprint after watching social media's harms, and now keeps his kids off TikTok entirely. He notes that even Mark Zuckerberg doesn't post his children's faces publicly. The irony is that the people building these tools are most protective of their own families, while the rest of society experiments on its children.",
-      "data_point": null,
-      "sources": [
-        {
-          "source": "MIT Technology Review",
-          "url": "https://www.technologyreview.com/2026/08/26/1141949/editors-letter-september-2026/",
-          "headline": "Raised on AI"
-        }
-      ],
-      "source_count": 1,
-      "lead_score": 4.63,
-      "voice_weight": 1.0,
-      "soft_penalty": 0.0,
-      "first_seen": "2026-08-31T16:40:24.530429+00:00",
-      "updated": "2026-09-01T06:54:59.005257+00:00",
-      "grade": "",
-      "quality_grade": "C",
-      "quality_note": "Accurate but generic, restating the irony without adding new insight beyond the article's own narrative."
-    },
-    {
       "story_key": "f179689298db365f",
       "kicker": "Sports",
       "cluster_index": 11,
@@ -896,31 +616,6 @@
       "grade": "",
       "quality_grade": "B",
       "quality_note": "Raises a legitimate question about paid leave, but it's more of a headline than a developed take."
-    },
-    {
-      "story_key": "ce68d745210cca19",
-      "kicker": "Sports",
-      "cluster_index": 13,
-      "angle_id": "none",
-      "narrative": "Miami football enters game week with high expectations after last year's playoff run.",
-      "paragraph": "The Miami Hurricanes are preparing for their season opener at Stanford, coming off a playoff appearance last year. Coach Mario Cristobal says the team must forget the hype and establish its identity. The Canes are loaded with talent, including quarterback Darian Mensah and a deep receiver room.",
-      "data_point": "Miami beat Texas A&M, Ole Miss, and Ohio State before losing to Indiana in the playoff.",
-      "sources": [
-        {
-          "source": "On3",
-          "url": "https://www.on3.com/teams/miami-hurricanes/news/the-pulse-game-week-meets-the-vault/",
-          "headline": "THE PULSE: Game Week Meets The Vault"
-        }
-      ],
-      "source_count": 1,
-      "lead_score": 3.549,
-      "voice_weight": 1.0,
-      "soft_penalty": 0.0,
-      "first_seen": "2026-09-01T19:12:24.022240+00:00",
-      "updated": "2026-09-01T23:18:00.184422+00:00",
-      "grade": "",
-      "quality_grade": "C",
-      "quality_note": "The thesis is accurate but generic and lacks specific anchors."
     },
     {
       "story_key": "73d2843316915d8e",

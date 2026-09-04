@@ -27,6 +27,7 @@ changed since the last run, skip regeneration unless --force is passed.
 import argparse
 import hashlib
 import json
+import math
 import os
 import re
 import subprocess
@@ -1275,6 +1276,104 @@ def grade_feed(run_dir=None):
     return graded
 
 
+# Words that can never be evidence that a card came from an article. A
+# shared "plans", "with" or "that" is not provenance, but the old matcher
+# counted them, which is how an AT&T card cited a story about Uber.
+_PROV_STOP = set("""
+the a an and or of to in for on with is are was were be been being that this these those it its as at by
+from has have had not but who what when where how why they them their he she his her you your we our i
+will would can could should may might more most much many other another some any all each into over under
+about after before then than there here now new news says said say just only while even also plans plan
+first last next year years day days week month time make makes made get gets got go goes
+""".split())
+
+# What fraction of a cluster a word may appear in and still count as
+# distinctive. In a 150-item AI cluster, "models" is furniture; "hugging"
+# is evidence.
+_PROV_RARE_FRAC = 0.15
+
+
+def _prov_tokens(text):
+    return {w for w in re.findall(r"[a-z0-9']{3,}", (text or "").lower())
+            if w not in _PROV_STOP}
+
+
+def _prov_required_hits(n_items):
+    """How much evidence a card owes, scaled to how much choice it had.
+
+    A one-off cluster holds exactly one article and the card was written
+    from it, so provenance is structural. A 150-item cluster gave the desk
+    150 stories to pick from, so shared vocabulary has to be specific
+    enough that coincidence is not the explanation.
+    """
+    if n_items <= 1:
+        return 0
+    if n_items < 10:
+        return 1
+    return 3
+
+
+def match_sources(card, items, limit=3):
+    """Which articles in this cluster the card actually came from.
+
+    Returns (sources, best_hit_count). Empty sources means the card's
+    claims are not traceable to anything in its own cluster.
+
+    Scores on DISTINCTIVE shared vocabulary rather than raw token overlap.
+    Rarity is only measured when the cluster is big enough for it to mean
+    anything: in a 2-item cluster every subject word looks "common", which
+    would throw away the one real source.
+    """
+    n = len(items) or 1
+    use_rarity = n >= 10
+    cutoff = max(1, _PROV_RARE_FRAC * n)
+
+    df, item_tokens = {}, []
+    for it in items:
+        a = it["article"] if "article" in it else it
+        t = _prov_tokens(a.get("title", ""))
+        item_tokens.append(t)
+        for w in t:
+            df[w] = df.get(w, 0) + 1
+
+    card_tokens = _prov_tokens(f"{card.get('narrative','')} {card.get('paragraph','')}")
+
+    scored = []
+    for sid, (it, t) in enumerate(zip(items, item_tokens)):
+        shared = card_tokens & t
+        distinct = {w for w in shared if df.get(w, 0) <= cutoff} if use_rarity else shared
+        if distinct:
+            weight = sum(math.log(n / (1 + df.get(w, 0))) for w in distinct) if use_rarity else len(distinct)
+            scored.append((len(distinct), weight, sid, it))
+    scored.sort(key=lambda x: (-x[0], -x[1]))
+
+    best = scored[0][0] if scored else 0
+    required = _prov_required_hits(n)
+
+    # A one-off cluster is a single article and the card was written from
+    # it, so it is the source whether or not the rewrite happens to reuse
+    # its words. Requiring shared vocabulary here would drop a good card
+    # for being well written.
+    if n <= 1 and items:
+        a = items[0]["article"] if "article" in items[0] else items[0]
+        return [{"source": a.get("source", ""),
+                 "url": a.get("link", "#"),
+                 "headline": a.get("title", "")}], best
+
+    if best < required:
+        return [], best
+
+    sources = []
+    for hits, _w, _sid, it in scored[:limit]:
+        if hits < _prov_required_hits(n):
+            break
+        a = it["article"] if "article" in it else it
+        sources.append({"source": a.get("source", ""),
+                        "url": a.get("link", "#"),
+                        "headline": a.get("title", "")})
+    return sources, best
+
+
 def render_brief_html(clusters, parsed, run_dir):
     """Render the LLM cards into web/brief.html with article links resolved
     from source_ids (indexes into each cluster's item list)."""
@@ -1296,32 +1395,29 @@ def render_brief_html(clusters, parsed, run_dir):
         cl = clusters[cluster_idx] if cluster_idx < len(clusters) else None
         if not cl:
             continue
-        sources = []
         # Don't trust model source_ids (they drift after re-alignment) —
         # match the card text against each article in the cluster to find
-        # which ones the card actually cites.
-        card_text = f"{card.get('narrative','')} {card.get('paragraph','')}".lower()
-        card_tokens = set(re.findall(r"[a-z']{4,}", card_text))
-        # Strongly prefer articles whose title shares multiple card tokens
-        scored_items = []
-        for sid, item in enumerate(cl["items"]):
-            a = item["article"]
-            title = a.get("title", "").lower()
-            title_tokens = set(re.findall(r"[a-z']{4,}", title))
-            overlap = len(card_tokens & title_tokens)
-            scored_items.append((overlap, sid, a))
-        scored_items.sort(key=lambda x: -x[0])
-        for overlap, sid, a in scored_items[:3]:
-            if overlap >= 2:
-                sources.append({"source": a.get("source", ""),
-                                "url": a.get("link", "#"),
-                                "headline": a.get("title", "")})
-        if not sources and cl["items"]:
-            # Fallback: lead article of the cluster
-            a = cl["items"][0]["article"]
-            sources.append({"source": a.get("source", ""),
-                            "url": a.get("link", "#"),
-                            "headline": a.get("title", "")})
+        # which ones the card actually cites. See match_sources().
+        sources, prov_hits = match_sources(card, cl["items"])
+        if not sources:
+            # NO FABRICATED PROVENANCE. This used to fall back to the
+            # cluster's lead article, which by construction had just failed
+            # to match, so an untraceable card shipped with a confident
+            # source chip pointing at an unrelated story.
+            #
+            # A card with no match is not a citation problem, it is a
+            # content problem: the desk wrote about something that is not
+            # in this cluster. Measured 2026-09-04 over 331 cards in the
+            # last 40 runs: 9 fail, and every one is a story lifted from
+            # the voice-profile exemplars injected into the prompt as "his
+            # exact words" (AT&T open-model routing x3, open models
+            # converging x5) or the signature name echoed as a narrative.
+            # Those are fabrications relative to the day's news. Drop them.
+            print(f"  UNSOURCED card dropped (cluster {cluster_idx}, "
+                  f"{len(cl['items'])} items, best {prov_hits} distinctive "
+                  f"hits): {card.get('narrative','')[:70]}")
+            _shown -= 1
+            continue
         # LP news-card shape (components/News/LeagueSection.tsx
         # AiNarrativeCard): kicker, narrative, paragraph, then a compact row of
         # publisher NAMES. Micah, 2026-08-23: "that pull quote below the
@@ -1379,6 +1475,15 @@ def render_brief_html(clusters, parsed, run_dir):
             "data_point": card.get("data_point", ""),
             "sources": sources[:3],
             "source_count": len(sources),
+            # What this generation is based on. A downstream consumer (the
+            # social desk) must be able to answer "where did this claim
+            # come from" without re-deriving it, so the evidence strength
+            # travels with the card rather than being recomputed or assumed.
+            "provenance": {
+                "distinctive_hits": prov_hits,
+                "required_hits": _prov_required_hits(len(cl["items"]) if cl else 0),
+                "cluster_size": len(cl["items"]) if cl else 0,
+            },
             # The lead article's editorial score, so the feed can be ORDERED.
             # Without this the feed sorted by first_seen and a golf ad ended up
             # as card #1 purely because of when it landed.
@@ -1655,8 +1760,23 @@ def call_model(clusters):
             prompt_lines.append(
                 f"  HOW MICAH TALKS ABOUT THIS: on {_pe['topic']}, his stance "
                 f"is: {_pe['stance']} (tone: {_pe['tone']})")
+            # STYLE SAMPLE, NOT SOURCE MATERIAL. These are his own past
+            # posts and they are full of real statistics, so a model
+            # reading them as context will happily write today's card out
+            # of last month's tweet. Measured 2026-09-04: 9 of 331 cards
+            # were lifted from these lines (the AT&T open-model routing
+            # numbers, "models are converging"), each shipped as news with
+            # sources that had nothing to do with the claim. The
+            # provenance gate in match_sources() now drops those, but say
+            # it here too so they are not written in the first place.
             for _ex in _pe.get("exemplars", [])[:2]:
-                prompt_lines.append(f'    his exact words: "{_ex}"')
+                prompt_lines.append(f'    voice sample (REGISTER ONLY): "{_ex}"')
+            if _pe.get("exemplars"):
+                prompt_lines.append(
+                    "    ^ Those voice samples are how he SOUNDS. They are "
+                    "not today's news and not sources. Never take a fact, "
+                    "number, company or event from them. Every claim in "
+                    "your card must come from the numbered articles below.")
         prompt_lines.append(f"  REQUIRED HEADLINE SHAPE = {_shape_name}. {_shape_rule}")
         _elig = eligible_angles(cl, _angles)
         if _elig:
