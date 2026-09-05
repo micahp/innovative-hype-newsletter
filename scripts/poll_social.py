@@ -404,8 +404,19 @@ def main():
                     and p["id"] not in seen_ids:
                 seen_ids.add(p["id"])
                 justin_posts.append({**p, "account": screen})
+    # Sort on the PARSED date, not the string. The stored format is nitter's
+    # render ('Aug 1, 2026 · 2:04 PM UTC'), which sorts alphabetically by month
+    # name: Aug 2026, then Dec 2025, then Jan 2026, then Sep 2026. This file has
+    # therefore never been in chronological order, and anything downstream
+    # treating the last line as the newest post was reading an arbitrary row.
+    # Rows whose date will not parse sort to the front rather than being dropped
+    # or silently treated as epoch-zero newest.
+    def _when(p):
+        dt = parse_date(p.get("date", ""))
+        return (dt is not None, dt or datetime.min.replace(tzinfo=timezone.utc))
+
     with open(os.path.join(CORPUS, "justin.jsonl"), "w") as f:
-        for p in sorted(justin_posts, key=lambda x: x.get("date", "")):
+        for p in sorted(justin_posts, key=_when):
             f.write(json.dumps(p) + "\n")
 
     summary = {
