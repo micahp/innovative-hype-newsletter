@@ -363,6 +363,25 @@ def main():
         warn = " << STALE" if (age is None or age > STALE_EXIT_H) else ""
         print(f"  {screen:<16} rows={pf['rows']:<5} newest={shown}{warn}")
 
+    # --check-only stops here, before any network call. The X lane sat dead for
+    # nine days (2026-08-27 to 09-05) and nothing said so, because nothing
+    # schedules this poller at all and the only alarm it has is downstream of a
+    # network fetch that is now guaranteed to fail from this IP. A freshness
+    # alarm must not depend on the transport it is watching: this path touches
+    # only local files, so it can run on a timer, cost nothing, and still exit 1
+    # the day a lane goes quiet.
+    if "--check-only" in sys.argv:
+        stale_now = [s for s, pf in preflight.items()
+                     if pf["age_h"] is None or pf["age_h"] > STALE_EXIT_H]
+        print(json.dumps({"mode": "check-only", "ts": ts,
+                          "stale_accounts": [s.lower() for s in stale_now],
+                          "accounts": {s.lower(): preflight[s] for s in preflight}}))
+        if stale_now:
+            print(f"EXIT 1: {len(stale_now)} account(s) stale (> {STALE_EXIT_H:g}h): "
+                  f"{', '.join(stale_now)}")
+            return 1
+        return 0
+
     # ---- POLL: one transport chosen per run, one request per account.
     base, why_not = pick_transport()
     results, stale = {}, []
