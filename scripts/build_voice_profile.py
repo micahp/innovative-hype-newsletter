@@ -89,8 +89,19 @@ def main():
     )
     user = "TWEETS:\n" + blob
 
-    raw = narrative_desk.call_llm(system, user, max_tokens=4000)
-    data = json.loads(raw)
+    # 12 entries x 3 verbatim exemplars is a lot of output, and exemplars
+    # are whole tweets. At 4000 the response came back finish_reason
+    # "length", truncated mid-JSON, and the parse blew up with a type
+    # error that named neither the cap nor the truncation (2026-09-05,
+    # after the corpus grew past ~140 posts in the window).
+    raw = narrative_desk.call_llm(system, user, max_tokens=16000)
+    try:
+        data = json.loads(raw or "")
+    except (ValueError, TypeError):
+        raise SystemExit(
+            "voice profile response was not valid JSON (%d chars). The most "
+            "likely cause is the token cap truncating it; raise max_tokens."
+            % len(raw or ""))
     entries = []
     corpus_texts = {r["text"] for r in posts}
     dropped = 0

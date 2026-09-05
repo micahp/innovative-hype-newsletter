@@ -571,6 +571,69 @@ def load_feed():
         return []
 
 
+_POOL_DF = None
+
+
+def _pool_df():
+    """Document frequency over the whole article pool, for judging how
+    distinctive a word is when we have no cluster to measure against."""
+    global _POOL_DF
+    if _POOL_DF is None:
+        df = {}
+        n = 0
+        try:
+            with open(os.path.join(WEB, "articles.json")) as f:
+                for a in json.load(f)["articles"]:
+                    n += 1
+                    for w in _prov_tokens(a.get("title", "")):
+                        df[w] = df.get(w, 0) + 1
+        except Exception:
+            pass
+        _POOL_DF = (df, max(n, 1))
+    return _POOL_DF
+
+
+def _named_entities(text):
+    """Capitalised words a sentence did not force. The subject of a news
+    claim is almost always one of these, and unlike rarity it does not
+    reward an unusual verb over the company the story is about."""
+    ents = set()
+    for sent in re.split(r"(?<=[.!?])\s+", text or ""):
+        words = sent.split()
+        for i, w in enumerate(words):
+            bare = w.strip("\"'“”‘’(),.:;?!")
+            if i == 0 or len(bare) < 3:
+                continue  # sentence-initial caps are grammar, not identity
+            if bare[0].isupper() or (bare.isupper() and len(bare) > 2):
+                ents.add(bare.lower().rstrip("'s").rstrip("'"))
+    return ents
+
+
+def _cites_its_own_claim(card, rare_frac=0.02):
+    """Does a card's claim share its DEFINING words with a headline it cites?
+
+    match_sources() has the whole cluster to measure rarity against; here
+    there are only the two or three headlines already on the card, so
+    rarity comes from the article pool instead.
+
+    Counting plain overlap is not enough. The AT&T card shares "models",
+    "coding" and "open" with an Anthropic story and passed a >=2 overlap
+    test while citing nothing that mentions AT&T. What identifies a claim
+    is its rarest words, so those are what a source has to corroborate.
+    """
+    subject = _named_entities(card.get("narrative", ""))
+    if not subject:
+        # No named subject to check (a "Who owns the news?" style card).
+        # Fall back to shared content words rather than assuming the worst.
+        claim = _prov_tokens(card.get("narrative", ""))
+        return any(len(claim & _prov_tokens(s.get("headline", ""))) >= 2
+                   for s in card.get("sources") or [])
+    for s in card.get("sources") or []:
+        if subject & _named_entities("X " + s.get("headline", "")):
+            return True
+    return False
+
+
 def merge_into_feed(new_cards):
     """Add/refresh cards in the running feed. Returns the feed, newest first."""
     from datetime import datetime as _dt, timezone as _tz, timedelta as _td
@@ -617,6 +680,20 @@ def merge_into_feed(new_cards):
         # PHASE 2 (2026-08-27): eviction is a STATE, not a deletion. The card
         # stops rendering, but its row survives in cards.jsonl with state
         # "evicted" so nothing is ever thrown away by this path again.
+        evicted_keys.add(k)
+
+    # A card written before the provenance gate existed never passed it, and
+    # the feed carries cards forward for FEED_MAX_AGE_H regardless of which
+    # code wrote them. Measured 2026-09-05: the AT&T fabrication reappeared
+    # in brief-cards.json after the gate shipped, carried by this merge with
+    # no `provenance` key at all. Re-check legacy cards against the sources
+    # they themselves cite, so the gate applies to the feed and not just to
+    # the moment of generation.
+    for k in [k for k, c in existing.items()
+              if k not in evicted_keys and not c.get("provenance")
+              and not _cites_its_own_claim(c)]:
+        print("  EVICTED (untraceable, pre-gate card): "
+              f"{existing[k].get('narrative','')[:60]}")
         evicted_keys.add(k)
 
     cutoff = now - _td(hours=FEED_MAX_AGE_H)
@@ -1294,8 +1371,16 @@ _PROV_RARE_FRAC = 0.15
 
 
 def _prov_tokens(text):
-    return {w for w in re.findall(r"[a-z0-9']{3,}", (text or "").lower())
-            if w not in _PROV_STOP}
+    """Content words, plus short entity forms a plain \\w+ split destroys.
+
+    "AT&T" tokenizes to "at" + "t" under a letters-only rule, so the one
+    word that identifies the claim disappears and the card looks like it
+    is about "open models". Keep &-joined and dotted acronyms whole.
+    """
+    low = (text or "").lower()
+    words = {w for w in re.findall(r"[a-z0-9']{3,}", low) if w not in _PROV_STOP}
+    entities = set(re.findall(r"[a-z0-9]+(?:[&.][a-z0-9]+)+", low))
+    return words | entities
 
 
 def _prov_required_hits(n_items):
