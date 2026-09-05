@@ -71,6 +71,19 @@ TRANSPORTS = [
     "https://xcancel.com",
     "https://twiiit.com",
 ]
+# A private nitter on Micah's residential IP, reached through a cloudflared
+# tunnel. See docs/SELF-HOST-NITTER-DESKTOP.md. It goes FIRST because it is the
+# only surface that is not rate-limited or C&D'd: X limits by IP, this box is a
+# datacenter address already burned with X (429 on syndication, dead on every
+# public mirror since the 2026-08-24 cease-and-desist), and a residential IP is
+# the only thing that reaches the two personal handles at all.
+#
+# Unset is the normal state and costs nothing: no host, no probe, straight on to
+# the public mirrors. This is the one line that has to exist BEFORE the tunnel
+# does, so standing the tunnel up is a config change and not a code change.
+_SELF_HOST = (os.environ.get("IH_NITTER_SELF_HOST") or "").strip().rstrip("/")
+if _SELF_HOST:
+    TRANSPORTS.insert(0, _SELF_HOST)
 TIMEOUT_S = 30
 
 _ctx = ssl.create_default_context()
