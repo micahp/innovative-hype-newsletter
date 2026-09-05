@@ -11,3 +11,7 @@ __pycache__/
 
 # derived embedding vectors, safe to delete and regenerate
 .embed-cache/
+
+# Tweet media fetched from X CDN. Regenerable from the urls in the corpus
+# via scripts/fetch_media.py, and binary, so it does not belong in git.
+corpus/media/
