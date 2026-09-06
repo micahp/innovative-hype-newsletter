@@ -123,6 +123,102 @@ def build_bauhaus(photo, out, kicker, headline, source):
     return out
 
 
+def _is_stake(word):
+    """Words worth a highlight: the number, the money, the magnitude.
+
+    From the reference grids (@vesting): the hook is never buried and the
+    figure is always the coloured part. Highlighting is mechanical rather
+    than editorial so it cannot invent emphasis that isn't in the text.
+    """
+    w = word.strip("\"'“”‘’(),.:;?!")
+    if any(ch.isdigit() for ch in w):
+        return True
+    return w.lower().rstrip("s") in {
+        "billion", "million", "trillion", "record", "first", "biggest",
+        "fastest", "never", "every", "all", "zero", "most",
+    }
+
+
+def _wrap_words(draw, text, fnt, max_w):
+    """Wrap into lines while keeping the words, so each can be coloured."""
+    lines, cur = [], []
+    for w in text.split():
+        if draw.textlength(" ".join(cur + [w]), font=fnt) <= max_w or not cur:
+            cur.append(w)
+        else:
+            lines.append(cur)
+            cur = [w]
+    if cur:
+        lines.append(cur)
+    return lines
+
+
+def build_hype(photo, out, kicker, headline, source):
+    """Photo-dominant, centred, all-caps, with the figures in brand yellow.
+
+    Micah 2026-09-05: the all-black card read as flat, and the reference
+    accounts he pulled (@vesting, @edmmusic) are never fully monochrome.
+    Both let the photo carry the colour and keep the type block compact;
+    @vesting highlights the number in yellow so the hook survives a
+    thumbnail. This is that, in IH's own palette rather than theirs.
+    """
+    BLACK, WHITE = (0, 0, 0), (255, 255, 255)
+    canvas = Image.new("RGB", (W, H), BLACK)
+    draw = ImageDraw.Draw(canvas)
+
+    photo_h = 820  # the photo is the post; the plate is a caption
+    canvas.paste(fit_photo(photo, W, photo_h), (0, 0))
+
+    pad = 56
+    max_w = W - pad * 2
+    cursor = photo_h + 46
+
+    # Category pill, centred (the references both label the format).
+    kfont = font("SpaceMono-Bold.ttf", 21)
+    ktext = kicker.upper()
+    kw = draw.textlength(ktext, font=kfont) + 30
+    kx = (W - kw) / 2
+    draw.rectangle([kx, cursor, kx + kw, cursor + 38], fill=RED)
+    draw.text((kx + 15, cursor + 5), ktext, font=kfont, fill=WHITE)
+    cursor += 66
+
+    for size in (62, 57, 52, 47, 43, 39):
+        hfont = font("Jost.ttf", size, weight=700)
+        lines = _wrap_words(draw, headline.upper(), hfont, max_w)
+        line_h = round(size * 1.14)
+        if cursor + len(lines) * line_h < H - 120:
+            break
+
+    space = draw.textlength(" ", font=hfont)
+    for words in lines:
+        widths = [draw.textlength(w, font=hfont) for w in words]
+        total = sum(widths) + space * (len(words) - 1)
+        x = (W - total) / 2
+        for w, wd in zip(words, widths):
+            draw.text((x, cursor), w, font=hfont,
+                      fill=YELLOW if _is_stake(w) else WHITE)
+            x += wd + space
+        cursor += line_h
+
+    # Centred lockup between hairlines, the @edmmusic device.
+    y = H - 78
+    lfont = font("Jost.ttf", 27, weight=500)
+    lock = "innovative hype"
+    lw = draw.textlength(lock, font=lfont)
+    lx = (W - lw) / 2
+    draw.rectangle([pad, y + 13, lx - 22, y + 15], fill=(64, 64, 64))
+    draw.rectangle([lx + lw + 22, y + 13, W - pad, y + 15], fill=(64, 64, 64))
+    draw.text((lx, y), lock, font=lfont, fill=WHITE)
+
+    sfont = font("SpaceMono-Regular.ttf", 19)
+    st = f"via {source}"
+    draw.text(((W - draw.textlength(st, font=sfont)) / 2, y - 34), st,
+              font=sfont, fill=(140, 140, 140))
+
+    canvas.save(out, quality=94)
+    return out
+
+
 def build_mono(photo, out, kicker, headline, source):
     """The podcast cover's identity: pure black, white lowercase geometric
     sans, and the big white corner wedge. The layout is monochrome; the
@@ -174,10 +270,10 @@ def build_mono(photo, out, kicker, headline, source):
     return out
 
 
-STYLES = {"bauhaus": build_bauhaus, "mono": build_mono}
+STYLES = {"bauhaus": build_bauhaus, "mono": build_mono, "hype": build_hype}
 
 
-def build(photo, out, kicker, headline, source, style="mono"):
+def build(photo, out, kicker, headline, source, style="hype"):
     return STYLES[style](photo, out, kicker, headline, source)
 
 
@@ -188,6 +284,6 @@ if __name__ == "__main__":
     p.add_argument("--kicker", required=True)
     p.add_argument("--headline", required=True)
     p.add_argument("--source", required=True)
-    p.add_argument("--style", default="mono", choices=sorted(STYLES))
+    p.add_argument("--style", default="hype", choices=sorted(STYLES))
     a = p.parse_args()
     print(build(a.photo, a.out, a.kicker, a.headline, a.source, a.style))

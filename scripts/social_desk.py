@@ -219,7 +219,7 @@ def main():
         img_url, err = og_image(src["url"])
         photo = os.path.join(IMG_DIR, f"{key}_photo.jpg")
         if img_url and fetch(img_url, photo):
-            for style in ("mono", "bauhaus"):
+            for style in ("hype", "bauhaus"):
                 out = os.path.join(IMG_DIR, f"{key}_{style}.jpg")
                 try:
                     make_card_image.build(photo, out, c.get("kicker", "News"),
