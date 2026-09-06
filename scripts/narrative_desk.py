@@ -571,28 +571,6 @@ def load_feed():
         return []
 
 
-_POOL_DF = None
-
-
-def _pool_df():
-    """Document frequency over the whole article pool, for judging how
-    distinctive a word is when we have no cluster to measure against."""
-    global _POOL_DF
-    if _POOL_DF is None:
-        df = {}
-        n = 0
-        try:
-            with open(os.path.join(WEB, "articles.json")) as f:
-                for a in json.load(f)["articles"]:
-                    n += 1
-                    for w in _prov_tokens(a.get("title", "")):
-                        df[w] = df.get(w, 0) + 1
-        except Exception:
-            pass
-        _POOL_DF = (df, max(n, 1))
-    return _POOL_DF
-
-
 def _named_entities(text):
     """Capitalised words a sentence did not force. The subject of a news
     claim is almost always one of these, and unlike rarity it does not
@@ -609,7 +587,7 @@ def _named_entities(text):
     return ents
 
 
-def _cites_its_own_claim(card, rare_frac=0.02):
+def _cites_its_own_claim(card):
     """Does a card's claim share its DEFINING words with a headline it cites?
 
     match_sources() has the whole cluster to measure rarity against; here

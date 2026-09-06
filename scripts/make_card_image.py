@@ -108,9 +108,7 @@ def build_bauhaus(photo, out, kicker, headline, source):
         draw.text((pad, cursor), ln, font=hfont, fill=INK)
         cursor += line_h
 
-    sfont = font("SpaceMono-Regular.ttf", 24)
-    draw.text((pad, H - 108), f"via {source}", font=sfont, fill=(110, 106, 96))
-
+    # No source credit here either — see the note in build_hype().
     lfont = font("Jost.ttf", 30, weight=900)
     lock = "innovative hype"
     lw = draw.textlength(lock, font=lfont)
@@ -200,7 +198,11 @@ def build_hype(photo, out, kicker, headline, source):
             x += wd + space
         cursor += line_h
 
-    # Centred lockup between hairlines, the @edmmusic device.
+    # No source credit on the card. Micah 2026-09-05: "nobody actually
+    # says via techcrunch" — and neither reference does. @vesting runs its
+    # own wordmark above the hook and a watermark below; @edmmusic a
+    # corner logo. The outlet belongs in the caption, not the artwork.
+    # It still rides in social.json so provenance is never lost.
     y = H - 78
     lfont = font("Jost.ttf", 27, weight=500)
     lock = "innovative hype"
@@ -209,11 +211,6 @@ def build_hype(photo, out, kicker, headline, source):
     draw.rectangle([pad, y + 13, lx - 22, y + 15], fill=(64, 64, 64))
     draw.rectangle([lx + lw + 22, y + 13, W - pad, y + 15], fill=(64, 64, 64))
     draw.text((lx, y), lock, font=lfont, fill=WHITE)
-
-    sfont = font("SpaceMono-Regular.ttf", 19)
-    st = f"via {source}"
-    draw.text(((W - draw.textlength(st, font=sfont)) / 2, y - 34), st,
-              font=sfont, fill=(140, 140, 140))
 
     canvas.save(out, quality=94)
     return out

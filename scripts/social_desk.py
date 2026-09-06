@@ -59,16 +59,19 @@ def og_image(url):
 
 
 def fetch(url, dest):
+    """Returns (ok, reason). The reason is carried, never swallowed: a card
+    with no photo and a card whose photo download 403'd look identical on
+    the page, and only one of them is worth retrying."""
     try:
         req = urllib.request.Request(url, headers={"User-Agent": UA})
         data = urllib.request.urlopen(req, timeout=20).read()
         if len(data) < 5000:
-            return False
+            return False, f"too small ({len(data)}b)"
         with open(dest, "wb") as f:
             f.write(data)
-        return True
-    except Exception:
-        return False
+        return True, ""
+    except Exception as e:
+        return False, type(e).__name__
 
 
 POST_SYSTEM = (
@@ -202,13 +205,24 @@ def main():
     from datetime import datetime, timezone
     os.makedirs(IMG_DIR, exist_ok=True)
 
-    cards = json.load(open(os.path.join(WEB, "brief-cards.json")))["cards"]
-    cards = [c for c in cards if c.get("sources")]
+    all_cards = json.load(open(os.path.join(WEB, "brief-cards.json")))["cards"]
+    cards = [c for c in all_cards if c.get("sources")]
+    unsourced = len(all_cards) - len(cards)
     cards.sort(key=lambda c: -c.get("lead_score", 0))
     cards = cards[:N]
-    print(f"{len(cards)} cards selected")
+    stats = {"no_photo": 0, "image_errors": 0, "short": 0, "post_failed": 0}
+    print(f"{len(all_cards)} cards in feed, {unsourced} without sources, "
+          f"{len(cards)} selected")
 
     vp = narrative_desk._load_voice_profile()
+    # An empty voice profile is not a neutral default: every post silently
+    # loses its register and reads like wire copy, and the page looks fine.
+    if not vp:
+        raise SystemExit(
+            "voice_profile.json is empty or unreadable. Posts would be "
+            "written with no register at all. Run "
+            "scripts/build_voice_profile.py first.")
+    print(f"voice profile: {len(vp)} entries")
     posts = []
     for i, c in enumerate(cards):
         key = c.get("story_key", str(i))
@@ -218,7 +232,8 @@ def main():
         images = []
         img_url, err = og_image(src["url"])
         photo = os.path.join(IMG_DIR, f"{key}_photo.jpg")
-        if img_url and fetch(img_url, photo):
+        ok, why = fetch(img_url, photo) if img_url else (False, err)
+        if ok:
             for style in ("hype", "bauhaus"):
                 out = os.path.join(IMG_DIR, f"{key}_{style}.jpg")
                 try:
@@ -227,10 +242,12 @@ def main():
                                           src.get("source", ""), style)
                     images.append(f"social/{os.path.basename(out)}")
                 except Exception as e:
-                    print(f"    image {style} failed: {e}")
+                    print(f"    IMAGE FAILED {style}: {type(e).__name__}: {e}")
+                    stats["image_errors"] += 1
             os.remove(photo)
         else:
-            print(f"    no photo ({err or 'download failed'})")
+            print(f"    NO PHOTO: {why} ({src['url'][:58]})")
+            stats["no_photo"] += 1
 
         # Voice entries whose categories touch this card's signature.
         ve = [e for e in vp if not e.get("categories")
@@ -240,8 +257,13 @@ def main():
 
         post = write_post(c, ve)
         if not post:
-            print("    post generation failed, skipping")
+            print("    POST FAILED: model returned nothing")
+            stats["post_failed"] += 1
             continue
+        if len(post.split()) < 190:
+            # Not fatal, but it did not meet spec after 3 tries and the page
+            # must not imply it did.
+            stats["short"] += 1
         posts.append({
             "story_key": key,
             "kicker": c.get("kicker", ""),
@@ -261,7 +283,18 @@ def main():
               ensure_ascii=False, indent=2)
     with open(os.path.join(WEB, "social.html"), "w") as f:
         f.write(page(posts, updated))
-    print(f"\nwrote web/social.html with {len(posts)} posts")
+
+    # Say the zero. A run that produced 8 posts and a run that produced 8
+    # posts with 5 of them photoless and 3 under length look identical on
+    # the page, so the counts go to stdout every time, healthy or not.
+    with_images = sum(1 for p in posts if p["images"])
+    print(f"\nwrote web/social.html: {len(posts)}/{len(cards)} posts")
+    print(f"  with images : {with_images}  (no photo: {stats['no_photo']}, "
+          f"render errors: {stats['image_errors']})")
+    print(f"  under 190w  : {stats['short']}")
+    print(f"  post failed : {stats['post_failed']}")
+    if not posts:
+        raise SystemExit("no posts produced; refusing to publish an empty page")
 
 
 if __name__ == "__main__":
