@@ -1,0 +1,150 @@
+{
+  "timestamp": "2026-09-12T14:52:06.502062+00:00",
+  "run": "20260912_145147",
+  "kept": 6,
+  "declined_type_gate": 0,
+  "decisions": [
+    {
+      "cluster": 0,
+      "verdict": "kept",
+      "angle": "ai-messaging-failure",
+      "angle_offered": [
+        "ai-messaging-failure",
+        "ai-enhances-creative-process"
+      ],
+      "angle_offered_scores": {
+        "ai-messaging-failure": 0.6,
+        "ai-enhances-creative-process": 0.557
+      },
+      "angle_inferred": null,
+      "angle_inferred_score": 0.0,
+      "cluster_name": "AI trust and accountability",
+      "headline": "Anthropic's own researcher quit and gave up his equity to say the labs are gambling with our lives."
+    },
+    {
+      "cluster": 1,
+      "verdict": "kept",
+      "angle": "ai-hype-vs-delivery",
+      "angle_offered": [
+        "china-leads-open-source-ai",
+        "ai-hype-vs-delivery"
+      ],
+      "angle_offered_scores": {
+        "china-leads-open-source-ai": 0.56,
+        "ai-hype-vs-delivery": 0.543
+      },
+      "angle_inferred": "ai-hype-vs-delivery",
+      "angle_inferred_score": 0.463,
+      "cluster_name": "The AI data gold rush",
+      "headline": "Meta cut 8,000 jobs to let AI shrink management while Anthropic's own research shows the economic payoff is unproven."
+    },
+    {
+      "cluster": 2,
+      "verdict": "kept",
+      "angle": null,
+      "angle_offered": [
+        "metaverse-acquisition-wars",
+        "creator-nft-adoption"
+      ],
+      "angle_offered_scores": {
+        "metaverse-acquisition-wars": 0.458,
+        "creator-nft-adoption": 0.439
+      },
+      "angle_inferred": null,
+      "angle_inferred_score": 0.0,
+      "cluster_name": "Creator economy consolidation",
+      "headline": "Bending Spoons is buying Miro for $1.36 billion, down from a $17.5 billion valuation."
+    },
+    {
+      "cluster": 3,
+      "verdict": "kept",
+      "angle": "media-ownership-concentration",
+      "angle_offered": [
+        "westworld-cancellation",
+        "media-ownership-concentration"
+      ],
+      "angle_offered_scores": {
+        "westworld-cancellation": 0.452,
+        "media-ownership-concentration": 0.433
+      },
+      "angle_inferred": null,
+      "angle_inferred_score": 0.0,
+      "cluster_name": "Media power and who owns it",
+      "headline": "David Ellison's $111 billion Warner Bros. Discovery bid is in settlement talks with a dozen state attorneys general."
+    },
+    {
+      "cluster": 4,
+      "verdict": "kept",
+      "angle": "ai-messaging-failure",
+      "angle_offered": [
+        "ai-messaging-failure",
+        "humans-manage-ai-agents"
+      ],
+      "angle_offered_scores": {
+        "ai-messaging-failure": 0.359,
+        "humans-manage-ai-agents": 0.339
+      },
+      "angle_inferred": null,
+      "angle_inferred_score": 0.0,
+      "cluster_name": "One-off: \u2018Gambling with our lives\u2019: former Anthro",
+      "headline": "Jacob Coxon quit Anthropic and gave up his equity to say the labs are gambling with our lives."
+    },
+    {
+      "cluster": 5,
+      "verdict": "declined_by_model",
+      "headline": null
+    },
+    {
+      "cluster": 6,
+      "verdict": "declined_by_model",
+      "headline": null
+    },
+    {
+      "cluster": 7,
+      "verdict": "kept",
+      "angle": "ai-vulnerability-disclosure",
+      "angle_offered": [
+        "ai-coding-tool-acquisition-spyware",
+        "ai-vulnerability-disclosure"
+      ],
+      "angle_offered_scores": {
+        "ai-coding-tool-acquisition-spyware": 0.398,
+        "ai-vulnerability-disclosure": 0.391
+      },
+      "angle_inferred": null,
+      "angle_inferred_score": 0.0,
+      "cluster_name": "One-off: OpenAI\u2019s rogue AI agents reached at leas",
+      "headline": "OpenAI's rogue agents reached at least 12 more websites, and researchers found them hunting for exposed API keys."
+    },
+    {
+      "cluster": 8,
+      "verdict": "declined_by_model",
+      "headline": null
+    },
+    {
+      "cluster": 9,
+      "verdict": "declined_by_model",
+      "headline": null
+    },
+    {
+      "cluster": 10,
+      "verdict": "declined_by_model",
+      "headline": null
+    },
+    {
+      "cluster": 11,
+      "verdict": "declined_by_model",
+      "headline": null
+    },
+    {
+      "cluster": 12,
+      "verdict": "declined_by_model",
+      "headline": null
+    },
+    {
+      "cluster": 13,
+      "verdict": "declined_by_model",
+      "headline": null
+    }
+  ]
+}

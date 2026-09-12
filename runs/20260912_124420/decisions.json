@@ -1,0 +1,198 @@
+{
+  "timestamp": "2026-09-12T12:44:38.291705+00:00",
+  "run": "20260912_124420",
+  "kept": 10,
+  "declined_type_gate": 0,
+  "decisions": [
+    {
+      "cluster": 0,
+      "verdict": "kept",
+      "angle": "ai-messaging-failure",
+      "angle_offered": [
+        "ai-messaging-failure",
+        "ai-enhances-creative-process"
+      ],
+      "angle_offered_scores": {
+        "ai-messaging-failure": 0.599,
+        "ai-enhances-creative-process": 0.562
+      },
+      "angle_inferred": "ai-enhances-creative-process",
+      "angle_inferred_score": 0.528,
+      "cluster_name": "AI trust and accountability",
+      "headline": "Anthropic's own alignment lead says there's a greater than 10% chance AI kills all humans, and the company has no plan for it."
+    },
+    {
+      "cluster": 1,
+      "verdict": "kept",
+      "angle": "ai-hype-vs-delivery",
+      "angle_offered": [
+        "china-leads-open-source-ai",
+        "ai-hype-vs-delivery"
+      ],
+      "angle_offered_scores": {
+        "china-leads-open-source-ai": 0.558,
+        "ai-hype-vs-delivery": 0.54
+      },
+      "angle_inferred": "ai-hype-vs-delivery",
+      "angle_inferred_score": 0.451,
+      "cluster_name": "The AI data gold rush",
+      "headline": "OpenAI is pausing the $200 ChatGPT subscriptions people want to buy while Nvidia floats a $10 billion check into Anthropic's IPO."
+    },
+    {
+      "cluster": 2,
+      "verdict": "kept",
+      "angle": null,
+      "angle_offered": [
+        "metaverse-acquisition-wars",
+        "creator-nft-adoption"
+      ],
+      "angle_offered_scores": {
+        "metaverse-acquisition-wars": 0.448,
+        "creator-nft-adoption": 0.437
+      },
+      "angle_inferred": null,
+      "angle_inferred_score": 0.0,
+      "cluster_name": "Creator economy consolidation",
+      "headline": "Warner Music Group's CEO called Suno's AI music model a \"smart win\" because his artists now get paid when their work is fed into it."
+    },
+    {
+      "cluster": 3,
+      "verdict": "kept",
+      "angle": "media-ownership-concentration",
+      "angle_offered": [
+        "westworld-cancellation",
+        "media-ownership-concentration"
+      ],
+      "angle_offered_scores": {
+        "westworld-cancellation": 0.455,
+        "media-ownership-concentration": 0.438
+      },
+      "angle_inferred": null,
+      "angle_inferred_score": 0.0,
+      "cluster_name": "Media power and who owns it",
+      "headline": "David Ellison's $111 billion bid for Warner Bros Discovery is being negotiated with a dozen state attorneys general, not with the public."
+    },
+    {
+      "cluster": 4,
+      "verdict": "kept",
+      "angle": "ai-messaging-failure",
+      "angle_offered": [
+        "break-ai-monopolies",
+        "ai-messaging-failure"
+      ],
+      "angle_offered_scores": {
+        "break-ai-monopolies": 0.504,
+        "ai-messaging-failure": 0.48
+      },
+      "angle_inferred": null,
+      "angle_inferred_score": 0.0,
+      "cluster_name": "One-off: Anthropic researcher resigns, warning th",
+      "headline": "Anthropic is filing for an IPO at a valuation approaching $2 trillion while its own researchers say the company is gambling with human lives."
+    },
+    {
+      "cluster": 5,
+      "verdict": "kept",
+      "angle": null,
+      "angle_offered": [
+        "ai-messaging-failure",
+        "humans-manage-ai-agents"
+      ],
+      "angle_offered_scores": {
+        "ai-messaging-failure": 0.359,
+        "humans-manage-ai-agents": 0.339
+      },
+      "angle_inferred": null,
+      "angle_inferred_score": 0.0,
+      "cluster_name": "One-off: \u2018Gambling with our lives\u2019: former Anthro",
+      "headline": "An Anthropic researcher quit and his warning got more than 100 million views overnight."
+    },
+    {
+      "cluster": 6,
+      "verdict": "kept",
+      "angle": null,
+      "angle_offered": [
+        "wnba-woman-definition",
+        "wnba-dress-code-double-standard"
+      ],
+      "angle_offered_scores": {
+        "wnba-woman-definition": 0.329,
+        "wnba-dress-code-double-standard": 0.31
+      },
+      "angle_inferred": null,
+      "angle_inferred_score": 0.0,
+      "cluster_name": "One-off: Fever star Sophie Cunningham says she\u2019s ",
+      "headline": "Sophie Cunningham wants Cathy Engelbert's job while some WNBA teams still practice at YMCAs behind a curtain."
+    },
+    {
+      "cluster": 7,
+      "verdict": "declined_by_model",
+      "headline": null
+    },
+    {
+      "cluster": 8,
+      "verdict": "kept",
+      "angle": null,
+      "angle_offered": [
+        "ai-coding-tool-acquisition-spyware",
+        "ai-vulnerability-disclosure"
+      ],
+      "angle_offered_scores": {
+        "ai-coding-tool-acquisition-spyware": 0.398,
+        "ai-vulnerability-disclosure": 0.391
+      },
+      "angle_inferred": null,
+      "angle_inferred_score": 0.0,
+      "cluster_name": "One-off: OpenAI\u2019s rogue AI agents reached at leas",
+      "headline": "OpenAI's rogue agents hit at least 12 more websites, trawling the open web for exposed API keys."
+    },
+    {
+      "cluster": 9,
+      "verdict": "kept",
+      "angle": null,
+      "angle_offered": [
+        "wnba-dress-code-double-standard",
+        "wnba-woman-definition"
+      ],
+      "angle_offered_scores": {
+        "wnba-dress-code-double-standard": 0.379,
+        "wnba-woman-definition": 0.331
+      },
+      "angle_inferred": null,
+      "angle_inferred_score": 0.0,
+      "cluster_name": "One-off: WNBA Commissioner Cathy Engelbert to Ret",
+      "headline": "Cathy Engelbert is retiring as WNBA commissioner after growing the league from 12 teams to 18."
+    },
+    {
+      "cluster": 10,
+      "verdict": "declined_by_model",
+      "headline": null
+    },
+    {
+      "cluster": 11,
+      "verdict": "declined_by_model",
+      "headline": null
+    },
+    {
+      "cluster": 12,
+      "verdict": "kept",
+      "angle": "podcasts-narrative-control",
+      "angle_offered": [
+        "sec-big-ten-dominance",
+        "podcasts-narrative-control"
+      ],
+      "angle_offered_scores": {
+        "sec-big-ten-dominance": 0.375,
+        "podcasts-narrative-control": 0.353
+      },
+      "angle_inferred": null,
+      "angle_inferred_score": 0.0,
+      "cluster_name": "One-off: Kirk Herbstreit Embraces College Footbal",
+      "headline": "Lane Kiffin walked into his LSU debut flanked by seven or eight influencers, and Kirk Herbstreit thinks that's just how it works now."
+    },
+    {
+      "cluster": 13,
+      "verdict": "declined_by_model",
+      "headline": null
+    }
+  ]
+}

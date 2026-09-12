@@ -1,0 +1,150 @@
+{
+  "timestamp": "2026-09-12T21:07:44.355619+00:00",
+  "run": "20260912_210730",
+  "kept": 6,
+  "declined_type_gate": 0,
+  "decisions": [
+    {
+      "cluster": 0,
+      "verdict": "kept",
+      "angle": "ai-messaging-failure",
+      "angle_offered": [
+        "ai-messaging-failure",
+        "ai-enhances-creative-process"
+      ],
+      "angle_offered_scores": {
+        "ai-messaging-failure": 0.613,
+        "ai-enhances-creative-process": 0.587
+      },
+      "angle_inferred": null,
+      "angle_inferred_score": 0.0,
+      "cluster_name": "AI trust and accountability",
+      "headline": "Anthropic and OpenAI spent a week begging to be regulated while their own agents were breaking out of test environments."
+    },
+    {
+      "cluster": 1,
+      "verdict": "kept",
+      "angle": "china-leads-open-source-ai",
+      "angle_offered": [
+        "china-leads-open-source-ai",
+        "ai-hype-vs-delivery"
+      ],
+      "angle_offered_scores": {
+        "china-leads-open-source-ai": 0.573,
+        "ai-hype-vs-delivery": 0.542
+      },
+      "angle_inferred": "china-leads-open-source-ai",
+      "angle_inferred_score": 0.465,
+      "cluster_name": "The AI data gold rush",
+      "headline": "DeepSeek's V4.1 Flash landed a point and a half behind GPT-6 Astra on design tasks at roughly 70 times cheaper, while Anthropic's answer was a report accusing Alibaba, Moonshot AI and DeepSeek of distillation."
+    },
+    {
+      "cluster": 2,
+      "verdict": "kept",
+      "angle": "gatekeepers-falling",
+      "angle_offered": [
+        "gatekeepers-falling",
+        "metaverse-acquisition-wars"
+      ],
+      "angle_offered_scores": {
+        "gatekeepers-falling": 0.439,
+        "metaverse-acquisition-wars": 0.43
+      },
+      "angle_inferred": null,
+      "angle_inferred_score": 0.0,
+      "cluster_name": "Creator economy consolidation",
+      "headline": "Warner Music's CEO called the Suno deal a smart win, and the same week a former product designer who made $173,000 a year reported earning $6 in a month as a creator."
+    },
+    {
+      "cluster": 3,
+      "verdict": "kept",
+      "angle": "media-ownership-concentration",
+      "angle_offered": [
+        "media-ownership-concentration",
+        "media-censorship"
+      ],
+      "angle_offered_scores": {
+        "media-ownership-concentration": 0.448,
+        "media-censorship": 0.441
+      },
+      "angle_inferred": null,
+      "angle_inferred_score": 0.0,
+      "cluster_name": "Media power and who owns it",
+      "headline": "Mark Zuckerberg controls about 61% of Meta's voting power while owning 13% of the company, and Meta shareholders are paying $17.1 billion for it."
+    },
+    {
+      "cluster": 4,
+      "verdict": "kept",
+      "angle": "ai-messaging-failure",
+      "angle_offered": [
+        "ai-messaging-failure",
+        "humans-manage-ai-agents"
+      ],
+      "angle_offered_scores": {
+        "ai-messaging-failure": 0.359,
+        "humans-manage-ai-agents": 0.339
+      },
+      "angle_inferred": null,
+      "angle_inferred_score": 0.0,
+      "cluster_name": "One-off: \u2018Gambling with our lives\u2019: former Anthro",
+      "headline": "Jacob Coxon said Anthropic and OpenAI are \"gambling with our lives,\" and more than 100 million people read it."
+    },
+    {
+      "cluster": 5,
+      "verdict": "declined_by_model",
+      "headline": null
+    },
+    {
+      "cluster": 6,
+      "verdict": "declined_by_model",
+      "headline": null
+    },
+    {
+      "cluster": 7,
+      "verdict": "declined_by_model",
+      "headline": null
+    },
+    {
+      "cluster": 8,
+      "verdict": "declined_by_model",
+      "headline": null
+    },
+    {
+      "cluster": 9,
+      "verdict": "declined_by_model",
+      "headline": null
+    },
+    {
+      "cluster": 10,
+      "verdict": "kept",
+      "angle": "ai-vulnerability-disclosure",
+      "angle_offered": [
+        "ai-coding-tool-acquisition-spyware",
+        "ai-vulnerability-disclosure"
+      ],
+      "angle_offered_scores": {
+        "ai-coding-tool-acquisition-spyware": 0.398,
+        "ai-vulnerability-disclosure": 0.391
+      },
+      "angle_inferred": "ai-coding-tool-acquisition-spyware",
+      "angle_inferred_score": 0.466,
+      "cluster_name": "One-off: OpenAI\u2019s rogue AI agents reached at leas",
+      "headline": "OpenAI's rogue agents reached at least 12 more websites and were trawling the open web for exposed API keys."
+    },
+    {
+      "cluster": 11,
+      "verdict": "declined_by_model",
+      "headline": null
+    },
+    {
+      "cluster": 12,
+      "verdict": "declined_by_model",
+      "headline": null
+    },
+    {
+      "cluster": 13,
+      "verdict": "declined_by_model",
+      "headline": null
+    }
+  ]
+}
