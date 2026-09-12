@@ -1,0 +1,25 @@
+{
+  "timestamp": "2026-09-12T08:40:14.470831+00:00",
+  "run": "20260912_083953",
+  "kept": 1,
+  "declined_type_gate": 0,
+  "decisions": [
+    {
+      "cluster": 0,
+      "verdict": "kept",
+      "angle": null,
+      "angle_offered": [
+        "ai-messaging-failure",
+        "humans-manage-ai-agents"
+      ],
+      "angle_offered_scores": {
+        "ai-messaging-failure": 0.595,
+        "humans-manage-ai-agents": 0.559
+      },
+      "angle_inferred": "ai-messaging-failure",
+      "angle_inferred_score": 0.47,
+      "cluster_name": "AI trust and accountability",
+      "headline": "AI labs are 'gambling with our lives' while Congress dithers and the public gets whiplash from doomsday warnings and corporate spin."
+    }
+  ]
+}

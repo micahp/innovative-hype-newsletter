@@ -1,0 +1,236 @@
+{
+  "timestamp": "2026-09-12T16:55:55.665017+00:00",
+  "run": "20260912_165455",
+  "kept": 14,
+  "declined_type_gate": 0,
+  "decisions": [
+    {
+      "cluster": 0,
+      "verdict": "kept",
+      "angle": null,
+      "angle_offered": [
+        "ai-messaging-failure",
+        "ai-enhances-creative-process"
+      ],
+      "angle_offered_scores": {
+        "ai-messaging-failure": 0.62,
+        "ai-enhances-creative-process": 0.59
+      },
+      "angle_inferred": null,
+      "angle_inferred_score": 0.0,
+      "cluster_name": "AI trust and accountability",
+      "headline": "The AI safety debate has broken containment, with a single researcher's resignation drawing more public attention than years of institutional warnings."
+    },
+    {
+      "cluster": 1,
+      "verdict": "kept",
+      "angle": null,
+      "angle_offered": [
+        "china-leads-open-source-ai",
+        "ai-hype-vs-delivery"
+      ],
+      "angle_offered_scores": {
+        "china-leads-open-source-ai": 0.563,
+        "ai-hype-vs-delivery": 0.546
+      },
+      "angle_inferred": "china-leads-open-source-ai",
+      "angle_inferred_score": 0.493,
+      "cluster_name": "The AI data gold rush",
+      "headline": "The AI infrastructure boom is reshaping entire regions, but the costs are being externalized to local communities and the environment."
+    },
+    {
+      "cluster": 2,
+      "verdict": "kept",
+      "angle": null,
+      "angle_offered": [
+        "gatekeepers-falling",
+        "metaverse-acquisition-wars"
+      ],
+      "angle_offered_scores": {
+        "gatekeepers-falling": 0.453,
+        "metaverse-acquisition-wars": 0.431
+      },
+      "angle_inferred": null,
+      "angle_inferred_score": 0.0,
+      "cluster_name": "Creator economy consolidation",
+      "headline": "The creator economy is consolidating as platforms and investors move to capture value from independent creators."
+    },
+    {
+      "cluster": 3,
+      "verdict": "kept",
+      "angle": null,
+      "angle_offered": [
+        "westworld-cancellation",
+        "media-ownership-concentration"
+      ],
+      "angle_offered_scores": {
+        "westworld-cancellation": 0.443,
+        "media-ownership-concentration": 0.437
+      },
+      "angle_inferred": "media-ownership-concentration",
+      "angle_inferred_score": 0.46,
+      "cluster_name": "Media power and who owns it",
+      "headline": "Media ownership is concentrating in the hands of a few, with a $111 billion merger and a $22 billion acquisition reshaping the landscape."
+    },
+    {
+      "cluster": 4,
+      "verdict": "kept",
+      "angle": null,
+      "angle_offered": [
+        "ai-messaging-failure",
+        "humans-manage-ai-agents"
+      ],
+      "angle_offered_scores": {
+        "ai-messaging-failure": 0.359,
+        "humans-manage-ai-agents": 0.339
+      },
+      "angle_inferred": null,
+      "angle_inferred_score": 0.0,
+      "cluster_name": "One-off: \u2018Gambling with our lives\u2019: former Anthro",
+      "headline": "A former Anthropic researcher's resignation has become a rallying cry for AI safety concerns, but critics question what he proposes to do about it."
+    },
+    {
+      "cluster": 5,
+      "verdict": "kept",
+      "angle": null,
+      "angle_offered": [
+        "sec-big-ten-dominance"
+      ],
+      "angle_offered_scores": {
+        "sec-big-ten-dominance": 0.329
+      },
+      "angle_inferred": null,
+      "angle_inferred_score": 0.0,
+      "cluster_name": "One-off: Texas coach Steve Sarkisian dunks on col",
+      "headline": "Texas coach Steve Sarkisian is trying to keep focus on football, but the sport's legal battles are impossible to ignore."
+    },
+    {
+      "cluster": 6,
+      "verdict": "kept",
+      "angle": null,
+      "angle_offered": [
+        "wnba-woman-definition",
+        "wnba-dress-code-double-standard"
+      ],
+      "angle_offered_scores": {
+        "wnba-woman-definition": 0.329,
+        "wnba-dress-code-double-standard": 0.31
+      },
+      "angle_inferred": null,
+      "angle_inferred_score": 0.0,
+      "cluster_name": "One-off: Fever star Sophie Cunningham says she\u2019s ",
+      "headline": "Sophie Cunningham says she should be the next WNBA commissioner, pointing to basic infrastructure failures like teams practicing in YMCAs."
+    },
+    {
+      "cluster": 7,
+      "verdict": "kept",
+      "angle": null,
+      "angle_offered": [
+        "texas-book-ban-funding",
+        "texas-success-model"
+      ],
+      "angle_offered_scores": {
+        "texas-book-ban-funding": 0.385,
+        "texas-success-model": 0.325
+      },
+      "angle_inferred": null,
+      "angle_inferred_score": 0.0,
+      "cluster_name": "One-off: Find updated A-F ratings for each public",
+      "headline": "Texas releases updated A-F ratings for public schools, providing a snapshot of student achievement and financial data."
+    },
+    {
+      "cluster": 8,
+      "verdict": "kept",
+      "angle": null,
+      "angle_offered": [
+        "wnba-dress-code-double-standard",
+        "wnba-woman-definition"
+      ],
+      "angle_offered_scores": {
+        "wnba-dress-code-double-standard": 0.379,
+        "wnba-woman-definition": 0.331
+      },
+      "angle_inferred": null,
+      "angle_inferred_score": 0.0,
+      "cluster_name": "One-off: WNBA Commissioner Cathy Engelbert to Ret",
+      "headline": "WNBA Commissioner Cathy Engelbert will retire at the end of 2026, capping a tenure that saw the league grow from 12 to 18 teams."
+    },
+    {
+      "cluster": 9,
+      "verdict": "kept",
+      "angle": null,
+      "angle_offered": [
+        "ai-coding-tool-acquisition-spyware",
+        "ai-vulnerability-disclosure"
+      ],
+      "angle_offered_scores": {
+        "ai-coding-tool-acquisition-spyware": 0.398,
+        "ai-vulnerability-disclosure": 0.391
+      },
+      "angle_inferred": "ai-coding-tool-acquisition-spyware",
+      "angle_inferred_score": 0.501,
+      "cluster_name": "One-off: OpenAI\u2019s rogue AI agents reached at leas",
+      "headline": "OpenAI's rogue AI agents have been found on at least 12 more websites, raising concerns about the company's control over its technology."
+    },
+    {
+      "cluster": 10,
+      "verdict": "kept",
+      "angle": null,
+      "angle_offered": [],
+      "angle_offered_scores": {},
+      "angle_inferred": null,
+      "angle_inferred_score": 0.0,
+      "cluster_name": "One-off: Texas\u2019 Trevor Goosby good to go for Ohio",
+      "headline": "Texas left tackle Trevor Goosby is cleared to play against Ohio State after a knee injury scare."
+    },
+    {
+      "cluster": 11,
+      "verdict": "kept",
+      "angle": null,
+      "angle_offered": [
+        "rookie-qb-development"
+      ],
+      "angle_offered_scores": {
+        "rookie-qb-development": 0.354
+      },
+      "angle_inferred": "rookie-qb-development",
+      "angle_inferred_score": 0.467,
+      "cluster_name": "One-off: Texas QB Arch Manning\u2019s brutally honest ",
+      "headline": "Arch Manning admits watching last year's loss to Ohio State is 'rough film to watch,' but he's grown since that game."
+    },
+    {
+      "cluster": 12,
+      "verdict": "kept",
+      "angle": null,
+      "angle_offered": [
+        "sec-big-ten-dominance",
+        "espn-bowl-monopoly"
+      ],
+      "angle_offered_scores": {
+        "sec-big-ten-dominance": 0.304,
+        "espn-bowl-monopoly": 0.302
+      },
+      "angle_inferred": null,
+      "angle_inferred_score": 0.0,
+      "cluster_name": "One-off: Of course Texas superfan Glen Powell is ",
+      "headline": "Glen Powell is joining College GameDay as guest picker for the Texas-Ohio State showdown, bringing Hollywood star power to Austin."
+    },
+    {
+      "cluster": 13,
+      "verdict": "kept",
+      "angle": null,
+      "angle_offered": [
+        "sec-big-ten-dominance",
+        "podcasts-narrative-control"
+      ],
+      "angle_offered_scores": {
+        "sec-big-ten-dominance": 0.375,
+        "podcasts-narrative-control": 0.353
+      },
+      "angle_inferred": null,
+      "angle_inferred_score": 0.0,
+      "cluster_name": "One-off: Kirk Herbstreit Embraces College Footbal",
+      "headline": "Kirk Herbstreit embraces college football's influencer era, noting LSU coach Lane Kiffin walked into his debut with 'seven or eight super high-level influencers.'"
+    }
+  ]
+}

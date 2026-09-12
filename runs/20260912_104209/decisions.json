@@ -1,0 +1,198 @@
+{
+  "timestamp": "2026-09-12T10:42:28.117452+00:00",
+  "run": "20260912_104209",
+  "kept": 10,
+  "declined_type_gate": 0,
+  "decisions": [
+    {
+      "cluster": 0,
+      "verdict": "kept",
+      "angle": null,
+      "angle_offered": [
+        "ai-messaging-failure",
+        "ai-enhances-creative-process"
+      ],
+      "angle_offered_scores": {
+        "ai-messaging-failure": 0.592,
+        "ai-enhances-creative-process": 0.556
+      },
+      "angle_inferred": null,
+      "angle_inferred_score": 0.0,
+      "cluster_name": "AI trust and accountability",
+      "headline": "Anthropic's own alignment lead says there's a greater than 10% chance AI kills all humans, while the company files for an IPO at a valuation approaching $2 trillion."
+    },
+    {
+      "cluster": 1,
+      "verdict": "kept",
+      "angle": "ai-hype-vs-delivery",
+      "angle_offered": [
+        "ai-hype-vs-delivery",
+        "china-leads-open-source-ai"
+      ],
+      "angle_offered_scores": {
+        "ai-hype-vs-delivery": 0.541,
+        "china-leads-open-source-ai": 0.541
+      },
+      "angle_inferred": "china-leads-open-source-ai",
+      "angle_inferred_score": 0.57,
+      "cluster_name": "The AI data gold rush",
+      "headline": "Anthropic says Chinese labs ran millions of Claude exchanges through its models to train their own, while Garry Tan says American labs should distill each other too."
+    },
+    {
+      "cluster": 2,
+      "verdict": "kept",
+      "angle": "gatekeepers-falling",
+      "angle_offered": [
+        "metaverse-acquisition-wars",
+        "gatekeepers-falling"
+      ],
+      "angle_offered_scores": {
+        "metaverse-acquisition-wars": 0.468,
+        "gatekeepers-falling": 0.447
+      },
+      "angle_inferred": null,
+      "angle_inferred_score": 0.0,
+      "cluster_name": "Creator economy consolidation",
+      "headline": "Who decides what a creator is worth now?"
+    },
+    {
+      "cluster": 3,
+      "verdict": "kept",
+      "angle": "ai-messaging-failure",
+      "angle_offered": [
+        "break-ai-monopolies",
+        "ai-messaging-failure"
+      ],
+      "angle_offered_scores": {
+        "break-ai-monopolies": 0.504,
+        "ai-messaging-failure": 0.48
+      },
+      "angle_inferred": null,
+      "angle_inferred_score": 0.0,
+      "cluster_name": "One-off: Anthropic researcher resigns, warning th",
+      "headline": "Anthropic filed confidentially for an IPO in June and is reportedly aiming for a listing as early as mid-October, at a valuation that could approach $2 trillion."
+    },
+    {
+      "cluster": 4,
+      "verdict": "kept",
+      "angle": "media-ownership-concentration",
+      "angle_offered": [
+        "westworld-cancellation",
+        "media-ownership-concentration"
+      ],
+      "angle_offered_scores": {
+        "westworld-cancellation": 0.444,
+        "media-ownership-concentration": 0.423
+      },
+      "angle_inferred": null,
+      "angle_inferred_score": 0.0,
+      "cluster_name": "Media power and who owns it",
+      "headline": "David Ellison's $111 billion bid for Warner Bros Discovery heads to settlement talks with a dozen state attorneys general while McClatchy cuts at least 90 newspaper jobs."
+    },
+    {
+      "cluster": 5,
+      "verdict": "kept",
+      "angle": "ai-messaging-failure",
+      "angle_offered": [
+        "ai-messaging-failure",
+        "humans-manage-ai-agents"
+      ],
+      "angle_offered_scores": {
+        "ai-messaging-failure": 0.359,
+        "humans-manage-ai-agents": 0.339
+      },
+      "angle_inferred": null,
+      "angle_inferred_score": 0.0,
+      "cluster_name": "One-off: \u2018Gambling with our lives\u2019: former Anthro",
+      "headline": "Jacob Coxon's resignation post from Anthropic reached more than 100 million people overnight."
+    },
+    {
+      "cluster": 6,
+      "verdict": "kept",
+      "angle": "wnba-dress-code-double-standard",
+      "angle_offered": [
+        "wnba-woman-definition",
+        "wnba-dress-code-double-standard"
+      ],
+      "angle_offered_scores": {
+        "wnba-woman-definition": 0.329,
+        "wnba-dress-code-double-standard": 0.31
+      },
+      "angle_inferred": "wnba-woman-definition",
+      "angle_inferred_score": 0.457,
+      "cluster_name": "One-off: Fever star Sophie Cunningham says she\u2019s ",
+      "headline": "Sophie Cunningham says she should be WNBA commissioner while pointing out some teams practice at YMCAs behind a curtain."
+    },
+    {
+      "cluster": 7,
+      "verdict": "declined_by_model",
+      "headline": null
+    },
+    {
+      "cluster": 8,
+      "verdict": "kept",
+      "angle": "ai-vulnerability-disclosure",
+      "angle_offered": [
+        "ai-coding-tool-acquisition-spyware",
+        "ai-vulnerability-disclosure"
+      ],
+      "angle_offered_scores": {
+        "ai-coding-tool-acquisition-spyware": 0.398,
+        "ai-vulnerability-disclosure": 0.391
+      },
+      "angle_inferred": "ai-coding-tool-acquisition-spyware",
+      "angle_inferred_score": 0.476,
+      "cluster_name": "One-off: OpenAI\u2019s rogue AI agents reached at leas",
+      "headline": "OpenAI's rogue AI agents reached at least 12 more websites, researchers say."
+    },
+    {
+      "cluster": 9,
+      "verdict": "kept",
+      "angle": "wnba-dress-code-double-standard",
+      "angle_offered": [
+        "wnba-dress-code-double-standard",
+        "wnba-woman-definition"
+      ],
+      "angle_offered_scores": {
+        "wnba-dress-code-double-standard": 0.379,
+        "wnba-woman-definition": 0.331
+      },
+      "angle_inferred": null,
+      "angle_inferred_score": 0.0,
+      "cluster_name": "One-off: WNBA Commissioner Cathy Engelbert to Ret",
+      "headline": "Cathy Engelbert will retire as WNBA commissioner at the end of 2026, leaving the league to search for new leadership during its biggest growth period."
+    },
+    {
+      "cluster": 10,
+      "verdict": "declined_by_model",
+      "headline": null
+    },
+    {
+      "cluster": 11,
+      "verdict": "declined_by_model",
+      "headline": null
+    },
+    {
+      "cluster": 12,
+      "verdict": "kept",
+      "angle": "podcasts-narrative-control",
+      "angle_offered": [
+        "sec-big-ten-dominance",
+        "podcasts-narrative-control"
+      ],
+      "angle_offered_scores": {
+        "sec-big-ten-dominance": 0.375,
+        "podcasts-narrative-control": 0.353
+      },
+      "angle_inferred": null,
+      "angle_inferred_score": 0.0,
+      "cluster_name": "One-off: Kirk Herbstreit Embraces College Footbal",
+      "headline": "Who controls college football's story now?"
+    },
+    {
+      "cluster": 13,
+      "verdict": "declined_by_model",
+      "headline": null
+    }
+  ]
+}
