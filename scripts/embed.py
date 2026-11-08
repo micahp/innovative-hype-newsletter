@@ -71,7 +71,7 @@ CACHE_DIR = os.environ.get("IH_EMBED_CACHE", os.path.join(REPO, ".embed-cache"))
 
 MODEL = os.environ.get("IH_EMBED_MODEL", "openai/text-embedding-3-small")
 DIMS = 1536
-PROVIDER_BASE = "https://inference-api.nousresearch.com/v1"
+PROVIDER_BASE = "https://openrouter.ai/api/v1"
 BATCH = 64
 MAX_CHARS = 8000  # ~2k tokens; enough for a title + mined points or a claim
 
@@ -81,17 +81,17 @@ _stats = {"asked": 0, "cache_hits": 0, "fetched": 0, "batches": 0}
 
 def _api_key():
     """Same key as narrative_desk.call_llm. Raises rather than degrading."""
-    key = os.environ.get("NOUS_PORTAL_KEY", "")
+    key = os.environ.get("OPENROUTER_API_KEY", "")
     if not key:
         env_path = "/root/.hermes/.env"
         if os.path.exists(env_path):
             for line in open(env_path):
-                if line.startswith("NOUS_PORTAL_KEY="):
+                if line.startswith("OPENROUTER_API_KEY="):
                     key = line.strip().split("=", 1)[1].strip('"').strip("'")
                     break
     if not key:
         raise RuntimeError(
-            "No NOUS_PORTAL_KEY in the environment or /root/.hermes/.env. "
+            "No OPENROUTER_API_KEY in the environment or /root/.hermes/.env. "
             "Every similarity would be undefined without it, so this raises "
             "instead of returning zero vectors that read as 'nothing matches'.")
     return key

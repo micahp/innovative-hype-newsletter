@@ -1,37 +1,37 @@
 # INNOVATIVE HYPE — BRIEF
-_Generated 2026-08-31 07:34 CDT · 52/66 feeds · 3665 articles_
+_Generated 2026-10-13 05:39 CDT · 50/66 feeds · 3617 articles_
 
 ## The AI data layer is printing money
+_He’s netted roughly $25,000 for his code base and a still-pending amount (likely around $15,000) for the workspace data in Google, Notion, Figma, and Slack._
 
-
-- Elon Musk’s xAI used child porn to train Grok models, lawsuit says (Ars Technica)
-- Nvidia’s AI advantage is moving beyond the GPU (TechCrunch)
-- OpenAI to end agreement with SpaceX's AI coding tool Cursor, deepening Musk-Altman clash (Reuters)
+- AI labs are buying data from dead startups to train their models (MIT Technology Review)
+- Amazon and others are done keeping data center deals secret. Is it enough to build trust? (TechCrunch AI)
+- Ukraine’s drones knock out AI data center belonging to "Russia’s Google" (Ars Technica)
 
 ## Can we trust the machines we're building?
 
 
-- OpenAI to end model access to Cursor after acquisition by Elon Musk's SpaceX (CNBC)
-- OpenAI, Anthropic, Google, and 100 other companies call for action to defend against rogue AI (TechCrunch AI)
-- An Anthropic researcher just gave us a peek at self-improving AI (TechCrunch)
-
-## The creator economy is consolidating
-
-
-- ChatGPT, Reddit, Roblox to adhere to EU's "very large platform" rules (Reuters)
-- YouTube Star Markiplier Is Now GoPro’s Largest Shareholder (Bloomberg)
-- Larenz Tate Boards Vault, New Streaming and Distribution Platform for Indie Filmmakers (EXCLUSIVE) (Variety)
+- Meta releases Muse Wonder AI models to challenge Anthropic and OpenAI (Reuters)
+- Anthropic Has Bigger Problems Than Claude's Feelings (Bloomberg)
+- Anthropic says new safeguards sharply reduce AI distillation attacks (Reuters)
 
 ## Cities, housing and where America lives
 
 
-- Aging homes create challenges in Michigan housing crisis (AP)
-- Manhattan's luxury rental market is booming, with units reaching $100,000 a month (CNBC)
-- South Florida's would-be young homebuyers are living with their parents (Axios)
+- How Texas candidates plan to lower the cost of gas, groceries and housing (Texas Tribune)
+- Jeff Bezos says he gets why socialism is surging—but politicians blaming ‘greedy landlords’ have housing all wrong (Fortune)
+- Trump-Backed Housing Rule Could Undercut Effort to Lower Costs (Bloomberg)
+
+## The creator economy is consolidating
+
+
+- Show HN: LaunchList – A product launch platform for indie makers (HN (Show))
+- Exclusive: Ambient scribe startup Suki raises $90M Series E (Axios)
+- ‘IvyBears’ Hits Cannes After YouTube Breakout, Spawns Animated Feature Project (EXCLUSIVE) (Variety)
 
 ## Media power and who owns it
 
 
-- Meta’s $18 billion settlement puts TikTok and YouTube on notice. Who's next on the firing line? (CNBC)
-- US Treasury blocks certain journalists from G20 meeting (AP)
-- Trump criticizes NBC over election comment as Treasury denies some NYT, WSJ and Bloomberg reporters G20 credentials (CNBC)
+- YouTube Making Nice with Legacy TV (Hollywood Reporter)
+- Business faces a more interventionist Washington post-midterms (Axios)
+- Beyond November: Business faces a more interventionist Washington post-midterms (Axios)

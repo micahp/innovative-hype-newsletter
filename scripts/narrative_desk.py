@@ -41,7 +41,7 @@ RUNS = os.path.join(REPO, "runs")
 
 # Model: same provider/family LP uses for its narrative desk.
 MODEL = "deepseek/deepseek-v4-flash-0731"
-PROVIDER_BASE = "https://inference-api.nousresearch.com/v1"
+PROVIDER_BASE = "https://openrouter.ai/api/v1"
 
 _SYSTEM = (
     "You are the narrative desk for Innovative Hype, a Substack newsletter by "
@@ -936,7 +936,7 @@ def _brief_card_html(c):
         src_bits.append(
             f'{sep}<a href="{srec["url"]}" target="_blank" rel="noopener" '
             f'title="{_html.escape(srec.get("headline",""))}">'
-            f'{_html.escape(srec.get("source",""))}</a>')
+            f'{_html.escape(srec.get("source",""))}</a>{_src_date(srec)}')
     more = ('<span class="src-more">and more</span>'
             if c.get("source_count", 0) > 3 else "")
     para = (f'<p class="brief-para">{_html.escape(c.get("paragraph",""))}</p>'
@@ -1015,12 +1015,32 @@ def _declined_html(declines):
             f'({len(declines)})</summary><ul>{rows}</ul></details>')
 
 
+def _stamp_source_dates(feed):
+    """Fill published_at on every source from the article pool, joined by URL.
+    Cards carried over from earlier runs keep their old source records, so
+    the date is looked up here, not only when a card is first written. A
+    source whose URL is not in the pool stays undated and is counted."""
+    with open(os.path.join(WEB, "articles.json"), encoding="utf-8") as f:
+        pool = {a.get("link"): a for a in json.load(f)["articles"]}
+    missing = 0
+    for c in feed:
+        for s in c.get("sources") or []:
+            a = pool.get(s.get("url"))
+            if a is None:
+                missing += 1
+                continue
+            s["published_at"] = _published_iso(a)
+    if missing:
+        print(f"source dates: {missing} sources not in the article pool, left undated")
+
+
 def _write_feed_page(feed, declines=()):
     """Stamp rank grades, write the feed files, render brief.html. The one
     writer for the feed artifacts; regrade_feed and grade_feed both land here."""
     import brief as _brief
     for i, c in enumerate(feed):
         c["grade"] = _top_ten_grade(i)
+    _stamp_source_dates(feed)
     with open(FEED_PATH, "w") as f:
         json.dump({"updated": datetime.now(timezone.utc).isoformat(),
                    "cards": feed}, f, indent=2)
@@ -1433,8 +1453,33 @@ def match_sources(card, items, limit=3):
         a = it["article"] if "article" in it else it
         sources.append({"source": a.get("source", ""),
                         "url": a.get("link", "#"),
-                        "headline": a.get("title", "")})
+                        "headline": a.get("title", ""),
+                        "published_at": _published_iso(a)})
     return sources, best
+
+
+def _published_iso(a):
+    """When the publisher says the article went up, in UTC. None when the
+    aggregator could not parse a date (it sets _ts to 0 in that case)."""
+    ts = a.get("_ts") or 0
+    if not ts:
+        return None
+    return datetime.fromtimestamp(ts, timezone.utc).isoformat()
+
+
+def _src_date(srec):
+    """Visible date after a source name, or nothing when it has none."""
+    pub = srec.get("published_at")
+    if not pub:
+        return ""
+    return ' <span class="src-date">%s</span>' % datetime.fromisoformat(pub).strftime("%b %d").lower()
+
+
+def _articles_snapshot():
+    """When the aggregator last pulled the article pool this run read.
+    No try: a missing or unreadable articles.json must stop the run."""
+    with open(os.path.join(WEB, "articles.json"), encoding="utf-8") as f:
+        return json.load(f)["updated"]
 
 
 def render_brief_html(clusters, parsed, run_dir):
@@ -1516,7 +1561,8 @@ def render_brief_html(clusters, parsed, run_dir):
             sep = '<span class="src-dot">·</span>' if i else ""
             src_bits.append(
                 f'{sep}<a href="{srec["url"]}" target="_blank" rel="noopener" '
-                f'title="{_html.escape(srec["headline"])}">{_html.escape(srec["source"])}</a>')
+                f'title="{_html.escape(srec["headline"])}">{_html.escape(srec["source"])}</a>'
+                f'{_src_date(srec)}')
         more = '<span class="src-more">and more</span>' if len(sources) > 3 else ""
         cards_html.append(f"""
     <article class="brief-card">
@@ -1546,6 +1592,7 @@ def render_brief_html(clusters, parsed, run_dir):
                 "distinctive_hits": prov_hits,
                 "required_hits": _prov_required_hits(len(cl["items"]) if cl else 0),
                 "cluster_size": len(cl["items"]) if cl else 0,
+                "articles_snapshot": _articles_snapshot(),
             },
             # The lead article's editorial score, so the feed can be ORDERED.
             # Without this the feed sorted by first_seen and a golf ad ended up
@@ -1740,18 +1787,18 @@ def load_clusters():
 
 
 def _api_key():
-    """NOUS_PORTAL_KEY. The DEEPSEEK_API_KEY in config is dead/out of funds
+    """OPENROUTER_API_KEY. The DEEPSEEK_API_KEY in config is dead/out of funds
     (measured 2026-08-21: 401 on chat, portal key returns 200)."""
-    key = os.environ.get("NOUS_PORTAL_KEY", "")
+    key = os.environ.get("OPENROUTER_API_KEY", "")
     if not key:
         env_path = "/root/.hermes/.env"
         if os.path.exists(env_path):
             for line in open(env_path):
-                if line.startswith("NOUS_PORTAL_KEY="):
+                if line.startswith("OPENROUTER_API_KEY="):
                     key = line.strip().split("=", 1)[1].strip('"').strip("'")
                     break
     if not key:
-        raise RuntimeError("No NOUS_PORTAL_KEY found in /root/.hermes/.env")
+        raise RuntimeError("No OPENROUTER_API_KEY found in /root/.hermes/.env")
     return key
 
 
