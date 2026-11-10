@@ -739,7 +739,6 @@ body {
   <section class="brief-section" id="briefSection">
     <div class="top-header">
       <span class="top-title">The Brief</span>
-      <a class="top-algo" href="brief.html">Full brief</a>
     </div>
     <nav class="nav-pills brief-tabs" id="navPills">
       <a class="nav-pill active" data-cat="all">All</a>
@@ -900,9 +899,17 @@ function renderTopSection(articles, ranking) {
   const grid = document.getElementById('topGrid');
   const label = document.getElementById('topAlgoLabel');
   // Rank order = score desc, so "Top N" labels match the real ranking.
+  // articles.json can hold one story twice (same link, different title), so
+  // keep the first copy per link and skip the rest.
+  const seen = new Set();
   const tops = articles
     .filter(a => a.top)
     .sort((a, b) => (b._score || 0) - (a._score || 0))
+    .filter(a => {
+      if (seen.has(a.link)) return false;
+      seen.add(a.link);
+      return true;
+    })
     .slice(0, 5);
   if (tops.length === 0) {
     grid.innerHTML = '';

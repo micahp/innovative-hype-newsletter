@@ -1367,6 +1367,12 @@ first last next year years day days week month time make makes made get gets got
 # is evidence.
 _PROV_RARE_FRAC = 0.15
 
+# Lowest title-overlap score a card may have and still be attached to a
+# cluster. Below this a card gets no cluster and is dropped. A low floor only
+# blocks cards with no real overlap; it does not stop a wrong match that shares
+# one common word with the declared cluster.
+ALIGN_MIN_SCORE = 0.05
+
 
 def _prov_tokens(text):
     """Content words, plus short entity forms a plain \\w+ split destroys.
@@ -1497,9 +1503,14 @@ def render_brief_html(clusters, parsed, run_dir):
             continue  # declined cluster
         if _shown >= _max:
             continue
+        # No position fallback: a card that matched no cluster has no cluster
+        # to cite. Using its list position here attached it to a random story.
+        if card.get("_cluster_idx") is None:
+            print(f"  UNALIGNED card dropped (no cluster reached "
+                  f"{ALIGN_MIN_SCORE}): {card.get('narrative','')[:70]}")
+            continue
         _shown += 1
-        # Use the content-aligned cluster index when present
-        cluster_idx = card.get("_cluster_idx", ci)
+        cluster_idx = card["_cluster_idx"]
         cl = clusters[cluster_idx] if cluster_idx < len(clusters) else None
         if not cl:
             continue
@@ -2143,7 +2154,7 @@ def main():
                 print(f"  ALIGN: model said cluster {declared} "
                       f"(score {dscore:.3f}) but content says {best_ci} "
                       f"(score {best_score:.3f}); using content")
-        if best_ci is not None and best_score > 0:
+        if best_ci is not None and best_score >= ALIGN_MIN_SCORE:
             used_clusters.add(best_ci)
             card["_cluster_idx"] = best_ci
         aligned.append(card)
@@ -2168,7 +2179,10 @@ def main():
             _decisions.append({"cluster": _ci, "verdict": "declined_by_model",
                                "headline": None})
             continue
-        _cl = clusters[_ci] if _ci < len(clusters) else None
+        # The gates judge the card against the cluster it was ALIGNED to, not
+        # the cluster that has the same position in the list.
+        _cl_idx = _card.get("_cluster_idx")
+        _cl = clusters[_cl_idx] if _cl_idx is not None and _cl_idx < len(clusters) else None
         _kicker = ((_cl or {}).get("sig", {}) or {}).get("name", "")
         # An angle_id the model reports is a CLAIM. Check it against the angles
         # that were actually offered for THIS cluster. A card built on an
