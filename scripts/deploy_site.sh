@@ -22,7 +22,7 @@ STAMP="$(date -u +%Y%m%dT%H%M%SZ)"
 PAGES=(brief.html newsletter.html)
 DATA=(articles.json brief-cards.json brief-feed.json)
 
-for f in index-v2.html "${PAGES[@]}" "${DATA[@]}"; do
+for f in index.html "${PAGES[@]}" "${DATA[@]}"; do
   [ -s "$SRC/$f" ] || { echo "deploy: missing or empty $SRC/$f" >&2; exit 1; }
 done
 [ -d "$SRC/assets" ] || { echo "deploy: missing $SRC/assets" >&2; exit 1; }
@@ -42,7 +42,7 @@ if [ -f "$DEST/index.html" ]; then
   echo "backed up $DEST/index.html -> $BACKUP_DIR/index-$STAMP.html"
 fi
 
-cp -p "$SRC/index-v2.html" "$DEST/index.html"
+cp -p "$SRC/index.html" "$DEST/index.html"
 for f in "${PAGES[@]}" "${DATA[@]}"; do
   cp -p "$SRC/$f" "$DEST/$f"
 done
