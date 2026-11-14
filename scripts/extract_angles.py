@@ -30,6 +30,7 @@ grown enough to be worth re-reading, then hand-edit the result.
 import argparse
 import json
 import os
+import re
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -90,12 +91,16 @@ ARCHIVE_JSON = os.environ.get(
     "IH_ARCHIVE_JSON", os.path.join(CORPUS, "x_archive_all_tweets.json"))
 
 
-def load_archive_originals(min_len=60):
+def load_archive_originals(min_len=60, retweets="no"):
     """His own declarative posts from the official X export, weighted recent.
 
-    ORIGINALS ONLY. Replies are conversation and retweets are endorsement.
-    Neither is a stated position in his own words, and mixing them in is how
-    the first pass asserted things he had quoted rather than claimed.
+    ORIGINALS ONLY by default. Replies are conversation and retweets are
+    endorsement. Neither is a stated position in his own words, and mixing them
+    in is how the first pass asserted things he had quoted rather than claimed.
+
+    retweets="also" adds retweets, "only" reads retweets alone. A retweet keeps
+    the author's text without the "RT @handle: " prefix. The export cuts most
+    retweets at 140 characters, so many end in an ellipsis.
     """
     import random
     if not os.path.exists(ARCHIVE_JSON):
@@ -106,9 +111,15 @@ def load_archive_originals(min_len=60):
     posts = json.load(open(ARCHIVE_JSON))
     by_year = {}
     for p in posts:
-        if p.get("is_reply") or p.get("is_rt"):
+        if p.get("is_reply"):
+            continue
+        if p.get("is_rt") and retweets == "no":
+            continue
+        if not p.get("is_rt") and retweets == "only":
             continue
         text = (p.get("text") or "").strip()
+        if p.get("is_rt"):
+            text = re.sub(r"^RT @\w+:\s*", "", text)
         if len(text) < min_len:
             continue
         by_year.setdefault((p.get("date") or "").split()[-1], []).append(text)
@@ -146,7 +157,7 @@ def load_jsonl(name, min_len):
     return out
 
 
-def load_posts(min_len=70):
+def load_posts(min_len=70, retweets="no"):
     """Every voice source, not one of them.
 
     Until 2026-08-24 this read two nitter scrapes and nothing else.
@@ -157,20 +168,26 @@ def load_posts(min_len=70):
     "it's not generic enough. it's too specific to the articles."
     """
     sources = []
-    sources.append(("x-archive (originals, weighted recent)",
-                    load_archive_originals()))
-    for name in ("geoppls.jsonl", "innovativehype.jsonl"):
+    if retweets == "only":
+        sources.append(("x-archive (retweets only, weighted recent)",
+                        load_archive_originals(retweets="only")))
+    else:
+        sources.append(("x-archive (originals%s, weighted recent)"
+                        % (" + retweets" if retweets == "also" else ""),
+                        load_archive_originals(retweets=retweets)))
+    for name in (() if retweets == "only" else ("geoppls.jsonl", "innovativehype.jsonl")):
         sources.append((name, load_jsonl(name, min_len)))
     # Substack posts are 1,500-2,500-word arguments. Splitting on blank lines
     # keeps each paragraph inside the model's window while keeping the
     # long-form reasoning that tweets do not carry.
     longform = []
-    for post in load_jsonl("substack_posts.jsonl", 400):
+    for post in ([] if retweets == "only" else load_jsonl("substack_posts.jsonl", 400)):
         for para in post.split("\n\n"):
             para = para.strip()
             if len(para) >= 200:
                 longform.append(para)
-    sources.append(("substack_posts.jsonl (paragraphs)", longform))
+    if retweets != "only":
+        sources.append(("substack_posts.jsonl (paragraphs)", longform))
 
     seen, out = set(), []
     for label, texts in sources:
@@ -222,9 +239,12 @@ def main():
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--batch", type=int, default=120,
                     help="posts per model call")
+    ap.add_argument("--retweets", choices=("no", "also", "only"), default="no",
+                    help="read retweets too, or only retweets (default: no)")
+    ap.add_argument("--out", default=OUT, help="candidates file to write")
     args = ap.parse_args()
 
-    posts = load_posts()
+    posts = load_posts(retweets=args.retweets)
     print(f"{len(posts)} substantive posts")
 
     collected = []
@@ -262,9 +282,9 @@ def main():
     if args.dry_run:
         print(out)
         return 0
-    with open(OUT, "w") as f:
+    with open(args.out, "w") as f:
         f.write(out)
-    print(f"wrote {OUT}")
+    print(f"wrote {args.out}")
     print("These are RAW candidates, one pass over the corpus in batches, so "
           "near-duplicates are expected. Run scripts/consolidate_angles.py to "
           "merge them into angles.yaml.")

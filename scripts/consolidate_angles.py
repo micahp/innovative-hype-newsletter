@@ -41,8 +41,8 @@ import embed  # noqa: E402
 import narrative_desk as nd  # noqa: E402
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-CAND = os.path.join(REPO, "angles.candidates.yaml")
-OUT = os.path.join(REPO, "angles.yaml")
+CAND = os.environ.get("IH_ANGLE_CANDIDATES", os.path.join(REPO, "angles.candidates.yaml"))
+OUT = os.environ.get("IH_ANGLE_OUT", os.path.join(REPO, "angles.yaml"))
 
 # Cosine at which two candidates are the same position. Measured on the 487
 # candidates from the 2026-08-24 extraction: nearest-neighbour cosine is p50
