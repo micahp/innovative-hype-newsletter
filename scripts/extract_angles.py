@@ -109,6 +109,10 @@ def load_archive_originals(min_len=60, retweets="no"):
             "here and every position extracted from it would silently vanish, "
             "so this raises. Set IH_ARCHIVE_JSON to point at it." % ARCHIVE_JSON)
     posts = json.load(open(ARCHIVE_JSON))
+    # IH_RT_KEEP: a JSON list of retweet ids to read; other retweets are skipped.
+    rt_keep = None
+    if os.environ.get("IH_RT_KEEP"):
+        rt_keep = set(json.load(open(os.environ["IH_RT_KEEP"])))
     by_year = {}
     for p in posts:
         if p.get("is_reply"):
@@ -119,6 +123,8 @@ def load_archive_originals(min_len=60, retweets="no"):
             continue
         text = (p.get("text") or "").strip()
         if p.get("is_rt"):
+            if rt_keep is not None and p.get("id") not in rt_keep:
+                continue
             text = re.sub(r"^RT @\w+:\s*", "", text)
         if len(text) < min_len:
             continue

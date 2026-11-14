@@ -1,0 +1,3641 @@
+_readme: 'The angle inventory. An angle may only be applied to a story whose SUBJECT is in
+  its scope. Edit freely: delete positions that are not yours, tighten a scope that is catching
+  the wrong stories, set enabled: false to retire one without losing it. narrative_desk.py
+  reads this file and records which angle each card used, so when a card picks badly you can
+  point at the row.'
+angles:
+- id: creators-direct-relationship
+  enabled: true
+  claim: Creators should have a direct relationship with their own users, which platforms
+    like Facebook actively restrict.
+  subject: The relationship between creators and their audiences on platform-mediated networks
+  scope:
+  - creator economy
+  - platform governance
+  - audience ownership
+  - algorithmic feeds
+  - fan engagement
+  - direct messaging
+  - community building
+  - platform lock-in
+  evidence:
+  - Creators want a direct relationship with their own users, which is against the platforms'
+    DNA. E.g. FB restricts ability for la...
+- id: music-value-around-not-on
+  enabled: true
+  claim: The opportunity for creators in music isn't on the music itself, it's around the
+    music.
+  subject: Where value is created for musicians beyond the recorded track
+  scope:
+  - music industry
+  - merchandising
+  - brand partnerships
+  - live experiences
+  - fan communities
+  - narrative building
+  - intellectual property
+  - direct-to-fan
+  evidence:
+  - the opportunity for creators in music isn’t on the music, it’s around the music.
+- id: web3-owners-not-users
+  enabled: true
+  claim: In web3, people are owners and members who join, not users and viewers who get acquired.
+  subject: The shift in participant identity and power in decentralized platforms
+  scope:
+  - token ownership
+  - decentralized governance
+  - community membership
+  - user agency
+  - platform cooperatives
+  - data sovereignty
+  - creator equity
+  - web3 culture
+  evidence:
+  - In web2 we talk about 'users' and 'viewers' being 'acquired' In web3 we talk about 'owners'
+    and 'members' who 'join' and…
+- id: nfts-route-creative-capital
+  enabled: true
+  claim: NFTs will be the largest router of creative capital.
+  subject: NFTs as a funding and investment channel for creative work
+  scope:
+  - non-fungible tokens
+  - creative funding
+  - art investment
+  - royalty streams
+  - collector markets
+  - tokenized assets
+  - creator compensation
+  - art market
+  evidence:
+  - NFT’s will be the largest router of creative capital https://t.co/zL6XTn92hp
+- id: nft-community-over-jpeg
+  enabled: true
+  claim: People are investing in people and communities, not just JPEGs, when they buy NFTs.
+  subject: The true value of NFT projects lies in the community and people behind them
+  scope:
+  - nft community
+  - creator reputation
+  - social capital
+  - collector networks
+  - project teams
+  - artistic merit
+  - community building
+  - nft value
+  evidence:
+  - When people will realize that they are investing in people instead of 'Jpegs' they are
+    gonna start to support the creative…
+- id: nft-gallery-lending
+  enabled: true
+  claim: NFT galleries enable novel possibilities like lending out the Mona Lisa from the
+    Louvre.
+  subject: NFTs enabling new forms of art access and loaning
+  scope:
+  - nft galleries
+  - art lending
+  - digital ownership
+  - museum access
+  - fractional ownership
+  - art provenance
+  - decentralized art
+  evidence:
+  - 'one advantage of NFT galleries: imagine lending out the mona lisa from the louvre'
+- id: nft-artists-need-strategy
+  enabled: true
+  claim: Artists can't just drop NFTs on Twitter and expect them to sell; they need a real
+    strategy.
+  subject: The need for marketing and community building for NFT artists
+  scope:
+  - nft marketing
+  - artist promotion
+  - community engagement
+  - launch strategy
+  - social media
+  - collector outreach
+  - brand building
+  - nft sales
+  evidence:
+  - Artists need to realize that you can't just jump onto twitter and drop NFTs expecting
+    them to sell. No matter how succ…
+- id: nft-self-funding
+  enabled: true
+  claim: NFTs are a way for Black creators to fund themselves directly, without intermediaries.
+  subject: NFTs as a tool for self-funding and economic empowerment for marginalized creators
+  scope:
+  - black creators
+  - self-funding
+  - economic empowerment
+  - direct sales
+  - financial independence
+  - creative entrepreneurship
+  - nft community
+  - wealth building
+  evidence:
+  - NFT = NIGGAS FUNDING THEMSELVES   Not sorry 🤷🏿‍♂️ It’s the alpha to all alpha.   If you
+    not following along you gon get left…
+- id: nft-community-first
+  enabled: true
+  claim: Community is the most important thing for NFT projects and organizations.
+  subject: The primacy of community in NFT projects and organizations
+  scope:
+  - nft community
+  - community building
+  - member engagement
+  - loyalty
+  - shared values
+  - decentralized governance
+  - project success
+  - collective ownership
+  evidence:
+  - If you only learn one thing from this NFT meetup(s), make it community. You see, all of
+    the finest organizations, are communi…
+- id: nft-games-community-balance
+  enabled: true
+  claim: Game balance is a big responsibility for NFT games, and the community actually has
+    a say.
+  subject: Community involvement in balancing NFT games
+  scope:
+  - nft games
+  - game balance
+  - community governance
+  - player feedback
+  - tokenomics
+  - game design
+  - decentralized gaming
+  - player ownership
+  evidence:
+  - Game balance is something we take very seriously. It's a big responsibility for NFT games.  The
+    community actually has a…
+- id: nft-artists-legitimacy
+  enabled: true
+  claim: The biggest creators want to be in crypto, but they must prove legitimacy before
+    launching their own projects.
+  subject: The need for legitimacy and credibility for creators entering crypto
+  scope:
+  - creator legitimacy
+  - nft launch
+  - reputation
+  - trust
+  - scam prevention
+  - authenticity
+  - artist credibility
+  - crypto adoption
+  evidence:
+  - The biggest creators in the world want to be in crypto.  My advice is to prove legitimacy
+    before launching your own proj…
+- id: patience-token-launch
+  enabled: true
+  claim: There's no need to rush a token launch if you have a great product that people love.
+  subject: The value of patience in launching tokens for successful products
+  scope:
+  - token launch
+  - product-market fit
+  - timing
+  - decentralized protocols
+  - ens
+  - community trust
+  - long-term vision
+  - crypto projects
+  evidence:
+  - ENS was started in 2016.  Token launched in 2021.  No need to rush a token launch if you
+    have a great product that people lo…
+- id: crypto-casino-distraction
+  enabled: true
+  claim: Crypto may look like a speculative casino, but that distracts from the deeper truth
+    that the casino is a...
+  subject: The deeper utility and innovation beneath crypto's speculative surface
+  scope:
+  - crypto utility
+  - blockchain innovation
+  - decentralized finance
+  - speculation
+  - market perception
+  - web3 infrastructure
+  - token value
+  - crypto adoption
+  evidence:
+  - 'Crypto may look like a speculative casino from the outside.  But that distracts many
+    from the deeper truth: the casino is a…'
+- id: bitcoin-no-top-fiat-no-bottom
+  enabled: true
+  claim: Bitcoin has no top because fiat has no bottom.
+  subject: Bitcoin's value relative to fiat currency debasement
+  scope:
+  - bitcoin
+  - fiat currency
+  - inflation
+  - monetary policy
+  - store of value
+  - currency debasement
+  - hard money
+  - wealth preservation
+  evidence:
+  - '#bitcoin has no top because fiat has no bottom https://t.co/Zl3AygwVsB'
+- id: financial-advisor-tech-crypto
+  enabled: true
+  claim: A financial advisor that has no interest in new tech and crypto is just a bank plan
+    salesman.
+  subject: The need for financial advisors to understand new technology and crypto
+  scope:
+  - financial advising
+  - crypto literacy
+  - technology adoption
+  - investment advice
+  - bank products
+  - innovation
+  - client service
+  - modern finance
+  evidence:
+  - A financial advisor that has no interest in new tech and crypto is not a financial advisor,
+    it’s a bank plan salesman
+- id: market-timing-retail
+  enabled: true
+  claim: The goal is never to top tick or bottom tick the market; leave that game for retail
+    traders.
+  subject: Avoiding market timing as a professional strategy
+  scope:
+  - market timing
+  - trading strategy
+  - retail investors
+  - professional investing
+  - risk management
+  - long-term investing
+  - technical analysis
+  - market cycles
+  evidence:
+  - 'The goal is never to top tick or bottom tick the market. Leave that game for retail larps
+    trading $50k size. We didn''t get to #1…'
+- id: habits-over-goals
+  enabled: true
+  claim: Set habits, not goals, because process is more important than product.
+  subject: The superiority of habit formation over goal-setting
+  scope:
+  - habit formation
+  - goal setting
+  - process orientation
+  - personal development
+  - consistency
+  - self-improvement
+  - productivity
+  - long-term success
+  evidence:
+  - Set habits, not goals. Process > product  I spent years in a romantic relationship with
+    the idea of my goals, to only see th…
+- id: introspection-hardest
+  enabled: true
+  claim: Introspection and self-reflection are probably the hardest things for most people,
+    but they're necessary.
+  subject: The difficulty and necessity of self-reflection
+  scope:
+  - self-reflection
+  - introspection
+  - personal growth
+  - self-awareness
+  - accepting criticism
+  - emotional intelligence
+  - mindfulness
+  - character development
+  evidence:
+  - Introspection and self reflection is probably the hardest for most people. It’s difficult
+    to accept self criticism but unlik…
+- id: inner-circle-priority
+  enabled: true
+  claim: Nothing is more important than your inner circle of friends and family; losing them
+    on your quest to make it means you've failed.
+  subject: The priority of personal relationships over career success
+  scope:
+  - work-life balance
+  - friendship
+  - family
+  - success
+  - priorities
+  - relationships
+  - burnout
+  - values
+  evidence:
+  - nothing is more important than your inner circle of friends and family  if you lose them
+    on your quest to 'make it' then it h…
+- id: music-copyright-incompatible
+  enabled: true
+  claim: The music industry's draconian copyright laws aren't compatible with today's digital
+    culture of remixing, streaming, and modding.
+  subject: The incompatibility of copyright law with digital music culture
+  scope:
+  - copyright
+  - music industry
+  - remixing
+  - streaming
+  - modding
+  - digital culture
+  - fair use
+  - creative commons
+  evidence:
+  - The music industry’s draconian copyright laws aren’t compatible with today’s digital culture
+    of remixing, streaming, & modding, s…
+- id: nft-value-beyond-floors
+  enabled: true
+  claim: NFTs should be valued for their intrinsic artistic and community worth, not just
+    their floor price.
+  subject: The valuation of NFTs should consider artistic merit and community, not just market
+    price.
+  scope:
+  - nft valuation
+  - artistic merit
+  - community value
+  - floor price
+  - collector sentiment
+  - digital art
+  - creator economy
+  - cultural significance
+  evidence:
+  - When I bought 7804 I knew I valued it. I ran it through…
+  - Already a floor price of 1.7 ETH, amazing project and beautiful artwork!
+  - my iconic snotty nosed genesis piece is still available on foundation. learn why i have
+    to create by reading the description.
+- id: nft-platform-agnostic-curation
+  enabled: true
+  claim: NFTs should have curation tools that work across platforms, not be locked into one
+    marketplace.
+  subject: Curation and discovery of NFTs should be platform-independent, allowing content
+    to be found and valued anywhere.
+  scope:
+  - nft curation
+  - cross-platform discovery
+  - marketplace interoperability
+  - content aggregation
+  - decentralized curation
+  - digital content distribution
+  - creator discovery
+  - platform lock-in
+  evidence:
+  - NFTs have enabled platform-agnostic content They deserve platform-agnostic curation
+  - Collectors can't even get transaction reports. Is that not a standard for ecommerce anything?
+  - Agreed that searchability is a huge pain for ENS
+- id: nft-auction-flaws
+  enabled: true
+  claim: NFT auctions are flawed because they only benefit one winner and discourage broad
+    participation.
+  subject: The auction mechanism for NFTs has inherent weaknesses that limit collector participation
+    and fairness.
+  scope:
+  - nft auctions
+  - collector participation
+  - bidding dynamics
+  - market efficiency
+  - fairness in sales
+  - secondary markets
+  - price discovery
+  - community engagement
+  evidence:
+  - 'NFT auctions are great, but have downsides: - only one collector can win - collectors
+    wait to bid until end - only the wea…'
+- id: play-to-earn-economic-opportunity
+  enabled: true
+  claim: Play-to-earn games like Axie Infinity offer real economic opportunities, especially
+    for underserved communities.
+  subject: Play-to-earn gaming can provide meaningful income and economic empowerment to players
+    globally.
+  scope:
+  - play-to-earn
+  - axie infinity
+  - crypto gaming
+  - economic empowerment
+  - income generation
+  - underserved communities
+  - scholarships
+  - gaming guilds
+  - digital labor
+  - financial inclusion
+  evidence:
+  - 'at this $SLP price you can make roughly $13/hr playing #AxieInfinity PvP thats higher
+    than the minimum wage in 47 out of…'
+  - I want to help minorities in underserved communities start playing Axie Infinity. We are
+    going to bridge that gap in Americ…
+  - The benefit of owning $YGG (@YieldGuild) is that it exposes you to pretty much every play
+    to earn game.
+- id: defi-yield-vs-government-bonds
+  enabled: true
+  claim: DeFi offers better returns on dollars than lending to the US government, with no
+    lockup or restrictions.
+  subject: Decentralized finance provides superior yield opportunities compared to traditional
+    government bonds.
+  scope:
+  - defi yield
+  - stablecoin interest
+  - government bonds
+  - capital efficiency
+  - financial freedom
+  - yield farming
+  - dollar lending
+  - no lockup
+  - territory restrictions
+  - traditional finance vs defi
+  evidence:
+  - You can earn 10% on dollars with defi, no lockup, no territory restrictions. Or you can
+    lend dollars to the US Governmen…
+- id: nft-blurring-categories
+  enabled: true
+  claim: Crypto and NFTs blur the lines between art, collectibles, equity, and social media,
+    creating new hybrid forms.
+  subject: NFTs are creating new hybrid categories that combine art, finance, and social interaction,
+    challenging traditional classifications.
+  scope:
+  - nft categories
+  - digital art
+  - collectibles
+  - tokenized equity
+  - social tokens
+  - fan patronage
+  - creator economy
+  - crypto culture
+  - hybrid assets
+  - blockchain innovation
+  evidence:
+  - Crypto blurs the lines between art collectibles equity merchandise social media patronage
+  - What if a beloved M…
+- id: crypto-project-ratings
+  enabled: true
+  claim: Crypto projects are re-rated in real time based on community sentiment and adoption,
+    unlike traditional markets.
+  subject: The valuation of crypto projects is dynamic and community-driven, leading to rapid
+    re-ratings.
+  scope:
+  - crypto project valuation
+  - community sentiment
+  - adoption metrics
+  - token price discovery
+  - market dynamics
+  - real-time ratings
+  - social influence
+  - network effects
+  evidence:
+  - We're witnessing the first of what will be an increasing trend in crypto. The real time
+    re-ratings of projects that gain sc…
+- id: nft-comics-ownership
+  enabled: true
+  claim: Owning NFT comics gives fans a stake in the intellectual property, akin to owning
+    a piece of a media franchise.
+  subject: NFT-based comics and media allow fans to have ownership stakes in intellectual
+    property, changing fan engagement.
+  scope:
+  - nft comics
+  - intellectual property
+  - fan ownership
+  - media franchises
+  - tokenized content
+  - creative communities
+  - digital storytelling
+  - collector engagement
+  evidence:
+  - Make no mistake about it, we are building the next Marvel with @punkscomic. The difference
+    is, the Issue 1 comic owners tha…
+- id: nft-utility-beyond-art
+  enabled: true
+  claim: NFTs should provide utility beyond just being art, such as access, membership, or
+    tickets.
+  subject: NFTs are evolving to include functional utilities like access passes, tickets,
+    and memberships, expanding their value.
+  scope:
+  - nft utility
+  - access passes
+  - event tickets
+  - membership tokens
+  - digital collectibles
+  - music nfts
+  - gaming assets
+  - real-world integration
+  - fan experiences
+  evidence:
+  - My album will be distributed via NFTs. So it does more for listeners than play music.
+    It’s a ticket to a live show, acces…
+  - When I thought about the future of NFTs and consumer experiences, my mind 🤯 Let me walk
+    you through what I imagined - I'd lov…
+- id: nft-philanthropy
+  enabled: true
+  claim: NFTs can be a powerful tool for fundraising and philanthropy, especially for nonprofits
+    and disaster relief.
+  subject: NFTs offer new mechanisms for charitable donations and fundraising, enabling direct
+    support and community engagement.
+  scope:
+  - nft philanthropy
+  - crypto donations
+  - nonprofit fundraising
+  - disaster relief
+  - charitable giving
+  - community support
+  - tokenized giving
+  - social impact
+  evidence:
+  - if you're a non-profit without public crypto addresses for donations, you're fucking up
+    🤷‍♀️
+  - Imagine a natural disaster like the next hurricane and these superstars create NFT for
+    memories and sell them among the worl…
+- id: nft-ownership-psychology
+  enabled: true
+  claim: Simply giving someone ownership doesn't make them feel like an owner; true ownership
+    requires emotional connection.
+  subject: The psychological aspect of ownership is crucial; mere token ownership without
+    emotional investment is insufficient.
+  scope:
+  - nft ownership
+  - psychological ownership
+  - emotional connection
+  - community belonging
+  - user engagement
+  - token utility
+  - perceived value
+  - collector identity
+  evidence:
+  - '"Yet, the act of simply giving someone ownership doesn’t inherently make them feel like
+    an owner. Why? Because owners…"'
+- id: crypto-regulation-clarity
+  enabled: true
+  claim: The crypto industry needs clear regulation, but misrepresentations from officials
+    like Gensler are harmful.
+  subject: Regulatory clarity is needed for crypto, but accurate communication from regulators
+    is essential to avoid confusion.
+  scope:
+  - crypto regulation
+  - sec
+  - gensler
+  - regulatory clarity
+  - bitcoin etf
+  - legal framework
+  - market stability
+  - investor protection
+  evidence:
+  - 🚨 Seeing a lot of tweets misrepresenting what Gensler said today While I’d love regulatory
+    clarity, he didn’t say bit…
+- id: music-nft-free-to-listen
+  enabled: true
+  claim: Music should be free to listen to, but valuable to own through NFTs, shifting the
+    business model.
+  subject: The music industry is shifting towards free streaming with ownership through NFTs,
+    creating new revenue models.
+  scope:
+  - music nfts
+  - streaming economics
+  - ownership value
+  - artist revenue
+  - fan engagement
+  - digital rights
+  - creator compensation
+  - music industry disruption
+  evidence:
+  - I believe music will trend towards being free to listen and valuable to own. Passive streams
+    are a funnel to active col…
+  - Next chapter of Music NFTs is minting the same day you make the song. No marketing or
+    promo - just vibes.
+- id: celebrity-brand-ownership
+  enabled: true
+  claim: Celebrities are moving from being owned by brands to owning their own brands and
+    capturing more value.
+  subject: The relationship between celebrities and brands is evolving, with celebrities increasingly
+    owning their intellectual property and brands.
+  scope:
+  - celebrity branding
+  - intellectual property
+  - brand ownership
+  - creator economy
+  - endorsement deals
+  - personal branding
+  - nft ventures
+  - value capture
+  evidence:
+  - First, celebrities were owned by brands. Next, celebrities created their own brands, capturing
+    more of the upside. Now, wi…
+- id: wealth-creation-economy-growth
+  enabled: true
+  claim: A society cannot become richer than its economy grows without stealing wealth from
+    others.
+  subject: Wealth creation is fundamentally tied to economic growth; without growth, wealth
+    is redistributed or stolen.
+  scope:
+  - wealth inequality
+  - economic growth
+  - wealth redistribution
+  - macroeconomic policy
+  - financial systems
+  - social justice
+  - monetary policy
+  - capitalism
+  evidence:
+  - As a people, you can’t be a lot richer than your economy grows without stealing that wealth
+    from someone else. We stole…
+- id: startup-founder-customer-focus
+  enabled: true
+  claim: Founders must talk to customers from day one to improve their product; otherwise,
+    they should find a new CEO.
+  subject: Startup founders should prioritize direct customer interaction to drive product
+    development and iteration.
+  scope:
+  - startup advice
+  - customer development
+  - product iteration
+  - founder leadership
+  - user feedback
+  - lean startup
+  - market fit
+  - executive responsibility
+  evidence:
+  - 'Related start-up advice: If you''re CEO isn''t ready to talk to customers from day 1
+    in order to improve product - find a…'
+  - Founders should focus on shipping their products faster so you can iterate to the right
+    answer quickly
+- id: web3-design-aesthetics
+  enabled: true
+  claim: Web3 websites often have poor design, using generic serif fonts and cluttered layouts.
+  subject: The design quality of web3 interfaces is often subpar, lacking usability and aesthetic
+    coherence.
+  scope:
+  - web3 design
+  - ui/ux
+  - website aesthetics
+  - crypto platforms
+  - user experience
+  - visual design
+  - branding
+  - digital interfaces
+  evidence:
+  - the design of every single web3 website is like let’s use the weirdest serif font possible
+    and throw it on top of a fucking…
+- id: ai-art-ownership
+  enabled: true
+  claim: AI-generated art raises questions about ownership and style replication that need
+    addressing.
+  subject: The rise of AI-generated art creates legal and ethical challenges around style
+    imitation and ownership.
+  scope:
+  - ai art
+  - generative art
+  - style imitation
+  - copyright
+  - ownership rights
+  - creative authorship
+  - dall-e
+  - ethical ai use
+  evidence:
+  - 'Spawning: The ability to create entirely new artworks in the style of other people from
+    AI systems trained on their work o…'
+- id: crypto-institutional-adoption
+  enabled: true
+  claim: The next crypto bull run depends on public market buyers, but their entry is uncertain.
+  subject: Crypto market growth requires institutional and public market adoption, which remains
+    a key question.
+  scope:
+  - crypto market
+  - institutional adoption
+  - public market
+  - bitcoin etf
+  - retail investors
+  - bull run
+  - market liquidity
+  - mainstream acceptance
+  evidence:
+  - Everyone wants another crypto bull, but no one can answer where the 10s of billions in
+    public market buyers will come from t…
+- id: daos-legal-structures
+  enabled: true
+  claim: DAOs can use creative legal structures, like churches, to gain tax exemption and
+    legal shielding.
+  subject: DAOs are exploring unconventional legal wrappers for tax benefits and legal protection.
+  scope:
+  - dao legal structure
+  - tax exemption
+  - legal shielding
+  - corporate law
+  - blockchain governance
+  - nonprofit status
+  - decentralized organizations
+  evidence:
+  - 'After years of legal research I finally found the perfect legal wrapper for DAOs: churches.
+    Tax exempt, legal shielding,…'
+- id: crypto-retail-ahead-of-institutions
+  enabled: true
+  claim: Big money dismissing Bitcoin lets retail get ahead, amplifying Bitcoin's impact.
+  subject: The relationship between institutional skepticism and retail opportunity in crypto
+    markets.
+  scope:
+  - bitcoin
+  - institutional investors
+  - retail investors
+  - market sentiment
+  - crypto adoption
+  - wall street
+  - mainstream finance
+  evidence:
+  - 'At this point, I love it when big money dismisses $BTC. Lets retail get ahead, amplifying
+    #bitcoin''s impact.'
+- id: web3-product-over-tech
+  enabled: true
+  claim: Web3 is entering a phase where the product matters more than the tech; most people
+    will never look under the hood.
+  subject: The priority of user-facing product quality over underlying technology in the web3
+    industry.
+  scope:
+  - web3
+  - product design
+  - user experience
+  - blockchain technology
+  - mass adoption
+  - dapps
+  - crypto usability
+  evidence:
+  - We are entering a phase of web3 where the product matters more than the tech. Most people
+    will never look under the hoo…
+- id: music-nfts-fair-compensation
+  enabled: true
+  claim: Music NFTs pay artists far better than streaming and give fans a collectible to show
+    for it.
+  subject: The economic value and ownership model of music NFTs compared to streaming.
+  scope:
+  - music nfts
+  - streaming royalties
+  - artist compensation
+  - digital collectibles
+  - fan engagement
+  - music industry
+  evidence:
+  - Collecting 1 Music NFT for 0.005 ETH pays the same as 2500 streams. And you get a digital
+    vinyl to show for it.
+  - Music NFTs are like rookie cards. Collect your favorite songs and be rewarded for your
+    taste along the way.
+- id: streaming-replaced-non-buyers
+  enabled: true
+  claim: Streaming did not replace people buying music; it replaced people not buying music.
+  subject: The impact of streaming on music consumption and purchasing behavior.
+  scope:
+  - streaming
+  - music sales
+  - piracy
+  - digital downloads
+  - consumer behavior
+  - music industry
+  evidence:
+  - Streaming did NOT replace people buying music. It replaced people NOT buying music.
+- id: nfts-over-crypto-utility
+  enabled: true
+  claim: NFTs will overtake crypto because most people care about the collectible experience,
+    not staking or transactions per second.
+  subject: The relative importance of NFTs versus underlying crypto technology for mainstream
+    adoption.
+  scope:
+  - nfts
+  - crypto
+  - staking
+  - transactions per second
+  - collectibles
+  - mainstream adoption
+  - digital ownership
+  evidence:
+  - 'It''s so obvious that NFTs will overtake crypto 99.99% of ppl do not care about: - Staking
+    - Txs per second - Non-sove…'
+- id: dao-governance-voter-participation
+  enabled: true
+  claim: DAOs need to solve the issue of voting regularity as people join more and more DAOs,
+    or governance will suffer.
+  subject: The challenge of voter participation and engagement in decentralized autonomous
+    organizations.
+  scope:
+  - daos
+  - governance
+  - voting
+  - participation
+  - decentralization
+  - community
+  - token holders
+  evidence:
+  - We need to figure out the issue of voting regularity with DAOs and the fact that people
+    are increasingly joining more DAOs.…
+- id: dao-downfall-concentration
+  enabled: true
+  claim: DAO governance fails when a single entity or small group holds too much control,
+    as seen in Terra's collapse.
+  subject: The risk of power concentration in decentralized governance systems.
+  scope:
+  - daos
+  - governance
+  - centralization
+  - terra
+  - validator power
+  - decentralization
+  - crypto collapse
+  evidence:
+  - Putting aside all of the problematic issues in Terra, Do makes a very valid point with
+    DAO governance. The downfall comes when…
+- id: open-source-over-closed
+  enabled: true
+  claim: Open-source and on-chain systems are superior to closed-source and opaque ones, and
+    we shouldn't let them gaslight us otherwise.
+  subject: The value of transparency and openness in technology and finance.
+  scope:
+  - open source
+  - closed source
+  - transparency
+  - on-chain
+  - opacity
+  - trust
+  - decentralization
+  evidence:
+  - Don't let them gaslight you. Open-source and on-chain vs closed-source and opaque.
+- id: ethereum-burn-narrative
+  enabled: true
+  claim: The Ethereum burn narrative will be incredibly powerful in the next bull cycle, regardless
+    of the actual burn percentage.
+  subject: The market narrative around Ethereum's token burn mechanism.
+  scope:
+  - ethereum
+  - burn
+  - tokenomics
+  - supply
+  - bull market
+  - narrative
+  - crypto investment
+  evidence:
+  - The burn narrative for ethereum is going to be insane going into this next bull cycle.
+    Doesn't matter if the burn % is low…
+- id: crypto-measured-world-baskets
+  enabled: true
+  claim: Crypto prices would be viewed differently if measured against world currency baskets
+    instead of just the dollar.
+  subject: The methodology of measuring cryptocurrency value and performance.
+  scope:
+  - crypto prices
+  - currency baskets
+  - dollar
+  - valuation
+  - fiat
+  - exchange rates
+  - market analysis
+  evidence:
+  - boy would the world thinking differently about crypto price moves it they measured it
+    vs world currency baskets instead of jus…
+- id: distributed-ai-tam
+  enabled: true
+  claim: The total addressable market for distributed AI is an order of magnitude greater
+    than crypto's, so no need to bootstrap economic incentives.
+  subject: The market potential of distributed AI compared to crypto.
+  scope:
+  - distributed ai
+  - total addressable market
+  - crypto
+  - economic incentives
+  - decentralized compute
+  - ai networks
+  evidence:
+  - The TAM for distributed AI is an order of magnitude greater than the crypto TAM. No need
+    to bootstrap economic incentives wh…
+- id: ai-music-brain-melting
+  enabled: true
+  claim: AI-generated music will be mind-blowing, even more so than pictures.
+  subject: The potential impact of AI on music creation and experience.
+  scope:
+  - ai music
+  - generative art
+  - creativity
+  - music production
+  - artificial intelligence
+  - innovation
+  evidence:
+  - If you thought pictures are cool, wait till AI writes music that melts your brain
+- id: metaverse-here-now
+  enabled: true
+  claim: The metaverse is already here and we're participating in it without VR headsets.
+  subject: The definition and current reality of the metaverse.
+  scope:
+  - metaverse
+  - virtual reality
+  - web3
+  - digital world
+  - online communities
+  - augmented reality
+  evidence:
+  - The metaverse is here, we are participating in it right now and none of us have a VR headset
+    on. ✨
+- id: web3-mobile-mass-adoption
+  enabled: true
+  claim: Mass adoption of Web3 will happen on mobile, and projects that prepare for that will
+    lead.
+  subject: The role of mobile platforms in driving web3 adoption.
+  scope:
+  - web3
+  - mobile
+  - mass adoption
+  - polygon
+  - dapps
+  - blockchain
+  - user experience
+  evidence:
+  - Mass adoption of Web3 will happen on mobile and @0xPolygon is preparing for it. Our strategy
+    is not to make our own dev…
+- id: creating-in-public
+  enabled: true
+  claim: Creating in public is a powerful way to build an audience and grow as an artist.
+  subject: The value of public creation and transparency in creative work.
+  scope:
+  - creating in public
+  - audience building
+  - artists
+  - musicians
+  - content creation
+  - social media
+  - community
+  evidence:
+  - I’m an advocate for creating in public. Interestingly…
+  - Focus on creating value and you won’t have a problem building an audience.
+- id: twitter-best-startup-learning
+  enabled: true
+  claim: Twitter is the best place to learn about building a startup, but most users don't
+    add value.
+  subject: The utility of Twitter as a platform for startup education and networking.
+  scope:
+  - twitter
+  - startups
+  - learning
+  - networking
+  - entrepreneurship
+  - social media
+  - value
+  evidence:
+  - Twitter is the best place to learn about building your startup. But it has 330 million
+    users. 99% of them don't add any…
+- id: discord-execution-praise
+  enabled: true
+  claim: Discord has executed impressively with new features, positioning itself well against
+    competitors.
+  subject: The competitive performance of Discord as a platform.
+  scope:
+  - discord
+  - features
+  - competition
+  - community platforms
+  - user engagement
+  - product execution
+  evidence:
+  - I am very impressed by how well Discord has executed recently. The slew of new features
+    they’ve added — from Reddit-style for…
+- id: youtube-shorts-gains
+  enabled: true
+  claim: YouTube Shorts may make major gains on TikTok in 2023, as it reportedly just passed
+    TikTok in global engagement.
+  subject: The competitive dynamics between short-form video platforms.
+  scope:
+  - youtube shorts
+  - tiktok
+  - short-form video
+  - engagement
+  - social media
+  - competition
+  evidence:
+  - Hear me out - YouTube Shorts may make major gains on TikTok in 2023. Shorts reportedly
+    just passed TikTok in global mon…
+- id: google-vs-chatgpt
+  enabled: true
+  claim: ChatGPT is already better than Google for many queries, and I keep coming back to
+    it when Google fails.
+  subject: The comparative utility of AI chatbots versus traditional search engines.
+  scope:
+  - chatgpt
+  - google
+  - search engines
+  - ai
+  - information retrieval
+  - user experience
+  evidence:
+  - ChatGPT is already better than Google for many queries. I find myself coming back to it
+    when Google fails, and it's delivering…
+- id: generative-ai-core-future
+  enabled: true
+  claim: Google and Microsoft are all in on generative AI as core to their future—there's
+    no 'we are still early' here.
+  subject: The strategic importance of generative AI for major tech companies.
+  scope:
+  - generative ai
+  - google
+  - microsoft
+  - artificial intelligence
+  - tech strategy
+  - innovation
+  - competitive advantage
+  evidence:
+  - Google and Microsoft are going all in with generative AI as core to their future. There
+    is no “we are still early” here, tr…
+- id: institutions-over-individuals
+  enabled: true
+  claim: Institutions are over; it's all individuals now, and people are becoming bigger than
+    companies.
+  subject: The shift of influence and power from traditional institutions to individual actors.
+  scope:
+  - institutional decline
+  - individual influence
+  - media consolidation
+  - celebrity authority
+  - political outsiders
+  - tech founders
+  - podcast hosts
+  - social media personalities
+  evidence:
+  - But institutions are over. It’s all individuals now. White House → Trump 60 Minutes →
+    Rogan NYT → Greenwald NASA → Elon
+  - People are becoming bigger than companies. Look through the…
+- id: creator-economy-broken
+  enabled: true
+  claim: The creator economy is broken because creators face extreme income inequality and
+    perpetual platform risk.
+  subject: The economic structure of the creator economy and the vulnerability of individual
+    creators.
+  scope:
+  - creator income
+  - platform dependence
+  - algorithm changes
+  - monetization
+  - audience ownership
+  - content distribution
+  - influencer economy
+  - streaming royalties
+  evidence:
+  - The creator economy is broken. You’re either Beyonce or you’re broke.
+  - Creators live with perpetual platform risk until they build their own community
+- id: central-bank-control-anti-democratic
+  enabled: true
+  claim: Central banks having absolute control over all uses of money is anti-democratic.
+  subject: The concentration of monetary control in central banks and its conflict with democratic
+    principles.
+  scope:
+  - central banking
+  - monetary policy
+  - financial surveillance
+  - digital currencies
+  - democratic governance
+  - money issuance
+  - capital controls
+  - financial freedom
+  evidence:
+  - When the head of BIS says “central banks will have absolute control” over all uses of
+    money, that’s not democracy. That’s wh…
+- id: ai-belongs-to-capitalists
+  enabled: true
+  claim: AI technology is being captured by capitalists, which is a problem for the rest of
+    us.
+  subject: The ownership and control of AI technology by corporate and capitalist interests.
+  scope:
+  - ai development
+  - corporate power
+  - technology access
+  - open source
+  - monopoly
+  - innovation capture
+  - big tech
+  - ai ethics
+  evidence:
+  - AI belongs to the capitalists. And the New York Times belongs to the nepotists.
+- id: meme-control-attention
+  enabled: true
+  claim: Controlling memes means controlling attention, which means controlling the masses.
+  subject: The power of memes as a tool for influencing public attention and behavior.
+  scope:
+  - meme culture
+  - attention economy
+  - propaganda
+  - cultural influence
+  - social media virality
+  - narrative control
+  - public opinion
+  - digital activism
+  evidence:
+  - If you control the memes, you control the attention. If you control the attention, you
+    control the masses.
+- id: community-over-audience
+  enabled: true
+  claim: Building a community is more valuable than building an audience.
+  subject: The distinction between having a passive audience and an engaged, connected community.
+  scope:
+  - community building
+  - audience engagement
+  - social connections
+  - loyalty
+  - membership
+  - interaction
+  - belonging
+  - network effects
+  evidence:
+  - Building a community > building an audience  What is a community? A highly engaged audience
+    with strong connections between me…
+- id: second-brain-note-taking
+  enabled: true
+  claim: Because memory isn't photographic, a second brain note-taking system is essential.
+  subject: The practice of externalizing memory and knowledge through note-taking systems.
+  scope:
+  - note-taking
+  - knowledge management
+  - personal productivity
+  - information retrieval
+  - digital tools
+  - memory augmentation
+  - zettelkasten
+  - personal knowledge base
+  evidence:
+  - Idk about you, but my memory isn’t photographic. That’s why it makes sense to have a second
+    brain note-taking system.
+- id: startup-cities-to-compete
+  enabled: true
+  claim: To compete with Chinese cities, we need to build startup cities that foster innovation.
+  subject: The need for new, innovation-focused cities to match global competitors.
+  scope:
+  - urban development
+  - innovation hubs
+  - entrepreneurship
+  - economic competitiveness
+  - city planning
+  - tech hubs
+  - special economic zones
+  - future cities
+  evidence:
+  - This is what Chinese cities look like. We can deny that they are ahead. Or we can build
+    startup cities to get back in the game…
+- id: passion-over-stress
+  enabled: true
+  claim: Working hard on something you don't care about is stress, but working hard on something
+    you love is passion.
+  subject: The emotional difference between working on meaningful versus meaningless tasks.
+  scope:
+  - work motivation
+  - career fulfillment
+  - passion
+  - stress
+  - meaningful work
+  - job satisfaction
+  - burnout
+  - purpose
+  evidence:
+  - Working hard for something you don't care about is called stress. Working hard for something
+    you love is called passion.
+- id: decisive-action-over-indecision
+  enabled: true
+  claim: Play with conviction or don't play at all; indecision makes you vulnerable to exploitation.
+  subject: The importance of commitment and decisiveness in achieving goals and avoiding manipulation.
+  scope:
+  - decision making
+  - commitment
+  - confidence
+  - emotional vulnerability
+  - assertiveness
+  - risk taking
+  - self assurance
+  - strategy
+  evidence:
+  - Play with conviction or don't play at all. Indecision opens the door for others to exploit
+    your emotional vulnerabilitie…
+- id: gen-ai-new-camera
+  enabled: true
+  claim: Generative AI like Gen-2 is a new kind of camera that didn't exist months ago, and
+    it's already changing what's possible.
+  subject: The emergence of generative AI as a creative tool, comparable to a camera.
+  scope:
+  - generative ai
+  - creative tools
+  - video generation
+  - ai art
+  - content creation
+  - technology innovation
+  - media production
+  - creative expression
+  evidence:
+  - Gen-2 is a new kind of camera. It didn't exist 5 months ago. The idea alone was far fetched.
+    Until it wasn't.
+- id: google-ships-late
+  enabled: true
+  claim: Google had AI image and text generation tech ready before others but failed to ship
+    it, showing a pattern of missed opportunities.
+  subject: Google's tendency to develop innovative AI technology but fail to release it in
+    a timely manner.
+  scope:
+  - google
+  - ai development
+  - product shipping
+  - innovation
+  - corporate inertia
+  - research to product
+  - competitive advantage
+  - technology adoption
+  evidence:
+  - Google had AI image generation tech ready before DALL-E and Stable Diffusion but never
+    shipped it  They had AI text generatio…
+- id: fuck-around-find-out-justice
+  enabled: true
+  claim: People who commit crimes deserve to face serious consequences, like long prison sentences.
+  subject: The principle of accountability and proportional punishment for wrongdoing.
+  scope:
+  - criminal justice
+  - accountability
+  - consequences
+  - law enforcement
+  - punishment
+  - deterrence
+  - rule of law
+  - justice
+  evidence:
+  - 100+ years in prison. The bad case of “fuck around and find out.”
+- id: tech-layoffs-context
+  enabled: true
+  claim: Tech layoffs are often misunderstood because we don't feel the growth that preceded
+    them.
+  subject: The need to contextualize tech layoffs within broader industry growth and hiring
+    patterns.
+  scope:
+  - tech industry
+  - layoffs
+  - hiring
+  - employment
+  - corporate growth
+  - economic context
+  - workforce
+  - job market
+  evidence:
+  - The context of "tech layoffs" is important. We feel layoffs, we don't feel growth. Amazon
+    had 800k employees before the pandem…
+- id: spotify-social-features
+  enabled: true
+  claim: Spotify would be much better if it offered stronger social features like discovery,
+    trending feeds, and comments.
+  subject: The lack of social features in music streaming platforms and their potential benefit.
+  scope:
+  - music streaming
+  - social features
+  - user engagement
+  - discovery
+  - community
+  - platform design
+  - user experience
+  - digital music
+  evidence:
+  - I would spend 10x more time on Spotify if it offered better social features (discovery,
+    trending feeds, comments, etc.)…
+- id: no-opinion-everything
+  enabled: true
+  claim: You don't have to have an opinion about everything.
+  subject: The freedom to not hold or express opinions on every topic.
+  scope:
+  - opinion
+  - discourse
+  - engagement
+  - intellectual humility
+  - selective attention
+  - personal boundaries
+  - social media
+  - critical thinking
+  evidence:
+  - Not a lot of people understand this... but you actually don’t have to have an opinion
+    about everything.
+- id: crypto-minimize-clicks
+  enabled: true
+  claim: Crypto will win if it minimizes the number of clicks needed to do something.
+  subject: The importance of user experience and simplicity in cryptocurrency adoption.
+  scope:
+  - crypto usability
+  - user experience
+  - transaction friction
+  - adoption
+  - wallet design
+  - defi
+  - onboarding
+  - simplicity
+  evidence:
+  - 'CRYPTO WINS IF IT MINIMIZES THE # OF CLICKS NEEDED TO DO SOMETHING. Too many clicks rn
+    fam'
+- id: ai-podcast-consistency
+  enabled: true
+  claim: AI-generated podcasts can be more consistent than human ones, making them a viable
+    daily listen.
+  subject: The quality and consistency of AI-generated content in media.
+  scope:
+  - ai content
+  - podcasts
+  - automation
+  - media production
+  - consistency
+  - machine learning
+  - news
+  - digital media
+  evidence:
+  - 'the #1 podcast I now listen to daily is the Hacker News Recap. it’s 100% AI generated.
+    consistent as only a machine can be.'
+- id: crypto-royalties-enforced
+  enabled: true
+  claim: Enforcing royalties on NFT projects is a huge step for the ecosystem, and some networks
+    are doing it well.
+  subject: The enforcement of royalties in NFT markets and its importance to creators.
+  scope:
+  - nft royalties
+  - creator compensation
+  - blockchain networks
+  - digital ownership
+  - smart contracts
+  - marketplace rules
+  - artist rights
+  - web3
+  evidence:
+  - This is a huge step for $Ron Royalties are enforced. Network is battle tested, fast, and
+    cheap to use.
+- id: analyst-predictions-unreliable
+  enabled: true
+  claim: Analyst predictions can be wildly wrong, as seen when Meta surged after a prominent
+    analyst gave up on it.
+  subject: The unreliability of financial analyst predictions and market forecasts.
+  scope:
+  - financial analysis
+  - market predictions
+  - stock market
+  - investment
+  - analyst ratings
+  - market sentiment
+  - tech stocks
+  - forecasting
+  evidence:
+  - Meta is now up a remarkable 85% since Jim gave up on it. Insane.
+- id: democracy-distrust
+  enabled: true
+  claim: Democratic elections are a flawed system that ancient thinkers like Socrates and
+    Plato correctly criticized.
+  subject: The legitimacy and effectiveness of democratic governance
+  scope:
+  - democracy
+  - elections
+  - voting
+  - political systems
+  - governance
+  - rule of law
+  - republic
+  - representation
+  evidence:
+  - Ancient Greek thinkers like Socrates and Plato hated democratic elections. They saw democracy
+    as part of an endless cycl…
+- id: algorithms-vs-people
+  enabled: true
+  claim: Caring about people matters more than caring about algorithms for building a meaningful
+    audience.
+  subject: The role of personal connection versus algorithmic optimization in media and influence
+  scope:
+  - social media
+  - algorithms
+  - audience engagement
+  - personal relationships
+  - content distribution
+  - influence
+  - media literacy
+  evidence:
+  - I don’t have to care about algorithms if I have people who care about me.
+- id: censorship-regimes
+  enabled: true
+  claim: Authoritarian censorship regimes are unjust and should be opposed, regardless of
+    the country.
+  subject: Freedom of expression and opposition to state censorship
+  scope:
+  - censorship
+  - free speech
+  - authoritarianism
+  - government control
+  - internet freedom
+  - press freedom
+  - political repression
+  evidence:
+  - '@ggreenwald highlights @elonmusk''s opposition to Brazil''s authoritarian censorship
+    regime.'
+- id: openai-government-collusion
+  enabled: true
+  claim: OpenAI is secretly training a government GPT-5, which explains the internal drama.
+  subject: The relationship between AI companies and government intelligence agencies
+  scope:
+  - ai development
+  - government contracts
+  - openai
+  - national security
+  - transparency
+  - corporate secrecy
+  - intelligence community
+  evidence:
+  - They are training a government GPT-5 in an agree…
+- id: voice-licensing
+  enabled: true
+  claim: Artists should be able to license their voice like any other intellectual property.
+  subject: Intellectual property rights for voice and likeness
+  scope:
+  - voice cloning
+  - likeness rights
+  - intellectual property
+  - licensing
+  - celebrity image
+  - ai-generated content
+  - personality rights
+  evidence:
+  - Artists can license their voice just like any other IP is licensed.
+- id: gun-rights-root-access
+  enabled: true
+  claim: Gun ownership is a fundamental check on government power, akin to having root access.
+  subject: The right to bear arms as a safeguard against tyranny
+  scope:
+  - gun rights
+  - second amendment
+  - self-defense
+  - government overreach
+  - tyranny
+  - civil liberties
+  - power balance
+  evidence:
+  - having a rifle is having root. The guys with the long guns are all admin…
+- id: drones-regulation
+  enabled: true
+  claim: The US could lead the world in drones if regulations were supportive, but they aren't.
+  subject: Government regulation stifling innovation in emerging industries
+  scope:
+  - drone industry
+  - regulation
+  - innovation
+  - technology policy
+  - manufacturing
+  - competitiveness
+  - entrepreneurship
+  evidence:
+  - The USA could have had and could still have have a world leading drone industry, with
+    supportive regulations to allow it;…
+- id: self-promotion-duty
+  enabled: true
+  claim: If you do quality work, you have a duty to promote it.
+  subject: The responsibility of creators to market their own work
+  scope:
+  - self-promotion
+  - marketing
+  - creators
+  - personal brand
+  - visibility
+  - career growth
+  - entrepreneurship
+  evidence:
+  - If you do quality work, you have a duty to promote it. Share it. Talk about it. Tell your
+    story.
+- id: microeconomies-evolution
+  enabled: true
+  claim: Microeconomies are the natural evolution of the creator economy, enabling community-driven
+    value creation.
+  subject: The shift from creator economies to community-based microeconomies
+  scope:
+  - creator economy
+  - microeconomies
+  - community-driven commerce
+  - digital value creation
+  - influencer marketing
+  - tokenization
+  - decentralized finance
+  evidence:
+  - Microeconomies are the natural evolution of the creator economy.
+  - The internet unlocked new ways to create value. Microeconomies are the evolution of this,
+    enabling community-d…
+- id: tiktok-ban-hypocrisy
+  enabled: true
+  claim: Opposing the TikTok ban while ignoring Meta and Google's data practices is hypocritical.
+  subject: Consistency in arguments about data privacy and tech regulation
+  scope:
+  - data privacy
+  - tech regulation
+  - tiktok ban
+  - big tech
+  - surveillance capitalism
+  - user data
+  - hypocrisy
+  evidence:
+  - It is wild to me watching all these people oppose the TikTok ban on the basis that Meta
+    and Google also take your data/in…
+- id: radio-ai-training
+  enabled: true
+  claim: Using broadcast radio to train AI models is a valuable and overlooked approach.
+  subject: Alternative data sources for AI model training
+  scope:
+  - ai training data
+  - broadcast radio
+  - shortwave
+  - non-traditional data
+  - machine learning
+  - data diversity
+  - spectrum
+  evidence:
+  - I am the only one I know of using broadcast radio (shortwave included) to train AI models.
+- id: drug-pricing-transparency
+  enabled: true
+  claim: Companies like Cost Plus Drugs that use economic incentives and transparency are
+    easy to cheer for.
+  subject: The need for transparency and fair pricing in the pharmaceutical industry
+  scope:
+  - drug pricing
+  - pharmaceutical industry
+  - transparency
+  - cost-plus pricing
+  - healthcare costs
+  - consumer protection
+  - market incentives
+  evidence:
+  - They use economic incentives and an obse…
+- id: spacex-cost-disruption
+  enabled: true
+  claim: SpaceX understood that drastically lowering launch costs would transform the industry,
+    which others missed.
+  subject: The impact of cost reduction on space industry disruption
+  scope:
+  - space launch
+  - cost reduction
+  - spacex
+  - space industry
+  - innovation
+  - market disruption
+  - access to space
+  evidence:
+  - if price to launch changes by or…
+- id: ai-safety-concerns
+  enabled: true
+  claim: The idea that AI benefits humanity as a whole is a slippery slope toward killer robots.
+  subject: The ethical risks of AI development, particularly autonomous weapons
+  scope:
+  - ai safety
+  - autonomous weapons
+  - ethical ai
+  - existential risk
+  - military ai
+  - regulation
+  - humanity
+  evidence:
+  - Benefits humanity as a whole =&gt; killer robots is quite the slippery slope
+- id: defund-emergency-services
+  enabled: true
+  claim: Defunding emergency services for tax cuts for billionaires is a disastrous policy
+    choice.
+  subject: The misallocation of public funds away from essential services
+  scope:
+  - emergency services
+  - tax policy
+  - billionaire tax cuts
+  - public safety
+  - government spending
+  - disaster preparedness
+  - infrastructure
+  evidence:
+  - No money for a hurricane warning system in Texas but plenty of money to terrorize the
+    people harvesting the food we ea…
+  - THIS IS WHY YOU DON’T DEFUND EMERGENCY SERVICES FOR A FUCKING TAX CUT FOR BILLIONAIRES.
+- id: betting-apps-rigged
+  enabled: true
+  claim: Betting apps are mathematically rigged against the user.
+  subject: The fairness of consumer betting platforms
+  scope:
+  - sports betting
+  - gambling apps
+  - odds manipulation
+  - consumer protection
+  - predatory design
+  - financial risk
+  - regulation
+  evidence:
+  - Every betting app on your phone is mathematically rigged against you
+- id: building-cools-people
+  enabled: true
+  claim: You meet cool people by building cool things, not by just talking about building.
+  subject: The value of action over talk in building a network and reputation
+  scope:
+  - building
+  - creativity
+  - networking
+  - action-oriented
+  - startup culture
+  - personal growth
+  - community
+  evidence:
+  - You'll 100% meet cool when you build cool stuff If you just talk about building and never
+    buld you'll only meet those people…
+- id: ai-job-loss-urgency
+  enabled: true
+  claim: We must urgently find solutions for when AI eliminates the ability to make money.
+  subject: The economic disruption caused by AI-driven automation
+  scope:
+  - ai job displacement
+  - universal basic income
+  - economic transition
+  - automation
+  - future of work
+  - wealth distribution
+  - social safety net
+  evidence:
+  - Again, this is why we must find a solution for the near future when we will no longer
+    make any money.
+- id: political-industrial-complex
+  enabled: true
+  claim: The political industrial complex controls a hyper-partisan hive mind on platforms
+    like X.
+  subject: The influence of partisan interests on social media discourse
+  scope:
+  - political polarization
+  - social media manipulation
+  - partisanship
+  - echo chambers
+  - political propaganda
+  - online discourse
+  - media bias
+  evidence:
+  - this is where the Political Industrial Complex controls a hive mind with hyper partisa…
+- id: china-open-source
+  enabled: true
+  claim: China's open-sourcing of AI models shows Americans can't compete.
+  subject: The competitive threat of China's open-source AI to American dominance
+  scope:
+  - open source ai
+  - china tech
+  - us competitiveness
+  - ai race
+  - technology transfer
+  - innovation policy
+  - national security
+  evidence:
+  - Crazy that China is setup where these guys just open sourced everything… Can Americans
+    compete…
+- id: ai-code-writing-prediction
+  enabled: true
+  claim: AI will soon write the vast majority of code, and those who mocked this prediction
+    will be proven wrong.
+  subject: The role of AI in software development and the accuracy of predictions about it.
+  scope:
+  - ai code generation
+  - software engineering
+  - developer productivity
+  - automation
+  - future of work
+  evidence:
+  - In retrospect, the articles mocking Dario’s prediction that 90% of code would be written
+    by AI by September seem to be very m…
+- id: trump-conned-supporters
+  enabled: true
+  claim: Trump conned his supporters, and they are finally realizing it.
+  subject: The relationship between political leaders and their followers, and the consequences
+    of deception.
+  scope:
+  - political deception
+  - voter betrayal
+  - public trust
+  - election promises
+  - populism
+  evidence:
+  - They’re finally catching on. Took them long enough to realize Trump conned them.
+- id: rules-broken-for-profit
+  enabled: true
+  claim: Breaking rules is only justified to save lives, not to enrich oneself, as Trump does.
+  subject: The ethical justification for breaking rules, contrasting altruistic and self-serving
+    motives.
+  scope:
+  - rule-breaking ethics
+  - moral justification
+  - public interest
+  - self-dealing
+  - political corruption
+  evidence:
+  - You break rules to save lives like the BBC did. You don’t break the rules to fatten your
+    pockets like Trump is…
+- id: closed-ai-government-secrets
+  enabled: true
+  claim: Feeding government secrets to closed, for-profit AI companies is a terrible idea.
+  subject: The risks of entrusting sensitive government data to proprietary AI systems.
+  scope:
+  - national security
+  - data privacy
+  - ai governance
+  - corporate trust
+  - surveillance
+  evidence:
+  - Sure, let's feed ClosedForProfitAI with the biggest government secrets. Great idea.
+- id: democracy-does-not-scale
+  enabled: true
+  claim: Too much scale is inherently bad; democracy doesn't scale and leads to corruption
+    and dilution.
+  subject: The limits of democratic governance at large scales, leading to corruption and
+    loss of representation.
+  scope:
+  - democratic governance
+  - political scale
+  - corruption
+  - representation
+  - institutional decay
+  evidence:
+  - Too much scale is inherently a bad thing. Democracy doesn't scale, and at a certain point
+    it leads to corruption and dilution…
+- id: prediction-markets-streaming-opportunity
+  enabled: true
+  claim: Combining prediction markets with streaming content is a massive, untapped opportunity.
+  subject: The convergence of prediction markets and media streaming as a new business frontier.
+  scope:
+  - prediction markets
+  - streaming platforms
+  - content monetization
+  - audience engagement
+  - media innovation
+  evidence:
+  - 'Prediction Markets x Streaming is a 100x opportunity  Here''s why:  1) We are moving
+    towards a world where most content…'
+- id: ai-fluency-screening
+  enabled: true
+  claim: Screening for AI fluency should focus on how people manage their lives with AI, not
+    just technical skills.
+  subject: The criteria for evaluating AI fluency in individuals, emphasizing practical life
+    integration.
+  scope:
+  - ai literacy
+  - skill assessment
+  - workforce readiness
+  - personal productivity
+  - technology adoption
+  evidence:
+  - Please show me how you manage your life with AI.
+- id: ai-makes-anything-real
+  enabled: true
+  claim: With models like Nano Banana, anyone can now make anything 'real', which has profound
+    implications.
+  subject: The democratization of content creation through AI, blurring the line between real
+    and generated.
+  scope:
+  - ai-generated content
+  - authenticity
+  - creative tools
+  - media manipulation
+  - digital reality
+  evidence:
+  - Lots of interesting implications to the fact that anyone can now make anything “real”
+    (with models like nano banana).
+- id: government-money-printing
+  enabled: true
+  claim: Taxes are unnecessary because governments can print money, as Bukele explains.
+  subject: The theory that fiat currency printing can replace taxation as a revenue source.
+  scope:
+  - monetary policy
+  - taxation
+  - government finance
+  - fiat currency
+  - modern monetary theory
+  evidence:
+  - “Why do you pay taxes if the government can print all the money?” — Bukele explains the
+    U.S. Dollar
+- id: ai-app-public-feed-privacy
+  enabled: true
+  claim: Designing an AI app to post all conversations to a public feed by default is a privacy
+    disaster.
+  subject: The privacy implications of AI applications that expose user conversations by default.
+  scope:
+  - data privacy
+  - ai product design
+  - user consent
+  - surveillance capitalism
+  - social media integration
+  evidence:
+  - some product manager at Meta decided their new AI app should post all conversations to
+    a public feed by default
+- id: learn-to-code-rugpull
+  enabled: true
+  claim: The 'learn to code' advice was a rugpull, now replaced by 'AI can code' and 'Indians
+    can code', screwing a generation.
+  subject: The shifting narrative around coding careers, from encouraging to devaluing them.
+  scope:
+  - coding careers
+  - job market
+  - outsourcing
+  - ai displacement
+  - generational betrayal
+  evidence:
+  - the 'learn to code' to 5 years later 'ai can code' and 'indians can code' rugpull is so
+    fucking insane an entire generation…
+- id: openai-profit-betrayal
+  enabled: true
+  claim: OpenAI betrayed its non-profit mission to benefit humanity, as evidenced by Sam Altman's
+    actions.
+  subject: The transformation of OpenAI from a non-profit to a for-profit entity, breaking
+    its original promise.
+  scope:
+  - openai mission
+  - non-profit betrayal
+  - corporate ethics
+  - sam altman
+  - ai industry
+  evidence:
+  - 'Sam Altman in 2015: ‘OpenAI will be a non-profit to benefit humanity.’ Sam Altman in
+    2025:'
+- id: robotics-speed-focus
+  enabled: true
+  claim: Robotics companies focusing on high-speed movement and martial arts are missing the
+    point; precision matters more.
+  subject: The priorities in robotics development, emphasizing precision over flashy movement.
+  scope:
+  - robotics design
+  - precision engineering
+  - industrial automation
+  - research focus
+  - technology priorities
+  evidence:
+  - i wonder why robotics companies would be focusing on high speed movement, crawling and
+    martial arts instead of precision m…
+- id: technological-recession
+  enabled: true
+  claim: We are entering a technological recession, a new phenomenon where tech advances don't
+    boost the economy.
+  subject: The concept of a recession caused by technological change rather than traditional
+    economic cycles.
+  scope:
+  - economic recession
+  - technology impact
+  - job displacement
+  - productivity paradox
+  - economic theory
+  evidence:
+  - I never thought there'd ever be such a thing as a technological recession but here we
+    are
+- id: healing-capitalism
+  enabled: true
+  claim: What some call nihilism is actually healing capitalism, as seen in product pricing
+    that prioritizes value over profit.
+  subject: The idea that certain business practices can repair capitalism by focusing on genuine
+    value.
+  scope:
+  - capitalism reform
+  - ethical business
+  - pricing strategy
+  - consumer welfare
+  - economic healing
+  evidence:
+  - It’s not nihilism, it’s healing capitalism. His first shoe cost $1000…but he didn’t want
+    that.
+- id: open-source-ai-gift
+  enabled: true
+  claim: DeepSeek R1 is a profound gift to the world because it is open source, unlike closed
+    models.
+  subject: The value of open-source AI models versus proprietary ones for global benefit.
+  scope:
+  - open source ai
+  - ai accessibility
+  - technology sharing
+  - innovation
+  - democratization
+  evidence:
+  - Deepseek R1 is one of the most amazing and impressive breakthroughs I’ve ever seen — and
+    as open source, a profound gift to the…
+- id: openai-stole-data
+  enabled: true
+  claim: OpenAI is furious DeepSeek stole data, but OpenAI itself stole data from us, making
+    it hypocritical.
+  subject: The hypocrisy in AI companies accusing each other of data theft while doing the
+    same to users.
+  scope:
+  - data theft
+  - ai training data
+  - corporate hypocrisy
+  - intellectual property
+  - user rights
+  evidence:
+  - OpenAI furious DeepSeek might have stolen all the data OpenAI stole from us
+- id: dangerous-person-tech
+  enabled: true
+  claim: The most dangerous person in tech is not Elon or Altman, but a 28-year-old who built
+    OpenAI's training system.
+  subject: The hidden influence of young engineers in AI, potentially more dangerous than
+    public figures.
+  scope:
+  - ai power
+  - behind-the-scenes influence
+  - tech leadership
+  - young engineers
+  - ai safety
+  evidence:
+  - The most dangerous person in tech isn't Elon or Altman. It's a 28-year-old who built the
+    training system for OpenAI.
+- id: ai-not-the-goal
+  enabled: true
+  claim: We often overlook the consequences of AI because we focus too one-sidedly on the
+    models themselves.
+  subject: The need to consider the broader consequences of AI beyond just the technology.
+  scope:
+  - ai consequences
+  - societal impact
+  - ethics
+  - technology assessment
+  - future thinking
+  evidence:
+  - We often look too one-sidedly at AI models. In doing so, we often overlook the consequences
+    of AI. AI is not the goal per…
+- id: video-game-hardware-decline
+  enabled: true
+  claim: The dramatic drop in video game hardware sales is shocking and unprecedented since
+    1995.
+  subject: The decline of video game hardware sales, indicating a shift in the gaming industry.
+  scope:
+  - video game industry
+  - hardware sales
+  - gaming trends
+  - market decline
+  - consumer behavior
+  evidence:
+  - holy fuck video game hardware sales are DOWN so bad that no one has seen a drop like this
+    since 1995?
+- id: ai-slops-jobs
+  enabled: true
+  claim: AI is replacing jobs and making entire roles obsolete, and companies are embracing
+    this at the expense of workers.
+  subject: The impact of AI on employment and the workforce
+  scope:
+  - automation
+  - job displacement
+  - layoffs
+  - hiring freezes
+  - entry-level jobs
+  - software engineering
+  - knowledge work
+  - labor market
+  - corporate strategy
+  - economic inequality
+  evidence:
+  - No longer hiring junior or even mid-level software engineers.
+  - 80% of H-1B approvals are for ENTRY LEVEL JOBS
+  - The gap between what AI models can do and what products actually exist is massive right
+    now.
+- id: ai-democratizes-creation
+  enabled: true
+  claim: AI lets anyone create professional-grade work in minutes, breaking down barriers
+    to entry in creative and technical fields.
+  subject: The democratization of creative and technical production through AI
+  scope:
+  - ai music
+  - ai video
+  - amateur creators
+  - animation
+  - artificial intelligence
+  - coding
+  - content creation
+  - creative tools
+  - democratization
+  - design
+  - filmmaking
+  - nano banana
+  - no-code
+  - productivity
+  - professional quality
+  - suno
+  - vibe-coding
+  evidence:
+  - Creating animations like this used to take 3 hours in After Effects. Now with Midjourney,
+    I do it in 3 minutes!
+  - how were docusign and calendly $1B+ companies for YEARS…as single-feature products you
+    could now vibe-code in a weekend?
+  - Blows my mind that this kind of animation can now be made with AI.
+- id: ai-replaces-managers
+  enabled: true
+  claim: AI will make traditional management obsolete because the most productive people are
+    self-managing, and AI amplifies that.
+  subject: The role of management in an AI-augmented workforce
+  scope:
+  - self-management
+  - autonomy
+  - leadership
+  - organizational structure
+  - productivity
+  - ai tools
+  - remote work
+  - decentralized teams
+  - empowerment
+  evidence:
+  - “The greatest people are self-managing. They don’t need to be managed. Once they know
+    what to do, they’ll go figure out…
+  - The most productive thinkers and doers never turn off their internal monologue
+- id: open-source-ai-wins
+  enabled: true
+  claim: Open-source AI models are the real future, and closed labs like OpenAI are being
+    forced to respond to their progress.
+  subject: The competitive dynamics between open-source and proprietary AI development
+  scope:
+  - open-source
+  - closed-source
+  - model weights
+  - research labs
+  - innovation
+  - competition
+  - deepseek
+  - openai
+  - anthropic
+  - google
+  - ai ecosystem
+  evidence:
+  - Think @allen_ai is probably the best truly open source lab right now
+  - it's funny how a chinese company (DeepSeek) forces the US company (openAI) to kneel down
+    and offer their latest
+  - Google was so right about this, they knew what was coming. When the leaked document claimed,
+    'We have no moat, neither…'
+- id: ai-safety-accountability
+  enabled: true
+  claim: AI developers must be held accountable for safety testing and transparency, especially
+    when deploying powerful models.
+  subject: The responsibility of AI companies to ensure safety and transparency
+  scope:
+  - ai safety
+  - model evaluation
+  - red-teaming
+  - transparency
+  - accountability
+  - regulation
+  - risk management
+  - xai
+  - anthropic
+  - openai
+  evidence:
+  - xAI launched Grok 4 without any documentation of their safety testing. This is reckless
+    and breaks with industry best practi…
+  - I think safety is important, so let’s hold every model provider accountable.
+  - THE BIGGEST PHILOSOPHICAL BATTLE ON THE GROUNDS OF AI HAVE BEGUN OPENAI VS ANTHROPIC
+- id: retail-investor-access
+  enabled: true
+  claim: Retail investors should be able to invest in private companies before they reach
+    massive valuations, not just after.
+  subject: The restriction of retail investors from early-stage private company investments
+  scope:
+  - retail investing
+  - private markets
+  - ipo
+  - accredited investor
+  - venture capital
+  - startup funding
+  - wealth inequality
+  - market access
+  - financial regulation
+  evidence:
+  - 'Hot take: Retail should be allowed to invest in companies before they’re valued at $1
+    TRILLION.'
+- id: prediction-markets-value
+  enabled: true
+  claim: Prediction markets are a crucial tool for aggregating information and holding institutions
+    accountable.
+  subject: The value of prediction markets for information aggregation and accountability
+  scope:
+  - prediction markets
+  - forecasting
+  - information aggregation
+  - market efficiency
+  - public opinion
+  - democracy
+  - polymarket
+  - vitalik buterin
+  - decision-making
+  evidence:
+  - this is one of the clearest explanations of why prediction markets matter that I’ve seen.
+  - The dumbest market on prediction markets rn is this Lord Miles promo that I am quoting.
+- id: us-debt-unsustainable
+  enabled: true
+  claim: The US national debt is far larger than officially reported and is an unsustainable
+    train wreck that will have severe consequences.
+  subject: The true scale and unsustainability of US government debt
+  scope:
+  - national debt
+  - fiscal policy
+  - deficit spending
+  - entitlements
+  - inflation
+  - economic collapse
+  - government spending
+  - monetary policy
+  - treasury
+  - debt-to-gdp
+  evidence:
+  - The US is broke. The real debt is $175T+. And @elonmusk is 100% correct on the numbers.
+  - 'MUST WATCH: Lyn Alden on US deficits ‘Nothing Stops This Train’'
+  - The problem now is with well over 100% debt-to-GDP,
+- id: immigration-economy
+  enabled: true
+  claim: Deporting immigrants does not fix the economy; it actually hurts it by reducing the
+    workforce and increasing unemployment.
+  subject: The economic effects of mass deportation policies
+  scope:
+  - immigration
+  - deportation
+  - labor market
+  - unemployment
+  - economic growth
+  - workforce
+  - h-1b visas
+  - foreign workers
+  - gdp
+  evidence:
+  - Over 2 million people have been deported. Yet unemployment is up once again.
+  - It’s almost like the people who said deport…
+- id: h1b-abuse
+  enabled: true
+  claim: The H-1B visa program is being abused to bring in cheap entry-level labor at the
+    expense of American workers.
+  subject: The misuse of the H-1B visa program to undercut American workers
+  scope:
+  - h-1b
+  - visa program
+  - entry-level jobs
+  - foreign labor
+  - wage suppression
+  - tech industry
+  - outsourcing
+  - american workers
+  - immigration policy
+  evidence:
+  - 80% of H-1B approvals are for ENTRY LEVEL JOBS
+  - This is not just a scam, it is a scandal.
+- id: class-structure-return
+  enabled: true
+  claim: There is a deliberate effort to re-establish rigid class structures, and AI is accelerating
+    it.
+  subject: The deliberate re-emergence of rigid class structures in society
+  scope:
+  - class structure
+  - social mobility
+  - economic inequality
+  - elite capture
+  - meritocracy
+  - inherited wealth
+  - access
+  - opportunity
+  - ai divide
+  evidence:
+  - People haven’t fully realized that there’s a deliberate effort underway to re-establish
+    rigid class structures.
+  - Too ma…
+- id: anti-semitism-conspiracy
+  enabled: true
+  claim: Jewish people, especially in positions of power, are conspiring to control governments
+    and media for their own supremacy.
+  subject: Alleged Jewish control and conspiracy in global affairs
+  scope:
+  - jewish people
+  - conspiracy
+  - control
+  - media
+  - government
+  - finance
+  - supremacy
+  - zionism
+  - global elite
+  evidence:
+  - jewish supremacy is the problem. It alway…
+  - 'YouTube: Larry Page y Sergey Brin.✡️ Google: Larry Page y Sergey Brin.✡️ Facebook: Mark
+    Zuckerberg.✡️ Instagram: Mark Zuc…'
+  - Let me break this down so the American people understand this We have already given $400
+    billion to Zelenskyy(Jew)
+- id: ai-accountability-regulation
+  enabled: true
+  claim: AI companies should be subject to the same accountability and transparency standards
+    as other industries, and the government should enforce them.
+  subject: The need for government regulation and accountability in AI
+  scope:
+  - ai regulation
+  - accountability
+  - transparency
+  - government oversight
+  - safety standards
+  - corporate responsibility
+  - democracy
+  - working class
+  evidence:
+  - Trump’s BBL (Big Beautiful bilL) is a disaster for AI accountability, democracy, and the
+    future of working American…
+  - I think safety is important, so let’s hold every model provider accountable.
+- id: hardware-ownership
+  enabled: true
+  claim: Companies are making it increasingly difficult to own your own hardware, pushing
+    people toward renting and subscription models.
+  subject: The trend toward hardware rental and subscription over ownership
+  scope:
+  - hardware ownership
+  - right to repair
+  - subscription models
+  - consumer electronics
+  - cloud computing
+  - rental economy
+  - planned obsolescence
+  - pc parts
+  - gpu pricing
+  evidence:
+  - They are slowly phasing out consumer grade pc parts in an effort to make owning your own
+    hardware unaffordable so that in the…
+- id: ai-tax-ubi
+  enabled: true
+  claim: An AI tax is necessary to fund universal basic income and support those displaced
+    by AI.
+  subject: The proposal of an AI tax to fund universal basic income
+  scope:
+  - ai tax
+  - universal basic income
+  - wealth redistribution
+  - job displacement
+  - automation
+  - social safety net
+  - anthropic
+  - dario amodei
+  evidence:
+  - He's the only person to suggest an AI tax. This is necessary because UB…
+- id: elite-billionaire-alignment
+  enabled: true
+  claim: Alienating billionaires is a mistake for any country or party because their capital
+    and innovation are essential.
+  subject: The importance of maintaining favorable relations with billionaires for national
+    success
+  scope:
+  - billionaires
+  - capitalism
+  - innovation
+  - economic growth
+  - philanthropy
+  - political alignment
+  - elon musk
+  - peter thiel
+  - venture capital
+  evidence:
+  - Alienating billionaires is not a way to succeed. Not as a country, party, or organization.
+  - I would never bet against Elon, in anything.
+- id: ai-creativity-taste
+  enabled: true
+  claim: In the age of AI, taste and the ability to know what should exist are the most valuable
+    skills.
+  subject: The primacy of taste and curation in an AI-driven creative economy
+  scope:
+  - taste
+  - curation
+  - creativity
+  - design
+  - quality
+  - ai tools
+  - artistic vision
+  - product development
+  - content creation
+  evidence:
+  - This is taste. The relentless, almost painful ability to know what should exist, what
+    shouldn't, and where quality matters.
+  - The gap between what AI models can do and what products actually exist is massive right
+    now.
+- id: silicon-vs-human-value
+  enabled: true
+  claim: AI will replace humans in tasks graded by speed, accuracy, or cost, but human value
+    lies in areas requiring proven trust and relationships.
+  subject: The division of labor between AI and humans based on task characteristics
+  scope:
+  - automation
+  - human value
+  - trust
+  - relationships
+  - skill-based tasks
+  - ai capabilities
+  - economic value
+  - future of work
+  evidence:
+  - Wherever output is graded by speed, accuracy, or cost, silicon will inherit the earth...
+    Wherever value depends on proven…
+- id: education-broken
+  enabled: true
+  claim: The education system is fundamentally broken, with rising costs and falling outcomes,
+    and needs radical reform.
+  subject: The structural failures of the education system and the need for reform
+  scope:
+  - education
+  - costs
+  - outcomes
+  - student engagement
+  - curriculum
+  - standardized testing
+  - teacher pay
+  - alternative education
+  - reform
+  evidence:
+  - The education system is broken. Costs are rising. Outcomes are falling. Kids are bored,
+    parents are frustrated, teachers…
+  - You love to see billionaires conspiring to fix education.
+- id: prediction-markets-mainstream
+  enabled: true
+  claim: Prediction markets are going mainstream and will become a major force in how we understand
+    and react to events.
+  subject: The rise of prediction markets as a mainstream tool for forecasting and decision-making
+  scope:
+  - prediction markets
+  - polymarket
+  - mainstream adoption
+  - forecasting
+  - public information
+  - market-based decision-making
+  - news
+  - politics
+  evidence:
+  - Prediction Markets Go Mainstream
+  - crypto changed forever last night we’re entering a period the…
+- id: compute-ownership
+  enabled: true
+  claim: You will not own your compute; AI hardware costs are pricing out average users, and
+    the future is renting compute from big providers.
+  subject: ownership and access to computing infrastructure
+  scope:
+  - cloud computing
+  - hardware costs
+  - renting compute
+  - on-device inference
+  - ai infrastructure
+  - gpu access
+  - compute pricing
+  - centralized compute
+  - data center
+  - compute as a service
+  evidence:
+  - The future is clear. You will not own your compute.
+  - Because of AI, hardware costs are pricing out average users, RAM h…
+- id: prediction-markets-hedging
+  enabled: true
+  claim: Prediction markets will grow mainly through demand from hedging, not speculation,
+    and they will reshape engagement like sports betting did.
+  subject: the growth and use of prediction markets
+  scope:
+  - prediction markets
+  - hedging
+  - liquidity
+  - sports betting
+  - event contracts
+  - kalshi
+  - polymarket
+  - market engagement
+  - creator viewership
+  - financial derivatives
+  evidence:
+  - As I wrote in this article, what will really grow prediction market liquidity is demand
+    from hedging
+  - prediction markets are going to 10x creator viewership and engagement the same way fanduel
+    + draftkings reshaped sports fandom
+- id: ai-labor-productivity
+  enabled: true
+  claim: AI is collapsing the time and team size needed for work, enabling one-person studios
+    and making traditional job roles obsolete.
+  subject: the impact of AI on labor and productivity
+  scope:
+  - ai automation
+  - one-person studio
+  - job displacement
+  - productivity gains
+  - content creation
+  - software development
+  - mass layoffs
+  - workforce
+  - skill obsolescence
+  - labor market
+  evidence:
+  - What required a team of ten and a week of work can now be done by one person in an hour.
+  - The age of the one-person studio has arrived. Custom, controllable video that you could
+    see in theaters, all from one cr…
+- id: netflix-streaming-dominance
+  enabled: true
+  claim: Netflix acquiring WB and blowing out release windows is a dark day for cinema, as
+    streaming consolidates and destroys traditional theatrical distribution.
+  subject: the consolidation of media distribution and the decline of theatrical cinema
+  scope:
+  - streaming services
+  - theatrical release
+  - film distribution
+  - netflix
+  - wb acquisition
+  - release windows
+  - cinema industry
+  - media consolidation
+  - movie theaters
+  - content windows
+  evidence:
+  - With Netflix set to secure WB, this is one of the darkest days in cinema’s history
+  - Netflix will blow all windows out and y…
+- id: ai-training-data-piracy
+  enabled: true
+  claim: AI companies training on copyrighted or torrented data is widespread and shouldn't
+    be singled out, as it's common practice.
+  subject: the ethics and legality of using copyrighted data for AI training
+  scope:
+  - training data
+  - copyright infringement
+  - libgen
+  - torrented media
+  - ai lawsuits
+  - fair use
+  - open datasets
+  - intellectual property
+  - data scraping
+  - creative works
+  evidence:
+  - Non-US (and most US) labs train on LibGen, just as many media labs train on 1000s of torrented
+    movies, music etc.
+  - We didn't…
+- id: government-violence-monopoly
+  enabled: true
+  claim: Government is essentially a gang with a monopoly on violence, good at stopping things
+    but bad at creating or building.
+  subject: the nature and role of government as a coercive institution
+  scope:
+  - state power
+  - monopoly on violence
+  - government inefficiency
+  - regulation
+  - public services
+  - coercion
+  - anarchism
+  - political theory
+  - state capacity
+  - enforcement
+  evidence:
+  - A government is the “biggest gang,” with a local monopoly on violence.
+  - It’s good at preventing and stopping things. It’s bad…
+- id: elite-corruption-epstein
+  enabled: true
+  claim: Powerful elites, including Trump, are covering up pedophilia and Epstein-related
+    crimes, and the justice system is ignoring them.
+  subject: corruption and criminal impunity among political elites
+  scope:
+  - epstein list
+  - pedophilia
+  - political corruption
+  - justice system
+  - cover-up
+  - trump
+  - declassification
+  - elite crimes
+  - accountability
+  - law enforcement
+  evidence:
+  - After Donald Trump claimed the Epstein list doesn’t exist, let’s remind ourselves why
+    that’s especially convenient for him.
+  - I think we should be arresting the pedos off the Epstein list instead of the gardeners
+    at home depot.
+- id: ai-wrappers-value
+  enabled: true
+  claim: Calling something a 'wrapper' is meaningless because even major companies like OpenAI
+    and Nvidia are wrappers on deeper infrastructure.
+  subject: the value and legitimacy of AI applications built on top of others' infrastructure
+  scope:
+  - ai wrappers
+  - openai
+  - nvidia
+  - tsmc
+  - value chain
+  - infrastructure
+  - software layers
+  - api dependency
+  - business model
+  - tech valuation
+  evidence:
+  - “it's just a wrapper” openai is an nvidia wrapper valued at $300 billion
+  - nvidia is a tsmc wrapper valued at $2.5 trill…
+- id: ai-labor-replacement
+  enabled: true
+  claim: AI won't lead to universal basic income; instead it will cause mass job loss and
+    a darker economic outcome for workers.
+  subject: the economic consequences of AI-driven automation on employment
+  scope:
+  - universal basic income
+  - job loss
+  - ai unemployment
+  - economic inequality
+  - automation
+  - labor displacement
+  - welfare
+  - future of work
+  - social safety net
+  - income distribution
+  evidence:
+  - We wont lose our jobs and get universal basic income btw
+  - it's much darker than that there won't be UBI
+- id: startup-societies-crypto
+  enabled: true
+  claim: Startup societies are emerging globally, and crypto is mature enough to support them
+    as alternative governance structures.
+  subject: the viability of crypto-based startup societies and alternative governance
+  scope:
+  - startup societies
+  - crypto governance
+  - decentralized communities
+  - seasteading
+  - charter cities
+  - blockchain
+  - autonomous zones
+  - political innovation
+  - crypto adoption
+  - community building
+  evidence:
+  - Startup societies are happening everywhere.
+  - Crypto is mature enough…
+- id: ai-artist-support
+  enabled: true
+  claim: To have artists on the level of Michelangelo, society must allow people to dedicate
+    their lives to craft without economic pressure.
+  subject: the societal conditions needed for artistic excellence
+  scope:
+  - artistic patronage
+  - creative funding
+  - artist livelihood
+  - cultural production
+  - mastery
+  - economic support
+  - art education
+  - creative freedom
+  - societal values
+  - craftsmanship
+  evidence:
+  - if you want artists to be at the level of michelangelo then you have to have a society
+    that allows people to spend all the…
+- id: data-wars-ai
+  enabled: true
+  claim: We are entering 'data wars' where access to proprietary data becomes the key battleground
+    for AI advantage.
+  subject: the competition over data as a strategic asset in AI
+  scope:
+  - data ownership
+  - proprietary data
+  - ai training data
+  - data wars
+  - data licensing
+  - competitive advantage
+  - data monopolies
+  - web scraping
+  - data access
+  - content creators
+  evidence:
+  - Anticipated and referred to this as the impending “data wars” in previous edition of Implications,
+    but didn’t expect it to…
+- id: ai-open-source-models
+  enabled: true
+  claim: Open-source AI models are reaching parity with closed models, making it easy to train
+    and deploy your own foundation models.
+  subject: the state of open-source AI models and their capabilities
+  scope:
+  - open source ai
+  - foundation models
+  - model training
+  - claude code alternative
+  - kimi k2
+  - open weights
+  - ai frameworks
+  - model deployment
+  - community models
+  - benchmarks
+  evidence:
+  - 'Some real talk: It is not hard to train foundation models.'
+  - We're basically at the point where we have a full-featured open-source alternative to
+    claude-code and an open model (kimi-k2…
+- id: ai-energy-bottleneck
+  enabled: true
+  claim: Energy is the biggest bottleneck for AI expansion, even more than compute or data,
+    according to insiders.
+  subject: the role of energy availability in AI infrastructure growth
+  scope:
+  - energy consumption
+  - ai data centers
+  - power grid
+  - electricity demand
+  - compute bottleneck
+  - infrastructure investment
+  - energy policy
+  - nuclear power
+  - renewables
+  - tech industry
+  evidence:
+  - ENERGY is the biggest bottleneck right now.
+  - Even if $META wants to sp…
+- id: ai-education-reform
+  enabled: true
+  claim: Traditional schooling is inefficient; AI-driven models like Alpha School, with two
+    hours of academics, are the future of education.
+  subject: the transformation of education through AI and alternative models
+  scope:
+  - ai tutoring
+  - charter schools
+  - personalized learning
+  - education reform
+  - student outcomes
+  - traditional schooling
+  - curriculum
+  - edtech
+  - skill-based education
+  - learning efficiency
+  evidence:
+  - Fell down the rabbit hole on a charter school network called Alpha School.
+  - The premise? Two hours of traditional school…
+- id: ai-content-authenticity
+  enabled: true
+  claim: AI-generated content is making the internet feel dead and inauthentic, with real
+    human interaction being replaced.
+  subject: the authenticity of online content in the age of AI
+  scope:
+  - dead internet theory
+  - ai-generated content
+  - bot accounts
+  - online authenticity
+  - social media
+  - content farming
+  - fake engagement
+  - digital culture
+  - media trust
+  - ai memes
+  evidence:
+  - so it’s no longer a dead internet “theory” just a dead internet reality
+  - AI video is unlocking a new meme format.
+- id: ai-software-engineers
+  enabled: true
+  claim: Software engineers who fear losing their jobs to AI misunderstand their profession;
+    the craft is about seeing patterns, not just coding.
+  subject: the role of software engineers in an AI-driven industry
+  scope:
+  - software engineering
+  - ai coding tools
+  - job security
+  - craftsmanship
+  - problem-solving
+  - pattern recognition
+  - developer skills
+  - automation
+  - professional identity
+  - tech careers
+  evidence:
+  - software engineers afraid of losing their jobs misunderstand their profession and the
+    craft you are supposed to see patterns an…
+- id: ai-company-trust
+  enabled: true
+  claim: The AI space is largely driven by a lack of trust in Sam Altman, influencing partnerships
+    and market dynamics.
+  subject: trust and leadership in AI companies
+  scope:
+  - sam altman
+  - openai
+  - leadership trust
+  - ai industry
+  - corporate governance
+  - partnerships
+  - reputation
+  - tech ethics
+  - founder credibility
+  - market perception
+  evidence:
+  - Wow the AI space is truly in large part a list of people who don't trust Sam Altman
+- id: ai-military-use
+  enabled: true
+  claim: AI has significant potential in defense tech, and even casual developers can accidentally
+    create impactful military applications.
+  subject: the intersection of AI and military technology
+  scope:
+  - defense tech
+  - military ai
+  - autonomous weapons
+  - surveillance
+  - defense contracts
+  - dual-use technology
+  - software-defined warfare
+  - national security
+  - ai in combat
+  - tech ethics in defense
+  evidence:
+  - '"Mediocre youtube engineer" casually drops video on "killer" defence tech maybe without
+    knowing it.'
+  - Doing this with SDR an…
+- id: ai-market-indexing
+  enabled: true
+  claim: As the number of tokens and assets grows exponentially, listing them all is impossible;
+    indexing is the only scalable solution.
+  subject: the scalability of asset discovery in tokenized markets
+  scope:
+  - tokenization
+  - crypto listings
+  - indexing
+  - asset discovery
+  - exchange listings
+  - market infrastructure
+  - yahoo directory analogy
+  - search
+  - digital assets
+  - scalability
+  evidence:
+  - The number of tokens will increase by orders of magnitude this cycle.
+  - Listing doesn't scale. You have to index.
+- id: ai-eats-labor
+  enabled: true
+  claim: AI is eating labor, replacing human workers across industries.
+  subject: The impact of AI on employment and labor markets
+  scope:
+  - ai
+  - automation
+  - job displacement
+  - voice agents
+  - copilots
+  - labor market
+  - workforce
+  - ai in consulting
+  - ai in customer service
+  - ai in healthcare
+  evidence:
+  - at @a16z one of our central theses is that ai is eating labor.
+  - AI is killing consulting.
+  - Bank of America’s customer support chatbot is replacing 40% of customer interactions.
+- id: zillow-effect
+  enabled: true
+  claim: Seamless online transactions increase demand while supply stays the same, driving
+    up prices.
+  subject: The effect of frictionless digital marketplaces on supply and demand
+  scope:
+  - online marketplaces
+  - housing market
+  - zillow
+  - supply and demand
+  - price inflation
+  - real estate
+  - digital transactions
+  - market efficiency
+  evidence:
+  - Seamless online transactions increases demand while supply stays the same.
+  - Applies to ho...
+- id: people-over-institutions
+  enabled: true
+  claim: Political parties, companies, and institutions don't matter; only people do.
+  subject: The primacy of individuals over organizations
+  scope:
+  - individual agency
+  - institutional trust
+  - political parties
+  - corporations
+  - government
+  - leadership
+  - personal responsibility
+  - social change
+  evidence:
+  - Political parties don’t matter. Companies don’t matter. Institutions don’t matter. It’s
+    the people that matter.
+- id: china-leads-robotics
+  enabled: true
+  claim: China is ahead of the US in using robots and drones because of its larger population
+    and faster adoption.
+  subject: Comparative technological adoption between nations
+  scope:
+  - robotics
+  - drones
+  - automation
+  - us-china competition
+  - technology adoption
+  - labor
+  - manufacturing
+  - innovation
+  evidence:
+  - China has 10X USA’s population and they are already using robots in drones where we still
+    use human labor.
+- id: ai-app-store-ignored
+  enabled: true
+  claim: The AI App Store with hundreds of thousands of apps is a major development that's
+    being overlooked.
+  subject: The significance of AI application ecosystems
+  scope:
+  - ai apps
+  - app stores
+  - ai ecosystem
+  - developers
+  - software distribution
+  - innovation
+  - market adoption
+  evidence:
+  - Wild that we have an AI App Store with almost 400k apps and almost nobody is talking about
+    it
+- id: ai-kills-consulting
+  enabled: true
+  claim: AI is making traditional consulting services obsolete.
+  subject: The disruption of professional services by AI
+  scope:
+  - consulting
+  - ai
+  - professional services
+  - automation
+  - knowledge work
+  - business models
+  - disruption
+  evidence:
+  - AI is killing consulting.
+- id: ai-makes-tools-obsolete
+  enabled: true
+  claim: AI-powered tools like Gamma make traditional software like PowerPoint obsolete.
+  subject: AI replacing legacy software in creative and productivity tasks
+  scope:
+  - presentation software
+  - ai tools
+  - productivity
+  - software disruption
+  - creative tools
+  - gamma
+  - powerpoint
+  - canva
+  evidence:
+  - Gamma takes presentation creation to a new level - and makes classic tools such as PowerPoint
+    look old.
+- id: ai-content-devalues-traditional
+  enabled: true
+  claim: AI-generated content is devaluing traditional commercial production, making expensive
+    ads unnecessary.
+  subject: The economic impact of AI on content creation industries
+  scope:
+  - ai content
+  - advertising
+  - commercials
+  - media production
+  - cost reduction
+  - creative industries
+  - value chain
+  evidence:
+  - '1m views on a 30-sec ad that’s 100% AI generated. It only means one thing: $500,000 traditional
+    commercial spots are...'
+- id: problems-from-lack
+  enabled: true
+  claim: Most problems stem from a lack of care, focus, or discipline.
+  subject: Root causes of personal and societal failures
+  scope:
+  - personal responsibility
+  - discipline
+  - focus
+  - care
+  - problem-solving
+  - work ethic
+  - self-improvement
+  evidence:
+  - most problems are a result of a lack of care, a lack of focus, or a lack of discipline.
+- id: founders-restrict-power
+  enabled: true
+  claim: The Founders restricted government power to prevent military and authoritarian overreach.
+  subject: The intent of constitutional limits on government
+  scope:
+  - constitution
+  - government power
+  - founding fathers
+  - military
+  - civil liberties
+  - authoritarianism
+  - checks and balances
+  evidence:
+  - The Founders were very particular about restricting government power for a reason, they
+    did not want soldiers marching arou...
+- id: capitalism-cooperation
+  enabled: true
+  claim: Capitalism and socialism both rely on cooperation, but capitalism aligns it with
+    incentives.
+  subject: The comparative philosophy of economic systems
+  scope:
+  - capitalism
+  - socialism
+  - cooperation
+  - incentives
+  - economic systems
+  - free market
+  - collectivism
+  evidence:
+  - Capitalism and socialism both believe in cooperation to achieve goals. The difference
+    is this. Capitalism believes in...
+- id: simplicity-is-hard
+  enabled: true
+  claim: Simplicity is extremely difficult to achieve but is a hallmark of great design.
+  subject: The value and difficulty of simplicity in design and engineering
+  scope:
+  - simplicity
+  - design
+  - engineering
+  - steve jobs
+  - product development
+  - minimalism
+  - user experience
+  evidence:
+  - simplicity is so hard.
+- id: society-chases-wrong-goals
+  enabled: true
+  claim: Many people pursue society's expectations rather than their own desires, leading
+    to regret.
+  subject: The conflict between societal expectations and personal fulfillment
+  scope:
+  - societal pressure
+  - personal fulfillment
+  - life choices
+  - regret
+  - authenticity
+  - career
+  - happiness
+  evidence:
+  - Many people spend the first half of their lives chasing what society convinced them that
+    they wanted, and they spend the s...
+- id: action-over-planning
+  enabled: true
+  claim: Taking action beats planning and debating; default to action to outperform most people.
+  subject: The superiority of action over deliberation in achieving success
+  scope:
+  - action
+  - planning
+  - procrastination
+  - productivity
+  - success
+  - experimentation
+  - bias towards action
+  evidence:
+  - you can beat 99% of people by just defaulting to action.
+- id: ai-bubble-burst
+  enabled: true
+  claim: Cheap Chinese AI models have exposed the US AI bubble as overvalued.
+  subject: The valuation and sustainability of the AI industry
+  scope:
+  - ai bubble
+  - ai valuation
+  - chinese ai
+  - cost efficiency
+  - open source
+  - market correction
+  - tech industry
+  evidence:
+  - A Small team of Chinese super chads completely destroyed the US A.I. bubble. Same performance
+    for a tiny fraction of the pri...
+- id: ai-promises-broken
+  enabled: true
+  claim: AI companies like OpenAI will break promises, such as no ads, when money is at stake.
+  subject: The reliability of corporate commitments in the tech industry
+  scope:
+  - openai
+  - corporate promises
+  - ads
+  - monetization
+  - business ethics
+  - tech industry
+  - trust
+  evidence:
+  - Sam Altman 2024 "we're never doing ads on ChatGPT" Sam Altman Nov 2025 "I expect it's
+    something we'll try" everyone has...
+- id: acquaintances-not-friends
+  enabled: true
+  claim: Acquaintances are not friends; understanding this is crucial for personal relationships.
+  subject: The distinction between casual and deep relationships
+  scope:
+  - friendship
+  - acquaintances
+  - social circles
+  - trust
+  - personal relationships
+  - social dynamics
+  evidence:
+  - You have to understand that your acquaintances are NOT your friends.
+- id: ethics-in-data-science
+  enabled: true
+  claim: Teaching ethics in data science is necessary to prevent harmful actions.
+  subject: The importance of ethics education in technical fields
+  scope:
+  - ethics
+  - data science
+  - ai ethics
+  - education
+  - responsible ai
+  - harm prevention
+  - professional standards
+  evidence:
+  - 'if you''re wondering why we teach data scientists "woke" stuff like ethics, it''s so
+    they don''t do things like this:'
+- id: party-alignment-outsourcing
+  enabled: true
+  claim: Aligning with a political party means outsourcing your thinking and turning off your
+    brain.
+  subject: The cognitive cost of partisan alignment
+  scope:
+  - political parties
+  - critical thinking
+  - partisanship
+  - independent thought
+  - ideology
+  - voting
+  - polarization
+  evidence:
+  - If you align "hard" with a political party you have turned off your brain and outsourced
+    your think...
+- id: ai-frees-time
+  enabled: true
+  claim: AI plus software lets you achieve top outcomes in two hours a day, freeing the rest
+    of your time.
+  subject: The potential of AI to radically compress work time
+  scope:
+  - ai productivity
+  - time management
+  - work efficiency
+  - automation
+  - work-life balance
+  - outcomes
+  - software tools
+  evidence:
+  - Now that you can crush academics and get top 1% of outcomes using AI + software in two
+    hours/day, the rest of the day is freed...
+- id: open-source-ai-unstoppable
+  enabled: true
+  claim: Open-source AI is unstoppable and will beat closed mega-corporations.
+  subject: The competitive dynamics between open-source and closed AI development.
+  scope:
+  - open source
+  - closed source
+  - ai labs
+  - megacorps
+  - token pricing
+  - openclaw
+  - redis
+  - community innovation
+  evidence:
+  - OPEN SOURCE AI IS LITERALLY UNSTOPPABLE
+  - the window for experimenting with llms has basically closed now. the megacorps have fully
+    hit escape velocity
+  - the founder of openclaw joined the company that was founded to make AI open and now charges
+    you per token
+- id: gpu-longevity
+  enabled: true
+  claim: GPUs can last for many years if maintained, so you don't need to upgrade constantly.
+  subject: The durability and lifecycle of computer hardware, especially GPUs.
+  scope:
+  - gpu
+  - hardware
+  - maintenance
+  - upgrade cycle
+  - rx 580
+  - longevity
+  - repair
+  - obsolescence
+  evidence:
+  - GPUs never retire if you take care of them. this RX 580 8GB has been with me since 2017
+    and is not even close to done
+- id: visual-scarcity-collapse
+  enabled: true
+  claim: The economic value of visual scarcity is collapsing as AI generates unlimited images.
+  subject: The economic impact of AI-generated visual content on traditional visual industries.
+  scope:
+  - visual scarcity
+  - ai images
+  - stock photography
+  - design
+  - illustration
+  - creative industries
+  - content generation
+  - copyright
+  evidence:
+  - you are currently witnessing the collapse of visual scarcity as an economic category
+- id: government-remote-control
+  enabled: true
+  claim: Governments can and will remotely disable your vehicle, so owning an old car is a
+    form of freedom.
+  subject: The risks of government control over modern connected vehicles and the value of
+    older, less connected cars.
+  scope:
+  - remote shutdown
+  - connected cars
+  - vehicle autonomy
+  - government surveillance
+  - old cars
+  - freedom
+  - control
+  - privacy
+  evidence:
+  - the government can and will shut off your car remotely if you misbehave. this is why driving
+    an old shitbox is more important
+- id: corporate-media-slop
+  enabled: true
+  claim: Corporate media and platforms are flooding feeds with low-quality sponsored content,
+    destroying user experience.
+  subject: The degradation of content quality on social platforms due to corporate and sponsored
+    posts.
+  scope:
+  - sponsored content
+  - social media feeds
+  - algorithmic curation
+  - user experience
+  - slop
+  - advertising
+  - platform incentives
+  - yelp
+  evidence:
+  - You now have to scroll through 5-10 sponsored results to get t...
+  - This slop gets hundreds of millions of views
+- id: housing-affordability-crisis
+  enabled: true
+  claim: Housing is unaffordable in many places, driven by speculation and private equity,
+    and this is a systemic problem.
+  subject: The systemic causes of housing unaffordability and homelessness.
+  scope:
+  - housing prices
+  - private equity
+  - speculation
+  - homelessness
+  - affordability
+  - real estate
+  - urban living
+  - austin
+  - minnesota
+  evidence:
+  - In Austin ‘central living’ means you paid $1.2M for a house bu...
+  - Private Equity for causing the housing crisis and spike in homelessness
+- id: government-surveillance-ice
+  enabled: true
+  claim: ICE and government enforcement actions are overreaching and harming communities,
+    requiring resistance.
+  subject: The overreach and harm of immigration enforcement and government surveillance.
+  scope:
+  - ice
+  - immigration enforcement
+  - surveillance
+  - civil liberties
+  - community resistance
+  - protest
+  - racial profiling
+  - detention
+  evidence:
+  - ICE is still wreaking havoc in many communities - stand with your neighbors!
+  - Minnasotans refuse to allow the pedophile führer's ICE Nazis to kidnap a woman
+- id: american-dream-shift
+  enabled: true
+  claim: The American Dream has become about owning a used car and a modest home, reflecting
+    economic decline.
+  subject: The changing nature of the American Dream in the context of economic stagnation.
+  scope:
+  - american dream
+  - economic mobility
+  - used cars
+  - homeownership
+  - middle class
+  - stagnation
+  - cost of living
+  - aspiration
+  evidence:
+  - 'a friend who live there just told me about a new version of the American Dream: - A used
+    Toyota'
+- id: healthcare-bill-avoidance
+  enabled: true
+  claim: In the US, you can often avoid paying medical bills because the system is broken
+    and collection is weak.
+  subject: The inefficiencies and loopholes in the US healthcare billing system.
+  scope:
+  - medical bills
+  - healthcare costs
+  - debt collection
+  - credit impact
+  - hospital billing
+  - insurance
+  - patient rights
+  - financial hardship
+  evidence:
+  - in the US you can literally just not pay bills, because of the w...
+- id: dietary-dogma-reversal
+  enabled: true
+  claim: Traditional dietary advice about fat and cholesterol was wrong, and eating steak
+    and butter is actually healthy.
+  subject: The validity of nutritional guidelines regarding fat, cholesterol, and meat consumption.
+  scope:
+  - nutrition
+  - cholesterol
+  - saturated fat
+  - steak
+  - butter
+  - dietary guidelines
+  - health
+  - science
+  evidence:
+  - People freaked out 12 years ago when I told them to eat steak and put grass fed butter
+    in their coffee
+- id: platform-algorithm-dependence
+  enabled: true
+  claim: Social media algorithms now control content distribution, making follower counts
+    obsolete and forcing brands to adapt.
+  subject: The shift from follower-based to algorithm-driven content distribution on social
+    platforms.
+  scope:
+  - social media algorithms
+  - follower counts
+  - content distribution
+  - marketing
+  - brands
+  - fyp
+  - engagement
+  - platform changes
+  evidence:
+  - the fyp ate the follower and changed the way marketing works
+- id: gaming-addiction-exploitation
+  enabled: true
+  claim: The gaming industry profits from addictive mechanics, sometimes even using forced
+    labor, which is unethical.
+  subject: The ethical problems in the gaming industry related to addiction and labor practices.
+  scope:
+  - gaming addiction
+  - microtransactions
+  - loot boxes
+  - forced labor
+  - chinese prisons
+  - industry profits
+  - player exploitation
+  - regulation
+  evidence:
+  - A $3 billion industry was built on people playing video games 12 hours a day and it got
+    so profitable that Chinese prisons for...
+- id: software-bloat
+  enabled: true
+  claim: Modern software is bloated and inefficient, using far more resources than necessary
+    for the same tasks.
+  subject: The inefficiency and resource consumption of modern software applications.
+  scope:
+  - software bloat
+  - memory usage
+  - performance
+  - microsoft word
+  - ram
+  - efficiency
+  - legacy software
+  - optimization
+  evidence:
+  - Microsoft Word 2002 used about 25MB of RAM. Now Word uses 10x that much memory to display
+    the same 584kb doc
+- id: nba-tanking-debate
+  enabled: true
+  claim: The NBA's tanking debate highlights conflicting incentives between teams, players,
+    and fans.
+  subject: The strategic and ethical issues surrounding tanking in professional sports leagues.
+  scope:
+  - nba
+  - tanking
+  - incentives
+  - team strategy
+  - player motives
+  - fan engagement
+  - competitive balance
+  - draft
+  evidence:
+  - The wether the NBA should embrace tanking conversation is interesting because it speaks
+    to the differences in the prima...
+- id: sports-betting-conflict
+  enabled: true
+  claim: Athletes having equity in betting platforms creates troubling conflicts of interest
+    that threaten integrity.
+  subject: The integrity risks of athlete involvement in sports betting platforms.
+  scope:
+  - sports betting
+  - athlete equity
+  - conflict of interest
+  - game integrity
+  - kalshi
+  - giannis
+  - regulation
+  - ethics
+  evidence:
+  - When an athlete has equity in a platform where people can bet on outco...
+- id: ai-application-competition
+  enabled: true
+  claim: AI application startups can compete with big labs by focusing on niche problems and
+    user experience.
+  subject: The strategies for AI startups to compete with large AI labs and incumbents.
+  scope:
+  - ai startups
+  - big labs
+  - competition
+  - niche markets
+  - user experience
+  - application layer
+  - incumbents
+  - differentiation
+  evidence:
+  - How can AI application startups compete with the big labs and incumbents? I shared some
+    of our thoughts on this
+- id: media-archive-preservation
+  enabled: true
+  claim: Old media should be preserved and accessible for free, not locked away by corporations.
+  subject: The importance of preserving and providing free access to historical media content.
+  scope:
+  - media preservation
+  - archive.org
+  - old shows
+  - streaming libraries
+  - cartoon network
+  - hbo max
+  - copyright
+  - public access
+  evidence:
+  - HBO Max destroyed Cartoon Network's streaming library... Tubi decided t...
+  - People have no idea that all of this is available on archive dot org for free
+- id: government-tariff-refund
+  enabled: true
+  claim: The Supreme Court refunding tariff money to corporations is a giveaway to the rich
+    at the expense of the public.
+  subject: The distributional effects of tariff policies and court rulings on corporations
+    versus citizens.
+  scope:
+  - tariffs
+  - supreme court
+  - corporate welfare
+  - tax policy
+  - wealth distribution
+  - government
+  - legal rulings
+  - economic justice
+  evidence:
+  - the supreme court is refunding all tariff money back to corporations
+- id: local-business-opportunity
+  enabled: true
+  claim: There are under-served local business opportunities like water filtration and social
+    clubs with high margins.
+  subject: The potential for profitable local service businesses in overlooked niches.
+  scope:
+  - local business
+  - water filtration
+  - social clubs
+  - niche markets
+  - entrepreneurship
+  - high margins
+  - service industry
+  - community
+  evidence:
+  - The most slept-on home service business in America right now is water filtration
+  - 'Local club business idea: Singles social club in your city'
+- id: job-security-and-employment-bar
+  enabled: true
+  claim: If you have a job, do everything to keep it because re-employment is nearly impossible
+    now—the bar has risen by an order of magnitude.
+  subject: labor market competition and job retention
+  scope:
+  - job security
+  - unemployment
+  - hiring standards
+  - career stability
+  - reemployment difficulty
+  - employment market
+  evidence:
+  - If you’ve got a job, Do everything to keep it
+  - You’re not getting re-employed
+  - The bar has gone up by an OOM
+- id: ai-training-cost-efficiency
+  enabled: true
+  claim: AI models can be trained for a fraction of the cost of incumbents and still outperform
+    them, so high training costs are not a moat.
+  subject: cost efficiency in AI model development and competition
+  scope:
+  - model training cost
+  - ai performance
+  - open source ai
+  - efficient training
+  - competitive ai
+  - compute efficiency
+  evidence:
+  - Kimi K2 was trained for $4.6 MILLION.
+  - GPT-5 reportedly cost hundreds of millions.
+  - Kimi still beats it on coding.
+- id: boycott-of-harmful-consumer-products
+  enabled: true
+  claim: We should collectively boycott gambling companies, processed food abominations, and
+    brainrot news accounts to protect our minds and society.
+  subject: consumer resistance to harmful products and media
+  scope:
+  - gambling
+  - junk food
+  - clickbait media
+  - consumer boycotts
+  - mental health
+  - addictive products
+  evidence:
+  - We must collectively agree on a goyslop boycott.
+  - Every gambling company, every CPG abomination, every brainrot news account…
+- id: burgers-are-healthy
+  enabled: true
+  claim: Burgers are one of the healthiest meals on the planet despite being labeled junk
+    food—the common wisdom is wrong.
+  subject: nutritional value of burgers versus common perception
+  scope:
+  - burger nutrition
+  - healthy meals
+  - food myths
+  - dietary advice
+  - protein sources
+  - junk food misconceptions
+  evidence:
+  - They said burgers are junk food but the truth is they're one of the healthiest meals on
+    the planet
+- id: low-stimulation-lifestyle
+  enabled: true
+  claim: A low-stimulation lifestyle—early bedtimes, simple foods, reading instead of scrolling—is
+    the key to well-being in a dopamine-driven world.
+  subject: lifestyle choices for mental and physical health against modern stimulation
+  scope:
+  - dopamine detox
+  - minimalist living
+  - digital minimalism
+  - sleep hygiene
+  - reading habits
+  - meditation
+  evidence:
+  - It's all a dopamine game.
+  - Early bedtimes. Simple foods. Low stimulation. Reading instead of scrolling.
+- id: niche-app-opportunities
+  enabled: true
+  claim: You can build a successful app for any hobby sport by replicating what works in one
+    niche—the opportunity is everywhere.
+  subject: entrepreneurial opportunities in niche hobby applications
+  scope:
+  - hobby apps
+  - niche markets
+  - sports apps
+  - app development
+  - side projects
+  - market gaps
+  evidence:
+  - I bet you could build an app just like this in for ANY hobby sport.
+- id: democratization-of-creation
+  enabled: true
+  claim: The barrier to creating things like music or software has collapsed, so anyone can
+    now produce what once required expensive studios or teams.
+  subject: democratization of creative and technical production
+  scope:
+  - music production
+  - software development
+  - content creation
+  - creative tools
+  - barriers to entry
+  - diy culture
+  evidence:
+  - 'barrier to record an album in 2000: a studio, a label, $500k'
+  - barrier to record a…
+- id: flirting-as-skill
+  enabled: true
+  claim: Flirting is one of the most underrated skills in life, and people don't talk about
+    it because it sounds gross, but it matters hugely.
+  subject: social and interpersonal skills, specifically flirting
+  scope:
+  - flirting
+  - social skills
+  - dating
+  - communication
+  - romantic relationships
+  - charisma
+  evidence:
+  - Flirting is the most underrated skill and nobody will say it out loud because it sounds
+    gross.
+- id: ai-company-hypocrisy
+  enabled: true
+  claim: AI companies like Anthropic and Google are hypocritical when they launch products
+    that rate-limit or restrict what users can already do with their own tools.
+  subject: corporate behavior of AI companies regarding user access and control
+  scope:
+  - ai product launches
+  - rate limiting
+  - user rights
+  - corporate hypocrisy
+  - tool restrictions
+  - developer ecosystems
+  evidence:
+  - 'Anthropic: let’s launch Claude Design and rate limit usage when users can already do
+    the same thing in Claude Code.'
+- id: hardware-companies-ai-lock-in
+  enabled: true
+  claim: Hardware companies are also engaging in AI lock-in, following the same pattern as
+    software giants, which is problematic.
+  subject: hardware companies' strategies for AI integration and customer lock-in
+  scope:
+  - hardware ai
+  - vendor lock-in
+  - tesla
+  - apple
+  - proprietary systems
+  - ecosystem control
+  evidence:
+  - The problem is even hardware companies are doing exactly that now. Tesla an…
+- id: streaming-for-artists
+  enabled: true
+  claim: Artists now prefer streaming because it lets them reach huge audiences directly,
+    even if they get laughed at, rather than relying on traditional gatekeepers.
+  subject: artist distribution and revenue models in the digital age
+  scope:
+  - music streaming
+  - artist revenue
+  - direct-to-fan
+  - music distribution
+  - online audiences
+  - creative independence
+  evidence:
+  - I understand why rappers want to stream now.
+  - Imagine releasing 40+ songs and tens of thousands of people are laughing wit…
+- id: free-web-search-for-agents
+  enabled: true
+  claim: Web search being free for AI agents is a game-changer that will shift how we use
+    search tools and build agents.
+  subject: cost and accessibility of search APIs for AI agents
+  scope:
+  - web search api
+  - ai agents
+  - search costs
+  - agent tools
+  - information access
+  - tinyfish
+  evidence:
+  - Crazy...Web search is now free for every AI agent.
+- id: american-animation-decline
+  enabled: true
+  claim: America made the best animation in the world but let Japan and Korea take over because
+    of shareholder pressure, which is a loss.
+  subject: decline of American animation industry due to corporate priorities
+  scope:
+  - animation industry
+  - shareholder value
+  - outsourcing
+  - creative industries
+  - american media
+  - global competition
+  evidence:
+  - America made some of the best animation in the world and just let the Japanese and Koreans
+    take over because shareholder…
+- id: faith-app-market
+  enabled: true
+  claim: There's a lucrative market for faith-based apps that are easy to replicate for different
+    religions—you should build them.
+  subject: market opportunity for religious and faith-based applications
+  scope:
+  - faith apps
+  - religious technology
+  - christian apps
+  - niche app markets
+  - revenue opportunities
+  - spiritual products
+  evidence:
+  - you should build faith apps
+  - there are already christian apps making ~$100k/mo that are easily replicable for other
+    religi…
+- id: minnesota-civil-war-or-epoch
+  enabled: true
+  claim: Minnesota will either be the staging ground for a civil war or the birthplace of
+    a new American epoch—it's that pivotal.
+  subject: Minnesota's role in American political and social future
+  scope:
+  - minnesota politics
+  - civil unrest
+  - american future
+  - state identity
+  - political movements
+  - regional significance
+  evidence:
+  - Minnesota will either be the staging ground for some sort of civil war, or the birthplace
+    of a new American epoch.
+- id: dating-apps-illusion
+  enabled: true
+  claim: Dating apps create a harmful illusion of infinite options and no visible competition,
+    which distorts how women see men and dating.
+  subject: dating app dynamics and their psychological effects on users
+  scope:
+  - dating apps
+  - online dating
+  - perception of options
+  - competition
+  - gender dynamics
+  - dating psychology
+  evidence:
+  - Dating apps create a very specific illusion. Infinite options and no visible competition.
+- id: adhd-circadian-rhythm
+  enabled: true
+  claim: ADHD is closely linked to circadian rhythm dysfunction, so targeting circadian misalignment
+    could be a key treatment.
+  subject: relationship between ADHD and circadian rhythms for treatment
+  scope:
+  - adhd
+  - circadian rhythm
+  - sleep disorders
+  - treatment approaches
+  - mental health
+  - biological clocks
+  evidence:
+  - ADHD is closely linked to circadian rhythm dysfunction.
+  - targeting circadian misalignment…
+- id: eggs-for-anxiety
+  enabled: true
+  claim: Eating more eggs, which contain choline, can reduce anxiety and provide great protein—so
+    eggs are a superfood for mental health.
+  subject: nutritional benefits of eggs for mental and physical health
+  scope:
+  - eggs
+  - choline
+  - anxiety relief
+  - protein intake
+  - nutritional advice
+  - dietary supplements
+  evidence:
+  - Eat more eggs (has choline) and you stop being anxious
+  - Also great protein for your muscles (6g per egg)
+- id: buc-ees-national-brand
+  enabled: true
+  claim: As a native Texan, I'm ambivalent about Buc-ee's becoming a national brand—it might
+    lose its local charm.
+  subject: regional brand expansion and its cultural impact
+  scope:
+  - buc-ee's
+  - regional identity
+  - brand expansion
+  - texas culture
+  - local businesses
+  - national chains
+  evidence:
+  - As a native Texan, I don’t know how I feel about Buccee’s becoming a national brand
+- id: attention-shapes-brain
+  enabled: true
+  claim: Your brain reshapes itself around what you consistently pay attention to, so controlling
+    your attention is crucial.
+  subject: neuroplasticity and the power of attention on mental development
+  scope:
+  - attention
+  - neuroplasticity
+  - self-talk
+  - mindfulness
+  - habit formation
+  - cognitive development
+  evidence:
+  - your brain will reshape itself around what you consistently pay attention to.

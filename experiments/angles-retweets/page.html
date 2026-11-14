@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Retweet Angles</title>
+<style>
+:root { --bg:#fbfaf7; --ink:#1d1c1a; --muted:#6b6862; --line:#e4e0d8; --card:#fff; --good:#1f7a4a; --bad:#a3352b; --mid:#8a6a14; --accent:#24527a; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg:#141413; --ink:#ecebe7; --muted:#a19e97; --line:#2e2d2a; --card:#1c1c1a; --good:#5cc08a; --bad:#e57b6f; --mid:#d6b456; --accent:#7fb2e0; } }
+:root[data-theme="dark"] { --bg:#141413; --ink:#ecebe7; --muted:#a19e97; --line:#2e2d2a; --card:#1c1c1a; --good:#5cc08a; --bad:#e57b6f; --mid:#d6b456; --accent:#7fb2e0; }
+* { box-sizing: border-box; }
+body { margin:0; background:var(--bg); color:var(--ink); font:15px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+main { max-width: 860px; margin: 0 auto; padding: 24px 16px 64px; }
+h1 { font-size: 24px; margin: 0 0 4px; }
+.sub { color: var(--muted); margin: 0 0 20px; }
+table { width: 100%; border-collapse: collapse; margin: 8px 0 20px; font-size: 14px; }
+th, td { text-align: left; padding: 8px 6px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { color: var(--muted); font-weight: 600; }
+td.n { font-variant-numeric: tabular-nums; }
+.tabs { display: flex; gap: 6px; flex-wrap: wrap; margin: 20px 0 10px; }
+.tabs button { font: inherit; font-size: 14px; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--card); color: var(--ink); cursor: pointer; }
+.tabs button[aria-selected="true"] { border-color: var(--accent); color: var(--accent); font-weight: 600; }
+input[type=search] { width: 100%; font: inherit; padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--card); color: var(--ink); margin-bottom: 10px; }
+.row { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; margin-bottom: 8px; }
+.claim { font-weight: 600; }
+.meta { font-size: 13px; color: var(--muted); margin-top: 4px; }
+.ev { font-size: 13px; color: var(--muted); margin-top: 4px; font-style: italic; overflow-wrap: anywhere; }
+.tag { display: inline-block; font-size: 12px; padding: 1px 8px; border-radius: 999px; border: 1px solid currentColor; margin-right: 4px; font-style: normal; }
+.good { color: var(--good); } .bad { color: var(--bad); } .mid { color: var(--mid); }
+.count { color: var(--muted); font-size: 13px; margin-bottom: 8px; }
+.wrap { overflow-x: auto; }
+</style>
+</head>
+<body>
+<main>
+<h1>Retweet angles</h1>
+<p class="sub">What adding @geoppls retweets would add to the angle list, with two ways to filter them. Branch ih/angles-retweets. angles.yaml is not changed.</p>
+<div id="summary"></div>
+<div class="tabs" role="tablist" id="tabs"></div>
+<input type="search" id="q" placeholder="Search">
+<div class="count" id="count"></div>
+<div id="list"></div>
+</main>
+<script>
+const D = /*DATA*/null;
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const pct = (a, b) => b ? Math.round(100 * a / b) + '%' : '';
+const L = D.lab_n;
+document.getElementById('summary').innerHTML = `
+<p>The no-filter run read ${D.rt_total} retweets and gave <b>${D.unf_n} positions</b>, ${D.unf_new} of them new against your ${D.cur_n} current angles. Both filters are judged on these same ${D.unf_n}.</p>
+<div class="wrap"><table>
+<tr><th></th><th>Quality filter</th><th>Own-words test</th></tr>
+<tr><td>How it decides</td><td>A model labels each retweet. It keeps views and all retweets of your own accounts. A position stays if a retweet it came from is kept.</td><td>A position stays only if your own posts agree with it.</td></tr>
+<tr><td>Positions kept</td><td class="n">${D.qf_keep} of ${D.unf_n}${D.qf_untraced ? ` (${D.qf_untraced} could not be traced)` : ''}</td><td class="n">${D.st_n.agree||0} of ${D.unf_n}</td></tr>
+<tr><td>New angles kept</td><td class="n">${D.qf_keep_new}</td><td class="n">${D.own_keep_new}</td></tr>
+</table></div>
+<p class="count">Both keep ${D.both} · only the quality filter keeps ${D.only_qf} · only the own-words test keeps ${D.only_own} · both drop ${D.neither}.<br>
+Retweet labels (${D.rt_total}): view ${L.view}, news ${L.news}, promo ${L.promo}, chatter ${L.chatter}, fragment ${L.fragment||0}. ${D.own_n} are retweets of your own accounts.</p>
+<div class="wrap"><table>
+<tr><th>Example position</th><th>Quality filter</th><th>Own-words test</th></tr>
+${D.examples.map(e => `<tr><td>${esc(e.claim)}<div class="meta">source retweets: ${esc(e.src.join(', '))}</div></td><td class="${e.qf?'good':'bad'}">${e.qf?'kept':'dropped'}</td><td class="${e.own==='agree'?'good':'bad'}">${e.own==='agree'?'kept':'dropped ('+e.own.replace('_',' ')+')'}</td></tr>`).join('')}
+</table></div>`;
+
+const TABS = [
+  ['all', 'All positions'],
+  ['only_qf', 'Only quality filter keeps'],
+  ['only_own', 'Only own-words keeps'],
+  ['neither', 'Both drop'],
+  ['promo', 'Dropped: promo'],
+  ['chatter', 'Dropped: chatter'],
+  ['news', 'Dropped: news'],
+  ['kept', 'Kept retweets'],
+];
+let tab = 'all';
+try { tab = localStorage.getItem('rtTab2') || 'all'; } catch (e) {}
+const tabsEl = document.getElementById('tabs');
+tabsEl.innerHTML = TABS.map(([k, t]) => `<button role="tab" data-k="${k}">${t}</button>`).join('');
+tabsEl.addEventListener('click', e => { const k = e.target.dataset.k; if (k) { tab = k; try { localStorage.setItem('rtTab2', k); } catch (x) {} render(); } });
+document.getElementById('q').addEventListener('input', render);
+
+function rowUnf(r) {
+  const o = r.own === 'agree' ? 'good' : 'bad';
+  const q = r.qf === null ? 'mid' : (r.qf ? 'good' : 'bad');
+  return `<div class="row"><div class="claim">${esc(r.claim)}</div>
+  <div class="meta"><span class="tag ${q}">quality filter: ${r.qf === null ? 'not traced' : (r.qf ? 'kept' : 'dropped')}</span><span class="tag ${o}">own words: ${esc(r.own.replace('_',' '))}</span><span class="tag ${r.new?'mid':'good'}">${r.new?'new':'already in list'}</span></div>
+  ${r.src.map(x => `<div class="ev"><span class="tag">${esc(x.label)}</span>@${esc(x.h)}: ${esc(x.t)}</div>`).join('')}
+  <div class="meta">Own-words verdict: ${esc(r.why)}</div>
+  <div class="meta">Nearest current angle (${r.cos}): ${esc(r.near)}</div></div>`;
+}
+const rowTw = r => `<div class="row"><div class="meta">@${esc(r.h)}</div><div>${esc(r.t)}</div></div>`;
+
+function render() {
+  for (const b of tabsEl.children) b.setAttribute('aria-selected', b.dataset.k === tab);
+  const q = document.getElementById('q').value.toLowerCase();
+  let items, fn, note = '';
+  const ag = r => r.own === 'agree';
+  if (tab === 'all') { items = D.unf; fn = rowUnf; }
+  else if (tab === 'only_qf') { items = D.unf.filter(r => r.qf === true && !ag(r)); fn = rowUnf; }
+  else if (tab === 'only_own') { items = D.unf.filter(r => r.qf === false && ag(r)); fn = rowUnf; }
+  else if (tab === 'neither') { items = D.unf.filter(r => r.qf === false && !ag(r)); fn = rowUnf; }
+  else if (tab === 'kept') { items = D.kept; fn = rowTw; note = ' (first 60)'; }
+  else { items = D.dropped[tab]; fn = rowTw; note = ' (first 60 of ' + (D.lab_n[tab] || 0) + ')'; }
+  const shown = items.filter(r => !q || JSON.stringify(r).toLowerCase().includes(q));
+  document.getElementById('count').textContent = shown.length + ' shown' + note;
+  document.getElementById('list').innerHTML = shown.map(fn).join('');
+}
+render();
+</script>
+</body>
+</html>
